@@ -1,0 +1,9 @@
+.debugpress-clearfix:before,
+.debugpress-clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.debugpress-clearfix:after {
+  clear: both;
+}
