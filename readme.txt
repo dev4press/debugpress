@@ -1,6 +1,6 @@
 === DebugPress ===
 Contributors: GDragoN
-Donate link: https://www.dev4press.com/
+Donate link: https://debug.press/
 Tags: comments, spam
 Stable tag: 1.0
 Requires at least: 4.9

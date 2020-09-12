@@ -3,6 +3,7 @@
 namespace Dev4Press\Plugin\DebugPress\Track;
 
 use Exception;
+use WP_Error;
 
 class Tracker {
 	public $timer_start_wp = 0;
@@ -93,19 +94,19 @@ class Tracker {
 	}
 
 	public function actions() {
-		if ( D4P_DEBUG && gdpet_debugger()->get( 'errors_override' ) ) {
+		if ( DEBUGPRESS_IS_DEBUG && debugpress_plugin()->get( 'errors_override' ) ) {
 			$this->_error_handler = set_error_handler( array( $this, 'track_error' ) );
 
 			register_shutdown_function( array( $this, 'track_fatal_error' ) );
 		}
 
-		if ( gdpet_debugger()->get( 'doingitwrong_override' ) ) {
+		if ( debugpress_plugin()->get( 'doingitwrong_override' ) ) {
 			add_action( 'doing_it_wrong_run', array( $this, 'track_wrong' ), 10, 3 );
 
 			add_filter( 'doing_it_wrong_trigger_error', '__return_false' );
 		}
 
-		if ( gdpet_debugger()->get( 'deprecated_override' ) ) {
+		if ( debugpress_plugin()->get( 'deprecated_override' ) ) {
 			add_action( 'deprecated_function_run', array( $this, 'track_function' ), 10, 3 );
 			add_action( 'deprecated_constructor_run', array( $this, 'track_constructor' ), 10, 2 );
 			add_action( 'deprecated_file_included', array( $this, 'track_file' ), 10, 4 );
@@ -215,10 +216,6 @@ class Tracker {
 		$this->_http_info = $info;
 	}
 
-	public function to_event_log( $code, $type = '', $meta = array() ) {
-		do_action( 'debugpress_log_to_events_log', $code, $type, $meta );
-	}
-
 	public function query() {
 		$this->query_current = get_num_queries();
 
@@ -241,18 +238,14 @@ class Tracker {
 		return $this->_hooks_object();
 	}
 
-	public function log( $object, $title = '', $db = false, $sql = false ) {
+	public function log( $object, $title = '', $sql = false ) {
 		$log = array(
-			'time'   => gdpet_db()->datetime(),
+			'time'   => current_time( 'mysql' ),
 			'title'  => $title,
 			'print'  => $object,
 			'caller' => $this->_get_caller(),
 			'sql'    => $sql
 		);
-
-		if ( $db ) {
-			gdpet_events()->log( 'user_object', array(), $log );
-		}
 
 		$this->logged[] = $log;
 	}
@@ -282,8 +275,6 @@ class Tracker {
 		$this->counts['errors'] ++;
 		$this->counts['total'] ++;
 
-		$this->to_event_log( 'php_error', '', $log );
-
 		if ( $errno == E_ERROR || $errno == E_USER_ERROR ) {
 			$this->has_errors ++;
 		} else {
@@ -308,8 +299,6 @@ class Tracker {
 
 		$this->counts['doingitwrong'] ++;
 		$this->counts['total'] ++;
-
-		$this->to_event_log( 'doingitwrong', '', $log );
 	}
 
 	public function track_function( $function, $replacement, $version ) {
@@ -332,8 +321,6 @@ class Tracker {
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
-
-		$this->to_event_log( 'deprecated', 'function', $log );
 	}
 
 	public function track_file( $file, $replacement, $version, $message ) {
@@ -348,8 +335,6 @@ class Tracker {
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
-
-		$this->to_event_log( 'deprecated', 'file', $log );
 	}
 
 	public function track_argument( $function, $replacement, $version ) {
@@ -403,8 +388,6 @@ class Tracker {
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
-
-		$this->to_event_log( 'deprecated', 'argument', $log );
 	}
 
 	public function track_constructor( $class, $version ) {
@@ -419,8 +402,6 @@ class Tracker {
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
-
-		$this->to_event_log( 'deprecated', 'constructor', $log );
 	}
 
 	public function wp_action() {
@@ -465,7 +446,7 @@ class Tracker {
 
 			switch ( $value ) {
 				case 'memory':
-					return d4p_filesize_format( $data, 2, '' );
+					return debugpress_format_size( $data, 2, '' );
 				case 'time':
 					return number_format( $data, 5 );
 				default:
@@ -479,8 +460,8 @@ class Tracker {
 	public function get_total_sql_time() {
 		$timer = 0;
 
-		if ( gdpet_db()->wpdb()->queries ) {
-			foreach ( gdpet_db()->wpdb()->queries as $q ) {
+		if ( debugpress_wpdb()->queries ) {
+			foreach ( debugpress_wpdb()->queries as $q ) {
 				$timer += $q[1];
 			}
 		}
@@ -491,10 +472,6 @@ class Tracker {
 	public function log_http_apis() {
 		if ( ! empty( $this->httpapi ) ) {
 			$this->_prepare_http_api_logs();
-
-			foreach ( $this->httpapi as $request ) {
-				$this->to_event_log( 'http_api_request', '', $request );
-			}
 		}
 	}
 

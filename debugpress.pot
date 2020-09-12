@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 09/12/2020 05:42:14 PM\n"
+"POT-Creation-Date: 09/12/2020 09:21:07 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,6 +124,66 @@ msgstr ""
 msgid "Visitors are users that are not currently logged in."
 msgstr ""
 
+#: core/display/Loader.php:36
+msgctxt "Popup message"
+msgid "Show Details"
+msgstr ""
+
+#: core/display/Loader.php:37
+msgctxt "Popup message"
+msgid "Hide Details"
+msgstr ""
+
+#: core/display/PrettyPrint.php:45
+msgctxt "PrettyPrint message"
+msgid "Empty Array"
+msgstr ""
+
+#: core/display/PrettyPrint.php:46
+msgctxt "PrettyPrint message"
+msgid "No Properties"
+msgstr ""
+
+#: core/display/PrettyPrint.php:47
+msgctxt "PrettyPrint message"
+msgid "No Methods"
+msgstr ""
+
+#: core/display/PrettyPrint.php:48
+msgctxt "PrettyPrint message"
+msgid "Infinite Recursion Detected!"
+msgstr ""
+
+#: core/display/PrettyPrint.php:49
+msgctxt "PrettyPrint message"
+msgid "%d characters"
+msgstr ""
+
+#: core/display/PrettyPrint.php:50
+msgctxt "PrettyPrint message"
+msgid "%s type"
+msgstr ""
+
+#: core/display/PrettyPrint.php:51
+msgctxt "PrettyPrint message"
+msgid "%d elements"
+msgstr ""
+
+#: core/display/PrettyPrint.php:52
+msgctxt "PrettyPrint message"
+msgid "%d properties"
+msgstr ""
+
+#: core/display/PrettyPrint.php:53
+msgctxt "PrettyPrint message"
+msgid "Called From"
+msgstr ""
+
+#: core/display/PrettyPrint.php:54
+msgctxt "PrettyPrint message"
+msgid "line"
+msgstr ""
+
 #: core/main/Panel.php:51
 #: core/main/Panel.php:56
 msgid "Name"
@@ -142,17 +202,61 @@ msgstr ""
 msgid "not defined"
 msgstr ""
 
+#: core/main/Plugin.php:164
+msgid "Production Environment"
+msgstr ""
+
+#: core/main/Plugin.php:167
+msgid "Staging Environment"
+msgstr ""
+
+#: core/main/Plugin.php:170
+msgid "Local Environment"
+msgstr ""
+
+#: core/main/Plugin.php:173
+msgid "Development Environment"
+msgstr ""
+
+#: core/main/Plugin.php:194
+msgid "WordPress"
+msgstr ""
+
+#: core/main/Plugin.php:195
+msgid "PHP"
+msgstr ""
+
+#: core/main/Plugin.php:197
+msgid "IP"
+msgstr ""
+
+#: core/main/Plugin.php:198
+msgid "Queries"
+msgstr ""
+
+#: core/main/Plugin.php:199
+msgid "Memory"
+msgstr ""
+
+#: core/main/Plugin.php:200
+msgid "Loaded"
+msgstr ""
+
+#: core/main/Plugin.php:200
+msgid "seconds."
+msgstr ""
+
 #: core/track/AJAX.php:50
 #: core/track/AJAX.php:52
 #: core/track/AJAX.php:57
 msgid "seconds"
 msgstr ""
 
-#: core/track/Tracker.php:362
+#: core/track/Tracker.php:347
 msgid "Unregistered Setting"
 msgstr ""
 
-#: core/track/Tracker.php:600
+#: core/track/Tracker.php:577
 msgid "Request not executed because of the filter on %s."
 msgstr ""
 

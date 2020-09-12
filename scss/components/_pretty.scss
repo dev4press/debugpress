@@ -1,0 +1,204 @@
+.gdp_r {
+    font: 12px Consolas, "Lucida Console", monospace;
+    cursor: default;
+
+    &.gdp_r_root {
+        background: white;
+        border: 1px solid black;
+        margin: 1em 0;
+    }
+
+    a {
+        outline: none;
+        box-shadow: none;
+        display: block !important;
+        text-decoration: none !important;
+
+        &:focus,
+        &:hover {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    p {
+        line-height: inherit !important;
+        margin: 0 !important;
+    }
+
+    .gdp_r_f {
+        padding: 3px;
+        border-top: 1px dashed #444;
+        font: 11px "Verdana", sans-serif;
+
+        code {
+            color: red;
+            background: none;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font: 11px Consolas, "Liberation Mono", Courier, monospace;
+            font-weight: bold;
+        }
+    }
+
+    .gdp_r_c {
+        display: block;
+        text-decoration: none;
+        color: #222;
+        padding: 2px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .gdp_r_a {
+        color: #F00;
+        display: inline-block;
+        width: 15px;
+        text-align: center;
+    }
+
+    .gdp_r_ad {
+        .gdp_r_a {
+            color: #000;
+            opacity: 0.2;
+        }
+    }
+
+    .gdp_r_k {
+        color: #060;
+        font-weight: bold;
+    }
+
+    .gdp_r_d {
+        font-size: 11px;
+        color: #777;
+        margin: 0 2px;
+
+        span {
+            color: #333;
+        }
+    }
+
+    .gdp_r_p {
+        color: #000;
+        font-weight: bold;
+
+        &.gdp_r_t_integer,
+        &.gdp_r_t_double {
+            color: #F0E;
+        }
+
+        &.gdp_r_t_string {
+            color: #E00;
+        }
+
+        &.gdp_r_t_boolean {
+            color: #00E;
+        }
+    }
+
+    .gdp_r_v {
+        margin-left: 9px;
+        padding-left: 7px;
+        border-left: 1px dotted #CCC;
+        display: none;
+
+        &.gdp_r_open {
+            display: block;
+        }
+    }
+
+    .gdp_r_ir {
+        font-style: italic;
+    }
+
+    .gdp_r_t_comment {
+        color: #080;
+    }
+
+    .gdp_r_m {
+        .gdp_r_k {
+            color: #909;
+        }
+
+        .gdp_r_ma {
+            font-weight: normal;
+            color: #777;
+        }
+
+        .gdp_r_mv {
+            color: #00E;
+        }
+    }
+
+    .gdp_r_m_public,
+    .gdp_r_m_protected,
+    .gdp_r_m_private,
+    .gdp_r_m_abstract,
+    .gdp_r_m_final {
+        .gdp_r_mo {
+            font-weight: normal;
+            color: #008;
+        }
+    }
+
+    &.gdp_r_root {
+        .gdp_r_rn {
+            font-weight: bold;
+            color: green;
+        }
+    }
+
+    .gdp_r_m_magic {
+        font-style: italic;
+    }
+
+    .gdp_r_m_deprecated {
+        text-decoration: line-through;
+    }
+
+    a {
+        &.gdp_r_c {
+            &.gdp_r_m_constructor,
+            &.gdp_r_m_destructor {
+                .gdp_r_k {
+                    color: #C02;
+                }
+            }
+
+            &:hover {
+                background-color: Highlight;
+                color: HighlightText;
+
+                .gdp_r_k,
+                .gdp_r_d,
+                .gdp_r_d span,
+                .gdp_r_ma,
+                .gdp_r_mo,
+                .gdp_r_mv,
+                .gdp_r_p,
+                .gdp_r_a {
+                    background-color: Highlight;
+                    color: HighlightText;
+                }
+            }
+        }
+    }
+}
+
+.gdp_rs {
+    &.gdp_rs_null {
+        color: #C02;
+    }
+
+    &.gdp_rs_empty {
+        color: #080;
+    }
+
+    &.gdp_rs_number {
+        color: #008;
+    }
+}

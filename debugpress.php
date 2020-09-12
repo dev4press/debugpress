@@ -2,7 +2,7 @@
 
 /*
 Plugin Name:       DebugPress
-Plugin URI:        https://plugins.dev4press.com/debugpress/
+Plugin URI:        https://debug.press/
 Description:       DebugPress is an easy to use plugin implementing popup for debugging currently loaded WordPress page with support for intercepting AJAX requests.
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
@@ -33,7 +33,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 
 define( 'DEBUGPRESS_VERSION', '1.0' );
 define( 'DEBUGPRESS_PLUGIN_PATH', __DIR__ . '/' );
-define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', __FILE__ ) . '/' );
+define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
+define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
 
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php' );
