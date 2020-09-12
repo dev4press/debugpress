@@ -1,0 +1,315 @@
+<?php
+
+namespace Dev4Press\Plugin\DebugPress\Admin;
+
+class Settings {
+    public function __construct() {
+
+    }
+
+    /** @return \Dev4Press\Plugin\DebugPress\Admin\Settings */
+    public static function instance() {
+        static $instance = null;
+
+        if (!isset($instance)) {
+            $instance = new Settings();
+        }
+
+        return $instance;
+    }
+
+    public function sections() {
+        add_settings_section(
+            'debugpress_settings_activation',
+            __("Debugger Activation"),
+            array($this, 'block_activation'),
+            'debugpress');
+
+        add_settings_section(
+            'debugpress_settings_buttons',
+            __("Debugger Activation Button Location"),
+            array($this, 'block_buttons'),
+            'debugpress');
+
+        add_settings_section(
+            'debugpress_settings_roles',
+            __("User roles with access to Debugger"),
+            array($this, 'block_roles'),
+            'debugpress');
+
+        add_settings_section(
+            'debugpress_settings_panels',
+            __("Debugger Panels"),
+            array($this, 'block_panels'),
+            'debugpress');
+    }
+
+    public function fields() {
+        add_settings_field(
+            'debugpress_settings_admin',
+            '<label for="debugpress_settings_admin">'.__('Website Admin', 'wordpress').'</label>',
+            array($this, 'option_admin'),
+            'debugpress',
+            'debugpress_settings_activation');
+
+        add_settings_field(
+            'debugpress_settings_frontend',
+            '<label for="debugpress_settings_frontend">'.__('Website Frontend', 'wordpress').'</label>',
+            array($this, 'option_frontend'),
+            'debugpress',
+            'debugpress_settings_activation');
+
+        add_settings_field(
+            'debugpress_settings_button_admin',
+            '<label for="debugpress_settings_button_admin">'.__('Website Admin', 'wordpress').'</label>',
+            array($this, 'option_button_admin'),
+            'debugpress',
+            'debugpress_settings_buttons');
+
+        add_settings_field(
+            'debugpress_settings_button_frontend',
+            '<label for="debugpress_settings_button_frontend">'.__('Website Frontend', 'wordpress').'</label>',
+            array($this, 'option_button_frontend'),
+            'debugpress',
+            'debugpress_settings_buttons');
+
+        add_settings_field(
+            'debugpress_settings_for_super_admin',
+            '<label for="debugpress_settings_admin">'.__('Super Admin', 'wordpress').'</label>',
+            array($this, 'option_for_super_admin'),
+            'debugpress',
+            'debugpress_settings_roles');
+
+        add_settings_field(
+            'debugpress_settings_for_roles',
+            '<label for="debugpress_settings_for_roles">'.__('User Roles', 'wordpress').'</label>',
+            array($this, 'option_for_roles'),
+            'debugpress',
+            'debugpress_settings_roles');
+
+        add_settings_field(
+            'debugpress_settings_for_visitor',
+            '<label for="debugpress_settings_for_visitor">'.__('Visitors', 'wordpress').'</label>',
+            array($this, 'option_for_visitor'),
+            'debugpress',
+            'debugpress_settings_roles');
+
+        add_settings_field(
+            'debugpress_settings_panel_content',
+            '<label for="debugpress_settings_panel_content">'.__('Registered Content', 'wordpress').'</label>',
+            array($this, 'option_panel_content'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_request',
+            '<label for="debugpress_settings_panel_request">'.__('Page Request', 'wordpress').'</label>',
+            array($this, 'option_panel_request'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_enqueue',
+            '<label for="debugpress_settings_panel_enqueue">'.__('Enqueued Files', 'wordpress').'</label>',
+            array($this, 'option_panel_enqueue'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_system',
+            '<label for="debugpress_settings_panel_system">'.__('System Information', 'wordpress').'</label>',
+            array($this, 'option_panel_system'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_user',
+            '<label for="debugpress_settings_panel_user">'.__('Current User', 'wordpress').'</label>',
+            array($this, 'option_panel_user'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_constants',
+            '<label for="debugpress_settings_panel_constants">'.__('Defined Constants', 'wordpress').'</label>',
+            array($this, 'option_panel_constants'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_http',
+            '<label for="debugpress_settings_panel_http">'.__('HTTP Requests', 'wordpress').'</label>',
+            array($this, 'option_panel_http'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_php',
+            '<label for="debugpress_settings_panel_php">'.__('PHP Information', 'wordpress').'</label>',
+            array($this, 'option_panel_php'),
+            'debugpress',
+            'debugpress_settings_panels');
+
+        add_settings_field(
+            'debugpress_settings_panel_bbpress',
+            '<label for="debugpress_settings_panel_bbpress">'.__('bbPress', 'wordpress').'</label>',
+            array($this, 'option_panel_bbpress'),
+            'debugpress',
+            'debugpress_settings_panels');
+    }
+
+    private function _roles_values() {
+        $roles = array();
+
+        foreach (wp_roles()->roles as $role => $details) {
+            $roles[$role] = translate_user_role($details['name']);
+        }
+
+        return $roles;
+    }
+
+    private function _location_values() {
+        return array(
+            'toolbar' => __("In WordPress Toolbar", "gd-press-tools"),
+            'topleft' => __("Float, Top / Left", "gd-press-tools"),
+            'topright' => __("Float, Top / Right", "gd-press-tools"),
+            'bottomleft' => __("Float, Bottom / Left", "gd-press-tools"),
+            'bottomright' => __("Float, Bottom / Right", "gd-press-tools")
+        );
+    }
+
+    private function _render_select($id, $name, $selected, $values) {
+        echo '<select id="'.esc_attr($id).'" name="'.esc_attr($name).'">';
+
+        foreach ($values as $value => $label) {
+            $sel = $selected == $value ? ' selected="selected"' : '';
+            echo '<option'.$sel.' value="'.esc_attr($value).'">'.esc_html($label).'</option>';
+        }
+
+        echo '</select>';
+    }
+
+    private function _render_checkboxes($id, $name, $selected, $values) {
+        $selected = is_null($selected) || $selected === true ? array_keys($values) : (array)$selected;
+
+        foreach ($values as $key => $title) {
+            $sel = in_array($key, $selected) ? ' checked="checked"' : '';
+
+            echo sprintf('<label style="display: block"><input type="checkbox" value="%s" name="%s[]"%s class="widefat" />%s</label>',
+                esc_attr($key), esc_attr($name), $sel, $title);
+        }
+    }
+
+    public function block_activation() {
+        echo __('Main activation settings for the plugin.', 'wordpress');
+    }
+
+    public function block_buttons() {
+        echo __("Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button.", 'wordpress');
+    }
+
+    public function block_roles() {
+        echo __("Debugger can be visibile to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", 'wordpress');
+    }
+
+    public function block_panels() {
+        echo __("Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them.", 'wordpress');
+    }
+
+    public function option_admin() {
+        $checked = debugpress_plugin()->get('admin') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_admin' name='debugpress_settings[admin]' type='checkbox' />";
+    }
+
+    public function option_frontend() {
+        $checked = debugpress_plugin()->get('frontend') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_frontend' name='debugpress_settings[frontend]' type='checkbox' />";
+    }
+
+    public function option_button_admin() {
+        $value = debugpress_plugin()->get('button_admin');
+
+        $this->_render_select('debugpress_settings_button_admin', 'debugpress_settings[button_admin]', $value, $this->_location_values());
+    }
+
+    public function option_button_frontend() {
+        $value = debugpress_plugin()->get('button_frontend');
+
+        $this->_render_select('debugpress_settings_button_frontend', 'debugpress_settings[button_frontend]', $value, $this->_location_values());
+    }
+
+    public function option_for_super_admin() {
+        $checked = debugpress_plugin()->get('for_super_admin') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_for_super_admin' name='debugpress_settings[for_super_admin]' type='checkbox' />";
+    }
+
+    public function option_for_roles() {
+        $checked = debugpress_plugin()->get('for_roles');
+
+        $this->_render_checkboxes('debugpress_settings_for_roles', 'debugpress_settings[for_roles]', $checked, $this->_roles_values());
+    }
+
+    public function option_for_visitor() {
+        $checked = debugpress_plugin()->get('for_visitor') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_for_visitor' name='debugpress_settings[for_visitor]' type='checkbox' />";
+        echo '<p class="description">'.esc_html__("Visitors are users that are not currently logged in.").'</p>';
+    }
+
+    public function option_panel_content() {
+        $checked = debugpress_plugin()->get('panel_content') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_content' name='debugpress_settings[panel_content]' type='checkbox' />";
+    }
+
+    public function option_panel_request() {
+        $checked = debugpress_plugin()->get('panel_request') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_request' name='debugpress_settings[panel_request]' type='checkbox' />";
+    }
+
+    public function option_panel_enqueue() {
+        $checked = debugpress_plugin()->get('panel_enqueue') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_enqueue' name='debugpress_settings[panel_enqueue]' type='checkbox' />";
+    }
+
+    public function option_panel_system() {
+        $checked = debugpress_plugin()->get('panel_system') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_system' name='debugpress_settings[panel_system]' type='checkbox' />";
+    }
+
+    public function option_panel_user() {
+        $checked = debugpress_plugin()->get('panel_user') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_user' name='debugpress_settings[panel_user]' type='checkbox' />";
+    }
+
+    public function option_panel_constants() {
+        $checked = debugpress_plugin()->get('panel_constants') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_constants' name='debugpress_settings[panel_constants]' type='checkbox' />";
+    }
+
+    public function option_panel_http() {
+        $checked = debugpress_plugin()->get('panel_http') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_http' name='debugpress_settings[panel_http]' type='checkbox' />";
+    }
+
+    public function option_panel_php() {
+        $checked = debugpress_plugin()->get('panel_php') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_php' name='debugpress_settings[panel_php]' type='checkbox' />";
+    }
+
+    public function option_panel_bbpress() {
+        $checked = debugpress_plugin()->get('panel_bbpress') ? ' checked="checked" ' : '';
+
+        echo "<input ".$checked." id='debugpress_settings_panel_bbpress' name='debugpress_settings[panel_bbpress]' type='checkbox' />";
+    }
+}
