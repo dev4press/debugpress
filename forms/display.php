@@ -18,7 +18,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			?>
         </ul>
-        <select id="gdpet-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "gd-press-tools" ); ?>">
+        <select id="gdpet-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "debugpress" ); ?>">
 			<?php
 
 			$first = true;
@@ -56,8 +56,8 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			<?php echo debugpress_plugin()->build_stats( null ); ?>
         </div>
         <div class="gdpet-debugger-footer-right">
-            <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "gd-press-tools" ); ?></a>
-            &middot; <a target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "gd-press-tools" ); ?></a>
+            <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
+            &middot; <a target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
         </div>
     </div>
 </div>

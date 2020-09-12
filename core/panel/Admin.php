@@ -6,7 +6,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Admin extends Panel {
 	public function left() {
-		$this->title( __( "Page Information", "gd-press-tools" ), true );
+		$this->title( __( "Page Information", "debugpress" ), true );
 		$this->block_header( true );
 		$this->table_init_standard();
 		$this->table_head();
@@ -22,36 +22,36 @@ class Admin extends Panel {
 
 		$screen = get_current_screen();
 
-		$this->title( __( "Current Screen", "gd-press-tools" ), true );
+		$this->title( __( "Current Screen", "debugpress" ), true );
 		$this->block_header( true );
 		$this->table_init_standard();
 		$this->table_head();
-		$this->table_row( array( __( "Base", "gd-press-tools" ), $screen->base ) );
-		$this->table_row( array( __( "ID", "gd-press-tools" ), $screen->id ) );
-		$this->table_row( array( __( "Parent Base", "gd-press-tools" ), $screen->parent_base ) );
-		$this->table_row( array( __( "Parent File", "gd-press-tools" ), $screen->parent_file ) );
-		$this->table_row( array( __( "Post Type", "gd-press-tools" ), $screen->post_type ) );
-		$this->table_row( array( __( "Taxonomy", "gd-press-tools" ), $screen->taxonomy ) );
+		$this->table_row( array( __( "Base", "debugpress" ), $screen->base ) );
+		$this->table_row( array( __( "ID", "debugpress" ), $screen->id ) );
+		$this->table_row( array( __( "Parent Base", "debugpress" ), $screen->parent_base ) );
+		$this->table_row( array( __( "Parent File", "debugpress" ), $screen->parent_file ) );
+		$this->table_row( array( __( "Post Type", "debugpress" ), $screen->post_type ) );
+		$this->table_row( array( __( "Taxonomy", "debugpress" ), $screen->taxonomy ) );
 		$this->table_foot();
 		$this->block_footer();
 	}
 
 	public function right() {
-		$this->title( __( "Conditionals", "gd-press-tools" ), true );
+		$this->title( __( "Conditionals", "debugpress" ), true );
 		$this->block_header( true );
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array(
 			'is_blog_admin',
-			is_blog_admin() ? __( "Yes", "gd-press-tools" ) : __( "No", "gd-press-tools" )
+			is_blog_admin() ? __( "Yes", "debugpress" ) : __( "No", "debugpress" )
 		) );
 		$this->table_row( array(
 			'is_network_admin',
-			is_network_admin() ? __( "Yes", "gd-press-tools" ) : __( "No", "gd-press-tools" )
+			is_network_admin() ? __( "Yes", "debugpress" ) : __( "No", "debugpress" )
 		) );
 		$this->table_row( array(
 			'is_user_admin',
-			is_user_admin() ? __( "Yes", "gd-press-tools" ) : __( "No", "gd-press-tools" )
+			is_user_admin() ? __( "Yes", "debugpress" ) : __( "No", "debugpress" )
 		) );
 		$this->table_foot();
 		$this->block_footer();

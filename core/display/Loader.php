@@ -80,7 +80,7 @@ class Loader {
 	}
 
 	public function display_float_button() {
-		echo '<div id="gdpet-debugger-button" class="' . $this->button_class() . ' gdpet-float-button gdpet-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "gd-press-tools" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
+		echo '<div id="gdpet-debugger-button" class="' . $this->button_class() . ' gdpet-float-button gdpet-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
 
 	public function button() {
@@ -88,11 +88,11 @@ class Loader {
 		$button .= '<span class="gdpet-debug-button-indicators">';
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
-			$button .= '<span class="gdpet-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "gd-press-tools" ) . '">0</span>';
+			$button .= '<span class="gdpet-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "debugpress" ) . '">0</span>';
 		}
 
-		$button .= '<span class="gdpet-debug-has-errors" style="display: ' . ( debugpress_tracker()->counts['total'] == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "gd-press-tools" ) . '">' . debugpress_tracker()->counts['total'] . '</span></span>';
-		$button .= '<span class="sanp-sr-only">' . __( "Open Debugger Panel", "gd-press-tools" ) . '</span>';
+		$button .= '<span class="gdpet-debug-has-errors" style="display: ' . ( debugpress_tracker()->counts['total'] == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . debugpress_tracker()->counts['total'] . '</span></span>';
+		$button .= '<span class="sanp-sr-only">' . __( "Open Debugger Panel", "debugpress" ) . '</span>';
 
 		return $button;
 	}
@@ -107,73 +107,73 @@ class Loader {
 
 	public function prepare_tabs() {
 		$this->tabs = array(
-			'basics' => __( "Basics", "gd-press-tools" )
+			'basics' => __( "Basics", "debugpress" )
 		);
 
 		if ( debugpress_plugin()->get( 'panel_request' ) ) {
-			$this->tabs['request'] = __( "Request", "gd-press-tools" );
+			$this->tabs['request'] = __( "Request", "debugpress" );
 		}
 
 		if ( ! is_admin() ) {
-			$this->tabs['query'] = __( "Query", "gd-press-tools" );
+			$this->tabs['query'] = __( "Query", "debugpress" );
 		} else {
-			$this->tabs['admin'] = __( "Admin", "gd-press-tools" );
+			$this->tabs['admin'] = __( "Admin", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_content' ) ) {
-			$this->tabs['content'] = __( "Content", "gd-press-tools" );
+			$this->tabs['content'] = __( "Content", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_constants' ) ) {
-			$this->tabs['constants'] = __( "Constants", "gd-press-tools" );
+			$this->tabs['constants'] = __( "Constants", "debugpress" );
 		}
 
 		if ( ! empty( debugpress_wpdb()->queries ) ) {
-			$this->tabs['queries'] = __( "SQL Queries", "gd-press-tools" );
+			$this->tabs['queries'] = __( "SQL Queries", "debugpress" );
 		}
 
 		if ( is_user_logged_in() && debugpress_plugin()->get( 'panel_user' ) ) {
-			$this->tabs['user'] = __( "User", "gd-press-tools" );
+			$this->tabs['user'] = __( "User", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_enqueue' ) ) {
-			$this->tabs['enqueue'] = __( "Enqueue", "gd-press-tools" );
+			$this->tabs['enqueue'] = __( "Enqueue", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_php' ) ) {
-			$this->tabs['php'] = __( "PHP", "gd-press-tools" );
+			$this->tabs['php'] = __( "PHP", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_system' ) ) {
-			$this->tabs['system'] = __( "System", "gd-press-tools" );
+			$this->tabs['system'] = __( "System", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_http' ) && ! empty( debugpress_tracker()->httpapi ) ) {
-			$this->tabs['http'] = __( "HTTP", "gd-press-tools" );
+			$this->tabs['http'] = __( "HTTP", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_bbpress' ) && debugpress_has_bbpress() && is_bbpress() ) {
-			$this->tabs['bbpress'] = __( "bbPress", "gd-press-tools" );
+			$this->tabs['bbpress'] = __( "bbPress", "debugpress" );
 		}
 
 		if ( ! empty( debugpress_tracker()->errors ) ) {
-			$this->tabs['errors'] = __( "Errors", "gd-press-tools" ) . ' (' . debugpress_tracker()->counts['errors'] . ')';
+			$this->tabs['errors'] = __( "Errors", "debugpress" ) . ' (' . debugpress_tracker()->counts['errors'] . ')';
 		}
 
 		if ( ! empty( debugpress_tracker()->deprecated ) ) {
-			$this->tabs['deprecated'] = __( "Deprecated", "gd-press-tools" ) . ' (' . debugpress_tracker()->counts['deprecated'] . ')';
+			$this->tabs['deprecated'] = __( "Deprecated", "debugpress" ) . ' (' . debugpress_tracker()->counts['deprecated'] . ')';
 		}
 
 		if ( ! empty( debugpress_tracker()->doingitwrong ) ) {
-			$this->tabs['doingitwrong'] = __( "Doing It Wrong", "gd-press-tools" ) . ' (' . debugpress_tracker()->counts['doingitwrong'] . ')';
+			$this->tabs['doingitwrong'] = __( "Doing It Wrong", "debugpress" ) . ' (' . debugpress_tracker()->counts['doingitwrong'] . ')';
 		}
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
-			$this->tabs['ajax'] = __( "AJAX", "gd-press-tools" ) . ' (<span>0</span>)';
+			$this->tabs['ajax'] = __( "AJAX", "debugpress" ) . ' (<span>0</span>)';
 		}
 
 		if ( ! empty( debugpress_tracker()->logged ) ) {
-			$this->tabs['log'] = __( "Log", "gd-press-tools" );
+			$this->tabs['log'] = __( "Log", "debugpress" );
 		}
 
 		$this->tabs = apply_filters( 'debugpress_debugger_popup_tabs', $this->tabs );

@@ -59,6 +59,14 @@ class Plugin {
 		return $instance;
 	}
 
+	public function wp_version() {
+		return $this->_wp_version;
+	}
+
+	public function wp_version_real() {
+		return $this->_wp_version_real;
+	}
+
 	public function plugins_loaded() {
 		global $wp_version;
 
