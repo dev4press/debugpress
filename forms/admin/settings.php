@@ -1,15 +1,15 @@
 <div class="wrap">
-    <h1><?php _e("DebugPress Settings"); ?></h1>
+    <h1><?php _e( "DebugPress Settings", "debugpress" ); ?></h1>
 
     <form action='options.php' method='post'>
-        <?php
+		<?php
 
-        settings_fields( 'debugpress' );
+		settings_fields( 'debugpress' );
 
-        do_settings_sections( 'debugpress' );
+		do_settings_sections( 'debugpress' );
 
-        submit_button();
+		submit_button();
 
-        ?>
+		?>
     </form>
 </div>

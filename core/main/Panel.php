@@ -49,13 +49,13 @@ abstract class Panel {
 	}
 
 	public function table_init_standard() {
-		$this->add_column( __( "Name", "gd-press-tools" ), '', '', true );
-		$this->add_column( __( "Value", "gd-press-tools" ), '', '' );
+		$this->add_column( __( "Name", "debugpress" ), '', '', true );
+		$this->add_column( __( "Value", "debugpress" ), '', '' );
 	}
 
 	public function table_init_right() {
-		$this->add_column( __( "Name", "gd-press-tools" ), '', '', true );
-		$this->add_column( __( "Value", "gd-press-tools" ), '', 'text-align: right;' );
+		$this->add_column( __( "Name", "debugpress" ), '', '', true );
+		$this->add_column( __( "Value", "debugpress" ), '', 'text-align: right;' );
 	}
 
 	public function table_head( $columns = array() ) {
@@ -94,7 +94,7 @@ abstract class Panel {
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $defines as $const ) {
-			$val = defined( $const ) ? $this->print_it( constant( $const ) ) : '<span style="color: #DD0000;">' . __( "NOT DEFINED", "gd-press-tools" ) . '</span>';
+			$val = defined( $const ) ? $this->print_it( constant( $const ) ) : '<span style="color: #DD0000;">' . __( "NOT DEFINED", "debugpress" ) . '</span>';
 
 			$this->table_row( array( $const, $val ) );
 		}
@@ -134,7 +134,7 @@ abstract class Panel {
 		$this->table_head();
 
 		foreach ( $properties as $property ) {
-			$value = isset( $object->$property ) ? $object->$property : '<span style="color: #d00;">' . __( "not defined", "gd-press-tools" ) . '</span>';
+			$value = isset( $object->$property ) ? $object->$property : '<span style="color: #d00;">' . __( "not defined", "debugpress" ) . '</span>';
 
 			$this->table_row( array( $property, $this->print_it( $value ) ) );
 		}

@@ -1,0 +1,162 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
+"Project-Id-Version: DebugPress\n"
+"POT-Creation-Date: 09/12/2020 05:42:14 PM\n"
+"Language-Team: Milan Petrovic <support@dev4press.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: GD i18n 2.5; www.dev4press.com\n"
+
+#: core/admin/Settings.php:23
+msgid "Debugger Activation"
+msgstr ""
+
+#: core/admin/Settings.php:29
+msgid "Debugger Activation Button Location"
+msgstr ""
+
+#: core/admin/Settings.php:35
+msgid "User roles with access to Debugger"
+msgstr ""
+
+#: core/admin/Settings.php:41
+msgid "Debugger Panels"
+msgstr ""
+
+#: core/admin/Settings.php:49
+#: core/admin/Settings.php:63
+msgid "Website Admin"
+msgstr ""
+
+#: core/admin/Settings.php:56
+#: core/admin/Settings.php:70
+msgid "Website Frontend"
+msgstr ""
+
+#: core/admin/Settings.php:77
+msgid "Super Admin"
+msgstr ""
+
+#: core/admin/Settings.php:84
+msgid "User Roles"
+msgstr ""
+
+#: core/admin/Settings.php:91
+msgid "Visitors"
+msgstr ""
+
+#: core/admin/Settings.php:98
+msgid "Registered Content"
+msgstr ""
+
+#: core/admin/Settings.php:105
+msgid "Page Request"
+msgstr ""
+
+#: core/admin/Settings.php:112
+msgid "Enqueued Files"
+msgstr ""
+
+#: core/admin/Settings.php:119
+msgid "System Information"
+msgstr ""
+
+#: core/admin/Settings.php:126
+msgid "Current User"
+msgstr ""
+
+#: core/admin/Settings.php:133
+msgid "Defined Constants"
+msgstr ""
+
+#: core/admin/Settings.php:140
+msgid "HTTP Requests"
+msgstr ""
+
+#: core/admin/Settings.php:147
+msgid "PHP Information"
+msgstr ""
+
+#: core/admin/Settings.php:154
+msgid "bbPress"
+msgstr ""
+
+#: core/admin/Settings.php:172
+msgid "In WordPress Toolbar"
+msgstr ""
+
+#: core/admin/Settings.php:173
+msgid "Float, Top / Left"
+msgstr ""
+
+#: core/admin/Settings.php:174
+msgid "Float, Top / Right"
+msgstr ""
+
+#: core/admin/Settings.php:175
+msgid "Float, Bottom / Left"
+msgstr ""
+
+#: core/admin/Settings.php:176
+msgid "Float, Bottom / Right"
+msgstr ""
+
+#: core/admin/Settings.php:203
+msgid "Main activation settings for the plugin."
+msgstr ""
+
+#: core/admin/Settings.php:207
+msgid "Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button."
+msgstr ""
+
+#: core/admin/Settings.php:211
+msgid "Debugger can be visibile to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role."
+msgstr ""
+
+#: core/admin/Settings.php:215
+msgid "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them."
+msgstr ""
+
+#: core/admin/Settings.php:258
+msgid "Visitors are users that are not currently logged in."
+msgstr ""
+
+#: core/main/Panel.php:51
+#: core/main/Panel.php:56
+msgid "Name"
+msgstr ""
+
+#: core/main/Panel.php:52
+#: core/main/Panel.php:57
+msgid "Value"
+msgstr ""
+
+#: core/main/Panel.php:96
+msgid "NOT DEFINED"
+msgstr ""
+
+#: core/main/Panel.php:136
+msgid "not defined"
+msgstr ""
+
+#: core/track/AJAX.php:50
+#: core/track/AJAX.php:52
+#: core/track/AJAX.php:57
+msgid "seconds"
+msgstr ""
+
+#: core/track/Tracker.php:362
+msgid "Unregistered Setting"
+msgstr ""
+
+#: core/track/Tracker.php:600
+msgid "Request not executed because of the filter on %s."
+msgstr ""
+
+#: forms/admin/settings.php:1
+msgid "DebugPress Settings"
+msgstr ""
+

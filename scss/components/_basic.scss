@@ -1,9 +1,9 @@
 .#{$prefix}-clearfix:before,
 .#{$prefix}-clearfix:after {
-	content: " ";
-	display: table;
+    content: " ";
+    display: table;
 }
 
 .#{$prefix}-clearfix:after {
-	clear: both;
+    clear: both;
 }

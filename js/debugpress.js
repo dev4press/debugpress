@@ -2,10 +2,8 @@
 /*global debugpress_data*/
 
 ;(function($, window, document, undefined) {
-	window.wp = window.wp || {};
-	window.wp.dev4press = window.wp.dev4press || {};
+    window.wp = window.wp || {};
+    window.wp.dev4press = window.wp.dev4press || {};
 
-	window.wp.dev4press.debugpress = {
-		
-	};
+    window.wp.dev4press.debugpress = {};
 })(jQuery, window, document);

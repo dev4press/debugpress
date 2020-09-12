@@ -48,14 +48,14 @@ class AJAX {
 		$data = array(
 			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? d4p_sanitize_basic( $_REQUEST['action'] ) : '',
 			'php-memory-available'   => ini_get( 'memory_limit' ) . "B",
-			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( "seconds", "gd-press-tools" ),
+			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" ),
 			'page-memory-usage'      => debugpress_tracker()->get( '_end', 'memory' ),
-			'page-total-time'        => debugpress_tracker()->get( '_end', 'time' ) . " " . __( "seconds", "gd-press-tools" ),
+			'page-total-time'        => debugpress_tracker()->get( '_end', 'time' ) . " " . __( "seconds", "debugpress" ),
 			'sql-queries-count'      => debugpress_tracker()->get( '_end', 'queries' )
 		);
 
 		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
-			$data['sql-total-time'] = debugpress_tracker()->get_total_sql_time() . " " . __( "seconds", "gd-press-tools" );
+			$data['sql-total-time'] = debugpress_tracker()->get_total_sql_time() . " " . __( "seconds", "debugpress" );
 		}
 
 		if ( ! empty( debugpress_tracker()->httpapi ) ) {
