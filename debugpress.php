@@ -36,6 +36,14 @@ define( 'DEBUGPRESS_PLUGIN_PATH', __DIR__ . '/' );
 define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
 
+if ( ! defined( 'D4P_EOL' ) ) {
+	define( 'D4P_EOL', "\r\n" );
+}
+
+if ( ! defined( 'D4P_TAB' ) ) {
+	define( 'D4P_TAB', "\t" );
+}
+
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/functions.php' );

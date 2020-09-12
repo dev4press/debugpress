@@ -10,7 +10,6 @@ class Plugin {
 		'active'          => false,
 		'admin'           => false,
 		'frontend'        => false,
-		'ajax'            => false,
 		'button_admin'    => 'toolbar',
 		'button_frontend' => 'toolbar',
 		'for_super_admin' => true,
@@ -29,6 +28,7 @@ class Plugin {
 	);
 
 	private $_extras = array(
+		'ajax'                   => true,
 		'slow_query_cutoff'      => 10,
 		'use_sql_formatter'      => true,
 		'format_queries_panel'   => true,

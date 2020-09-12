@@ -8,6 +8,27 @@ abstract class Panel {
 	public function __construct() {
 	}
 
+	/** @return \Dev4Press\Plugin\DebugPress\Main\Panel */
+	public static function instance() {
+		static $instance = array();
+
+		$class = get_called_class();
+
+		if ( ! isset( $instance[ $class ] ) ) {
+			$instance[ $class ] = new $class();
+		}
+
+		return $instance[ $class ];
+	}
+
+	public function left() {
+
+	}
+
+	public function right() {
+
+	}
+
 	public function block_header( $open = true ) {
 		echo '<div class="gdpet-debugger-panel-block" style="display: ' . ( $open ? 'block' : 'none' ) . ';">';
 	}

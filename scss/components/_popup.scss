@@ -1,0 +1,567 @@
+.gdp_r [class^="gdpet-icon-"] {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.gdpet-clearfix:before,
+.gdpet-clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.gdpet-clearfix:after {
+    clear: both;
+}
+
+.gdpet-style-popup {
+    color: #444;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.4em;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.gdpet-style-popup * {
+    font-family: inherit;
+}
+
+.gdpet-style-popup,
+.gdpet-style-popup * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.gdpet-style-popup pre {
+    margin: 0;
+    padding: 5px 7px;
+    font-size: 12px;
+    line-height: 1.4em;
+    white-space: pre;
+}
+
+.gdpet-style-popup a {
+    color: #0073AA;
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.gdpet-style-popup .sanp-wrapper {
+    background: #FFF;
+    border-radius: 0;
+    border: 4px solid #23282D;
+    box-shadow: 1px 1px 5px rgba(32, 32, 32, 0.6);
+}
+
+.gdpet-style-popup .sanp-wrapper .sanp-header {
+    background: #23282D;
+    border-radius: 0;
+    padding: 5px 5px 0;
+    color: #FFF;
+    height: 33px;
+}
+
+.gdpet-style-popup .sanp-wrapper > button {
+    -webkit-appearance: none;
+
+    background: none;
+    border: medium none;
+    color: #EEE;
+    cursor: pointer;
+    float: right;
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 18px;
+    right: 5px;
+    top: 7px;
+}
+
+.gdpet-style-popup .sanp-wrapper .sanp-header h5 {
+    border-bottom: 4px solid #23282D;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.gdpet-style-popup .sanp-wrapper .sanp-content {
+    padding: 0;
+}
+
+.gdpet-style-popup .sanp-wrapper .sanp-footer {
+    border-radius: 0;
+    padding: 5px;
+    background: #E0E0E0;
+    text-align: left;
+}
+
+.gdpet-style-popup .sanp-wrapper .sanp-footer button {
+    -webkit-appearance: none;
+
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    color: #23282D;
+    font-weight: bold;
+    outline: 1px solid transparent;
+    background: none;
+    border: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.gdpet-style-popup.sanp-button-alt .sanp-wrapper > button {
+    background: #500;
+    box-shadow: 1px 1px 4px rgba(32, 32, 32, 0.3);
+    color: #FFF;
+}
+
+#wpadminbar .gdpet-icon {
+    vertical-align: middle !important;
+    font-size: 20px !important;
+    line-height: 1;
+}
+
+#wp-admin-bar-gdpet-debugger-button {
+    float: right !important;
+}
+
+.gdpet-float-button {
+    position: fixed;
+    background-color: #23282D;
+    border: 1px solid #23282D;
+    box-shadow: 0 0 3px rgba(35, 40, 45, 0.7);
+    z-index: 142000;
+    padding: 5px;
+}
+
+.gdpet-float-button a {
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    outline: none !important;
+    text-decoration: none;
+}
+
+.gdpet-float-button a:focus {
+    box-shadow: none;
+}
+
+.gdpet-float-button.gdpet-position-topright {
+    right: 5px;
+    top: 5px;
+}
+
+.gdpet-float-button.gdpet-position-topleft {
+    left: 5px;
+    top: 5px;
+}
+
+.gdpet-float-button.gdpet-position-bottomright {
+    right: 5px;
+    bottom: 5px;
+}
+
+.gdpet-float-button.gdpet-position-bottomleft {
+    left: 5px;
+    bottom: 5px;
+}
+
+.gdpet-float-button .gdpet-icon {
+    font-size: 24px !important;
+    vertical-align: top;
+}
+
+.gdpet-debug-dialog-button.gdpet-float-button a .gdpet-debug-button-indicators {
+    vertical-align: 8px;
+}
+
+.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-errors,
+.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-ajax {
+    padding: 2px 3px !important;
+    border-radius: 3px !important;
+    color: #FFF;
+    font-size: 11px !important;
+    max-height: 12px !important;
+    margin: 4px !important;
+}
+
+.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-ajax {
+    background-color: #D82AE5;
+}
+
+.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-errors {
+    background-color: #ED1E24;
+}
+
+#gdpet-debugger-tabs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    line-height: 26px;
+}
+
+#gdpet-debugger-tabs li {
+    float: left;
+    height: 28px;
+    line-height: 26px;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    list-style: none;
+}
+
+#gdpet-debugger-tabs li a {
+    color: #EEE;
+    box-shadow: none;
+    outline: none;
+    text-decoration: none;
+}
+
+#gdpet-debugger-tabs li.gdpet-tab-active {
+    background: #FFF;
+}
+
+#gdpet-debugger-tabs li.gdpet-tab-active a {
+    color: #23282D;
+    font-weight: bold;
+}
+
+#gdpet-debugger-content-wrapper .gdpet-tab-content {
+    display: none;
+}
+
+#gdpet-debugger-content-wrapper .gdpet-tab-content.gdpet-tab-active {
+    display: block;
+}
+
+#gdpet-debugger-select {
+    display: none;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+    padding: 0 10px;
+    width: 85%;
+    min-height: 28px;
+}
+
+.gdpet-debugger-footer-right {
+    float: right;
+}
+
+.gdpet-debugger-footer-left {
+    float: left;
+}
+
+#gdpet-debugger-content-wrapper .gdpet-events-log-toggle {
+    font-weight: bold;
+}
+
+#gdpet-debugger-content-wrapper .gdpet-events-log-toggler {
+    border-left: 1px solid #888;
+    padding-left: 10px;
+
+    display: none;
+}
+
+#gdpet-debugger-content-wrapper .gdpet-events-log-toggler.gdpet-events-log-toggler-opened {
+    display: block;
+}
+
+#gdpet-debugger-content-wrapper .gdpet-error-message {
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+}
+
+.gdpet-debugger-panel-block {
+    margin: 5px 0 10px;
+    display: block;
+    overflow: auto;
+}
+
+.gdpet-querie-sidebar-control,
+.gdpet-debugger-panel-block-title {
+    background: #23282D;
+    color: #FFF;
+    padding: 5px !important;
+    font-size: 12px;
+    margin: 0;
+}
+
+.gdpet-debugger-panel-block-title span {
+    float: right;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.gdpet-querie-sidebar-control {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.gdpet-querie-sidebar-control span {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.gdpet-querie-sidebar-control span i.gdpet-icon,
+.gdpet-debugger-panel-block-title span i.gdpet-icon {
+    vertical-align: top;
+}
+
+.gdpet-debugger-panel-block-subtitle {
+    background: #777;
+    color: #FFF;
+    margin: 5px 0;
+    padding: 2px 5px !important;
+    font-size: 11px;
+    line-height: 20px;
+}
+
+.gdpet-debugger-table {
+    width: 100%;
+    table-layout: auto;
+    margin: 0;
+    border: 1px solid #DDD;
+    background: #FFF;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.gdpet-debugger-table thead {
+    background: #DDD;
+}
+
+.gdpet-debugger-table th,
+.gdpet-debugger-table td {
+    border: 1px solid #E8E8E8;
+    text-align: left;
+    padding: 1px 4px !important;
+    font-size: 12px;
+}
+
+.gdpet-debugger-table td {
+    border-width: 0 1px 1px 0;
+    vertical-align: top;
+}
+
+.gdpet-debugger-table tr:nth-of-type(2n) {
+    background: #FAFAFA;
+}
+
+.gdpet-style-popup a.sqlq-option-on {
+    font-weight: bold;
+    color: #FFF;
+    background: #0073AA;
+    padding: 0 3px 1px;
+}
+
+.sql-query-list .sql-query {
+    border: 1px solid #777;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.sql-query-list .sql-query .sql-query-full {
+    background-color: #F4F4F4;
+    color: #000;
+    font-family: monospace;
+    font-weight: bold;
+    margin: 5px 0 0;
+    padding: 5px;
+}
+
+.gdpet-debugger-table .gdp_r.gdp_r_root {
+    margin: 0;
+}
+
+.gdpet-wrapper-warning {
+    border: 1px solid #23282D;
+    padding: 10px;
+    margin: 0 0 10px;
+}
+
+.gdpet-wrapper-warning h4 {
+    color: #900;
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+
+.gdpet-debug-dialog-button a,
+.gdpet-debug-dialog-button a:hover {
+    color: #69FB3B !important;
+}
+
+.gdpet-debug-dialog-button.gdpet-debug-has-warnings a,
+.gdpet-debug-dialog-button.gdpet-debug-has-warnings a:hover {
+    color: #FF0 !important;
+}
+
+.gdpet-debug-dialog-button.gdpet-debug-has-errors a,
+.gdpet-debug-dialog-button.gdpet-debug-has-errors a:hover {
+    color: #FF3232 !important;
+}
+
+.gdpet-debug-environment {
+    margin: 0 0 10px;
+    padding: 10px;
+    background-color: #F3FFE7;
+}
+
+.gdpet-debug-environment .gdpet-debugger-panel-block-title {
+    background-color: #12AE00;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.gdpet-debug-environment.gdpet-debug-env-development {
+    background-color: #FFE7F2;
+}
+
+.gdpet-debug-environment.gdpet-debug-env-development .gdpet-debugger-panel-block-title {
+    background-color: #AE0060;
+}
+
+.gdpet-debug-environment.gdpet-debug-env-local {
+    background-color: #F7E7FF;
+}
+
+.gdpet-debug-environment.gdpet-debug-env-local .gdpet-debugger-panel-block-title {
+    background-color: #8800AE;
+}
+
+.gdpet-debug-environment.gdpet-debug-env-staging {
+    background-color: #E7EEFF;
+}
+
+.gdpet-debug-environment.gdpet-debug-env-staging .gdpet-debugger-panel-block-title {
+    background-color: #0026AE;
+}
+
+.gdpet-debugger-footer-left .gdpet-debugger-environment {
+    color: #12AE00;
+}
+
+.gdpet-debugger-footer-left .gdpet-debugger-environment.gdpet-env-development {
+    color: #AE0060;
+}
+
+.gdpet-debugger-footer-left .gdpet-debugger-environment.gdpet-env-local {
+    color: #8800AE;
+}
+
+.gdpet-debugger-footer-left .gdpet-debugger-environment.gdpet-env-staging {
+    color: #0026AE;
+}
+
+.gdpet-debug-notice-block {
+    margin: 0 0 10px;
+    padding: 10px 10px 1px;
+    border-left: 4px solid red;
+    background-color: #FFE7E7;
+}
+
+.gdpet-debug-notice-block .gdpet-debugger-panel-block-title {
+    background-color: red;
+}
+
+.gdpet-tab-content.gdpet-queries-sidebar-closed {
+
+}
+
+.gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter {
+    width: 44px;
+}
+
+.gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter h5,
+.gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter div {
+    display: none !important;
+}
+
+.gdpet-tab-content.gdpet-queries-sidebar-closed .three-quarters {
+    width: calc(100% - 44px);
+}
+
+.gdpet-debugger-panel-block .sql-calls-button-expander {
+    font-weight: bold;
+    font-size: 12px;
+    color: #FFF !important;
+    background: #0073AA;
+    padding: 0 6px 3px;
+    margin: 0 0 0 10px;
+    border-radius: 3px;
+}
+
+.gdpet-debugger-footer-left div {
+    display: inline;
+}
+
+@media screen and (max-width: 1080px) {
+    #gdpet-debugger-tab-queries .gdpet-grid .one-quarter {
+        width: 45%;
+    }
+
+    #gdpet-debugger-tab-queries .gdpet-grid .three-quarters {
+        width: 55%;
+    }
+
+    .gdpet-debugger-footer-left div {
+        display: block;
+    }
+
+    .gdpet-debugger-footer-left div span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .gdpet-querie-sidebar-control {
+        margin-bottom: 5px;
+    }
+
+    .gdpet-debugger-footer-left,
+    .gdpet-debugger-footer-right {
+        float: none;
+        text-align: center;
+    }
+
+    #gdpet-debugger-tabs {
+        display: none;
+    }
+
+    #gdpet-debugger-select {
+        display: block;
+    }
+
+    .gdpet-style-popup .sanp-wrapper .sanp-header {
+        height: 40px;
+    }
+
+    .gdpet-tab-content .gdpet-grid .gdpet-unit {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    #wpadminbar .gdpet-debug-dialog-button {
+        display: block !important;
+    }
+
+    #wpadminbar .gdpet-debug-dialog-button .ab-item {
+        padding: 0 10px !important;
+    }
+
+    #wpadminbar .gdpet-debug-dialog-button .ab-item i.gdpet-icon {
+        font-size: 24px !important;
+    }
+}
