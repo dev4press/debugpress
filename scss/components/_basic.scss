@@ -1,9 +1,9 @@
-.debugpress-clearfix:before,
-.debugpress-clearfix:after {
+.#{$prefix}-clearfix:before,
+.#{$prefix}-clearfix:after {
 	content: " ";
 	display: table;
 }
 
-.debugpress-clearfix:after {
+.#{$prefix}-clearfix:after {
 	clear: both;
 }

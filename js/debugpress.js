@@ -6,6 +6,6 @@
 	window.wp.dev4press = window.wp.dev4press || {};
 
 	window.wp.dev4press.debugpress = {
-
+		
 	};
 })(jQuery, window, document);

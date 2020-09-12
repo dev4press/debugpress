@@ -7,6 +7,7 @@ class Plugin {
 
 	}
 
+	/** @return \Dev4Press\Plugin\DebugPress\Admin\Plugin */
 	public static function instance() {
 		static $instance = null;
 
