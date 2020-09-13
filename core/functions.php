@@ -13,6 +13,52 @@ function debugpress_has_bbpress() {
 	}
 }
 
+function debugpress_is_classicpress() {
+	return function_exists( 'classicpress_version' ) &&
+	       function_exists( 'classicpress_version_short' );
+}
+
+function debugpress_current_url_request() {
+	$pathinfo = isset( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : '';
+	list( $pathinfo ) = explode( '?', $pathinfo );
+	$pathinfo = str_replace( '%', '%25', $pathinfo );
+
+	$request         = explode( '?', $_SERVER['REQUEST_URI'] );
+	$req_uri         = $request[0];
+	$req_query       = isset( $request[1] ) ? $request[1] : false;
+	$home_path       = trim( parse_url( home_url(), PHP_URL_PATH ), '/' );
+	$home_path_regex = sprintf( '|^%s|i', preg_quote( $home_path, '|' ) );
+
+	$req_uri = str_replace( $pathinfo, '', $req_uri );
+	$req_uri = trim( $req_uri, '/' );
+	$req_uri = preg_replace( $home_path_regex, '', $req_uri );
+	$req_uri = trim( $req_uri, '/' );
+
+	$url_request = $req_uri;
+
+	if ( $req_query !== false ) {
+		$url_request .= '?' . $req_query;
+	}
+
+	return $url_request;
+}
+
+function debugpress_current_url( $use_wp = true ) {
+	if ( $use_wp ) {
+		return home_url( debugpress_current_url_request() );
+	} else {
+		$s        = empty( $_SERVER['HTTPS'] ) ? '' : ( $_SERVER['HTTPS'] == 'on' ? 's' : '' );
+		$protocol = debugpress_strleft( strtolower( $_SERVER['SERVER_PROTOCOL'] ), '/' ) . $s;
+		$port     = $_SERVER['SERVER_PORT'] == '80' || $_SERVER['SERVER_PORT'] == '443' ? '' : ':' . $_SERVER['SERVER_PORT'];
+
+		return $protocol . '://' . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
+	}
+}
+
+function debugpress_strleft( $s1, $s2 ) {
+	return substr( $s1, 0, strpos( $s1, $s2 ) );
+}
+
 function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) {
 	$units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
 

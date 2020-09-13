@@ -2,6 +2,7 @@
 
 use Dev4Press\Plugin\DebugPress\Admin\Plugin as AdminPlugin;
 use Dev4Press\Plugin\DebugPress\Main\AJAX;
+use Dev4Press\Plugin\DebugPress\Main\DB;
 use Dev4Press\Plugin\DebugPress\Main\Plugin;
 use Dev4Press\Plugin\DebugPress\Main\Scope;
 use Dev4Press\Plugin\DebugPress\Track\Tracker;
@@ -31,9 +32,7 @@ function debugpress_tracker() {
 	return Tracker::instance();
 }
 
-/** @return \wpdb */
-function debugpress_wpdb() {
-	global $wpdb;
-
-	return $wpdb;
+/** @return \Dev4Press\Plugin\DebugPress\Main\DB */
+function debugpress_db() {
+	return DB::instance();
 }

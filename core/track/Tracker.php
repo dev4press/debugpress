@@ -460,8 +460,8 @@ class Tracker {
 	public function get_total_sql_time() {
 		$timer = 0;
 
-		if ( debugpress_wpdb()->queries ) {
-			foreach ( debugpress_wpdb()->queries as $q ) {
+		if ( debugpress_db()->wpdb()->queries ) {
+			foreach ( debugpress_db()->wpdb()->queries as $q ) {
 				$timer += $q[1];
 			}
 		}

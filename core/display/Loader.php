@@ -128,7 +128,7 @@ class Loader {
 			$this->tabs['constants'] = __( "Constants", "debugpress" );
 		}
 
-		if ( ! empty( debugpress_wpdb()->queries ) ) {
+		if ( ! empty( debugpress_db()->wpdb()->queries ) ) {
 			$this->tabs['queries'] = __( "SQL Queries", "debugpress" );
 		}
 
