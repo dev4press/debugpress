@@ -6,6 +6,7 @@ class Plugin {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_enqueue_scripts', array($this, 'enqueue_sctipts'));
 
 		add_filter( 'network_admin_plugin_action_links_debugpress/debugpress.php', array(
 			$this,
@@ -39,6 +40,10 @@ class Plugin {
 		}
 
 		return $links;
+	}
+
+	public function enqueue_sctipts() {
+		wp_enqueue_style('debugpress-admin', DEBUGPRESS_PLUGIN_URL . 'css/adminpanel' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array( ), DEBUGPRESS_VERSION);
 	}
 
 	public function admin_menu() {

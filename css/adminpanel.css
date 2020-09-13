@@ -1,0 +1,9 @@
+.debugpress_settings {
+  max-width: 600px;
+  float: left;
+}
+
+.debugpress_sidebar {
+  float: left;
+  width: 250px;
+}
