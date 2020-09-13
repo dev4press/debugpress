@@ -6,7 +6,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Basics extends Panel {
 	public function left() {
-		$env = $this->_env();
+		$env  = $this->_env();
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {

@@ -29,6 +29,10 @@ abstract class Panel {
 
 	}
 
+	public function single() {
+
+	}
+
 	public function block_header( $open = true ) {
 		echo '<div class="gdpet-debugger-panel-block" style="display: ' . ( $open ? 'block' : 'none' ) . ';">';
 	}
