@@ -28,7 +28,11 @@ class Loader {
 			}
 		}
 
-		add_action( 'shutdown', array( $this, 'debugger_content' ), 1000000 );
+		if ( is_admin() ) {
+			add_action( 'admin_footer', array( $this, 'debugger_content_prepare' ) );
+		} else {
+			add_action( 'wp_footer', array( $this, 'debugger_content_prepare' ) );
+		}
 	}
 
 	public static function instance() {
@@ -84,7 +88,7 @@ class Loader {
 	}
 
 	public function button() {
-		$button = '<i class="gdpet-icon gdpet-icon-bug"></i>';
+		$button = '<i class="debugpress-icon debugpress-icon-bug"></i>';
 		$button .= '<span class="gdpet-debug-button-indicators">';
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
@@ -95,6 +99,10 @@ class Loader {
 		$button .= '<span class="sanp-sr-only">' . __( "Open Debugger Panel", "debugpress" ) . '</span>';
 
 		return $button;
+	}
+
+	public function debugger_content_prepare() {
+		add_action( 'shutdown', array( $this, 'debugger_content' ), 1000000 );
 	}
 
 	public function debugger_content() {

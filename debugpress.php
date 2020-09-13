@@ -53,7 +53,3 @@ debugpress_plugin();
 if ( defined( 'WP_ADMIN' ) && WP_ADMIN ) {
 	debugpress_admin();
 }
-
-if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-	debugpress_ajax();
-}

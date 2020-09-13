@@ -22,18 +22,20 @@ class Admin extends Panel {
 
 		$screen = get_current_screen();
 
-		$this->title( __( "Current Screen", "debugpress" ), true );
-		$this->block_header( true );
-		$this->table_init_standard();
-		$this->table_head();
-		$this->table_row( array( __( "Base", "debugpress" ), $screen->base ) );
-		$this->table_row( array( __( "ID", "debugpress" ), $screen->id ) );
-		$this->table_row( array( __( "Parent Base", "debugpress" ), $screen->parent_base ) );
-		$this->table_row( array( __( "Parent File", "debugpress" ), $screen->parent_file ) );
-		$this->table_row( array( __( "Post Type", "debugpress" ), $screen->post_type ) );
-		$this->table_row( array( __( "Taxonomy", "debugpress" ), $screen->taxonomy ) );
-		$this->table_foot();
-		$this->block_footer();
+		if ( ! is_null( $screen ) ) {
+			$this->title( __( "Current Screen", "debugpress" ), true );
+			$this->block_header( true );
+			$this->table_init_standard();
+			$this->table_head();
+			$this->table_row( array( __( "Base", "debugpress" ), $screen->base ) );
+			$this->table_row( array( __( "ID", "debugpress" ), $screen->id ) );
+			$this->table_row( array( __( "Parent Base", "debugpress" ), $screen->parent_base ) );
+			$this->table_row( array( __( "Parent File", "debugpress" ), $screen->parent_file ) );
+			$this->table_row( array( __( "Post Type", "debugpress" ), $screen->post_type ) );
+			$this->table_row( array( __( "Taxonomy", "debugpress" ), $screen->taxonomy ) );
+			$this->table_foot();
+			$this->block_footer();
+		}
 	}
 
 	public function right() {

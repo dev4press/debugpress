@@ -36,11 +36,7 @@ class Query extends Panel {
 
 		$this->title( __( "Executed SQL Query", "debugpress" ), true );
 		$this->block_header( true );
-		if ( class_exists( 'gdpet_sql_formatter' ) ) {
-			echo SQLFormat::format( $wp_query->request, true );
-		} else {
-			echo $wp_query->request;
-		}
+		echo SQLFormat::format( $wp_query->request, true );
 		$this->block_footer();
 
 		$this->title( __( "Complete WP Query object", "debugpress" ), true );

@@ -79,7 +79,7 @@ class Queries extends Panel {
 	}
 
 	public function left() {
-		echo '<h4 class="gdpet-querie-sidebar-control"><span data-state="open"><i class="gdpet-icon gdpet-icon-chevron-left"></i></span></h4>';
+		echo '<h4 class="gdpet-querie-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-chevron-left"></i></span></h4>';
 
 		$this->title( __( "Basic Statistics", "debugpress" ), true );
 		$this->block_header( true );
@@ -246,7 +246,7 @@ class Queries extends Panel {
 			echo '<a class="sql-calls-button-expander" href="#">' . __( "expand", "debugpress" ) . '</a><br />';
 			echo '</div><div class="sql-query-full">';
 
-			if ( class_exists( 'gdpet_sql_formatter' ) && debugpress_plugin()->get( 'format_queries_panel' ) ) {
+			if ( debugpress_plugin()->get( 'format_queries_panel' ) ) {
 				echo SQLFormat::format( $q[0], true );
 			} else {
 				echo $q[0];

@@ -53,7 +53,7 @@ abstract class Panel {
 		$render = '<h5 class="gdpet-debugger-panel-block-title">' . $title;
 
 		if ( ! $hide_button ) {
-			$render .= '<span class="' . ( $open ? 'block-open' : '' ) . '"><i class="gdpet-icon gdpet-icon-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
+			$render .= '<span class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
 		}
 
 		$render .= '</h5>';

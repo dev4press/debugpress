@@ -1,4 +1,4 @@
-.gdp_r [class^="gdpet-icon-"] {
+.gdp_r [class^="debugpress-icon-"] {
     vertical-align: middle;
     font-size: 14px;
 }
@@ -122,9 +122,10 @@
     color: #FFF;
 }
 
-#wpadminbar .gdpet-icon {
-    vertical-align: middle !important;
-    font-size: 20px !important;
+#wpadminbar .debugpress-icon {
+    vertical-align: text-top !important;
+    font-size: 19px !important;
+    font-family: "debugpress" !important;
     line-height: 1;
 }
 
@@ -173,7 +174,7 @@
     bottom: 5px;
 }
 
-.gdpet-float-button .gdpet-icon {
+.gdpet-float-button .debugpress-icon {
     font-size: 24px !important;
     vertical-align: top;
 }
@@ -312,8 +313,8 @@
     cursor: pointer;
 }
 
-.gdpet-querie-sidebar-control span i.gdpet-icon,
-.gdpet-debugger-panel-block-title span i.gdpet-icon {
+.gdpet-querie-sidebar-control span i.debugpress-icon,
+.gdpet-debugger-panel-block-title span i.debugpress-icon {
     vertical-align: top;
 }
 
@@ -561,7 +562,7 @@
         padding: 0 10px !important;
     }
 
-    #wpadminbar .gdpet-debug-dialog-button .ab-item i.gdpet-icon {
+    #wpadminbar .gdpet-debug-dialog-button .ab-item i.debugpress-icon {
         font-size: 24px !important;
     }
 }

@@ -3,6 +3,7 @@
 namespace Dev4Press\Plugin\DebugPress\Main;
 
 use Dev4Press\Plugin\DebugPress\Display\Loader;
+use Dev4Press\Plugin\DebugPress\Track\AJAX;
 
 class Plugin {
 	private $_settings = array();
@@ -77,6 +78,10 @@ class Plugin {
 		$this->_allowed  = apply_filters( 'debugpress_debugger_is_allowed', $this->is_user_allowed() );
 
 		debugpress_tracker();
+
+		if ( $this->get( 'ajax' ) ) {
+			AJAX::instance();
+		}
 	}
 
 	public function init() {

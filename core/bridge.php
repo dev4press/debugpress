@@ -1,7 +1,6 @@
 <?php
 
 use Dev4Press\Plugin\DebugPress\Admin\Plugin as AdminPlugin;
-use Dev4Press\Plugin\DebugPress\Main\AJAX;
 use Dev4Press\Plugin\DebugPress\Main\DB;
 use Dev4Press\Plugin\DebugPress\Main\Plugin;
 use Dev4Press\Plugin\DebugPress\Main\Scope;
@@ -15,11 +14,6 @@ function debugpress_plugin() {
 /** @return \Dev4Press\Plugin\DebugPress\Main\Scope */
 function debugpress_scope() {
 	return Scope::instance();
-}
-
-/** @return \Dev4Press\Plugin\DebugPress\Main\AJAX */
-function debugpress_ajax() {
-	return AJAX::instance();
 }
 
 /** @return \Dev4Press\Plugin\DebugPress\Admin\Plugin */

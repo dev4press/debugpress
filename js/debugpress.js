@@ -72,7 +72,7 @@
                     height: "90%",
                     headerContent: $("#gdpet-debugger-content-header"),
                     footerContent: $("#gdpet-debugger-content-footer"),
-                    buttonXContent: "<i aria-hidden=\"true\" class=\"gdpet-icon gdpet-icon-power-off\"></i>",
+                    buttonXContent: "<i aria-hidden=\"true\" class=\"debugpress-icon debugpress-icon-power-off\"></i>",
                     xContentSize: true
                 },
                 callbacks: {
@@ -101,11 +101,11 @@
                 if (state === "open") {
                     tab.addClass("gdpet-queries-sidebar-closed");
                     $(this).data("state", "closed");
-                    $("i", this).removeClass("gdpet-icon-chevron-left").addClass("gdpet-icon-chevron-right");
+                    $("i", this).removeClass("debugpress-icon-chevron-left").addClass("debugpress-icon-chevron-right");
                 } else {
                     tab.removeClass("gdpet-queries-sidebar-closed");
                     $(this).data("state", "open");
-                    $("i", this).removeClass("gdpet-icon-chevron-right").addClass("gdpet-icon-chevron-left");
+                    $("i", this).removeClass("debugpress-icon-chevron-right").addClass("debugpress-icon-chevron-left");
                 }
             });
 
@@ -116,12 +116,12 @@
 
                 if ($(this).hasClass("block-open")) {
                     $(this).removeClass("block-open");
-                    $(this).find("i").attr("class", "gdpet-icon gdpet-icon-plus");
+                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-plus");
 
                     block.hide();
                 } else {
                     $(this).addClass("block-open");
-                    $(this).find("i").attr("class", "gdpet-icon gdpet-icon-minus");
+                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-minus");
 
                     block.show();
                 }
@@ -181,6 +181,25 @@
                 }
             });
 
+            $(document).on("click", ".gdp_r a.gdp_r_c", function(e) {
+                e.preventDefault();
+
+                if ($(this).hasClass("gdp_r_aa")) {
+                    var button = $(this).find(".gdp_r_a");
+                    var branch = $("#" + $(this).data("branch"));
+
+                    if (branch) {
+                        if (branch.hasClass("gdp_r_open")) {
+                            button.html(debugpress_data.icon_right);
+                        } else {
+                            button.html(debugpress_data.icon_down);
+                        }
+
+                        branch.toggleClass("gdp_r_open");
+                    }
+                }
+            });
+
             $("#gdpet-debugger-tabs li a").click(function(e) {
                 e.preventDefault();
 
@@ -223,7 +242,7 @@
                     el.data("calls", count);
                     $("a span", tab).html(count);
 
-                    render = '<h5 class="gdpet-debugger-panel-block-title">[' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="gdpet-icon gdpet-icon-minus"></i></span></h5>';
+                    render = '<h5 class="gdpet-debugger-panel-block-title">[' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
                     render += '<div class="gdpet-debugger-panel-block" style="display: block;"><table class="gdpet-debugger-table"><thead><tr><th scope="col" class="" style="">Name</th><th scope="col" class="" style="">Value</th></tr></thead><tbody>';
 
                     $.each(ajax.headers, function(key, val) {
@@ -246,8 +265,8 @@
                             header = parts.shift(),
                             value = parts.join(': ');
 
-                        if (header.substring(0, 8).toLowerCase() === 'x-gdpet-') {
-                            header = header.substring(8);
+                        if (header.substring(0, 13).toLowerCase() === 'x-debugpress-') {
+                            header = header.substring(13);
                             headers[header] = value;
                         }
                     });

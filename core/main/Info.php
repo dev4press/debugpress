@@ -2,6 +2,8 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+use PDO;
+
 class Info {
 	public static function _loaded_status( $value ) {
 		if ( $value === true ) {
