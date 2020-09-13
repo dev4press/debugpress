@@ -34,7 +34,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 define( 'DEBUGPRESS_VERSION', '1.0' );
 define( 'DEBUGPRESS_PLUGIN_PATH', __DIR__ . '/' );
 define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
+
 define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
+define( 'DEBUGPRESS_IS_AJAX', defined( 'DOING_AJAX' ) && DOING_AJAX );
+define( 'DEBUGPRESS_IS_CRON', defined( 'DOING_CRON' ) && DOING_CRON );
 
 if ( ! defined( 'D4P_EOL' ) ) {
 	define( 'D4P_EOL', "\r\n" );

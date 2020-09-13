@@ -38,6 +38,12 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_autos',
+			__( "Auto debug overrides", "debugpress" ),
+			array( $this, 'block_autos' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_panels',
 			__( "Debugger Panels", "debugpress" ),
 			array( $this, 'block_panels' ),
@@ -93,6 +99,20 @@ class Settings {
 			array( $this, 'option_for_visitor' ),
 			'debugpress',
 			'debugpress_settings_roles' );
+
+		add_settings_field(
+			'debugpress_settings_auto_wpdebug',
+			'<label for="debugpress_settings_auto_wpdebug">' . __( "Enable WP_DEBUG", "debugpress" ) . '</label>',
+			array( $this, 'option_auto_wpdebug' ),
+			'debugpress',
+			'debugpress_settings_autos' );
+
+		add_settings_field(
+			'debugpress_settings_auto_savequeries',
+			'<label for="debugpress_settings_auto_savequeries">' . __( "Enable SAVEQUERIES", "debugpress" ) . '</label>',
+			array( $this, 'option_auto_savequeries' ),
+			'debugpress',
+			'debugpress_settings_autos' );
 
 		add_settings_field(
 			'debugpress_settings_panel_content',
@@ -216,6 +236,10 @@ class Settings {
 		echo __( "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them.", "debugpress" );
 	}
 
+	public function block_autos() {
+		echo __( "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed.", "debugpress" );
+	}
+
 	public function option_admin() {
 		$checked = debugpress_plugin()->get( 'admin' ) ? ' checked="checked" ' : '';
 
@@ -257,6 +281,18 @@ class Settings {
 
 		echo "<input " . $checked . " id='debugpress_settings_for_visitor' name='debugpress_settings[for_visitor]' type='checkbox' />";
 		echo '<p class="description">' . esc_html__( "Visitors are users that are not currently logged in.", "debugpress" ) . '</p>';
+	}
+
+	public function option_auto_wpdebug() {
+		$checked = debugpress_plugin()->get( 'auto_wpdebug' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_auto_wpdebug' name='debugpress_settings[auto_wpdebug]' type='checkbox' />";
+	}
+
+	public function option_auto_savequeries() {
+		$checked = debugpress_plugin()->get( 'auto_savequeries' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_auto_savequeries' name='debugpress_settings[auto_savequeries]' type='checkbox' />";
 	}
 
 	public function option_panel_content() {

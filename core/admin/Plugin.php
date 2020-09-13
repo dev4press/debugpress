@@ -6,6 +6,14 @@ class Plugin {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
+
+		add_filter( 'network_admin_plugin_action_links_debugpress/debugpress.php', array(
+			$this,
+			'plugin_action_links'
+		) );
+		add_filter( 'plugin_action_links_debugpress/debugpress.php', array( $this, 'plugin_action_links' ) );
+
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_links' ), 10, 2 );
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Admin\Plugin */
@@ -17,6 +25,20 @@ class Plugin {
 		}
 
 		return $instance;
+	}
+
+	public function plugin_action_links( $actions ) {
+		$actions['settings'] = '<a href="' . admin_url( 'options-general.php?page=debugpress' ) . '">' . esc_html__( "Settings", "debugpress" ) . '</a>';
+
+		return $actions;
+	}
+
+	function plugin_links( $links, $file ) {
+		if ( $file == 'debugpress/debugpress.php' ) {
+			$links[] = '<a target="_blank" rel="noopener" href="https://www.dev4press.com/">dev4Press.com</a>';
+		}
+
+		return $links;
 	}
 
 	public function admin_menu() {

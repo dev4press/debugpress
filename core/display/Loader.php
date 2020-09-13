@@ -3,7 +3,9 @@
 namespace Dev4Press\Plugin\DebugPress\Display;
 
 class Loader {
+	private $button = false;
 	private $position;
+
 	public $tabs = array();
 
 	public function __construct() {
@@ -15,17 +17,11 @@ class Loader {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
-		PrettyPrint::init()->ICON_DOWN  = '&#9660;';
-		PrettyPrint::init()->ICON_RIGHT = '&#9658;';
+		PrettyPrint::init()->ICON_DOWN  = '<i class="debugpress-icon debugpress-icon-caret-right"></i>';
+		PrettyPrint::init()->ICON_RIGHT = '<i class="debugpress-icon debugpress-icon-caret-down"></i>';
 
 		if ( $this->position == 'toolbar' ) {
 			add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );
-		} else {
-			if ( is_admin() ) {
-				add_action( 'admin_footer', array( $this, 'display_float_button' ), 1000001 );
-			} else {
-				add_action( 'wp_footer', array( $this, 'display_float_button' ), 1000001 );
-			}
 		}
 
 		if ( is_admin() ) {
@@ -33,6 +29,14 @@ class Loader {
 		} else {
 			add_action( 'wp_footer', array( $this, 'debugger_content_prepare' ) );
 		}
+	}
+
+	public function debugger_content_prepare() {
+		if ( ! $this->button ) {
+			add_action( 'shutdown', array( $this, 'display_float_button' ), 999990 );
+		}
+
+		add_action( 'shutdown', array( $this, 'debugger_content' ), 1000000 );
 	}
 
 	public static function instance() {
@@ -53,8 +57,8 @@ class Loader {
 			'position'            => $this->position,
 			'events_show_details' => _x( "Show Details", "Popup message", "debugpress" ),
 			'events_hide_details' => _x( "Hide Details", "Popup message", "debugpress" ),
-			'icon_down'           => '&#9660;',
-			'icon_right'          => '&#9658;'
+			'icon_down'           => '<i class="debugpress-icon debugpress-icon-caret-right"></i>',
+			'icon_right'          => '<i class="debugpress-icon debugpress-icon-caret-down"></i>'
 		) );
 	}
 
@@ -81,6 +85,8 @@ class Loader {
 			'href'  => '#',
 			'meta'  => array( 'class' => $this->button_class() )
 		) );
+
+		$this->button = true;
 	}
 
 	public function display_float_button() {
@@ -99,10 +105,6 @@ class Loader {
 		$button .= '<span class="sanp-sr-only">' . __( "Open Debugger Panel", "debugpress" ) . '</span>';
 
 		return $button;
-	}
-
-	public function debugger_content_prepare() {
-		add_action( 'shutdown', array( $this, 'debugger_content' ), 1000000 );
 	}
 
 	public function debugger_content() {

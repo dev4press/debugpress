@@ -17,6 +17,9 @@ class Plugin {
 		'for_roles'       => true,
 		'for_visitor'     => false,
 
+		'auto_wpdebug'     => false,
+		'auto_savequeries' => false,
+
 		'panel_content'   => true,
 		'panel_request'   => true,
 		'panel_enqueue'   => false,
@@ -77,9 +80,17 @@ class Plugin {
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
 		$this->_allowed  = apply_filters( 'debugpress_debugger_is_allowed', $this->is_user_allowed() );
 
+		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
+			define( 'WP_DEBUG', true );
+		}
+
+		if ( $this->get( 'auto_savequeries' ) && ! defined( 'SAVEQUERIES' ) ) {
+			define( 'SAVEQUERIES', true );
+		}
+
 		debugpress_tracker();
 
-		if ( $this->get( 'ajax' ) ) {
+		if ( $this->get( 'ajax' ) && DEBUGPRESS_IS_AJAX ) {
 			AJAX::instance();
 		}
 	}
@@ -90,7 +101,7 @@ class Plugin {
 		wp_register_script( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'popup/popup.min.js', array( 'jquery' ), $this->_animated_popup_version, true );
 		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array( 'animated-popup' ), DEBUGPRESS_VERSION, true );
 
-		if ( $this->_allowed ) {
+		if ( ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->_allowed ) {
 			$allowed = is_admin() ? $this->get( 'admin' ) : $this->get( 'frontend' );
 
 			if ( $allowed ) {

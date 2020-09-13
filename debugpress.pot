@@ -3,12 +3,17 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 09/13/2020 12:08:44 PM\n"
+"POT-Creation-Date: 09/13/2020 05:10:18 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: GD i18n 2.5; www.dev4press.com\n"
+
+#: core/admin/Plugin.php:27
+#: forms/display.php:58
+msgid "Settings"
+msgstr ""
 
 #: core/admin/Settings.php:23
 msgid "Debugger Activation"
@@ -23,106 +28,122 @@ msgid "User roles with access to Debugger"
 msgstr ""
 
 #: core/admin/Settings.php:41
+msgid "Auto debug overrides"
+msgstr ""
+
+#: core/admin/Settings.php:47
 msgid "Debugger Panels"
 msgstr ""
 
-#: core/admin/Settings.php:49
-#: core/admin/Settings.php:63
+#: core/admin/Settings.php:55
+#: core/admin/Settings.php:69
 msgid "Website Admin"
 msgstr ""
 
-#: core/admin/Settings.php:56
-#: core/admin/Settings.php:70
+#: core/admin/Settings.php:62
+#: core/admin/Settings.php:76
 msgid "Website Frontend"
 msgstr ""
 
-#: core/admin/Settings.php:77
+#: core/admin/Settings.php:83
 msgid "Super Admin"
 msgstr ""
 
-#: core/admin/Settings.php:84
+#: core/admin/Settings.php:90
 msgid "User Roles"
 msgstr ""
 
-#: core/admin/Settings.php:91
+#: core/admin/Settings.php:97
 msgid "Visitors"
 msgstr ""
 
-#: core/admin/Settings.php:98
+#: core/admin/Settings.php:104
+msgid "Enable WP_DEBUG"
+msgstr ""
+
+#: core/admin/Settings.php:111
+msgid "Enable SAVEQUERIES"
+msgstr ""
+
+#: core/admin/Settings.php:118
 msgid "Registered Content"
 msgstr ""
 
-#: core/admin/Settings.php:105
+#: core/admin/Settings.php:125
 #: core/panel/Request.php:21
 msgid "Page Request"
 msgstr ""
 
-#: core/admin/Settings.php:112
+#: core/admin/Settings.php:132
 msgid "Enqueued Files"
 msgstr ""
 
-#: core/admin/Settings.php:119
+#: core/admin/Settings.php:139
 msgid "System Information"
 msgstr ""
 
-#: core/admin/Settings.php:126
+#: core/admin/Settings.php:146
 msgid "Current User"
 msgstr ""
 
-#: core/admin/Settings.php:133
+#: core/admin/Settings.php:153
 msgid "Defined Constants"
 msgstr ""
 
-#: core/admin/Settings.php:140
+#: core/admin/Settings.php:160
 msgid "HTTP Requests"
 msgstr ""
 
-#: core/admin/Settings.php:147
+#: core/admin/Settings.php:167
 msgid "PHP Information"
 msgstr ""
 
-#: core/admin/Settings.php:154
-#: core/display/Loader.php:155
+#: core/admin/Settings.php:174
+#: core/display/Loader.php:165
 msgid "bbPress"
 msgstr ""
 
-#: core/admin/Settings.php:172
+#: core/admin/Settings.php:192
 msgid "In WordPress Toolbar"
 msgstr ""
 
-#: core/admin/Settings.php:173
+#: core/admin/Settings.php:193
 msgid "Float, Top / Left"
 msgstr ""
 
-#: core/admin/Settings.php:174
+#: core/admin/Settings.php:194
 msgid "Float, Top / Right"
 msgstr ""
 
-#: core/admin/Settings.php:175
+#: core/admin/Settings.php:195
 msgid "Float, Bottom / Left"
 msgstr ""
 
-#: core/admin/Settings.php:176
+#: core/admin/Settings.php:196
 msgid "Float, Bottom / Right"
 msgstr ""
 
-#: core/admin/Settings.php:203
+#: core/admin/Settings.php:223
 msgid "Main activation settings for the plugin."
 msgstr ""
 
-#: core/admin/Settings.php:207
+#: core/admin/Settings.php:227
 msgid "Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button."
 msgstr ""
 
-#: core/admin/Settings.php:211
+#: core/admin/Settings.php:231
 msgid "Debugger can be visibile to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role."
 msgstr ""
 
-#: core/admin/Settings.php:215
+#: core/admin/Settings.php:235
 msgid "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them."
 msgstr ""
 
-#: core/admin/Settings.php:258
+#: core/admin/Settings.php:239
+msgid "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed."
+msgstr ""
+
+#: core/admin/Settings.php:282
 msgid "Visitors are users that are not currently logged in."
 msgstr ""
 
@@ -186,7 +207,7 @@ msgstr ""
 
 #: core/display/ErrorFormat.php:87
 #: core/panel/Log.php:17
-#: core/panel/Queries.php:133
+#: core/panel/Queries.php:181
 msgid "Caller"
 msgstr ""
 
@@ -240,37 +261,37 @@ msgstr ""
 msgid "Argument in <strong>%s</strong> is deprecated since version %s."
 msgstr ""
 
-#: core/display/Loader.php:49
+#: core/display/Loader.php:57
 msgctxt "Popup message"
 msgid "Show Details"
 msgstr ""
 
-#: core/display/Loader.php:50
+#: core/display/Loader.php:58
 msgctxt "Popup message"
 msgid "Hide Details"
 msgstr ""
 
-#: core/display/Loader.php:82
+#: core/display/Loader.php:92
 msgid "Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:90
+#: core/display/Loader.php:100
 msgid "AJAX Calls"
 msgstr ""
 
-#: core/display/Loader.php:93
+#: core/display/Loader.php:103
 msgid "PHP Errors"
 msgstr ""
 
-#: core/display/Loader.php:94
+#: core/display/Loader.php:104
 msgid "Open Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:109
+#: core/display/Loader.php:119
 msgid "Basics"
 msgstr ""
 
-#: core/display/Loader.php:113
+#: core/display/Loader.php:123
 #: core/panel/Constants.php:143
 #: core/panel/HTTP.php:11
 #: core/panel/Request.php:9
@@ -278,67 +299,67 @@ msgstr ""
 msgid "Request"
 msgstr ""
 
-#: core/display/Loader.php:117
+#: core/display/Loader.php:127
 #: core/panel/Request.php:54
 msgid "Query"
 msgstr ""
 
-#: core/display/Loader.php:119
+#: core/display/Loader.php:129
 msgid "Admin"
 msgstr ""
 
-#: core/display/Loader.php:123
+#: core/display/Loader.php:133
 msgid "Content"
 msgstr ""
 
-#: core/display/Loader.php:127
+#: core/display/Loader.php:137
 msgid "Constants"
 msgstr ""
 
-#: core/display/Loader.php:131
+#: core/display/Loader.php:141
 msgid "SQL Queries"
 msgstr ""
 
-#: core/display/Loader.php:135
+#: core/display/Loader.php:145
 #: core/panel/System.php:37
 msgid "User"
 msgstr ""
 
-#: core/display/Loader.php:139
+#: core/display/Loader.php:149
 msgid "Enqueue"
 msgstr ""
 
-#: core/display/Loader.php:143
-#: core/main/Plugin.php:203
+#: core/display/Loader.php:153
+#: core/main/Plugin.php:219
 msgid "PHP"
 msgstr ""
 
-#: core/display/Loader.php:147
+#: core/display/Loader.php:157
 #: core/panel/Constants.php:134
 msgid "System"
 msgstr ""
 
-#: core/display/Loader.php:151
+#: core/display/Loader.php:161
 msgid "HTTP"
 msgstr ""
 
-#: core/display/Loader.php:159
+#: core/display/Loader.php:169
 msgid "Errors"
 msgstr ""
 
-#: core/display/Loader.php:163
+#: core/display/Loader.php:173
 msgid "Deprecated"
 msgstr ""
 
-#: core/display/Loader.php:167
+#: core/display/Loader.php:177
 msgid "Doing It Wrong"
 msgstr ""
 
-#: core/display/Loader.php:171
+#: core/display/Loader.php:181
 msgid "AJAX"
 msgstr ""
 
-#: core/display/Loader.php:175
+#: core/display/Loader.php:185
 msgid "Log"
 msgstr ""
 
@@ -392,56 +413,56 @@ msgctxt "PrettyPrint message"
 msgid "line"
 msgstr ""
 
-#: core/main/Info.php:7
-#: core/main/Info.php:348
-#: core/main/Info.php:405
+#: core/main/Info.php:9
+#: core/main/Info.php:350
+#: core/main/Info.php:407
 msgid "loaded"
 msgstr ""
 
-#: core/main/Info.php:9
-#: core/main/Info.php:351
-#: core/main/Info.php:361
-#: core/main/Info.php:369
-#: core/main/Info.php:379
-#: core/main/Info.php:389
-#: core/main/Info.php:397
-#: core/main/Info.php:407
+#: core/main/Info.php:11
+#: core/main/Info.php:353
+#: core/main/Info.php:363
+#: core/main/Info.php:371
+#: core/main/Info.php:381
+#: core/main/Info.php:391
+#: core/main/Info.php:399
+#: core/main/Info.php:409
 msgid "not loaded"
 msgstr ""
 
-#: core/main/Info.php:237
-#: core/main/Info.php:241
-#: core/main/Info.php:338
+#: core/main/Info.php:239
+#: core/main/Info.php:243
+#: core/main/Info.php:340
 msgid "On"
 msgstr ""
 
-#: core/main/Info.php:237
-#: core/main/Info.php:241
-#: core/main/Info.php:338
+#: core/main/Info.php:239
+#: core/main/Info.php:243
+#: core/main/Info.php:340
 msgid "Off"
 msgstr ""
 
-#: core/main/Info.php:278
+#: core/main/Info.php:280
 msgid "ON"
 msgstr ""
 
-#: core/main/Info.php:278
+#: core/main/Info.php:280
 msgid "OFF"
 msgstr ""
 
-#: core/main/Info.php:413
+#: core/main/Info.php:415
 msgid "OK"
 msgstr ""
 
-#: core/main/Info.php:415
+#: core/main/Info.php:417
 msgid "not available"
 msgstr ""
 
 #: core/main/Panel.php:76
 #: core/main/Panel.php:81
 #: core/panel/Basics.php:102
-#: core/panel/Queries.php:83
-#: core/panel/Queries.php:98
+#: core/panel/Queries.php:85
+#: core/panel/Queries.php:125
 msgid "Name"
 msgstr ""
 
@@ -458,50 +479,50 @@ msgstr ""
 msgid "not defined"
 msgstr ""
 
-#: core/main/Plugin.php:172
+#: core/main/Plugin.php:188
 msgid "Production Environment"
 msgstr ""
 
-#: core/main/Plugin.php:175
+#: core/main/Plugin.php:191
 msgid "Staging Environment"
 msgstr ""
 
-#: core/main/Plugin.php:178
+#: core/main/Plugin.php:194
 msgid "Local Environment"
 msgstr ""
 
-#: core/main/Plugin.php:181
+#: core/main/Plugin.php:197
 msgid "Development Environment"
 msgstr ""
 
-#: core/main/Plugin.php:202
+#: core/main/Plugin.php:218
 #: core/panel/Basics.php:89
 msgid "WordPress"
 msgstr ""
 
-#: core/main/Plugin.php:205
+#: core/main/Plugin.php:221
 #: core/panel/System.php:16
 msgid "IP"
 msgstr ""
 
-#: core/main/Plugin.php:206
-#: core/panel/Queries.php:88
-#: core/panel/Queries.php:110
-#: core/panel/Queries.php:122
-#: core/panel/Queries.php:134
+#: core/main/Plugin.php:222
+#: core/panel/Queries.php:91
+#: core/panel/Queries.php:146
+#: core/panel/Queries.php:164
+#: core/panel/Queries.php:182
 msgid "Queries"
 msgstr ""
 
-#: core/main/Plugin.php:207
+#: core/main/Plugin.php:223
 #: core/panel/Basics.php:103
 msgid "Memory"
 msgstr ""
 
-#: core/main/Plugin.php:208
+#: core/main/Plugin.php:224
 msgid "Loaded"
 msgstr ""
 
-#: core/main/Plugin.php:208
+#: core/main/Plugin.php:224
 msgid "seconds."
 msgstr ""
 
@@ -509,47 +530,47 @@ msgstr ""
 msgid "Page Information"
 msgstr ""
 
-#: core/panel/Admin.php:24
+#: core/panel/Admin.php:25
 msgid "Current Screen"
 msgstr ""
 
-#: core/panel/Admin.php:28
+#: core/panel/Admin.php:29
 msgid "Base"
 msgstr ""
 
-#: core/panel/Admin.php:29
+#: core/panel/Admin.php:30
 msgid "ID"
 msgstr ""
 
-#: core/panel/Admin.php:30
+#: core/panel/Admin.php:31
 msgid "Parent Base"
 msgstr ""
 
-#: core/panel/Admin.php:31
+#: core/panel/Admin.php:32
 msgid "Parent File"
 msgstr ""
 
-#: core/panel/Admin.php:32
+#: core/panel/Admin.php:33
 msgid "Post Type"
 msgstr ""
 
-#: core/panel/Admin.php:33
+#: core/panel/Admin.php:34
 msgid "Taxonomy"
 msgstr ""
 
-#: core/panel/Admin.php:39
+#: core/panel/Admin.php:41
 msgid "Conditionals"
 msgstr ""
 
-#: core/panel/Admin.php:45
-#: core/panel/Admin.php:49
-#: core/panel/Admin.php:53
+#: core/panel/Admin.php:47
+#: core/panel/Admin.php:51
+#: core/panel/Admin.php:55
 msgid "Yes"
 msgstr ""
 
-#: core/panel/Admin.php:45
-#: core/panel/Admin.php:49
-#: core/panel/Admin.php:53
+#: core/panel/Admin.php:47
+#: core/panel/Admin.php:51
+#: core/panel/Admin.php:55
 msgid "No"
 msgstr ""
 
@@ -577,7 +598,7 @@ msgstr ""
 #: core/panel/Basics.php:54
 #: core/panel/Basics.php:66
 #: core/panel/Basics.php:79
-#: core/panel/Queries.php:171
+#: core/panel/Queries.php:225
 #: core/track/AJAX.php:50
 #: core/track/AJAX.php:52
 #: core/track/AJAX.php:57
@@ -791,7 +812,7 @@ msgid "Response"
 msgstr ""
 
 #: core/panel/HTTP.php:13
-#: core/panel/Queries.php:171
+#: core/panel/Queries.php:225
 msgid "Time"
 msgstr ""
 
@@ -834,8 +855,8 @@ msgid "IP and Port"
 msgstr ""
 
 #: core/panel/HTTP.php:47
-#: core/panel/Queries.php:84
-#: core/panel/Queries.php:89
+#: core/panel/Queries.php:86
+#: core/panel/Queries.php:97
 msgid "Total"
 msgstr ""
 
@@ -867,178 +888,178 @@ msgstr ""
 msgid "Full PHP $_COOKIE"
 msgstr ""
 
-#: core/panel/Queries.php:81
+#: core/panel/Queries.php:83
 msgid "Basic Statistics"
 msgstr ""
 
-#: core/panel/Queries.php:85
+#: core/panel/Queries.php:87
 msgid "Filtered"
 msgstr ""
 
-#: core/panel/Queries.php:86
+#: core/panel/Queries.php:88
 msgid "Ratio"
 msgstr ""
 
-#: core/panel/Queries.php:89
-#: core/panel/Queries.php:89
-#: core/panel/Queries.php:90
-#: core/panel/Queries.php:90
-#: core/panel/Queries.php:91
-#: core/panel/Queries.php:91
-#: core/panel/Queries.php:92
-#: core/panel/Queries.php:92
+#: core/panel/Queries.php:98
+#: core/panel/Queries.php:99
+#: core/panel/Queries.php:104
+#: core/panel/Queries.php:105
+#: core/panel/Queries.php:110
+#: core/panel/Queries.php:111
+#: core/panel/Queries.php:116
+#: core/panel/Queries.php:117
 msgid "sec"
 msgstr ""
 
-#: core/panel/Queries.php:90
+#: core/panel/Queries.php:103
 msgid "Fastest"
 msgstr ""
 
-#: core/panel/Queries.php:91
+#: core/panel/Queries.php:109
 msgid "Slowest"
 msgstr ""
 
-#: core/panel/Queries.php:92
-#: core/panel/Queries.php:183
+#: core/panel/Queries.php:115
+#: core/panel/Queries.php:237
 msgid "Average"
 msgstr ""
 
-#: core/panel/Queries.php:96
+#: core/panel/Queries.php:123
 msgid "Queries Control"
 msgstr ""
 
-#: core/panel/Queries.php:99
+#: core/panel/Queries.php:126
 msgid "Control"
 msgstr ""
 
-#: core/panel/Queries.php:101
+#: core/panel/Queries.php:129
 msgid "Call List"
 msgstr ""
 
-#: core/panel/Queries.php:101
+#: core/panel/Queries.php:130
 msgid "compact"
 msgstr ""
 
-#: core/panel/Queries.php:101
+#: core/panel/Queries.php:130
 msgid "full"
 msgstr ""
 
-#: core/panel/Queries.php:102
+#: core/panel/Queries.php:133
 msgid "Sort By"
 msgstr ""
 
-#: core/panel/Queries.php:102
+#: core/panel/Queries.php:134
 msgid "order"
 msgstr ""
 
-#: core/panel/Queries.php:102
+#: core/panel/Queries.php:134
 msgid "time"
 msgstr ""
 
-#: core/panel/Queries.php:102
+#: core/panel/Queries.php:134
 msgid "length"
 msgstr ""
 
-#: core/panel/Queries.php:103
+#: core/panel/Queries.php:137
 msgid "Show"
 msgstr ""
 
-#: core/panel/Queries.php:103
+#: core/panel/Queries.php:138
 msgid "all"
 msgstr ""
 
-#: core/panel/Queries.php:103
+#: core/panel/Queries.php:138
 msgid "slow"
 msgstr ""
 
-#: core/panel/Queries.php:103
+#: core/panel/Queries.php:138
 msgid "fast"
 msgstr ""
 
-#: core/panel/Queries.php:107
+#: core/panel/Queries.php:143
 msgid "Query Types"
 msgstr ""
 
-#: core/panel/Queries.php:109
+#: core/panel/Queries.php:145
 msgid "Type"
 msgstr ""
 
-#: core/panel/Queries.php:112
-#: core/panel/Queries.php:124
-#: core/panel/Queries.php:136
+#: core/panel/Queries.php:149
+#: core/panel/Queries.php:167
+#: core/panel/Queries.php:185
 msgid "Reset All"
 msgstr ""
 
-#: core/panel/Queries.php:112
-#: core/panel/Queries.php:124
-#: core/panel/Queries.php:136
+#: core/panel/Queries.php:150
+#: core/panel/Queries.php:168
+#: core/panel/Queries.php:186
 msgid "show"
 msgstr ""
 
-#: core/panel/Queries.php:112
-#: core/panel/Queries.php:124
-#: core/panel/Queries.php:136
+#: core/panel/Queries.php:150
+#: core/panel/Queries.php:168
+#: core/panel/Queries.php:186
 msgid "hide"
 msgstr ""
 
-#: core/panel/Queries.php:119
+#: core/panel/Queries.php:161
 msgid "Database Tables"
 msgstr ""
 
-#: core/panel/Queries.php:121
+#: core/panel/Queries.php:163
 msgid "Table"
 msgstr ""
 
-#: core/panel/Queries.php:131
+#: core/panel/Queries.php:179
 msgid "Query Callers"
 msgstr ""
 
-#: core/panel/Queries.php:145
+#: core/panel/Queries.php:199
 msgid "List of Executed SQL Queries"
 msgstr ""
 
-#: core/panel/Queries.php:169
+#: core/panel/Queries.php:223
 msgid "Order"
 msgstr ""
 
-#: core/panel/Queries.php:170
+#: core/panel/Queries.php:224
 msgid "Length"
 msgstr ""
 
-#: core/panel/Queries.php:170
+#: core/panel/Queries.php:224
 msgid "characters"
 msgstr ""
 
-#: core/panel/Queries.php:172
+#: core/panel/Queries.php:226
 msgid "Share"
 msgstr ""
 
-#: core/panel/Queries.php:175
+#: core/panel/Queries.php:229
 msgid "Fastest Query"
 msgstr ""
 
-#: core/panel/Queries.php:177
+#: core/panel/Queries.php:231
 msgid "Slowest Query"
 msgstr ""
 
-#: core/panel/Queries.php:179
+#: core/panel/Queries.php:233
 msgid "Slow"
 msgstr ""
 
-#: core/panel/Queries.php:181
+#: core/panel/Queries.php:235
 msgid "Fast"
 msgstr ""
 
-#: core/panel/Queries.php:187
-#: core/panel/Queries.php:190
+#: core/panel/Queries.php:241
+#: core/panel/Queries.php:244
 msgid "Called from"
 msgstr ""
 
-#: core/panel/Queries.php:188
+#: core/panel/Queries.php:242
 msgid "collapse"
 msgstr ""
 
-#: core/panel/Queries.php:191
+#: core/panel/Queries.php:245
 msgid "expand"
 msgstr ""
 
@@ -1050,11 +1071,11 @@ msgstr ""
 msgid "Executed SQL Query"
 msgstr ""
 
-#: core/panel/Query.php:45
+#: core/panel/Query.php:41
 msgid "Complete WP Query object"
 msgstr ""
 
-#: core/panel/Query.php:50
+#: core/panel/Query.php:46
 msgid "Complete WP object"
 msgstr ""
 
@@ -1198,19 +1219,19 @@ msgstr ""
 msgid "PHP Extensions"
 msgstr ""
 
-#: core/panel/User.php:80
+#: core/panel/User.php:83
 msgid "Basic User Information"
 msgstr ""
 
-#: core/panel/User.php:93
+#: core/panel/User.php:96
 msgid "Core Meta Information"
 msgstr ""
 
-#: core/panel/User.php:128
+#: core/panel/User.php:131
 msgid "User Information"
 msgstr ""
 
-#: core/panel/User.php:145
+#: core/panel/User.php:148
 msgid "Rest of User Meta Information"
 msgstr ""
 
@@ -1232,10 +1253,6 @@ msgstr ""
 
 #: forms/display.php:20
 msgid "Select Debugger Panel"
-msgstr ""
-
-#: forms/display.php:58
-msgid "Settings"
 msgstr ""
 
 #: forms/display.php:59
