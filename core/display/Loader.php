@@ -17,8 +17,8 @@ class Loader {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
-		PrettyPrint::init()->ICON_DOWN  = '<i class="debugpress-icon debugpress-icon-caret-right"></i>';
-		PrettyPrint::init()->ICON_RIGHT = '<i class="debugpress-icon debugpress-icon-caret-down"></i>';
+		PrettyPrint::init()->ICON_DOWN  = '<i class="debugpress-icon debugpress-icon-caret-down"></i>';
+		PrettyPrint::init()->ICON_RIGHT = '<i class="debugpress-icon debugpress-icon-caret-right"></i>';
 
 		if ( $this->position == 'toolbar' ) {
 			add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );
@@ -54,11 +54,10 @@ class Loader {
 		wp_enqueue_script( 'debugpress' );
 
 		wp_localize_script( 'debugpress', 'debugpress_data', array(
-			'position'            => $this->position,
 			'events_show_details' => _x( "Show Details", "Popup message", "debugpress" ),
 			'events_hide_details' => _x( "Hide Details", "Popup message", "debugpress" ),
-			'icon_down'           => '<i class="debugpress-icon debugpress-icon-caret-right"></i>',
-			'icon_right'          => '<i class="debugpress-icon debugpress-icon-caret-down"></i>'
+			'icon_down'           => '<i class="debugpress-icon debugpress-icon-caret-down"></i>',
+			'icon_right'          => '<i class="debugpress-icon debugpress-icon-caret-right"></i>'
 		) );
 	}
 
@@ -90,7 +89,9 @@ class Loader {
 	}
 
 	public function display_float_button() {
-		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
+		$_position = $this->position == 'toolbar' ? apply_filter('debugpress_float_button_fallback_position', 'topright') : $this->position;
+
+		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $_position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
 
 	public function button() {

@@ -50,44 +50,56 @@
 }
 
 @media screen and (max-width: 800px) {
-    .debugpress-querie-sidebar-control {
-        margin-bottom: 5px;
-    }
+    .debugpress-style-popup {
+        .debugpress-querie-sidebar-control {
+            margin-bottom: 5px;
+        }
 
-    .debugpress-debugger-footer-left,
-    .debugpress-debugger-footer-right {
-        float: none;
-        text-align: center;
-    }
+        .debugpress-debugger-footer-left,
+        .debugpress-debugger-footer-right {
+            float: none;
+            text-align: center;
+        }
 
-    #debugpress-debugger-tabs {
-        display: none;
-    }
+        #debugpress-debugger-tabs {
+            display: none;
+        }
 
-    #debugpress-debugger-select {
-        display: block;
-    }
+        #debugpress-debugger-select {
+            display: block;
+        }
 
-    .debugpress-style-popup .sanp-wrapper .sanp-header {
-        height: 40px;
-    }
+        .sanp-wrapper {
+            .sanp-header {
+                height: 40px;
+            }
 
-    .debugpress-tab-content .#{$grid-prefix}-grid .#{$grid-prefix}-unit {
-        padding-left: 10px;
-        padding-right: 10px;
+            > button {
+                top: 5px;
+            }
+        }
+
+        .debugpress-tab-content {
+            .#{$grid-prefix}-grid .#{$grid-prefix}-unit {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
     }
 }
 
 @media screen and (max-width: 782px) {
-    #wpadminbar .debugpress-debug-dialog-button {
-        display: block !important;
-    }
+    #wpadminbar {
+        .debugpress-debug-dialog-button {
+            display: block !important;
 
-    #wpadminbar .debugpress-debug-dialog-button .ab-item {
-        padding: 0 10px !important;
-    }
+            .ab-item {
+                padding: 0 10px !important;
 
-    #wpadminbar .debugpress-debug-dialog-button .ab-item i.debugpress-icon {
-        font-size: 24px !important;
+                i.debugpress-icon {
+                    font-size: 24px !important;
+                }
+            }
+        }
     }
 }

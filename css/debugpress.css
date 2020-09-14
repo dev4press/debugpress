@@ -491,11 +491,11 @@ a > .debugpress-icon {
   color: #EEE;
   cursor: pointer;
   float: right;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 900;
-  line-height: 18px;
+  line-height: 1;
   right: 5px;
-  top: 7px;
+  top: 2px;
 }
 .debugpress-style-popup .sanp-wrapper .sanp-header {
   background: #23282D;
@@ -579,13 +579,16 @@ a > .debugpress-icon {
 }
 .debugpress-style-popup #debugpress-debugger-select {
   display: none;
-  font-size: 12px;
+  font-size: 14px;
   height: 28px;
   line-height: 28px;
   margin: 0;
   padding: 0 10px;
-  width: 85%;
+  width: calc(100% - 30px);
   min-height: 28px;
+  max-width: 100%;
+  border-radius: 0;
+  border: 0;
 }
 .debugpress-style-popup .debugpress-debugger-footer-right {
   float: right;
@@ -819,29 +822,27 @@ a > .debugpress-icon {
   }
 }
 @media screen and (max-width: 800px) {
-  .debugpress-querie-sidebar-control {
+  .debugpress-style-popup .debugpress-querie-sidebar-control {
     margin-bottom: 5px;
   }
-
-  .debugpress-debugger-footer-left,
-.debugpress-debugger-footer-right {
+  .debugpress-style-popup .debugpress-debugger-footer-left,
+.debugpress-style-popup .debugpress-debugger-footer-right {
     float: none;
     text-align: center;
   }
-
-  #debugpress-debugger-tabs {
+  .debugpress-style-popup #debugpress-debugger-tabs {
     display: none;
   }
-
-  #debugpress-debugger-select {
+  .debugpress-style-popup #debugpress-debugger-select {
     display: block;
   }
-
   .debugpress-style-popup .sanp-wrapper .sanp-header {
     height: 40px;
   }
-
-  .debugpress-tab-content .debugpress-grid .debugpress-unit {
+  .debugpress-style-popup .sanp-wrapper > button {
+    top: 5px;
+  }
+  .debugpress-style-popup .debugpress-tab-content .debugpress-grid .debugpress-unit {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -850,11 +851,9 @@ a > .debugpress-icon {
   #wpadminbar .debugpress-debug-dialog-button {
     display: block !important;
   }
-
   #wpadminbar .debugpress-debug-dialog-button .ab-item {
     padding: 0 10px !important;
   }
-
   #wpadminbar .debugpress-debug-dialog-button .ab-item i.debugpress-icon {
     font-size: 24px !important;
   }
