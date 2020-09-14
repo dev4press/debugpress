@@ -44,19 +44,19 @@
     }
 }
 
-.gdpet-debug-dialog-button {
+.debugpress-debug-dialog-button {
     &.debugpress-float-button {
         a {
-            .gdpet-debug-button-indicators {
+            .debugpress-debug-button-indicators {
                 vertical-align: 8px;
             }
         }
     }
 
     a {
-        .gdpet-debug-button-indicators {
-            .gdpet-debug-has-errors,
-            .gdpet-debug-has-ajax {
+        .debugpress-debug-button-indicators {
+            .debugpress-debug-has-errors,
+            .debugpress-debug-has-ajax {
                 padding: 2px 3px !important;
                 border-radius: 3px !important;
                 color: #FFF;
@@ -65,11 +65,11 @@
                 margin: 4px !important;
             }
 
-            .gdpet-debug-has-ajax {
+            .debugpress-debug-has-ajax {
                 background-color: #D82AE5;
             }
 
-            .gdpet-debug-has-errors {
+            .debugpress-debug-has-errors {
                 background-color: #ED1E24;
             }
         }
@@ -79,13 +79,13 @@
         color: #69FB3B !important;
     }
 
-    &.gdpet-debug-has-warnings {
+    &.debugpress-debug-has-warnings {
         a, a:hover {
             color: #FF0 !important;
         }
     }
 
-    &.gdpet-debug-has-errors {
+    &.debugpress-debug-has-errors {
         a, a:hover {
             color: #FF3232 !important;
         }

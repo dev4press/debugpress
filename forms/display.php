@@ -5,7 +5,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 ?>
 <div id="gdpet-debugger-container" style="display: none;">
     <div id="gdpet-debugger-content-header">
-        <ul role="tablist" id="gdpet-debugger-tabs" class="gdpet-clearfix">
+        <ul role="tablist" id="gdpet-debugger-tabs" class="debugpress-clearfix">
 			<?php
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $label ) {
@@ -51,7 +51,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 		?>
     </div>
-    <div id="gdpet-debugger-content-footer" class="gdpet-clearfix">
+    <div id="gdpet-debugger-content-footer" class="debugpress-clearfix">
         <div class="gdpet-debugger-footer-left">
 			<?php echo debugpress_plugin()->build_stats( null ); ?>
         </div>

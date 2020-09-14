@@ -97,86 +97,86 @@ a > .debugpress-icon {
   font-size: 4em;
 }
 
-.gdpet-grid,
-.gdpet-unit {
+.debugpress-grid,
+.debugpress-unit {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.gdpet-grid {
+.debugpress-grid {
   display: block;
   clear: both;
   *zoom: 1;
 }
-.gdpet-grid .gdpet-unit {
+.debugpress-grid .debugpress-unit {
   float: left;
   width: 100%;
   padding: 10px;
   margin: 0;
 }
-.gdpet-grid .wrap {
+.debugpress-grid .wrap {
   max-width: 978px;
   margin: 0 auto;
 }
-.gdpet-grid:before, .gdpet-grid:after {
+.debugpress-grid:before, .debugpress-grid:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.gdpet-grid:after {
+.debugpress-grid:after {
   clear: both;
 }
-.gdpet-grid .whole, .gdpet-grid .w-1-1 {
+.debugpress-grid .whole, .debugpress-grid .w-1-1 {
   width: 100%;
 }
-.gdpet-grid .half, .gdpet-grid .w-1-2 {
+.debugpress-grid .half, .debugpress-grid .w-1-2 {
   width: 50%;
 }
-.gdpet-grid .one-third, .gdpet-grid .w-1-3 {
+.debugpress-grid .one-third, .debugpress-grid .w-1-3 {
   width: 33.3332%;
 }
-.gdpet-grid .two-thirds, .gdpet-grid .w-2-3 {
+.debugpress-grid .two-thirds, .debugpress-grid .w-2-3 {
   width: 66.6665%;
 }
-.gdpet-grid .one-quarter, .gdpet-grid .w-1-4 {
+.debugpress-grid .one-quarter, .debugpress-grid .w-1-4 {
   width: 25%;
 }
-.gdpet-grid .three-quarters, .gdpet-grid .w-3-4 {
+.debugpress-grid .three-quarters, .debugpress-grid .w-3-4 {
   width: 75%;
 }
-.gdpet-grid .one-fifth, .gdpet-grid .w-1-5 {
+.debugpress-grid .one-fifth, .debugpress-grid .w-1-5 {
   width: 20%;
 }
-.gdpet-grid .two-fifths, .gdpet-grid .w-2-5 {
+.debugpress-grid .two-fifths, .debugpress-grid .w-2-5 {
   width: 40%;
 }
-.gdpet-grid .three-fifths, .gdpet-grid .w-3-5 {
+.debugpress-grid .three-fifths, .debugpress-grid .w-3-5 {
   width: 60%;
 }
-.gdpet-grid .four-fifths, .gdpet-grid .w-4-5 {
+.debugpress-grid .four-fifths, .debugpress-grid .w-4-5 {
   width: 80%;
 }
-.gdpet-grid .golden-small, .gdpet-grid .w-g-s {
+.debugpress-grid .golden-small, .debugpress-grid .w-g-s {
   width: 38.2716%;
 }
-.gdpet-grid .golden-large, .gdpet-grid .w-g-l {
+.debugpress-grid .golden-large, .debugpress-grid .w-g-l {
   width: 61.7283%;
 }
 
-.gdpet-unit .gdpet-unit:first-child {
+.debugpress-unit .debugpress-unit:first-child {
   padding-left: 0;
 }
-.gdpet-unit .gdpet-unit:last-child {
+.debugpress-unit .debugpress-unit:last-child {
   padding-right: 0;
 }
-.gdpet-unit .gdpet-unit:first-child > .gdpet-unit {
+.debugpress-unit .debugpress-unit:first-child > .debugpress-unit {
   padding-top: 0;
 }
-.gdpet-unit .gdpet-unit:last-child > .gdpet-unit {
+.debugpress-unit .debugpress-unit:last-child > .debugpress-unit {
   padding-bottom: 0;
 }
-.gdpet-unit.no-gutters {
+.debugpress-unit.no-gutters {
   padding: 0 !important;
 }
 
@@ -358,16 +358,6 @@ a > .debugpress-icon {
   color: #008;
 }
 
-.gdpet-clearfix:before,
-.gdpet-clearfix:after {
-  content: " ";
-  display: table;
-}
-
-.gdpet-clearfix:after {
-  clear: both;
-}
-
 .debugpress-clearfix:before,
 .debugpress-clearfix:after {
   content: " ";
@@ -385,7 +375,7 @@ a > .debugpress-icon {
   line-height: 1;
 }
 
-#wp-admin-bar-gdpet-debugger-button {
+#wp-admin-bar-debugpress-debugger-button {
   float: right !important;
 }
 
@@ -428,11 +418,11 @@ a > .debugpress-icon {
   vertical-align: top;
 }
 
-.gdpet-debug-dialog-button.debugpress-float-button a .gdpet-debug-button-indicators {
+.debugpress-debug-dialog-button.debugpress-float-button a .debugpress-debug-button-indicators {
   vertical-align: 8px;
 }
-.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-errors,
-.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-ajax {
+.debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-errors,
+.debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-ajax {
   padding: 2px 3px !important;
   border-radius: 3px !important;
   color: #FFF;
@@ -440,23 +430,23 @@ a > .debugpress-icon {
   max-height: 12px !important;
   margin: 4px !important;
 }
-.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-ajax {
+.debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-ajax {
   background-color: #D82AE5;
 }
-.gdpet-debug-dialog-button a .gdpet-debug-button-indicators .gdpet-debug-has-errors {
+.debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-errors {
   background-color: #ED1E24;
 }
-.gdpet-debug-dialog-button a, .gdpet-debug-dialog-button a:hover {
+.debugpress-debug-dialog-button a, .debugpress-debug-dialog-button a:hover {
   color: #69FB3B !important;
 }
-.gdpet-debug-dialog-button.gdpet-debug-has-warnings a, .gdpet-debug-dialog-button.gdpet-debug-has-warnings a:hover {
+.debugpress-debug-dialog-button.debugpress-debug-has-warnings a, .debugpress-debug-dialog-button.debugpress-debug-has-warnings a:hover {
   color: #FF0 !important;
 }
-.gdpet-debug-dialog-button.gdpet-debug-has-errors a, .gdpet-debug-dialog-button.gdpet-debug-has-errors a:hover {
+.debugpress-debug-dialog-button.debugpress-debug-has-errors a, .debugpress-debug-dialog-button.debugpress-debug-has-errors a:hover {
   color: #FF3232 !important;
 }
 
-.gdpet-style-popup {
+.debugpress-style-popup {
   color: #444;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   line-height: 1.4em;
@@ -465,36 +455,36 @@ a > .debugpress-icon {
   font-weight: normal;
   box-sizing: border-box;
 }
-.gdpet-style-popup * {
+.debugpress-style-popup * {
   font-family: inherit;
   box-sizing: border-box;
 }
-.gdpet-style-popup pre {
+.debugpress-style-popup pre {
   margin: 0;
   padding: 5px 7px;
   font-size: 12px;
   line-height: 1.4em;
   white-space: pre;
 }
-.gdpet-style-popup a {
+.debugpress-style-popup a {
   color: #0073AA;
   text-decoration: none;
   box-shadow: none;
   outline: none;
 }
-.gdpet-style-popup a.sqlq-option-on {
+.debugpress-style-popup a.sqlq-option-on {
   font-weight: bold;
   color: #FFF;
   background: #0073AA;
   padding: 0 3px 1px;
 }
-.gdpet-style-popup .sanp-wrapper {
+.debugpress-style-popup .sanp-wrapper {
   background: #FFF;
   border-radius: 0;
   border: 4px solid #23282D;
   box-shadow: 1px 1px 5px rgba(32, 32, 32, 0.6);
 }
-.gdpet-style-popup .sanp-wrapper > button {
+.debugpress-style-popup .sanp-wrapper > button {
   -webkit-appearance: none;
   background: none;
   border: medium none;
@@ -507,14 +497,14 @@ a > .debugpress-icon {
   right: 5px;
   top: 7px;
 }
-.gdpet-style-popup .sanp-wrapper .sanp-header {
+.debugpress-style-popup .sanp-wrapper .sanp-header {
   background: #23282D;
   border-radius: 0;
   padding: 5px 5px 0;
   color: #FFF;
   height: 33px;
 }
-.gdpet-style-popup .sanp-wrapper .sanp-header h5 {
+.debugpress-style-popup .sanp-wrapper .sanp-header h5 {
   border-bottom: 4px solid #23282D;
   color: #FFF;
   font-size: 18px;
@@ -524,16 +514,16 @@ a > .debugpress-icon {
   padding: 0;
   text-transform: uppercase;
 }
-.gdpet-style-popup .sanp-wrapper .sanp-content {
+.debugpress-style-popup .sanp-wrapper .sanp-content {
   padding: 0;
 }
-.gdpet-style-popup .sanp-wrapper .sanp-footer {
+.debugpress-style-popup .sanp-wrapper .sanp-footer {
   border-radius: 0;
   padding: 5px;
   background: #E0E0E0;
   text-align: left;
 }
-.gdpet-style-popup .sanp-wrapper .sanp-footer button {
+.debugpress-style-popup .sanp-wrapper .sanp-footer button {
   -webkit-appearance: none;
   margin: 0;
   padding: 0;
@@ -547,20 +537,20 @@ a > .debugpress-icon {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-.gdpet-style-popup.sanp-button-alt .sanp-wrapper > button {
+.debugpress-style-popup.sanp-button-alt .sanp-wrapper > button {
   background: #500;
   box-shadow: 1px 1px 4px rgba(32, 32, 32, 0.3);
   color: #FFF;
 }
 
-.gdpet-style-popup #gdpet-debugger-tabs {
+.debugpress-style-popup #gdpet-debugger-tabs {
   margin: 0;
   padding: 0;
   list-style: none;
   font-size: 13px;
   line-height: 26px;
 }
-.gdpet-style-popup #gdpet-debugger-tabs li {
+.debugpress-style-popup #gdpet-debugger-tabs li {
   float: left;
   height: 28px;
   line-height: 26px;
@@ -568,26 +558,26 @@ a > .debugpress-icon {
   padding: 0 5px;
   list-style: none;
 }
-.gdpet-style-popup #gdpet-debugger-tabs li a {
+.debugpress-style-popup #gdpet-debugger-tabs li a {
   color: #EEE;
   box-shadow: none;
   outline: none;
   text-decoration: none;
 }
-.gdpet-style-popup #gdpet-debugger-tabs li.gdpet-tab-active {
+.debugpress-style-popup #gdpet-debugger-tabs li.gdpet-tab-active {
   background: #FFF;
 }
-.gdpet-style-popup #gdpet-debugger-tabs li.gdpet-tab-active a {
+.debugpress-style-popup #gdpet-debugger-tabs li.gdpet-tab-active a {
   color: #23282D;
   font-weight: bold;
 }
-.gdpet-style-popup #gdpet-debugger-content-wrapper .gdpet-tab-content {
+.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-tab-content {
   display: none;
 }
-.gdpet-style-popup #gdpet-debugger-content-wrapper .gdpet-tab-content.gdpet-tab-active {
+.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-tab-content.gdpet-tab-active {
   display: block;
 }
-.gdpet-style-popup #gdpet-debugger-select {
+.debugpress-style-popup #gdpet-debugger-select {
   display: none;
   font-size: 12px;
   height: 28px;
@@ -597,37 +587,37 @@ a > .debugpress-icon {
   width: 85%;
   min-height: 28px;
 }
-.gdpet-style-popup .gdpet-debugger-footer-right {
+.debugpress-style-popup .gdpet-debugger-footer-right {
   float: right;
 }
-.gdpet-style-popup .gdpet-debugger-footer-left {
+.debugpress-style-popup .gdpet-debugger-footer-left {
   float: left;
 }
-.gdpet-style-popup .gdpet-debugger-footer-left div {
+.debugpress-style-popup .gdpet-debugger-footer-left div {
   display: inline;
 }
-.gdpet-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggle {
+.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggle {
   font-weight: bold;
 }
-.gdpet-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggler {
+.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggler {
   border-left: 1px solid #888;
   padding-left: 10px;
   display: none;
 }
-.gdpet-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggler.gdpet-events-log-toggler-opened {
+.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggler.gdpet-events-log-toggler-opened {
   display: block;
 }
-.gdpet-style-popup #gdpet-debugger-content-wrapper .gdpet-error-message {
+.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-error-message {
   font-weight: bold;
   font-style: italic;
   color: red;
 }
-.gdpet-style-popup .gdpet-debugger-panel-block {
+.debugpress-style-popup .gdpet-debugger-panel-block {
   margin: 5px 0 10px;
   display: block;
   overflow: auto;
 }
-.gdpet-style-popup .gdpet-debugger-panel-block .sql-calls-button-expander {
+.debugpress-style-popup .gdpet-debugger-panel-block .sql-calls-button-expander {
   font-weight: bold;
   font-size: 12px;
   color: #FFF !important;
@@ -636,22 +626,22 @@ a > .debugpress-icon {
   margin: 0 0 0 10px;
   border-radius: 3px;
 }
-.gdpet-style-popup .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .gdpet-debugger-panel-block-title {
   background: #23282D;
   color: #FFF;
   padding: 5px !important;
   font-size: 12px;
   margin: 0;
 }
-.gdpet-style-popup .gdpet-debugger-panel-block-title span {
+.debugpress-style-popup .gdpet-debugger-panel-block-title span {
   float: right;
   font-size: 15px;
   cursor: pointer;
 }
-.gdpet-style-popup .gdpet-debugger-panel-block-title span i.debugpress-icon {
+.debugpress-style-popup .gdpet-debugger-panel-block-title span i.debugpress-icon {
   vertical-align: top;
 }
-.gdpet-style-popup .gdpet-querie-sidebar-control {
+.debugpress-style-popup .gdpet-querie-sidebar-control {
   background: #23282D;
   color: #FFF;
   padding: 5px !important;
@@ -660,14 +650,14 @@ a > .debugpress-icon {
   margin-bottom: 10px;
   text-align: right;
 }
-.gdpet-style-popup .gdpet-querie-sidebar-control span {
+.debugpress-style-popup .gdpet-querie-sidebar-control span {
   font-size: 15px;
   cursor: pointer;
 }
-.gdpet-style-popup .gdpet-querie-sidebar-control span i.debugpress-icon {
+.debugpress-style-popup .gdpet-querie-sidebar-control span i.debugpress-icon {
   vertical-align: top;
 }
-.gdpet-style-popup .gdpet-debugger-panel-block-subtitle {
+.debugpress-style-popup .gdpet-debugger-panel-block-subtitle {
   background: #777;
   color: #FFF;
   margin: 5px 0;
@@ -675,7 +665,7 @@ a > .debugpress-icon {
   font-size: 11px;
   line-height: 20px;
 }
-.gdpet-style-popup .gdpet-debugger-table {
+.debugpress-style-popup .gdpet-debugger-table {
   width: 100%;
   table-layout: auto;
   margin: 0;
@@ -685,38 +675,38 @@ a > .debugpress-icon {
   font-size: 12px;
   line-height: 20px;
 }
-.gdpet-style-popup .gdpet-debugger-table thead {
+.debugpress-style-popup .gdpet-debugger-table thead {
   background: #DDD;
 }
-.gdpet-style-popup .gdpet-debugger-table th,
-.gdpet-style-popup .gdpet-debugger-table td {
+.debugpress-style-popup .gdpet-debugger-table th,
+.debugpress-style-popup .gdpet-debugger-table td {
   border: 1px solid #E8E8E8;
   text-align: left;
   padding: 1px 4px !important;
   font-size: 12px;
 }
-.gdpet-style-popup .gdpet-debugger-table td {
+.debugpress-style-popup .gdpet-debugger-table td {
   border-width: 0 1px 1px 0;
   vertical-align: top;
 }
-.gdpet-style-popup .gdpet-debugger-table tr:nth-of-type(2n) {
+.debugpress-style-popup .gdpet-debugger-table tr:nth-of-type(2n) {
   background: #FAFAFA;
 }
-.gdpet-style-popup .gdpet-debugger-table.gdpet-table-keyvalue tr td:first-child {
+.debugpress-style-popup .gdpet-debugger-table.gdpet-table-keyvalue tr td:first-child {
   width: 30%;
 }
-.gdpet-style-popup .gdpet-debugger-table .gdp_r.gdp_r_root {
+.debugpress-style-popup .gdpet-debugger-table .gdp_r.gdp_r_root {
   margin: 0;
 }
-.gdpet-style-popup #gdpet-debugger-tab-queries .gdpet-debugger-table.gdpet-table-keyvalue tr td:first-child {
+.debugpress-style-popup #gdpet-debugger-tab-queries .gdpet-debugger-table.gdpet-table-keyvalue tr td:first-child {
   width: 60%;
 }
-.gdpet-style-popup .sql-query-list .sql-query {
+.debugpress-style-popup .sql-query-list .sql-query {
   border: 1px solid #777;
   margin: 5px 0;
   padding: 5px;
 }
-.gdpet-style-popup .sql-query-list .sql-query .sql-query-full {
+.debugpress-style-popup .sql-query-list .sql-query .sql-query-full {
   background-color: #F4F4F4;
   color: #000;
   font-family: monospace;
@@ -724,83 +714,83 @@ a > .debugpress-icon {
   margin: 5px 0 0;
   padding: 5px;
 }
-.gdpet-style-popup .gdpet-wrapper-warning {
+.debugpress-style-popup .gdpet-wrapper-warning {
   border: 1px solid #23282D;
   padding: 10px;
   margin: 0 0 10px;
 }
-.gdpet-style-popup .gdpet-wrapper-warning h4 {
+.debugpress-style-popup .gdpet-wrapper-warning h4 {
   color: #900;
   font-size: 16px;
   margin: 0 0 5px;
 }
-.gdpet-style-popup .gdpet-debug-environment {
+.debugpress-style-popup .gdpet-debug-environment {
   margin: 0 0 10px;
   padding: 10px;
   background-color: #F3FFE7;
 }
-.gdpet-style-popup .gdpet-debug-environment .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .gdpet-debug-environment .gdpet-debugger-panel-block-title {
   background-color: #12AE00;
   text-align: center;
   font-size: 1.1em;
 }
-.gdpet-style-popup .gdpet-debug-environment.gdpet-debug-env-development {
+.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-development {
   background-color: #FFE7F2;
 }
-.gdpet-style-popup .gdpet-debug-environment.gdpet-debug-env-development .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-development .gdpet-debugger-panel-block-title {
   background-color: #AE0060;
 }
-.gdpet-style-popup .gdpet-debug-environment.gdpet-debug-env-local {
+.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-local {
   background-color: #F7E7FF;
 }
-.gdpet-style-popup .gdpet-debug-environment.gdpet-debug-env-local .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-local .gdpet-debugger-panel-block-title {
   background-color: #8800AE;
 }
-.gdpet-style-popup .gdpet-debug-environment.gdpet-debug-env-staging {
+.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-staging {
   background-color: #E7EEFF;
 }
-.gdpet-style-popup .gdpet-debug-environment.gdpet-debug-env-staging .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-staging .gdpet-debugger-panel-block-title {
   background-color: #0026AE;
 }
-.gdpet-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment {
+.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment {
   color: #12AE00;
 }
-.gdpet-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-development {
+.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-development {
   color: #AE0060;
 }
-.gdpet-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-local {
+.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-local {
   color: #8800AE;
 }
-.gdpet-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-staging {
+.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-staging {
   color: #0026AE;
 }
-.gdpet-style-popup .gdpet-debug-notice-block {
+.debugpress-style-popup .gdpet-debug-notice-block {
   margin: 0 0 10px;
   padding: 10px 10px 1px;
   border-left: 4px solid red;
   background-color: #FFE7E7;
 }
-.gdpet-style-popup .gdpet-debug-notice-block .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .gdpet-debug-notice-block .gdpet-debugger-panel-block-title {
   background-color: red;
 }
-.gdpet-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter {
+.debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter {
   width: 44px;
 }
-.gdpet-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter h5, .gdpet-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter div {
+.debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter h5, .debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter div {
   display: none !important;
 }
-.gdpet-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .three-quarters {
+.debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .three-quarters {
   width: calc(100% - 44px);
 }
 
 @media screen and (max-width: 568px) {
-  .gdpet-grid .gdpet-unit {
+  .debugpress-grid .debugpress-unit {
     width: 100% !important;
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  .gdpet-unit .gdpet-grid .gdpet-unit {
+  .debugpress-unit .debugpress-grid .debugpress-unit {
     padding-left: 0;
     padding-right: 0;
   }
@@ -814,18 +804,16 @@ a > .debugpress-icon {
   }
 }
 @media screen and (max-width: 1080px) {
-  #gdpet-debugger-tab-queries .gdpet-grid .one-quarter {
+  #gdpet-debugger-tab-queries .debugpress-grid .one-quarter {
     width: 45%;
   }
-
-  #gdpet-debugger-tab-queries .gdpet-grid .three-quarters {
+  #gdpet-debugger-tab-queries .debugpress-grid .three-quarters {
     width: 55%;
   }
 
   .gdpet-debugger-footer-left div {
     display: block;
   }
-
   .gdpet-debugger-footer-left div span {
     display: none;
   }
@@ -849,25 +837,25 @@ a > .debugpress-icon {
     display: block;
   }
 
-  .gdpet-style-popup .sanp-wrapper .sanp-header {
+  .debugpress-style-popup .sanp-wrapper .sanp-header {
     height: 40px;
   }
 
-  .gdpet-tab-content .gdpet-grid .gdpet-unit {
+  .gdpet-tab-content .debugpress-grid .debugpress-unit {
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 @media screen and (max-width: 782px) {
-  #wpadminbar .gdpet-debug-dialog-button {
+  #wpadminbar .debugpress-debug-dialog-button {
     display: block !important;
   }
 
-  #wpadminbar .gdpet-debug-dialog-button .ab-item {
+  #wpadminbar .debugpress-debug-dialog-button .ab-item {
     padding: 0 10px !important;
   }
 
-  #wpadminbar .gdpet-debug-dialog-button .ab-item i.debugpress-icon {
+  #wpadminbar .debugpress-debug-dialog-button .ab-item i.debugpress-icon {
     font-size: 24px !important;
   }
 }

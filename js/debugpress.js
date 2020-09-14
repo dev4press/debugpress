@@ -53,17 +53,17 @@
             wp.dev4press.debugpress.ajax = ajax;
 
             if (wp.dev4press.debugpress.counts.total > 0) {
-                var button = $(".gdpet-debug-dialog-button"),
-                    extra = wp.dev4press.debugpress.counts.errors > 0 ? 'gdpet-debug-has-errors' : 'gdpet-debug-has-warnings';
+                var button = $(".debugpress-debug-dialog-button"),
+                    extra = wp.dev4press.debugpress.counts.errors > 0 ? 'debugpress-debug-has-errors' : 'debugpress-debug-has-warnings';
 
-                $(".gdpet-debug-has-errors", button).show().html(wp.dev4press.debugpress.counts.total);
+                $(".debugpress-debug-has-errors", button).show().html(wp.dev4press.debugpress.counts.total);
 
                 button.addClass(extra);
             }
 
             $("#gdpet-debugger-content-wrapper").smartAniPopup({
                 settings: {
-                    style: "gdpet-style-popup",
+                    style: "debugpress-style-popup",
                     modal: true,
                     effect: "fade",
                     closeEscape: true,
@@ -82,7 +82,7 @@
                 }
             });
 
-            $(document).on("click", ".gdpet-debug-dialog-button a", function(e) {
+            $(document).on("click", ".debugpress-debug-dialog-button a", function(e) {
                 e.preventDefault();
 
                 $("#gdpet-debugger-content-wrapper").smartAniPopup("open");
@@ -230,7 +230,7 @@
                 render: function(ajax) {
                     var el = $("#gdpet-debugger-ajax-wrapper"),
                         tab = $("#gdpet-debugger-tab-ajax-li"),
-                        button = $(".gdpet-debug-dialog-button"),
+                        button = $(".debugpress-debug-dialog-button"),
                         count = parseInt(el.data("calls")),
                         render = '';
 
@@ -253,7 +253,7 @@
 
                     el.append(render);
 
-                    $(".gdpet-debug-has-ajax", button).show().html(count);
+                    $(".debugpress-debug-has-ajax", button).show().html(count);
                     button.fadeOut(50).fadeIn(50).fadeOut(100).fadeIn(100).fadeOut(50).fadeIn(50);
                 },
                 headers: function(response) {

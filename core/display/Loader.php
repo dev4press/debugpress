@@ -63,13 +63,13 @@ class Loader {
 	}
 
 	public function button_class() {
-		$class = 'gdpet-debug-dialog-button';
+		$class = 'debugpress-debug-dialog-button';
 
 		if ( debugpress_tracker()->counts['total'] > 0 ) {
 			if ( debugpress_tracker()->counts['errors'] > 0 ) {
-				$class .= ' gdpet-debug-has-errors';
+				$class .= ' debugpress-debug-has-errors';
 			} else {
-				$class .= ' gdpet-debug-has-warnings';
+				$class .= ' debugpress-debug-has-warnings';
 			}
 		}
 
@@ -80,7 +80,7 @@ class Loader {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->add_menu( array(
-			'id'    => 'gdpet-debugger-button',
+			'id'    => 'debugpress-debugger-button',
 			'title' => $this->button(),
 			'href'  => '#',
 			'meta'  => array( 'class' => $this->button_class() )
@@ -90,18 +90,18 @@ class Loader {
 	}
 
 	public function display_float_button() {
-		echo '<div id="gdpet-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
+		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
 
 	public function button() {
 		$button = '<i class="debugpress-icon debugpress-icon-bug"></i>';
-		$button .= '<span class="gdpet-debug-button-indicators">';
+		$button .= '<span class="debugpress-debug-button-indicators">';
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
-			$button .= '<span class="gdpet-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "debugpress" ) . '">0</span>';
+			$button .= '<span class="debugpress-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "debugpress" ) . '">0</span>';
 		}
 
-		$button .= '<span class="gdpet-debug-has-errors" style="display: ' . ( debugpress_tracker()->counts['total'] == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . debugpress_tracker()->counts['total'] . '</span></span>';
+		$button .= '<span class="debugpress-debug-has-errors" style="display: ' . ( debugpress_tracker()->counts['total'] == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . debugpress_tracker()->counts['total'] . '</span></span>';
 		$button .= '<span class="sanp-sr-only">' . __( "Open Debugger Panel", "debugpress" ) . '</span>';
 
 		return $button;

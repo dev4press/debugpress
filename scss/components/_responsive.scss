@@ -26,20 +26,26 @@
 }
 
 @media screen and (max-width: 1080px) {
-    #gdpet-debugger-tab-queries .gdpet-grid .one-quarter {
-        width: 45%;
+    #gdpet-debugger-tab-queries {
+        .#{$grid-prefix}-grid {
+            .one-quarter {
+                width: 45%;
+            }
+
+            .three-quarters {
+                width: 55%;
+            }
+        }
     }
 
-    #gdpet-debugger-tab-queries .gdpet-grid .three-quarters {
-        width: 55%;
-    }
+    .gdpet-debugger-footer-left {
+        div {
+            display: block;
 
-    .gdpet-debugger-footer-left div {
-        display: block;
-    }
-
-    .gdpet-debugger-footer-left div span {
-        display: none;
+            span {
+                display: none;
+            }
+        }
     }
 }
 
@@ -62,26 +68,26 @@
         display: block;
     }
 
-    .gdpet-style-popup .sanp-wrapper .sanp-header {
+    .debugpress-style-popup .sanp-wrapper .sanp-header {
         height: 40px;
     }
 
-    .gdpet-tab-content .gdpet-grid .gdpet-unit {
+    .gdpet-tab-content .#{$grid-prefix}-grid .#{$grid-prefix}-unit {
         padding-left: 10px;
         padding-right: 10px;
     }
 }
 
 @media screen and (max-width: 782px) {
-    #wpadminbar .gdpet-debug-dialog-button {
+    #wpadminbar .debugpress-debug-dialog-button {
         display: block !important;
     }
 
-    #wpadminbar .gdpet-debug-dialog-button .ab-item {
+    #wpadminbar .debugpress-debug-dialog-button .ab-item {
         padding: 0 10px !important;
     }
 
-    #wpadminbar .gdpet-debug-dialog-button .ab-item i.debugpress-icon {
+    #wpadminbar .debugpress-debug-dialog-button .ab-item i.debugpress-icon {
         font-size: 24px !important;
     }
 }
