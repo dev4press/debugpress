@@ -93,11 +93,11 @@ abstract class Panel {
 		}
 
 		$class = '';
-		if (count($this->_table) == 2) {
+		if ( count( $this->_table ) == 2 ) {
 			$class = 'debugpress-table-keyvalue';
 		}
 
-		echo '<table class="debugpress-debugger-table '.$class.'"><thead><tr>' . D4P_EOL;
+		echo '<table class="debugpress-debugger-table ' . $class . '"><thead><tr>' . D4P_EOL;
 		foreach ( $this->_table as $row ) {
 			echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . D4P_EOL;
 		}

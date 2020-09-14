@@ -18,7 +18,7 @@ function debugpress_has_bbpress() {
 }
 
 function debugpress_has_permalinks() {
-	return get_option('permalink_structure');
+	return get_option( 'permalink_structure' );
 }
 
 function debugpress_is_classicpress() {

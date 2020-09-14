@@ -10,7 +10,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Basics extends Panel {
 	public function left() {
-		$env  = $this->_env();
+		$env = $this->_env();
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {
@@ -24,7 +24,7 @@ class Basics extends Panel {
 		if ( ! empty( $test ) ) {
 			echo '<div class="debugpress-debug-notice-block">';
 
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> '. __( "Debug mode problems", "debugpress" ), true, true);
+			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Debug mode problems", "debugpress" ), true, true );
 			$this->block_header( true );
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );
@@ -96,7 +96,10 @@ class Basics extends Panel {
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), debugpress_plugin()->wp_version_real() ) );
-		$this->table_row( array( __( "Pretty Permalinks", "debugpress" ), debugpress_has_permalinks() ? __("Enabled") : __("Disabled") ) );
+		$this->table_row( array(
+			__( "Pretty Permalinks", "debugpress" ),
+			debugpress_has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" )
+		) );
 		$this->table_foot();
 		$this->block_footer();
 

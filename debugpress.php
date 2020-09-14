@@ -3,7 +3,7 @@
 /*
 Plugin Name:       DebugPress
 Plugin URI:        https://debug.press/
-Description:       DebugPress is an easy to use plugin implementing popup for debugging and profiling currently loaded WordPress page with support for intercepting AJAX requests.
+Description:       DebugPress is an easy to use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests.
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       debugpress
