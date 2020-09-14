@@ -543,14 +543,14 @@ a > .debugpress-icon {
   color: #FFF;
 }
 
-.debugpress-style-popup #gdpet-debugger-tabs {
+.debugpress-style-popup #debugpress-debugger-tabs {
   margin: 0;
   padding: 0;
   list-style: none;
   font-size: 13px;
   line-height: 26px;
 }
-.debugpress-style-popup #gdpet-debugger-tabs li {
+.debugpress-style-popup #debugpress-debugger-tabs li {
   float: left;
   height: 28px;
   line-height: 26px;
@@ -558,26 +558,26 @@ a > .debugpress-icon {
   padding: 0 5px;
   list-style: none;
 }
-.debugpress-style-popup #gdpet-debugger-tabs li a {
+.debugpress-style-popup #debugpress-debugger-tabs li a {
   color: #EEE;
   box-shadow: none;
   outline: none;
   text-decoration: none;
 }
-.debugpress-style-popup #gdpet-debugger-tabs li.gdpet-tab-active {
+.debugpress-style-popup #debugpress-debugger-tabs li.debugpress-tab-active {
   background: #FFF;
 }
-.debugpress-style-popup #gdpet-debugger-tabs li.gdpet-tab-active a {
+.debugpress-style-popup #debugpress-debugger-tabs li.debugpress-tab-active a {
   color: #23282D;
   font-weight: bold;
 }
-.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-tab-content {
+.debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-tab-content {
   display: none;
 }
-.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-tab-content.gdpet-tab-active {
+.debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-tab-content.debugpress-tab-active {
   display: block;
 }
-.debugpress-style-popup #gdpet-debugger-select {
+.debugpress-style-popup #debugpress-debugger-select {
   display: none;
   font-size: 12px;
   height: 28px;
@@ -587,37 +587,37 @@ a > .debugpress-icon {
   width: 85%;
   min-height: 28px;
 }
-.debugpress-style-popup .gdpet-debugger-footer-right {
+.debugpress-style-popup .debugpress-debugger-footer-right {
   float: right;
 }
-.debugpress-style-popup .gdpet-debugger-footer-left {
+.debugpress-style-popup .debugpress-debugger-footer-left {
   float: left;
 }
-.debugpress-style-popup .gdpet-debugger-footer-left div {
+.debugpress-style-popup .debugpress-debugger-footer-left div {
   display: inline;
 }
-.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggle {
+.debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-events-log-toggle {
   font-weight: bold;
 }
-.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggler {
+.debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-events-log-toggler {
   border-left: 1px solid #888;
   padding-left: 10px;
   display: none;
 }
-.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-events-log-toggler.gdpet-events-log-toggler-opened {
+.debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-events-log-toggler.debugpress-events-log-toggler-opened {
   display: block;
 }
-.debugpress-style-popup #gdpet-debugger-content-wrapper .gdpet-error-message {
+.debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-error-message {
   font-weight: bold;
   font-style: italic;
   color: red;
 }
-.debugpress-style-popup .gdpet-debugger-panel-block {
+.debugpress-style-popup .debugpress-debugger-panel-block {
   margin: 5px 0 10px;
   display: block;
   overflow: auto;
 }
-.debugpress-style-popup .gdpet-debugger-panel-block .sql-calls-button-expander {
+.debugpress-style-popup .debugpress-debugger-panel-block .sql-calls-button-expander {
   font-weight: bold;
   font-size: 12px;
   color: #FFF !important;
@@ -626,22 +626,22 @@ a > .debugpress-icon {
   margin: 0 0 0 10px;
   border-radius: 3px;
 }
-.debugpress-style-popup .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .debugpress-debugger-panel-block-title {
   background: #23282D;
   color: #FFF;
   padding: 5px !important;
   font-size: 12px;
   margin: 0;
 }
-.debugpress-style-popup .gdpet-debugger-panel-block-title span {
+.debugpress-style-popup .debugpress-debugger-panel-block-title span {
   float: right;
   font-size: 15px;
   cursor: pointer;
 }
-.debugpress-style-popup .gdpet-debugger-panel-block-title span i.debugpress-icon {
+.debugpress-style-popup .debugpress-debugger-panel-block-title span i.debugpress-icon {
   vertical-align: top;
 }
-.debugpress-style-popup .gdpet-querie-sidebar-control {
+.debugpress-style-popup .debugpress-querie-sidebar-control {
   background: #23282D;
   color: #FFF;
   padding: 5px !important;
@@ -650,14 +650,14 @@ a > .debugpress-icon {
   margin-bottom: 10px;
   text-align: right;
 }
-.debugpress-style-popup .gdpet-querie-sidebar-control span {
+.debugpress-style-popup .debugpress-querie-sidebar-control span {
   font-size: 15px;
   cursor: pointer;
 }
-.debugpress-style-popup .gdpet-querie-sidebar-control span i.debugpress-icon {
+.debugpress-style-popup .debugpress-querie-sidebar-control span i.debugpress-icon {
   vertical-align: top;
 }
-.debugpress-style-popup .gdpet-debugger-panel-block-subtitle {
+.debugpress-style-popup .debugpress-debugger-panel-block-subtitle {
   background: #777;
   color: #FFF;
   margin: 5px 0;
@@ -665,7 +665,7 @@ a > .debugpress-icon {
   font-size: 11px;
   line-height: 20px;
 }
-.debugpress-style-popup .gdpet-debugger-table {
+.debugpress-style-popup .debugpress-debugger-table {
   width: 100%;
   table-layout: auto;
   margin: 0;
@@ -675,30 +675,30 @@ a > .debugpress-icon {
   font-size: 12px;
   line-height: 20px;
 }
-.debugpress-style-popup .gdpet-debugger-table thead {
+.debugpress-style-popup .debugpress-debugger-table thead {
   background: #DDD;
 }
-.debugpress-style-popup .gdpet-debugger-table th,
-.debugpress-style-popup .gdpet-debugger-table td {
+.debugpress-style-popup .debugpress-debugger-table th,
+.debugpress-style-popup .debugpress-debugger-table td {
   border: 1px solid #E8E8E8;
   text-align: left;
   padding: 1px 4px !important;
   font-size: 12px;
 }
-.debugpress-style-popup .gdpet-debugger-table td {
+.debugpress-style-popup .debugpress-debugger-table td {
   border-width: 0 1px 1px 0;
   vertical-align: top;
 }
-.debugpress-style-popup .gdpet-debugger-table tr:nth-of-type(2n) {
+.debugpress-style-popup .debugpress-debugger-table tr:nth-of-type(2n) {
   background: #FAFAFA;
 }
-.debugpress-style-popup .gdpet-debugger-table.gdpet-table-keyvalue tr td:first-child {
+.debugpress-style-popup .debugpress-debugger-table.debugpress-table-keyvalue tr td:first-child {
   width: 30%;
 }
-.debugpress-style-popup .gdpet-debugger-table .gdp_r.gdp_r_root {
+.debugpress-style-popup .debugpress-debugger-table .gdp_r.gdp_r_root {
   margin: 0;
 }
-.debugpress-style-popup #gdpet-debugger-tab-queries .gdpet-debugger-table.gdpet-table-keyvalue tr td:first-child {
+.debugpress-style-popup #debugpress-debugger-tab-queries .debugpress-debugger-table.debugpress-table-keyvalue tr td:first-child {
   width: 60%;
 }
 .debugpress-style-popup .sql-query-list .sql-query {
@@ -714,72 +714,72 @@ a > .debugpress-icon {
   margin: 5px 0 0;
   padding: 5px;
 }
-.debugpress-style-popup .gdpet-wrapper-warning {
+.debugpress-style-popup .debugpress-wrapper-warning {
   border: 1px solid #23282D;
   padding: 10px;
   margin: 0 0 10px;
 }
-.debugpress-style-popup .gdpet-wrapper-warning h4 {
+.debugpress-style-popup .debugpress-wrapper-warning h4 {
   color: #900;
   font-size: 16px;
   margin: 0 0 5px;
 }
-.debugpress-style-popup .gdpet-debug-environment {
+.debugpress-style-popup .debugpress-debug-environment {
   margin: 0 0 10px;
   padding: 10px;
   background-color: #F3FFE7;
 }
-.debugpress-style-popup .gdpet-debug-environment .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .debugpress-debug-environment .debugpress-debugger-panel-block-title {
   background-color: #12AE00;
   text-align: center;
   font-size: 1.1em;
 }
-.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-development {
+.debugpress-style-popup .debugpress-debug-environment.debugpress-debug-env-development {
   background-color: #FFE7F2;
 }
-.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-development .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .debugpress-debug-environment.debugpress-debug-env-development .debugpress-debugger-panel-block-title {
   background-color: #AE0060;
 }
-.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-local {
+.debugpress-style-popup .debugpress-debug-environment.debugpress-debug-env-local {
   background-color: #F7E7FF;
 }
-.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-local .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .debugpress-debug-environment.debugpress-debug-env-local .debugpress-debugger-panel-block-title {
   background-color: #8800AE;
 }
-.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-staging {
+.debugpress-style-popup .debugpress-debug-environment.debugpress-debug-env-staging {
   background-color: #E7EEFF;
 }
-.debugpress-style-popup .gdpet-debug-environment.gdpet-debug-env-staging .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .debugpress-debug-environment.debugpress-debug-env-staging .debugpress-debugger-panel-block-title {
   background-color: #0026AE;
 }
-.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment {
+.debugpress-style-popup .debugpress-debugger-footer-left .debugpress-debugger-environment {
   color: #12AE00;
 }
-.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-development {
+.debugpress-style-popup .debugpress-debugger-footer-left .debugpress-debugger-environment.debugpress-env-development {
   color: #AE0060;
 }
-.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-local {
+.debugpress-style-popup .debugpress-debugger-footer-left .debugpress-debugger-environment.debugpress-env-local {
   color: #8800AE;
 }
-.debugpress-style-popup .gdpet-debugger-footer-left .debugpress-debugger-environment.debugpress-env-staging {
+.debugpress-style-popup .debugpress-debugger-footer-left .debugpress-debugger-environment.debugpress-env-staging {
   color: #0026AE;
 }
-.debugpress-style-popup .gdpet-debug-notice-block {
+.debugpress-style-popup .debugpress-debug-notice-block {
   margin: 0 0 10px;
   padding: 10px 10px 1px;
   border-left: 4px solid red;
   background-color: #FFE7E7;
 }
-.debugpress-style-popup .gdpet-debug-notice-block .gdpet-debugger-panel-block-title {
+.debugpress-style-popup .debugpress-debug-notice-block .debugpress-debugger-panel-block-title {
   background-color: red;
 }
-.debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter {
+.debugpress-style-popup .debugpress-tab-content.debugpress-queries-sidebar-closed .one-quarter {
   width: 44px;
 }
-.debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter h5, .debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .one-quarter div {
+.debugpress-style-popup .debugpress-tab-content.debugpress-queries-sidebar-closed .one-quarter h5, .debugpress-style-popup .debugpress-tab-content.debugpress-queries-sidebar-closed .one-quarter div {
   display: none !important;
 }
-.debugpress-style-popup .gdpet-tab-content.gdpet-queries-sidebar-closed .three-quarters {
+.debugpress-style-popup .debugpress-tab-content.debugpress-queries-sidebar-closed .three-quarters {
   width: calc(100% - 44px);
 }
 
@@ -804,36 +804,36 @@ a > .debugpress-icon {
   }
 }
 @media screen and (max-width: 1080px) {
-  #gdpet-debugger-tab-queries .debugpress-grid .one-quarter {
+  #debugpress-debugger-tab-queries .debugpress-grid .one-quarter {
     width: 45%;
   }
-  #gdpet-debugger-tab-queries .debugpress-grid .three-quarters {
+  #debugpress-debugger-tab-queries .debugpress-grid .three-quarters {
     width: 55%;
   }
 
-  .gdpet-debugger-footer-left div {
+  .debugpress-debugger-footer-left div {
     display: block;
   }
-  .gdpet-debugger-footer-left div span {
+  .debugpress-debugger-footer-left div span {
     display: none;
   }
 }
 @media screen and (max-width: 800px) {
-  .gdpet-querie-sidebar-control {
+  .debugpress-querie-sidebar-control {
     margin-bottom: 5px;
   }
 
-  .gdpet-debugger-footer-left,
-.gdpet-debugger-footer-right {
+  .debugpress-debugger-footer-left,
+.debugpress-debugger-footer-right {
     float: none;
     text-align: center;
   }
 
-  #gdpet-debugger-tabs {
+  #debugpress-debugger-tabs {
     display: none;
   }
 
-  #gdpet-debugger-select {
+  #debugpress-debugger-select {
     display: block;
   }
 
@@ -841,7 +841,7 @@ a > .debugpress-icon {
     height: 40px;
   }
 
-  .gdpet-tab-content .debugpress-grid .debugpress-unit {
+  .debugpress-tab-content .debugpress-grid .debugpress-unit {
     padding-left: 10px;
     padding-right: 10px;
   }

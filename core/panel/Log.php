@@ -7,7 +7,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 class Log extends Panel {
 	public function single() {
 		foreach ( debugpress_tracker()->logged as $item ) {
-			echo '<div class="gdpet-wrapper-warning gdpet-warning-user-log">';
+			echo '<div class="debugpress-wrapper-warning debugpress-warning-user-log">';
 			$this->_render_logged( $item );
 			echo '</div>';
 		}

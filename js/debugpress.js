@@ -61,7 +61,7 @@
                 button.addClass(extra);
             }
 
-            $("#gdpet-debugger-content-wrapper").smartAniPopup({
+            $("#debugpress-debugger-content-wrapper").smartAniPopup({
                 settings: {
                     style: "debugpress-style-popup",
                     modal: true,
@@ -70,14 +70,14 @@
                     onLoad: false,
                     width: "95%",
                     height: "90%",
-                    headerContent: $("#gdpet-debugger-content-header"),
-                    footerContent: $("#gdpet-debugger-content-footer"),
+                    headerContent: $("#debugpress-debugger-content-header"),
+                    footerContent: $("#debugpress-debugger-content-footer"),
                     buttonXContent: "<i aria-hidden=\"true\" class=\"debugpress-icon debugpress-icon-power-off\"></i>",
                     xContentSize: true
                 },
                 callbacks: {
                     afterOpen: function() {
-                        $("#gdpet-debugger-tabs .gdpet-tab-active a").focus();
+                        $("#debugpress-debugger-tabs .debugpress-tab-active a").focus();
                     }
                 }
             });
@@ -85,31 +85,31 @@
             $(document).on("click", ".debugpress-debug-dialog-button a", function(e) {
                 e.preventDefault();
 
-                $("#gdpet-debugger-content-wrapper").smartAniPopup("open");
+                $("#debugpress-debugger-content-wrapper").smartAniPopup("open");
             });
 
-            $(document).on("change", "#gdpet-debugger-select", function() {
+            $(document).on("change", "#debugpress-debugger-select", function() {
                 wp.dev4press.debugpress.tab_change($(this).val());
             });
 
-            $(document).on("click", ".gdpet-querie-sidebar-control span", function(e) {
+            $(document).on("click", ".debugpress-querie-sidebar-control span", function(e) {
                 e.preventDefault();
 
-                var tab = $(".gdpet-tab-content.gdpet-tab-active"),
+                var tab = $(".debugpress-tab-content.debugpress-tab-active"),
                     state = $(this).data("state");
 
                 if (state === "open") {
-                    tab.addClass("gdpet-queries-sidebar-closed");
+                    tab.addClass("debugpress-queries-sidebar-closed");
                     $(this).data("state", "closed");
                     $("i", this).removeClass("debugpress-icon-chevron-left").addClass("debugpress-icon-chevron-right");
                 } else {
-                    tab.removeClass("gdpet-queries-sidebar-closed");
+                    tab.removeClass("debugpress-queries-sidebar-closed");
                     $(this).data("state", "open");
                     $("i", this).removeClass("debugpress-icon-chevron-right").addClass("debugpress-icon-chevron-left");
                 }
             });
 
-            $(document).on("click", ".gdpet-debugger-panel-block-title span", function(e) {
+            $(document).on("click", ".debugpress-debugger-panel-block-title span", function(e) {
                 e.preventDefault();
 
                 var block = $(this).parent().next();
@@ -127,25 +127,25 @@
                 }
             });
 
-            $(document).on("click", "#gdpet-debugger-content-wrapper .gdpet-events-log-toggle", function(e) {
+            $(document).on("click", "#debugpress-debugger-content-wrapper .debugpress-events-log-toggle", function(e) {
                 e.preventDefault();
 
-                var opened = $(this).hasClass("gdpet-events-log-toggle-opened");
+                var opened = $(this).hasClass("debugpress-events-log-toggle-opened");
 
                 if (opened) {
-                    $(this).html(gdpet_debugger_data.events_show_details);
+                    $(this).html(debugpress_data.events_show_details);
 
-                    $(this).removeClass("gdpet-events-log-toggle-opened");
-                    $(this).next().removeClass("gdpet-events-log-toggler-opened");
+                    $(this).removeClass("debugpress-events-log-toggle-opened");
+                    $(this).next().removeClass("debugpress-events-log-toggler-opened");
                 } else {
-                    $(this).html(gdpet_debugger_data.events_hide_details);
+                    $(this).html(debugpress_data.events_hide_details);
 
-                    $(this).addClass("gdpet-events-log-toggle-opened");
-                    $(this).next().addClass("gdpet-events-log-toggler-opened");
+                    $(this).addClass("debugpress-events-log-toggle-opened");
+                    $(this).next().addClass("debugpress-events-log-toggler-opened");
                 }
             });
 
-            $(document).on("keydown", '#gdpet-debugger-tabs [role="tab"]', function(e) {
+            $(document).on("keydown", '#debugpress-debugger-tabs [role="tab"]', function(e) {
                 var first = $(this), current, theid,
                     prev = $(this).parents('li').prev().children('[role="tab"]'),
                     next = $(this).parents('li').next().children('[role="tab"]');
@@ -174,8 +174,8 @@
 
                     theid = $(document.activeElement).attr('href').substring(1);
 
-                    $('#gdpet-debugger-content-wrapper [role="tabpanel"]').attr('aria-hidden', 'true');
-                    $('#gdpet-debugger-content-wrapper #' + theid).attr('aria-hidden', null);
+                    $('#debugpress-debugger-content-wrapper [role="tabpanel"]').attr('aria-hidden', 'true');
+                    $('#debugpress-debugger-content-wrapper #' + theid).attr('aria-hidden', null);
 
                     wp.dev4press.debugpress.tab_change(theid);
                 }
@@ -200,7 +200,7 @@
                 }
             });
 
-            $("#gdpet-debugger-tabs li a").click(function(e) {
+            $("#debugpress-debugger-tabs li a").click(function(e) {
                 e.preventDefault();
 
                 wp.dev4press.debugpress.tab_change($(this).attr("href").substr(1));
@@ -228,8 +228,8 @@
                     });
                 },
                 render: function(ajax) {
-                    var el = $("#gdpet-debugger-ajax-wrapper"),
-                        tab = $("#gdpet-debugger-tab-ajax-li"),
+                    var el = $("#debugpress-debugger-ajax-wrapper"),
+                        tab = $("#debugpress-debugger-tab-ajax-li"),
                         button = $(".debugpress-debug-dialog-button"),
                         count = parseInt(el.data("calls")),
                         render = '';
@@ -242,8 +242,8 @@
                     el.data("calls", count);
                     $("a span", tab).html(count);
 
-                    render = '<h5 class="gdpet-debugger-panel-block-title">[' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
-                    render += '<div class="gdpet-debugger-panel-block" style="display: block;"><table class="gdpet-debugger-table"><thead><tr><th scope="col" class="" style="">Name</th><th scope="col" class="" style="">Value</th></tr></thead><tbody>';
+                    render = '<h5 class="debugpress-debugger-panel-block-title">[' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                    render += '<div class="debugpress-debugger-panel-block" style="display: block;"><table class="debugpress-debugger-table"><thead><tr><th scope="col" class="" style="">Name</th><th scope="col" class="" style="">Value</th></tr></thead><tbody>';
 
                     $.each(ajax.headers, function(key, val) {
                         render += '<tr><td>' + key + '</td><td>' + val + '</td></tr>';
@@ -603,12 +603,12 @@
             if (tab !== wp.dev4press.debugpress.tab) {
                 wp.dev4press.debugpress.tab = tab;
 
-                $("#gdpet-debugger-tabs li").removeClass("gdpet-tab-active");
-                $("#" + tab + "-li").addClass("gdpet-tab-active");
-                $("#gdpet-debugger-content-wrapper div.gdpet-tab-content").removeClass("gdpet-tab-active");
-                $("#" + tab).addClass("gdpet-tab-active");
+                $("#debugpress-debugger-tabs li").removeClass("debugpress-tab-active");
+                $("#" + tab + "-li").addClass("debugpress-tab-active");
+                $("#debugpress-debugger-content-wrapper div.debugpress-tab-content").removeClass("debugpress-tab-active");
+                $("#" + tab).addClass("debugpress-tab-active");
 
-                $("#gdpet-debugger-tabs li a").attr({
+                $("#debugpress-debugger-tabs li a").attr({
                     'tabindex': '-1',
                     'aria-selected': null
                 });
@@ -618,7 +618,7 @@
                     'aria-selected': true
                 });
 
-                $("#gdpet-debugger-select").val(tab);
+                $("#debugpress-debugger-select").val(tab);
             }
         }
     };

@@ -34,7 +34,7 @@ abstract class Panel {
 	}
 
 	public function block_header( $open = true ) {
-		echo '<div class="gdpet-debugger-panel-block" style="display: ' . ( $open ? 'block' : 'none' ) . ';">';
+		echo '<div class="debugpress-debugger-panel-block" style="display: ' . ( $open ? 'block' : 'none' ) . ';">';
 	}
 
 	public function block_footer() {
@@ -50,7 +50,7 @@ abstract class Panel {
 	}
 
 	public function title( $title, $open = true, $hide_button = false ) {
-		$render = '<h5 class="gdpet-debugger-panel-block-title">' . $title;
+		$render = '<h5 class="debugpress-debugger-panel-block-title">' . $title;
 
 		if ( ! $hide_button ) {
 			$render .= '<span class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
@@ -62,7 +62,7 @@ abstract class Panel {
 	}
 
 	public function sub_title( $title ) {
-		echo '<h6 class="gdpet-debugger-panel-block-subtitle">' . $title . '</h6>';
+		echo '<h6 class="debugpress-debugger-panel-block-subtitle">' . $title . '</h6>';
 	}
 
 	public function add_column( $name, $class = '', $style = '', $reset = false ) {
@@ -90,10 +90,10 @@ abstract class Panel {
 
 		$class = '';
 		if (count($this->_table) == 2) {
-			$class = 'gdpet-table-keyvalue';
+			$class = 'debugpress-table-keyvalue';
 		}
 
-		echo '<table class="gdpet-debugger-table '.$class.'"><thead><tr>' . D4P_EOL;
+		echo '<table class="debugpress-debugger-table '.$class.'"><thead><tr>' . D4P_EOL;
 		foreach ( $this->_table as $row ) {
 			echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . D4P_EOL;
 		}

@@ -1,5 +1,5 @@
 .debugpress-style-popup {
-    #gdpet-debugger-tabs {
+    #debugpress-debugger-tabs {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -21,7 +21,7 @@
                 text-decoration: none;
             }
 
-            &.gdpet-tab-active {
+            &.debugpress-tab-active {
                 background: #FFF;
 
                 a {
@@ -32,17 +32,17 @@
         }
     }
 
-    #gdpet-debugger-content-wrapper {
-        .gdpet-tab-content {
+    #debugpress-debugger-content-wrapper {
+        .debugpress-tab-content {
             display: none;
 
-            &.gdpet-tab-active {
+            &.debugpress-tab-active {
                 display: block;
             }
         }
     }
 
-    #gdpet-debugger-select {
+    #debugpress-debugger-select {
         display: none;
         font-size: 12px;
         height: 28px;
@@ -53,11 +53,11 @@
         min-height: 28px;
     }
 
-    .gdpet-debugger-footer-right {
+    .debugpress-debugger-footer-right {
         float: right;
     }
 
-    .gdpet-debugger-footer-left {
+    .debugpress-debugger-footer-left {
         float: left;
 
         div {
@@ -65,30 +65,30 @@
         }
     }
 
-    #gdpet-debugger-content-wrapper {
-        .gdpet-events-log-toggle {
+    #debugpress-debugger-content-wrapper {
+        .debugpress-events-log-toggle {
             font-weight: bold;
         }
 
-        .gdpet-events-log-toggler {
+        .debugpress-events-log-toggler {
             border-left: 1px solid #888;
             padding-left: 10px;
 
             display: none;
 
-            &.gdpet-events-log-toggler-opened {
+            &.debugpress-events-log-toggler-opened {
                 display: block;
             }
         }
 
-        .gdpet-error-message {
+        .debugpress-error-message {
             font-weight: bold;
             font-style: italic;
             color: red;
         }
     }
 
-    .gdpet-debugger-panel-block {
+    .debugpress-debugger-panel-block {
         margin: 5px 0 10px;
         display: block;
         overflow: auto;
@@ -104,7 +104,7 @@
         }
     }
 
-    .gdpet-debugger-panel-block-title {
+    .debugpress-debugger-panel-block-title {
         background: #23282D;
         color: #FFF;
         padding: 5px !important;
@@ -122,7 +122,7 @@
         }
     }
 
-    .gdpet-querie-sidebar-control {
+    .debugpress-querie-sidebar-control {
         background: #23282D;
         color: #FFF;
         padding: 5px !important;
@@ -141,7 +141,7 @@
         }
     }
 
-    .gdpet-debugger-panel-block-subtitle {
+    .debugpress-debugger-panel-block-subtitle {
         background: #777;
         color: #FFF;
         margin: 5px 0;
@@ -150,7 +150,7 @@
         line-height: 20px;
     }
 
-    .gdpet-debugger-table {
+    .debugpress-debugger-table {
         width: 100%;
         table-layout: auto;
         margin: 0;
@@ -181,7 +181,7 @@
             background: #FAFAFA;
         }
 
-        &.gdpet-table-keyvalue {
+        &.debugpress-table-keyvalue {
             tr {
                 td {
                     &:first-child {
@@ -196,9 +196,9 @@
         }
     }
 
-    #gdpet-debugger-tab-queries {
-        .gdpet-debugger-table {
-            &.gdpet-table-keyvalue {
+    #debugpress-debugger-tab-queries {
+        .debugpress-debugger-table {
+            &.debugpress-table-keyvalue {
                 tr {
                     td {
                         &:first-child {
@@ -227,7 +227,7 @@
         }
     }
 
-    .gdpet-wrapper-warning {
+    .debugpress-wrapper-warning {
         border: 1px solid #23282D;
         padding: 10px;
         margin: 0 0 10px;
@@ -239,43 +239,43 @@
         }
     }
 
-    .gdpet-debug-environment {
+    .debugpress-debug-environment {
         margin: 0 0 10px;
         padding: 10px;
         background-color: #F3FFE7;
 
-        .gdpet-debugger-panel-block-title {
+        .debugpress-debugger-panel-block-title {
             background-color: #12AE00;
             text-align: center;
             font-size: 1.1em;
         }
 
-        &.gdpet-debug-env-development {
+        &.debugpress-debug-env-development {
             background-color: #FFE7F2;
 
-            .gdpet-debugger-panel-block-title {
+            .debugpress-debugger-panel-block-title {
                 background-color: #AE0060;
             }
         }
 
-        &.gdpet-debug-env-local {
+        &.debugpress-debug-env-local {
             background-color: #F7E7FF;
 
-            .gdpet-debugger-panel-block-title {
+            .debugpress-debugger-panel-block-title {
                 background-color: #8800AE;
             }
         }
 
-        &.gdpet-debug-env-staging {
+        &.debugpress-debug-env-staging {
             background-color: #E7EEFF;
 
-            .gdpet-debugger-panel-block-title {
+            .debugpress-debugger-panel-block-title {
                 background-color: #0026AE;
             }
         }
     }
 
-    .gdpet-debugger-footer-left {
+    .debugpress-debugger-footer-left {
         .debugpress-debugger-environment {
             color: #12AE00;
 
@@ -293,19 +293,19 @@
         }
     }
 
-    .gdpet-debug-notice-block {
+    .debugpress-debug-notice-block {
         margin: 0 0 10px;
         padding: 10px 10px 1px;
         border-left: 4px solid red;
         background-color: #FFE7E7;
 
-        .gdpet-debugger-panel-block-title {
+        .debugpress-debugger-panel-block-title {
             background-color: red;
         }
     }
 
-    .gdpet-tab-content {
-        &.gdpet-queries-sidebar-closed {
+    .debugpress-tab-content {
+        &.debugpress-queries-sidebar-closed {
             .one-quarter {
                 width: 44px;
 

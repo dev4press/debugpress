@@ -3,14 +3,14 @@
 use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 ?>
-<div id="gdpet-debugger-container" style="display: none;">
-    <div id="gdpet-debugger-content-header">
-        <ul role="tablist" id="gdpet-debugger-tabs" class="debugpress-clearfix">
+<div id="debugpress-debugger-container" style="display: none;">
+    <div id="debugpress-debugger-content-header">
+        <ul role="tablist" id="debugpress-debugger-tabs" class="debugpress-clearfix">
 			<?php
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $label ) {
-				echo '<li role="presentation" id="gdpet-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'gdpet-tab-active' : '' ) . '">';
-				echo '<a tabindex="0" role="tab" aria-controls="gdpet-debugger-tab-' . $tab . '" href="#gdpet-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . '>' . $label . '</a>';
+				echo '<li role="presentation" id="debugpress-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
+				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . '>' . $label . '</a>';
 				echo '</li>';
 
 				$first = false;
@@ -18,12 +18,12 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			?>
         </ul>
-        <select id="gdpet-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "debugpress" ); ?>">
+        <select id="debugpress-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "debugpress" ); ?>">
 			<?php
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $label ) {
-				echo '<option value="gdpet-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
+				echo '<option value="debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
 
 				$first = false;
 			}
@@ -31,12 +31,12 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			?>
         </select>
     </div>
-    <div id="gdpet-debugger-content-wrapper">
+    <div id="debugpress-debugger-content-wrapper">
 		<?php
 
 		$first = true;
 		foreach ( Loader::instance()->tabs as $tab => $label ) {
-			echo '<div id="gdpet-debugger-tab-' . $tab . '" role="tabpanel" class="gdpet-tab-content ' . ( $first ? 'gdpet-tab-active' : '' ) . '"' . ( ! $first ? ' aria-hidden="true"' : '' ) . '>';
+			echo '<div id="debugpress-debugger-tab-' . $tab . '" role="tabpanel" class="debugpress-tab-content ' . ( $first ? 'debugpress-tab-active' : '' ) . '"' . ( ! $first ? ' aria-hidden="true"' : '' ) . '>';
 
 			$panel_path = apply_filters( 'debugpress_debugger_panel_path_' . $tab, DEBUGPRESS_PLUGIN_PATH . 'forms/panels/' . $tab . '.php' );
 
@@ -51,11 +51,11 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 		?>
     </div>
-    <div id="gdpet-debugger-content-footer" class="debugpress-clearfix">
-        <div class="gdpet-debugger-footer-left">
+    <div id="debugpress-debugger-content-footer" class="debugpress-clearfix">
+        <div class="debugpress-debugger-footer-left">
 			<?php echo debugpress_plugin()->build_stats( null ); ?>
         </div>
-        <div class="gdpet-debugger-footer-right">
+        <div class="debugpress-debugger-footer-right">
             <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
             &middot; <a target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
         </div>

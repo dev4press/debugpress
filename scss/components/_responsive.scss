@@ -26,7 +26,7 @@
 }
 
 @media screen and (max-width: 1080px) {
-    #gdpet-debugger-tab-queries {
+    #debugpress-debugger-tab-queries {
         .#{$grid-prefix}-grid {
             .one-quarter {
                 width: 45%;
@@ -38,7 +38,7 @@
         }
     }
 
-    .gdpet-debugger-footer-left {
+    .debugpress-debugger-footer-left {
         div {
             display: block;
 
@@ -50,21 +50,21 @@
 }
 
 @media screen and (max-width: 800px) {
-    .gdpet-querie-sidebar-control {
+    .debugpress-querie-sidebar-control {
         margin-bottom: 5px;
     }
 
-    .gdpet-debugger-footer-left,
-    .gdpet-debugger-footer-right {
+    .debugpress-debugger-footer-left,
+    .debugpress-debugger-footer-right {
         float: none;
         text-align: center;
     }
 
-    #gdpet-debugger-tabs {
+    #debugpress-debugger-tabs {
         display: none;
     }
 
-    #gdpet-debugger-select {
+    #debugpress-debugger-select {
         display: block;
     }
 
@@ -72,7 +72,7 @@
         height: 40px;
     }
 
-    .gdpet-tab-content .#{$grid-prefix}-grid .#{$grid-prefix}-unit {
+    .debugpress-tab-content .#{$grid-prefix}-grid .#{$grid-prefix}-unit {
         padding-left: 10px;
         padding-right: 10px;
     }

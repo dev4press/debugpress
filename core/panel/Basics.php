@@ -10,7 +10,7 @@ class Basics extends Panel {
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {
-			echo '<div class="gdpet-debug-environment gdpet-debug-env-' . $env['type'] . '">';
+			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . $env['type'] . '">';
 
 			$this->title( $env['label'], true, true );
 
@@ -18,7 +18,7 @@ class Basics extends Panel {
 		}
 
 		if ( ! empty( $test ) ) {
-			echo '<div class="gdpet-debug-notice-block">';
+			echo '<div class="debugpress-debug-notice-block">';
 
 			$this->title( __( "Debug mode problems", "debugpress" ), true );
 			$this->block_header( true );
