@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Display;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use ReflectionFunction;
 use ReflectionMethod;
 

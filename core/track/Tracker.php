@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Track;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Exception;
 use WP_Error;
 

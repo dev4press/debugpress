@@ -15,6 +15,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Display;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class SQLFormat {
 // Constants for token types
 	const TOKEN_TYPE_WHITESPACE = 0;

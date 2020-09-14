@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Panel;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Content extends Panel {
@@ -28,6 +32,13 @@ class Content extends Panel {
 
 		if ( ! empty( $wp_rewrite->rules ) ) {
 			$this->list_array( $wp_rewrite->rules, '$' . 'wp_rewrite->rules' );
+		} else {
+			echo '<div class="debugpress-debug-notice-block">';
+			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> '. __( "Rewrite Rules problem", "debugpress" ), true, true);
+			$this->block_header( true );
+			_e("Permalinks are disabled.");
+			$this->block_footer();
+			echo '</div>';
 		}
 
 		$this->title( __( "Extra Permalinks Structure", "debugpress" ) );

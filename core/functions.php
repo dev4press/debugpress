@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Dev4Press\Plugin\DebugPress\Display\PrettyPrint;
 
 function debugpress_has_bbpress() {
@@ -11,6 +15,10 @@ function debugpress_has_bbpress() {
 	} else {
 		return false;
 	}
+}
+
+function debugpress_has_permalinks() {
+	return get_option('permalink_structure');
 }
 
 function debugpress_is_classicpress() {

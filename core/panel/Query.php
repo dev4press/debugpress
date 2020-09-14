@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Panel;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Dev4Press\Plugin\DebugPress\Display\SQLFormat;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
@@ -36,7 +40,9 @@ class Query extends Panel {
 
 		$this->title( __( "Executed SQL Query", "debugpress" ), true );
 		$this->block_header( true );
+		echo '<div class="query-sql-run-full">';
 		echo SQLFormat::format( $wp_query->request, true );
+		echo '</div>';
 		$this->block_footer();
 
 		$this->title( __( "Complete WP Query object", "debugpress" ), true );

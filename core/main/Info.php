@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use PDO;
 
 class Info {

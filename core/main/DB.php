@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class DB {
 	private $_dbs;
 	private $_dbv;

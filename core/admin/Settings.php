@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Settings {
 	public function __construct() {
 
@@ -287,12 +291,14 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'auto_wpdebug' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_auto_wpdebug' name='debugpress_settings[auto_wpdebug]' type='checkbox' />";
+		echo '<p class="description">' . esc_html__( "Plugin will attempt to set WP_DEBUG to 'true'. But, if the WP_DEBUG was previously defined elsewhere as 'false', this option will not work.", "debugpress" ) . '</p>';
 	}
 
 	public function option_auto_savequeries() {
 		$checked = debugpress_plugin()->get( 'auto_savequeries' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_auto_savequeries' name='debugpress_settings[auto_savequeries]' type='checkbox' />";
+		echo '<p class="description">' . esc_html__( "Plugin will attempt to set SAVEQUERIES to 'true'. But, if the SAVEQUERIES was previously defined elsewhere as 'false', this option will not work.", "debugpress" ) . '</p>';
 	}
 
 	public function option_panel_content() {

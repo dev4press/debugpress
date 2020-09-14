@@ -114,9 +114,14 @@
         font-size: 12px;
         margin: 0;
 
+        > i.debugpress-icon {
+            font-size: 1.5em;
+            margin: 0 5px 0 0;
+        }
+
         span {
             float: right;
-            font-size: 15px;
+            font-size: 18px;
             cursor: pointer;
 
             i.debugpress-icon {
@@ -213,6 +218,15 @@
         }
     }
 
+    .query-sql-run-full {
+        background-color: #F4F4F4;
+        color: #000;
+        font-family: monospace;
+        font-weight: bold;
+        margin: 5px 0 0;
+        padding: 5px;
+    }
+
     .sql-query-list {
         .sql-query {
             border: 1px solid #777;
@@ -297,7 +311,7 @@
     }
 
     .debugpress-debug-notice-block {
-        margin: 0 0 10px;
+        margin: 10px 0;
         padding: 10px 10px 1px;
         border-left: 4px solid red;
         background-color: #FFE7E7;

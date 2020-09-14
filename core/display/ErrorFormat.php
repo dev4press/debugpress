@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Display;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class ErrorFormat {
 	public static function render_caller( $caller ) {
 		$render = '<a href="#" class="debugpress-events-log-toggle">' . __( "Show Details", "debugpress" ) . '</a>';

@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Wrap {
 	function __construct( $args = array() ) {
 		if ( is_array( $args ) && ! empty( $args ) ) {

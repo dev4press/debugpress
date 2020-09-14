@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Panel;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Basics extends Panel {
@@ -20,7 +24,7 @@ class Basics extends Panel {
 		if ( ! empty( $test ) ) {
 			echo '<div class="debugpress-debug-notice-block">';
 
-			$this->title( __( "Debug mode problems", "debugpress" ), true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> '. __( "Debug mode problems", "debugpress" ), true, true);
 			$this->block_header( true );
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );
@@ -92,6 +96,7 @@ class Basics extends Panel {
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), debugpress_plugin()->wp_version_real() ) );
+		$this->table_row( array( __( "Pretty Permalinks", "debugpress" ), debugpress_has_permalinks() ? __("Enabled") : __("Disabled") ) );
 		$this->table_foot();
 		$this->block_footer();
 

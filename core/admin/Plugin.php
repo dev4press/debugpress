@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Plugin {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );

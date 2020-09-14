@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class IP {
 	protected static $private_ipv4 = array(
 		'10.0.0.0/8',

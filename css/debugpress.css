@@ -636,9 +636,13 @@ a > .debugpress-icon {
   font-size: 12px;
   margin: 0;
 }
+.debugpress-style-popup .debugpress-debugger-panel-block-title > i.debugpress-icon {
+  font-size: 1.5em;
+  margin: 0 5px 0 0;
+}
 .debugpress-style-popup .debugpress-debugger-panel-block-title span {
   float: right;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
 }
 .debugpress-style-popup .debugpress-debugger-panel-block-title span i.debugpress-icon {
@@ -704,6 +708,14 @@ a > .debugpress-icon {
 .debugpress-style-popup #debugpress-debugger-tab-queries .debugpress-debugger-table.debugpress-table-keyvalue tr td:first-child {
   width: 60%;
 }
+.debugpress-style-popup .query-sql-run-full {
+  background-color: #F4F4F4;
+  color: #000;
+  font-family: monospace;
+  font-weight: bold;
+  margin: 5px 0 0;
+  padding: 5px;
+}
 .debugpress-style-popup .sql-query-list .sql-query {
   border: 1px solid #777;
   margin: 5px 0;
@@ -768,7 +780,7 @@ a > .debugpress-icon {
   color: #0026AE;
 }
 .debugpress-style-popup .debugpress-debug-notice-block {
-  margin: 0 0 10px;
+  margin: 10px 0;
   padding: 10px 10px 1px;
   border-left: 4px solid red;
   background-color: #FFE7E7;

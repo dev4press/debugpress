@@ -2,6 +2,10 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Dev4Press\Plugin\DebugPress\Display\Loader;
 use Dev4Press\Plugin\DebugPress\Track\AJAX;
 

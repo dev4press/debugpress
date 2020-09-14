@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Dev4Press\Plugin\DebugPress\Admin\Plugin as AdminPlugin;
 use Dev4Press\Plugin\DebugPress\Main\DB;
 use Dev4Press\Plugin\DebugPress\Main\Plugin;
