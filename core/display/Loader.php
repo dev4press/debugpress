@@ -93,7 +93,7 @@ class Loader {
 	}
 
 	public function display_float_button() {
-		$_position = $this->position == 'toolbar' ? apply_filter( 'debugpress_float_button_fallback_position', 'topright' ) : $this->position;
+		$_position = $this->position == 'toolbar' ? apply_filters( 'debugpress_float_button_fallback_position', 'topright' ) : $this->position;
 
 		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $_position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
