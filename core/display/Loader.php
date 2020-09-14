@@ -90,7 +90,7 @@ class Loader {
 	}
 
 	public function display_float_button() {
-		echo '<div id="gdpet-debugger-button" class="' . $this->button_class() . ' gdpet-float-button gdpet-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
+		echo '<div id="gdpet-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $this->position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
 
 	public function button() {

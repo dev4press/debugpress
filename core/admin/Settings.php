@@ -45,7 +45,7 @@ class Settings {
 
 		add_settings_section(
 			'debugpress_settings_panels',
-			__( "Debugger Panels", "debugpress" ),
+			__( "Additional Debugger Panels", "debugpress" ),
 			array( $this, 'block_panels' ),
 			'debugpress' );
 	}

@@ -1,0 +1,93 @@
+.debugpress-float-button {
+    position: fixed;
+    background-color: #23282D;
+    border: 1px solid #23282D;
+    box-shadow: 0 0 3px rgba(35, 40, 45, 0.7);
+    z-index: 142000;
+    padding: 5px;
+
+    a {
+        display: block;
+        height: 22px;
+        line-height: 22px;
+        outline: none !important;
+        text-decoration: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    &.debugpress-position-topright {
+        right: 5px;
+        top: 5px;
+    }
+
+    &.debugpress-position-topleft {
+        left: 5px;
+        top: 5px;
+    }
+
+    &.debugpress-position-bottomright {
+        right: 5px;
+        bottom: 5px;
+    }
+
+    &.debugpress-position-bottomleft {
+        left: 5px;
+        bottom: 5px;
+    }
+
+    .debugpress-icon {
+        font-size: 24px !important;
+        vertical-align: top;
+    }
+}
+
+.gdpet-debug-dialog-button {
+    &.debugpress-float-button {
+        a {
+            .gdpet-debug-button-indicators {
+                vertical-align: 8px;
+            }
+        }
+    }
+
+    a {
+        .gdpet-debug-button-indicators {
+            .gdpet-debug-has-errors,
+            .gdpet-debug-has-ajax {
+                padding: 2px 3px !important;
+                border-radius: 3px !important;
+                color: #FFF;
+                font-size: 11px !important;
+                max-height: 12px !important;
+                margin: 4px !important;
+            }
+
+            .gdpet-debug-has-ajax {
+                background-color: #D82AE5;
+            }
+
+            .gdpet-debug-has-errors {
+                background-color: #ED1E24;
+            }
+        }
+    }
+
+    a, a:hover {
+        color: #69FB3B !important;
+    }
+
+    &.gdpet-debug-has-warnings {
+        a, a:hover {
+            color: #FF0 !important;
+        }
+    }
+
+    &.gdpet-debug-has-errors {
+        a, a:hover {
+            color: #FF3232 !important;
+        }
+    }
+}

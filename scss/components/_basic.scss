@@ -1,3 +1,13 @@
+.gdpet-clearfix:before,
+.gdpet-clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.gdpet-clearfix:after {
+    clear: both;
+}
+
 .#{$prefix}-clearfix:before,
 .#{$prefix}-clearfix:after {
     content: " ";
@@ -6,4 +16,15 @@
 
 .#{$prefix}-clearfix:after {
     clear: both;
+}
+
+#wpadminbar .#{$font-prefix-ctrl} {
+    vertical-align: text-top !important;
+    font-size: 19px !important;
+    font-family: "debugpress" !important;
+    line-height: 1;
+}
+
+#wp-admin-bar-gdpet-debugger-button {
+    float: right !important;
 }

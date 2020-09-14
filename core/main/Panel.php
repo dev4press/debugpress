@@ -88,10 +88,16 @@ abstract class Panel {
 			$this->_table = $columns;
 		}
 
-		echo '<table class="gdpet-debugger-table"><thead><tr>' . D4P_EOL;
+		$class = '';
+		if (count($this->_table) == 2) {
+			$class = 'gdpet-table-keyvalue';
+		}
+
+		echo '<table class="gdpet-debugger-table '.$class.'"><thead><tr>' . D4P_EOL;
 		foreach ( $this->_table as $row ) {
 			echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . D4P_EOL;
 		}
+
 		echo '</tr></thead><tbody>' . D4P_EOL;
 	}
 

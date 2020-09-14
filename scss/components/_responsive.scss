@@ -1,0 +1,87 @@
+@media screen and (max-width: 568px) {
+    .#{$grid-prefix}-grid {
+        .#{$grid-prefix}-unit {
+            width: 100% !important;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+    .#{$grid-prefix}-unit {
+        .#{$grid-prefix}-grid {
+            .#{$grid-prefix}-unit {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .center-on-mobiles {
+        text-align: center !important;
+    }
+
+    .hide-on-mobiles {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    #gdpet-debugger-tab-queries .gdpet-grid .one-quarter {
+        width: 45%;
+    }
+
+    #gdpet-debugger-tab-queries .gdpet-grid .three-quarters {
+        width: 55%;
+    }
+
+    .gdpet-debugger-footer-left div {
+        display: block;
+    }
+
+    .gdpet-debugger-footer-left div span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .gdpet-querie-sidebar-control {
+        margin-bottom: 5px;
+    }
+
+    .gdpet-debugger-footer-left,
+    .gdpet-debugger-footer-right {
+        float: none;
+        text-align: center;
+    }
+
+    #gdpet-debugger-tabs {
+        display: none;
+    }
+
+    #gdpet-debugger-select {
+        display: block;
+    }
+
+    .gdpet-style-popup .sanp-wrapper .sanp-header {
+        height: 40px;
+    }
+
+    .gdpet-tab-content .gdpet-grid .gdpet-unit {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    #wpadminbar .gdpet-debug-dialog-button {
+        display: block !important;
+    }
+
+    #wpadminbar .gdpet-debug-dialog-button .ab-item {
+        padding: 0 10px !important;
+    }
+
+    #wpadminbar .gdpet-debug-dialog-button .ab-item i.debugpress-icon {
+        font-size: 24px !important;
+    }
+}

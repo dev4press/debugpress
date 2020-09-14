@@ -2,6 +2,11 @@
     font: 12px Consolas, "Lucida Console", monospace;
     cursor: default;
 
+    [class^="debugpress-icon-"] {
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
     &.gdp_r_root {
         background: white;
         border: 1px solid black;

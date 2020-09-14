@@ -1,27 +1,30 @@
 .debugpress_settings {
-  max-width: 600px;
+  width: calc(100% - 300px);
   float: left;
 }
 
 .debugpress_sidebar {
-  float: left;
-  padding-left: 15px;
+  float: right;
+  padding-left: 20px;
   width: 280px;
 }
 .debugpress_sidebar img {
   height: auto;
   width: 100%;
 }
-.debugpress_sidebar .debugpress_plugin {
-  color: #fff;
+.debugpress_sidebar > div {
   text-align: center;
-  background: #1e72bd;
   padding: 15px;
   margin: 0 0 15px;
+  max-width: 360px;
+}
+.debugpress_sidebar .debugpress_plugin {
+  color: #FFF;
+  background: #1E72BD;
 }
 .debugpress_sidebar .debugpress_plugin > div {
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
   padding: 15px 0;
   margin: 15px 0;
   font-weight: bold;
@@ -32,16 +35,15 @@
 }
 .debugpress_sidebar .debugpress_help {
   color: #111;
-  text-align: center;
-  background: #fff;
-  padding: 15px;
-  margin: 0 0 15px;
+  background: #FFF;
+}
+.debugpress_sidebar .debugpress_help > p {
+  margin: 0;
+  padding: 0 0 15px;
 }
 .debugpress_sidebar .debugpress_dev4press {
   color: #111;
-  text-align: center;
-  background: #e0e0e0;
-  padding: 15px;
+  background: #E0E0E0;
 }
 .debugpress_sidebar .debugpress_dev4press > p {
   margin: 0;
@@ -49,9 +51,27 @@
   font-weight: bold;
 }
 .debugpress_sidebar .debugpress_dev4press > div {
-  border-top: 1px solid #1e72bd;
+  border-top: 1px solid #1E72BD;
   padding: 15px 0 0;
   margin: 15px 0 0;
   font-weight: bold;
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 900px) {
+  .debugpress_settings {
+    width: 100%;
+    float: none;
+  }
+
+  .debugpress_sidebar {
+    border-top: 1px solid #1E72BD;
+    padding-top: 20px;
+    padding-left: 0;
+    width: 100%;
+    float: none;
+  }
+  .debugpress_sidebar > div {
+    margin: 0 auto 15px;
+  }
 }

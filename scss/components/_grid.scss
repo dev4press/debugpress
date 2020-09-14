@@ -130,30 +130,3 @@
 .pull-right {
     float: right;
 }
-
-@media screen and (max-width: 568px) {
-    .#{$grid-prefix}-grid {
-        .#{$grid-prefix}-unit {
-            width: 100% !important;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    }
-
-    .#{$grid-prefix}-unit {
-        .#{$grid-prefix}-grid {
-            .#{$grid-prefix}-unit {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
-    }
-
-    .center-on-mobiles {
-        text-align: center !important;
-    }
-
-    .hide-on-mobiles {
-        display: none !important;
-    }
-}
