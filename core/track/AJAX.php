@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class AJAX {
+	public $session_key = '';
+
 	public function __construct() {
 		add_action( 'init', array( $this, 'prepare' ), 30 );
 		add_action( 'shutdown', array( $this, 'release' ), 0 );
@@ -23,6 +25,9 @@ class AJAX {
 	}
 
 	public function prepare() {
+		$this->session_key = time() . '-' . rand( 100000, 999999 );
+		debugpress_error_log( $this->session_key . ' - ' . __( "AJAX STARTED", "debugpress" ) );
+
 		ob_start();
 
 		add_action( 'send_headers', 'nocache_headers' );
@@ -33,15 +38,18 @@ class AJAX {
 
 		if ( ! headers_sent() ) {
 			foreach ( $this->data() as $key => $value ) {
-				if ( is_scalar( $value ) ) {
-					$header = sprintf( 'X-DEBUGPRESS-%s: %s', $key, $value );
-				} else {
-					$header = sprintf( 'X-DEBUGPRESS-%s: %s', $key, json_encode( $value ) );
+				$formatted = is_scalar( $value ) ? $value : json_encode( $value );
+				$header    = sprintf( 'X-DEBUGPRESS-%s: %s', $key, $formatted );
+
+				if ( $key !== 'ajax-session-key' ) {
+					debugpress_error_log( sprintf( '%s: %s', $key, $formatted ) );
 				}
 
 				header( $header );
 			}
 		}
+
+		debugpress_error_log( $this->session_key . ' - ' . __( "AJAX ENDED", "debugpress" ) );
 
 		if ( ob_get_length() !== false ) {
 			ob_flush();
@@ -50,6 +58,7 @@ class AJAX {
 
 	public function data() {
 		$data = array(
+			'ajax-session-key'       => $this->session_key,
 			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( $_REQUEST['action'] ) : '',
 			'php-memory-available'   => ini_get( 'memory_limit' ) . "B",
 			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" ),

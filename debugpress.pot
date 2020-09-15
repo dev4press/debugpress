@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 09/14/2020 03:26:47 PM\n"
+"POT-Creation-Date: 09/15/2020 04:21:56 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -338,7 +338,7 @@ msgid "Enqueue"
 msgstr ""
 
 #: core/display/Loader.php:158
-#: core/main/Plugin.php:223
+#: core/main/Plugin.php:226
 msgid "PHP"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr ""
 
 #: core/main/Panel.php:80
 #: core/main/Panel.php:85
-#: core/panel/Basics.php:107
+#: core/panel/Basics.php:110
 #: core/panel/Queries.php:89
 #: core/panel/Queries.php:129
 msgid "Name"
@@ -487,33 +487,33 @@ msgstr ""
 msgid "not defined"
 msgstr ""
 
-#: core/main/Plugin.php:192
+#: core/main/Plugin.php:195
 msgid "Production Environment"
 msgstr ""
 
-#: core/main/Plugin.php:195
+#: core/main/Plugin.php:198
 msgid "Staging Environment"
 msgstr ""
 
-#: core/main/Plugin.php:198
+#: core/main/Plugin.php:201
 msgid "Local Environment"
 msgstr ""
 
-#: core/main/Plugin.php:201
+#: core/main/Plugin.php:204
 msgid "Development Environment"
 msgstr ""
 
-#: core/main/Plugin.php:222
+#: core/main/Plugin.php:225
 #: core/panel/Basics.php:93
 msgid "WordPress"
 msgstr ""
 
-#: core/main/Plugin.php:225
+#: core/main/Plugin.php:228
 #: core/panel/System.php:20
 msgid "IP"
 msgstr ""
 
-#: core/main/Plugin.php:226
+#: core/main/Plugin.php:229
 #: core/panel/Queries.php:95
 #: core/panel/Queries.php:150
 #: core/panel/Queries.php:168
@@ -521,16 +521,16 @@ msgstr ""
 msgid "Queries"
 msgstr ""
 
-#: core/main/Plugin.php:227
-#: core/panel/Basics.php:108
+#: core/main/Plugin.php:230
+#: core/panel/Basics.php:111
 msgid "Memory"
 msgstr ""
 
-#: core/main/Plugin.php:228
+#: core/main/Plugin.php:231
 msgid "Loaded"
 msgstr ""
 
-#: core/main/Plugin.php:228
+#: core/main/Plugin.php:231
 msgid "seconds."
 msgstr ""
 
@@ -607,9 +607,9 @@ msgstr ""
 #: core/panel/Basics.php:70
 #: core/panel/Basics.php:83
 #: core/panel/Queries.php:229
-#: core/track/AJAX.php:54
-#: core/track/AJAX.php:56
-#: core/track/AJAX.php:61
+#: core/track/AJAX.php:63
+#: core/track/AJAX.php:65
+#: core/track/AJAX.php:70
 msgid "seconds"
 msgstr ""
 
@@ -655,43 +655,43 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: core/panel/Basics.php:98
+#: core/panel/Basics.php:99
 msgid "Pretty Permalinks"
 msgstr ""
 
-#: core/panel/Basics.php:98
+#: core/panel/Basics.php:100
 msgid "Enabled"
 msgstr ""
 
-#: core/panel/Basics.php:98
+#: core/panel/Basics.php:100
 msgid "Disabled"
 msgstr ""
 
-#: core/panel/Basics.php:102
+#: core/panel/Basics.php:105
 msgid "Page Scope"
 msgstr ""
 
-#: core/panel/Basics.php:105
+#: core/panel/Basics.php:108
 msgid "Load Snapshots"
 msgstr ""
 
-#: core/panel/Basics.php:109
+#: core/panel/Basics.php:112
 msgid "Timer"
 msgstr ""
 
-#: core/panel/Basics.php:110
+#: core/panel/Basics.php:113
 msgid "SQL"
 msgstr ""
 
-#: core/panel/Basics.php:111
+#: core/panel/Basics.php:114
 msgid "Hooks"
 msgstr ""
 
-#: core/panel/Basics.php:136
-msgid "Debug mode is not enabled. Most of the debug related information is not available."
+#: core/panel/Basics.php:139
+msgid "Debug mode is not enabled. Some of the debug related information is not available."
 msgstr ""
 
-#: core/panel/Basics.php:143
+#: core/panel/Basics.php:146
 msgid "Saving of SQL queries is not enabled. SQL queries debug is not available."
 msgstr ""
 
@@ -1261,6 +1261,14 @@ msgstr ""
 
 #: core/panel/User.php:152
 msgid "Rest of User Meta Information"
+msgstr ""
+
+#: core/track/AJAX.php:28
+msgid "AJAX STARTED"
+msgstr ""
+
+#: core/track/AJAX.php:51
+msgid "AJAX ENDED"
 msgstr ""
 
 #: core/track/Tracker.php:351

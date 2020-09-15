@@ -41,6 +41,12 @@ Currently, the plugin has following panels:
 * AJAX (if AJAX calls are captured while page is active)
 * Log (if there are user stored objects to show)
 
+= Documentation and Support =
+To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
+
+* Plugin Documentation: [DebugPress Website](https://debug.press/documentation/)
+* Support Forum: [Dev4Press Support](https://support.dev4press.com/forums/forum/plugins-free/debugpress/)
+
 = SQL Queries =
 This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the the executio time, order, caller functions stack and fully formatted SQL query that is easy to read.
 

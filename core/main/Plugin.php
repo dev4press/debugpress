@@ -92,6 +92,9 @@ class Plugin {
 			define( 'SAVEQUERIES', true );
 		}
 
+		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
+		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
+
 		debugpress_tracker();
 
 		if ( $this->get( 'ajax' ) && DEBUGPRESS_IS_AJAX ) {

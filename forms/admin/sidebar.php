@@ -12,14 +12,14 @@
     <div class="debugpress_help">
         <p><?php _e( "To get help for the DebugPress plugin, start with the plugin website for tutorials, or use Dev4Press.com knowledge base.", "debugpress" ); ?></p>
         <div>
-            <a target="_blank" rel="noopener" href="https://debug.press/">Debug.Press</a> &middot;
-            <a target="_blank" rel="noopener" href="https://www.dev4press.com/">Dev4Press.com</a>
+            <a target="_blank" rel="noopener" href="https://debug.press/documentation/">Debug.Press</a> &middot;
+            <a target="_blank" rel="noopener" href="https://support.dev4press.com/kb/product/debugpress/">Dev4Press.com</a>
         </div>
         <hr/>
         <p><?php _e( "If you need direct help, you can use WordPress.org support forums or the Dev4Press.com support forums.", "debugpress" ); ?></p>
         <div>
-            <a target="_blank" rel="noopener" href="#">WordPress.org</a> &middot;
-            <a target="_blank" rel="noopener" href="#">Dev4Press.com</a>
+            <a target="_blank" rel="noopener" href="https://wordpress.org/support/plugin/debugpress/">WordPress.org</a> &middot;
+            <a target="_blank" rel="noopener" href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/">Dev4Press.com</a>
         </div>
         <hr/>
         <p><?php _e( "The plugin is available on GitHub, and you can report issues, suggest new features or submit pull requests.", "debugpress" ); ?></p>

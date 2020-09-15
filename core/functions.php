@@ -26,6 +26,14 @@ function debugpress_is_classicpress() {
 	       function_exists( 'classicpress_version_short' );
 }
 
+function debugpress_error_log( $log ) {
+	if ( DEBUGPRESS_IS_DEBUG_LOG ) {
+		$print = print_r( $log, true );
+
+		error_log( $print );
+	}
+}
+
 function debugpress_current_url_request() {
 	$pathinfo = isset( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : '';
 	list( $pathinfo ) = explode( '?', $pathinfo );

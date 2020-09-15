@@ -10,7 +10,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Basics extends Panel {
 	public function left() {
-		$env = $this->_env();
+		$env  = $this->_env();
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {
@@ -137,7 +137,7 @@ class Basics extends Panel {
 		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
 			$test[] = array(
 				'WP_DEBUG',
-				__( "Debug mode is not enabled. Most of the debug related information is not available.", "debugpress" )
+				__( "Debug mode is not enabled. Some of the debug related information is not available.", "debugpress" )
 			);
 		}
 

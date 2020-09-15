@@ -7,9 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class ErrorFormat {
-	public static function render_caller( $caller ) {
+	public static function render_caller( $caller, $escape = false ) {
+		$_print = $escape ? esc_html($caller) : $caller;
+
 		$render = '<a href="#" class="debugpress-events-log-toggle">' . __( "Show Details", "debugpress" ) . '</a>';
-		$render .= '<div class="debugpress-events-log-toggler"><strong>' . __( "From", "debugpress" ) . ':</strong><br/>' . esc_html( $caller ) . '</div>';
+		$render .= '<div class="debugpress-events-log-toggler"><strong>' . __( "From", "debugpress" ) . ':</strong><br/>' . $_print . '</div>';
 
 		return $render;
 	}
