@@ -19,6 +19,9 @@ The plugin currently has 18 tabs in the popup debugger window, showing all kinds
 
 The plugin doesn't modify or replaces any WordPress files or functions.
 
+= Quick Overview Video =
+https://www.youtube.com/watch?v=-eFnBRLhy-s
+
 = Debugger Panels =
 Currently, the plugin has following panels:
 
