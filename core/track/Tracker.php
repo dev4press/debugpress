@@ -72,6 +72,8 @@ class Tracker {
 		$this->start();
 
 		$this->actions();
+
+		do_action('debugpress_tracker_getting_ready');
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Track\Tracker */
@@ -269,7 +271,7 @@ class Tracker {
 
 	public function track_error( $errno, $errstr, $errfile, $errline ) {
 		if ( ! ( error_reporting() & $errno ) ) {
-			return;
+			return false;
 		}
 
 		$caller         = $this->_get_caller();
@@ -288,6 +290,8 @@ class Tracker {
 		if ( is_callable( $this->_error_handler ) ) {
 			call_user_func( $this->_error_handler, $errno, $errstr, $errfile, $errline );
 		}
+
+		return false;
 	}
 
 	public function track_wrong( $function, $message, $version ) {

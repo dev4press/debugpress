@@ -10,7 +10,8 @@ class AJAX {
 	public $session_key = '';
 
 	public function __construct() {
-		add_action( 'init', array( $this, 'prepare' ), 30 );
+		add_action( 'debugpress_tracker_getting_ready', array( $this, 'prepare' ), 30 );
+
 		add_action( 'shutdown', array( $this, 'release' ), 0 );
 	}
 

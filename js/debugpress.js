@@ -215,8 +215,21 @@
         tabs: {
             ajax: {
                 init: function() {
+                    $(document).ajaxError(function(event, response, options, error) {
+                        var ajax = {
+                            status: 'error',
+                            error: error,
+                            url: options.url,
+                            type: options.type,
+                            headers: wp.dev4press.debugpress.tabs.ajax.headers(response)
+                        };
+
+                        wp.dev4press.debugpress.tabs.ajax.render(ajax);
+                    });
+
                     $(document).ajaxSuccess(function(event, response, options) {
                         var ajax = {
+                            status: 'success',
                             url: options.url,
                             data: options.data.toString(),
                             type: options.type,
@@ -242,7 +255,12 @@
                     el.data("calls", count);
                     $("a span", tab).html(count);
 
-                    render = '<h5 class="debugpress-debugger-panel-block-title">[' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                    if (ajax.status === 'success') {
+                        render = '<h5 class="debugpress-debugger-panel-block-title">[SUCCESS] [' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                    } else {
+                        render = '<h5 class="debugpress-debugger-panel-block-title" style="background: #900;">[ERROR] [' + ajax.type + ' => ' + ajax.error + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                    }
+
                     render += '<div class="debugpress-debugger-panel-block" style="display: block;"><table class="debugpress-debugger-table"><thead><tr><th scope="col" class="" style="">Name</th><th scope="col" class="" style="">Value</th></tr></thead><tbody>';
 
                     $.each(ajax.headers, function(key, val) {
