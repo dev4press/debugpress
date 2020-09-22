@@ -3,15 +3,16 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        font-size: 13px;
+        font-size: var(--debugpress-base-font-size);
         line-height: 26px;
+        width: calc(100% - 30px);
 
         li {
             float: left;
             height: 28px;
             line-height: 26px;
-            margin: 0 5px 0 0;
-            padding: 0 5px;
+            margin: 0;
+            padding: 0 10px;
             list-style: none;
 
             a {
@@ -44,7 +45,7 @@
 
     #debugpress-debugger-select {
         display: none;
-        font-size: 14px;
+        font-size: calc(var(--debugpress-base-font-size) + 1px);
         height: 28px;
         line-height: 28px;
         margin: 0;
@@ -98,7 +99,7 @@
 
         .sql-calls-button-expander {
             font-weight: bold;
-            font-size: 12px;
+            font-size: calc(var(--debugpress-base-font-size) - 1px);
             color: #FFF !important;
             background: #0073AA;
             padding: 0 6px 3px;
@@ -134,17 +135,18 @@
         background: #23282D;
         color: #FFF;
         padding: 5px !important;
-        font-size: 12px;
+        font-size: calc(var(--debugpress-base-font-size) - 1px);
         margin: 0;
         margin-bottom: 10px;
         text-align: right;
 
         span {
-            font-size: 15px;
+            font-size: calc(var(--debugpress-base-font-size) + 4px);
             cursor: pointer;
+            padding-right: 4px;
 
             i.debugpress-icon {
-                vertical-align: top;
+                vertical-align: text-bottom;
             }
         }
     }
@@ -154,7 +156,7 @@
         color: #FFF;
         margin: 5px 0;
         padding: 2px 5px !important;
-        font-size: 11px;
+        font-size: calc(var(--debugpress-base-font-size) - 2px);
         line-height: 20px;
     }
 
@@ -165,7 +167,7 @@
         border: 1px solid #DDD;
         background: #FFF;
         border-collapse: collapse;
-        font-size: 12px;
+        font-size: calc(var(--debugpress-base-font-size) - 1px);
         line-height: 20px;
 
         thead {
@@ -177,7 +179,7 @@
             border: 1px solid #E8E8E8;
             text-align: left;
             padding: 1px 4px !important;
-            font-size: 12px;
+            font-size: calc(var(--debugpress-base-font-size) - 1px);
         }
 
         td {
@@ -223,8 +225,14 @@
         color: #000;
         font-family: monospace;
         font-weight: bold;
+        font-size: var(--debugpress-sql-font-size);
         margin: 5px 0 0;
         padding: 5px;
+
+        pre {
+            color: black;
+            background-color: white;
+        }
     }
 
     .sql-query-list {
@@ -238,8 +246,14 @@
                 color: #000;
                 font-family: monospace;
                 font-weight: bold;
+                font-size: var(--debugpress-sql-font-size);
                 margin: 5px 0 0;
                 padding: 5px;
+
+                pre {
+                    color: black;
+                    background-color: white;
+                }
             }
         }
     }
@@ -251,7 +265,7 @@
 
         h4 {
             color: #900;
-            font-size: 16px;
+            font-size: calc(var(--debugpress-base-font-size) + 3px);
             margin: 0 0 5px;
         }
     }
@@ -264,7 +278,7 @@
         .debugpress-debugger-panel-block-title {
             background-color: #12AE00;
             text-align: center;
-            font-size: 1.1em;
+            font-size: 110%;
         }
 
         &.debugpress-debug-env-development {

@@ -1,10 +1,12 @@
 .gdp_r {
-    font: 12px Consolas, "Lucida Console", monospace;
+    font-size: var(--debugpress-pretty-font-size);
+    font-family: Consolas, "Lucida Console", monospace;
+    line-height: 140%;
     cursor: default;
 
-    [class^="debugpress-icon-"] {
-        vertical-align: middle;
-        font-size: 14px;
+    .debugpress-icon {
+        vertical-align: text-bottom;
+        font-size: calc(var(--debugpress-pretty-font-size) + 2px);
     }
 
     &.gdp_r_root {
@@ -78,7 +80,7 @@
     }
 
     .gdp_r_d {
-        font-size: 11px;
+        font-size: calc(var(--debugpress-pretty-font-size) - 1px);
         color: #777;
         margin: 0 2px;
 

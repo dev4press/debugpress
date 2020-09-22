@@ -82,7 +82,7 @@ class Plugin {
 		$this->_wp_version_real = $wp_version;
 
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
-		$this->_allowed  = apply_filters( 'debugpress_debugger_is_allowed', $this->is_user_allowed() );
+		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
 
 		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
 			define( 'WP_DEBUG', true );

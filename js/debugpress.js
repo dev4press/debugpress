@@ -101,11 +101,11 @@
                 if (state === "open") {
                     tab.addClass("debugpress-queries-sidebar-closed");
                     $(this).data("state", "closed");
-                    $("i", this).removeClass("debugpress-icon-chevron-left").addClass("debugpress-icon-chevron-right");
+                    $("i", this).removeClass("debugpress-icon-flip-horizontal");
                 } else {
                     tab.removeClass("debugpress-queries-sidebar-closed");
                     $(this).data("state", "open");
-                    $("i", this).removeClass("debugpress-icon-chevron-right").addClass("debugpress-icon-chevron-left");
+                    $("i", this).addClass("debugpress-icon-flip-horizontal");
                 }
             });
 

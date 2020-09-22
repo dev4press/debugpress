@@ -38,7 +38,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 		foreach ( Loader::instance()->tabs as $tab => $label ) {
 			echo '<div id="debugpress-debugger-tab-' . $tab . '" role="tabpanel" class="debugpress-tab-content ' . ( $first ? 'debugpress-tab-active' : '' ) . '"' . ( ! $first ? ' aria-hidden="true"' : '' ) . '>';
 
-			$panel_path = apply_filters( 'debugpress_debugger_panel_path_' . $tab, DEBUGPRESS_PLUGIN_PATH . 'forms/panels/' . $tab . '.php' );
+			$panel_path = apply_filters( 'debugpress-debugger-panel-path-' . $tab, DEBUGPRESS_PLUGIN_PATH . 'forms/panels/' . $tab . '.php' );
 
 			if ( file_exists( $panel_path ) ) {
 				include( $panel_path );

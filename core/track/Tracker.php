@@ -73,7 +73,7 @@ class Tracker {
 
 		$this->actions();
 
-		do_action('debugpress_tracker_getting_ready');
+		do_action( 'debugpress-tracker-getting-ready' );
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Track\Tracker */

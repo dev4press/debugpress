@@ -21,6 +21,7 @@ class Loader {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
+		SQLFormat::$pre_attributes      = '';
 		PrettyPrint::init()->ICON_DOWN  = '<i class="debugpress-icon debugpress-icon-caret-down"></i>';
 		PrettyPrint::init()->ICON_RIGHT = '<i class="debugpress-icon debugpress-icon-caret-right"></i>';
 
@@ -63,6 +64,8 @@ class Loader {
 			'icon_down'           => '<i class="debugpress-icon debugpress-icon-caret-down"></i>',
 			'icon_right'          => '<i class="debugpress-icon debugpress-icon-caret-right"></i>'
 		) );
+
+		wp_add_inline_style( 'debugpress', $this->vars_styling_override() );
 	}
 
 	public function button_class() {
@@ -93,7 +96,7 @@ class Loader {
 	}
 
 	public function display_float_button() {
-		$_position = $this->position == 'toolbar' ? apply_filters( 'debugpress_float_button_fallback_position', 'topright' ) : $this->position;
+		$_position = $this->position == 'toolbar' ? apply_filters( 'debugpress-float-button-fallback_position', 'topright' ) : $this->position;
 
 		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $_position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
@@ -191,6 +194,29 @@ class Loader {
 			$this->tabs['log'] = __( "Log", "debugpress" );
 		}
 
-		$this->tabs = apply_filters( 'debugpress_debugger_popup_tabs', $this->tabs );
+		$this->tabs = apply_filters( 'debugpress-debugger-popup-tabs', $this->tabs );
+	}
+
+	private function vars_styling_override() {
+		$mods = array();
+		$vars = array(
+			'base-font-size'   => '13px',
+			'sql-font-size'    => '13px',
+			'pretty-font-size' => '12px'
+		);
+
+		foreach ( $vars as $var => $value ) {
+			$mod = apply_filters( 'debugpress-styling-var-override-' . $var, $value );
+
+			if ( $mod !== $value ) {
+				$mods[] = '--debugpress-' . $var . ': ' . $mod . ';';
+			}
+		}
+
+		if ( ! empty( $mods ) ) {
+			return ':root {' . D4P_EOL . D4P_TAB . join( D4P_EOL . D4P_TAB, $mods ) . D4P_EOL . '}';
+		} else {
+			return '';
+		}
 	}
 }

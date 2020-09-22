@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.0
+Stable tag: 1.1
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
@@ -18,6 +18,12 @@ DebugPress is an easy to use plugin implementing popup for debugging and profili
 The plugin currently has 18 tabs in the popup debugger window, showing all kinds of information relevant to current page, WordPress setup, background AJAX calls and much more.
 
 The plugin doesn't modify or replaces any WordPress files or functions.
+
+= Home and GitHub =
+To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
+
+* Plugin Website: [DebugPress Website](https://debug.press/)
+* Plugin on GitHub: [DebugPress](https://github.com/debugpress)
 
 = Quick Overview Video =
 https://www.youtube.com/watch?v=-eFnBRLhy-s
@@ -44,12 +50,6 @@ Currently, the plugin has following panels:
 * AJAX (if AJAX calls are captured while page is active)
 * Log (if there are user stored objects to show)
 
-= Documentation and Support =
-To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
-
-* Plugin Documentation: [DebugPress Website](https://debug.press/documentation/)
-* Support Forum: [Dev4Press Support](https://support.dev4press.com/forums/forum/plugins-free/debugpress/)
-
 = SQL Queries =
 This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the the executio time, order, caller functions stack and fully formatted SQL query that is easy to read.
 
@@ -61,6 +61,12 @@ The plugin tracks every AJAX call coming through WordPress `admin-ajax.php` hand
 
 = Plugin Settings =
 The plugin has various options controlling the plugin activation, button integration position, user roles that can see the debugger window, options to attempt overriding WordPress debug flags and options controlling the visibility of optional debugger panels.
+
+= Documentation and Support =
+To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
+
+* Plugin Documentation: [DebugPress Website](https://debug.press/documentation/)
+* Support Forum: [Dev4Press Support](https://support.dev4press.com/forums/forum/plugins-free/debugpress/)
 
 == Installation ==
 = General Requirements =
@@ -86,6 +92,13 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * First official release
 
 == Upgrade Notice ==
+= 1.1 =
+* New: using CSS variables for some of the debugger styling
+* New: filters to modify CSS variables
+* Edit: changed plugins own actions and filters for uniformity
+* Edit: many improvements to the debugger styling
+* Edit: various improvements to the SCSS organization
+
 = 1.0 =
 First official release.
 
