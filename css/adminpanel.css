@@ -1,88 +1,98 @@
 .debugpress_settings {
-    width: calc(100% - 300px);
-    float: left;
+  width: calc(100% - 300px);
+  float: left;
+  color: #000;
+}
+.debugpress_settings .debugpress-settings-section {
+  max-width: 720px;
+  background-color: #fff;
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid #1E72BD;
+}
+.debugpress_settings .debugpress-settings-section h2 {
+  margin: -15px -15px 15px;
+  padding: 15px;
+  background-color: #1E72BD;
+  color: #fff;
+}
+.debugpress_settings .debugpress-settings-section .debugpress-section-info {
+  margin: -15px -15px 0;
+  padding: 15px;
+  background-color: #daeeff;
 }
 
 .debugpress_sidebar {
-    float: right;
-    padding-left: 20px;
-    width: 280px;
+  float: right;
+  padding-left: 20px;
+  width: 280px;
 }
-
 .debugpress_sidebar img {
-    height: auto;
-    width: 100%;
+  height: auto;
+  width: 100%;
 }
-
 .debugpress_sidebar > div {
-    text-align: center;
-    padding: 15px;
-    margin: 0 0 15px;
-    max-width: 360px;
+  text-align: center;
+  padding: 15px;
+  margin: 0 0 15px;
+  max-width: 360px;
 }
-
 .debugpress_sidebar .debugpress_plugin {
-    color: #FFF;
-    background: #1E72BD;
+  color: #FFF;
+  background: #1E72BD;
 }
-
 .debugpress_sidebar .debugpress_plugin > div {
-    border-top: 1px solid #FFF;
-    border-bottom: 1px solid #FFF;
-    padding: 15px 0;
-    margin: 15px 0;
-    font-weight: bold;
-    font-size: 1.1em;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+  padding: 15px 0;
+  margin: 15px 0;
+  font-weight: bold;
+  font-size: 1.1em;
 }
-
 .debugpress_sidebar .debugpress_plugin .button-secondary {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 .debugpress_sidebar .debugpress_help {
-    color: #111;
-    background: #FFF;
+  color: #111;
+  background: #FFF;
+  border: 1px solid #1E72BD;
 }
-
 .debugpress_sidebar .debugpress_help > p {
-    margin: 0;
-    padding: 0 0 15px;
+  margin: 0;
+  padding: 0 0 15px;
 }
-
 .debugpress_sidebar .debugpress_dev4press {
-    color: #111;
-    background: #E0E0E0;
+  color: #111;
+  background: #E0E0E0;
+  border: 1px solid #1E72BD;
 }
-
 .debugpress_sidebar .debugpress_dev4press > p {
-    margin: 0;
-    padding: 0 0 10px;
-    font-weight: bold;
+  margin: 0;
+  padding: 0 0 10px;
+  font-weight: bold;
 }
-
 .debugpress_sidebar .debugpress_dev4press > div {
-    border-top: 1px solid #1E72BD;
-    padding: 15px 0 0;
-    margin: 15px 0 0;
-    font-weight: bold;
-    font-size: 1.2em;
+  border-top: 1px solid #1E72BD;
+  padding: 15px 0 0;
+  margin: 15px 0 0;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 @media screen and (max-width: 900px) {
-    .debugpress_settings {
-        width: 100%;
-        float: none;
-    }
+  .debugpress_settings {
+    width: 100%;
+    float: none;
+  }
 
-    .debugpress_sidebar {
-        border-top: 1px solid #1E72BD;
-        padding-top: 20px;
-        padding-left: 0;
-        width: 100%;
-        float: none;
-    }
-
-    .debugpress_sidebar > div {
-        margin: 0 auto 15px;
-    }
+  .debugpress_sidebar {
+    border-top: 1px solid #1E72BD;
+    padding-top: 20px;
+    padding-left: 0;
+    width: 100%;
+    float: none;
+  }
+  .debugpress_sidebar > div {
+    margin: 0 auto 15px;
+  }
 }

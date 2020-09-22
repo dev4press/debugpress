@@ -1,6 +1,28 @@
 .debugpress_settings {
     width: calc(100% - 300px);
     float: left;
+    color: #000;
+
+    .debugpress-settings-section {
+        max-width: 720px;
+        background-color: #fff;
+        padding: 15px;
+        margin: 15px 0;
+        border: 1px solid #1E72BD;
+
+        h2 {
+            margin: -15px -15px 15px;
+            padding: 15px;
+            background-color: #1E72BD;
+            color: #fff;
+        }
+
+        .debugpress-section-info {
+            margin: -15px -15px 0;
+            padding: 15px;
+            background-color: #daeeff;
+        }
+    }
 }
 
 .debugpress_sidebar {
@@ -41,6 +63,7 @@
     .debugpress_help {
         color: #111;
         background: #FFF;
+        border: 1px solid #1E72BD;
 
         > p {
             margin: 0;
@@ -51,6 +74,7 @@
     .debugpress_dev4press {
         color: #111;
         background: #E0E0E0;
+        border: 1px solid #1E72BD;
 
         > p {
             margin: 0;

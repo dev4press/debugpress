@@ -6,6 +6,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Dev4Press\Plugin\DebugPress\Display\PrettyPrint;
 
+function debugpress_do_settings_sections( $page ) {
+	global $wp_settings_sections, $wp_settings_fields;
+
+	if ( ! isset( $wp_settings_sections[ $page ] ) ) {
+		return;
+	}
+
+	foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
+		echo '<div class="debugpress-settings-section">';
+			if ( $section['title'] ) {
+				echo "<h2>{$section['title']}</h2>\n";
+			}
+
+			if ( $section['callback'] ) {
+				echo '<div class="debugpress-section-info">';
+				call_user_func( $section['callback'], $section );
+				echo '</div>';
+			}
+
+			if ( ! isset( $wp_settings_fields ) || ! isset( $wp_settings_fields[ $page ] ) || ! isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
+				continue;
+			}
+			echo '<table class="form-table" role="presentation">';
+			do_settings_fields( $page, $section['id'] );
+			echo '</table>';
+		echo '</div>';
+	}
+}
+
 function debugpress_has_bbpress() {
 	if ( function_exists( 'bbp_get_version' ) ) {
 		$version = bbp_get_version();
@@ -89,6 +118,27 @@ function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) {
 
 function debugpress_store_object( $object, $title = '', $sql = false ) {
 	debugpress_tracker()->log( $object, $title, $sql );
+}
+
+function debugpress_count_lines_in_files( $file_path ) {
+	if (!file_exists($file_path)) {
+		return 0;
+	}
+
+	$file = new SplFileObject( $file_path, 'r' );
+	$file->seek( PHP_INT_MAX );
+
+	echo $file->key() + 1;
+}
+
+function debugpress_read_lines_from_file( $file_path, $last = 1000 ) {
+	$file = new SplFileObject( $file_path, 'r' );
+	$file->seek( PHP_INT_MAX );
+	$last_line = $file->key();
+
+	$lines = new LimitIterator( $file, $last_line - $last, $last_line );
+
+	return iterator_to_array( $lines );
 }
 
 function gdp_rs( $value, $echo = true ) {

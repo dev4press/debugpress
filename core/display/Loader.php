@@ -194,6 +194,10 @@ class Loader {
 			$this->tabs['log'] = __( "Log", "debugpress" );
 		}
 
+		if ( debugpress_plugin()->get( 'panel_debuglog' ) ) {
+			$this->tabs['debuglog'] = array('label' => __("Debug Log"), 'tab' => '<i class="debugpress-icon debugpress-icon-exclamation"></i>');
+		}
+
 		$this->tabs = apply_filters( 'debugpress-debugger-popup-tabs', $this->tabs );
 	}
 

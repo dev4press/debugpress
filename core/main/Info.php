@@ -17,6 +17,18 @@ class Info {
 		}
 	}
 
+	public static function debug_log_path() {
+		$path = '';
+
+		if (DEBUGPRESS_IS_DEBUG_LOG) {
+			if (defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) {
+				$path = ini_get('error_log');
+			}
+		}
+
+		return $path;
+	}
+
 	public static function cms_name() {
 		return debugpress_is_classicpress() ? 'ClassicPress' : 'WordPress';
 	}

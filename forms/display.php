@@ -8,9 +8,12 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
         <ul role="tablist" id="debugpress-debugger-tabs" class="debugpress-clearfix">
 			<?php
 			$first = true;
-			foreach ( Loader::instance()->tabs as $tab => $label ) {
+			foreach ( Loader::instance()->tabs as $tab => $obj ) {
+				$label = is_array($obj) ? $obj['tab'] : $obj;
+				$title = is_array($obj) ? ' title="'.$obj['label'].'"' : '';
+
 				echo '<li role="presentation" id="debugpress-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
-				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . '>' . $label . '</a>';
+				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . $title . '>' . $label . '</a>';
 				echo '</li>';
 
 				$first = false;
@@ -22,7 +25,9 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			<?php
 
 			$first = true;
-			foreach ( Loader::instance()->tabs as $tab => $label ) {
+			foreach ( Loader::instance()->tabs as $tab => $obj ) {
+			    $label = is_array($obj) ? $obj['label'] : $obj;
+
 				echo '<option value="debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
 
 				$first = false;

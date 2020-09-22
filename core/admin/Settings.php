@@ -48,6 +48,12 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_special',
+			__( "Special Debugger Panels", "debugpress" ),
+			array( $this, 'block_special' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_panels',
 			__( "Additional Debugger Panels", "debugpress" ),
 			array( $this, 'block_panels' ),
@@ -131,6 +137,13 @@ class Settings {
 			array( $this, 'option_panel_request' ),
 			'debugpress',
 			'debugpress_settings_panels' );
+
+		add_settings_field(
+			'debugpress_settings_panel_debuglog',
+			'<label for="debugpress_settings_panel_debuglog">' . __( "WordPress Debug Log", "debugpress" ) . '</label>',
+			array( $this, 'option_panel_debuglog' ),
+			'debugpress',
+			'debugpress_settings_special' );
 
 		add_settings_field(
 			'debugpress_settings_panel_enqueue',
@@ -225,7 +238,7 @@ class Settings {
 	}
 
 	public function block_activation() {
-		echo __( "Main activation settings for the plugin.", "debugpress" );
+		echo __( "Main activation settings for the plugin. You can choose to use debugger on admin side and / or frontend.", "debugpress" );
 	}
 
 	public function block_buttons() {
@@ -234,6 +247,11 @@ class Settings {
 
 	public function block_roles() {
 		echo __( "Debugger can be visibile to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", "debugpress" );
+		echo ' <strong>'.__( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!").'</strong>';
+	}
+
+	public function block_special() {
+		echo __( "Debugger contains some special panels that can be limited in terms of use when it comes to different user roles allowed to view Debugger popup.", "debugpress" );
 	}
 
 	public function block_panels() {
@@ -311,6 +329,13 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'panel_request' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_request' name='debugpress_settings[panel_request]' type='checkbox' />";
+	}
+
+	public function option_panel_debuglog() {
+		$checked = debugpress_plugin()->get( 'panel_debuglog' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_panel_debuglog' name='debugpress_settings[panel_debuglog]' type='checkbox' />";
+		echo '<p class="description">' . esc_html__( "This panel will be on the right side of the Debugger header, and it has additional controls that will be available to website administrators only.", "debugpress" ) . '</p>';
 	}
 
 	public function option_panel_enqueue() {

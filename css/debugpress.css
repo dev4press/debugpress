@@ -508,7 +508,7 @@ a > .debugpress-icon {
   -webkit-appearance: none;
   background: none;
   border: medium none;
-  color: #EEE;
+  color: #ee0000;
   cursor: pointer;
   float: right;
   font-size: 20px;
@@ -591,6 +591,13 @@ a > .debugpress-icon {
 .debugpress-style-popup #debugpress-debugger-tabs li.debugpress-tab-active a {
   color: #23282D;
   font-weight: bold;
+}
+.debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-debuglog-li {
+  float: right;
+}
+.debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-debuglog-li i {
+  font-size: 120%;
+  vertical-align: text-bottom;
 }
 .debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-tab-content {
   display: none;
