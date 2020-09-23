@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Dev4Press\Plugin\DebugPress\Display\Loader;
-use Dev4Press\Plugin\DebugPress\Track\AJAX;
+use Dev4Press\Plugin\DebugPress\Track\AJAX as AJAXTracker;
 
 class Plugin {
 	private $_settings = array();
@@ -96,8 +96,14 @@ class Plugin {
 		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
 		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
 
-		if ( $this->get( 'ajax' ) && DEBUGPRESS_IS_AJAX ) {
-			AJAX::instance();
+		if ( DEBUGPRESS_IS_AJAX && $this->_allowed ) {
+			if ( $this->get( 'ajax' ) ) {
+				AJAXTracker::instance();
+			}
+
+			if ( $this->get( 'panel_debuglog' ) ) {
+				AJAX::instance();
+			}
 		}
 
 		debugpress_tracker();

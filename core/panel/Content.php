@@ -30,15 +30,21 @@ class Content extends Panel {
 
 		$this->title( __( "Rewrite Rules", "debugpress" ), true );
 
-		if ( ! empty( $wp_rewrite->rules ) ) {
-			$this->list_array( $wp_rewrite->rules, '$' . 'wp_rewrite->rules' );
+		if ( ! is_admin() ) {
+			if ( ! empty( $wp_rewrite->rules ) ) {
+				$this->list_array( $wp_rewrite->rules, '$' . 'wp_rewrite->rules' );
+			} else {
+				echo '<div class="debugpress-debug-notice-block">';
+				$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Rewrite Rules problem", "debugpress" ), true, true );
+				$this->block_header( true );
+				_e( "Permalinks are disabled.", "debugpress" );
+				$this->block_footer();
+				echo '</div>';
+			}
 		} else {
-			echo '<div class="debugpress-debug-notice-block">';
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Rewrite Rules problem", "debugpress" ), true, true );
 			$this->block_header( true );
-			_e( "Permalinks are disabled.", "debugpress" );
+			_e( "Rewrite rules are not loaded on the WordPress admin side.", "debugpress" );
 			$this->block_footer();
-			echo '</div>';
 		}
 
 		$this->title( __( "Extra Permalinks Structure", "debugpress" ) );

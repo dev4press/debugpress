@@ -20,9 +20,9 @@ class Info {
 	public static function debug_log_path() {
 		$path = '';
 
-		if (DEBUGPRESS_IS_DEBUG_LOG) {
-			if (defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) {
-				$path = ini_get('error_log');
+		if ( DEBUGPRESS_IS_DEBUG_LOG ) {
+			if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+				$path = ini_get( 'error_log' );
 			}
 		}
 
@@ -269,9 +269,7 @@ class Info {
 	}
 
 	public static function php_sapi() {
-		$sapi = PHP_SAPI;
-
-		return $sapi;
+		return PHP_SAPI;
 	}
 
 	public static function php_memory_limit() {

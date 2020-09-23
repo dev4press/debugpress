@@ -59,6 +59,8 @@ class Loader {
 		wp_enqueue_script( 'debugpress' );
 
 		wp_localize_script( 'debugpress', 'debugpress_data', array(
+			'ajax_endpoint'       => admin_url( 'admin-ajax.php' ),
+			'call_nonce'          => wp_create_nonce( 'debugpress-ajax-call' ),
 			'events_show_details' => _x( "Show Details", "Popup message", "debugpress" ),
 			'events_hide_details' => _x( "Hide Details", "Popup message", "debugpress" ),
 			'icon_down'           => '<i class="debugpress-icon debugpress-icon-caret-down"></i>',
@@ -195,7 +197,10 @@ class Loader {
 		}
 
 		if ( debugpress_plugin()->get( 'panel_debuglog' ) ) {
-			$this->tabs['debuglog'] = array('label' => __("Debug Log"), 'tab' => '<i class="debugpress-icon debugpress-icon-exclamation"></i>');
+			$this->tabs['debuglog'] = array(
+				'label' => __( "Debug Log", "debugpress" ),
+				'tab'   => '<i class="debugpress-icon debugpress-icon-file"></i>'
+			);
 		}
 
 		$this->tabs = apply_filters( 'debugpress-debugger-popup-tabs', $this->tabs );

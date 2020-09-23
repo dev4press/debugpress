@@ -5,7 +5,7 @@
 
     .debugpress-settings-section {
         max-width: 720px;
-        background-color: #fff;
+        background-color: #FFF;
         padding: 15px;
         margin: 15px 0;
         border: 1px solid #1E72BD;
@@ -14,13 +14,19 @@
             margin: -15px -15px 15px;
             padding: 15px;
             background-color: #1E72BD;
-            color: #fff;
+            color: #FFF;
         }
 
         .debugpress-section-info {
             margin: -15px -15px 0;
             padding: 15px;
-            background-color: #daeeff;
+            background-color: #DAEEFF;
+        }
+
+        p.description {
+            border-top: 1px solid #1E72BD;
+            margin: 10px 0 0;
+            padding: 5px 0 0;
         }
     }
 }
@@ -38,7 +44,7 @@
     > div {
         text-align: center;
         padding: 15px;
-        margin: 0 0 15px;
+        margin: 15px 0;
         max-width: 360px;
     }
 

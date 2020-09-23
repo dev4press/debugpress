@@ -145,8 +145,7 @@
         color: #FFF;
         padding: 5px !important;
         font-size: calc(var(--debugpress-base-font-size) - 1px);
-        margin: 0;
-        margin-bottom: 10px;
+        margin: 0 0 10px;
         text-align: right;
 
         span {
@@ -229,16 +228,30 @@
         }
     }
 
-    .query-sql-run-full {
+    .query-sql-run-full,
+    #debugpress-debuglog-content {
         background-color: #F4F4F4;
         color: #000;
         font-family: monospace;
-        font-weight: bold;
         font-size: var(--debugpress-sql-font-size);
         margin: 5px 0 0;
         padding: 5px;
+    }
+
+    .query-sql-run-full {
+        font-weight: bold;
 
         pre {
+            color: black;
+            background-color: white;
+        }
+    }
+
+    #debugpress-debuglog-content {
+        font-weight: normal;
+
+        > div {
+            overflow: auto;
             color: black;
             background-color: white;
         }
@@ -358,5 +371,15 @@
                 width: calc(100% - 44px);
             }
         }
+    }
+
+    .debugpress-button-action {
+        background: #27B;
+        color: #FFF;
+        cursor: pointer;
+        border: 0;
+        width: 100%;
+        border-radius: 0;
+        padding: 5px 15px;
     }
 }

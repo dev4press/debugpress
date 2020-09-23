@@ -246,8 +246,8 @@ class Settings {
 	}
 
 	public function block_roles() {
-		echo __( "Debugger can be visibile to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", "debugpress" );
-		echo ' <strong>'.__( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!").'</strong>';
+		echo __( "Debugger can be visible to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", "debugpress" );
+		echo ' <strong>' . __( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!", "debugpress" ) . '</strong>';
 	}
 
 	public function block_special() {
@@ -335,7 +335,7 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'panel_debuglog' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_debuglog' name='debugpress_settings[panel_debuglog]' type='checkbox' />";
-		echo '<p class="description">' . esc_html__( "This panel will be on the right side of the Debugger header, and it has additional controls that will be available to website administrators only.", "debugpress" ) . '</p>';
+		echo '<p class="description">' . esc_html__( "This panel will be on the right side of the Debugger header, and it is displayed as icon only.", "debugpress" ) . '</p>';
 	}
 
 	public function option_panel_enqueue() {

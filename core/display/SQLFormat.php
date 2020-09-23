@@ -820,12 +820,10 @@ class SQLFormat {
 
 		// Quoted String
 		if ( $string[0] === '"' || $string[0] === '\'' || $string[0] === '`' || $string[0] === '[' ) {
-			$return = array(
+			return array(
 				self::TOKEN_TYPE  => ( ( $string[0] === '`' || $string[0] === '[' ) ? self::TOKEN_TYPE_BACKTICK_QUOTE : self::TOKEN_TYPE_QUOTE ),
 				self::TOKEN_VALUE => self::getQuotedString( $string )
 			);
-
-			return $return;
 		}
 
 		// User-defined Variable

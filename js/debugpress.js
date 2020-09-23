@@ -210,9 +210,37 @@
                 wp.dev4press.debugpress.tabs.ajax.init();
             }
 
+            wp.dev4press.debugpress.tabs.debuglog.init();
             wp.dev4press.debugpress.tabs.queries.init();
         },
         tabs: {
+            debuglog: {
+                init: function() {
+                    $(document).on("click", "button.debugpress-action-debuglog-load", function() {
+                        $.ajax({
+                            url: debugpress_data.ajax_endpoint + "?action=debugpress_load_debuglog&_ajax_nonce=" + debugpress_data.call_nonce,
+                            type: "get",
+                            dataType: "html",
+                            success: function(html) {
+                                var container = $("#debugpress-debuglog-content");
+
+                                container.find("div").html(html);
+                                container.scrollTop(container.prop("scrollHeight"));
+
+                                wp.dev4press.debugpress.tabs.debuglog.resize();
+                            },
+                            error: function(jqXhr, textStatus, errorThrown) {
+
+                            }
+                        });
+                    });
+
+                    $(window).on('resize orientationchange', wp.dev4press.debugpress.tabs.debuglog.resize);
+                },
+                resize: function() {
+                    $("#debugpress-debuglog-content div").height($(".debugpress-style-popup .sanp-content").height() - 65);
+                }
+            },
             ajax: {
                 init: function() {
                     $(document).ajaxError(function(event, response, options, error) {
@@ -231,7 +259,7 @@
                         var ajax = {
                             status: 'success',
                             url: options.url,
-                            data: options.data.toString(),
+                            data: options.data ? options.data.toString() : '',
                             type: options.type,
                             response: options.dataType,
                             headers: wp.dev4press.debugpress.tabs.ajax.headers(response)
@@ -439,7 +467,7 @@
                     });
                 },
                 events: function() {
-                    $(document).on("click", ".sql-calls-button-expander", function(e) {
+                    $(document).on("click", ".sql-calls-button-expander", function() {
                         var parent = $(this).parent(),
                             query = parent.parent(),
                             full = parent.hasClass("sql-calls-full")

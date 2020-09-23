@@ -15,22 +15,22 @@ function debugpress_do_settings_sections( $page ) {
 
 	foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
 		echo '<div class="debugpress-settings-section">';
-			if ( $section['title'] ) {
-				echo "<h2>{$section['title']}</h2>\n";
-			}
+		if ( $section['title'] ) {
+			echo "<h2>{$section['title']}</h2>\n";
+		}
 
-			if ( $section['callback'] ) {
-				echo '<div class="debugpress-section-info">';
-				call_user_func( $section['callback'], $section );
-				echo '</div>';
-			}
+		if ( $section['callback'] ) {
+			echo '<div class="debugpress-section-info">';
+			call_user_func( $section['callback'], $section );
+			echo '</div>';
+		}
 
-			if ( ! isset( $wp_settings_fields ) || ! isset( $wp_settings_fields[ $page ] ) || ! isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
-				continue;
-			}
-			echo '<table class="form-table" role="presentation">';
-			do_settings_fields( $page, $section['id'] );
-			echo '</table>';
+		if ( ! isset( $wp_settings_fields ) || ! isset( $wp_settings_fields[ $page ] ) || ! isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
+			continue;
+		}
+		echo '<table class="form-table" role="presentation">';
+		do_settings_fields( $page, $section['id'] );
+		echo '</table>';
 		echo '</div>';
 	}
 }
@@ -121,14 +121,14 @@ function debugpress_store_object( $object, $title = '', $sql = false ) {
 }
 
 function debugpress_count_lines_in_files( $file_path ) {
-	if (!file_exists($file_path)) {
+	if ( ! file_exists( $file_path ) ) {
 		return 0;
 	}
 
 	$file = new SplFileObject( $file_path, 'r' );
 	$file->seek( PHP_INT_MAX );
 
-	echo $file->key() + 1;
+	return $file->key() + 1;
 }
 
 function debugpress_read_lines_from_file( $file_path, $last = 1000 ) {
