@@ -254,6 +254,11 @@
             overflow: auto;
             color: black;
             background-color: white;
+
+            pre {
+                background: none;
+                overflow: visible;
+            }
         }
     }
 
@@ -381,5 +386,6 @@
         width: 100%;
         border-radius: 0;
         padding: 5px 15px;
+        font-size: calc(var(--debugpress-base-font-size) + 3px);
     }
 }

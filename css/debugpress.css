@@ -756,6 +756,10 @@ a > .debugpress-icon {
   color: black;
   background-color: white;
 }
+.debugpress-style-popup #debugpress-debuglog-content > div pre {
+  background: none;
+  overflow: visible;
+}
 .debugpress-style-popup .sql-query-list .sql-query {
   border: 1px solid #777;
   margin: 5px 0;
@@ -850,6 +854,7 @@ a > .debugpress-icon {
   width: 100%;
   border-radius: 0;
   padding: 5px 15px;
+  font-size: calc(var(--debugpress-base-font-size) + 3px);
 }
 
 @media screen and (max-width: 568px) {
