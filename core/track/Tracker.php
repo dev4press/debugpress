@@ -172,6 +172,8 @@ class Tracker {
 				'trace' => $trace,
 			);
 		}
+		debugpress_store_object( $trace );
+		debugpress_store_object( 'XXX' );
 
 		return $args;
 	}
@@ -354,8 +356,7 @@ class Tracker {
 		switch ( $function ) {
 			case 'options.php' :
 				$deprecated = __( "Unregistered Setting", "debugpress" );
-
-				return;
+				break;
 			case 'has_cap' :
 				if ( 0 === strpos( $backtrace[7]["function"], "add_" ) && "_page" == substr( $backtrace[7]["function"], - 5 ) ) {
 					$bt = 7;
@@ -381,8 +382,6 @@ class Tracker {
 			case 'define' :
 				if ( 'ms_subdomain_constants' == $backtrace[4]["function"] ) {
 					$deprecated = 'VHOST';
-
-					return;
 				}
 				break;
 			default :
@@ -514,7 +513,7 @@ class Tracker {
 		$caller = array();
 
 		foreach ( $trace as $call ) {
-			if ( isset( $call['class'] ) && "Dev4Press\\Plugin\\DebugPress\\Basic\\Tracker" == $call['class'] ) {
+			if ( isset( $call['class'] ) && "Dev4Press\\Plugin\\DebugPress\\Track\\Tracker" == $call['class'] ) {
 				continue;
 			}
 

@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.1
+Stable tag: 1.2
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
@@ -87,7 +87,15 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
 == Changelog ==
-= 1.1 =
+= 1.2 (2020.09.28) =
+* New: debugger activator: show number of captured HTTP API calls
+* New: debugger Log panel: renamed to Store
+* New: debugger Log panel: rewritten rendering to match other panels
+* New: debugger HTTP tab: shows number of calls in the tab button
+* Fix: wrong class name in the backtrace tracker processor
+* Fix: few small issues with the deprecated tracker processor
+
+= 1.1 (2020.09.23) =
 * New: debugger panel - Debug Log
 * New: using CSS variables for some of the debugger styling
 * New: filters to modify CSS variables

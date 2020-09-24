@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 09/23/2020 12:24:41 PM\n"
+"POT-Creation-Date: 09/24/2020 10:56:54 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -108,7 +108,7 @@ msgid "PHP Information"
 msgstr ""
 
 #: core/admin/Settings.php:191
-#: core/display/Loader.php:175
+#: core/display/Loader.php:179
 msgid "bbPress"
 msgstr ""
 
@@ -235,8 +235,8 @@ msgid "In file"
 msgstr ""
 
 #: core/display/ErrorFormat.php:93
-#: core/panel/Log.php:21
 #: core/panel/Queries.php:185
+#: core/panel/Store.php:17
 msgid "Caller"
 msgstr ""
 
@@ -304,23 +304,28 @@ msgstr ""
 msgid "Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:110
+#: core/display/Loader.php:113
 msgid "AJAX Calls"
 msgstr ""
 
-#: core/display/Loader.php:113
+#: core/display/Loader.php:117
+#: core/panel/Basics.php:67
+msgid "HTTP API Calls"
+msgstr ""
+
+#: core/display/Loader.php:120
 msgid "PHP Errors"
 msgstr ""
 
-#: core/display/Loader.php:114
+#: core/display/Loader.php:122
 msgid "Open Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:129
+#: core/display/Loader.php:137
 msgid "Basics"
 msgstr ""
 
-#: core/display/Loader.php:133
+#: core/display/Loader.php:141
 #: core/panel/Constants.php:147
 #: core/panel/HTTP.php:15
 #: core/panel/Request.php:13
@@ -328,71 +333,71 @@ msgstr ""
 msgid "Request"
 msgstr ""
 
-#: core/display/Loader.php:137
+#: core/display/Loader.php:145
 #: core/panel/Request.php:58
 msgid "Query"
 msgstr ""
 
-#: core/display/Loader.php:139
+#: core/display/Loader.php:147
 msgid "Admin"
 msgstr ""
 
-#: core/display/Loader.php:143
+#: core/display/Loader.php:151
 msgid "Content"
 msgstr ""
 
-#: core/display/Loader.php:147
+#: core/display/Loader.php:155
 msgid "Constants"
 msgstr ""
 
-#: core/display/Loader.php:151
+#: core/display/Loader.php:159
 msgid "SQL Queries"
 msgstr ""
 
-#: core/display/Loader.php:155
+#: core/display/Loader.php:163
 #: core/panel/System.php:41
 msgid "User"
 msgstr ""
 
-#: core/display/Loader.php:159
+#: core/display/Loader.php:167
 msgid "Enqueue"
 msgstr ""
 
-#: core/display/Loader.php:163
+#: core/display/Loader.php:171
 #: core/main/Plugin.php:233
 msgid "PHP"
 msgstr ""
 
-#: core/display/Loader.php:167
+#: core/display/Loader.php:175
 #: core/panel/Constants.php:138
 msgid "System"
 msgstr ""
 
-#: core/display/Loader.php:171
-msgid "HTTP"
-msgstr ""
-
-#: core/display/Loader.php:179
+#: core/display/Loader.php:183
 msgid "Errors"
 msgstr ""
 
-#: core/display/Loader.php:183
+#: core/display/Loader.php:187
 msgid "Deprecated"
 msgstr ""
 
-#: core/display/Loader.php:187
+#: core/display/Loader.php:191
 msgid "Doing It Wrong"
 msgstr ""
 
-#: core/display/Loader.php:191
+#: core/display/Loader.php:195
+msgid "HTTP"
+msgstr ""
+
+#: core/display/Loader.php:199
 msgid "AJAX"
 msgstr ""
 
-#: core/display/Loader.php:195
-msgid "Log"
+#: core/display/Loader.php:203
+msgid "Store"
 msgstr ""
 
-#: core/display/Loader.php:200
+#: core/display/Loader.php:208
 msgid "Debug Log"
 msgstr ""
 
@@ -649,10 +654,6 @@ msgstr ""
 
 #: core/panel/Basics.php:63
 msgid "Executed Hooks"
-msgstr ""
-
-#: core/panel/Basics.php:67
-msgid "HTTP API Calls"
 msgstr ""
 
 #: core/panel/Basics.php:69
@@ -927,6 +928,7 @@ msgstr ""
 
 #: core/panel/HTTP.php:17
 #: core/panel/Queries.php:229
+#: core/panel/Store.php:14
 msgid "Time"
 msgstr ""
 
@@ -1233,6 +1235,18 @@ msgstr ""
 msgid "Scheme"
 msgstr ""
 
+#: core/panel/Store.php:12
+msgid "Stored objects and other data"
+msgstr ""
+
+#: core/panel/Store.php:15
+msgid "Title"
+msgstr ""
+
+#: core/panel/Store.php:16
+msgid "Logged Data"
+msgstr ""
+
 #: core/panel/System.php:13
 msgid "Server Information"
 msgstr ""
@@ -1361,7 +1375,7 @@ msgstr ""
 msgid "Unregistered Setting"
 msgstr ""
 
-#: core/track/Tracker.php:585
+#: core/track/Tracker.php:582
 msgid "Request not executed because of the filter on %s."
 msgstr ""
 

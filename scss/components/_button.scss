@@ -56,6 +56,7 @@
     a {
         .debugpress-debug-button-indicators {
             .debugpress-debug-has-errors,
+            .debugpress-debug-has-httpcalls,
             .debugpress-debug-has-ajax {
                 padding: 2px 3px !important;
                 border-radius: 3px !important;
@@ -63,6 +64,10 @@
                 font-size: 11px !important;
                 max-height: 12px !important;
                 margin: 4px !important;
+            }
+
+            .debugpress-debug-has-httpcalls {
+                background-color: #2AAAE5;
             }
 
             .debugpress-debug-has-ajax {

@@ -107,11 +107,20 @@ class Loader {
 		$button = '<i class="debugpress-icon debugpress-icon-bug"></i>';
 		$button .= '<span class="debugpress-debug-button-indicators">';
 
+		$_error_counts = debugpress_tracker()->counts['total'];
+		$_http_counts  = count( debugpress_tracker()->httpapi );
+
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
 			$button .= '<span class="debugpress-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "debugpress" ) . '">0</span>';
 		}
 
-		$button .= '<span class="debugpress-debug-has-errors" style="display: ' . ( debugpress_tracker()->counts['total'] == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . debugpress_tracker()->counts['total'] . '</span></span>';
+		if ( debugpress_plugin()->get( 'panel_http' ) && $_http_counts > 0 ) {
+			$button .= '<span class="debugpress-debug-has-httpcalls" style="display: ' . ( $_http_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "HTTP API Calls", "debugpress" ) . '">' . $_http_counts . '</span>';
+		}
+
+		$button .= '<span class="debugpress-debug-has-errors" style="display: ' . ( $_error_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . $_error_counts . '</span>';
+
+		$button .= '</span>';
 		$button .= '<span class="sanp-sr-only">' . __( "Open Debugger Panel", "debugpress" ) . '</span>';
 
 		return $button;
@@ -168,10 +177,6 @@ class Loader {
 			$this->tabs['system'] = __( "System", "debugpress" );
 		}
 
-		if ( debugpress_plugin()->get( 'panel_http' ) && ! empty( debugpress_tracker()->httpapi ) ) {
-			$this->tabs['http'] = __( "HTTP", "debugpress" );
-		}
-
 		if ( debugpress_plugin()->get( 'panel_bbpress' ) && debugpress_has_bbpress() && is_bbpress() ) {
 			$this->tabs['bbpress'] = __( "bbPress", "debugpress" );
 		}
@@ -188,12 +193,16 @@ class Loader {
 			$this->tabs['doingitwrong'] = __( "Doing It Wrong", "debugpress" ) . ' (' . debugpress_tracker()->counts['doingitwrong'] . ')';
 		}
 
+		if ( debugpress_plugin()->get( 'panel_http' ) && ! empty( debugpress_tracker()->httpapi ) ) {
+			$this->tabs['http'] = __( "HTTP", "debugpress" ) . ' (' . count( debugpress_tracker()->httpapi ) . ')';
+		}
+
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
 			$this->tabs['ajax'] = __( "AJAX", "debugpress" ) . ' (<span>0</span>)';
 		}
 
 		if ( ! empty( debugpress_tracker()->logged ) ) {
-			$this->tabs['log'] = __( "Log", "debugpress" );
+			$this->tabs['store'] = __( "Store", "debugpress" ) . ' (' . count( debugpress_tracker()->logged ) . ')';
 		}
 
 		if ( debugpress_plugin()->get( 'panel_debuglog' ) ) {

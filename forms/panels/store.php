@@ -1,10 +1,10 @@
 <?php
 
-use Dev4Press\Plugin\DebugPress\Panel\Log;
+use Dev4Press\Plugin\DebugPress\Panel\Store;
 
 ?>
 <div class="debugpress-grid">
     <div class="debugpress-unit full">
-		<?php Log::instance()->single(); ?>
+		<?php Store::instance()->single(); ?>
     </div>
 </div>
