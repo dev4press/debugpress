@@ -172,8 +172,6 @@ class Tracker {
 				'trace' => $trace,
 			);
 		}
-		debugpress_store_object( $trace );
-		debugpress_store_object( 'XXX' );
 
 		return $args;
 	}
