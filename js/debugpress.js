@@ -261,7 +261,7 @@
                             url: options.url,
                             data: options.data ? options.data.toString() : '',
                             type: options.type,
-                            response: options.dataType,
+                            response: options.hasOwnProperty('dataType') ? options.dataType : options.dataTypes.join('/'),
                             headers: wp.dev4press.debugpress.tabs.ajax.headers(response)
                         };
 
@@ -285,7 +285,7 @@
 
                     if (ajax.status === 'success') {
                         if (ajax.hasOwnProperty('response')) {
-                            response = ajax.response.toUpperCase();
+                            response = ajax.response === undefined ? response : ajax.response.toString().toUpperCase();
                         }
 
                         render = '<h5 class="debugpress-debugger-panel-block-title">[SUCCESS] [' + ajax.type + ' => ' + response + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
