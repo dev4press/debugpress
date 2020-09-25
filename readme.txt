@@ -46,7 +46,7 @@ Currently, the plugin has following panels:
 * Deprecated (if PHP deprecated warnings are captured)
 * Doing It Wrong (if WordPress Doing It Wrong warnings are captured)
 * AJAX (if AJAX calls are captured while page is active)
-* Log (if there are user stored objects to show)
+* Store (if there are user stored objects to show)
 * Debug Log (load content on demand from WordPress 'debug.log')
 
 = SQL Queries =
@@ -87,13 +87,14 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
 == Changelog ==
-= 1.2 (2020.09.26) =
+= 1.2 (2020.09.25) =
 * New: debugger activator: show number of captured HTTP API calls
 * New: debugger Log panel: renamed to Store
 * New: debugger Log panel: rewritten rendering to match other panels
 * New: debugger HTTP tab: shows number of calls in the tab button
 * New: settings to control AJAX calls tracking on active page
 * New: settings to control errors and warnings tracking
+* Edit: various minor improvements and changes
 * Fix: wrong class name in the backtrace tracker processor
 * Fix: few small issues with the deprecated tracker processor
 * Fix: several issues with displaying AJAX calls results
@@ -113,6 +114,9 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * First official release
 
 == Upgrade Notice ==
+= 1.2 =
+Several panels improved. Many new settings. Several bug fixes.
+
 = 1.1 =
 Debug Log panel added. Various styling improvements. Improved settings panel.
 
