@@ -48,6 +48,12 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_errors',
+			__( "Errors Tracking", "debugpress" ),
+			array( $this, 'block_errors' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_special',
 			__( "Special Debugger Panels", "debugpress" ),
 			array( $this, 'block_special' ),
@@ -193,6 +199,27 @@ class Settings {
 			array( $this, 'option_panel_bbpress' ),
 			'debugpress',
 			'debugpress_settings_panels' );
+
+		add_settings_field(
+			'debugpress_settings_errors_override',
+			'<label for="debugpress_settings_errors_override">' . __( "PHP errors and warnings", "debugpress" ) . '</label>',
+			array( $this, 'option_errors_override' ),
+			'debugpress',
+			'debugpress_settings_errors' );
+
+		add_settings_field(
+			'debugpress_settings_doingitwrong_override',
+			'<label for="debugpress_settings_doingitwrong_override">' . __( "WordPress Doing It Wrong", "debugpress" ) . '</label>',
+			array( $this, 'option_doingitwrong_override' ),
+			'debugpress',
+			'debugpress_settings_errors' );
+
+		add_settings_field(
+			'debugpress_settings_deprecated_override',
+			'<label for="debugpress_settings_deprecated_override">' . __( "Deprecated warnings", "debugpress" ) . '</label>',
+			array( $this, 'option_deprecated_override' ),
+			'debugpress',
+			'debugpress_settings_errors' );
 	}
 
 	private function _roles_values() {
@@ -256,6 +283,10 @@ class Settings {
 
 	public function block_panels() {
 		echo __( "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them.", "debugpress" );
+	}
+
+	public function block_errors() {
+		echo __( "Control which types of errors and warnings plugins will track and report.", "debugpress" );
 	}
 
 	public function block_autos() {
@@ -378,5 +409,23 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'panel_bbpress' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_bbpress' name='debugpress_settings[panel_bbpress]' type='checkbox' />";
+	}
+
+	public function option_errors_override() {
+		$checked = debugpress_plugin()->get( 'errors_override' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_errors_override' name='debugpress_settings[errors_override]' type='checkbox' />";
+	}
+
+	public function option_deprecated_override() {
+		$checked = debugpress_plugin()->get( 'deprecated_override' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_deprecated_override' name='debugpress_settings[deprecated_override]' type='checkbox' />";
+	}
+
+	public function option_doingitwrong_override() {
+		$checked = debugpress_plugin()->get( 'doingitwrong_override' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_doingitwrong_override' name='debugpress_settings[doingitwrong_override]' type='checkbox' />";
 	}
 }

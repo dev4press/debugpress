@@ -92,8 +92,10 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * New: debugger Log panel: renamed to Store
 * New: debugger Log panel: rewritten rendering to match other panels
 * New: debugger HTTP tab: shows number of calls in the tab button
+* New: settings to control errors and warnings tracking
 * Fix: wrong class name in the backtrace tracker processor
 * Fix: few small issues with the deprecated tracker processor
+* Fix: several issues with displaying AJAX calls results
 
 = 1.1 (2020.09.23) =
 * New: debugger panel - Debug Log

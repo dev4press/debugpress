@@ -273,7 +273,7 @@
                         tab = $("#debugpress-debugger-tab-ajax-li"),
                         button = $(".debugpress-debug-dialog-button"),
                         count = parseInt(el.data("calls")),
-                        render = '';
+                        render = '', response = 'UNKNOWN';
 
                     if (count === 0) {
                         el.html("");
@@ -284,7 +284,11 @@
                     $("a span", tab).html(count);
 
                     if (ajax.status === 'success') {
-                        render = '<h5 class="debugpress-debugger-panel-block-title">[SUCCESS] [' + ajax.type + ' => ' + ajax.response.toUpperCase() + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                        if (ajax.hasOwnProperty('response')) {
+                            response = ajax.response.toUpperCase();
+                        }
+
+                        render = '<h5 class="debugpress-debugger-panel-block-title">[SUCCESS] [' + ajax.type + ' => ' + response + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
                     } else {
                         render = '<h5 class="debugpress-debugger-panel-block-title" style="background: #900;">[ERROR] [' + ajax.type + ' => ' + ajax.error + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
                     }

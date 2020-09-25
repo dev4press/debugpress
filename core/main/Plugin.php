@@ -12,39 +12,36 @@ use Dev4Press\Plugin\DebugPress\Track\AJAX as AJAXTracker;
 class Plugin {
 	private $_settings = array();
 	private $_defaults = array(
-		'active'          => false,
-		'admin'           => false,
-		'frontend'        => false,
-		'button_admin'    => 'toolbar',
-		'button_frontend' => 'toolbar',
-		'for_super_admin' => true,
-		'for_roles'       => true,
-		'for_visitor'     => false,
-
-		'auto_wpdebug'     => false,
-		'auto_savequeries' => false,
-
-		'panel_content'   => true,
-		'panel_request'   => true,
-		'panel_debuglog'  => true,
-		'panel_enqueue'   => false,
-		'panel_system'    => false,
-		'panel_user'      => false,
-		'panel_constants' => false,
-		'panel_http'      => false,
-		'panel_php'       => false,
-		'panel_bbpress'   => false
+		'active'                => false,
+		'admin'                 => false,
+		'frontend'              => false,
+		'button_admin'          => 'toolbar',
+		'button_frontend'       => 'toolbar',
+		'for_super_admin'       => true,
+		'for_roles'             => true,
+		'for_visitor'           => false,
+		'auto_wpdebug'          => false,
+		'auto_savequeries'      => false,
+		'errors_override'       => true,
+		'deprecated_override'   => true,
+		'doingitwrong_override' => true,
+		'panel_content'         => true,
+		'panel_request'         => true,
+		'panel_debuglog'        => true,
+		'panel_enqueue'         => false,
+		'panel_system'          => false,
+		'panel_user'            => false,
+		'panel_constants'       => false,
+		'panel_http'            => false,
+		'panel_php'             => false,
+		'panel_bbpress'         => false
 	);
 
 	private $_extras = array(
-		'ajax'                   => true,
-		'slow_query_cutoff'      => 10,
-		'use_sql_formatter'      => true,
-		'format_queries_panel'   => true,
-		'errors_override'        => true,
-		'deprecated_override'    => true,
-		'doingitwrong_override'  => true,
-		'integrate_admin_footer' => true
+		'ajax'                 => true,
+		'slow_query_cutoff'    => 10,
+		'use_sql_formatter'    => true,
+		'format_queries_panel' => true
 	);
 
 	private $_allowed = false;
