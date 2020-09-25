@@ -48,6 +48,12 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_ajax',
+			__( "AJAX Calls Tracking", "debugpress" ),
+			array( $this, 'block_ajax' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_errors',
 			__( "Errors Tracking", "debugpress" ),
 			array( $this, 'block_errors' ),
@@ -220,6 +226,13 @@ class Settings {
 			array( $this, 'option_deprecated_override' ),
 			'debugpress',
 			'debugpress_settings_errors' );
+
+		add_settings_field(
+			'debugpress_settings_ajax',
+			'<label for="debugpress_settings_ajax">' . __( "AJAX Tracking", "debugpress" ) . '</label>',
+			array( $this, 'option_ajax' ),
+			'debugpress',
+			'debugpress_settings_ajax' );
 	}
 
 	private function _roles_values() {
@@ -291,6 +304,10 @@ class Settings {
 
 	public function block_autos() {
 		echo __( "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed.", "debugpress" );
+	}
+
+	public function block_ajax() {
+		echo __( "Add AJAX tab in the debugger, and track the AJAX request on the active page.", "debugpress" );
 	}
 
 	public function option_admin() {
@@ -427,5 +444,11 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'doingitwrong_override' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_doingitwrong_override' name='debugpress_settings[doingitwrong_override]' type='checkbox' />";
+	}
+
+	public function option_ajax() {
+		$checked = debugpress_plugin()->get( 'ajax' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_ajax' name='debugpress_settings[ajax]' type='checkbox' />";
 	}
 }

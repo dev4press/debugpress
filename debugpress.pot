@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 09/25/2020 03:37:38 PM\n"
+"POT-Creation-Date: 09/25/2020 08:01:01 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,166 +33,178 @@ msgid "Auto debug overrides"
 msgstr ""
 
 #: core/admin/Settings.php:51
-msgid "Errors Tracking"
+msgid "AJAX Calls Tracking"
 msgstr ""
 
 #: core/admin/Settings.php:57
-msgid "Special Debugger Panels"
+msgid "Errors Tracking"
 msgstr ""
 
 #: core/admin/Settings.php:63
+msgid "Special Debugger Panels"
+msgstr ""
+
+#: core/admin/Settings.php:69
 msgid "Additional Debugger Panels"
 msgstr ""
 
-#: core/admin/Settings.php:71
-#: core/admin/Settings.php:85
+#: core/admin/Settings.php:77
+#: core/admin/Settings.php:91
 msgid "Website Admin"
 msgstr ""
 
-#: core/admin/Settings.php:78
-#: core/admin/Settings.php:92
+#: core/admin/Settings.php:84
+#: core/admin/Settings.php:98
 msgid "Website Frontend"
 msgstr ""
 
-#: core/admin/Settings.php:99
+#: core/admin/Settings.php:105
 msgid "Super Admin"
 msgstr ""
 
-#: core/admin/Settings.php:106
+#: core/admin/Settings.php:112
 msgid "User Roles"
 msgstr ""
 
-#: core/admin/Settings.php:113
+#: core/admin/Settings.php:119
 msgid "Visitors"
 msgstr ""
 
-#: core/admin/Settings.php:120
+#: core/admin/Settings.php:126
 msgid "Enable WP_DEBUG"
 msgstr ""
 
-#: core/admin/Settings.php:127
+#: core/admin/Settings.php:133
 msgid "Enable SAVEQUERIES"
 msgstr ""
 
-#: core/admin/Settings.php:134
+#: core/admin/Settings.php:140
 msgid "Registered Content"
 msgstr ""
 
-#: core/admin/Settings.php:141
+#: core/admin/Settings.php:147
 #: core/panel/Request.php:25
 msgid "Page Request"
 msgstr ""
 
-#: core/admin/Settings.php:148
+#: core/admin/Settings.php:154
 msgid "WordPress Debug Log"
 msgstr ""
 
-#: core/admin/Settings.php:155
+#: core/admin/Settings.php:161
 msgid "Enqueued Files"
 msgstr ""
 
-#: core/admin/Settings.php:162
+#: core/admin/Settings.php:168
 msgid "System Information"
 msgstr ""
 
-#: core/admin/Settings.php:169
+#: core/admin/Settings.php:175
 msgid "Current User"
 msgstr ""
 
-#: core/admin/Settings.php:176
+#: core/admin/Settings.php:182
 msgid "Defined Constants"
 msgstr ""
 
-#: core/admin/Settings.php:183
+#: core/admin/Settings.php:189
 msgid "HTTP Requests"
 msgstr ""
 
-#: core/admin/Settings.php:190
+#: core/admin/Settings.php:196
 msgid "PHP Information"
 msgstr ""
 
-#: core/admin/Settings.php:197
+#: core/admin/Settings.php:203
 #: core/display/Loader.php:180
 msgid "bbPress"
 msgstr ""
 
-#: core/admin/Settings.php:204
+#: core/admin/Settings.php:210
 msgid "PHP errors and warnings"
 msgstr ""
 
-#: core/admin/Settings.php:211
+#: core/admin/Settings.php:217
 msgid "WordPress Doing It Wrong"
 msgstr ""
 
-#: core/admin/Settings.php:218
+#: core/admin/Settings.php:224
 msgid "Deprecated warnings"
 msgstr ""
 
-#: core/admin/Settings.php:236
+#: core/admin/Settings.php:231
+msgid "AJAX Tracking"
+msgstr ""
+
+#: core/admin/Settings.php:249
 msgid "In WordPress Toolbar"
 msgstr ""
 
-#: core/admin/Settings.php:237
+#: core/admin/Settings.php:250
 msgid "Float, Top / Left"
 msgstr ""
 
-#: core/admin/Settings.php:238
+#: core/admin/Settings.php:251
 msgid "Float, Top / Right"
 msgstr ""
 
-#: core/admin/Settings.php:239
+#: core/admin/Settings.php:252
 msgid "Float, Bottom / Left"
 msgstr ""
 
-#: core/admin/Settings.php:240
+#: core/admin/Settings.php:253
 msgid "Float, Bottom / Right"
 msgstr ""
 
-#: core/admin/Settings.php:267
+#: core/admin/Settings.php:280
 msgid "Main activation settings for the plugin. You can choose to use debugger on admin side and / or frontend."
 msgstr ""
 
-#: core/admin/Settings.php:271
+#: core/admin/Settings.php:284
 msgid "Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button."
 msgstr ""
 
-#: core/admin/Settings.php:275
+#: core/admin/Settings.php:288
 msgid "Debugger can be visible to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role."
 msgstr ""
 
-#: core/admin/Settings.php:276
+#: core/admin/Settings.php:289
 msgid "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!"
 msgstr ""
 
-#: core/admin/Settings.php:280
+#: core/admin/Settings.php:293
 msgid "Debugger contains some special panels that can be limited in terms of use when it comes to different user roles allowed to view Debugger popup."
 msgstr ""
 
-#: core/admin/Settings.php:284
+#: core/admin/Settings.php:297
 msgid "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them."
 msgstr ""
 
-#: core/admin/Settings.php:288
+#: core/admin/Settings.php:301
 msgid "Control which types of errors and warnings plugins will track and report."
 msgstr ""
 
-#: core/admin/Settings.php:292
+#: core/admin/Settings.php:305
 msgid "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed."
 msgstr ""
 
-#: core/admin/Settings.php:335
+#: core/admin/Settings.php:309
+msgid "Add AJAX tab in the debugger, and track the AJAX request on the active page."
+msgstr ""
+
+#: core/admin/Settings.php:352
 msgid "Visitors are users that are not currently logged in."
 msgstr ""
 
-#: core/admin/Settings.php:342
+#: core/admin/Settings.php:359
 msgid "Plugin will attempt to set WP_DEBUG to 'true'. But, if the WP_DEBUG was previously defined elsewhere as 'false', this option will not work."
 msgstr ""
 
-#: core/admin/Settings.php:349
+#: core/admin/Settings.php:366
 msgid "Plugin will attempt to set SAVEQUERIES to 'true'. But, if the SAVEQUERIES was previously defined elsewhere as 'false', this option will not work."
 msgstr ""
 
-#: core/admin/Settings.php:368
+#: core/admin/Settings.php:385
 msgid "This panel will be on the right side of the Debugger header, and it is displayed as icon only."
 msgstr ""
 
