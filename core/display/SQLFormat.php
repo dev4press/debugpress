@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class SQLFormat {
-// Constants for token types
+	// Constants for token types
 	const TOKEN_TYPE_WHITESPACE = 0;
 	const TOKEN_TYPE_WORD = 1;
 	const TOKEN_TYPE_QUOTE = 2;

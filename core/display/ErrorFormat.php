@@ -116,6 +116,7 @@ class ErrorFormat {
 		if ( $item['message'] ) {
 			$render .= '<div class="debugpress-error-message">' . esc_html( $item['message'] ) . '</div>';
 		}
+
 		$render .= '</div>';
 
 		return $render;
@@ -154,6 +155,7 @@ class ErrorFormat {
 		if ( isset( $item['message'] ) && ! empty( $item['message'] ) ) {
 			echo '<em>' . $item['message'] . '</em>';
 		}
+
 		echo '</div>';
 	}
 
@@ -168,23 +170,27 @@ class ErrorFormat {
 		if ( isset( $item['message'] ) && ! empty( $item['message'] ) ) {
 			echo '<em>' . $item['message'] . '</em>';
 		}
+
 		echo '</div>';
 	}
 
 	public static function deprecated_argument( $item ) {
 		echo '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-argument">';
 		echo '<h4>' . __( "Deprecated Argument", "debugpress" ) . ':</h4>';
+
 		if ( $item['in_file'] ) {
 			if ( $item['on_line'] ) {
 				echo "<strong>" . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . ", ";
 			}
 			echo "<strong>" . __( "In file", "debugpress" ) . ":</strong> " . $item["in_file"] . "<br/>";
 		}
+
 		echo sprintf( __( "Argument in <strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item["deprecated"], $item["version"] );
 
 		if ( isset( $item['message'] ) && ! empty( $item['message'] ) ) {
 			echo '<em>' . $item['message'] . '</em>';
 		}
+
 		echo '</div>';
 	}
 }
