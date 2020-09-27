@@ -7,7 +7,7 @@ Description:       DebugPress is an easy to use plugin implementing popup for de
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       debugpress
-Version:           1.2
+Version:           1.3
 Requires at least: 4.9
 Tested up to:      5.5
 Requires PHP:      5.6

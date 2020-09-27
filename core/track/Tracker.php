@@ -274,9 +274,9 @@ class Tracker {
 			return false;
 		}
 
-		$caller         = $this->_get_caller();
-		$log            = compact( 'errno', 'errstr', 'errfile', 'errline', 'caller' );
-		$this->errors[] = $log;
+		$caller = $this->_get_caller();
+
+		$this->errors[] = compact( 'errno', 'errstr', 'errfile', 'errline', 'caller' );
 
 		$this->counts['errors'] ++;
 		$this->counts['total'] ++;
@@ -300,10 +300,9 @@ class Tracker {
 		$deprecated = $function . '()';
 		$in_file    = $this->_strip_abspath( $backtrace[3]['file'] );
 		$on_line    = $backtrace[3]['line'];
+		$caller     = $this->_get_caller( 'doing_it_wrong_run' );
 
-		$caller               = $this->_get_caller( 'doing_it_wrong_run' );
-		$log                  = compact( 'deprecated', 'message', 'version', 'in_file', 'on_line', 'caller' );
-		$this->doingitwrong[] = $log;
+		$this->doingitwrong[] = compact( 'deprecated', 'message', 'version', 'in_file', 'on_line', 'caller' );
 
 		$this->counts['doingitwrong'] ++;
 		$this->counts['total'] ++;
@@ -324,8 +323,7 @@ class Tracker {
 		$in_file = $this->_strip_abspath( $backtrace[ $bt ]['file'] );
 		$on_line = $backtrace[ $bt ]['line'];
 
-		$log                            = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line' );
-		$this->deprecated['function'][] = $log;
+		$this->deprecated['function'][] = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line' );
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
@@ -338,18 +336,19 @@ class Tracker {
 		$in_file    = $this->_strip_abspath( $backtrace[4]['file'] );
 		$on_line    = $backtrace[4]['line'];
 
-		$log                        = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line' );
-		$this->deprecated['file'][] = $log;
+		$this->deprecated['file'][] = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file' );
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
 	}
 
-	public function track_argument( $function, $replacement, $version ) {
+	public function track_argument( $function, $message, $version ) {
 		$backtrace = debug_backtrace();
 
 		$deprecated = $function . '()';
-		$menu       = $in_file = $on_line = null;
+		$menu       = null;
+		$in_file    = null;
+		$on_line    = null;
 
 		switch ( $function ) {
 			case 'options.php' :
@@ -388,8 +387,7 @@ class Tracker {
 				break;
 		}
 
-		$log                            = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line' );
-		$this->deprecated['argument'][] = $log;
+		$this->deprecated['argument'][] = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line' );
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
@@ -402,8 +400,7 @@ class Tracker {
 		$in_file    = $this->_strip_abspath( $backtrace[4]['file'] );
 		$on_line    = $backtrace[4]['line'];
 
-		$log                               = compact( 'deprecated', 'version', 'in_file', 'on_line' );
-		$this->deprecated['constructor'][] = $log;
+		$this->deprecated['constructor'][] = compact( 'deprecated', 'version', 'in_file', 'on_line' );
 
 		$this->counts['deprecated'] ++;
 		$this->counts['total'] ++;
