@@ -15,16 +15,16 @@ class Deprecated extends Panel {
 			foreach ( $items as $item ) {
 				switch ( $type ) {
 					case 'file':
-						ErrorFormat::deprecated_file( $item );
+						echo ErrorFormat::deprecated_file( $item );
 						break;
 					case 'function':
-						ErrorFormat::deprecated_function( $item );
+						echo ErrorFormat::deprecated_function( $item );
 						break;
 					case 'constructor':
-						ErrorFormat::deprecated_constructor( $item );
+						echo ErrorFormat::deprecated_constructor( $item );
 						break;
 					case 'argument':
-						ErrorFormat::deprecated_argument( $item );
+						echo ErrorFormat::deprecated_argument( $item );
 						break;
 				}
 			}

@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.2.1
+Stable tag: 1.3
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
@@ -87,6 +87,13 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
 == Changelog ==
+= 1.3 (2020.10.01) =
+* New: option to control AJAX tracking data save into debug.log
+* New: filters to control AJAX tracking activity and data returned
+* New: filter to control every plugin settings returned value
+* Edit: uniform return of rendered results from ErrorFormat class
+* Removed: several unused methods in the ErrorFormat class
+
 = 1.2.1 (2020.09.27) =
 * Edit: various improvements to errors and warnings tracking handlers
 * Fix: missing argument for the deprecated tracking handler
@@ -118,14 +125,14 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * First official release
 
 == Upgrade Notice ==
+= 1.3 =
+Improvements to AJAX tracking.
+
 = 1.2 =
 Several panels improved. Many new settings. Several bug fixes.
 
 = 1.1 =
 Debug Log panel added. Various styling improvements. Improved settings panel.
-
-= 1.0 =
-First official release.
 
 == Screenshots ==
 1. Debugger popup: basic debugger panel

@@ -7,7 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class AJAX {
-	public $session_key = '';
+	private $_session_key = '';
+	private $_skip_tracking = false;
+	private $_to_debug_log = true;
 
 	public function __construct() {
 		add_action( 'debugpress-tracker-getting-ready', array( $this, 'prepare' ), 30 );
@@ -26,8 +28,18 @@ class AJAX {
 	}
 
 	public function prepare() {
-		$this->session_key = time() . '-' . rand( 100000, 999999 );
-		debugpress_error_log( $this->session_key . ' - ' . __( "AJAX STARTED", "debugpress" ) );
+		$this->_skip_tracking = apply_filters( 'debugpress-ajax-tracker-skip', $this->_skip_tracking );
+		$this->_to_debug_log  = apply_filters( 'debugpress-ajax-tracker-to-debug-log', debugpress_plugin()->get( 'ajax_to_debuglog' ) );
+
+		if ( $this->_skip_tracking ) {
+			return;
+		}
+
+		$this->_session_key = time() . '-' . rand( 100000, 999999 );
+
+		if ( $this->_to_debug_log ) {
+			debugpress_error_log( $this->_session_key . ' - ' . __( "AJAX STARTED", "debugpress" ) );
+		}
 
 		ob_start();
 
@@ -35,6 +47,10 @@ class AJAX {
 	}
 
 	public function release() {
+		if ( $this->_skip_tracking ) {
+			return;
+		}
+
 		debugpress_tracker()->end();
 
 		if ( ! headers_sent() ) {
@@ -42,7 +58,7 @@ class AJAX {
 				$formatted = is_scalar( $value ) ? $value : json_encode( $value );
 				$header    = sprintf( 'X-DEBUGPRESS-%s: %s', $key, $formatted );
 
-				if ( $key !== 'ajax-session-key' ) {
+				if ( $this->_to_debug_log && $key !== 'ajax-session-key' ) {
 					debugpress_error_log( sprintf( '%s: %s', $key, $formatted ) );
 				}
 
@@ -50,7 +66,9 @@ class AJAX {
 			}
 		}
 
-		debugpress_error_log( $this->session_key . ' - ' . __( "AJAX ENDED", "debugpress" ) );
+		if ( $this->_to_debug_log ) {
+			debugpress_error_log( $this->_session_key . ' - ' . __( "AJAX ENDED", "debugpress" ) );
+		}
 
 		if ( ob_get_length() !== false ) {
 			ob_flush();
@@ -59,7 +77,7 @@ class AJAX {
 
 	public function data() {
 		$data = array(
-			'ajax-session-key'       => $this->session_key,
+			'ajax-session-key'       => $this->_session_key,
 			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( $_REQUEST['action'] ) : '',
 			'php-memory-available'   => ini_get( 'memory_limit' ) . "B",
 			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" ),
@@ -88,6 +106,6 @@ class AJAX {
 			$data['doingitwrong-count'] = debugpress_tracker()->counts['doingitwrong'];
 		}
 
-		return $data;
+		return apply_filters( 'debugpress-ajax-tracker-data', $data );
 	}
 }

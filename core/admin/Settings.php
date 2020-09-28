@@ -233,6 +233,13 @@ class Settings {
 			array( $this, 'option_ajax' ),
 			'debugpress',
 			'debugpress_settings_ajax' );
+
+		add_settings_field(
+			'debugpress_settings_ajax_to_debuglog',
+			'<label for="debugpress_settings_ajax_to_debuglog">' . __( "Save to Debug Log", "debugpress" ) . '</label>',
+			array( $this, 'option_ajax_to_debuglog' ),
+			'debugpress',
+			'debugpress_settings_ajax' );
 	}
 
 	private function _roles_values() {
@@ -450,5 +457,12 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'ajax' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_ajax' name='debugpress_settings[ajax]' type='checkbox' />";
+	}
+
+	public function option_ajax_to_debuglog() {
+		$checked = debugpress_plugin()->get( 'ajax_to_debuglog' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_ajax_to_debuglog' name='debugpress_settings[ajax_to_debuglog]' type='checkbox' />";
+		echo '<p class="description">' . esc_html__( "The tracking results for each tracked AJAX call would be also saved in the WordPress 'debug.log', if it is used.", "debugpress" ) . '</p>';
 	}
 }

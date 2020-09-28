@@ -16,6 +16,7 @@ class Plugin {
 		'admin'                 => false,
 		'frontend'              => false,
 		'ajax'                  => true,
+		'ajax_to_debuglog'      => true,
 		'button_admin'          => 'toolbar',
 		'button_frontend'       => 'toolbar',
 		'for_super_admin'       => true,
@@ -123,14 +124,16 @@ class Plugin {
 
 	public function get( $name, $fallback = false ) {
 		if ( isset( $this->_settings[ $name ] ) ) {
-			return $this->_settings[ $name ];
+			$value = $this->_settings[ $name ];
 		} else if ( isset( $this->_defaults[ $name ] ) ) {
-			return $this->_defaults[ $name ];
+			$value = $this->_defaults[ $name ];
 		} else if ( isset( $this->_extras[ $name ] ) ) {
-			return $this->_extras[ $name ];
+			$value = $this->_extras[ $name ];
+		} else {
+			$value = $fallback;
 		}
 
-		return $fallback;
+		return apply_filters( 'debugpress-get-settings-value-' . $name, $value, $fallback );
 	}
 
 	public function process_settings( $input ) {
