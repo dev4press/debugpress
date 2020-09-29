@@ -1,0 +1,170 @@
+.debugpress-panel-tools {
+    .tab-content {
+        margin: 15px;
+    }
+}
+
+.debugpress_phpinfo {
+    overflow: auto;
+
+    h1.p {
+        background-color: #222;
+        color: #FFF;
+        font-size: 28px;
+        margin: 0;
+        padding: 22px 16px;
+    }
+
+    td img {
+        float: right;
+        margin: 7px 16px 0 0;
+    }
+
+    .table {
+        table-layout: fixed;
+    }
+
+    div.inside {
+        margin: -1px 0 10px;
+    }
+
+    p.sub {
+        color: #777;
+        font-size: 13px;
+        font-style: italic;
+        padding: 5px 10px 15px;
+        margin: -12px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table tr.first th {
+        color: #222;
+        font-weight: bold;
+    }
+
+    td {
+        border-bottom: 1px solid #ECECEC;
+        padding: 4px 0;
+        white-space: nowrap;
+        font-size: 18px;
+    }
+
+    table tr:last-child td {
+        border-bottom: none;
+    }
+
+    td.b, .gdpet-info-grid th.first {
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+        padding-right: 6px;
+        white-space: nowrap;
+        text-align: right;
+    }
+
+    td.first, td.last {
+        width: 1px;
+    }
+
+    td.t {
+        white-space: normal;
+    }
+
+    td.t, .gdpet-info-grid th {
+        line-height: 16px;
+        color: #333;
+        font-size: 12px;
+        padding: 4px 0 2px;
+    }
+
+    td.options {
+        text-align: right;
+        white-space: normal;
+        padding-right: 0px;
+    }
+
+    th {
+        text-align: left;
+        background-color: #ECECEC;
+        padding: 3px 5px;
+    }
+
+    h3 {
+        background: #333 !important;
+        color: white;
+        text-shadow: none !important;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    div.inside .link {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    h2.phpsection {
+        background-color: #333;
+        color: #FFF;
+        font-style: normal;
+        padding: 5px 10px;
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 5px;
+        text-shadow: none;
+    }
+
+    h2.phpsection a {
+        color: #FFF;
+    }
+}
+
+.debugpress_info {
+    table {
+        max-width: 100%;
+        line-height: 1.5;
+        border-collapse: collapse;
+        border: 1px solid #BBB;
+        border-top: 0;
+
+        thead {
+            th {
+                text-align: left;
+                vertical-align: top;
+                padding: 5px;
+                background: #666;
+                color: #FFF
+            }
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid #BBB;
+
+                th, td {
+                    vertical-align: top;
+                    padding: 5px;
+                    text-align: left;
+                }
+
+                td {
+                    border-left: 1px solid #BBB;
+
+                    div {
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+    }
+}

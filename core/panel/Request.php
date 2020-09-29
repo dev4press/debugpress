@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Dev4Press\Plugin\DebugPress\Main\IP;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
+use Dev4Press\Plugin\DebugPress\Main\WP;
 
 class Request extends Panel {
 	public function left() {
@@ -16,7 +17,7 @@ class Request extends Panel {
 
 		$this->title( __( "URL", "debugpress" ), true );
 		$this->block_header( true );
-		echo debugpress_current_url();
+		echo WP::instance()->current_url();
 		$this->block_footer();
 		$this->list_array( $this->request_url() );
 

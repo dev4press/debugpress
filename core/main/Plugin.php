@@ -30,6 +30,7 @@ class Plugin {
 		'panel_content'         => true,
 		'panel_request'         => true,
 		'panel_debuglog'        => true,
+		'panel_hooks'           => false,
 		'panel_enqueue'         => false,
 		'panel_system'          => false,
 		'panel_user'            => false,

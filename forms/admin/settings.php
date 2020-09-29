@@ -1,4 +1,4 @@
-<div class="wrap">
+<div class="wrap debugpress-panel debugpress-panel-settings">
     <h1><?php _e( "DebugPress Settings", "debugpress" ); ?></h1>
 
     <form action='options.php' method='post'>

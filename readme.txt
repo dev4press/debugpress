@@ -88,6 +88,8 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 
 == Changelog ==
 = 1.3 (2020.10.01) =
+* New: additional Info page added into WordPress admin Tools
+* New: tools info page shows the content of PHPInfo and MySQL Variables
 * New: option to control AJAX tracking data save into debug.log
 * New: filters to control AJAX tracking activity and data returned
 * New: filter to control every plugin settings returned value
@@ -130,7 +132,7 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 
 == Upgrade Notice ==
 = 1.3 =
-Improvements to AJAX tracking.
+Tools Info panel with PHPInfo and MySQL Variables. Improvements to AJAX tracking. Some code and styling refactoring.
 
 = 1.2 =
 Several panels improved. Many new settings. Several bug fixes.

@@ -13,14 +13,14 @@ function debugpress_rs( $value, $echo = true ) {
 		$result = '<div class="debugpress_rs debugpress_rs_bool">' . ( $value ? 'TRUE' : 'FALSE' ) . '</div>';
 	} else if ( is_null( $value ) ) {
 		$result = '<div class="debugpress_rs debugpress_rs_null">NULL</div>';
+	} else if ( is_numeric( $value ) ) {
+		$result = '<div class="debugpress_rs debugpress_rs_number">' . $value . '</div>';
 	} else if ( is_string( $value ) ) {
 		if ( empty( $value ) ) {
 			$result = '<div class="debugpress_rs debugpress_rs_empty">EMPTY</div>';
 		} else {
 			$result = '<div class="debugpress_rs debugpress_rs_string">' . $value . '</div>';
 		}
-	} else if ( is_int( $value ) || is_float( $value ) ) {
-		$result = '<div class="debugpress_rs debugpress_rs_number">' . $value . '</div>';
 	}
 
 	if ( $echo ) {

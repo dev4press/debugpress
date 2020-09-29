@@ -158,6 +158,13 @@ class Settings {
 			'debugpress_settings_special' );
 
 		add_settings_field(
+			'debugpress_settings_panel_hooks',
+			'<label for="debugpress_settings_panel_hooks">' . __( "Registered Hooks", "debugpress" ) . '</label>',
+			array( $this, 'option_panel_hooks' ),
+			'debugpress',
+			'debugpress_settings_panels' );
+
+		add_settings_field(
 			'debugpress_settings_panel_enqueue',
 			'<label for="debugpress_settings_panel_enqueue">' . __( "Enqueued Files", "debugpress" ) . '</label>',
 			array( $this, 'option_panel_enqueue' ),
@@ -391,6 +398,12 @@ class Settings {
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_debuglog' name='debugpress_settings[panel_debuglog]' type='checkbox' />";
 		echo '<p class="description">' . esc_html__( "This panel will be on the right side of the Debugger header, and it is displayed as icon only.", "debugpress" ) . '</p>';
+	}
+
+	public function option_panel_hooks() {
+		$checked = debugpress_plugin()->get( 'panel_hooks' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_panel_hooks' name='debugpress_settings[panel_hooks]' type='checkbox' />";
 	}
 
 	public function option_panel_enqueue() {

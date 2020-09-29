@@ -165,6 +165,10 @@ class Loader {
 			$this->tabs['user'] = __( "User", "debugpress" );
 		}
 
+		if ( debugpress_plugin()->get( 'panel_hooks' ) ) {
+			$this->tabs['hooks'] = __( "Hooks", "debugpress" );
+		}
+
 		if ( debugpress_plugin()->get( 'panel_enqueue' ) ) {
 			$this->tabs['enqueue'] = __( "Enqueue", "debugpress" );
 		}

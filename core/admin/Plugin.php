@@ -52,10 +52,18 @@ class Plugin {
 
 	public function admin_menu() {
 		add_options_page( 'DebugPress', 'DebugPress', 'manage_options', 'debugpress', array( $this, 'settings_page' ) );
+		add_management_page( 'DebugPress Info', 'DebugPress Info', 'manage_options', 'debugpress', array(
+			$this,
+			'tools_page'
+		) );
 	}
 
 	public function settings_page() {
 		include( DEBUGPRESS_PLUGIN_PATH . 'forms/admin/settings.php' );
+	}
+
+	public function tools_page() {
+		include( DEBUGPRESS_PLUGIN_PATH . 'forms/admin/tools.php' );
 	}
 
 	public function admin_init() {
