@@ -16,7 +16,10 @@ class Plugin {
 			$this,
 			'plugin_action_links'
 		) );
-		add_filter( 'plugin_action_links_debugpress/debugpress.php', array( $this, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_debugpress/debugpress.php', array(
+			$this,
+			'plugin_action_links'
+		) );
 
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_links' ), 10, 2 );
 	}
@@ -51,8 +54,11 @@ class Plugin {
 	}
 
 	public function admin_menu() {
-		add_options_page( 'DebugPress', 'DebugPress', 'manage_options', 'debugpress', array( $this, 'settings_page' ) );
-		add_management_page( 'DebugPress Info', 'DebugPress Info', 'manage_options', 'debugpress', array(
+		add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
+			$this,
+			'settings_page'
+		) );
+		add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
 			$this,
 			'tools_page'
 		) );
