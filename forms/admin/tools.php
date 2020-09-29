@@ -1,9 +1,16 @@
 <?php
 
+use Dev4Press\Plugin\DebugPress\Main\OPCache;
+
 $_tabs = apply_filters( 'debugpress-tools-tabs', array(
-	'php'   => __( "PHP Info" ),
-	'mysql' => __( "MySQL Variables", "debugpress" )
+	'php'     => __( "PHP Info", "debugpress" ),
+	'opcache' => __( "OPCache Info", "debugpress" ),
+	'mysql'   => __( "MySQL Variables", "debugpress" )
 ) );
+
+if ( ! OPCache::instance()->has_opcache() ) {
+	unset( $_tabs['opcache'] );
+}
 
 $_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : '';
 $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;

@@ -89,7 +89,9 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 == Changelog ==
 = 1.3 (2020.10.01) =
 * New: additional Info page added into WordPress admin Tools
-* New: tools info page shows the content of PHPInfo and MySQL Variables
+* New: tools info page shows the content of PHP Info
+* New: tools info page shows the content of OPCache Info
+* New: tools info page shows the content of MySQL Variables
 * New: option to control AJAX tracking data save into debug.log
 * New: filters to control AJAX tracking activity and data returned
 * New: filter to control every plugin settings returned value

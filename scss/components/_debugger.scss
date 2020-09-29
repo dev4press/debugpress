@@ -31,6 +31,7 @@
                 }
             }
 
+            &#debugpress-debugger-tab-tools-li,
             &#debugpress-debugger-tab-debuglog-li {
                 float: right;
 
@@ -381,10 +382,13 @@
     .debugpress-button-action {
         background: #27B;
         color: #FFF;
+        display: block;
         cursor: pointer;
         border: 0;
+        text-align: center;
         width: 100%;
         border-radius: 0;
+        margin: 5px 0 0;
         padding: 5px 15px;
         font-size: calc(var(--debugpress-base-font-size) + 3px);
     }

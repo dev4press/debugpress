@@ -165,9 +165,9 @@ class Loader {
 			$this->tabs['user'] = __( "User", "debugpress" );
 		}
 
-		if ( debugpress_plugin()->get( 'panel_hooks' ) ) {
+		/*if ( debugpress_plugin()->get( 'panel_hooks' ) ) {
 			$this->tabs['hooks'] = __( "Hooks", "debugpress" );
-		}
+		}*/
 
 		if ( debugpress_plugin()->get( 'panel_enqueue' ) ) {
 			$this->tabs['enqueue'] = __( "Enqueue", "debugpress" );
@@ -208,6 +208,11 @@ class Loader {
 		if ( ! empty( debugpress_tracker()->logged ) ) {
 			$this->tabs['store'] = __( "Store", "debugpress" ) . ' (' . count( debugpress_tracker()->logged ) . ')';
 		}
+
+		/*$this->tabs['tools'] = array(
+			'label' => __( "Tools", "debugpress" ),
+			'tab'   => '<i class="debugpress-icon debugpress-icon-tools"></i>'
+		);*/
 
 		if ( debugpress_plugin()->get( 'panel_debuglog' ) ) {
 			$this->tabs['debuglog'] = array(

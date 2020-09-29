@@ -20,8 +20,71 @@
         margin: 7px 16px 0 0;
     }
 
-    .table {
-        table-layout: fixed;
+    table {
+        width: 100%;
+        background: #FFF;
+        border-collapse: collapse;
+        border: 1px solid #BBB;
+        margin: 0 0 5px;
+
+        td,
+        th {
+            padding: 5px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        tr {
+            th,
+            td.first {
+                width: 20%;
+            }
+
+            td.b,
+            th.first {
+                color: #333;
+                font-weight: bold;
+            }
+
+            td {
+                border-bottom: 1px solid #ECECEC;
+                word-break: break-all;
+
+                .options {
+                    text-align: right;
+                    white-space: normal;
+                    padding-right: 0px;
+                }
+            }
+
+            &.first {
+                th {
+                    color: #222;
+                    font-weight: bold;
+                }
+            }
+
+            &:last-child {
+                td {
+                    border-bottom: none;
+                }
+            }
+
+            &.h,
+            &.with-header {
+                th {
+                    background: #666;
+                    color: #FFF;
+                    padding: 10px;
+                }
+            }
+        }
+
+        th {
+            text-align: left;
+            background-color: #ECECEC;
+            padding: 3px 5px;
+        }
     }
 
     div.inside {
@@ -34,62 +97,6 @@
         font-style: italic;
         padding: 5px 10px 15px;
         margin: -12px;
-    }
-
-    table {
-        width: 100%;
-    }
-
-    table tr.first th {
-        color: #222;
-        font-weight: bold;
-    }
-
-    td {
-        border-bottom: 1px solid #ECECEC;
-        padding: 4px 0;
-        white-space: nowrap;
-        font-size: 18px;
-    }
-
-    table tr:last-child td {
-        border-bottom: none;
-    }
-
-    td.b, .gdpet-info-grid th.first {
-        color: #333;
-        font-weight: bold;
-        font-size: 15px;
-        padding-right: 6px;
-        white-space: nowrap;
-        text-align: right;
-    }
-
-    td.first, td.last {
-        width: 1px;
-    }
-
-    td.t {
-        white-space: normal;
-    }
-
-    td.t, .gdpet-info-grid th {
-        line-height: 16px;
-        color: #333;
-        font-size: 12px;
-        padding: 4px 0 2px;
-    }
-
-    td.options {
-        text-align: right;
-        white-space: normal;
-        padding-right: 0px;
-    }
-
-    th {
-        text-align: left;
-        background-color: #ECECEC;
-        padding: 3px 5px;
     }
 
     h3 {
@@ -131,6 +138,7 @@
 
 .debugpress_info {
     table {
+        min-width: 50%;
         max-width: 100%;
         line-height: 1.5;
         border-collapse: collapse;
@@ -140,16 +148,16 @@
         thead {
             th {
                 text-align: left;
-                vertical-align: top;
                 padding: 5px;
                 background: #666;
-                color: #FFF
+                color: #FFF;
             }
         }
 
         tbody {
             tr {
                 border-bottom: 1px solid #BBB;
+                background: #FFF;
 
                 th, td {
                     vertical-align: top;
@@ -165,6 +173,14 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .debugpress_info {
+        table {
+            width: 100%;
         }
     }
 }

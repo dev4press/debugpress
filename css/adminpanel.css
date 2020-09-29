@@ -138,8 +138,62 @@
     margin: 7px 16px 0 0;
 }
 
-.debugpress_phpinfo .table {
-    table-layout: fixed;
+.debugpress_phpinfo table {
+    width: 100%;
+    background: #FFF;
+    border-collapse: collapse;
+    border: 1px solid #BBB;
+    margin: 0 0 5px;
+}
+
+.debugpress_phpinfo table td,
+.debugpress_phpinfo table th {
+    padding: 5px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.debugpress_phpinfo table tr th,
+.debugpress_phpinfo table tr td.first {
+    width: 20%;
+}
+
+.debugpress_phpinfo table tr td.b,
+.debugpress_phpinfo table tr th.first {
+    color: #333;
+    font-weight: bold;
+}
+
+.debugpress_phpinfo table tr td {
+    border-bottom: 1px solid #ECECEC;
+    word-break: break-all;
+}
+
+.debugpress_phpinfo table tr td .options {
+    text-align: right;
+    white-space: normal;
+    padding-right: 0px;
+}
+
+.debugpress_phpinfo table tr.first th {
+    color: #222;
+    font-weight: bold;
+}
+
+.debugpress_phpinfo table tr:last-child td {
+    border-bottom: none;
+}
+
+.debugpress_phpinfo table tr.h th, .debugpress_phpinfo table tr.with-header th {
+    background: #666;
+    color: #FFF;
+    padding: 10px;
+}
+
+.debugpress_phpinfo table th {
+    text-align: left;
+    background-color: #ECECEC;
+    padding: 3px 5px;
 }
 
 .debugpress_phpinfo div.inside {
@@ -152,62 +206,6 @@
     font-style: italic;
     padding: 5px 10px 15px;
     margin: -12px;
-}
-
-.debugpress_phpinfo table {
-    width: 100%;
-}
-
-.debugpress_phpinfo table tr.first th {
-    color: #222;
-    font-weight: bold;
-}
-
-.debugpress_phpinfo td {
-    border-bottom: 1px solid #ECECEC;
-    padding: 4px 0;
-    white-space: nowrap;
-    font-size: 18px;
-}
-
-.debugpress_phpinfo table tr:last-child td {
-    border-bottom: none;
-}
-
-.debugpress_phpinfo td.b, .debugpress_phpinfo .gdpet-info-grid th.first {
-    color: #333;
-    font-weight: bold;
-    font-size: 15px;
-    padding-right: 6px;
-    white-space: nowrap;
-    text-align: right;
-}
-
-.debugpress_phpinfo td.first, .debugpress_phpinfo td.last {
-    width: 1px;
-}
-
-.debugpress_phpinfo td.t {
-    white-space: normal;
-}
-
-.debugpress_phpinfo td.t, .debugpress_phpinfo .gdpet-info-grid th {
-    line-height: 16px;
-    color: #333;
-    font-size: 12px;
-    padding: 4px 0 2px;
-}
-
-.debugpress_phpinfo td.options {
-    text-align: right;
-    white-space: normal;
-    padding-right: 0px;
-}
-
-.debugpress_phpinfo th {
-    text-align: left;
-    background-color: #ECECEC;
-    padding: 3px 5px;
 }
 
 .debugpress_phpinfo h3 {
@@ -247,6 +245,7 @@
 }
 
 .debugpress_info table {
+    min-width: 50%;
     max-width: 100%;
     line-height: 1.5;
     border-collapse: collapse;
@@ -256,7 +255,6 @@
 
 .debugpress_info table thead th {
     text-align: left;
-    vertical-align: top;
     padding: 5px;
     background: #666;
     color: #FFF;
@@ -264,6 +262,7 @@
 
 .debugpress_info table tbody tr {
     border-bottom: 1px solid #BBB;
+    background: #FFF;
 }
 
 .debugpress_info table tbody tr th, .debugpress_info table tbody tr td {
@@ -278,4 +277,10 @@
 
 .debugpress_info table tbody tr td div {
     word-break: break-all;
+}
+
+@media screen and (max-width: 900px) {
+    .debugpress_info table {
+        width: 100%;
+    }
 }

@@ -677,11 +677,11 @@ a > .debugpress-icon {
     font-weight: bold;
 }
 
-.debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-debuglog-li {
+.debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-tools-li, .debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-debuglog-li {
     float: right;
 }
 
-.debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-debuglog-li i {
+.debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-tools-li i, .debugpress-style-popup #debugpress-debugger-tabs li#debugpress-debugger-tab-debuglog-li i {
     font-size: 120%;
     vertical-align: text-bottom;
 }
@@ -996,10 +996,13 @@ a > .debugpress-icon {
 .debugpress-style-popup .debugpress-button-action {
     background: #27B;
     color: #FFF;
+    display: block;
     cursor: pointer;
     border: 0;
+    text-align: center;
     width: 100%;
     border-radius: 0;
+    margin: 5px 0 0;
     padding: 5px 15px;
     font-size: calc(var(--debugpress-base-font-size) + 3px);
 }

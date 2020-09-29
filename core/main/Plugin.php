@@ -30,7 +30,6 @@ class Plugin {
 		'panel_content'         => true,
 		'panel_request'         => true,
 		'panel_debuglog'        => true,
-		'panel_hooks'           => false,
 		'panel_enqueue'         => false,
 		'panel_system'          => false,
 		'panel_user'            => false,
@@ -41,6 +40,7 @@ class Plugin {
 	);
 
 	private $_extras = array(
+		'panel_hooks'          => false,
 		'slow_query_cutoff'    => 10,
 		'use_sql_formatter'    => true,
 		'format_queries_panel' => true

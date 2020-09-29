@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 09/29/2020 12:56:43 PM\n"
+"POT-Creation-Date: 09/29/2020 06:49:04 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -436,7 +436,11 @@ msgstr ""
 msgid "Store"
 msgstr ""
 
-#: core/display/Loader.php:213
+#: core/display/Loader.php:212
+msgid "Tools"
+msgstr ""
+
+#: core/display/Loader.php:218
 msgid "Debug Log"
 msgstr ""
 
@@ -546,6 +550,8 @@ msgstr ""
 #: core/main/Panel.php:81
 #: core/main/Panel.php:86
 #: forms/tools/mysql.php:4
+#: forms/tools/opcache.php:9
+#: forms/tools/opcache.php:28
 msgid "Value"
 msgstr ""
 
@@ -1448,19 +1454,26 @@ msgstr ""
 msgid "DebugPress on GitHub"
 msgstr ""
 
-#: forms/admin/tools.php:10
+#: forms/admin/tools.php:20
 msgid "DebugPress Information"
 msgstr ""
 
-#: forms/admin/tools.php:13
+#: forms/admin/tools.php:23
 msgid "Intro"
 msgstr ""
 
-#: forms/admin/tools.php:14
+#: forms/admin/tools.php:5
+#: forms/tools/info.php:9
 msgid "PHP Info"
 msgstr ""
 
-#: forms/admin/tools.php:15
+#: forms/admin/tools.php:6
+#: forms/tools/info.php:16
+msgid "OPCache Info"
+msgstr ""
+
+#: forms/admin/tools.php:7
+#: forms/tools/info.php:23
 msgid "MySQL Variables"
 msgstr ""
 
@@ -1468,8 +1481,36 @@ msgstr ""
 msgid "There are no AJAX requests detected yet."
 msgstr ""
 
+#: forms/tools/info.php:6
+msgid "This page shows several Information panels that are not practical for display in the Debugger window due to their size and fact that they don't usually change between page loading."
+msgstr ""
+
+#: forms/tools/info.php:11
+msgid "Load the full content of the PHP.ini file through PHPInfo function call."
+msgstr ""
+
+#: forms/tools/info.php:13
+#: forms/tools/info.php:20
+#: forms/tools/info.php:27
+msgid "Open the Panel"
+msgstr ""
+
+#: forms/tools/info.php:18
+msgid "Show the settings for the PHP OPCache and basic statistics."
+msgstr ""
+
+#: forms/tools/info.php:25
+msgid "Show all the MySQL configuration variables retrieved from the database server."
+msgstr ""
+
 #: forms/tools/mysql.php:3
+#: forms/tools/opcache.php:8
+#: forms/tools/opcache.php:27
 msgid "Variable"
+msgstr ""
+
+#: forms/tools/opcache.php:24
+msgid "OPCache Statistics"
 msgstr ""
 
 #: forms/display.php:23
