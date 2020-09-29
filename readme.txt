@@ -91,6 +91,10 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * New: option to control AJAX tracking data save into debug.log
 * New: filters to control AJAX tracking activity and data returned
 * New: filter to control every plugin settings returned value
+* New: ability to print SQL formatted string for the user stored queries
+* New: improved documentation for all the functions
+* Edit: refactored functions and improved the functions organization
+* Edit: refactored pretty print function to use different name and classes
 * Edit: uniform return of rendered results from ErrorFormat class
 * Removed: several unused methods in the ErrorFormat class
 

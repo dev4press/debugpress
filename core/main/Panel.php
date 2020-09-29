@@ -48,9 +48,9 @@ abstract class Panel {
 	public function print_it( $value ) {
 		$value = maybe_unserialize( $value );
 
-		$print = gdp_rs( $value, false );
+		$print = debugpress_rs( $value, false );
 
-		return ! empty( $print ) ? $print : gdp_rx( $value, false );
+		return ! empty( $print ) ? $print : debugpress_rx( $value, false );
 	}
 
 	public function title( $title, $open = true, $hide_button = false ) {

@@ -37,6 +37,7 @@ define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 
 define( 'DEBUGPRESS_IS_AJAX', defined( 'DOING_AJAX' ) && DOING_AJAX );
 define( 'DEBUGPRESS_IS_CRON', defined( 'DOING_CRON' ) && DOING_CRON );
+define( 'DEBUGPRESS_IS_CLI', defined( 'WP_CLI' ) && WP_CLI );
 
 if ( ! defined( 'D4P_EOL' ) ) {
 	define( 'D4P_EOL', "\r\n" );
@@ -46,12 +47,19 @@ if ( ! defined( 'D4P_TAB' ) ) {
 	define( 'D4P_TAB', "\t" );
 }
 
+if ( DEBUGPRESS_IS_CLI || DEBUGPRESS_IS_CRON ) {
+	return;
+}
+
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/functions.php' );
+require_once( DEBUGPRESS_PLUGIN_PATH . 'core/pretty-print.php' );
 
 debugpress_plugin();
 
 if ( defined( 'WP_ADMIN' ) && WP_ADMIN ) {
+	require_once( DEBUGPRESS_PLUGIN_PATH . 'core/admin.php' );
+
 	debugpress_admin();
 }

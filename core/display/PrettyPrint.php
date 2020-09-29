@@ -16,9 +16,9 @@ class PrettyPrint {
 	protected $value;
 	protected $is_root = true;
 
-	public $css_class = 'gdp_r';
-	public $html_id = 'gdp_r_v';
-	public $js_func = 'gdp_r_toggle';
+	public $css_class = 'debugpress_r';
+	public $html_id = 'debugpress_r_v';
+	public $js_func = 'debugpress_r_toggle';
 
 	public $inspect_methods = false;
 	public $collapsed = true;
@@ -172,7 +172,7 @@ class PrettyPrint {
 			$_ = debug_backtrace();
 
 			while ( $d = array_pop( $_ ) ) {
-				if ( ( strToLower( $d['function'] ) == 'gdp_r' ) || ( strToLower( $d['function'] ) == 'gdp_rx' ) ) {
+				if ( ( strToLower( $d['function'] ) == 'debugpress_r' ) || ( strToLower( $d['function'] ) == 'debugpress_rx' ) ) {
 					break;
 				}
 			}

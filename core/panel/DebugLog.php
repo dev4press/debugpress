@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Dev4Press\Plugin\DebugPress\Main\Files;
 use Dev4Press\Plugin\DebugPress\Main\Info;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
@@ -40,7 +41,7 @@ class DebugLog extends Panel {
 			echo file_exists( $path ) ? debugpress_format_size( filesize( $path ) ) : __( "File is not yet created.", "debugpress" );
 
 			$this->sub_title( __( "Current Log Number of Lines", "debugpress" ) );
-			echo debugpress_count_lines_in_files( $path );
+			echo Files::instance()->count_lines_in_files( $path );
 			$this->block_footer();
 
 			$this->title( __( "Settings", "debugpress" ), true, true );
@@ -72,7 +73,7 @@ class DebugLog extends Panel {
 		$path = Info::debug_log_path();
 
 		if ( file_exists( $path ) && filesize( $path ) > 0 ) {
-			return debugpress_read_lines_from_file( $path );
+			return Files::instance()->read_lines_from_file( $path );
 		}
 
 		return array();

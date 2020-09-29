@@ -181,21 +181,21 @@
                 }
             });
 
-            $(document).on("click", ".gdp_r a.gdp_r_c", function(e) {
+            $(document).on("click", ".debugpress_r a.debugpress_r_c", function(e) {
                 e.preventDefault();
 
-                if ($(this).hasClass("gdp_r_aa")) {
-                    var button = $(this).find(".gdp_r_a");
+                if ($(this).hasClass("debugpress_r_aa")) {
+                    var button = $(this).find(".debugpress_r_a");
                     var branch = $("#" + $(this).data("branch"));
 
                     if (branch) {
-                        if (branch.hasClass("gdp_r_open")) {
+                        if (branch.hasClass("debugpress_r_open")) {
                             button.html(debugpress_data.icon_right);
                         } else {
                             button.html(debugpress_data.icon_down);
                         }
 
-                        branch.toggleClass("gdp_r_open");
+                        branch.toggleClass("debugpress_r_open");
                     }
                 }
             });

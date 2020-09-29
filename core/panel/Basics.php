@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Dev4Press\Plugin\DebugPress\Main\Panel;
+use Dev4Press\Plugin\DebugPress\Main\WP;
 
 class Basics extends Panel {
 	public function left() {
@@ -98,7 +99,7 @@ class Basics extends Panel {
 		$this->table_row( array( __( "Version", "debugpress" ), debugpress_plugin()->wp_version_real() ) );
 		$this->table_row( array(
 			__( "Pretty Permalinks", "debugpress" ),
-			debugpress_has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" )
+			WP::instance()->has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" )
 		) );
 		$this->table_foot();
 		$this->block_footer();

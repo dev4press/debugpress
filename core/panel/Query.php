@@ -47,12 +47,12 @@ class Query extends Panel {
 
 		$this->title( __( "Complete WP Query object", "debugpress" ), true );
 		$this->block_header( true );
-		gdp_r( $wp_query, false );
+		debugpress_r( $wp_query, false );
 		$this->block_footer();
 
 		$this->title( __( "Complete WP object", "debugpress" ), true );
 		$this->block_header( true );
-		gdp_r( $wp, false );
+		debugpress_r( $wp, false );
 		$this->block_footer();
 	}
 }

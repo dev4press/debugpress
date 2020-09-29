@@ -4,37 +4,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Dev4Press\Plugin\DebugPress\Display\PrettyPrint;
+/**
+ * Print the value in the WordPress debug.log, if it is available.
+ *
+ * @param mixed $object
+ */
+function debugpress_error_log( $object ) {
+	if ( DEBUGPRESS_IS_DEBUG_LOG ) {
+		$print = print_r( $object, true );
 
-function debugpress_do_settings_sections( $page ) {
-	global $wp_settings_sections, $wp_settings_fields;
-
-	if ( ! isset( $wp_settings_sections[ $page ] ) ) {
-		return;
-	}
-
-	foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
-		echo '<div class="debugpress-settings-section">';
-		if ( $section['title'] ) {
-			echo "<h2>{$section['title']}</h2>\n";
-		}
-
-		if ( $section['callback'] ) {
-			echo '<div class="debugpress-section-info">';
-			call_user_func( $section['callback'], $section );
-			echo '</div>';
-		}
-
-		if ( ! isset( $wp_settings_fields ) || ! isset( $wp_settings_fields[ $page ] ) || ! isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
-			continue;
-		}
-		echo '<table class="form-table" role="presentation">';
-		do_settings_fields( $page, $section['id'] );
-		echo '</table>';
-		echo '</div>';
+		error_log( $print );
 	}
 }
 
+/**
+ * Store the object into the DebugPress Tracker, and display it inside the Store tab of the Debugger.
+ *
+ * @param mixed  $object Object value to store, it can be any type.
+ * @param string $title  Optional title to associate with the stored object
+ * @param false  $sql    If the stored object SQL string, it will be rendered as formatted SQL
+ */
+function debugpress_store_object( $object, $title = '', $sql = false ) {
+	debugpress_tracker()->log( $object, $title, $sql );
+}
+
+/**
+ * Check if the bbPress plugin is currently installed and active. Requires bbPress version 2.5 or newer.
+ *
+ * @return bool TRUE: if the bbPress is active, FALSE: if it is not active
+ */
 function debugpress_has_bbpress() {
 	if ( function_exists( 'bbp_get_version' ) ) {
 		$version = bbp_get_version();
@@ -46,21 +44,36 @@ function debugpress_has_bbpress() {
 	}
 }
 
-function debugpress_has_permalinks() {
-	return get_option( 'permalink_structure' );
-}
-
+/**
+ * Check if the currently running CMS is ClassicPress, and not the WordPress.
+ *
+ * @return bool TRUE: if the ClassicPress is active, FALSE: if it is not active
+ */
 function debugpress_is_classicpress() {
 	return function_exists( 'classicpress_version' ) &&
 	       function_exists( 'classicpress_version_short' );
 }
 
-function debugpress_error_log( $log ) {
-	if ( DEBUGPRESS_IS_DEBUG_LOG ) {
-		$print = print_r( $log, true );
+/**
+ * Format numeric value representing bytes (for file size, for instance) into short format rounded to KB, MB, GB, TB
+ * and PB.
+ *
+ * @param float  $size    size value to format
+ * @param int    $decimal number of decimal points to show
+ * @param string $sep     separator between value and modifier
+ *
+ * @return string formatted string
+ */
+function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) {
+	$units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
 
-		error_log( $print );
-	}
+	$size = max( $size, 0 );
+	$pow  = floor( ( $size ? log( $size ) : 0 ) / log( 1024 ) );
+	$pow  = min( $pow, count( $units ) - 1 );
+
+	$size /= pow( 1024, $pow );
+
+	return round( $size, $decimal ) . $sep . $units[ $pow ];
 }
 
 function debugpress_current_url_request() {
@@ -102,77 +115,4 @@ function debugpress_current_url( $use_wp = true ) {
 
 function debugpress_strleft( $s1, $s2 ) {
 	return substr( $s1, 0, strpos( $s1, $s2 ) );
-}
-
-function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) {
-	$units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
-
-	$size = max( $size, 0 );
-	$pow  = floor( ( $size ? log( $size ) : 0 ) / log( 1024 ) );
-	$pow  = min( $pow, count( $units ) - 1 );
-
-	$size /= pow( 1024, $pow );
-
-	return round( $size, $decimal ) . $sep . $units[ $pow ];
-}
-
-function debugpress_store_object( $object, $title = '', $sql = false ) {
-	debugpress_tracker()->log( $object, $title, $sql );
-}
-
-function debugpress_count_lines_in_files( $file_path ) {
-	if ( ! file_exists( $file_path ) ) {
-		return 0;
-	}
-
-	$file = new SplFileObject( $file_path, 'r' );
-	$file->seek( PHP_INT_MAX );
-
-	return $file->key() + 1;
-}
-
-function debugpress_read_lines_from_file( $file_path, $last = 1000 ) {
-	$file = new SplFileObject( $file_path, 'r' );
-	$file->seek( PHP_INT_MAX );
-	$last_line = $file->key();
-
-	$lines = new LimitIterator( $file, $last_line - $last, $last_line );
-
-	return iterator_to_array( $lines );
-}
-
-function gdp_rs( $value, $echo = true ) {
-	$result = '';
-
-	if ( is_bool( $value ) ) {
-		$result = '<div class="gdp_rs gdp_rs_bool">' . ( $value ? 'TRUE' : 'FALSE' ) . '</div>';
-	} else if ( is_null( $value ) ) {
-		$result = '<div class="gdp_rs gdp_rs_null">NULL</div>';
-	} else if ( is_string( $value ) ) {
-		if ( empty( $value ) ) {
-			$result = '<div class="gdp_rs gdp_rs_empty">EMPTY</div>';
-		} else {
-			$result = '<div class="gdp_rs gdp_rs_string">' . $value . '</div>';
-		}
-	} else if ( is_int( $value ) || is_float( $value ) ) {
-		$result = '<div class="gdp_rs gdp_rs_number">' . $value . '</div>';
-	}
-
-	if ( $echo ) {
-		echo $result;
-	} else {
-		return $result;
-	}
-}
-
-function gdp_r( $value, $footer = true, $collapsed = true, $inspect_methods = true ) {
-	$n = PrettyPrint::instance( $value, $footer, $collapsed, $inspect_methods );
-
-	$n->render();
-}
-
-function gdp_rx( $value, $footer = true, $collapsed = true, $inspect_methods = true ) {
-	$n = PrettyPrint::instance( $value, $footer, $collapsed, $inspect_methods );
-
-	return $n->generate();
 }

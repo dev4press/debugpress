@@ -71,7 +71,10 @@ class System extends Panel {
 		$this->table_row( array( __( "Display", "debugpress" ), Info::php_error_display() ) );
 		$this->table_row( array( __( "Logging", "debugpress" ), Info::php_error_logging() ) );
 		$this->table_row( array( __( "Log file", "debugpress" ), Info::php_error_filepath() ) );
-		$this->table_row( array( __( "Error flags", "debugpress" ), gdp_rx( Info::php_error_levels(), false ) ) );
+		$this->table_row( array(
+			__( "Error flags", "debugpress" ),
+			debugpress_rx( Info::php_error_levels(), false )
+		) );
 		$this->table_foot();
 		$this->block_footer();
 

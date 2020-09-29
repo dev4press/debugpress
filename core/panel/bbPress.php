@@ -106,28 +106,28 @@ class bbPress extends Panel {
 		$this->block_header( true );
 		if ( isset( debugpress_tracker()->objects['bbpress']['forum_query'] ) ) {
 			$this->sub_title( __( "Forum Query", "debugpress" ) );
-			gdp_r( debugpress_tracker()->objects['bbpress']['forum_query'], false );
+			debugpress_r( debugpress_tracker()->objects['bbpress']['forum_query'], false );
 		}
 
 		if ( isset( debugpress_tracker()->objects['bbpress']['topic_query'] ) ) {
 			$this->sub_title( __( "Topic Query", "debugpress" ) );
-			gdp_r( debugpress_tracker()->objects['bbpress']['topic_query'], false );
+			debugpress_r( debugpress_tracker()->objects['bbpress']['topic_query'], false );
 		}
 
 		if ( isset( debugpress_tracker()->objects['bbpress']['reply_query'] ) ) {
 			$this->sub_title( __( "Reply Query", "debugpress" ) );
-			gdp_r( debugpress_tracker()->objects['bbpress']['reply_query'], false );
+			debugpress_r( debugpress_tracker()->objects['bbpress']['reply_query'], false );
 		}
 
 		if ( isset( debugpress_tracker()->objects['bbpress']['search_query'] ) ) {
 			$this->sub_title( __( "Search Query", "debugpress" ) );
-			gdp_r( debugpress_tracker()->objects['bbpress']['search_query'], false );
+			debugpress_r( debugpress_tracker()->objects['bbpress']['search_query'], false );
 		}
 		$this->block_footer();
 
 		$this->title( __( "Basic bbPress Object", "debugpress" ), true );
 		$this->block_header( true );
-		gdp_r( bbpress(), false );
+		debugpress_r( bbpress(), false );
 		$this->block_footer();
 	}
 }

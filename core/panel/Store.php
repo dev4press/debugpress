@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Dev4Press\Plugin\DebugPress\Display\SQLFormat;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Store extends Panel {
@@ -25,11 +26,17 @@ class Store extends Panel {
 	}
 
 	public function render_item( $item ) {
+		$printed = $item['sql']
+			?
+			'<div class="query-sql-run-full">' . SQLFormat::format( $item['print'] ) . '</div>'
+			:
+			debugpress_rx( $item['print'], false );
+
 		$this->table_row( array(
 				$item['time'],
 				( empty( $item['title'] ) ? '/' : '<strong>' . $item['title'] . '</strong>' ),
-				gdp_rx( $item['print'], false ),
-				gdp_rx( $item['caller'], false )
+				$printed,
+				debugpress_rx( $item['caller'], false )
 			)
 		);
 	}
