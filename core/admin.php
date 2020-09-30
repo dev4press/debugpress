@@ -14,14 +14,38 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  */
 function debugpress_do_settings_sections( $page ) {
+	$tabs = array(
+		'debugpress_settings_activation' => 'activation',
+		'debugpress_settings_special'    => 'panels',
+		'debugpress_settings_autos'      => 'advanced'
+	);
+
 	global $wp_settings_sections, $wp_settings_fields;
 
 	if ( ! isset( $wp_settings_sections[ $page ] ) ) {
 		return;
 	}
 
+	$first = true;
+	$close = false;
+
 	foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
-		echo '<div class="debugpress-settings-section">';
+		$id = $section['id'];
+
+		if ( isset( $tabs[ $id ] ) ) {
+			$tab = $tabs[ $id ];
+
+			if ( $close ) {
+				echo '</div>';
+			}
+
+			echo '<div class="tab-content nav-tab-content-' . $tab . ( $first ? ' tab-content-active' : '' ) . '">';
+
+			$close = true;
+			$first = false;
+		}
+
+		echo '<div class="debugpress-settings-section section-' . $id . '">';
 		if ( $section['title'] ) {
 			echo "<h2>{$section['title']}</h2>\n";
 		}
@@ -40,4 +64,6 @@ function debugpress_do_settings_sections( $page ) {
 		echo '</table>';
 		echo '</div>';
 	}
+
+	echo '</div>';
 }

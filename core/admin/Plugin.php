@@ -51,6 +51,7 @@ class Plugin {
 
 	public function enqueue_sctipts() {
 		wp_enqueue_style( 'debugpress-admin', DEBUGPRESS_PLUGIN_URL . 'css/adminpanel' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array(), DEBUGPRESS_VERSION );
+		wp_enqueue_script( 'debugpress-admin', DEBUGPRESS_PLUGIN_URL . 'js/adminpanel' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array( 'jquery' ), DEBUGPRESS_VERSION, true );
 	}
 
 	public function admin_menu() {

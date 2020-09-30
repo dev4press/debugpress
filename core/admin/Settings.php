@@ -42,6 +42,18 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_special',
+			__( "Special Debugger Panels", "debugpress" ),
+			array( $this, 'block_special' ),
+			'debugpress' );
+
+		add_settings_section(
+			'debugpress_settings_panels',
+			__( "Additional Debugger Panels", "debugpress" ),
+			array( $this, 'block_panels' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_autos',
 			__( "Auto debug overrides", "debugpress" ),
 			array( $this, 'block_autos' ),
@@ -57,18 +69,6 @@ class Settings {
 			'debugpress_settings_errors',
 			__( "Errors Tracking", "debugpress" ),
 			array( $this, 'block_errors' ),
-			'debugpress' );
-
-		add_settings_section(
-			'debugpress_settings_special',
-			__( "Special Debugger Panels", "debugpress" ),
-			array( $this, 'block_special' ),
-			'debugpress' );
-
-		add_settings_section(
-			'debugpress_settings_panels',
-			__( "Additional Debugger Panels", "debugpress" ),
-			array( $this, 'block_panels' ),
 			'debugpress' );
 	}
 
@@ -157,12 +157,12 @@ class Settings {
 			'debugpress',
 			'debugpress_settings_special' );
 
-		add_settings_field(
+		/*add_settings_field(
 			'debugpress_settings_panel_hooks',
 			'<label for="debugpress_settings_panel_hooks">' . __( "Registered Hooks", "debugpress" ) . '</label>',
 			array( $this, 'option_panel_hooks' ),
 			'debugpress',
-			'debugpress_settings_panels' );
+			'debugpress_settings_panels' );*/
 
 		add_settings_field(
 			'debugpress_settings_panel_enqueue',

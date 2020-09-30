@@ -1,5 +1,34 @@
+.debugpress-panel {
+    .nav-tab {
+        margin-left: 10px;
+        padding: 5px 15px;
+
+        .dashicons {
+            font-size: 16px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+    }
+
+    .nav-tab-right {
+        float: right;
+        margin-right: 10px;
+        margin-left: 0;
+    }
+}
+
+.debugpress-panel-settings {
+    .tab-content {
+        display: none;
+
+        &.tab-content-active {
+            display: block;
+        }
+    }
+}
+
 .debugpress_settings {
-    width: calc(100% - 300px);
+    width: calc(100% - 330px);
     float: left;
     color: #000;
 
@@ -7,7 +36,7 @@
         max-width: 720px;
         background-color: #FFF;
         padding: 15px;
-        margin: 15px 0;
+        margin: 15px 0 0 15px;
         border: 1px solid #1E72BD;
 
         h2 {
@@ -34,6 +63,7 @@
 .debugpress_sidebar {
     float: right;
     padding-left: 20px;
+    margin-right: 15px;
     width: 280px;
 
     img {
@@ -102,6 +132,10 @@
     .debugpress_settings {
         width: 100%;
         float: none;
+
+        .debugpress-settings-section {
+            margin: 15px;
+        }
     }
 
     .debugpress_sidebar {
@@ -110,6 +144,7 @@
         padding-left: 0;
         width: 100%;
         float: none;
+        margin: 0;
 
         > div {
             margin: 0 auto 15px;

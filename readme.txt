@@ -92,6 +92,7 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * New: tools info page shows the content of PHP Info
 * New: tools info page shows the content of OPCache Info
 * New: tools info page shows the content of MySQL Variables
+* New: plugin settings panel uses tabbed interface to organize settings
 * New: option to control AJAX tracking data save into debug.log
 * New: filters to control AJAX tracking activity and data returned
 * New: filter to control every plugin settings returned value
