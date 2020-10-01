@@ -6,7 +6,7 @@
 	$php_info = ob_get_contents();
 	ob_end_clean();
 
-	if ( D4P_PHP_VERSION >= 56 ) {
+	if ( DEBUGPRESS_PHP_VERSION >= 56 ) {
 		$php_info = str_replace( '</div></body></html>', '', $php_info );
 
 		$ix       = strpos( $php_info, '<table' );

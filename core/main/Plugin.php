@@ -84,16 +84,7 @@ class Plugin {
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
 		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
 
-		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
-			define( 'WP_DEBUG', true );
-		}
-
-		if ( $this->get( 'auto_savequeries' ) && ! defined( 'SAVEQUERIES' ) ) {
-			define( 'SAVEQUERIES', true );
-		}
-
-		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
-		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
+		$this->define_constants();
 
 		if ( DEBUGPRESS_IS_AJAX && $this->_allowed ) {
 			if ( $this->get( 'ajax' ) ) {
@@ -106,6 +97,24 @@ class Plugin {
 		}
 
 		debugpress_tracker();
+	}
+
+	public function define_constants() {
+		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
+			define( 'WP_DEBUG', true );
+		}
+
+		if ( $this->get( 'auto_savequeries' ) && ! defined( 'SAVEQUERIES' ) ) {
+			define( 'SAVEQUERIES', true );
+		}
+
+		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
+		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
+
+		$version = str_replace('.', '', phpversion());
+		$version = intval(substr($version, 0, 2));
+
+		define('DEBUGPRESS_PHP_VERSION', $version);
 	}
 
 	public function init() {

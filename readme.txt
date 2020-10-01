@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.3
+Stable tag: 1.3.1
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
@@ -94,6 +94,10 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
 == Changelog ==
+= 1.3.1 (2020.10.01) =
+* Edit: minor changes to the main plugin class
+* Fix: one constant was not defined
+
 = 1.3 (2020.10.01) =
 * New: additional Info page added into WordPress admin Tools
 * New: tools info page shows the content of PHP Info
