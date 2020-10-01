@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+use LimitIterator;
 use SplFileObject;
 
 if ( ! defined( 'ABSPATH' ) ) {
