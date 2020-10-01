@@ -58,6 +58,13 @@ Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. 
 = AJAX =
 The plugin tracks every AJAX call coming through WordPress `admin-ajax.php` handler, and with every response, it returns HTTP headers with AJAX request basic execution information. Right now, plugin is not returning list of logged errors or SQL queries, because both can produce huge output that goes over the HTTP header limits. Plan is to introduce these in the future plugin versions.
 
+= Info Panels =
+In the administration Tools menu, plugin adds DebugPress Info page showing several panels
+
+* PHP Info: full formatted results from `phpinfo()` function
+* OPCache Info: full settings and statistics for the OPCache PHP extension
+* MySQL Variables: full MySQL settings retrieved from the database
+
 = Plugin Settings =
 The plugin has various options controlling the plugin activation, button integration position, user roles that can see the debugger window, options to attempt overriding WordPress debug flags and options controlling the visibility of optional debugger panels.
 
@@ -101,6 +108,7 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 * Edit: refactored functions and improved the functions organization
 * Edit: refactored pretty print function to use different name and classes
 * Edit: uniform return of rendered results from ErrorFormat class
+* Edit: expanded plugin readme.txt and added new screenshots
 * Removed: several unused methods in the ErrorFormat class
 
 = 1.2.1 (2020.09.27) =
@@ -144,10 +152,15 @@ Several panels improved. Many new settings. Several bug fixes.
 Debug Log panel added. Various styling improvements. Improved settings panel.
 
 == Screenshots ==
-1. Debugger popup: basic debugger panel
-2. Debugger popup: current page Query
-3. Debugger popup: captured AJAX calls
+1. Debugger popup: Basic debugger panel
+2. Debugger popup: Current page Query
+3. Debugger popup: Captured AJAX calls
 4. Debugger popup: SQL Queries
 5. Debugger popup: WordPress debug log
-6. Debugger popup: responsive layout
-7. Settings: all plugin settings
+6. Debugger popup: Responsive layout
+7. Settings: Activation
+8. Settings: Panels
+9. Settings: Advanced
+10. Tools: PHP Info
+11. Tools: OPCache Info
+12. Tools: MySQL Variables
