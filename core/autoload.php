@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main plugin autoloader class for resolving plugin classes and loading them.
  *
- * @param $class name of the class to load
+ * @param string $class name of the class to load
  */
 function d4p_plugin_debugpress_autoload( $class ) {
 	$path = dirname( __FILE__ ) . '/';

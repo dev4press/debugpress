@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Dev4Press\Plugin\DebugPress\Main\Info;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
-class System extends Panel {
+class Server extends Panel {
 	public function left() {
 		$this->title( __( "Server Information", "debugpress" ), true );
 		$this->block_header( true );

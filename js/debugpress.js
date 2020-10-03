@@ -222,12 +222,13 @@
                             type: "get",
                             dataType: "html",
                             success: function(html) {
-                                var container = $("#debugpress-debuglog-content");
+                                var div = $("#debugpress-debuglog-content").find("div");
 
-                                container.find("div").html(html);
-                                container.scrollTop(container.prop("scrollHeight"));
+                                div.html(html);
 
                                 wp.dev4press.debugpress.tabs.debuglog.resize();
+
+                                div.scrollTop(div.prop("scrollHeight"));
                             },
                             error: function(jqXhr, textStatus, errorThrown) {
 

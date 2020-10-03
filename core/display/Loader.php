@@ -178,7 +178,7 @@ class Loader {
 		}
 
 		if ( debugpress_plugin()->get( 'panel_system' ) ) {
-			$this->tabs['system'] = __( "System", "debugpress" );
+			$this->tabs['server'] = __( "System", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_bbpress' ) && debugpress_has_bbpress() && is_bbpress() ) {

@@ -111,10 +111,10 @@ class Plugin {
 		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
 		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
 
-		$version = str_replace('.', '', phpversion());
-		$version = intval(substr($version, 0, 2));
+		$version = str_replace( '.', '', phpversion() );
+		$version = intval( substr( $version, 0, 2 ) );
 
-		define('DEBUGPRESS_PHP_VERSION', $version);
+		define( 'DEBUGPRESS_PHP_VERSION', $version );
 	}
 
 	public function init() {

@@ -1,13 +1,13 @@
 <?php
 
-use Dev4Press\Plugin\DebugPress\Panel\System;
+use Dev4Press\Plugin\DebugPress\Panel\Server;
 
 ?>
 <div class="debugpress-grid">
     <div class="debugpress-unit half">
-		<?php System::instance()->left(); ?>
+		<?php Server::instance()->left(); ?>
     </div>
     <div class="debugpress-unit half">
-		<?php System::instance()->right(); ?>
+		<?php Server::instance()->right(); ?>
     </div>
 </div>

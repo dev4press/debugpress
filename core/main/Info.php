@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Exception;
 use PDO;
 
 class Info {
@@ -416,13 +417,16 @@ class Info {
 	}
 
 	public static function php_pear() {
-		@include_once( 'System.php' );
+		try {
+			@include_once( 'System.php' );
 
-		if ( class_exists( 'System' ) === true ) {
-			return __( "loaded", "debugpress" );
-		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			if ( class_exists( '\System' ) === true ) {
+				return __( "loaded", "debugpress" );
+			}
+		} catch ( Exception $exception ) {
 		}
+
+		return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
 	}
 
 	public static function php_function( $name ) {
