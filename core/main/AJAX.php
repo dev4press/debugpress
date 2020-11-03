@@ -41,7 +41,7 @@ class AJAX {
 	public function respond( $response, $code = 200, $json = false ) {
 		status_header( $code );
 
-		if ( gdssh_settings()->get( 'ajax_header_no_cache' ) ) {
+		if ( debugpress_plugin()->get( 'ajax_header_no_cache' ) ) {
 			nocache_headers();
 		}
 

@@ -41,7 +41,9 @@ class Files {
 		$file->seek( PHP_INT_MAX );
 		$last_line = $file->key();
 
-		$lines = new LimitIterator( $file, $last_line - $last, $last_line );
+		$first_line = $last_line < $last ? 0 : $last_line - $last;
+
+		$lines = new LimitIterator( $file, $first_line, $last_line );
 
 		return iterator_to_array( $lines );
 	}

@@ -43,7 +43,8 @@ class Plugin {
 		'panel_hooks'          => false,
 		'slow_query_cutoff'    => 10,
 		'use_sql_formatter'    => true,
-		'format_queries_panel' => true
+		'format_queries_panel' => true,
+		'ajax_header_no_cache' => true
 	);
 
 	private $_allowed = false;
