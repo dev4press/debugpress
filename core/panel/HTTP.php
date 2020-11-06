@@ -25,11 +25,18 @@ class HTTP extends Panel {
 	}
 
 	public function render_request( $request ) {
-		$raw_url = explode( '?', $request['info']['url'], 2 );
-		$url     = $raw_url[0];
+		$url = 'N/A';
+		$arg = array();
 
-		if ( isset( $raw_url[1] ) ) {
-			$url .= '<br/>&nbsp;&nbsp;&nbsp;&nbsp;?' . join( '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&', explode( '&', $raw_url[1] ) );
+		if ( isset( $request['info']['url'] ) ) {
+			$raw_url = explode( '?', $request['info']['url'], 2 );
+
+			$url = $raw_url[0];
+			$arg = isset( $raw_url[1] ) ? explode( '&', $raw_url[1] ) : array();
+		}
+
+		if ( ! empty( $arg ) ) {
+			$url .= '<br/>&nbsp;&nbsp;&nbsp;&nbsp;?' . join( '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&', $arg );
 		}
 
 		$_req = array(

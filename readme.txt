@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Version: 1.4
+Version: 1.4.1
 Stable tag: trunk
 Requires at least: 4.9
 Tested up to: 5.5
@@ -95,6 +95,10 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
 == Changelog ==
+= 1.4.1 (2020.11.06) =
+* Edit: support for the edge case HTTP request missing valid URL
+* Fix: HTTP panel could still fail in some edge case requests
+
 = 1.4 (2020.11.03) =
 * Edit: improvements to the way HTTP panel displays logged data
 * Fix: HTTP panel shows duplicated content type entry
