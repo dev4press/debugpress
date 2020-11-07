@@ -21,7 +21,7 @@ The plugin doesn't modify or replaces any WordPress files or functions.
 
 = Home and GitHub =
 * Learn more about the plugin: [DebugPress Website](https://debug.press/)
-* Contribute to plugin development: [DebugPress on GitHub](https://github.com/debugpress)
+* Contribute to plugin development: [DebugPress on GitHub](https://github.com/dev4press/debugpress)
 
 = Quick Overview Video =
 https://www.youtube.com/watch?v=-eFnBRLhy-s
