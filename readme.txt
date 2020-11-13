@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.4.2
+Stable tag: 1.5
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
@@ -93,8 +93,13 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 = How can I open Debugger popup? =
 If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
+= How can I enable WordPress Debug Mode? =
+To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
+
 == Changelog ==
-= 1.4.2 (2020.11.13) =
+= 1.5 (2020.11.13) =
+* New: Contextual help tab for the plugin settings
+* New: Contextual help includes information about debug mode activation
 * Fix: Few minor typos in various parts of the code
 
 = 1.4.1 (2020.11.06) =

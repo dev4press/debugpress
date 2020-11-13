@@ -3,33 +3,104 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 10/01/2020 10:29:41 AM\n"
+"POT-Creation-Date: 11/13/2020 10:22:03 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: GD i18n 2.5; www.dev4press.com\n"
 
-#: core/admin/Plugin.php:57
+#: core/admin/Plugin.php:59
 #: forms/admin/settings.php:1
 msgid "DebugPress Settings"
 msgstr ""
 
-#: core/admin/Plugin.php:57
-#: forms/display.php:64
+#: core/admin/Plugin.php:59
+#: core/admin/Plugin.php:115
+#: forms/display.php:66
 msgid "DebugPress"
 msgstr ""
 
-#: core/admin/Plugin.php:61
-#: core/admin/Plugin.php:61
+#: core/admin/Plugin.php:63
+#: core/admin/Plugin.php:63
 msgid "DebugPress Info"
 msgstr ""
 
-#: core/admin/Plugin.php:38
+#: core/admin/Plugin.php:85
+msgid "Debug Mode"
+msgstr ""
+
+#: core/admin/Plugin.php:86
+msgid "Plugin Debug Mode Activation"
+msgstr ""
+
+#: core/admin/Plugin.php:86
+msgid "On this page, Advanced Tab, you have options to attempt enabling debug mode and save queries. But, it is highly recommended to do it via wp-config.php."
+msgstr ""
+
+#: core/admin/Plugin.php:87
+msgid "How to enable WordPress Debug Mode"
+msgstr ""
+
+#: core/admin/Plugin.php:87
+msgid "Add the following code into wp-config.php. Find the line in that file where WP_DEBUG is set, and replace that line with this code."
+msgstr ""
+
+#: core/admin/Plugin.php:91
+msgid "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries."
+msgstr ""
+
+#: core/admin/Plugin.php:91
+#: core/panel/Basics.php:32
+#: core/panel/DebugLog.php:29
+msgid "More Information"
+msgstr ""
+
+#: core/admin/Plugin.php:98
+#: core/admin/Plugin.php:99
+msgid "Help & Support"
+msgstr ""
+
+#: core/admin/Plugin.php:99
+msgid "To get help with DebugPress, you can start with Knowledge Base list of frequently asked questions, user guides, articles (tutorials) and reference guide (for developers)."
+msgstr ""
+
+#: core/admin/Plugin.php:100
+#: core/admin/Plugin.php:118
+msgid "Knowledge Base"
+msgstr ""
+
+#: core/admin/Plugin.php:100
+#: core/admin/Plugin.php:119
+msgid "Support Forum"
+msgstr ""
+
+#: core/admin/Plugin.php:107
+#: core/admin/Plugin.php:108
+msgid "Found a bug?"
+msgstr ""
+
+#: core/admin/Plugin.php:108
+msgid "If you find a bug in DebugPress, you can report it in the support forum."
+msgstr ""
+
+#: core/admin/Plugin.php:109
+msgid "Before reporting a bug, make sure you use latest plugin version, your website and server meet system requirements. And, please be as descriptive as possible, include server side logged errors, or errors from browser debugger."
+msgstr ""
+
+#: core/admin/Plugin.php:110
+msgid "Open new topic"
+msgstr ""
+
+#: core/admin/Plugin.php:40
 #: core/panel/DebugLog.php:46
 #: forms/admin/tools.php:29
-#: forms/display.php:63
+#: forms/display.php:65
 msgid "Settings"
+msgstr ""
+
+#: core/admin/Plugin.php:117
+msgid "Home Page"
 msgstr ""
 
 #: core/admin/Settings.php:27
@@ -405,7 +476,7 @@ msgid "SQL Queries"
 msgstr ""
 
 #: core/display/Loader.php:164
-#: core/panel/System.php:41
+#: core/panel/Server.php:41
 msgid "User"
 msgstr ""
 
@@ -419,7 +490,7 @@ msgid "Enqueue"
 msgstr ""
 
 #: core/display/Loader.php:176
-#: core/main/Plugin.php:234
+#: core/main/Plugin.php:244
 msgid "PHP"
 msgstr ""
 
@@ -454,6 +525,7 @@ msgstr ""
 
 #: core/display/Loader.php:212
 #: forms/admin/settings.php:9
+#: forms/display.php:63
 msgid "Tools"
 msgstr ""
 
@@ -511,48 +583,48 @@ msgctxt "PrettyPrint message"
 msgid "line"
 msgstr ""
 
-#: core/main/Info.php:13
-#: core/main/Info.php:364
-#: core/main/Info.php:421
+#: core/main/Info.php:14
+#: core/main/Info.php:365
+#: core/main/Info.php:423
 msgid "loaded"
 msgstr ""
 
-#: core/main/Info.php:15
-#: core/main/Info.php:367
-#: core/main/Info.php:377
-#: core/main/Info.php:385
-#: core/main/Info.php:395
-#: core/main/Info.php:405
-#: core/main/Info.php:413
-#: core/main/Info.php:423
+#: core/main/Info.php:16
+#: core/main/Info.php:368
+#: core/main/Info.php:378
+#: core/main/Info.php:386
+#: core/main/Info.php:396
+#: core/main/Info.php:406
+#: core/main/Info.php:414
+#: core/main/Info.php:428
 msgid "not loaded"
 msgstr ""
 
-#: core/main/Info.php:255
-#: core/main/Info.php:259
-#: core/main/Info.php:354
+#: core/main/Info.php:256
+#: core/main/Info.php:260
+#: core/main/Info.php:355
 msgid "On"
 msgstr ""
 
-#: core/main/Info.php:255
-#: core/main/Info.php:259
-#: core/main/Info.php:354
+#: core/main/Info.php:256
+#: core/main/Info.php:260
+#: core/main/Info.php:355
 msgid "Off"
 msgstr ""
 
-#: core/main/Info.php:294
+#: core/main/Info.php:295
 msgid "ON"
 msgstr ""
 
-#: core/main/Info.php:294
+#: core/main/Info.php:295
 msgid "OFF"
 msgstr ""
 
-#: core/main/Info.php:429
+#: core/main/Info.php:433
 msgid "OK"
 msgstr ""
 
-#: core/main/Info.php:431
+#: core/main/Info.php:435
 msgid "not available"
 msgstr ""
 
@@ -581,33 +653,33 @@ msgstr ""
 msgid "not defined"
 msgstr ""
 
-#: core/main/Plugin.php:203
+#: core/main/Plugin.php:213
 msgid "Production Environment"
 msgstr ""
 
-#: core/main/Plugin.php:206
+#: core/main/Plugin.php:216
 msgid "Staging Environment"
 msgstr ""
 
-#: core/main/Plugin.php:209
+#: core/main/Plugin.php:219
 msgid "Local Environment"
 msgstr ""
 
-#: core/main/Plugin.php:212
+#: core/main/Plugin.php:222
 msgid "Development Environment"
 msgstr ""
 
-#: core/main/Plugin.php:233
+#: core/main/Plugin.php:243
 #: core/panel/Basics.php:94
 msgid "WordPress"
 msgstr ""
 
-#: core/main/Plugin.php:236
-#: core/panel/System.php:20
+#: core/main/Plugin.php:246
+#: core/panel/Server.php:20
 msgid "IP"
 msgstr ""
 
-#: core/main/Plugin.php:237
+#: core/main/Plugin.php:247
 #: core/panel/Queries.php:95
 #: core/panel/Queries.php:150
 #: core/panel/Queries.php:168
@@ -615,16 +687,16 @@ msgstr ""
 msgid "Queries"
 msgstr ""
 
-#: core/main/Plugin.php:238
+#: core/main/Plugin.php:248
 #: core/panel/Basics.php:112
 msgid "Memory"
 msgstr ""
 
-#: core/main/Plugin.php:239
+#: core/main/Plugin.php:249
 msgid "Loaded"
 msgstr ""
 
-#: core/main/Plugin.php:239
+#: core/main/Plugin.php:249
 msgid "seconds."
 msgstr ""
 
@@ -678,11 +750,6 @@ msgstr ""
 
 #: core/panel/Basics.php:27
 msgid "Debug mode problems"
-msgstr ""
-
-#: core/panel/Basics.php:32
-#: core/panel/DebugLog.php:29
-msgid "More Information"
 msgstr ""
 
 #: core/panel/Basics.php:39
@@ -741,8 +808,8 @@ msgid "Upload Directory"
 msgstr ""
 
 #: core/panel/Basics.php:98
-#: core/panel/System.php:38
-#: core/panel/System.php:53
+#: core/panel/Server.php:38
+#: core/panel/Server.php:53
 msgid "Version"
 msgstr ""
 
@@ -837,7 +904,7 @@ msgid "Theme"
 msgstr ""
 
 #: core/panel/Constants.php:144
-#: core/panel/System.php:40
+#: core/panel/Server.php:40
 msgid "Database"
 msgstr ""
 
@@ -992,63 +1059,62 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: core/panel/HTTP.php:35
+#: core/panel/HTTP.php:42
 msgid "Transport"
 msgstr ""
 
-#: core/panel/HTTP.php:36
+#: core/panel/HTTP.php:43
 #: core/panel/Request.php:65
 msgid "Method"
 msgstr ""
 
-#: core/panel/HTTP.php:37
+#: core/panel/HTTP.php:44
 msgid "User Agent"
 msgstr ""
 
-#: core/panel/HTTP.php:38
+#: core/panel/HTTP.php:45
 msgid "Timeout"
 msgstr ""
 
-#: core/panel/HTTP.php:39
+#: core/panel/HTTP.php:46
 msgid "Redirection"
 msgstr ""
 
-#: core/panel/HTTP.php:40
+#: core/panel/HTTP.php:47
 msgid "HTTP Version"
 msgstr ""
 
-#: core/panel/HTTP.php:44
+#: core/panel/HTTP.php:61
 msgid "Code"
 msgstr ""
 
-#: core/panel/HTTP.php:45
-#: core/panel/HTTP.php:47
+#: core/panel/HTTP.php:62
 msgid "Content Type"
 msgstr ""
 
-#: core/panel/HTTP.php:46
+#: core/panel/HTTP.php:63
 msgid "IP and Port"
 msgstr ""
 
-#: core/panel/HTTP.php:51
+#: core/panel/HTTP.php:67
 #: core/panel/Queries.php:90
 #: core/panel/Queries.php:101
 msgid "Total"
 msgstr ""
 
-#: core/panel/HTTP.php:52
+#: core/panel/HTTP.php:68
 msgid "DNS Resolution"
 msgstr ""
 
-#: core/panel/HTTP.php:53
+#: core/panel/HTTP.php:69
 msgid "Connect"
 msgstr ""
 
-#: core/panel/HTTP.php:54
+#: core/panel/HTTP.php:70
 msgid "Pretransfer"
 msgstr ""
 
-#: core/panel/HTTP.php:55
+#: core/panel/HTTP.php:71
 msgid "Redirect"
 msgstr ""
 
@@ -1292,12 +1358,112 @@ msgid "Response Headers"
 msgstr ""
 
 #: core/panel/Request.php:57
-#: core/panel/System.php:39
+#: core/panel/Server.php:39
 msgid "Host"
 msgstr ""
 
 #: core/panel/Request.php:66
 msgid "Scheme"
+msgstr ""
+
+#: core/panel/Server.php:13
+msgid "Server Information"
+msgstr ""
+
+#: core/panel/Server.php:17
+msgid "Server"
+msgstr ""
+
+#: core/panel/Server.php:18
+msgid "Operating System"
+msgstr ""
+
+#: core/panel/Server.php:19
+msgid "Hostname"
+msgstr ""
+
+#: core/panel/Server.php:21
+msgid "Port"
+msgstr ""
+
+#: core/panel/Server.php:25
+msgid "Server Status"
+msgstr ""
+
+#: core/panel/Server.php:29
+msgid "Current Timestamp"
+msgstr ""
+
+#: core/panel/Server.php:30
+msgid "Current Datetime"
+msgstr ""
+
+#: core/panel/Server.php:34
+msgid "mySQL Status"
+msgstr ""
+
+#: core/panel/Server.php:42
+msgid "Charset"
+msgstr ""
+
+#: core/panel/Server.php:43
+msgid "Collation"
+msgstr ""
+
+#: core/panel/Server.php:49
+msgid "PHP Status"
+msgstr ""
+
+#: core/panel/Server.php:54
+msgid "API Interface"
+msgstr ""
+
+#: core/panel/Server.php:55
+msgid "Available Memory"
+msgstr ""
+
+#: core/panel/Server.php:57
+msgid "Used Memory"
+msgstr ""
+
+#: core/panel/Server.php:59
+msgid "Max POST Size"
+msgstr ""
+
+#: core/panel/Server.php:60
+msgid "Max Upload Size"
+msgstr ""
+
+#: core/panel/Server.php:61
+msgid "Max Execution Time"
+msgstr ""
+
+#: core/panel/Server.php:62
+msgid "Allow URL fopen"
+msgstr ""
+
+#: core/panel/Server.php:66
+msgid "PHP Errors Display and Logging"
+msgstr ""
+
+#: core/panel/Server.php:70
+msgid "Display"
+msgstr ""
+
+#: core/panel/Server.php:71
+msgid "Logging"
+msgstr ""
+
+#: core/panel/Server.php:72
+msgid "Log file"
+msgstr ""
+
+#: core/panel/Server.php:74
+msgid "Error flags"
+msgstr ""
+
+#: core/panel/Server.php:80
+msgid "PHP Extensions"
 msgstr ""
 
 #: core/panel/Store.php:13
@@ -1310,106 +1476,6 @@ msgstr ""
 
 #: core/panel/Store.php:17
 msgid "Logged Data"
-msgstr ""
-
-#: core/panel/System.php:13
-msgid "Server Information"
-msgstr ""
-
-#: core/panel/System.php:17
-msgid "Server"
-msgstr ""
-
-#: core/panel/System.php:18
-msgid "Operating System"
-msgstr ""
-
-#: core/panel/System.php:19
-msgid "Hostname"
-msgstr ""
-
-#: core/panel/System.php:21
-msgid "Port"
-msgstr ""
-
-#: core/panel/System.php:25
-msgid "Server Status"
-msgstr ""
-
-#: core/panel/System.php:29
-msgid "Current Timestamp"
-msgstr ""
-
-#: core/panel/System.php:30
-msgid "Current Datetime"
-msgstr ""
-
-#: core/panel/System.php:34
-msgid "mySQL Status"
-msgstr ""
-
-#: core/panel/System.php:42
-msgid "Charset"
-msgstr ""
-
-#: core/panel/System.php:43
-msgid "Collation"
-msgstr ""
-
-#: core/panel/System.php:49
-msgid "PHP Status"
-msgstr ""
-
-#: core/panel/System.php:54
-msgid "API Interface"
-msgstr ""
-
-#: core/panel/System.php:55
-msgid "Available Memory"
-msgstr ""
-
-#: core/panel/System.php:57
-msgid "Used Memory"
-msgstr ""
-
-#: core/panel/System.php:59
-msgid "Max POST Size"
-msgstr ""
-
-#: core/panel/System.php:60
-msgid "Max Upload Size"
-msgstr ""
-
-#: core/panel/System.php:61
-msgid "Max Execution Time"
-msgstr ""
-
-#: core/panel/System.php:62
-msgid "Allow URL fopen"
-msgstr ""
-
-#: core/panel/System.php:66
-msgid "PHP Errors Display and Logging"
-msgstr ""
-
-#: core/panel/System.php:70
-msgid "Display"
-msgstr ""
-
-#: core/panel/System.php:71
-msgid "Logging"
-msgstr ""
-
-#: core/panel/System.php:72
-msgid "Log file"
-msgstr ""
-
-#: core/panel/System.php:74
-msgid "Error flags"
-msgstr ""
-
-#: core/panel/System.php:80
-msgid "PHP Extensions"
 msgstr ""
 
 #: core/panel/Tools.php:18

@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Plugin {
+	private $_pages = array();
+
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -55,14 +57,16 @@ class Plugin {
 	}
 
 	public function admin_menu() {
-		add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
+		$this->_pages['settings'] = add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
 			$this,
 			'settings_page'
 		) );
-		add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
+		$this->_pages['info']     = add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
 			$this,
 			'tools_page'
 		) );
+
+		add_action( 'load-' . $this->_pages['settings'], array( $this, 'settings_context_help' ) );
 	}
 
 	public function settings_page() {
@@ -71,6 +75,51 @@ class Plugin {
 
 	public function tools_page() {
 		include( DEBUGPRESS_PLUGIN_PATH . 'forms/admin/tools.php' );
+	}
+
+	public function settings_context_help() {
+		$screen = get_current_screen();
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'debugpress-debug',
+				'title'   => __( "Debug Mode", "debugpress" ),
+				'content' => '<h2>' . __( "Plugin Debug Mode Activation", "debugpress" ) . '</h2><p>' . __( "On this page, Advanced Tab, you have options to attempt enabling debug mode and save queries. But, it is highly recommended to do it via wp-config.php.", "debugpress" ) .
+				             '</p><h2>' . __( "How to enable WordPress Debug Mode", "debugpress" ) . '</h2><p>' . __( "Add the following code into wp-config.php. Find the line in that file where WP_DEBUG is set, and replace that line with this code.", "debugpress" ) .
+				             '</p><pre>define(\'WP_DEBUG\', true);
+define(\'WP_DEBUG_DISPLAY\', false);
+define(\'WP_DEBUG_LOG\', true);
+define(\'SAVEQUERIES\', true);</pre><p>' . __( "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.", "debugpress" ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( "More Information", "debugpress" ) . '</a></p>'
+			)
+		);
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'debugpress-info',
+				'title'   => __( "Help & Support", "debugpress" ),
+				'content' => '<h2>' . __( "Help & Support", "debugpress" ) . '</h2><p>' . __( "To get help with DebugPress, you can start with Knowledge Base list of frequently asked questions, user guides, articles (tutorials) and reference guide (for developers).", "debugpress" ) .
+				             '</p><p><a href="https://support.dev4press.com/kb/product/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( "Knowledge Base", "debugpress" ) . '</a> <a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-secondary" target="_blank">' . __( "Support Forum", "debugpress" ) . '</a></p>'
+			)
+		);
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'debugpress-bugs',
+				'title'   => __( "Found a bug?", "debugpress" ),
+				'content' => '<h2>' . __( "Found a bug?", "debugpress" ) . '</h2><p>' . __( "If you find a bug in DebugPress, you can report it in the support forum.", "debugpress" ) .
+				             '</p><p>' . __( "Before reporting a bug, make sure you use latest plugin version, your website and server meet system requirements. And, please be as descriptive as possible, include server side logged errors, or errors from browser debugger.", "debugpress" ) .
+				             '</p><p><a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( "Open new topic", "debugpress" ) . '</a></p>'
+			)
+		);
+
+		$screen->set_help_sidebar(
+			'<p><strong>' . __( "DebugPress", "debugpress" ) . '</strong></p>' .
+			'<p>' . join( '<br/>', array(
+				'home'  => '<a target="_blank" rel="noopener" href="https://debug.press/">' . esc_html__( "Home Page", "debugpress" ) . '</a>',
+				'kb'    => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/kb/product/debugpress/">' . esc_html__( "Knowledge Base", "debugpress" ) . '</a>',
+				'forum' => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/">' . esc_html__( "Support Forum", "debugpress" ) . '</a>'
+			) ) . '</p>'
+		);
 	}
 
 	public function admin_init() {
