@@ -30,7 +30,7 @@ class Basics extends Panel {
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );
 				echo $t[1];
-				echo ' <a href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . __( "More Information", "debugpress" ) . '</a>';
+				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . __( "More Information", "debugpress" ) . '</a>';
 			}
 			$this->block_footer();
 

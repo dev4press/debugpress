@@ -64,7 +64,8 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
             <a target="_blank" href="<?php echo admin_url( 'tools.php?page=debugpress-info' ); ?>"><?php _e( "Tools", "debugpress" ); ?></a>
             &middot;
             <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
-            &middot; <a target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
+            &middot;
+            <a rel="noopener" target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
         </div>
     </div>
 </div>

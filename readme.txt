@@ -101,6 +101,7 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Contextual help tab for the plugin settings
 * New: Contextual help includes information about debug mode activation
 * Fix: Few minor typos in various parts of the code
+* Fix: Few external links were missing REL noopener attribute
 
 = 1.4.1 (2020.11.06) =
 * Edit: support for the edge case HTTP request missing valid URL
