@@ -256,7 +256,7 @@ class Plugin {
 			$gd .= '<strong class="debugpress-debugger-environment debugpress-env-' . $env['type'] . '">' . $env['label'] . '</strong> &middot; ';
 		}
 
-		$gd .= __( "WordPress", "debugpress" ) . ': <strong>' . $this->_wp_version_real . '</strong> &middot; ';
+		$gd .= Info::cms_name() . ': <strong>' . Info::cms_version() . '</strong> &middot; ';
 		$gd .= __( "PHP", "debugpress" ) . ': <strong>' . phpversion() . '</strong><span> &middot; </span>';
 
 		$gd .= __( "IP", "debugpress" ) . ': <strong>' . IP::get_visitor_ip() . '</strong> &middot; ';
