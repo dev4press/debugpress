@@ -51,6 +51,8 @@ class Plugin {
 	private $_animated_popup_version = '1.9';
 	private $_wp_version;
 	private $_wp_version_real;
+	private $_cp_version;
+	private $_cp_version_real;
 
 	public function __construct() {
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 0 );
@@ -76,11 +78,24 @@ class Plugin {
 		return $this->_wp_version_real;
 	}
 
+	public function cp_version() {
+		return $this->_cp_version;
+	}
+
+	public function cp_version_real() {
+		return $this->_cp_version_real;
+	}
+
 	public function plugins_loaded() {
 		global $wp_version;
 
-		$this->_wp_version      = substr( str_replace( '.', '', $wp_version ), 0, 2 );
+		if (debugpress_is_classicpress()) {
+			$this->_cp_version_real = classicpress_version();
+			$this->_cp_version      = substr( str_replace( '.', '', $this->_cp_version_real ), 0, 2 );
+		}
+
 		$this->_wp_version_real = $wp_version;
+		$this->_wp_version      = substr( str_replace( '.', '', $wp_version ), 0, 2 );
 
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
 		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );

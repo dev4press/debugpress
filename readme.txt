@@ -97,11 +97,18 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 1.5 (2020.11.13) =
-* New: Contextual help tab for the plugin settings
-* New: Contextual help includes information about debug mode activation
-* Fix: Few minor typos in various parts of the code
-* Fix: Few external links were missing REL noopener attribute
+= 1.5 (2020.11.14) =
+* New: debugger panel - Tools
+* New: tools panel - links to the individual plugin info panels
+* New: tools panel - links to the individual wordpress tools panels
+* New: tools panel - links to test with Google PageSpeed Insights
+* New: tools panel - link to test with GTMetrix website
+* New: contextual help tab for the plugin settings
+* New: contextual help includes information about debug mode activation
+* Edit: various styling changes and tweaks
+* Fix: few minor typos in various parts of the code
+* Fix: few external links were missing REL noopener attribute
+* Fix: minor issue with CMS version INFO method
 
 = 1.4.1 (2020.11.06) =
 * Edit: support for the edge case HTTP request missing valid URL
@@ -111,8 +118,8 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * Edit: improvements to the way HTTP panel displays logged data
 * Fix: HTTP panel shows duplicated content type entry
 * Fix: HTTP panel attempts to display data that doesn't exist
-* Fix: Error log loading fails due to file offset calculation
-* Fix: Problem with returning error log via AJAX method
+* Fix: error log loading fails due to file offset calculation
+* Fix: problem with returning error log via AJAX method
 
 = 1.3.2 (2020.10.03) =
 * New: link to plugin Tools (Info) page added to Debugger popup footer

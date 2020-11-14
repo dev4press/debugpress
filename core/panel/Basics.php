@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Dev4Press\Plugin\DebugPress\Main\Info;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 use Dev4Press\Plugin\DebugPress\Main\WP;
 
@@ -92,11 +93,11 @@ class Basics extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "WordPress", "debugpress" ), true );
+		$this->title( Info::cms_name(), true );
 		$this->block_header( true );
 		$this->table_init_standard();
 		$this->table_head();
-		$this->table_row( array( __( "Version", "debugpress" ), debugpress_plugin()->wp_version_real() ) );
+		$this->table_row( array( __( "Version", "debugpress" ), Info::cms_version() ) );
 		$this->table_row( array(
 			__( "Pretty Permalinks", "debugpress" ),
 			WP::instance()->has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" )

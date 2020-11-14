@@ -107,6 +107,11 @@
         display: block;
         overflow: auto;
 
+        p {
+            padding: 0;
+            margin: 0 0 .5em;
+        }
+
         .sql-calls-button-expander {
             font-weight: bold;
             font-size: calc(var(--debugpress-base-font-size) - 1px);
@@ -382,13 +387,13 @@
     .debugpress-button-action {
         background: #27B;
         color: #FFF;
-        display: block;
+        display: inline-block;
         cursor: pointer;
         border: 0;
         text-align: center;
-        width: 100%;
+        width: max-content;
         border-radius: 0;
-        margin: 5px 0 0;
+        margin: 5px 5px 0 0;
         padding: 5px 15px;
         font-size: calc(var(--debugpress-base-font-size) + 3px);
     }

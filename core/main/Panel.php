@@ -29,6 +29,10 @@ abstract class Panel {
 
 	}
 
+	public function middle() {
+
+	}
+
 	public function right() {
 
 	}

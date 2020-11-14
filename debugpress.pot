@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 11/13/2020 10:22:03 PM\n"
+"POT-Creation-Date: 11/14/2020 10:02:26 AM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -11,13 +11,14 @@ msgstr ""
 "X-Generator: GD i18n 2.5; www.dev4press.com\n"
 
 #: core/admin/Plugin.php:59
+#: core/panel/Tools.php:38
 #: forms/admin/settings.php:1
 msgid "DebugPress Settings"
 msgstr ""
 
 #: core/admin/Plugin.php:59
 #: core/admin/Plugin.php:115
-#: forms/display.php:66
+#: forms/display.php:67
 msgid "DebugPress"
 msgstr ""
 
@@ -628,16 +629,16 @@ msgstr ""
 msgid "not available"
 msgstr ""
 
-#: core/main/Panel.php:80
-#: core/main/Panel.php:85
+#: core/main/Panel.php:84
+#: core/main/Panel.php:89
 #: core/panel/Basics.php:111
 #: core/panel/Queries.php:89
 #: core/panel/Queries.php:129
 msgid "Name"
 msgstr ""
 
-#: core/main/Panel.php:81
-#: core/main/Panel.php:86
+#: core/main/Panel.php:85
+#: core/main/Panel.php:90
 #: forms/tools/mysql.php:4
 #: forms/tools/opcache.php:9
 #: forms/tools/opcache.php:28
@@ -645,11 +646,11 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: core/main/Panel.php:131
+#: core/main/Panel.php:135
 msgid "NOT DEFINED"
 msgstr ""
 
-#: core/main/Panel.php:171
+#: core/main/Panel.php:175
 msgid "not defined"
 msgstr ""
 
@@ -1478,60 +1479,142 @@ msgstr ""
 msgid "Logged Data"
 msgstr ""
 
-#: core/panel/Tools.php:18
-#: forms/tools/info.php:11
-msgid "Load the full content of the PHP.ini file through PHPInfo function call."
-msgstr ""
-
-#: core/panel/Tools.php:25
-#: forms/tools/info.php:18
-msgid "Show the settings for the PHP OPCache and basic statistics."
-msgstr ""
-
-#: core/panel/Tools.php:32
-#: forms/tools/info.php:25
-msgid "Show all the MySQL configuration variables retrieved from the database server."
-msgstr ""
-
-#: core/panel/Tools.php:39
-msgid "Only website administrator can access the Information panels."
-msgstr ""
-
-#: core/panel/Tools.php:13
+#: core/panel/Tools.php:16
 msgid "Information Panels"
 msgstr ""
 
-#: core/panel/Tools.php:17
+#: core/panel/Tools.php:19
 #: forms/admin/tools.php:5
 #: forms/tools/info.php:9
 msgid "PHP Info"
 msgstr ""
 
-#: core/panel/Tools.php:19
+#: core/panel/Tools.php:20
+#: forms/tools/info.php:11
+msgid "Load the full content of the PHP.ini file through PHPInfo function call."
+msgstr ""
+
+#: core/panel/Tools.php:21
 msgid "Open PHP Info Panel"
 msgstr ""
 
-#: core/panel/Tools.php:24
+#: core/panel/Tools.php:26
 #: forms/tools/opcache.php:24
 msgid "OPCache Statistics"
 msgstr ""
 
-#: core/panel/Tools.php:26
+#: core/panel/Tools.php:27
+#: forms/tools/info.php:18
+msgid "Show the settings for the PHP OPCache and basic statistics."
+msgstr ""
+
+#: core/panel/Tools.php:28
 msgid "Open OPCache Statistics Panel"
 msgstr ""
 
-#: core/panel/Tools.php:31
+#: core/panel/Tools.php:33
 #: forms/admin/tools.php:7
 #: forms/tools/info.php:23
 msgid "MySQL Variables"
 msgstr ""
 
-#: core/panel/Tools.php:33
+#: core/panel/Tools.php:34
+#: forms/tools/info.php:25
+msgid "Show all the MySQL configuration variables retrieved from the database server."
+msgstr ""
+
+#: core/panel/Tools.php:35
 msgid "Open MySQL Variables Panel"
 msgstr ""
 
-#: core/panel/Tools.php:37
-msgid "Information Panels not available"
+#: core/panel/Tools.php:41
+msgid "Plugin Settings"
+msgstr ""
+
+#: core/panel/Tools.php:42
+msgid "Open the DebugPress settings panel."
+msgstr ""
+
+#: core/panel/Tools.php:43
+msgid "Open Settings Panel"
+msgstr ""
+
+#: core/panel/Tools.php:47
+#: core/panel/Tools.php:74
+msgid "Not Available"
+msgstr ""
+
+#: core/panel/Tools.php:49
+#: core/panel/Tools.php:76
+msgid "Only administrator roles can access this information."
+msgstr ""
+
+#: core/panel/Tools.php:56
+msgid "WordPress Important Tools"
+msgstr ""
+
+#: core/panel/Tools.php:61
+msgid "Site Health"
+msgstr ""
+
+#: core/panel/Tools.php:62
+msgid "Open the WordPress Site Health panel."
+msgstr ""
+
+#: core/panel/Tools.php:63
+msgid "Open Site Health Panel"
+msgstr ""
+
+#: core/panel/Tools.php:68
+msgid "WordPress Updates"
+msgstr ""
+
+#: core/panel/Tools.php:69
+msgid "Open the WordPress Updates panel."
+msgstr ""
+
+#: core/panel/Tools.php:70
+msgid "Open Updates Panel"
+msgstr ""
+
+#: core/panel/Tools.php:83
+msgid "Online Performance Testing"
+msgstr ""
+
+#: core/panel/Tools.php:87
+msgid "Google PageSpeed Insights"
+msgstr ""
+
+#: core/panel/Tools.php:88
+msgid "Run the current page in the Google PageSpeed Insights test tool."
+msgstr ""
+
+#: core/panel/Tools.php:89
+msgid "Run Mobile Test"
+msgstr ""
+
+#: core/panel/Tools.php:90
+msgid "Run Desktop Test"
+msgstr ""
+
+#: core/panel/Tools.php:94
+msgid "GTMetrix"
+msgstr ""
+
+#: core/panel/Tools.php:95
+msgid "Open GTMetrix website for the current page."
+msgstr ""
+
+#: core/panel/Tools.php:96
+msgid "Run the Test"
+msgstr ""
+
+#: core/panel/Tools.php:100
+msgid "Not available for this page"
+msgstr ""
+
+#: core/panel/Tools.php:102
+msgid "Admin side panels can't be tested via online performance tools."
 msgstr ""
 
 #: core/panel/User.php:87

@@ -35,7 +35,7 @@ class Info {
 	}
 
 	public static function cms_version() {
-		return debugpress_plugin()->wp_version_real;
+		return debugpress_is_classicpress() ? debugpress_plugin()->cp_version_real() : debugpress_plugin()->wp_version_real();
 	}
 
 	public static function cms_count_plugins() {
