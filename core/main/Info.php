@@ -10,7 +10,7 @@ use Exception;
 use PDO;
 
 class Info {
-	public static function _loaded_status( $value ) {
+	public static function _loaded_status( $value ) : string {
 		if ( $value === true ) {
 			return __( "loaded", "debugpress" );
 		} else {
@@ -18,7 +18,7 @@ class Info {
 		}
 	}
 
-	public static function debug_log_path() {
+	public static function debug_log_path() : string {
 		$path = '';
 
 		if ( DEBUGPRESS_IS_DEBUG_LOG ) {
@@ -30,7 +30,7 @@ class Info {
 		return $path;
 	}
 
-	public static function cms_name() {
+	public static function cms_name() : string {
 		return debugpress_is_classicpress() ? 'ClassicPress' : 'WordPress';
 	}
 

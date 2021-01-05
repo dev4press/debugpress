@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class ErrorFormat {
-	public static function render_caller( $caller, $escape = false ) {
+	public static function render_caller( $caller, $escape = false ) : string {
 		$_print = $escape ? esc_html( $caller ) : $caller;
 
 		$render = '<a href="#" class="debugpress-events-log-toggle">' . __( "Show Details", "debugpress" ) . '</a>';
@@ -16,7 +16,7 @@ class ErrorFormat {
 		return $render;
 	}
 
-	public static function php_error( $error ) {
+	public static function php_error( $error ) : string {
 		$class = 'debugpress-wrapper-warning debugpress-warning-errors debugpress-error-';
 
 		if ( ! isset( $error['errno'] ) || ! isset( $error['caller'] ) ) {
@@ -80,7 +80,7 @@ class ErrorFormat {
 		return $render;
 	}
 
-	public static function doing_it_wrong( $item ) {
+	public static function doing_it_wrong( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-doingitwrong">';
 		$render .= '<h4>' . sprintf( __( "For <strong>%s</strong>", "debugpress" ), $item['deprecated'] ) . '</h4>';
 		$render .= '<strong>' . __( "Since version", "debugpress" ) . ":</strong> " . $item['version'] . ', ';
@@ -103,7 +103,7 @@ class ErrorFormat {
 		return $render;
 	}
 
-	public static function deprecated_file( $item ) {
+	public static function deprecated_file( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-file">';
 		$render .= '<h4>' . __( "Deprecated File", "debugpress" ) . ':</h4>';
 		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . '<br/>';
@@ -120,7 +120,7 @@ class ErrorFormat {
 		return $render;
 	}
 
-	public static function deprecated_function( $item ) {
+	public static function deprecated_function( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-function">';
 		$render .= '<h4>' . __( "Deprecated Function", "debugpress" ) . ':</h4>';
 		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . '<br/>';
@@ -145,7 +145,7 @@ class ErrorFormat {
 		return $render;
 	}
 
-	public static function deprecated_constructor( $item ) {
+	public static function deprecated_constructor( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-constructor">';
 		$render .= '<h4>' . __( "Deprecated Constructor", "debugpress" ) . ':</h4>';
 		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . '<br/>';
@@ -162,7 +162,7 @@ class ErrorFormat {
 		return $render;
 	}
 
-	public static function deprecated_argument( $item ) {
+	public static function deprecated_argument( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-argument">';
 		$render .= '<h4>' . __( "Deprecated Argument", "debugpress" ) . ':</h4>';
 

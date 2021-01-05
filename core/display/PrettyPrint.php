@@ -59,7 +59,7 @@ class PrettyPrint {
 		$this->STR_OBJ_DESC                   = _x( "line", "PrettyPrint message", "debugpress" );
 	}
 
-	public static function init() {
+	public static function init() : PrettyPrint {
 		if ( null === self::$instance ) {
 			self::$instance = new PrettyPrint();
 		}
@@ -67,7 +67,7 @@ class PrettyPrint {
 		return self::$instance;
 	}
 
-	public static function instance( $value, $footer = true, $collapsed = true, $inspect_methods = false ) {
+	public static function instance( $value, $footer = true, $collapsed = true, $inspect_methods = false ) : PrettyPrint {
 		if ( null === self::$instance ) {
 			self::$instance = new PrettyPrint();
 		}
@@ -81,7 +81,7 @@ class PrettyPrint {
 		return self::$instance;
 	}
 
-	public function generate() {
+	public function generate() : string {
 		return $this->_generate_root( $this->value, $this->css_class );
 	}
 
@@ -89,11 +89,11 @@ class PrettyPrint {
 		echo $this->generate();
 	}
 
-	protected function _esc_html( $text ) {
+	protected function _esc_html( $text ) : string {
 		return htmlspecialchars( $text, ENT_QUOTES, 'UTF-8' );
 	}
 
-	protected function _generate_keyvalues( $array, &$html ) {
+	protected function _generate_keyvalues( $array, &$html ) : bool {
 		$has_subitems = false;
 
 		foreach ( $array as $k => $v ) {
@@ -131,7 +131,7 @@ class PrettyPrint {
 		}
 	}
 
-	protected function _generate_root( $var, $class = '' ) {
+	protected function _generate_root( $var, $class = '' ) : string {
 		$html = '<div class="' . $class . ' ' . $this->css_class . '_root">';
 
 		$root_wrapper = false;
@@ -185,7 +185,7 @@ class PrettyPrint {
 		return $html;
 	}
 
-	protected function _generate_value( $var, $class = '', $id = '' ) {
+	protected function _generate_value( $var, $class = '', $id = '' ) : string {
 		$BEENTHERE = self::$been_there;
 		$class     .= ' ' . $this->css_class . '_t_' . gettype( $var );
 
@@ -224,7 +224,7 @@ class PrettyPrint {
 		return $html;
 	}
 
-	protected function _generate_footer( $d ) {
+	protected function _generate_footer( $d ) : string {
 		$footer = '<div class="' . $this->css_class . '_f">';
 		$footer .= $this->STR_FOOTER_CALL . ' <code>' . $d['file'] . '</code> ';
 		$footer .= $this->STR_FOOTER_LINE . ' <code>' . $d['line'] . '</code>';
@@ -233,13 +233,13 @@ class PrettyPrint {
 		return $footer;
 	}
 
-	protected function _generate_dropid() {
+	protected function _generate_dropid() : int {
 		static $id = 0;
 
 		return ++ $id;
 	}
 
-	protected function _generate_keyvalue( $key, $val ) {
+	protected function _generate_keyvalue( $key, $val ) : string {
 		$id      = $this->_generate_dropid();
 		$p       = '';
 		$d       = '';
@@ -287,7 +287,7 @@ class PrettyPrint {
 		return $html;
 	}
 
-	protected function _format_phpdoc( $doc ) {
+	protected function _format_phpdoc( $doc ) : string {
 		$doc = $this->_esc_html( $doc );
 
 		$doc = preg_replace( '/(\\n)\\s+?\\*([\\s\\/])/', '$1 *$2', $doc );
@@ -301,7 +301,7 @@ class PrettyPrint {
 		return $doc;
 	}
 
-	protected function _generate_callable( $context, $callback ) {
+	protected function _generate_callable( $context, $callback ) : string {
 		$id   = $this->_generate_dropid();
 		$ref  = null;
 		$name = 'Anonymous';

@@ -14,7 +14,7 @@ use Dev4Press\Plugin\DebugPress\Display\PrettyPrint;
  *
  * @return string pretty printed output
  */
-function debugpress_rs( $value, $echo = true ) {
+function debugpress_rs( $value, $echo = true ) : string {
 	$result = '';
 
 	if ( is_bool( $value ) ) {
@@ -68,7 +68,7 @@ function debugpress_r( $value, $footer = true, $collapsed = true, $inspect_metho
  *
  * @uses \Dev4Press\Plugin\DebugPress\Display\PrettyPrint
  */
-function debugpress_rx( $value, $footer = true, $collapsed = true, $inspect_methods = true ) {
+function debugpress_rx( $value, $footer = true, $collapsed = true, $inspect_methods = true ) : string {
 	$n = PrettyPrint::instance( $value, $footer, $collapsed, $inspect_methods );
 
 	return $n->generate();

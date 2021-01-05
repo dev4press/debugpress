@@ -18,7 +18,7 @@ class OPCache {
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\OPCache */
-	public static function instance() {
+	public static function instance() : OPCache {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {
@@ -47,7 +47,7 @@ class OPCache {
 		}
 	}
 
-	public function has_opcache() {
+	public function has_opcache() : bool {
 		return extension_loaded( 'Zend OPcache' );
 	}
 }

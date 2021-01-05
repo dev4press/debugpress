@@ -128,7 +128,7 @@ class Tracker {
 			add_action( $action, array( $this, 'wp_action' ), 1 );
 		}
 
-		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 1000000 );
+		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 10000000 );
 
 		if ( debugpress_has_bbpress() ) {
 			foreach ( $this->_bbp_queries as $filter ) {

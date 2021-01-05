@@ -49,7 +49,7 @@ abstract class Panel {
 		echo '</div>';
 	}
 
-	public function print_it( $value ) {
+	public function print_it( $value ) : string {
 		$value = maybe_unserialize( $value );
 
 		$print = debugpress_rs( $value, false );
@@ -116,10 +116,12 @@ abstract class Panel {
 	public function table_row( $data ) {
 		echo '<tr>';
 		$i = 0;
+
 		foreach ( $data as $el ) {
 			echo '<td style="' . $this->_table[ $i ]->style . '">' . $el . '</td>' . D4P_EOL;
 			$i ++;
 		}
+
 		echo '</tr>';
 	}
 
@@ -183,7 +185,7 @@ abstract class Panel {
 		$this->block_footer();
 	}
 
-	public function list_plain_pairs( $list, $merge = '<br/>' ) {
+	public function list_plain_pairs( $list, $merge = '<br/>' ) : string {
 		$render = array();
 
 		foreach ( $list as $key => $value ) {

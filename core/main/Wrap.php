@@ -21,7 +21,7 @@ class Wrap {
 		}
 	}
 
-	public function to_array() {
+	public function to_array() : array {
 		return (array) $this;
 	}
 

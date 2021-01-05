@@ -33,7 +33,7 @@ function debugpress_store_object( $object, $title = '', $sql = false ) {
  *
  * @return bool TRUE: if the bbPress is active, FALSE: if it is not active
  */
-function debugpress_has_bbpress() {
+function debugpress_has_bbpress() : bool {
 	if ( function_exists( 'bbp_get_version' ) ) {
 		$version = bbp_get_version();
 		$version = intval( substr( str_replace( '.', '', $version ), 0, 2 ) );
@@ -49,7 +49,7 @@ function debugpress_has_bbpress() {
  *
  * @return bool TRUE: if the ClassicPress is active, FALSE: if it is not active
  */
-function debugpress_is_classicpress() {
+function debugpress_is_classicpress() : bool {
 	return function_exists( 'classicpress_version' ) &&
 	       function_exists( 'classicpress_version_short' );
 }
@@ -58,13 +58,13 @@ function debugpress_is_classicpress() {
  * Format numeric value representing bytes (for file size, for instance) into short format rounded to KB, MB, GB, TB
  * and PB.
  *
- * @param float  $size    size value to format
- * @param int    $decimal number of decimal points to show
- * @param string $sep     separator between value and modifier
+ * @param float|int  $size    size value to format
+ * @param int        $decimal number of decimal points to show
+ * @param string     $sep     separator between value and modifier
  *
  * @return string formatted string
  */
-function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) {
+function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) : string {
 	$units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
 
 	$size = max( $size, 0 );
@@ -84,7 +84,7 @@ function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) {
  *
  * @return false|string extracted string or false on error
  */
-function debugpress_strleft( $input, $modifier ) {
+function debugpress_strleft( string $input, string $modifier ) {
 	return substr( $input, 0, strpos( $input, $modifier ) );
 }
 

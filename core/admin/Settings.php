@@ -144,6 +144,13 @@ class Settings {
 			'debugpress_settings_panels' );
 
 		add_settings_field(
+			'debugpress_settings_panel_roles',
+			'<label for="debugpress_settings_panel_roles">' . __( "User Roles", "debugpress" ) . '</label>',
+			array( $this, 'option_panel_roles' ),
+			'debugpress',
+			'debugpress_settings_panels' );
+
+		add_settings_field(
 			'debugpress_settings_panel_request',
 			'<label for="debugpress_settings_panel_request">' . __( "Page Request", "debugpress" ) . '</label>',
 			array( $this, 'option_panel_request' ),
@@ -385,6 +392,12 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'panel_content' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_content' name='debugpress_settings[panel_content]' type='checkbox' />";
+	}
+
+	public function option_panel_roles() {
+		$checked = debugpress_plugin()->get( 'panel_roles' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_panel_roles' name='debugpress_settings[panel_roles]' type='checkbox' />";
 	}
 
 	public function option_panel_request() {

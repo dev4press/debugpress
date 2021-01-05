@@ -16,7 +16,7 @@ class Plugin {
 		'admin'                 => false,
 		'frontend'              => false,
 		'ajax'                  => true,
-		'ajax_to_debuglog'      => true,
+		'ajax_to_debuglog'      => false,
 		'button_admin'          => 'toolbar',
 		'button_frontend'       => 'toolbar',
 		'for_super_admin'       => true,
@@ -28,6 +28,7 @@ class Plugin {
 		'deprecated_override'   => true,
 		'doingitwrong_override' => true,
 		'panel_content'         => true,
+		'panel_roles'           => true,
 		'panel_request'         => true,
 		'panel_debuglog'        => true,
 		'panel_enqueue'         => false,
@@ -56,11 +57,12 @@ class Plugin {
 
 	public function __construct() {
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 0 );
+		add_action( 'plugins_loaded', array( $this, 'activation' ), DEBUGPRESS_ACTIVATION_PRIORITY );
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\Plugin */
-	public static function instance() {
+	public static function instance() : Plugin {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {
@@ -89,7 +91,7 @@ class Plugin {
 	public function plugins_loaded() {
 		global $wp_version;
 
-		if (debugpress_is_classicpress()) {
+		if ( debugpress_is_classicpress() ) {
 			$this->_cp_version_real = classicpress_version();
 			$this->_cp_version      = substr( str_replace( '.', '', $this->_cp_version_real ), 0, 2 );
 		}
@@ -101,7 +103,9 @@ class Plugin {
 		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
 
 		$this->define_constants();
+	}
 
+	public function activation() {
 		if ( DEBUGPRESS_IS_AJAX && $this->_allowed ) {
 			if ( $this->get( 'ajax' ) ) {
 				AJAXTracker::instance();
@@ -162,7 +166,7 @@ class Plugin {
 		return apply_filters( 'debugpress-get-settings-value-' . $name, $value, $fallback );
 	}
 
-	public function process_settings( $input ) {
+	public function process_settings( $input ) : array {
 		$types = array(
 			'for_roles'       => 'array',
 			'button_admin'    => 'string',
@@ -216,7 +220,7 @@ class Plugin {
 		return false;
 	}
 
-	public function environment() {
+	public function environment() : array {
 		$env = array();
 
 		if ( $this->_wp_version > 54 && function_exists( 'wp_get_environment_type' ) ) {
@@ -243,7 +247,7 @@ class Plugin {
 		return $env;
 	}
 
-	public function build_stats( $key = 'wp_footer' ) {
+	public function build_stats( $key = 'wp_footer' ) : string {
 		$gd = '<div class="debugpress-debugger-stats-block">';
 
 		if ( is_null( $key ) ) {

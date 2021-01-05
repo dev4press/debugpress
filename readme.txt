@@ -2,10 +2,10 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.5
-Requires at least: 4.9
+Stable tag: 1.6
+Requires at least: 5.0
 Tested up to: 5.5
-Requires PHP: 5.6
+Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,11 +34,12 @@ Currently, the plugin has following panels:
 * Admin (for admin side only)
 * Query (for frontend only)
 * Content (optional)
+* Roles (optional)
 * Constants (optional)
 * SQL Queries (if SQL queries logging is enabled)
 * User (optional, if user is logged in only)
 * PHP (optional)
-* System (optional)
+* Server (optional)
 * HTTP (optional, if HTTP API calls are captured)
 * bbPress (optional, on bbPress forum pages only)
 * Enqueue (optional)
@@ -47,6 +48,7 @@ Currently, the plugin has following panels:
 * Doing It Wrong (if WordPress Doing It Wrong warnings are captured)
 * AJAX (if AJAX calls are captured while page is active)
 * Store (if there are user stored objects to show)
+* Tools (internal and external tools links)
 * Debug Log (load content on demand from WordPress 'debug.log')
 
 = SQL Queries =
@@ -76,10 +78,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 
 == Installation ==
 = General Requirements =
-* PHP: 5.6 or newer
+* PHP: 7.0 or newer
 
 = WordPress Requirements =
-* WordPress: 4.9 or newer
+* WordPress: 5.0 or newer
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -97,6 +99,14 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 1.6 (2021.01.06) =
+* New: requires PHP 7.0 or newer
+* New: debugger panel - Roles
+* New: roles panel - shows registered user roles
+* New: changed the loading order and activation priority
+* Edit: few improvements to the readme file
+* Fix: tracker loading causes problem with some plugins changing user roles
+
 = 1.5 (2020.11.14) =
 * New: debugger panel - Tools
 * New: tools panel - links to the individual plugin info panels

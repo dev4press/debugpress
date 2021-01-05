@@ -12,7 +12,7 @@ class WP {
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\WP */
-	public static function instance() {
+	public static function instance() : WP {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {
@@ -26,7 +26,7 @@ class WP {
 		return get_option( 'permalink_structure' );
 	}
 
-	public function current_url( $use_wp = true ) {
+	public function current_url( $use_wp = true ) : string {
 		if ( $use_wp ) {
 			return home_url( $this->current_url_request() );
 		} else {
@@ -38,7 +38,7 @@ class WP {
 		}
 	}
 
-	public function current_url_request() {
+	public function current_url_request() : string {
 		$pathinfo = isset( $_SERVER['PATH_INFO'] ) ? $_SERVER['PATH_INFO'] : '';
 		list( $pathinfo ) = explode( '?', $pathinfo );
 		$pathinfo = str_replace( '%', '%25', $pathinfo );

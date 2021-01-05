@@ -27,7 +27,7 @@ class Plugin {
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Admin\Plugin */
-	public static function instance() {
+	public static function instance() : Plugin {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {
@@ -86,10 +86,10 @@ class Plugin {
 				'title'   => __( "Debug Mode", "debugpress" ),
 				'content' => '<h2>' . __( "Plugin Debug Mode Activation", "debugpress" ) . '</h2><p>' . __( "On this page, Advanced Tab, you have options to attempt enabling debug mode and save queries. But, it is highly recommended to do it via wp-config.php.", "debugpress" ) .
 				             '</p><h2>' . __( "How to enable WordPress Debug Mode", "debugpress" ) . '</h2><p>' . __( "Add the following code into wp-config.php. Find the line in that file where WP_DEBUG is set, and replace that line with this code.", "debugpress" ) .
-				             '</p><pre>define(\'WP_DEBUG\', true);
-define(\'WP_DEBUG_DISPLAY\', false);
-define(\'WP_DEBUG_LOG\', true);
-define(\'SAVEQUERIES\', true);</pre><p>' . __( "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.", "debugpress" ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( "More Information", "debugpress" ) . '</a></p>'
+				             '</p><pre>define( \'WP_DEBUG\', true );
+define( \'WP_DEBUG_DISPLAY\', false );
+define( \'WP_DEBUG_LOG\', true );
+define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.", "debugpress" ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( "More Information", "debugpress" ) . '</a></p>'
 			)
 		);
 
@@ -134,7 +134,7 @@ define(\'SAVEQUERIES\', true);</pre><p>' . __( "This code enables debug mode, hi
 		Settings::instance()->fields();
 	}
 
-	public function settings_sanitize( $input ) {
+	public function settings_sanitize( $input ) : array {
 		return debugpress_plugin()->process_settings( $input );
 	}
 }

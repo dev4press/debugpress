@@ -15,7 +15,7 @@ class AJAX {
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\AJAX */
-	public static function instance() {
+	public static function instance() : AJAX {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {

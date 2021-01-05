@@ -2,6 +2,8 @@
 
 namespace Dev4Press\Plugin\DebugPress\Main;
 
+use wpdb;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -15,7 +17,7 @@ class DB {
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\DB */
-	public static function instance() {
+	public static function instance() : DB {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {
@@ -25,13 +27,13 @@ class DB {
 		return $instance;
 	}
 
-	public function wpdb() {
+	public function wpdb() : wpdb {
 		global $wpdb;
 
 		return $wpdb;
 	}
 
-	public function db_mysql_string() {
+	public function db_mysql_string() : string {
 		if ( empty( $this->_dbs ) ) {
 			$this->_dbs = $this->wpdb()->get_var( "SELECT VERSION()" );
 		}

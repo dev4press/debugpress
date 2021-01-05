@@ -153,6 +153,10 @@ class Loader {
 			$this->tabs['content'] = __( "Content", "debugpress" );
 		}
 
+		if ( debugpress_plugin()->get( 'panel_roles' ) ) {
+			$this->tabs['roles'] = __( "Roles", "debugpress" );
+		}
+
 		if ( debugpress_plugin()->get( 'panel_constants' ) ) {
 			$this->tabs['constants'] = __( "Constants", "debugpress" );
 		}

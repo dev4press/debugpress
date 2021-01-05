@@ -46,7 +46,7 @@ class IP {
 		'2c0f:f248::/32'
 	);
 
-	public static function is_ipv4_in_range( $ip, $range ) {
+	public static function is_ipv4_in_range( $ip, $range ) : bool {
 		if ( strpos( $range, '/' ) !== false ) {
 			list( $range, $netmask ) = explode( '/', $range, 2 );
 
@@ -100,7 +100,7 @@ class IP {
 		}
 	}
 
-	public static function is_ipv6_in_range( $ip, $range ) {
+	public static function is_ipv6_in_range( $ip, $range ) : bool {
 		$pieces = explode( '/', $range, 2 );
 
 		$left_piece  = $pieces[0];
@@ -143,7 +143,7 @@ class IP {
 		return ( $ip >= $first && $ip <= $last );
 	}
 
-	public static function get_full_ipv6( $ip ) {
+	public static function get_full_ipv6( $ip ) : string {
 		$pieces      = explode( '/', $ip, 2 );
 		$left_piece  = $pieces[0];
 		$right_piece = null;
@@ -185,7 +185,7 @@ class IP {
 		return self::ip2long6( $final_ip );
 	}
 
-	public static function ip2long6( $ip ) {
+	public static function ip2long6( $ip ) : string {
 		if ( substr_count( $ip, '::' ) ) {
 			$ip = str_replace( '::', str_repeat( ':0000', 8 - substr_count( $ip, ':' ) ) . ':', $ip );
 		}
@@ -200,7 +200,7 @@ class IP {
 		return base_convert( $r_ip, 2, 10 );
 	}
 
-	public static function is_private_ip( $ip = null ) {
+	public static function is_private_ip( $ip = null ) : bool {
 		if ( is_null( $ip ) ) {
 			$ip = IP::get_visitor_ip();
 		}
@@ -222,7 +222,7 @@ class IP {
 		return false;
 	}
 
-	public static function is_cloudflare_ip( $ip = null ) {
+	public static function is_cloudflare_ip( $ip = null ) : bool {
 		if ( is_null( $ip ) ) {
 			if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
 				if ( isset( $_SERVER['HTTP_X_REAL_IP'] ) ) {
@@ -262,7 +262,7 @@ class IP {
 		return $ip;
 	}
 
-	public static function get_all_ips() {
+	public static function get_all_ips() : array {
 		$keys = array(
 			'HTTP_CF_CONNECTING_IP',
 			'HTTP_CLIENT_IP',

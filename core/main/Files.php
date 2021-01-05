@@ -15,7 +15,7 @@ class Files {
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\Files */
-	public static function instance() {
+	public static function instance() : Files {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {
@@ -25,7 +25,7 @@ class Files {
 		return $instance;
 	}
 
-	public function count_lines_in_files( $file_path ) {
+	public function count_lines_in_files( $file_path ) : int {
 		if ( ! file_exists( $file_path ) ) {
 			return 0;
 		}
@@ -36,7 +36,7 @@ class Files {
 		return $file->key() + 1;
 	}
 
-	public function read_lines_from_file( $file_path, $last = 1000 ) {
+	public function read_lines_from_file( $file_path, $last = 1000 ) : array {
 		$file = new SplFileObject( $file_path, 'r' );
 		$file->seek( PHP_INT_MAX );
 		$last_line = $file->key();
