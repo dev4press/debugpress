@@ -256,7 +256,7 @@ class Settings {
 			'debugpress_settings_ajax' );
 	}
 
-	private function _roles_values() {
+	private function _roles_values() : array {
 		$roles = array();
 
 		foreach ( wp_roles()->roles as $role => $details ) {
@@ -266,7 +266,7 @@ class Settings {
 		return $roles;
 	}
 
-	private function _location_values() {
+	private function _location_values() : array {
 		return array(
 			'toolbar'     => __( "In WordPress Toolbar", "debugpress" ),
 			'topleft'     => __( "Float, Top / Left", "debugpress" ),

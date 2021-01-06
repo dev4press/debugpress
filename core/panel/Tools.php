@@ -18,21 +18,21 @@ class Tools extends Panel {
 			$this->block_header( true );
 			$this->sub_title( __( "PHP Info", "debugpress" ) );
 			echo '<p>' . __( "Load the full content of the PHP.ini file through PHPInfo function call.", "debugpress" ) . '</p>';
-			echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress&tab=php' ) . '" class="debugpress-button-action">' . __( "Open PHP Info Panel", "debugpress" ) . '</a>';
+			echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress-info&tab=php' ) . '" class="debugpress-button-action">' . __( "Open PHP Info Panel", "debugpress" ) . '</a>';
 			$this->block_footer();
 
 			if ( OPCache::instance()->has_opcache() ) {
 				$this->block_header( true );
 				$this->sub_title( __( "OPCache Statistics", "debugpress" ) );
 				echo '<p>' . __( "Show the settings for the PHP OPCache and basic statistics.", "debugpress" ) . '</p>';
-				echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress&tab=opcache' ) . '" class="debugpress-button-action">' . __( "Open OPCache Statistics Panel", "debugpress" ) . '</a>';
+				echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress-info&tab=opcache' ) . '" class="debugpress-button-action">' . __( "Open OPCache Statistics Panel", "debugpress" ) . '</a>';
 				$this->block_footer();
 			}
 
 			$this->block_header( true );
 			$this->sub_title( __( "MySQL Variables", "debugpress" ) );
 			echo '<p>' . __( "Show all the MySQL configuration variables retrieved from the database server.", "debugpress" ) . '</p>';
-			echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress&tab=mysql' ) . '" class="debugpress-button-action">' . __( "Open MySQL Variables Panel", "debugpress" ) . '</a>';
+			echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress-info&tab=mysql' ) . '" class="debugpress-button-action">' . __( "Open MySQL Variables Panel", "debugpress" ) . '</a>';
 			$this->block_footer();
 
 			$this->title( __( "DebugPress Settings", "debugpress" ), true, true );
@@ -40,7 +40,7 @@ class Tools extends Panel {
 			$this->block_header( true );
 			$this->sub_title( __( "Plugin Settings", "debugpress" ) );
 			echo '<p>' . __( "Open the DebugPress settings panel.", "debugpress" ) . '</p>';
-			echo '<a target="_blank" href="' . admin_url( 'tools.php?page=debugpress&tab=php' ) . '" class="debugpress-button-action">' . __( "Open Settings Panel", "debugpress" ) . '</a>';
+			echo '<a target="_blank" href="' . admin_url( 'options-general.php?page=debugpress' ) . '" class="debugpress-button-action">' . __( "Open Settings Panel", "debugpress" ) . '</a>';
 			$this->block_footer();
 		} else {
 			echo '<div class="debugpress-debug-notice-block">';

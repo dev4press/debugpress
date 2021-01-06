@@ -17,7 +17,7 @@ class AJAX {
 		add_action( 'shutdown', array( $this, 'release' ), 0 );
 	}
 
-	public static function instance() {
+	public static function instance() : AJAX {
 		static $instance = null;
 
 		if ( null === $instance ) {

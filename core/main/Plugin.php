@@ -56,9 +56,7 @@ class Plugin {
 	private $_cp_version_real;
 
 	public function __construct() {
-		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 0 );
-		add_action( 'plugins_loaded', array( $this, 'activation' ), DEBUGPRESS_ACTIVATION_PRIORITY );
-		add_action( 'init', array( $this, 'init' ) );
+
 	}
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\Plugin */
@@ -67,9 +65,16 @@ class Plugin {
 
 		if ( ! isset( $instance ) ) {
 			$instance = new Plugin();
+			$instance->run();
 		}
 
 		return $instance;
+	}
+
+	private function run() {
+		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 0 );
+		add_action( 'plugins_loaded', array( $this, 'activation' ), DEBUGPRESS_ACTIVATION_PRIORITY );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	public function wp_version() {
@@ -98,14 +103,14 @@ class Plugin {
 
 		$this->_wp_version_real = $wp_version;
 		$this->_wp_version      = substr( str_replace( '.', '', $wp_version ), 0, 2 );
+	}
 
+	public function activation() {
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
 		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
 
 		$this->define_constants();
-	}
 
-	public function activation() {
 		if ( DEBUGPRESS_IS_AJAX && $this->_allowed ) {
 			if ( $this->get( 'ajax' ) ) {
 				AJAXTracker::instance();
@@ -194,7 +199,7 @@ class Plugin {
 		return $settings;
 	}
 
-	private function is_user_allowed() {
+	private function is_user_allowed() : bool {
 		if ( is_super_admin() ) {
 			return $this->get( 'for_super_admin' );
 		} else if ( is_user_logged_in() ) {

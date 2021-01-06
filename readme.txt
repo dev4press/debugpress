@@ -101,10 +101,12 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 == Changelog ==
 = 1.6 (2021.01.06) =
 * New: requires PHP 7.0 or newer
+* New: requires WordPress 5.0 or newer
 * New: debugger panel - Roles
 * New: roles panel - shows registered user roles
 * New: changed the loading order and activation priority
 * Edit: few improvements to the readme file
+* Fix: tools panel - broken links to all of the plugin panels
 * Fix: tracker loading causes problem with some plugins changing user roles
 
 = 1.5 (2020.11.14) =
