@@ -86,7 +86,7 @@ class Tools extends Panel {
 			$this->block_header( true );
 			$this->sub_title( __( "Google PageSpeed Insights", "debugpress" ) );
 			echo '<p>' . __( "Run the current page in the Google PageSpeed Insights test tool.", "debugpress" ) . '</p>';
-			echo '<a target="_blank" rel="noopener" href="' . $this->_google_pagespeed_url( 'mobile' ) . '" class="debugpress-button-action">' . __( "Run Mobile Test", "debugpress" ) . '</a>';
+			echo '<a target="_blank" rel="noopener" href="' . $this->_google_pagespeed_url() . '" class="debugpress-button-action">' . __( "Run Mobile Test", "debugpress" ) . '</a>';
 			echo '<a target="_blank" rel="noopener" href="' . $this->_google_pagespeed_url( 'desktop' ) . '" class="debugpress-button-action">' . __( "Run Desktop Test", "debugpress" ) . '</a>';
 			$this->block_footer();
 

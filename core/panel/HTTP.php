@@ -13,9 +13,9 @@ class HTTP extends Panel {
 		$this->title( __( "Logged HTTP API Requests", "debugpress" ), true );
 		$this->block_header( true );
 		$this->add_column( __( "URL", "debugpress" ), "", "", true );
-		$this->add_column( __( "Request", "debugpress" ), "", "" );
-		$this->add_column( __( "Response", "debugpress" ), "", "" );
-		$this->add_column( __( "Time", "debugpress" ), "", "" );
+		$this->add_column( __( "Request", "debugpress" ) );
+		$this->add_column( __( "Response", "debugpress" ) );
+		$this->add_column( __( "Time", "debugpress" ) );
 		$this->table_head();
 		foreach ( debugpress_tracker()->httpapi as $request ) {
 			$this->render_request( $request );

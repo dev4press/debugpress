@@ -14,9 +14,9 @@ class Store extends Panel {
 		$this->title( __( "Stored objects and other data", "debugpress" ), true );
 		$this->block_header( true );
 		$this->add_column( __( "Time", "debugpress" ), "", "", true );
-		$this->add_column( __( "Title", "debugpress" ), "", "" );
-		$this->add_column( __( "Logged Data", "debugpress" ), "", "" );
-		$this->add_column( __( "Caller", "debugpress" ), "", "" );
+		$this->add_column( __( "Title", "debugpress" ) );
+		$this->add_column( __( "Logged Data", "debugpress" ) );
+		$this->add_column( __( "Caller", "debugpress" ) );
 		$this->table_head();
 		foreach ( debugpress_tracker()->logged as $item ) {
 			$this->render_item( $item );

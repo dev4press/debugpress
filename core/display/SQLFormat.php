@@ -729,9 +729,9 @@ class SQLFormat {
 	/**
 	 * Get stats about the token cache
 	 *
-	 * @return Array An array containing the keys 'hits', 'misses', 'entries', and 'size' in bytes
+	 * @return array An array containing the keys 'hits', 'misses', 'entries', and 'size' in bytes
 	 */
-	public static function getCacheStats() {
+	public static function getCacheStats() : array {
 		return array(
 			'hits'    => self::$cache_hits,
 			'misses'  => self::$cache_misses,
@@ -783,10 +783,10 @@ class SQLFormat {
 	 * Return the next token and token type in a SQL string.
 	 * Quoted strings, comments, reserved words, whitespace, and punctuation are all their own tokens.
 	 *
-	 * @param String $string   The SQL string
+	 * @param string $string   The SQL string
 	 * @param array  $previous The result of the previous getNextToken() call
 	 *
-	 * @return Array An associative array containing the type and value of the token.
+	 * @return array An associative array containing the type and value of the token.
 	 */
 	protected static function getNextToken( $string, $previous = null ) {
 		// Whitespace
@@ -931,9 +931,9 @@ class SQLFormat {
 	 * Takes a SQL string and breaks it into tokens.
 	 * Each token is an associative array with type and value.
 	 *
-	 * @param String $string The SQL string
+	 * @param string $string The SQL string
 	 *
-	 * @return Array An array of tokens.
+	 * @return array An array of tokens.
 	 */
 	protected static function tokenize( $string ) {
 		self::init();
@@ -1002,10 +1002,10 @@ class SQLFormat {
 	/**
 	 * Format the whitespace in a SQL string to make it easier to read.
 	 *
-	 * @param String  $string    The SQL string
+	 * @param string  $string    The SQL string
 	 * @param boolean $highlight If true, syntax highlighting will also be performed
 	 *
-	 * @return String The SQL string with HTML styles and formatting wrapped in a <pre> tag
+	 * @return string The SQL string with HTML styles and formatting wrapped in a <pre> tag
 	 */
 	public static function format( $string, $highlight = true ) {
 		// This variable will be populated with formatted html
@@ -1291,9 +1291,9 @@ class SQLFormat {
 	/**
 	 * Add syntax highlighting to a SQL string
 	 *
-	 * @param String $string The SQL string
+	 * @param string $string The SQL string
 	 *
-	 * @return String The SQL string with HTML styles applied
+	 * @return string The SQL string with HTML styles applied
 	 */
 	public static function highlight( $string ) {
 		$tokens = self::tokenize( $string );
@@ -1311,9 +1311,9 @@ class SQLFormat {
 	 * Split a SQL string into multiple queries.
 	 * Uses ";" as a query delimiter.
 	 *
-	 * @param String $string The SQL string
+	 * @param string $string The SQL string
 	 *
-	 * @return Array An array of individual query strings without trailing semicolons
+	 * @return array An array of individual query strings without trailing semicolons
 	 */
 	public static function splitQuery( $string ) {
 		$queries       = array();
@@ -1351,9 +1351,9 @@ class SQLFormat {
 	/**
 	 * Remove all comments from a SQL string
 	 *
-	 * @param String $string The SQL string
+	 * @param string $string The SQL string
 	 *
-	 * @return String The SQL string without comments
+	 * @return string The SQL string without comments
 	 */
 	public static function removeComments( $string ) {
 		$result = '';
@@ -1376,9 +1376,9 @@ class SQLFormat {
 	/**
 	 * Compress a query by collapsing white space and removing comments
 	 *
-	 * @param String $string The SQL string
+	 * @param string $string The SQL string
 	 *
-	 * @return String The SQL string without comments
+	 * @return string The SQL string without comments
 	 */
 	public static function compress( $string ) {
 		$result = '';
@@ -1417,9 +1417,9 @@ class SQLFormat {
 	/**
 	 * Highlights a token depending on its type.
 	 *
-	 * @param Array $token An associative array containing type and value.
+	 * @param array $token An associative array containing type and value.
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightToken( $token ) {
 		$type = $token[ self::TOKEN_TYPE ];
@@ -1462,9 +1462,9 @@ class SQLFormat {
 	/**
 	 * Highlights a quoted string
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightQuote( $value ) {
 		if ( self::is_cli() ) {
@@ -1477,9 +1477,9 @@ class SQLFormat {
 	/**
 	 * Highlights a backtick quoted string
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightBacktickQuote( $value ) {
 		if ( self::is_cli() ) {
@@ -1492,9 +1492,9 @@ class SQLFormat {
 	/**
 	 * Highlights a reserved word
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightReservedWord( $value ) {
 		if ( self::is_cli() ) {
@@ -1507,9 +1507,9 @@ class SQLFormat {
 	/**
 	 * Highlights a boundary token
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightBoundary( $value ) {
 		if ( $value === '(' || $value === ')' ) {
@@ -1526,9 +1526,9 @@ class SQLFormat {
 	/**
 	 * Highlights a number
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightNumber( $value ) {
 		if ( self::is_cli() ) {
@@ -1541,9 +1541,9 @@ class SQLFormat {
 	/**
 	 * Highlights an error
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightError( $value ) {
 		if ( self::is_cli() ) {
@@ -1556,9 +1556,9 @@ class SQLFormat {
 	/**
 	 * Highlights a comment
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightComment( $value ) {
 		if ( self::is_cli() ) {
@@ -1571,9 +1571,9 @@ class SQLFormat {
 	/**
 	 * Highlights a word token
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightWord( $value ) {
 		if ( self::is_cli() ) {
@@ -1586,9 +1586,9 @@ class SQLFormat {
 	/**
 	 * Highlights a variable token
 	 *
-	 * @param String $value The token's value
+	 * @param string $value The token's value
 	 *
-	 * @return String HTML code of the highlighted token.
+	 * @return string HTML code of the highlighted token.
 	 */
 	protected static function highlightVariable( $value ) {
 		if ( self::is_cli() ) {
@@ -1601,9 +1601,9 @@ class SQLFormat {
 	/**
 	 * Helper function for building regular expressions for reserved words and boundary characters
 	 *
-	 * @param String $a The string to be quoted
+	 * @param string $a The string to be quoted
 	 *
-	 * @return String The quoted string
+	 * @return string The quoted string
 	 */
 	private static function quote_regex( $a ) {
 		return preg_quote( $a, '/' );
@@ -1612,9 +1612,9 @@ class SQLFormat {
 	/**
 	 * Helper function for building string output
 	 *
-	 * @param String $string The string to be quoted
+	 * @param string $string The string to be quoted
 	 *
-	 * @return String The quoted string
+	 * @return string The quoted string
 	 */
 	private static function output( $string ) {
 		if ( self::is_cli() ) {

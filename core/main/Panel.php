@@ -83,7 +83,7 @@ abstract class Panel {
 
 	public function table_init_standard() {
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
-		$this->add_column( __( "Value", "debugpress" ), '', '' );
+		$this->add_column( __( "Value", "debugpress" ) );
 	}
 
 	public function table_init_right() {
@@ -126,7 +126,7 @@ abstract class Panel {
 	}
 
 	public function list_defines( $defines, $subtitle = '' ) {
-		$this->block_header( true );
+		$this->block_header();
 
 		if ( $subtitle != '' ) {
 			$this->sub_title( $subtitle );
@@ -144,7 +144,7 @@ abstract class Panel {
 	}
 
 	public function list_array( $data, $subtitle = '' ) {
-		$this->block_header( true );
+		$this->block_header();
 
 		if ( $subtitle != '' ) {
 			$this->sub_title( $subtitle );
@@ -164,7 +164,7 @@ abstract class Panel {
 	}
 
 	public function list_properties( $object, $properties = array(), $subtitle = '' ) {
-		$this->block_header( true );
+		$this->block_header();
 
 		if ( $subtitle != '' ) {
 			$this->sub_title( $subtitle );
