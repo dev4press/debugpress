@@ -18,7 +18,7 @@ function debugpress_rs( $value, $echo = true ) : string {
 	$result = '';
 
 	if ( is_bool( $value ) ) {
-		$result = '<div class="debugpress_rs debugpress_rs_bool">' . ( $value ? 'TRUE' : 'FALSE' ) . '</div>';
+		$result = '<div class="debugpress_rs debugpress_rs_bool debugpress_rs_bool_'.($value ? 'true' : 'false').'">' . ( $value ? 'TRUE' : 'FALSE' ) . '</div>';
 	} else if ( is_null( $value ) ) {
 		$result = '<div class="debugpress_rs debugpress_rs_null">NULL</div>';
 	} else if ( is_numeric( $value ) ) {

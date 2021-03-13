@@ -21,6 +21,7 @@ class Tracker {
 	public $has_errors = 0;
 	public $has_warnings = 0;
 
+	public $plugins = array();
 	public $snapshots = array();
 	public $objects = array();
 	public $errors = array();
@@ -92,6 +93,8 @@ class Tracker {
 	}
 
 	public function end() {
+		do_action( 'debugpress-tracker-plugins-call' );
+
 		$this->snapshot( '_end' );
 	}
 
@@ -242,6 +245,22 @@ class Tracker {
 
 	public function hooks() {
 		return $this->_hooks_object();
+	}
+
+	public function plugin( $plugin_file, $data = array() ) {
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+		$plugin = get_plugin_data( $plugin_file );
+
+		if ( ! isset( $this->plugins[ $plugin_file ] ) ) {
+			$this->plugins[ $plugin_file ] = array();
+		}
+
+		$this->plugins[ $plugin_file ][] = array(
+			'file'   => $plugin_file,
+			'plugin' => $plugin,
+			'data'   => $data
+		);
 	}
 
 	public function log( $object, $title = '', $sql = false ) {

@@ -366,13 +366,20 @@ a > .debugpress-icon {
 }
 
 .debugpress_rs.debugpress_rs_null {
-  color: #C02;
+  color: #C00;
 }
 .debugpress_rs.debugpress_rs_empty {
-  color: #080;
+  color: #090;
 }
 .debugpress_rs.debugpress_rs_number {
-  color: #008;
+  color: #009;
+}
+.debugpress_rs.debugpress_rs_bool.debugpress_rs_bool_true {
+  font-weight: bold;
+  color: #050;
+}
+.debugpress_rs.debugpress_rs_bool.debugpress_rs_bool_false {
+  color: #700;
 }
 
 .debugpress-clearfix:before,

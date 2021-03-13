@@ -2,9 +2,9 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.6
+Stable tag: 1.7
 Requires at least: 5.0
-Tested up to: 5.5
+Tested up to: 5.7
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -15,7 +15,7 @@ DebugPress is an easy to use plugin implementing popup for debugging and profili
 
 DebugPress is an easy to use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests. The main debugger window is displayed as a popup, activated through the button with the Bug integrated into WordPress Toolbar, or floating on the page.
 
-The plugin currently has 19 tabs in the popup debugger window, showing all kinds of information relevant to current page, WordPress setup, background AJAX calls and much more.
+The plugin currently has total of 22 tabs in the popup debugger window, showing all kinds of information relevant to current page, WordPress setup, background AJAX calls and much more.
 
 The plugin doesn't modify or replaces any WordPress files or functions.
 
@@ -42,6 +42,7 @@ Currently, the plugin has following panels:
 * Server (optional)
 * HTTP (optional, if HTTP API calls are captured)
 * bbPress (optional, on bbPress forum pages only)
+* Plugins (optional, if plugins store data)
 * Enqueue (optional)
 * Errors (if PHP errors are captured)
 * Deprecated (if PHP deprecated warnings are captured)
@@ -99,6 +100,12 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 1.7 (2021.03.22) =
+* New: debugger panel - Plugins
+* New: plugins panel - log specially formatted objects from plugins
+* Edit: various improvements to the debugger popup styling
+* Fix: few Info methods has wrong names
+
 = 1.6 (2021.01.06) =
 * New: requires PHP 7.0 or newer
 * New: requires WordPress 5.0 or newer
@@ -192,6 +199,15 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 1.7 =
+Plugins Panel. Few improvements and bug fixes.
+
+= 1.6 =
+Roles Panel. Few bug fixes.
+
+= 1.5 =
+Tools Panel. Contextual Help. Few bug fixes.
+
 = 1.4 =
 Various improvements and bug fixes.
 

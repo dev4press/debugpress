@@ -189,6 +189,10 @@ class Loader {
 			$this->tabs['bbpress'] = __( "bbPress", "debugpress" );
 		}
 
+		if ( ! empty( debugpress_tracker()->plugins ) ) {
+			$this->tabs['plugins'] = __( "Plugins", "debugpress" );
+		}
+
 		if ( ! empty( debugpress_tracker()->errors ) ) {
 			$this->tabs['errors'] = __( "Errors", "debugpress" ) . ' (' . debugpress_tracker()->counts['errors'] . ')';
 		}

@@ -77,19 +77,19 @@ class Plugin {
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
-	public function wp_version() {
+	public function wp_version() : string {
 		return $this->_wp_version;
 	}
 
-	public function wp_version_real() {
+	public function wp_version_real() : string {
 		return $this->_wp_version_real;
 	}
 
-	public function cp_version() {
+	public function cp_version() : string {
 		return $this->_cp_version;
 	}
 
-	public function cp_version_real() {
+	public function cp_version_real() : string {
 		return $this->_cp_version_real;
 	}
 

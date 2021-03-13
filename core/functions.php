@@ -29,6 +29,16 @@ function debugpress_store_object( $object, $title = '', $sql = false ) {
 }
 
 /**
+ * Store the data associated with the plugin for debug purposes, to be displayed on the Plugins tab of the Debugger.
+ *
+ * @param string $plugin_file Name of the plugin as identified by WordPress, relative path to plugin main file
+ * @param array  $data        Data to show on the Plugins page
+ */
+function debugpress_store_for_plugin( $plugin_file, $data = array() ) {
+	debugpress_tracker()->plugin( $plugin_file, $data );
+}
+
+/**
  * Check if the bbPress plugin is currently installed and active. Requires bbPress version 2.5 or newer.
  *
  * @return bool TRUE: if the bbPress is active, FALSE: if it is not active
@@ -58,9 +68,9 @@ function debugpress_is_classicpress() : bool {
  * Format numeric value representing bytes (for file size, for instance) into short format rounded to KB, MB, GB, TB
  * and PB.
  *
- * @param float|int  $size    size value to format
- * @param int        $decimal number of decimal points to show
- * @param string     $sep     separator between value and modifier
+ * @param float|int $size    size value to format
+ * @param int       $decimal number of decimal points to show
+ * @param string    $sep     separator between value and modifier
  *
  * @return string formatted string
  */
@@ -88,6 +98,15 @@ function debugpress_strleft( string $input, string $modifier ) {
 	return substr( $input, 0, strpos( $input, $modifier ) );
 }
 
+/**
+ * Replace first occurrence of the $from string with the $to string inside the $subject.
+ *
+ * @param string $from
+ * @param string $to
+ * @param string $subject
+ *
+ * @return string|string[]|null
+ */
 function debugpress_str_replace_first( $from, $to, $subject ) {
 	return preg_replace( '/' . preg_quote( $from, '/' ) . '/', $to, $subject, 1 );
 }
