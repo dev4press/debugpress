@@ -1,317 +1,272 @@
 .debugpress-panel .nav-tab {
-    margin-left: 10px;
-    padding: 5px 15px;
+  margin-left: 10px;
+  padding: 5px 15px;
 }
-
 .debugpress-panel .nav-tab .dashicons {
-    font-size: 16px;
-    margin-right: 5px;
-    vertical-align: middle;
+  font-size: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
 }
-
 .debugpress-panel .nav-tab-right {
-    float: right;
-    margin-right: 10px;
-    margin-left: 0;
+  float: right;
+  margin-right: 10px;
+  margin-left: 0;
 }
 
 .debugpress-panel-settings .tab-content {
-    display: none;
+  display: none;
 }
-
 .debugpress-panel-settings .tab-content.tab-content-active {
-    display: block;
+  display: block;
 }
 
 .debugpress_settings {
-    width: calc(100% - 330px);
-    float: left;
-    color: #000;
+  width: calc(100% - 330px);
+  float: left;
+  color: #000;
 }
-
 .debugpress_settings .debugpress-settings-section {
-    max-width: 720px;
-    background-color: #FFF;
-    padding: 15px;
-    margin: 15px 0 0 15px;
-    border: 1px solid #1E72BD;
+  max-width: 720px;
+  background-color: #FFF;
+  padding: 15px;
+  margin: 15px 0 0 15px;
+  border: 1px solid #1E72BD;
 }
-
 .debugpress_settings .debugpress-settings-section h2 {
-    margin: -15px -15px 15px;
-    padding: 15px;
-    background-color: #1E72BD;
-    color: #FFF;
+  margin: -15px -15px 15px;
+  padding: 15px;
+  background-color: #1E72BD;
+  color: #FFF;
 }
-
 .debugpress_settings .debugpress-settings-section .debugpress-section-info {
-    margin: -15px -15px 0;
-    padding: 15px;
-    background-color: #DAEEFF;
+  margin: -15px -15px 0;
+  padding: 15px;
+  background-color: #DAEEFF;
 }
-
 .debugpress_settings .debugpress-settings-section p.description {
-    border-top: 1px solid #1E72BD;
-    margin: 10px 0 0;
-    padding: 5px 0 0;
+  border-top: 1px solid #1E72BD;
+  margin: 10px 0 0;
+  padding: 5px 0 0;
 }
 
 .debugpress_sidebar {
-    float: right;
-    padding-left: 20px;
-    margin-right: 15px;
-    width: 280px;
+  float: right;
+  padding-left: 20px;
+  margin-right: 15px;
+  width: 280px;
 }
-
 .debugpress_sidebar img {
-    height: auto;
-    width: 100%;
+  height: auto;
+  width: 100%;
 }
-
 .debugpress_sidebar > div {
-    text-align: center;
-    padding: 15px;
-    margin: 15px 0;
-    max-width: 360px;
+  text-align: center;
+  padding: 15px;
+  margin: 15px 0;
+  max-width: 360px;
 }
-
 .debugpress_sidebar .debugpress_plugin {
-    color: #FFF;
-    background: #1E72BD;
+  color: #FFF;
+  background: #1E72BD;
 }
-
 .debugpress_sidebar .debugpress_plugin > div {
-    border-top: 1px solid #FFF;
-    border-bottom: 1px solid #FFF;
-    padding: 15px 0;
-    margin: 15px 0;
-    font-weight: bold;
-    font-size: 1.1em;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+  padding: 15px 0;
+  margin: 15px 0;
+  font-weight: bold;
+  font-size: 1.1em;
 }
-
 .debugpress_sidebar .debugpress_plugin .button-secondary {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 .debugpress_sidebar .debugpress_help {
-    color: #111;
-    background: #FFF;
-    border: 1px solid #1E72BD;
+  color: #111;
+  background: #FFF;
+  border: 1px solid #1E72BD;
 }
-
 .debugpress_sidebar .debugpress_help > p {
-    margin: 0;
-    padding: 0 0 15px;
+  margin: 0;
+  padding: 0 0 15px;
 }
-
 .debugpress_sidebar .debugpress_dev4press {
-    color: #111;
-    background: #E0E0E0;
-    border: 1px solid #1E72BD;
+  color: #111;
+  background: #E0E0E0;
+  border: 1px solid #1E72BD;
 }
-
 .debugpress_sidebar .debugpress_dev4press > p {
-    margin: 0;
-    padding: 0 0 10px;
-    font-weight: bold;
+  margin: 0;
+  padding: 0 0 10px;
+  font-weight: bold;
 }
-
 .debugpress_sidebar .debugpress_dev4press > div {
-    border-top: 1px solid #1E72BD;
-    padding: 15px 0 0;
-    margin: 15px 0 0;
-    font-weight: bold;
-    font-size: 1.2em;
+  border-top: 1px solid #1E72BD;
+  padding: 15px 0 0;
+  margin: 15px 0 0;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 @media screen and (max-width: 900px) {
-    .debugpress_settings {
-        width: 100%;
-        float: none;
-    }
-
-    .debugpress_settings .debugpress-settings-section {
-        margin: 15px;
-    }
-
-    .debugpress_sidebar {
-        border-top: 1px solid #1E72BD;
-        padding-top: 20px;
-        padding-left: 0;
-        width: 100%;
-        float: none;
-        margin: 0;
-    }
-
-    .debugpress_sidebar > div {
-        margin: 0 auto 15px;
-    }
-}
-
-.debugpress-panel-tools .tab-content {
+  .debugpress_settings {
+    width: 100%;
+    float: none;
+  }
+  .debugpress_settings .debugpress-settings-section {
     margin: 15px;
+  }
+
+  .debugpress_sidebar {
+    border-top: 1px solid #1E72BD;
+    padding-top: 20px;
+    padding-left: 0;
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+  .debugpress_sidebar > div {
+    margin: 0 auto 15px;
+  }
+}
+.debugpress-panel-tools .tab-content {
+  margin: 15px;
 }
 
 .debugpress_phpinfo {
-    overflow: auto;
+  overflow: auto;
 }
-
 .debugpress_phpinfo h1.p {
-    background-color: #222;
-    color: #FFF;
-    font-size: 28px;
-    margin: 0;
-    padding: 22px 16px;
+  background-color: #222;
+  color: #FFF;
+  font-size: 28px;
+  margin: 0;
+  padding: 22px 16px;
 }
-
 .debugpress_phpinfo td img {
-    float: right;
-    margin: 7px 16px 0 0;
+  float: right;
+  margin: 7px 16px 0 0;
 }
-
 .debugpress_phpinfo table {
-    width: 100%;
-    background: #FFF;
-    border-collapse: collapse;
-    border: 1px solid #BBB;
-    margin: 0 0 5px;
+  width: 100%;
+  background: #FFF;
+  border-collapse: collapse;
+  border: 1px solid #BBB;
+  margin: 0 0 5px;
 }
-
 .debugpress_phpinfo table td,
 .debugpress_phpinfo table th {
-    padding: 5px;
-    text-align: left;
-    vertical-align: top;
+  padding: 5px;
+  text-align: left;
+  vertical-align: top;
 }
-
 .debugpress_phpinfo table tr th,
 .debugpress_phpinfo table tr td.first {
-    width: 20%;
+  width: 20%;
 }
-
 .debugpress_phpinfo table tr td.b,
 .debugpress_phpinfo table tr th.first {
-    color: #333;
-    font-weight: bold;
+  color: #333;
+  font-weight: bold;
 }
-
 .debugpress_phpinfo table tr td {
-    border-bottom: 1px solid #ECECEC;
-    word-break: break-all;
+  border-bottom: 1px solid #ECECEC;
+  word-break: break-all;
 }
-
 .debugpress_phpinfo table tr td .options {
-    text-align: right;
-    white-space: normal;
-    padding-right: 0;
+  text-align: right;
+  white-space: normal;
+  padding-right: 0;
 }
-
 .debugpress_phpinfo table tr.first th {
-    color: #222;
-    font-weight: bold;
+  color: #222;
+  font-weight: bold;
 }
-
 .debugpress_phpinfo table tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
-
 .debugpress_phpinfo table tr.h th, .debugpress_phpinfo table tr.with-header th {
-    background: #666;
-    color: #FFF;
-    padding: 10px;
+  background: #666;
+  color: #FFF;
+  padding: 10px;
 }
-
 .debugpress_phpinfo table th {
-    text-align: left;
-    background-color: #ECECEC;
-    padding: 3px 5px;
+  text-align: left;
+  background-color: #ECECEC;
+  padding: 3px 5px;
 }
-
 .debugpress_phpinfo div.inside {
-    margin: -1px 0 10px;
+  margin: -1px 0 10px;
 }
-
 .debugpress_phpinfo p.sub {
-    color: #777;
-    font-size: 13px;
-    font-style: italic;
-    padding: 5px 10px 15px;
-    margin: -12px;
+  color: #777;
+  font-size: 13px;
+  font-style: italic;
+  padding: 5px 10px 15px;
+  margin: -12px;
 }
-
 .debugpress_phpinfo h3 {
-    background: #333 !important;
-    color: white;
-    text-shadow: none !important;
-    font-size: 14px;
-    font-weight: bold;
+  background: #333 !important;
+  color: white;
+  text-shadow: none !important;
+  font-size: 14px;
+  font-weight: bold;
 }
-
 .debugpress_phpinfo div.inside .link {
-    text-align: right;
-    font-weight: bold;
+  text-align: right;
+  font-weight: bold;
 }
-
 .debugpress_phpinfo a {
-    text-decoration: none;
+  text-decoration: none;
 }
-
 .debugpress_phpinfo a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
 .debugpress_phpinfo h2.phpsection {
-    background-color: #333;
-    color: #FFF;
-    font-style: normal;
-    padding: 5px 10px;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 5px;
-    text-shadow: none;
+  background-color: #333;
+  color: #FFF;
+  font-style: normal;
+  padding: 5px 10px;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  text-shadow: none;
 }
-
 .debugpress_phpinfo h2.phpsection a {
-    color: #FFF;
+  color: #FFF;
 }
 
 .debugpress_info table {
-    min-width: 50%;
-    max-width: 100%;
-    line-height: 1.5;
-    border-collapse: collapse;
-    border: 1px solid #BBB;
-    border-top: 0;
+  min-width: 50%;
+  max-width: 100%;
+  line-height: 1.5;
+  border-collapse: collapse;
+  border: 1px solid #BBB;
+  border-top: 0;
 }
-
 .debugpress_info table thead th {
-    text-align: left;
-    padding: 5px;
-    background: #666;
-    color: #FFF;
+  text-align: left;
+  padding: 5px;
+  background: #666;
+  color: #FFF;
 }
-
 .debugpress_info table tbody tr {
-    border-bottom: 1px solid #BBB;
-    background: #FFF;
+  border-bottom: 1px solid #BBB;
+  background: #FFF;
 }
-
 .debugpress_info table tbody tr th, .debugpress_info table tbody tr td {
-    vertical-align: top;
-    padding: 5px;
-    text-align: left;
+  vertical-align: top;
+  padding: 5px;
+  text-align: left;
 }
-
 .debugpress_info table tbody tr td {
-    border-left: 1px solid #BBB;
+  border-left: 1px solid #BBB;
 }
-
 .debugpress_info table tbody tr td div {
-    word-break: break-all;
+  word-break: break-all;
 }
 
 @media screen and (max-width: 1200px) {
-    .debugpress_info table {
-        width: 100%;
-    }
+  .debugpress_info table {
+    width: 100%;
+  }
 }
