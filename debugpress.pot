@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 01/05/2021 11:00:27 PM\n"
+"POT-Creation-Date: 03/14/2021 11:20:10 AM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -496,7 +496,7 @@ msgid "Enqueue"
 msgstr ""
 
 #: core/display/Loader.php:180
-#: core/main/Plugin.php:263
+#: core/main/Plugin.php:268
 msgid "PHP"
 msgstr ""
 
@@ -506,36 +506,40 @@ msgid "System"
 msgstr ""
 
 #: core/display/Loader.php:192
-msgid "Errors"
+msgid "Plugins"
 msgstr ""
 
 #: core/display/Loader.php:196
-msgid "Deprecated"
+msgid "Errors"
 msgstr ""
 
 #: core/display/Loader.php:200
-msgid "Doing It Wrong"
+msgid "Deprecated"
 msgstr ""
 
 #: core/display/Loader.php:204
-msgid "HTTP"
+msgid "Doing It Wrong"
 msgstr ""
 
 #: core/display/Loader.php:208
-msgid "AJAX"
+msgid "HTTP"
 msgstr ""
 
 #: core/display/Loader.php:212
-msgid "Store"
+msgid "AJAX"
 msgstr ""
 
 #: core/display/Loader.php:216
+msgid "Store"
+msgstr ""
+
+#: core/display/Loader.php:220
 #: forms/admin/settings.php:9
 #: forms/display.php:63
 msgid "Tools"
 msgstr ""
 
-#: core/display/Loader.php:222
+#: core/display/Loader.php:226
 msgid "Debug Log"
 msgstr ""
 
@@ -659,28 +663,28 @@ msgstr ""
 msgid "not defined"
 msgstr ""
 
-#: core/main/Plugin.php:232
+#: core/main/Plugin.php:237
 msgid "Production Environment"
 msgstr ""
 
-#: core/main/Plugin.php:235
+#: core/main/Plugin.php:240
 msgid "Staging Environment"
 msgstr ""
 
-#: core/main/Plugin.php:238
+#: core/main/Plugin.php:243
 msgid "Local Environment"
 msgstr ""
 
-#: core/main/Plugin.php:241
+#: core/main/Plugin.php:246
 msgid "Development Environment"
 msgstr ""
 
-#: core/main/Plugin.php:265
+#: core/main/Plugin.php:270
 #: core/panel/Server.php:20
 msgid "IP"
 msgstr ""
 
-#: core/main/Plugin.php:266
+#: core/main/Plugin.php:271
 #: core/panel/Queries.php:95
 #: core/panel/Queries.php:150
 #: core/panel/Queries.php:168
@@ -688,16 +692,16 @@ msgstr ""
 msgid "Queries"
 msgstr ""
 
-#: core/main/Plugin.php:267
+#: core/main/Plugin.php:272
 #: core/panel/Basics.php:113
 msgid "Memory"
 msgstr ""
 
-#: core/main/Plugin.php:268
+#: core/main/Plugin.php:273
 msgid "Loaded"
 msgstr ""
 
-#: core/main/Plugin.php:268
+#: core/main/Plugin.php:273
 msgid "seconds."
 msgstr ""
 
@@ -1653,11 +1657,11 @@ msgstr ""
 msgid "AJAX ENDED"
 msgstr ""
 
-#: core/track/Tracker.php:354
+#: core/track/Tracker.php:373
 msgid "Unregistered Setting"
 msgstr ""
 
-#: core/track/Tracker.php:579
+#: core/track/Tracker.php:598
 msgid "Request not executed because of the filter on %s."
 msgstr ""
 
