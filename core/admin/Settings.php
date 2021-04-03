@@ -54,12 +54,6 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
-			'debugpress_settings_autos',
-			__( "Auto debug overrides", "debugpress" ),
-			array( $this, 'block_autos' ),
-			'debugpress' );
-
-		add_settings_section(
 			'debugpress_settings_ajax',
 			__( "AJAX Calls Tracking", "debugpress" ),
 			array( $this, 'block_ajax' ),
@@ -69,6 +63,18 @@ class Settings {
 			'debugpress_settings_errors',
 			__( "Errors Tracking", "debugpress" ),
 			array( $this, 'block_errors' ),
+			'debugpress' );
+
+		add_settings_section(
+			'debugpress_settings_pretty',
+			__( "Pretty Print", "debugpress" ),
+			array( $this, 'block_pretty' ),
+			'debugpress' );
+
+		add_settings_section(
+			'debugpress_settings_autos',
+			__( "Auto debug overrides", "debugpress" ),
+			array( $this, 'block_autos' ),
 			'debugpress' );
 	}
 
@@ -121,6 +127,13 @@ class Settings {
 			array( $this, 'option_for_visitor' ),
 			'debugpress',
 			'debugpress_settings_roles' );
+
+		add_settings_field(
+			'debugpress_settings_pretty_print',
+			'<label for="debugpress_settings_pretty_print">' . __( "Print Package", "debugpress" ) . '</label>',
+			array( $this, 'option_pretty_print' ),
+			'debugpress',
+			'debugpress_settings_pretty' );
 
 		add_settings_field(
 			'debugpress_settings_auto_wpdebug',
@@ -323,6 +336,10 @@ class Settings {
 		echo __( "Control which types of errors and warnings plugins will track and report.", "debugpress" );
 	}
 
+	public function block_pretty() {
+		echo __( "Choose which pretty print implementation to load. This is used to display complex arrays and objects in a readable form.", "debugpress" );
+	}
+
 	public function block_autos() {
 		echo __( "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed.", "debugpress" );
 	}
@@ -372,6 +389,16 @@ class Settings {
 
 		echo "<input " . $checked . " id='debugpress_settings_for_visitor' name='debugpress_settings[for_visitor]' type='checkbox' />";
 		echo '<p class="description">' . esc_html__( "Visitors are users that are not currently logged in.", "debugpress" ) . '</p>';
+	}
+
+	public function option_pretty_print() {
+		$enabled = debugpress_plugin()->get( 'pr' );
+
+		echo "<label style='display: block;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . __( "Pretty Print", "debugpress" ) . "</label>";
+		echo '<p class="description">' . esc_html__( "Default and simple library, but it can be limited in what it can process.", "debugpress" ) . '</p>';
+
+		echo "<label style='display: block; margin-top: 15px;'><input " . ( $enabled == 'kint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='kint' type='radio' />KINT</label>";
+		echo '<p class="description">' . esc_html__( "Third party developed library with more robust output and able to process almost any type of complex objects.", "debugpress" ) . ' <a href="https://github.com/kint-php/kint" target="_blank">' . __( "GitHub", "debugpress" ) . '</a></p>';
 	}
 
 	public function option_auto_wpdebug() {

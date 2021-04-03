@@ -22,8 +22,6 @@ class Loader {
 		}
 
 		SQLFormat::$pre_attributes      = '';
-		PrettyPrint::init()->ICON_DOWN  = '<i class="debugpress-icon debugpress-icon-caret-down"></i>';
-		PrettyPrint::init()->ICON_RIGHT = '<i class="debugpress-icon debugpress-icon-caret-right"></i>';
 
 		if ( $this->position == 'toolbar' ) {
 			add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );

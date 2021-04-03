@@ -26,6 +26,9 @@ The plugin doesn't modify or replaces any WordPress files or functions.
 = Quick Overview Video =
 https://www.youtube.com/watch?v=-eFnBRLhy-s
 
+= Pretty Print for objects =
+To display the content of objects or arrays, plugin has pretty print functionality through use of simpler PrettyPrint library, or more robust third-party library Kint. You can choose one or the other from the plugin Settings, Advanced tab.
+
 = Debugger Panels =
 Currently, the plugin has following panels:
 
@@ -100,11 +103,15 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 1.7 (2021.03.22) =
+= 1.7 (2021.04.03) =
 * New: debugger panel - Plugins
 * New: plugins panel - log specially formatted objects from plugins
+* New: settings panel shows Tracking tab
+* New: settings group to select Pretty Print engine to use
+* New: third party pretty print Engine: Kint
 * Edit: various improvements to the debugger popup styling
-* Fix: few Info methods has wrong names
+* Fix: few Info methods have wrong names
+* Fix: few warnings thrown by the Tracker object
 
 = 1.6 (2021.01.06) =
 * New: requires PHP 7.0 or newer

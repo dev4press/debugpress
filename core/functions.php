@@ -110,3 +110,35 @@ function debugpress_strleft( string $input, string $modifier ) {
 function debugpress_str_replace_first( $from, $to, $subject ) {
 	return preg_replace( '/' . preg_quote( $from, '/' ) . '/', $to, $subject, 1 );
 }
+
+/**
+ * Basic pretty print replacement that handles only scalars or null, and it can't print objects or arrays.
+ *
+ * @param bool|numeric|string|null $value variable to pretty print
+ * @param bool                     $echo  print or return formatted result
+ *
+ * @return string pretty printed output
+ */
+function debugpress_rs( $value, $echo = true ) : string {
+	$result = '';
+
+	if ( is_bool( $value ) ) {
+		$result = '<div class="debugpress_rs debugpress_rs_bool debugpress_rs_bool_' . ( $value ? 'true' : 'false' ) . '">' . ( $value ? 'TRUE' : 'FALSE' ) . '</div>';
+	} else if ( is_null( $value ) ) {
+		$result = '<div class="debugpress_rs debugpress_rs_null">NULL</div>';
+	} else if ( is_numeric( $value ) ) {
+		$result = '<div class="debugpress_rs debugpress_rs_number">' . $value . '</div>';
+	} else if ( is_string( $value ) ) {
+		if ( empty( $value ) ) {
+			$result = '<div class="debugpress_rs debugpress_rs_empty">EMPTY</div>';
+		} else {
+			$result = '<div class="debugpress_rs debugpress_rs_string">' . $value . '</div>';
+		}
+	}
+
+	if ( $echo ) {
+		echo $result;
+	} else {
+		return $result;
+	}
+}

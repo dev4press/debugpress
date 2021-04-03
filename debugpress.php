@@ -58,7 +58,6 @@ if ( DEBUGPRESS_IS_CLI || DEBUGPRESS_IS_CRON ) {
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php' );
 require_once( DEBUGPRESS_PLUGIN_PATH . 'core/functions.php' );
-require_once( DEBUGPRESS_PLUGIN_PATH . 'core/pretty-print.php' );
 
 debugpress_plugin();
 

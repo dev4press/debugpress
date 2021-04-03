@@ -731,6 +731,14 @@ a > .debugpress-icon {
   padding: 1px 4px !important;
   font-size: calc(var(--debugpress-base-font-size) - 1px);
 }
+.debugpress-style-popup .debugpress-debugger-table th .kint-rich,
+.debugpress-style-popup .debugpress-debugger-table td .kint-rich {
+  margin: 0;
+}
+.debugpress-style-popup .debugpress-debugger-table th .kint-rich > dl > .kint-parent,
+.debugpress-style-popup .debugpress-debugger-table td .kint-rich > dl > .kint-parent {
+  margin-top: 0;
+}
 .debugpress-style-popup .debugpress-debugger-table td {
   border-width: 0 1px 1px 0;
   vertical-align: top;

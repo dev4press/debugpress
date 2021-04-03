@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 01/05/2021 11:00:27 PM\n"
+"POT-Creation-Date: 04/03/2021 02:10:46 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -125,187 +125,212 @@ msgid "Additional Debugger Panels"
 msgstr ""
 
 #: core/admin/Settings.php:57
-msgid "Auto debug overrides"
-msgstr ""
-
-#: core/admin/Settings.php:63
 msgid "AJAX Calls Tracking"
 msgstr ""
 
-#: core/admin/Settings.php:69
+#: core/admin/Settings.php:63
 msgid "Errors Tracking"
 msgstr ""
 
-#: core/admin/Settings.php:77
-#: core/admin/Settings.php:91
+#: core/admin/Settings.php:69
+#: core/admin/Settings.php:396
+msgid "Pretty Print"
+msgstr ""
+
+#: core/admin/Settings.php:75
+msgid "Auto debug overrides"
+msgstr ""
+
+#: core/admin/Settings.php:83
+#: core/admin/Settings.php:97
 msgid "Website Admin"
 msgstr ""
 
-#: core/admin/Settings.php:84
-#: core/admin/Settings.php:98
+#: core/admin/Settings.php:90
+#: core/admin/Settings.php:104
 msgid "Website Frontend"
 msgstr ""
 
-#: core/admin/Settings.php:105
+#: core/admin/Settings.php:111
 msgid "Super Admin"
 msgstr ""
 
-#: core/admin/Settings.php:112
-#: core/admin/Settings.php:147
+#: core/admin/Settings.php:118
+#: core/admin/Settings.php:160
 msgid "User Roles"
 msgstr ""
 
-#: core/admin/Settings.php:119
+#: core/admin/Settings.php:125
 msgid "Visitors"
 msgstr ""
 
-#: core/admin/Settings.php:126
+#: core/admin/Settings.php:132
+msgid "Print Package"
+msgstr ""
+
+#: core/admin/Settings.php:139
 msgid "Enable WP_DEBUG"
 msgstr ""
 
-#: core/admin/Settings.php:133
+#: core/admin/Settings.php:146
 msgid "Enable SAVEQUERIES"
 msgstr ""
 
-#: core/admin/Settings.php:140
+#: core/admin/Settings.php:153
 msgid "Registered Content"
 msgstr ""
 
-#: core/admin/Settings.php:154
+#: core/admin/Settings.php:167
 #: core/panel/Request.php:26
 msgid "Page Request"
 msgstr ""
 
-#: core/admin/Settings.php:161
+#: core/admin/Settings.php:174
 msgid "WordPress Debug Log"
 msgstr ""
 
-#: core/admin/Settings.php:168
+#: core/admin/Settings.php:181
 msgid "Registered Hooks"
 msgstr ""
 
-#: core/admin/Settings.php:175
+#: core/admin/Settings.php:188
 msgid "Enqueued Files"
 msgstr ""
 
-#: core/admin/Settings.php:182
+#: core/admin/Settings.php:195
 msgid "System Information"
 msgstr ""
 
-#: core/admin/Settings.php:189
+#: core/admin/Settings.php:202
 msgid "Current User"
 msgstr ""
 
-#: core/admin/Settings.php:196
+#: core/admin/Settings.php:209
 msgid "Defined Constants"
 msgstr ""
 
-#: core/admin/Settings.php:203
+#: core/admin/Settings.php:216
 msgid "HTTP Requests"
 msgstr ""
 
-#: core/admin/Settings.php:210
+#: core/admin/Settings.php:223
 msgid "PHP Information"
 msgstr ""
 
-#: core/admin/Settings.php:217
-#: core/display/Loader.php:188
+#: core/admin/Settings.php:230
+#: core/display/Loader.php:186
 msgid "bbPress"
 msgstr ""
 
-#: core/admin/Settings.php:224
+#: core/admin/Settings.php:237
 msgid "PHP errors and warnings"
 msgstr ""
 
-#: core/admin/Settings.php:231
+#: core/admin/Settings.php:244
 msgid "WordPress Doing It Wrong"
 msgstr ""
 
-#: core/admin/Settings.php:238
+#: core/admin/Settings.php:251
 msgid "Deprecated warnings"
 msgstr ""
 
-#: core/admin/Settings.php:245
+#: core/admin/Settings.php:258
 msgid "AJAX Tracking"
 msgstr ""
 
-#: core/admin/Settings.php:252
+#: core/admin/Settings.php:265
 msgid "Save to Debug Log"
 msgstr ""
 
-#: core/admin/Settings.php:270
+#: core/admin/Settings.php:283
 msgid "In WordPress Toolbar"
 msgstr ""
 
-#: core/admin/Settings.php:271
+#: core/admin/Settings.php:284
 msgid "Float, Top / Left"
 msgstr ""
 
-#: core/admin/Settings.php:272
+#: core/admin/Settings.php:285
 msgid "Float, Top / Right"
 msgstr ""
 
-#: core/admin/Settings.php:273
+#: core/admin/Settings.php:286
 msgid "Float, Bottom / Left"
 msgstr ""
 
-#: core/admin/Settings.php:274
+#: core/admin/Settings.php:287
 msgid "Float, Bottom / Right"
 msgstr ""
 
-#: core/admin/Settings.php:301
+#: core/admin/Settings.php:314
 msgid "Main activation settings for the plugin. You can choose to use debugger on admin side and / or frontend."
 msgstr ""
 
-#: core/admin/Settings.php:305
+#: core/admin/Settings.php:318
 msgid "Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button."
 msgstr ""
 
-#: core/admin/Settings.php:309
+#: core/admin/Settings.php:322
 msgid "Debugger can be visible to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role."
 msgstr ""
 
-#: core/admin/Settings.php:310
+#: core/admin/Settings.php:323
 msgid "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!"
 msgstr ""
 
-#: core/admin/Settings.php:314
+#: core/admin/Settings.php:327
 msgid "Debugger contains some special panels that can be limited in terms of use when it comes to different user roles allowed to view Debugger popup."
 msgstr ""
 
-#: core/admin/Settings.php:318
+#: core/admin/Settings.php:331
 msgid "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them."
 msgstr ""
 
-#: core/admin/Settings.php:322
+#: core/admin/Settings.php:335
 msgid "Control which types of errors and warnings plugins will track and report."
 msgstr ""
 
-#: core/admin/Settings.php:326
+#: core/admin/Settings.php:339
+msgid "Choose which pretty print implementation to load. This is used to display complex arrays and objects in a readable form."
+msgstr ""
+
+#: core/admin/Settings.php:343
 msgid "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed."
 msgstr ""
 
-#: core/admin/Settings.php:330
+#: core/admin/Settings.php:347
 msgid "Add AJAX tab in the debugger, and track the AJAX request on the active page."
 msgstr ""
 
-#: core/admin/Settings.php:373
+#: core/admin/Settings.php:400
+msgid "GitHub"
+msgstr ""
+
+#: core/admin/Settings.php:390
 msgid "Visitors are users that are not currently logged in."
 msgstr ""
 
-#: core/admin/Settings.php:380
+#: core/admin/Settings.php:397
+msgid "Default and simple library, but it can be limited in what it can process."
+msgstr ""
+
+#: core/admin/Settings.php:400
+msgid "Third party developed library with more robust output and able to process almost any type of complex objects."
+msgstr ""
+
+#: core/admin/Settings.php:407
 msgid "Plugin will attempt to set WP_DEBUG to 'true'. But, if the WP_DEBUG was previously defined elsewhere as 'false', this option will not work."
 msgstr ""
 
-#: core/admin/Settings.php:387
+#: core/admin/Settings.php:414
 msgid "Plugin will attempt to set SAVEQUERIES to 'true'. But, if the SAVEQUERIES was previously defined elsewhere as 'false', this option will not work."
 msgstr ""
 
-#: core/admin/Settings.php:412
+#: core/admin/Settings.php:439
 msgid "This panel will be on the right side of the Debugger header, and it is displayed as icon only."
 msgstr ""
 
-#: core/admin/Settings.php:491
+#: core/admin/Settings.php:518
 msgid "The tracking results for each tracked AJAX call would be also saved in the WordPress 'debug.log', if it is used."
 msgstr ""
 
@@ -413,42 +438,42 @@ msgstr ""
 msgid "Argument in <strong>%s</strong> is deprecated since version %s."
 msgstr ""
 
-#: core/display/Loader.php:63
+#: core/display/Loader.php:61
 msgctxt "Popup message"
 msgid "Show Details"
 msgstr ""
 
-#: core/display/Loader.php:64
+#: core/display/Loader.php:62
 msgctxt "Popup message"
 msgid "Hide Details"
 msgstr ""
 
-#: core/display/Loader.php:102
+#: core/display/Loader.php:100
 msgid "Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:113
+#: core/display/Loader.php:111
 msgid "AJAX Calls"
 msgstr ""
 
-#: core/display/Loader.php:117
+#: core/display/Loader.php:115
 #: core/panel/Basics.php:69
 msgid "HTTP API Calls"
 msgstr ""
 
-#: core/display/Loader.php:120
+#: core/display/Loader.php:118
 msgid "PHP Errors"
 msgstr ""
 
-#: core/display/Loader.php:123
+#: core/display/Loader.php:121
 msgid "Open Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:138
+#: core/display/Loader.php:136
 msgid "Basics"
 msgstr ""
 
-#: core/display/Loader.php:142
+#: core/display/Loader.php:140
 #: core/panel/Constants.php:147
 #: core/panel/HTTP.php:15
 #: core/panel/Request.php:14
@@ -456,137 +481,91 @@ msgstr ""
 msgid "Request"
 msgstr ""
 
-#: core/display/Loader.php:146
+#: core/display/Loader.php:144
 #: core/panel/Request.php:59
 msgid "Query"
 msgstr ""
 
-#: core/display/Loader.php:148
+#: core/display/Loader.php:146
 msgid "Admin"
 msgstr ""
 
-#: core/display/Loader.php:152
+#: core/display/Loader.php:150
 msgid "Content"
 msgstr ""
 
-#: core/display/Loader.php:156
+#: core/display/Loader.php:154
 msgid "Roles"
 msgstr ""
 
-#: core/display/Loader.php:160
+#: core/display/Loader.php:158
 msgid "Constants"
 msgstr ""
 
-#: core/display/Loader.php:164
+#: core/display/Loader.php:162
 msgid "SQL Queries"
 msgstr ""
 
-#: core/display/Loader.php:168
+#: core/display/Loader.php:166
 #: core/panel/Server.php:41
 msgid "User"
 msgstr ""
 
-#: core/display/Loader.php:172
+#: core/display/Loader.php:170
 #: core/panel/Basics.php:116
 msgid "Hooks"
 msgstr ""
 
-#: core/display/Loader.php:176
+#: core/display/Loader.php:174
 msgid "Enqueue"
 msgstr ""
 
-#: core/display/Loader.php:180
-#: core/main/Plugin.php:263
+#: core/display/Loader.php:178
+#: core/main/Plugin.php:284
 msgid "PHP"
 msgstr ""
 
-#: core/display/Loader.php:184
+#: core/display/Loader.php:182
 #: core/panel/Constants.php:138
 msgid "System"
 msgstr ""
 
-#: core/display/Loader.php:192
+#: core/display/Loader.php:190
+msgid "Plugins"
+msgstr ""
+
+#: core/display/Loader.php:194
 msgid "Errors"
 msgstr ""
 
-#: core/display/Loader.php:196
+#: core/display/Loader.php:198
 msgid "Deprecated"
 msgstr ""
 
-#: core/display/Loader.php:200
+#: core/display/Loader.php:202
 msgid "Doing It Wrong"
 msgstr ""
 
-#: core/display/Loader.php:204
+#: core/display/Loader.php:206
 msgid "HTTP"
 msgstr ""
 
-#: core/display/Loader.php:208
+#: core/display/Loader.php:210
 msgid "AJAX"
 msgstr ""
 
-#: core/display/Loader.php:212
+#: core/display/Loader.php:214
 msgid "Store"
 msgstr ""
 
-#: core/display/Loader.php:216
-#: forms/admin/settings.php:9
+#: core/display/Loader.php:218
+#: forms/admin/settings.php:20
 #: forms/display.php:63
 msgid "Tools"
 msgstr ""
 
-#: core/display/Loader.php:222
+#: core/display/Loader.php:224
 msgid "Debug Log"
-msgstr ""
-
-#: core/display/PrettyPrint.php:49
-msgctxt "PrettyPrint message"
-msgid "Empty Array"
-msgstr ""
-
-#: core/display/PrettyPrint.php:50
-msgctxt "PrettyPrint message"
-msgid "No Properties"
-msgstr ""
-
-#: core/display/PrettyPrint.php:51
-msgctxt "PrettyPrint message"
-msgid "No Methods"
-msgstr ""
-
-#: core/display/PrettyPrint.php:52
-msgctxt "PrettyPrint message"
-msgid "Infinite Recursion Detected!"
-msgstr ""
-
-#: core/display/PrettyPrint.php:53
-msgctxt "PrettyPrint message"
-msgid "%d characters"
-msgstr ""
-
-#: core/display/PrettyPrint.php:54
-msgctxt "PrettyPrint message"
-msgid "%s type"
-msgstr ""
-
-#: core/display/PrettyPrint.php:55
-msgctxt "PrettyPrint message"
-msgid "%d elements"
-msgstr ""
-
-#: core/display/PrettyPrint.php:56
-msgctxt "PrettyPrint message"
-msgid "%d properties"
-msgstr ""
-
-#: core/display/PrettyPrint.php:57
-msgctxt "PrettyPrint message"
-msgid "Called From"
-msgstr ""
-
-#: core/display/PrettyPrint.php:58
-msgctxt "PrettyPrint message"
-msgid "line"
 msgstr ""
 
 #: core/main/Info.php:14
@@ -659,28 +638,28 @@ msgstr ""
 msgid "not defined"
 msgstr ""
 
-#: core/main/Plugin.php:232
+#: core/main/Plugin.php:253
 msgid "Production Environment"
 msgstr ""
 
-#: core/main/Plugin.php:235
+#: core/main/Plugin.php:256
 msgid "Staging Environment"
 msgstr ""
 
-#: core/main/Plugin.php:238
+#: core/main/Plugin.php:259
 msgid "Local Environment"
 msgstr ""
 
-#: core/main/Plugin.php:241
+#: core/main/Plugin.php:262
 msgid "Development Environment"
 msgstr ""
 
-#: core/main/Plugin.php:265
+#: core/main/Plugin.php:286
 #: core/panel/Server.php:20
 msgid "IP"
 msgstr ""
 
-#: core/main/Plugin.php:266
+#: core/main/Plugin.php:287
 #: core/panel/Queries.php:95
 #: core/panel/Queries.php:150
 #: core/panel/Queries.php:168
@@ -688,16 +667,16 @@ msgstr ""
 msgid "Queries"
 msgstr ""
 
-#: core/main/Plugin.php:267
+#: core/main/Plugin.php:288
 #: core/panel/Basics.php:113
 msgid "Memory"
 msgstr ""
 
-#: core/main/Plugin.php:268
+#: core/main/Plugin.php:289
 msgid "Loaded"
 msgstr ""
 
-#: core/main/Plugin.php:268
+#: core/main/Plugin.php:289
 msgid "seconds."
 msgstr ""
 
@@ -1645,6 +1624,56 @@ msgstr ""
 msgid "Rest of User Meta Information"
 msgstr ""
 
+#: core/printer/prettyprint/PrettyPrint.php:49
+msgctxt "PrettyPrint message"
+msgid "Empty Array"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:50
+msgctxt "PrettyPrint message"
+msgid "No Properties"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:51
+msgctxt "PrettyPrint message"
+msgid "No Methods"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:52
+msgctxt "PrettyPrint message"
+msgid "Infinite Recursion Detected!"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:53
+msgctxt "PrettyPrint message"
+msgid "%d characters"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:54
+msgctxt "PrettyPrint message"
+msgid "%s type"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:55
+msgctxt "PrettyPrint message"
+msgid "%d elements"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:56
+msgctxt "PrettyPrint message"
+msgid "%d properties"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:57
+msgctxt "PrettyPrint message"
+msgid "Called From"
+msgstr ""
+
+#: core/printer/prettyprint/PrettyPrint.php:58
+msgctxt "PrettyPrint message"
+msgid "line"
+msgstr ""
+
 #: core/track/AJAX.php:40
 msgid "AJAX STARTED"
 msgstr ""
@@ -1653,27 +1682,31 @@ msgstr ""
 msgid "AJAX ENDED"
 msgstr ""
 
-#: core/track/Tracker.php:354
+#: core/track/Tracker.php:373
 msgid "Unregistered Setting"
 msgstr ""
 
-#: core/track/Tracker.php:579
+#: core/track/Tracker.php:600
 msgid "Request not executed because of the filter on %s."
 msgstr ""
 
-#: forms/admin/settings.php:4
+#: forms/admin/settings.php:5
 msgid "Activation"
 msgstr ""
 
-#: forms/admin/settings.php:5
-msgid "Panel"
+#: forms/admin/settings.php:8
+msgid "Panels"
 msgstr ""
 
-#: forms/admin/settings.php:6
+#: forms/admin/settings.php:11
+msgid "Tracking"
+msgstr ""
+
+#: forms/admin/settings.php:14
 msgid "Advanced"
 msgstr ""
 
-#: forms/admin/settings.php:7
+#: forms/admin/settings.php:17
 msgid "Website"
 msgstr ""
 

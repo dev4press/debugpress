@@ -194,6 +194,14 @@
             text-align: left;
             padding: 1px 4px !important;
             font-size: calc(var(--debugpress-base-font-size) - 1px);
+
+            .kint-rich {
+                margin: 0;
+
+                > dl > .kint-parent {
+                    margin-top: 0;
+                }
+            }
         }
 
         td {

@@ -12,6 +12,7 @@ use Dev4Press\Plugin\DebugPress\Track\AJAX as AJAXTracker;
 class Plugin {
 	private $_settings = array();
 	private $_defaults = array(
+		'pr'                    => 'prettyprint',
 		'active'                => false,
 		'admin'                 => false,
 		'frontend'              => false,
@@ -109,6 +110,7 @@ class Plugin {
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
 		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
 
+		$this->load_printer();
 		$this->define_constants();
 
 		if ( DEBUGPRESS_IS_AJAX && $this->_allowed ) {
@@ -124,7 +126,20 @@ class Plugin {
 		debugpress_tracker();
 	}
 
-	public function define_constants() {
+	private function load_printer( $name = '' ) {
+		if ( ! function_exists( 'debugpress_r' ) ) {
+			$name = empty( $name ) ? $this->get( 'pr' ) : 'prettyprint';
+			$path = DEBUGPRESS_PLUGIN_PATH . 'core/printer/' . $name . '/load.php';
+
+			if ( file_exists( $path ) ) {
+				require_once( $path );
+			} else {
+				$this->load_printer( 'prettyprint' );
+			}
+		}
+	}
+
+	private function define_constants() {
 		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
 			define( 'WP_DEBUG', true );
 		}
@@ -174,6 +189,7 @@ class Plugin {
 	public function process_settings( $input ) : array {
 		$types = array(
 			'for_roles'       => 'array',
+			'pr'              => 'string',
 			'button_admin'    => 'string',
 			'button_frontend' => 'string'
 		);

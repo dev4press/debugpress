@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DebugPress\Display;
+namespace Dev4Press\Plugin\DebugPress\Printer\PrettyPrint;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,8 +36,8 @@ class PrettyPrint {
 	public $STR_FOOTER_CALL;
 	public $STR_FOOTER_LINE;
 
-	public $ICON_DOWN = '&#9660;';
-	public $ICON_RIGHT = '&#9658;';
+	public $ICON_DOWN = '<i class="debugpress-icon debugpress-icon-caret-down"></i>';
+	public $ICON_RIGHT = '<i class="debugpress-icon debugpress-icon-caret-right"></i>';
 
 	protected $_has_reflection = null;
 	protected $_visible_mods = array( 'abstract', 'final', 'private', 'protected', 'public', 'static' );
@@ -67,7 +67,7 @@ class PrettyPrint {
 		return self::$instance;
 	}
 
-	public static function instance( $value, $footer = true, $collapsed = true, $inspect_methods = false ) : PrettyPrint {
+	public static function instance( $value, $footer = true, $collapsed = true, $inspect_methods = true ) : PrettyPrint {
 		if ( null === self::$instance ) {
 			self::$instance = new PrettyPrint();
 		}

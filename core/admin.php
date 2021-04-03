@@ -17,7 +17,8 @@ function debugpress_do_settings_sections( $page ) {
 	$tabs = array(
 		'debugpress_settings_activation' => 'activation',
 		'debugpress_settings_special'    => 'panels',
-		'debugpress_settings_autos'      => 'advanced'
+		'debugpress_settings_ajax'       => 'tracking',
+		'debugpress_settings_pretty'     => 'advanced'
 	);
 
 	global $wp_settings_sections, $wp_settings_fields;
