@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 04/03/2021 02:10:46 PM\n"
+"POT-Creation-Date: 04/03/2021 05:14:42 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +133,6 @@ msgid "Errors Tracking"
 msgstr ""
 
 #: core/admin/Settings.php:69
-#: core/admin/Settings.php:396
 msgid "Pretty Print"
 msgstr ""
 
@@ -300,6 +299,10 @@ msgstr ""
 
 #: core/admin/Settings.php:347
 msgid "Add AJAX tab in the debugger, and track the AJAX request on the active page."
+msgstr ""
+
+#: core/admin/Settings.php:396
+msgid "Default"
 msgstr ""
 
 #: core/admin/Settings.php:400

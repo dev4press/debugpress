@@ -394,7 +394,7 @@ class Settings {
 	public function option_pretty_print() {
 		$enabled = debugpress_plugin()->get( 'pr' );
 
-		echo "<label style='display: block;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . __( "Pretty Print", "debugpress" ) . "</label>";
+		echo "<label style='display: block;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . __( "Default", "debugpress" ) . "</label>";
 		echo '<p class="description">' . esc_html__( "Default and simple library, but it can be limited in what it can process.", "debugpress" ) . '</p>';
 
 		echo "<label style='display: block; margin-top: 15px;'><input " . ( $enabled == 'kint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='kint' type='radio' />KINT</label>";
