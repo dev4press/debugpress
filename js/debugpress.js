@@ -77,7 +77,7 @@
                 },
                 callbacks: {
                     afterOpen: function() {
-                        $("#debugpress-debugger-tabs .debugpress-tab-active a").focus();
+                        $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger('focus');
                     }
                 }
             });
@@ -170,7 +170,7 @@
                     current.attr({
                         'tabindex': '0',
                         'aria-selected': true
-                    }).focus();
+                    }).trigger('focus');
 
                     theid = $(document.activeElement).attr('href').substring(1);
 
@@ -200,7 +200,7 @@
                 }
             });
 
-            $("#debugpress-debugger-tabs li a").click(function(e) {
+            $(document).on("click", "#debugpress-debugger-tabs li a", function(e) {
                 e.preventDefault();
 
                 wp.dev4press.debugpress.tab_change($(this).attr("href").substr(1));

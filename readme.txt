@@ -2,9 +2,9 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.7
-Requires at least: 5.0
-Tested up to: 5.7
+Stable tag: 1.7.1
+Requires at least: 5.1
+Tested up to: 5.8
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -103,6 +103,11 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 1.7.1 (2021.07.26) =
+* New: tested with WordPress 5.8
+* New: requires WordPress 5.1 or newer
+* Edit: few more compatibility changes to the JavaScript code
+
 = 1.7 (2021.04.03) =
 * New: debugger panel - Plugins
 * New: plugins panel - log specially formatted objects from plugins

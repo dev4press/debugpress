@@ -7,9 +7,9 @@ Description:       DebugPress is an easy to use plugin implementing popup for de
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       debugpress
-Version:           1.7
-Requires at least: 5.0
-Tested up to:      5.7
+Version:           1.7.1
+Requires at least: 5.1
+Tested up to:      5.8
 Requires PHP:      7.0
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
@@ -31,9 +31,11 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-define( 'DEBUGPRESS_VERSION', '1.7' );
-define( 'DEBUGPRESS_PLUGIN_PATH', __DIR__ . '/' );
-define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
+const DEBUGPRESS_VERSION = '1.7.1';
+const DEBUGPRESS_FILE = __FILE__;
+const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
+
+define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', DEBUGPRESS_FILE ) );
 
 define( 'DEBUGPRESS_IS_AJAX', defined( 'DOING_AJAX' ) && DOING_AJAX );
 define( 'DEBUGPRESS_IS_CRON', defined( 'DOING_CRON' ) && DOING_CRON );
