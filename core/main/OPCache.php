@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class OPCache {
+	public $status = 'disabled';
 	public $version;
 	public $enabled;
 	public $settings = array();
@@ -31,19 +32,25 @@ class OPCache {
 
 	public function init() {
 		if ( $this->has_opcache() ) {
-			$_status = opcache_get_status();
-			$_config = opcache_get_configuration();
+			$this->status = 'enabled';
 
-			$this->version = $_config['version']['version'];
-			$this->enabled = $_status['opcache_enabled'];
+			if ( function_exists( 'opcache_get_configuration' ) ) {
+				$this->status = 'restricted';
 
-			foreach ( $_config['directives'] as $key => $value ) {
-				$name                    = substr( $key, 8 );
-				$this->settings[ $name ] = $value;
+				$_status = opcache_get_status();
+				$_config = opcache_get_configuration();
+
+				$this->version = $_config['version']['version'];
+				$this->enabled = $_status['opcache_enabled'];
+
+				foreach ( $_config['directives'] as $key => $value ) {
+					$name                    = substr( $key, 8 );
+					$this->settings[ $name ] = $value;
+				}
+
+				$this->memory     = $_status['memory_usage'];
+				$this->statistics = $_status['opcache_statistics'];
 			}
-
-			$this->memory     = $_status['memory_usage'];
-			$this->statistics = $_status['opcache_statistics'];
 		}
 	}
 

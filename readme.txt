@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 Requires at least: 5.1
 Tested up to: 5.8
 Requires PHP: 7.0
@@ -103,6 +103,10 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 1.7.2 (2021.09.26) =
+* Edit: OPCache status support for server restricted access
+* Fix: OPCache warnings when access is restricted on server
+
 = 1.7.1 (2021.07.26) =
 * New: tested with WordPress 5.8
 * New: requires WordPress 5.1 or newer
