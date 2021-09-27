@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DebugPress\n"
-"POT-Creation-Date: 04/03/2021 05:14:42 PM\n"
+"POT-Creation-Date: 09/27/2021 12:37:02 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -217,7 +217,7 @@ msgid "PHP Information"
 msgstr ""
 
 #: core/admin/Settings.php:230
-#: core/display/Loader.php:186
+#: core/display/Loader.php:191
 msgid "bbPress"
 msgstr ""
 
@@ -451,32 +451,36 @@ msgctxt "Popup message"
 msgid "Hide Details"
 msgstr ""
 
-#: core/display/Loader.php:100
+#: core/display/Loader.php:86
 msgid "Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:111
+#: core/display/Loader.php:112
 msgid "AJAX Calls"
 msgstr ""
 
-#: core/display/Loader.php:115
+#: core/display/Loader.php:116
 #: core/panel/Basics.php:69
 msgid "HTTP API Calls"
 msgstr ""
 
-#: core/display/Loader.php:118
+#: core/display/Loader.php:120
+msgid "Storage"
+msgstr ""
+
+#: core/display/Loader.php:123
 msgid "PHP Errors"
 msgstr ""
 
-#: core/display/Loader.php:121
+#: core/display/Loader.php:126
 msgid "Open Debugger Panel"
 msgstr ""
 
-#: core/display/Loader.php:136
+#: core/display/Loader.php:141
 msgid "Basics"
 msgstr ""
 
-#: core/display/Loader.php:140
+#: core/display/Loader.php:145
 #: core/panel/Constants.php:147
 #: core/panel/HTTP.php:15
 #: core/panel/Request.php:14
@@ -484,90 +488,90 @@ msgstr ""
 msgid "Request"
 msgstr ""
 
-#: core/display/Loader.php:144
+#: core/display/Loader.php:149
 #: core/panel/Request.php:59
 msgid "Query"
 msgstr ""
 
-#: core/display/Loader.php:146
+#: core/display/Loader.php:151
 msgid "Admin"
 msgstr ""
 
-#: core/display/Loader.php:150
+#: core/display/Loader.php:155
 msgid "Content"
 msgstr ""
 
-#: core/display/Loader.php:154
+#: core/display/Loader.php:159
 msgid "Roles"
 msgstr ""
 
-#: core/display/Loader.php:158
+#: core/display/Loader.php:163
 msgid "Constants"
 msgstr ""
 
-#: core/display/Loader.php:162
+#: core/display/Loader.php:167
 msgid "SQL Queries"
 msgstr ""
 
-#: core/display/Loader.php:166
+#: core/display/Loader.php:171
 #: core/panel/Server.php:41
 msgid "User"
 msgstr ""
 
-#: core/display/Loader.php:170
+#: core/display/Loader.php:175
 #: core/panel/Basics.php:116
 msgid "Hooks"
 msgstr ""
 
-#: core/display/Loader.php:174
+#: core/display/Loader.php:179
 msgid "Enqueue"
 msgstr ""
 
-#: core/display/Loader.php:178
+#: core/display/Loader.php:183
 #: core/main/Plugin.php:284
 msgid "PHP"
 msgstr ""
 
-#: core/display/Loader.php:182
+#: core/display/Loader.php:187
 #: core/panel/Constants.php:138
 msgid "System"
 msgstr ""
 
-#: core/display/Loader.php:190
+#: core/display/Loader.php:195
 msgid "Plugins"
 msgstr ""
 
-#: core/display/Loader.php:194
+#: core/display/Loader.php:199
 msgid "Errors"
 msgstr ""
 
-#: core/display/Loader.php:198
+#: core/display/Loader.php:203
 msgid "Deprecated"
 msgstr ""
 
-#: core/display/Loader.php:202
+#: core/display/Loader.php:207
 msgid "Doing It Wrong"
 msgstr ""
 
-#: core/display/Loader.php:206
+#: core/display/Loader.php:211
 msgid "HTTP"
 msgstr ""
 
-#: core/display/Loader.php:210
+#: core/display/Loader.php:215
 msgid "AJAX"
 msgstr ""
 
-#: core/display/Loader.php:214
+#: core/display/Loader.php:219
 msgid "Store"
 msgstr ""
 
-#: core/display/Loader.php:218
+#: core/display/Loader.php:223
 #: forms/admin/settings.php:20
 #: forms/display.php:63
 msgid "Tools"
 msgstr ""
 
-#: core/display/Loader.php:224
+#: core/display/Loader.php:229
 msgid "Debug Log"
 msgstr ""
 
@@ -627,9 +631,9 @@ msgstr ""
 #: core/main/Panel.php:85
 #: core/main/Panel.php:90
 #: forms/tools/mysql.php:4
-#: forms/tools/opcache.php:9
-#: forms/tools/opcache.php:28
-#: forms/tools/opcache.php:47
+#: forms/tools/opcache.php:19
+#: forms/tools/opcache.php:38
+#: forms/tools/opcache.php:57
 msgid "Value"
 msgstr ""
 
@@ -1493,7 +1497,7 @@ msgid "Open PHP Info Panel"
 msgstr ""
 
 #: core/panel/Tools.php:25
-#: forms/tools/opcache.php:24
+#: forms/tools/opcache.php:34
 msgid "OPCache Statistics"
 msgstr ""
 
@@ -1765,13 +1769,17 @@ msgid "Open the Panel"
 msgstr ""
 
 #: forms/tools/mysql.php:3
-#: forms/tools/opcache.php:8
-#: forms/tools/opcache.php:27
-#: forms/tools/opcache.php:46
+#: forms/tools/opcache.php:18
+#: forms/tools/opcache.php:37
+#: forms/tools/opcache.php:56
 msgid "Variable"
 msgstr ""
 
-#: forms/tools/opcache.php:43
+#: forms/tools/opcache.php:8
+msgid "OPCache information can't be displayed, because access to OPCache statistics and information has been restricted on the hosting level."
+msgstr ""
+
+#: forms/tools/opcache.php:53
 msgid "OPCache Memory Usage"
 msgstr ""
 

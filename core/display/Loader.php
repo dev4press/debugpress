@@ -21,7 +21,7 @@ class Loader {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
-		SQLFormat::$pre_attributes      = '';
+		SQLFormat::$pre_attributes = '';
 
 		if ( $this->position == 'toolbar' ) {
 			add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );
@@ -68,20 +68,6 @@ class Loader {
 		wp_add_inline_style( 'debugpress', $this->vars_styling_override() );
 	}
 
-	public function button_class() {
-		$class = 'debugpress-debug-dialog-button';
-
-		if ( debugpress_tracker()->counts['total'] > 0 ) {
-			if ( debugpress_tracker()->counts['errors'] > 0 ) {
-				$class .= ' debugpress-debug-has-errors';
-			} else {
-				$class .= ' debugpress-debug-has-warnings';
-			}
-		}
-
-		return $class;
-	}
-
 	public function display_in_toolbar() {
 		global $wp_admin_bar;
 
@@ -101,12 +87,27 @@ class Loader {
 		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $_position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
 	}
 
-	public function button() {
+	public function button_class() : string {
+		$class = 'debugpress-debug-dialog-button';
+
+		if ( debugpress_tracker()->counts['total'] > 0 ) {
+			if ( debugpress_tracker()->counts['errors'] > 0 ) {
+				$class .= ' debugpress-debug-has-errors';
+			} else {
+				$class .= ' debugpress-debug-has-warnings';
+			}
+		}
+
+		return $class;
+	}
+
+	public function button() : string {
 		$button = '<i class="debugpress-icon debugpress-icon-bug"></i>';
 		$button .= '<span class="debugpress-debug-button-indicators">';
 
 		$_error_counts = debugpress_tracker()->counts['total'];
 		$_http_counts  = count( debugpress_tracker()->httpapi );
+		$_store_counts = count( debugpress_tracker()->logged );
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
 			$button .= '<span class="debugpress-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "debugpress" ) . '">0</span>';
@@ -114,6 +115,10 @@ class Loader {
 
 		if ( debugpress_plugin()->get( 'panel_http' ) && $_http_counts > 0 ) {
 			$button .= '<span class="debugpress-debug-has-httpcalls" style="display: ' . ( $_http_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "HTTP API Calls", "debugpress" ) . '">' . $_http_counts . '</span>';
+		}
+
+		if ( $_store_counts > 0 ) {
+			$button .= '<span class="debugpress-debug-has-stored" style="display: ' . ( $_store_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "Storage", "debugpress" ) . '">' . $_store_counts . '</span>';
 		}
 
 		$button .= '<span class="debugpress-debug-has-errors" style="display: ' . ( $_error_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . $_error_counts . '</span>';
@@ -230,7 +235,7 @@ class Loader {
 		$this->tabs = apply_filters( 'debugpress-debugger-popup-tabs', $this->tabs );
 	}
 
-	private function vars_styling_override() {
+	private function vars_styling_override() : string {
 		$mods = array();
 		$vars = array(
 			'base-font-size'   => '13px',

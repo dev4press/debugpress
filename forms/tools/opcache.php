@@ -2,61 +2,74 @@
 
 use Dev4Press\Plugin\DebugPress\Main\OPCache;
 
-?>
-<div class="debugpress_info">
-    <table>
-        <thead>
-        <th><?php _e( "Variable", "debugpress" ); ?></th>
-        <th><?php _e( "Value", "debugpress" ); ?></th>
-        </thead>
-        <tbody>
-		<?php
+if ( OPCache::instance()->status == 'restricted' ) {
+	?>
 
-		$opcache_info = OPCache::instance()->settings;
+    <p>
+		<?php _e( "OPCache information can't be displayed, because access to OPCache statistics and information has been restricted on the hosting level.", "debugpress" ); ?>
+    </p>
 
-		foreach ( $opcache_info as $var => $value ) {
-			echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
-		}
+	<?php
+} else {
+	?>
 
-		?>
-        </tbody>
-    </table>
+    <div class="debugpress_info">
+        <table>
+            <thead>
+            <th><?php _e( "Variable", "debugpress" ); ?></th>
+            <th><?php _e( "Value", "debugpress" ); ?></th>
+            </thead>
+            <tbody>
+			<?php
 
-    <h2><?php _e( "OPCache Statistics", "debugpress" ); ?></h2>
-    <table>
-        <thead>
-        <th><?php _e( "Variable", "debugpress" ); ?></th>
-        <th><?php _e( "Value", "debugpress" ); ?></th>
-        </thead>
-        <tbody>
-		<?php
+			$opcache_info = OPCache::instance()->settings;
 
-		$opcache_info = OPCache::instance()->statistics;
+			foreach ( $opcache_info as $var => $value ) {
+				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
+			}
 
-		foreach ( $opcache_info as $var => $value ) {
-			echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
-		}
+			?>
+            </tbody>
+        </table>
 
-		?>
-        </tbody>
-    </table>
+        <h2><?php _e( "OPCache Statistics", "debugpress" ); ?></h2>
+        <table>
+            <thead>
+            <th><?php _e( "Variable", "debugpress" ); ?></th>
+            <th><?php _e( "Value", "debugpress" ); ?></th>
+            </thead>
+            <tbody>
+			<?php
 
-    <h2><?php _e( "OPCache Memory Usage", "debugpress" ); ?></h2>
-    <table>
-        <thead>
-        <th><?php _e( "Variable", "debugpress" ); ?></th>
-        <th><?php _e( "Value", "debugpress" ); ?></th>
-        </thead>
-        <tbody>
-		<?php
+			$opcache_info = OPCache::instance()->statistics;
 
-		$opcache_info = OPCache::instance()->memory;
+			foreach ( $opcache_info as $var => $value ) {
+				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
+			}
 
-		foreach ( $opcache_info as $var => $value ) {
-			echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
-		}
+			?>
+            </tbody>
+        </table>
 
-		?>
-        </tbody>
-    </table>
-</div>
+        <h2><?php _e( "OPCache Memory Usage", "debugpress" ); ?></h2>
+        <table>
+            <thead>
+            <th><?php _e( "Variable", "debugpress" ); ?></th>
+            <th><?php _e( "Value", "debugpress" ); ?></th>
+            </thead>
+            <tbody>
+			<?php
+
+			$opcache_info = OPCache::instance()->memory;
+
+			foreach ( $opcache_info as $var => $value ) {
+				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
+			}
+
+			?>
+            </tbody>
+        </table>
+    </div>
+
+	<?php
+}

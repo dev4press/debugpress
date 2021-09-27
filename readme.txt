@@ -2,9 +2,9 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.7.2
+Stable tag: 1.8
 Requires at least: 5.1
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -13,7 +13,7 @@ DebugPress is an easy to use plugin implementing popup for debugging and profili
 
 == Description ==
 
-DebugPress is an easy to use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests. The main debugger window is displayed as a popup, activated through the button with the Bug integrated into WordPress Toolbar, or floating on the page.
+DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests. The main debugger window is displayed as a popup, activated through the button with the Bug integrated into WordPress Toolbar, or floating on the page.
 
 The plugin currently has total of 22 tabs in the popup debugger window, showing all kinds of information relevant to current page, WordPress setup, background AJAX calls and much more.
 
@@ -103,14 +103,12 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 1.7.2 (2021.09.26) =
+= 1.8 (2021.09.27) =
+* New: requires WordPress 5.1 or newer
+* New: activation button indicator for number of stored object
+* Edit: few more compatibility changes to the JavaScript code
 * Edit: OPCache status support for server restricted access
 * Fix: OPCache warnings when access is restricted on server
-
-= 1.7.1 (2021.07.26) =
-* New: tested with WordPress 5.8
-* New: requires WordPress 5.1 or newer
-* Edit: few more compatibility changes to the JavaScript code
 
 = 1.7 (2021.04.03) =
 * New: debugger panel - Plugins

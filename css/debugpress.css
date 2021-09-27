@@ -446,6 +446,7 @@ a > .debugpress-icon {
   vertical-align: 8px;
 }
 .debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-errors,
+.debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-stored,
 .debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-httpcalls,
 .debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-ajax {
   padding: 2px 3px !important;
@@ -460,6 +461,9 @@ a > .debugpress-icon {
 }
 .debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-ajax {
   background-color: #D82AE5;
+}
+.debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-stored {
+  background-color: #19A514;
 }
 .debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-errors {
   background-color: #ED1E24;
