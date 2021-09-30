@@ -400,9 +400,13 @@ class Info {
 
 	public static function php_opcache() : string {
 		if ( extension_loaded( 'Zend OPcache' ) ) {
-			$config = opcache_get_configuration();
+			if ( function_exists( 'opcache_get_configuration' ) ) {
+				$config = opcache_get_configuration();
 
-			return $config['version']['version'];
+				return $config['version']['version'];
+			} else {
+				return '<strong>' . __( "loaded", "debugpress" ) . '</strong>';
+			}
 		} else {
 			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
 		}

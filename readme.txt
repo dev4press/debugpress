@@ -103,7 +103,7 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 1.8 (2021.09.27) =
+= 1.8 (2021.09.30) =
 * New: requires WordPress 5.1 or newer
 * New: activation button indicator for number of stored object
 * Edit: few more compatibility changes to the JavaScript code
@@ -213,6 +213,9 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 1.8 =
+Many improvements and bug fixes.
+
 = 1.7 =
 Plugins Panel. Few improvements and bug fixes.
 
