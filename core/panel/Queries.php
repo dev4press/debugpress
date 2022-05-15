@@ -269,7 +269,7 @@ class Queries extends Panel {
 		$total = count( $calls );
 		$last  = $calls[ $total - 1 ];
 
-		if ( strpos( $last, 'd4p_wpdb_core' ) === 0 || ( strpos( $last, 'Dev4Press' ) === 0 && strpos($last, '\Core\Plugins\DBLite') > 0 ) ) {
+		if ( strpos( $last, 'd4p_wpdb_core' ) === 0 || ( strpos( $last, 'Dev4Press' ) === 0 && strpos( $last, '\Core\Plugins\DBLite' ) > 0 ) ) {
 			$last = $calls[ $total - 2 ];
 		}
 

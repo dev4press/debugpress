@@ -24,7 +24,7 @@ function debugpress_error_log( $object ) {
  * @param string $title  Optional title to associate with the stored object
  * @param false  $sql    If the stored object SQL string, it will be rendered as formatted SQL
  */
-function debugpress_store_object( $object, $title = '', $sql = false ) {
+function debugpress_store_object( $object, string $title = '', bool $sql = false ) {
 	debugpress_tracker()->log( $object, $title, $sql );
 }
 
@@ -34,7 +34,7 @@ function debugpress_store_object( $object, $title = '', $sql = false ) {
  * @param string $plugin_file Name of the plugin as identified by WordPress, relative path to plugin main file
  * @param array  $data        Data to show on the Plugins page
  */
-function debugpress_store_for_plugin( $plugin_file, $data = array() ) {
+function debugpress_store_for_plugin( string $plugin_file, array $data = array() ) {
 	debugpress_tracker()->plugin( $plugin_file, $data );
 }
 
@@ -74,7 +74,7 @@ function debugpress_is_classicpress() : bool {
  *
  * @return string formatted string
  */
-function debugpress_format_size( $size, $decimal = 2, $sep = ' ' ) : string {
+function debugpress_format_size( $size, int $decimal = 2, string $sep = ' ' ) : string {
 	$units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
 
 	$size = max( $size, 0 );
@@ -107,7 +107,7 @@ function debugpress_strleft( string $input, string $modifier ) {
  *
  * @return string|string[]|null
  */
-function debugpress_str_replace_first( $from, $to, $subject ) {
+function debugpress_str_replace_first( string $from, string $to, string $subject ) {
 	return preg_replace( '/' . preg_quote( $from, '/' ) . '/', $to, $subject, 1 );
 }
 
@@ -119,7 +119,7 @@ function debugpress_str_replace_first( $from, $to, $subject ) {
  *
  * @return string pretty printed output
  */
-function debugpress_rs( $value, $echo = true ) : string {
+function debugpress_rs( $value, bool $echo = true ) : string {
 	$result = '';
 
 	if ( is_bool( $value ) ) {

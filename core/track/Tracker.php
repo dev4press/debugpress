@@ -503,7 +503,7 @@ class Tracker {
 
 		if ( is_array( $wp_filter ) && ! empty( $wp_filter ) ) {
 			foreach ( $wp_filter as $hooks ) {
-				if (isset($hooks->callbacks)) {
+				if ( isset( $hooks->callbacks ) ) {
 					foreach ( $hooks->callbacks as $priorities ) {
 						foreach ( $priorities as $items ) {
 							$this->count_hooks += count( $items );

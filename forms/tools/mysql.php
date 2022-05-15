@@ -1,8 +1,10 @@
 <div class="debugpress_info">
     <table>
         <thead>
-        <th><?php _e( "Variable", "debugpress" ); ?></th>
-        <th><?php _e( "Value", "debugpress" ); ?></th>
+            <tr>
+                <th><?php _e( "Variable", "debugpress" ); ?></th>
+                <th><?php _e( "Value", "debugpress" ); ?></th>
+            </tr>
         </thead>
         <tbody>
 		<?php

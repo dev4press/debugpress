@@ -2,14 +2,14 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.8
-Requires at least: 5.1
-Tested up to: 5.9
-Requires PHP: 7.0
+Stable tag: 1.9
+Requires at least: 5.2
+Tested up to: 6.0
+Requires PHP: 7.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-DebugPress is an easy to use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests.
+DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests.
 
 == Description ==
 
@@ -56,7 +56,7 @@ Currently, the plugin has following panels:
 * Debug Log (load content on demand from WordPress 'debug.log')
 
 = SQL Queries =
-This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the the execution time, order, caller functions stack and fully formatted SQL query that is easy to read.
+This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read.
 
 = PHP and WordPress Errors =
 Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. Plugin captures this information during the page load, and it shows full debug trace as returned by the PHP debug tracing function.
@@ -82,10 +82,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 
 == Installation ==
 = General Requirements =
-* PHP: 7.0 or newer
+* PHP: 7.2 or newer
 
 = WordPress Requirements =
-* WordPress: 5.0 or newer
+* WordPress: 5.2 or newer
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -97,12 +97,18 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 = How can I open Debugger popup? =
-If you have enabled debugger (for admin side and/or frontend), Debugger is activate via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
+If you have enabled debugger (for admin side and/or frontend), Debugger is activated via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
 
 = How can I enable WordPress Debug Mode? =
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 1.9 (2021.05.15) =
+* New: Tested with WordPress 6.0
+* Edit: Several minor updates and improvements
+* Edit: Kint Pretty Print Library 4.1.1
+* Fix: SOme layout issues with the tables
+
 = 1.8 (2021.09.30) =
 * New: requires WordPress 5.1 or newer
 * New: activation button indicator for number of stored object
@@ -127,13 +133,13 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: roles panel - shows registered user roles
 * New: changed the loading order and activation priority
 * Edit: few improvements to the readme file
-* Fix: tools panel - broken links to all of the plugin panels
-* Fix: tracker loading causes problem with some plugins changing user roles
+* Fix: tools panel - broken links to all the plugin panels
+* Fix: tracker loading causes' problem with some plugins changing user roles
 
 = 1.5 (2020.11.14) =
 * New: debugger panel - Tools
 * New: tools panel - links to the individual plugin info panels
-* New: tools panel - links to the individual wordpress tools panels
+* New: tools panel - links to the individual WordPress tools panels
 * New: tools panel - links to test with Google PageSpeed Insights
 * New: tools panel - link to test with GTMetrix website
 * New: contextual help tab for the plugin settings
@@ -200,10 +206,10 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 
 = 1.1 (2020.09.23) =
 * New: debugger panel - Debug Log
-* New: using CSS variables for some of the debugger styling
+* New: using CSS variables for some debugger styling
 * New: filters to modify CSS variables
 * New: improved the look of the plugin settings page
-* Edit: expanded some of the information for plugin settings
+* Edit: expanded some information for plugin settings
 * Edit: changed plugins own actions and filters for uniformity
 * Edit: many improvements to the debugger styling
 * Edit: various improvements to the SCSS organization
@@ -213,6 +219,9 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 1.9 =
+Few updates and improvements. Updated Kint Library.
+
 = 1.8 =
 Many improvements and bug fixes.
 
@@ -221,21 +230,6 @@ Plugins Panel. Few improvements and bug fixes.
 
 = 1.6 =
 Roles Panel. Few bug fixes.
-
-= 1.5 =
-Tools Panel. Contextual Help. Few bug fixes.
-
-= 1.4 =
-Various improvements and bug fixes.
-
-= 1.3 =
-Tools Info panel with PHPInfo and MySQL Variables. Improvements to AJAX tracking. Some code and styling refactoring.
-
-= 1.2 =
-Several panels improved. Many new settings. Several bug fixes.
-
-= 1.1 =
-Debug Log panel added. Various styling improvements. Improved settings panel.
 
 == Screenshots ==
 1. Debugger popup: Basic debugger panel

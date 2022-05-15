@@ -22,12 +22,12 @@
     ),
     'kint-php/kint' => 
     array (
-      'pretty_version' => '3.3',
-      'version' => '3.3.0.0',
+      'pretty_version' => '4.1.2',
+      'version' => '4.1.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '335ac1bcaf04d87df70d8aa51e8887ba2c6d203b',
+      'reference' => 'fa53c4333cda79dc9cb002cfa029abe994d0ae00',
     ),
   ),
 );

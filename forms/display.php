@@ -7,6 +7,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
     <div id="debugpress-debugger-content-header">
         <ul role="tablist" id="debugpress-debugger-tabs" class="debugpress-clearfix">
 			<?php
+
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
 				$label = is_array( $obj ) ? $obj['tab'] : $obj;
