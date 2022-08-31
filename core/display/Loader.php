@@ -15,22 +15,26 @@ class Loader {
 	public function __construct() {
 		$this->position = is_admin() ? debugpress_plugin()->get( 'button_admin' ) : debugpress_plugin()->get( 'button_frontend' );
 
-		if ( is_admin() ) {
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		} else {
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		}
-
-		SQLFormat::$pre_attributes = '';
-
 		if ( $this->position == 'toolbar' ) {
 			add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );
 		}
 
 		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		} else {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'login_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		}
+
+		SQLFormat::$pre_attributes = '';
+	}
+
+	public function run() {
+		if ( is_admin() ) {
 			add_action( 'admin_footer', array( $this, 'debugger_content_prepare' ) );
 		} else {
 			add_action( 'wp_footer', array( $this, 'debugger_content_prepare' ) );
+			add_action( 'login_footer', array( $this, 'debugger_content_prepare' ) );
 		}
 	}
 
@@ -42,7 +46,7 @@ class Loader {
 		add_action( 'shutdown', array( $this, 'debugger_content' ), 1000000 );
 	}
 
-	public static function instance() {
+	public static function instance() : Loader {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {

@@ -18,7 +18,6 @@ class OPCache {
 
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\OPCache */
 	public static function instance() : OPCache {
 		static $instance = null;
 

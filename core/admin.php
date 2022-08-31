@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Replacement function for rendering plugin settings sections. Based on the WordPress core do_settings_sections(), but
  * expanded to add additional layout elements.
  *
- * @param string $page the slug name of the page whose settings sections you want to output
+ * @param string $page the slug name of the page whose settings section you want to output
  *
  * @see \do_settings_sections()
  *

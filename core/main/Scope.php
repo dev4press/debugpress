@@ -45,7 +45,6 @@ class Scope {
 		}
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\Scope */
 	public static function instance() : Scope {
 		static $instance = null;
 

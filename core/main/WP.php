@@ -11,7 +11,6 @@ class WP {
 
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\WP */
 	public static function instance() : WP {
 		static $instance = null;
 

@@ -16,7 +16,6 @@ class DB {
 
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\DB */
 	public static function instance() : DB {
 		static $instance = null;
 

@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 1.9
+Stable tag: 2.0
 Requires at least: 5.2
 Tested up to: 6.0
 Requires PHP: 7.2
@@ -30,7 +30,7 @@ https://www.youtube.com/watch?v=-eFnBRLhy-s
 To display the content of objects or arrays, plugin has pretty print functionality through use of simpler PrettyPrint library, or more robust third-party library Kint. You can choose one or the other from the plugin Settings, Advanced tab.
 
 = Debugger Panels =
-Currently, the plugin has following panels:
+Currently, the plugin has the following panels:
 
 * Basic
 * Request (optional)
@@ -103,11 +103,21 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 1.9 (2021.05.15) =
+= 2.0 (2022.08.31) =
+* New: Prevent loading of the debugger panel for REST request
+* New: Default PrettyPrint library has own CSS file
+* New: Debugger now loads on the WordPress login pages
+* New: Kint set as default pretty print library for new installations
+* Edit: Improvements to the plugin loading process
+* Edit: Various minor updates and tweaks
+* Edit: Kint Pretty Print Library 4.2
+* Fix: Plugin can break some REST request responses
+
+= 1.9 (2022.05.15) =
 * New: Tested with WordPress 6.0
 * Edit: Several minor updates and improvements
 * Edit: Kint Pretty Print Library 4.1.1
-* Fix: SOme layout issues with the tables
+* Fix: Some layout issues with the tables
 
 = 1.8 (2021.09.30) =
 * New: requires WordPress 5.1 or newer
@@ -182,7 +192,7 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: filter to control every plugin settings returned value
 * New: ability to print SQL formatted string for the user stored queries
 * New: improved documentation for all the functions
-* Edit: refactored functions and improved the functions organization
+* Edit: refactored functions and improved the functions' organization
 * Edit: refactored pretty print function to use different name and classes
 * Edit: uniform return of rendered results from ErrorFormat class
 * Edit: expanded plugin readme.txt and added new screenshots
@@ -219,6 +229,9 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 2.0 =
+Various updates and improvements. Updated Kint Library.
+
 = 1.9 =
 Few updates and improvements. Updated Kint Library.
 

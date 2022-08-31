@@ -21,7 +21,7 @@
         sort_by: function(source, attr, order, cls) {
             var i, elms = [], list = [], keys = [], key;
 
-            $(source + " div." + cls).each(function(index) {
+            $(source + " div." + cls).each(function() {
                 key = $(this).attr(attr);
 
                 elms[key] = this;

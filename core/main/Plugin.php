@@ -12,7 +12,7 @@ use Dev4Press\Plugin\DebugPress\Track\AJAX as AJAXTracker;
 class Plugin {
 	private $_settings = array();
 	private $_defaults = array(
-		'pr'                    => 'prettyprint',
+		'pr'                    => 'kint',
 		'active'                => false,
 		'admin'                 => false,
 		'frontend'              => false,
@@ -55,12 +55,12 @@ class Plugin {
 	private $_wp_version_real;
 	private $_cp_version;
 	private $_cp_version_real;
+	private $_rest_request = false;
 
 	public function __construct() {
 
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\Plugin */
 	public static function instance() : Plugin {
 		static $instance = null;
 
@@ -73,9 +73,25 @@ class Plugin {
 	}
 
 	private function run() {
+		add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 0 );
 		add_action( 'plugins_loaded', array( $this, 'activation' ), DEBUGPRESS_ACTIVATION_PRIORITY );
 		add_action( 'init', array( $this, 'init' ) );
+
+		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', array( $this, 'loader' ) );
+		} else {
+			add_action( 'wp', array( $this, 'loader' ) );
+			add_action( 'login_init', array( $this, 'loader' ) );
+		}
+	}
+
+	public function rest_api() {
+		$this->_rest_request = defined( 'REST_REQUEST' ) && REST_REQUEST;
+	}
+
+	public function is_rest_request() : bool {
+		return $this->_rest_request;
 	}
 
 	public function wp_version() : string {
@@ -126,49 +142,21 @@ class Plugin {
 		debugpress_tracker();
 	}
 
-	private function load_printer( $name = '' ) {
-		if ( ! function_exists( 'debugpress_r' ) ) {
-			$name = empty( $name ) ? $this->get( 'pr' ) : 'prettyprint';
-			$path = DEBUGPRESS_PLUGIN_PATH . 'core/printer/' . $name . '/load.php';
-
-			if ( file_exists( $path ) ) {
-				require_once( $path );
-			} else {
-				$this->load_printer( 'prettyprint' );
-			}
-		}
-	}
-
-	private function define_constants() {
-		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
-			define( 'WP_DEBUG', true );
-		}
-
-		if ( $this->get( 'auto_savequeries' ) && ! defined( 'SAVEQUERIES' ) ) {
-			define( 'SAVEQUERIES', true );
-		}
-
-		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
-		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
-
-		$version = str_replace( '.', '', phpversion() );
-		$version = intval( substr( $version, 0, 2 ) );
-
-		define( 'DEBUGPRESS_PHP_VERSION', $version );
-	}
-
 	public function init() {
 		wp_register_style( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'popup/popup.min.css', array(), $this->_animated_popup_version );
+		wp_register_style( 'debugpress-print', DEBUGPRESS_PLUGIN_URL . 'css/prettyprint' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array(), DEBUGPRESS_VERSION );
 		wp_register_style( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'css/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array( 'animated-popup' ), DEBUGPRESS_VERSION );
 		wp_register_script( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'popup/popup.min.js', array( 'jquery' ), $this->_animated_popup_version, true );
 		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array( 'animated-popup' ), DEBUGPRESS_VERSION, true );
 
-		if ( ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->_allowed ) {
-			$allowed = is_admin() ? $this->get( 'admin' ) : $this->get( 'frontend' );
+		if ( is_admin() ? $this->get( 'admin' ) : $this->get( 'frontend' ) ) {
+			Loader::instance();
+		}
+	}
 
-			if ( $allowed ) {
-				Loader::instance();
-			}
+	public function loader() {
+		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->_allowed ) {
+			Loader::instance()->run();
 		}
 	}
 
@@ -213,32 +201,6 @@ class Plugin {
 		}
 
 		return $settings;
-	}
-
-	private function is_user_allowed() : bool {
-		if ( is_super_admin() ) {
-			return $this->get( 'for_super_admin' );
-		} else if ( is_user_logged_in() ) {
-			$allowed = $this->get( 'for_roles' );
-
-			if ( $allowed === true || is_null( $allowed ) ) {
-				return true;
-			} else if ( is_array( $allowed ) && empty( $allowed ) ) {
-				return false;
-			} else if ( is_array( $allowed ) && ! empty( $allowed ) ) {
-				global $current_user;
-
-				if ( is_array( $current_user->roles ) ) {
-					$matched = array_intersect( $current_user->roles, $allowed );
-
-					return ! empty( $matched );
-				}
-			}
-		} else {
-			return $this->get( 'for_visitor' );
-		}
-
-		return false;
 	}
 
 	public function environment() : array {
@@ -291,5 +253,75 @@ class Plugin {
 		$gd .= '</div>';
 
 		return $gd;
+	}
+
+	public function enqueue_print_style() {
+		wp_enqueue_style( 'debugpress-print' );
+	}
+
+	private function is_user_allowed() : bool {
+		if ( is_super_admin() ) {
+			return $this->get( 'for_super_admin' );
+		} else if ( is_user_logged_in() ) {
+			$allowed = $this->get( 'for_roles' );
+
+			if ( $allowed === true || is_null( $allowed ) ) {
+				return true;
+			} else if ( is_array( $allowed ) && empty( $allowed ) ) {
+				return false;
+			} else if ( is_array( $allowed ) && ! empty( $allowed ) ) {
+				global $current_user;
+
+				if ( is_array( $current_user->roles ) ) {
+					$matched = array_intersect( $current_user->roles, $allowed );
+
+					return ! empty( $matched );
+				}
+			}
+		} else {
+			return $this->get( 'for_visitor' );
+		}
+
+		return false;
+	}
+
+	private function load_printer( $name = '' ) {
+		if ( ! function_exists( 'debugpress_r' ) ) {
+			$name = empty( $name ) ? $this->get( 'pr' ) : 'prettyprint';
+			$path = DEBUGPRESS_PLUGIN_PATH . 'core/printer/' . $name . '/load.php';
+
+			if ( $name == 'prettyprint' ) {
+				if ( is_admin() ) {
+					add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_print_style' ) );
+				} else {
+					add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_print_style' ) );
+					add_action( 'login_enqueue_scripts', array( $this, 'enqueue_print_style' ) );
+				}
+			}
+
+			if ( file_exists( $path ) ) {
+				require_once( $path );
+			} else {
+				$this->load_printer( 'prettyprint' );
+			}
+		}
+	}
+
+	private function define_constants() {
+		if ( $this->get( 'auto_wpdebug' ) && ! defined( 'WP_DEBUG' ) ) {
+			define( 'WP_DEBUG', true );
+		}
+
+		if ( $this->get( 'auto_savequeries' ) && ! defined( 'SAVEQUERIES' ) ) {
+			define( 'SAVEQUERIES', true );
+		}
+
+		define( 'DEBUGPRESS_IS_DEBUG', defined( 'WP_DEBUG' ) && WP_DEBUG );
+		define( 'DEBUGPRESS_IS_DEBUG_LOG', DEBUGPRESS_IS_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG );
+
+		$version = str_replace( '.', '', phpversion() );
+		$version = intval( substr( $version, 0, 2 ) );
+
+		define( 'DEBUGPRESS_PHP_VERSION', $version );
 	}
 }

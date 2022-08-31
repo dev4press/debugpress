@@ -77,7 +77,6 @@ class Tracker {
 		do_action( 'debugpress-tracker-getting-ready' );
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Track\Tracker */
 	public static function instance() : Tracker {
 		static $instance = null;
 

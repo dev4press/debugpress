@@ -14,7 +14,6 @@ class Files {
 
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\Files */
 	public static function instance() : Files {
 		static $instance = null;
 

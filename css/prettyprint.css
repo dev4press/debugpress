@@ -1,0 +1,170 @@
+:root {
+  --debugpress-pretty-font-size: 12px;
+}
+
+.debugpress_r {
+  font-size: var(--debugpress-pretty-font-size);
+  font-family: Consolas, "Lucida Console", monospace;
+  line-height: 140%;
+  cursor: default;
+}
+.debugpress_r .debugpress-icon {
+  vertical-align: text-bottom;
+  font-size: calc(var(--debugpress-pretty-font-size) + 2px);
+}
+.debugpress_r.debugpress_r_root {
+  background: white;
+  border: 1px solid black;
+  margin: 1em 0;
+}
+.debugpress_r a {
+  outline: none;
+  box-shadow: none;
+  display: block !important;
+  text-decoration: none !important;
+}
+.debugpress_r a:focus, .debugpress_r a:hover {
+  outline: none;
+  box-shadow: none;
+}
+.debugpress_r p {
+  line-height: inherit !important;
+  margin: 0 !important;
+}
+.debugpress_r .debugpress_r_f {
+  padding: 3px;
+  border-top: 1px dashed #444;
+  font: 11px "Verdana", sans-serif;
+}
+.debugpress_r .debugpress_r_f code {
+  color: red;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font: 11px Consolas, "Liberation Mono", Courier, monospace;
+  font-weight: bold;
+}
+.debugpress_r .debugpress_r_c {
+  display: block;
+  text-decoration: none;
+  color: #222;
+  padding: 2px;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.debugpress_r .debugpress_r_a {
+  color: #F00;
+  display: inline-block;
+  width: 15px;
+  text-align: center;
+}
+.debugpress_r .debugpress_r_ad .debugpress_r_a {
+  color: #000;
+  opacity: 0.2;
+}
+.debugpress_r .debugpress_r_k {
+  color: #060;
+  font-weight: bold;
+}
+.debugpress_r .debugpress_r_d {
+  font-size: calc(var(--debugpress-pretty-font-size) - 1px);
+  color: #777;
+  margin: 0 2px;
+}
+.debugpress_r .debugpress_r_d span {
+  color: #333;
+}
+.debugpress_r .debugpress_r_p {
+  color: #000;
+  font-weight: bold;
+}
+.debugpress_r .debugpress_r_p.debugpress_r_t_integer, .debugpress_r .debugpress_r_p.debugpress_r_t_double {
+  color: #F0E;
+}
+.debugpress_r .debugpress_r_p.debugpress_r_t_string {
+  color: #E00;
+}
+.debugpress_r .debugpress_r_p.debugpress_r_t_boolean {
+  color: #00E;
+}
+.debugpress_r .debugpress_r_v {
+  margin-left: 9px;
+  padding-left: 7px;
+  border-left: 1px dotted #CCC;
+  display: none;
+}
+.debugpress_r .debugpress_r_v.debugpress_r_open {
+  display: block;
+}
+.debugpress_r .debugpress_r_ir {
+  font-style: italic;
+}
+.debugpress_r .debugpress_r_t_comment {
+  color: #080;
+}
+.debugpress_r .debugpress_r_m .debugpress_r_k {
+  color: #909;
+}
+.debugpress_r .debugpress_r_m .debugpress_r_ma {
+  font-weight: normal;
+  color: #777;
+}
+.debugpress_r .debugpress_r_m .debugpress_r_mv {
+  color: #00E;
+}
+.debugpress_r .debugpress_r_m_public .debugpress_r_mo,
+.debugpress_r .debugpress_r_m_protected .debugpress_r_mo,
+.debugpress_r .debugpress_r_m_private .debugpress_r_mo,
+.debugpress_r .debugpress_r_m_abstract .debugpress_r_mo,
+.debugpress_r .debugpress_r_m_final .debugpress_r_mo {
+  font-weight: normal;
+  color: #008;
+}
+.debugpress_r.debugpress_r_root .debugpress_r_rn {
+  font-weight: bold;
+  color: green;
+}
+.debugpress_r .debugpress_r_m_magic {
+  font-style: italic;
+}
+.debugpress_r .debugpress_r_m_deprecated {
+  text-decoration: line-through;
+}
+.debugpress_r a.debugpress_r_c.debugpress_r_m_constructor .debugpress_r_k, .debugpress_r a.debugpress_r_c.debugpress_r_m_destructor .debugpress_r_k {
+  color: #C02;
+}
+.debugpress_r a.debugpress_r_c:hover {
+  background-color: Highlight;
+  color: HighlightText;
+}
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_k,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_d,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_d span,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_ma,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_mo,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_mv,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_p,
+.debugpress_r a.debugpress_r_c:hover .debugpress_r_a {
+  background-color: Highlight;
+  color: HighlightText;
+}
+
+.debugpress_rs.debugpress_rs_null {
+  color: #C00;
+}
+.debugpress_rs.debugpress_rs_empty {
+  color: #090;
+}
+.debugpress_rs.debugpress_rs_number {
+  color: #009;
+}
+.debugpress_rs.debugpress_rs_bool.debugpress_rs_bool_true {
+  font-weight: bold;
+  color: #050;
+}
+.debugpress_rs.debugpress_rs_bool.debugpress_rs_bool_false {
+  color: #700;
+}

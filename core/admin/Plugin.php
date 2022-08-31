@@ -26,7 +26,6 @@ class Plugin {
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_links' ), 10, 2 );
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Admin\Plugin */
 	public static function instance() : Plugin {
 		static $instance = null;
 

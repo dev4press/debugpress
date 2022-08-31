@@ -55,8 +55,8 @@ class PrettyPrint {
 		$this->STR_RES_DESC                   = _x( "%s type", "PrettyPrint message", "debugpress" );
 		$this->STR_ARR_DESC                   = _x( "%d elements", "PrettyPrint message", "debugpress" );
 		$this->STR_OBJ_DESC                   = _x( "%d properties", "PrettyPrint message", "debugpress" );
-		$this->STR_ARR_DESC                   = _x( "Called From", "PrettyPrint message", "debugpress" );
-		$this->STR_OBJ_DESC                   = _x( "line", "PrettyPrint message", "debugpress" );
+		$this->STR_FOOTER_CALL                = _x( "Called From", "PrettyPrint message", "debugpress" );
+		$this->STR_FOOTER_LINE                = _x( "line", "PrettyPrint message", "debugpress" );
 	}
 
 	public static function init() : PrettyPrint {

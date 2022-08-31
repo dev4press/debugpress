@@ -11,8 +11,7 @@ class Settings {
 
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Admin\Settings */
-	public static function instance() {
+	public static function instance() : Settings {
 		static $instance = null;
 
 		if ( ! isset( $instance ) ) {

@@ -53,5 +53,5 @@ function debugpress_rx( $value, $footer = true ) : string {
 		Kint::$display_called_from = true;
 	}
 
-	return (string)$show;
+	return (string) $show;
 }

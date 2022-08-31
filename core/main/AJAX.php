@@ -14,7 +14,6 @@ class AJAX {
 		add_action( 'wp_ajax_nopriv_debugpress_load_debuglog', array( $this, 'load_debuglog' ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DebugPress\Main\AJAX */
 	public static function instance() : AJAX {
 		static $instance = null;
 
