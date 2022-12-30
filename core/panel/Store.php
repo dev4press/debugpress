@@ -11,8 +11,8 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Store extends Panel {
 	public function single() {
-		$this->title( __( "Stored objects and other data", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Stored objects and other data", "debugpress" ), true, true );
+		$this->block_header();
 		$this->add_column( __( "Time", "debugpress" ), "", "", true );
 		$this->add_column( __( "Title", "debugpress" ) );
 		$this->add_column( __( "Logged Data", "debugpress" ) );

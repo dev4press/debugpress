@@ -38,9 +38,9 @@ class WP {
 	}
 
 	public function current_url_request() : string {
-		$pathinfo = $_SERVER['PATH_INFO'] ?? '';
-		list( $pathinfo ) = explode( '?', $pathinfo );
-		$pathinfo = str_replace( '%', '%25', $pathinfo );
+		$path_info = $_SERVER['PATH_INFO'] ?? '';
+		list( $path_info ) = explode( '?', $path_info );
+		$path_info = str_replace( '%', '%25', $path_info );
 
 		$request         = explode( '?', $_SERVER['REQUEST_URI'] );
 		$req_uri         = $request[0];
@@ -49,10 +49,10 @@ class WP {
 		$home_path       = $home_path ? trim( $home_path, '/' ) : '';
 		$home_path_regex = sprintf( '|^%s|i', preg_quote( $home_path, '|' ) );
 
-		$req_uri = str_replace( $pathinfo, '', $req_uri );
-		$req_uri = trim( $req_uri, '/' );
+		$req_uri = str_replace( $path_info, '', $req_uri );
+		$req_uri = ltrim( $req_uri, '/' );
 		$req_uri = preg_replace( $home_path_regex, '', $req_uri );
-		$req_uri = trim( $req_uri, '/' );
+		$req_uri = ltrim( $req_uri, '/' );
 
 		$url_request = $req_uri;
 

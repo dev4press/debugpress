@@ -472,20 +472,6 @@
                     });
                 },
                 events: function() {
-                    $(document).on("click", ".sql-calls-button-expander", function() {
-                        var parent = $(this).parent(),
-                            query = parent.parent(),
-                            full = parent.hasClass("sql-calls-full")
-
-                        if (full) {
-                            parent.hide();
-                            $(".sql-calls-compact", query).show();
-                        } else {
-                            parent.hide();
-                            $(".sql-calls-full", query).show();
-                        }
-                    });
-
                     $(document).on("click", ".sqlq-option-calls", function(e) {
                         e.preventDefault();
 
@@ -646,6 +632,20 @@
                         $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
 
                         wp.dev4press.debugpress.tabs.queries.filter();
+                    });
+
+                    $(document).on("click", ".sql-calls-button-expander", function() {
+                        var parent = $(this).parent(),
+                            query = parent.parent(),
+                            full = parent.hasClass("sql-calls-full");
+
+                        if (full) {
+                            parent.hide();
+                            $(".sql-calls-compact", query).show();
+                        } else {
+                            parent.hide();
+                            $(".sql-calls-full", query).show();
+                        }
                     });
                 }
             }

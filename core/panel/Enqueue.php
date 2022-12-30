@@ -12,8 +12,8 @@ class Enqueue extends Panel {
 	public function left() {
 		global $wp_scripts;
 
-		$this->title( __( "Scripts in Header", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Scripts in Header", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $wp_scripts->queue as $scr ) {
@@ -22,8 +22,8 @@ class Enqueue extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Scripts in Footer", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Scripts in Footer", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $wp_scripts->in_footer as $scr ) {
@@ -36,8 +36,8 @@ class Enqueue extends Panel {
 	public function right() {
 		global $wp_styles;
 
-		$this->title( __( "Styles in Header", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Styles in Header", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $wp_styles->queue as $scr ) {

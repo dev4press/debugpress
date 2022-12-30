@@ -125,8 +125,10 @@ abstract class Panel {
 		echo '</tr>';
 	}
 
-	public function list_defines( $defines, $subtitle = '' ) {
-		$this->block_header();
+	public function list_defines( $defines, $subtitle = '', $block = true, $open = true ) {
+		if ( $block ) {
+			$this->block_header( $open );
+		}
 
 		if ( $subtitle != '' ) {
 			$this->sub_title( $subtitle );
@@ -140,11 +142,16 @@ abstract class Panel {
 			$this->table_row( array( $const, $val ) );
 		}
 		$this->table_foot();
-		$this->block_footer();
+
+		if ( $block ) {
+			$this->block_footer();
+		}
 	}
 
-	public function list_array( $data, $subtitle = '' ) {
-		$this->block_header();
+	public function list_array( $data, $subtitle = '', $block = true, $open = true ) {
+		if ( $block ) {
+			$this->block_header( $open );
+		}
 
 		if ( $subtitle != '' ) {
 			$this->sub_title( $subtitle );
@@ -160,7 +167,9 @@ abstract class Panel {
 			$this->table_foot();
 		}
 
-		$this->block_footer();
+		if ( $block ) {
+			$this->block_footer();
+		}
 	}
 
 	public function list_properties( $object, $properties = array(), $subtitle = '' ) {

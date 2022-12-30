@@ -85,8 +85,8 @@ class User extends Panel {
 	public function left() {
 		global $userdata;
 
-		$this->title( __( "Basic User Information", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Basic User Information", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $this->fields['users'] as $name ) {
@@ -98,8 +98,8 @@ class User extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Core Meta Information", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Core Meta Information", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $this->usermeta as $key => $value ) {
@@ -133,8 +133,8 @@ class User extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "User Information", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "User Information", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $this->fields['info'] as $name ) {
@@ -150,8 +150,8 @@ class User extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Rest of User Meta Information", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Rest of User Meta Information", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $this->usermeta as $key => $value ) {

@@ -11,8 +11,8 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Server extends Panel {
 	public function left() {
-		$this->title( __( "Server Information", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Server Information", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Server", "debugpress" ), Info::server_name() ) );
@@ -23,8 +23,8 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Server Status", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Server Status", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Current Timestamp", "debugpress" ), time() ) );
@@ -32,8 +32,8 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "mySQL Status", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "mySQL Status", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), Info::mysql_version() ) );
@@ -47,8 +47,8 @@ class Server extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "PHP Status", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "PHP Status", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), Info::php_version() ) );
@@ -64,8 +64,8 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Errors Display and Logging", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "PHP Errors Display and Logging", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Display", "debugpress" ), Info::php_error_display() ) );
@@ -78,8 +78,8 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Extensions", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "PHP Extensions", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( 'Zend OPCache', Info::php_opcache() ) );

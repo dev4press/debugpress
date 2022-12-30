@@ -12,20 +12,20 @@ use Dev4Press\Plugin\DebugPress\Main\WP;
 
 class Request extends Panel {
 	public function left() {
-		$this->title( __( "Request", "debugpress" ), true );
+		$this->title( __( "Request", "debugpress" ) );
 		$this->list_array( $this->request_basics() );
 
-		$this->title( __( "URL", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "URL", "debugpress" ) );
+		$this->block_header();
 		echo WP::instance()->current_url();
+		$this->list_array( $this->request_url(), '', false );
 		$this->block_footer();
-		$this->list_array( $this->request_url() );
 
 		if ( ! is_admin() ) {
 			global $wp, $template;
 
-			$this->title( __( "Page Request", "debugpress" ), true );
-			$this->block_header( true );
+			$this->title( __( "Page Request", "debugpress" ) );
+			$this->block_header();
 			$this->sub_title( __( "Request", "debugpress" ) );
 			echo empty( $wp->request ) ? __( "None", "debugpress" ) : esc_html( $wp->request );
 
@@ -41,19 +41,19 @@ class Request extends Panel {
 			$this->block_footer();
 		}
 
-		$this->title( __( "IP's from &#36;_SERVER", "debugpress" ), true );
+		$this->title( __( "IP's from &#36;_SERVER", "debugpress" ) );
 		$this->list_array( IP::get_all_ips() );
 	}
 
 	public function right() {
-		$this->title( __( "Request Headers", "debugpress" ), true );
+		$this->title( __( "Request Headers", "debugpress" ) );
 		$this->list_array( $this->request_headers() );
 
-		$this->title( __( "Response Headers", "debugpress" ), true );
+		$this->title( __( "Response Headers", "debugpress" ) );
 		$this->list_array( $this->response_headers() );
 	}
 
-	public function request_url() {
+	public function request_url() : array {
 		return array(
 			__( "Host", "debugpress" )  => wp_unslash( $_SERVER['HTTP_HOST'] ),
 			__( "Path", "debugpress" )  => isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/',
@@ -61,14 +61,14 @@ class Request extends Panel {
 		);
 	}
 
-	public function request_basics() {
+	public function request_basics() : array {
 		return array(
 			__( "Method", "debugpress" ) => strtoupper( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ),
 			__( "Scheme", "debugpress" ) => is_ssl() ? 'HTTPS' : 'HTTP'
 		);
 	}
 
-	public function request_headers() {
+	public function request_headers() : array {
 		$server = wp_unslash( $_SERVER );
 
 		$headers = array();
@@ -85,7 +85,7 @@ class Request extends Panel {
 		return $headers;
 	}
 
-	public function response_headers() {
+	public function response_headers() : array {
 		$raw = headers_list();
 
 		$list = array();

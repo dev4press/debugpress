@@ -20,7 +20,7 @@ class Roles extends Panel {
 		global $wp_roles;
 
 		$this->title( __( "User Roles Options Key", "debugpress" ) );
-		$this->block_header( true );
+		$this->block_header();
 		echo $wp_roles->role_key;
 		$this->block_footer();
 

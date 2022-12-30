@@ -12,23 +12,23 @@ class Content extends Panel {
 	public function left() {
 		global $wp_taxonomies, $wp_post_types, $wp_post_statuses, $_wp_additional_image_sizes;
 
-		$this->title( __( "Registered Post Types", "debugpress" ), true );
+		$this->title( __( "Registered Post Types", "debugpress" ) );
 		$this->list_array( $wp_post_types );
 
-		$this->title( __( "Registered Taxonomies", "debugpress" ), true );
+		$this->title( __( "Registered Taxonomies", "debugpress" ) );
 		$this->list_array( $wp_taxonomies );
 
-		$this->title( __( "Registered Post Statuses", "debugpress" ), true );
+		$this->title( __( "Registered Post Statuses", "debugpress" ) );
 		$this->list_array( $wp_post_statuses );
 
-		$this->title( __( "Additional Image Sizes", "debugpress" ), true );
+		$this->title( __( "Additional Image Sizes", "debugpress" ) );
 		$this->list_array( $_wp_additional_image_sizes );
 	}
 
 	public function right() {
 		global $wp_rewrite;
 
-		$this->title( __( "Rewrite Rules", "debugpress" ), true );
+		$this->title( __( "Rewrite Rules", "debugpress" ) );
 
 		if ( ! is_admin() ) {
 			if ( ! empty( $wp_rewrite->rules ) ) {
@@ -36,13 +36,13 @@ class Content extends Panel {
 			} else {
 				echo '<div class="debugpress-debug-notice-block">';
 				$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Rewrite Rules problem", "debugpress" ), true, true );
-				$this->block_header( true );
+				$this->block_header();
 				_e( "Permalinks are disabled.", "debugpress" );
 				$this->block_footer();
 				echo '</div>';
 			}
 		} else {
-			$this->block_header( true );
+			$this->block_header();
 			_e( "Rewrite rules are not loaded on the WordPress admin side.", "debugpress" );
 			$this->block_footer();
 		}

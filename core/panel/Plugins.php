@@ -30,7 +30,7 @@ class Plugins extends Panel {
 		foreach ( $this->sides[ $side ] as $item ) {
 			$plugin = debugpress_tracker()->plugins[ $item[0] ][ $item[1] ];
 
-			$this->title( $plugin['plugin']['Name'], true );
+			$this->title( $plugin['plugin']['Name'] );
 
 			foreach ( $plugin['data'] as $name => $values ) {
 				$this->list_array( $values, $name );

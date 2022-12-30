@@ -2,9 +2,9 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 2.0
+Stable tag: 2.1
 Requires at least: 5.2
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 7.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -103,6 +103,16 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 2.1 (2022.12.30) =
+* New: Tested with PHP 8.2 and WordPress 6.1
+* New: Query panel shows current post and metadata for that post
+* Edit: Improvements to the Query panel and organization of displayed data
+* Edit: Various language syntax improvements and changes
+* Edit: Kint Pretty Print Library 5.0.1
+* Fix: Several issues related to changes in PHP 8.2
+* Fix: Few minor issues with the layouts in the debugger panels
+* Fix: Missing semicolon in one instance in JavaScript
+
 = 2.0 (2022.08.31) =
 * New: Prevent loading of the debugger panel for REST request
 * New: Default PrettyPrint library has own CSS file
@@ -229,6 +239,9 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 2.1 =
+Various updates and improvements. Updated Kint Library.
+
 = 2.0 =
 Various updates and improvements. Updated Kint Library.
 

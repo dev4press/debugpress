@@ -27,7 +27,7 @@ class Basics extends Panel {
 			echo '<div class="debugpress-debug-notice-block">';
 
 			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Debug mode problems", "debugpress" ), true, true );
-			$this->block_header( true );
+			$this->block_header();
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );
 				echo $t[1];
@@ -38,8 +38,8 @@ class Basics extends Panel {
 			echo '</div>';
 		}
 
-		$this->title( __( "Page Loading Stats", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Page Loading Stats", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array(
@@ -76,8 +76,8 @@ class Basics extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Current PHP Limits", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Current PHP Limits", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "PHP Memory Available", "debugpress" ), ini_get( 'memory_limit' ) . "B" ) );
@@ -88,13 +88,13 @@ class Basics extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Upload Directory", "debugpress" ), true );
+		$this->title( __( "Upload Directory", "debugpress" ) );
 		$this->list_array( wp_upload_dir() );
 	}
 
 	public function right() {
-		$this->title( Info::cms_name(), true );
-		$this->block_header( true );
+		$this->title( Info::cms_name() );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), Info::cms_version() ) );
@@ -105,11 +105,11 @@ class Basics extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Page Scope", "debugpress" ), true );
+		$this->title( __( "Page Scope", "debugpress" ) );
 		$this->list_array( debugpress_scope()->scope() );
 
-		$this->title( __( "Load Snapshots", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Load Snapshots", "debugpress" ) );
+		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), "", "", true );
 		$this->add_column( __( "Memory", "debugpress" ), "", "text-align: right;" );
 		$this->add_column( __( "Timer", "debugpress" ), "", "text-align: right;" );
@@ -129,11 +129,11 @@ class Basics extends Panel {
 		$this->block_footer();
 	}
 
-	private function _env() {
+	private function _env() : array {
 		return debugpress_plugin()->environment();
 	}
 
-	private function _test() {
+	private function _test() : array {
 		$test = array();
 
 		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {

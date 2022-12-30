@@ -3,16 +3,16 @@
 
     <nav class="nav-tab-wrapper">
         <a href="#activation" class="nav-tab nav-tab-change nav-tab-active">
-            <?php _e( "Activation", "debugpress" ); ?>
+			<?php _e( "Activation", "debugpress" ); ?>
         </a>
         <a href="#panels" class="nav-tab nav-tab-change">
-            <?php _e( "Panels", "debugpress" ); ?>
+			<?php _e( "Panels", "debugpress" ); ?>
         </a>
         <a href="#tracking" class="nav-tab nav-tab-change">
-            <?php _e( "Tracking", "debugpress" ); ?>
+			<?php _e( "Tracking", "debugpress" ); ?>
         </a>
         <a href="#advanced" class="nav-tab nav-tab-change">
-		    <?php _e( "Advanced", "debugpress" ); ?>
+			<?php _e( "Advanced", "debugpress" ); ?>
         </a>
         <a href="https://debug.press" target="_blank" rel="noopener nofollow" class="nav-tab nav-tab-right">
             <span class="dashicons dashicons-external"></span><?php _e( "Website", "debugpress" ); ?>

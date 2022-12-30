@@ -10,16 +10,16 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Admin extends Panel {
 	public function left() {
-		$this->title( __( "Page Information", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Page Information", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
-		$this->table_row( array( "&#36;pagenow", isset( $GLOBALS['pagenow'] ) ? $GLOBALS['pagenow'] : '' ) );
-		$this->table_row( array( "&#36;typenow", isset( $GLOBALS['typenow'] ) ? $GLOBALS['typenow'] : '' ) );
-		$this->table_row( array( "&#36;taxnow", isset( $GLOBALS['taxnow'] ) ? $GLOBALS['taxnow'] : '' ) );
+		$this->table_row( array( "&#36;pagenow", $GLOBALS['pagenow'] ?? '' ) );
+		$this->table_row( array( "&#36;typenow", $GLOBALS['typenow'] ?? '' ) );
+		$this->table_row( array( "&#36;taxnow", $GLOBALS['taxnow'] ?? '' ) );
 		$this->table_row( array(
 			"&#36;hook_suffix",
-			isset( $GLOBALS['hook_suffix'] ) ? $GLOBALS['hook_suffix'] : ''
+			$GLOBALS['hook_suffix'] ?? ''
 		) );
 		$this->table_foot();
 		$this->block_footer();
@@ -27,8 +27,8 @@ class Admin extends Panel {
 		$screen = get_current_screen();
 
 		if ( ! is_null( $screen ) ) {
-			$this->title( __( "Current Screen", "debugpress" ), true );
-			$this->block_header( true );
+			$this->title( __( "Current Screen", "debugpress" ) );
+			$this->block_header();
 			$this->table_init_standard();
 			$this->table_head();
 			$this->table_row( array( __( "Base", "debugpress" ), $screen->base ) );
@@ -43,8 +43,8 @@ class Admin extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "Conditionals", "debugpress" ), true );
-		$this->block_header( true );
+		$this->title( __( "Conditionals", "debugpress" ) );
+		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array(

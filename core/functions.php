@@ -138,7 +138,7 @@ function debugpress_rs( $value, bool $echo = true ) : string {
 
 	if ( $echo ) {
 		echo $result;
-	} else {
-		return $result;
 	}
+
+	return $result;
 }

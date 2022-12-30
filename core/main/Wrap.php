@@ -7,6 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Wrap {
+	public $name;
+	public $class;
+	public $style;
+
 	function __construct( $args = array() ) {
 		if ( is_array( $args ) && ! empty( $args ) ) {
 			$this->from_array( $args );

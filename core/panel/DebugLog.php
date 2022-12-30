@@ -25,7 +25,7 @@ class DebugLog extends Panel {
 		if ( empty( $path ) ) {
 			echo '<div class="debugpress-debug-notice-block">';
 			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Debug Log not available", "debugpress" ), true, true );
-			$this->block_header( true );
+			$this->block_header();
 			_e( "WordPress Debug Log is not currently enabled.", "debugpress" );
 			echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . __( "More Information", "debugpress" ) . '</a>';
 			$this->block_footer();
@@ -33,7 +33,7 @@ class DebugLog extends Panel {
 
 			$this->_available = false;
 		} else {
-			$this->block_header( true );
+			$this->block_header();
 			$this->sub_title( __( "Debug Log Path", "debugpress" ) );
 			echo $path;
 
@@ -45,13 +45,13 @@ class DebugLog extends Panel {
 			$this->block_footer();
 
 			$this->title( __( "Settings", "debugpress" ), true, true );
-			$this->block_header( true );
+			$this->block_header();
 			$this->sub_title( __( "Log lines to load", "debugpress" ) );
 			echo $this->_limit === 0 ? __( "Complete debug log", "debugpress" ) : $this->_limit;
 			$this->block_footer();
 
 			$this->title( __( "Actions", "debugpress" ), true, true );
-			$this->block_header( true );
+			$this->block_header();
 			echo '<button class="debugpress-button-action debugpress-action-debuglog-load">' . __( "Load the debug log", "debugpress" ) . '</button>';
 			$this->block_footer();
 		}
@@ -63,13 +63,13 @@ class DebugLog extends Panel {
 		if ( $this->_available ) {
 			echo '<div id="debugpress-debuglog-content"><div>' . __( "Use the controls on the left to load the content of the debug log.", "debugpress" ) . '</div></div>';
 		} else {
-			$this->block_header( true );
+			$this->block_header();
 			_e( "Debug log is not available.", "debugpress" );
 			$this->block_footer();
 		}
 	}
 
-	public function load_from_debug_log() {
+	public function load_from_debug_log() : array {
 		$path = Info::debug_log_path();
 
 		if ( file_exists( $path ) && filesize( $path ) > 0 ) {
