@@ -50,12 +50,14 @@ class Query extends Panel {
 	public function right() {
 		global $wp_query, $wp;
 
-		$this->title( __( "Executed SQL Query", "debugpress" ) );
-		$this->block_header();
-		echo '<div class="query-sql-run-full">';
-		echo SQLFormat::format( $wp_query->request );
-		echo '</div>';
-		$this->block_footer();
+		if ( ! empty( $wp_query->request ) ) {
+			$this->title( __( "Executed SQL Query", "debugpress" ) );
+			$this->block_header();
+			echo '<div class="query-sql-run-full">';
+			echo SQLFormat::format( $wp_query->request );
+			echo '</div>';
+			$this->block_footer();
+		}
 
 		$this->title( __( "Complete WP Query object", "debugpress" ) );
 		$this->block_header();

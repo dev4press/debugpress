@@ -36,12 +36,12 @@ class Request extends Panel {
 			echo empty( $wp->matched_query ) ? __( "None", "debugpress" ) : esc_html( $wp->matched_query );
 
 			$this->sub_title( __( "Loaded Template", "debugpress" ) );
-			$tpl = basename( $template );
+			$tpl = $template ? basename( $template ) : '';
 			echo empty( $tpl ) ? __( "None", "debugpress" ) : esc_html( $tpl );
 			$this->block_footer();
 		}
 
-		$this->title( __( "IP's from &#36;_SERVER", "debugpress" ) );
+		$this->title( __( "IPs from &#36;_SERVER", "debugpress" ) );
 		$this->list_array( IP::get_all_ips() );
 	}
 

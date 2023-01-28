@@ -2,10 +2,10 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 2.1
+Stable tag: 2.2
 Requires at least: 5.2
 Tested up to: 6.1
-Requires PHP: 7.2
+Requires PHP: 7.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -82,7 +82,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 
 == Installation ==
 = General Requirements =
-* PHP: 7.2 or newer
+* PHP: 7.3 or newer
 
 = WordPress Requirements =
 * WordPress: 5.2 or newer
@@ -103,6 +103,11 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 2.2 (2023.02.01) =
+* New: Updated some system requirements
+* Edit: Various improvements to some panels display conditions
+* Fix: Several more issues related to changes in PHP 8.1 and 8.2
+
 = 2.1 (2022.12.30) =
 * New: Tested with PHP 8.2 and WordPress 6.1
 * New: Query panel shows current post and metadata for that post
