@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Dev4Press\Plugin\DebugPress\Main\DB;
 use Dev4Press\Plugin\DebugPress\Main\Info;
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
@@ -37,6 +38,15 @@ class Server extends Panel {
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), Info::mysql_version() ) );
+		$this->table_row( array( __( "Charset", "debugpress" ), DB::instance()->wpdb()->charset ) );
+		$this->table_row( array( __( "Collation", "debugpress" ), DB::instance()->wpdb()->collate ) );
+		$this->table_foot();
+		$this->block_footer();
+
+		$this->title( __( "mySQL Connection", "debugpress" ) );
+		$this->block_header();
+		$this->table_init_standard();
+		$this->table_head();
 		$this->table_row( array( __( "Host", "debugpress" ), DB_HOST ) );
 		$this->table_row( array( __( "Database", "debugpress" ), DB_NAME ) );
 		$this->table_row( array( __( "User", "debugpress" ), DB_USER ) );
@@ -60,7 +70,8 @@ class Server extends Panel {
 		$this->table_row( array( __( "Max POST Size", "debugpress" ), Info::php_post_size() ) );
 		$this->table_row( array( __( "Max Upload Size", "debugpress" ), Info::php_upload_size() ) );
 		$this->table_row( array( __( "Max Execution Time", "debugpress" ), Info::php_execution_time() ) );
-		$this->table_row( array( __( "Allow URL fopen", "debugpress" ), Info::php_allow_url_fopen() ) );
+		$this->table_row( array( __( "Allow URL `fopen`", "debugpress" ), Info::php_allow_url_fopen() ) );
+		$this->table_row( array( __( "Include path", "debugpress" ), Info::php_include_path() ) );
 		$this->table_foot();
 		$this->block_footer();
 
@@ -78,17 +89,41 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Extensions", "debugpress" ) );
+		$this->title( __( "PHP Important Extensions", "debugpress" ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
-		$this->table_row( array( 'Zend OPCache', Info::php_opcache() ) );
 		$this->table_row( array( 'PDO', Info::php_pdo() ) );
 		$this->table_row( array( 'zLib', Info::php_zlib() ) );
 		$this->table_row( array( 'cURL', Info::php_curl() ) );
 		$this->table_row( array( 'GD', Info::php_gd() ) );
-		$this->table_row( array( 'APC', Info::php_apc() ) );
 		$this->table_row( array( 'PEAR', Info::php_pear() ) );
+		$this->table_foot();
+		$this->block_footer();
+
+		$this->title( __( "PHP Cache Extensions", "debugpress" ) );
+		$this->block_header();
+		$this->table_init_standard();
+		$this->table_head();
+		$this->table_row( array( 'Zend OPCache', Info::php_opcache() ) );
+		$this->table_row( array( 'APC', Info::php_apc() ) );
+		$this->table_row( array( 'Memcache', Info::php_extension( 'memcache' ) ) );
+		$this->table_row( array( 'Memcached', Info::php_extension( 'memcached' ) ) );
+		$this->table_foot();
+		$this->block_footer();
+
+		$this->title( __( "PHP Loaded Extensions", "debugpress" ) );
+		$this->block_header();
+		$this->table_init_standard();
+		$this->table_head();
+		$this->table_row( array(
+			__( "Standard", "debugpress" ),
+			debugpress_rx( Info::php_loaded_extensions(), false )
+		) );
+		$this->table_row( array(
+			__( "ZEND", "debugpress" ),
+			debugpress_rx( Info::php_loaded_extensions( true ), false )
+		) );
 		$this->table_foot();
 		$this->block_footer();
 	}

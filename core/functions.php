@@ -87,6 +87,35 @@ function debugpress_format_size( $size, int $decimal = 2, string $sep = ' ' ) : 
 }
 
 /**
+ * Check if specified file exist even in the include paths.
+ *
+ * @param string $file file name to find
+ *
+ * @return bool true if the file is found in current path or include path.
+ */
+function debugpress_file_exists( $file ) : bool {
+	if ( function_exists( 'stream_resolve_include_path' ) ) {
+		return ! ( stream_resolve_include_path( $file ) === false );
+	} else {
+		$paths = get_include_path();
+
+		if ( $paths === false ) {
+			return false;
+		}
+
+		$paths = explode( PATH_SEPARATOR, $paths );
+
+		foreach ( $paths as $path ) {
+			if ( file_exists( $path . DIRECTORY_SEPARATOR . $file ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+}
+
+/**
  * Extract part of the string from the left, based on the position of the other string.
  *
  * @param string $input    string to extract part from

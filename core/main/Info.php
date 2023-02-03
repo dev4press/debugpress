@@ -421,16 +421,38 @@ class Info {
 	}
 
 	public static function php_pear() : string {
-		try {
-			@include_once( 'System.php' );
+		$file = 'System.php';
 
-			if ( class_exists( '\System' ) === true ) {
-				return __( "loaded", "debugpress" );
+		if ( debugpress_file_exists( $file ) ) {
+			try {
+				@include_once( $file );
+
+				if ( class_exists( '\System' ) === true ) {
+					return __( "loaded", "debugpress" );
+				}
+			} catch ( Exception $exception ) {
 			}
-		} catch ( Exception $exception ) {
 		}
 
 		return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+	}
+
+	public static function php_include_path() : string {
+		$path = get_include_path();
+
+		return $path === false ? '' : $path;
+	}
+
+	public static function php_loaded_extensions( bool $zend = false ) : array {
+		return get_loaded_extensions( $zend );
+	}
+
+	public static function php_extension( $name ) : string {
+		if ( extension_loaded( $name ) ) {
+			return __( "OK", "debugpress" );
+		} else {
+			return '<strong style="color: #cc0000;">' . __( "not available", "debugpress" ) . '</strong>';
+		}
 	}
 
 	public static function php_function( $name ) : string {

@@ -103,10 +103,15 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 2.2 (2023.02.01) =
-* New: Updated some system requirements
+= 2.2 (2023.02.03) =
+* New: Updated some plugin system requirements
+* New: Server panel shows PHP Include Path value
+* New: Server panel shows Memcache/Memcached status
+* New: Server panel shows all loaded extensions
+* New: Server panel shows expanded MySQL information
 * Edit: Various improvements to some panels display conditions
 * Fix: Several more issues related to changes in PHP 8.1 and 8.2
+* Fix: Issue with detection of the PEAR System.php file
 
 = 2.1 (2022.12.30) =
 * New: Tested with PHP 8.2 and WordPress 6.1
@@ -244,6 +249,9 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 2.2 =
+Various updates, improvements and fixes.
+
 = 2.1 =
 Various updates and improvements. Updated Kint Library.
 
