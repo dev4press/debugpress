@@ -42,7 +42,7 @@ class Plugin {
 		return $actions;
 	}
 
-	function plugin_links( $links, $file ) {
+	public function plugin_links( $links, $file ) {
 		if ( $file == 'debugpress/debugpress.php' ) {
 			$links[] = '<a target="_blank" rel="noopener" href="https://www.dev4press.com/">dev4Press.com</a>';
 		}
@@ -89,6 +89,15 @@ class Plugin {
 define( \'WP_DEBUG_DISPLAY\', false );
 define( \'WP_DEBUG_LOG\', true );
 define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.", "debugpress" ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( "More Information", "debugpress" ) . '</a></p>'
+			)
+		);
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'debugpress-demand',
+				'title'   => __( "On Demand", "debugpress" ),
+				'content' => '<h2>' . __( "Debugger On Demand Activation", "debugpress" ) . '</h2><p>' . __( "Add the following argument and value to the URL. If the access key value is not configured in the plugin settings, On Demand loading is disabled.", "debugpress" ) .
+				             '</p><pre>?debugpress={ACCESS_KEY}</pre><p>' . __( "If the URL already has arguments (? is already in URL), replace ? with &.", "debugpress" ) . '</p>'
 			)
 		);
 

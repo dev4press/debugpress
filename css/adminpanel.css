@@ -69,6 +69,11 @@
   color: #FFF;
   background: #1E72BD;
 }
+.debugpress_sidebar .debugpress_plugin > span {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 .debugpress_sidebar .debugpress_plugin > div {
   border-top: 1px solid #FFF;
   border-bottom: 1px solid #FFF;
@@ -115,7 +120,6 @@
   .debugpress_settings .debugpress-settings-section {
     margin: 15px;
   }
-
   .debugpress_sidebar {
     border-top: 1px solid #1E72BD;
     padding-top: 20px;

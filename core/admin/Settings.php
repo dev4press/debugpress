@@ -41,6 +41,12 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_on_demand',
+			__( "On Demand loading of Debugger", "debugpress" ),
+			array( $this, 'block_on_demand' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_special',
 			__( "Special Debugger Panels", "debugpress" ),
 			array( $this, 'block_special' ),
@@ -126,6 +132,13 @@ class Settings {
 			array( $this, 'option_for_visitor' ),
 			'debugpress',
 			'debugpress_settings_roles' );
+
+		add_settings_field(
+			'debugpress_settings_access_key',
+			'<label for="debugpress_settings_access_key">' . __( "Access Key", "debugpress" ) . '</label>',
+			array( $this, 'option_access_key' ),
+			'debugpress',
+			'debugpress_settings_on_demand' );
 
 		add_settings_field(
 			'debugpress_settings_pretty_print',
@@ -323,6 +336,10 @@ class Settings {
 		echo ' <strong>' . __( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!", "debugpress" ) . '</strong>';
 	}
 
+	public function block_on_demand() {
+		echo __( "Debugger can be be loaded on demand only, by using the secret access key in the URL. This way you can have DebugPress plugin active, but both Activation options can be disabled, and plugin Debugger panel is activated only on pages with the on demand URL request.", "debugpress" );
+	}
+
 	public function block_special() {
 		echo __( "Debugger contains some special panels that can be limited in terms of use when it comes to different user roles allowed to view Debugger popup.", "debugpress" );
 	}
@@ -388,6 +405,13 @@ class Settings {
 
 		echo "<input " . $checked . " id='debugpress_settings_for_visitor' name='debugpress_settings[for_visitor]' type='checkbox' />";
 		echo '<p class="description">' . esc_html__( "Visitors are users that are not currently logged in.", "debugpress" ) . '</p>';
+	}
+
+	public function option_access_key() {
+		$enabled = debugpress_plugin()->get( 'access_key' );
+
+		echo "<input class='widefat' id='debugpress_settings_access_key' name='debugpress_settings[access_key]' type='text' value='" . esc_attr( $enabled ) . "' />";
+		echo '<p class="description">' . esc_html__( "Access key to use in the URL to activate DebugPress on demand. Use any URL friendly string you want that includes one or more: lowercase letters, numbers, dashes.", "debugpress" ) . '</p>';
 	}
 
 	public function option_pretty_print() {

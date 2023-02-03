@@ -82,6 +82,12 @@
         color: #FFF;
         background: #1E72BD;
 
+        > span {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         > div {
             border-top: 1px solid #FFF;
             border-bottom: 1px solid #FFF;

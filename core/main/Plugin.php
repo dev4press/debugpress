@@ -12,6 +12,7 @@ use Dev4Press\Plugin\DebugPress\Track\AJAX as AJAXTracker;
 class Plugin {
 	private $_settings = array();
 	private $_defaults = array(
+		'access_key'            => '',
 		'pr'                    => 'kint',
 		'active'                => false,
 		'admin'                 => false,
@@ -50,6 +51,8 @@ class Plugin {
 	);
 
 	private $_allowed = false;
+	private $_activate = false;
+	private $_url_activated = false;
 	private $_animated_popup_version = '1.9';
 	private $_wp_version;
 	private $_wp_version_real;
@@ -124,7 +127,14 @@ class Plugin {
 
 	public function activation() {
 		$this->_settings = get_option( 'debugpress_settings', $this->_defaults );
-		$this->_allowed  = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
+		$this->_activate = is_admin() ? $this->get( 'admin' ) : $this->get( 'frontend' );
+		$the_access_key  = $this->get( 'access_key' );
+
+		if ( ! empty( $the_access_key ) ) {
+			$this->_url_activated = isset( $_GET['debugpress'] ) && sanitize_key( $_GET['debugpress'] ) === $the_access_key;
+		}
+
+		$this->_allowed = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
 
 		$this->load_printer();
 		$this->define_constants();
@@ -149,13 +159,13 @@ class Plugin {
 		wp_register_script( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'popup/popup.min.js', array( 'jquery' ), $this->_animated_popup_version, true );
 		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array( 'animated-popup' ), DEBUGPRESS_VERSION, true );
 
-		if ( is_admin() ? $this->get( 'admin' ) : $this->get( 'frontend' ) ) {
+		if ( $this->is_enabled() ) {
 			Loader::instance();
 		}
 	}
 
 	public function loader() {
-		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->_allowed ) {
+		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->is_enabled() ) {
 			Loader::instance()->run();
 		}
 	}
@@ -177,6 +187,7 @@ class Plugin {
 	public function process_settings( $input ) : array {
 		$types = array(
 			'for_roles'       => 'array',
+			'access_key'      => 'slug',
 			'pr'              => 'string',
 			'button_admin'    => 'string',
 			'button_frontend' => 'string'
@@ -190,6 +201,9 @@ class Plugin {
 					default:
 					case 'string':
 						$settings[ $key ] = sanitize_text_field( $input[ $key ] );
+						break;
+					case 'slug':
+						$settings[ $key ] = sanitize_key( $input[ $key ] );
 						break;
 					case 'array':
 						$settings[ $key ] = isset( $input[ $key ] ) ? (array) $input[ $key ] : array();
@@ -260,6 +274,10 @@ class Plugin {
 	}
 
 	private function is_user_allowed() : bool {
+		if ( $this->_url_activated ) {
+			return true;
+		}
+
 		if ( is_super_admin() ) {
 			return $this->get( 'for_super_admin' );
 		} else if ( is_user_logged_in() ) {
@@ -267,15 +285,17 @@ class Plugin {
 
 			if ( $allowed === true || is_null( $allowed ) ) {
 				return true;
-			} else if ( is_array( $allowed ) && empty( $allowed ) ) {
-				return false;
-			} else if ( is_array( $allowed ) && ! empty( $allowed ) ) {
-				global $current_user;
+			} else if ( is_array( $allowed ) ) {
+				if ( empty( $allowed ) ) {
+					return false;
+				} else {
+					global $current_user;
 
-				if ( is_array( $current_user->roles ) ) {
-					$matched = array_intersect( $current_user->roles, $allowed );
+					if ( is_array( $current_user->roles ) ) {
+						$matched = array_intersect( $current_user->roles, $allowed );
 
-					return ! empty( $matched );
+						return ! empty( $matched );
+					}
 				}
 			}
 		} else {
@@ -283,6 +303,10 @@ class Plugin {
 		}
 
 		return false;
+	}
+
+	public function is_enabled() : bool {
+		return $this->_allowed && ( $this->_url_activated || $this->_activate );
 	}
 
 	private function load_printer( $name = '' ) {
