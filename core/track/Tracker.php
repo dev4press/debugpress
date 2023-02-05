@@ -224,25 +224,25 @@ class Tracker {
 		$this->_http_info = $info;
 	}
 
-	public function query() {
+	public function query() : int {
 		$this->query_current = get_num_queries();
 
 		return $this->query_current;
 	}
 
-	public function memory() {
+	public function memory() : int {
 		$this->memory_current = memory_get_usage();
 
 		return $this->memory_current;
 	}
 
-	public function timer() {
+	public function timer() : float {
 		$this->timer_current = microtime( true );
 
 		return $this->timer_current - $this->timer_start_wp;
 	}
 
-	public function hooks() {
+	public function hooks() : int {
 		return $this->_hooks_object();
 	}
 
@@ -495,7 +495,7 @@ class Tracker {
 		}
 	}
 
-	private function _hooks_object() {
+	private function _hooks_object() : int {
 		global $wp_filter;
 
 		$this->count_hooks = 0;
@@ -515,11 +515,11 @@ class Tracker {
 		return $this->count_hooks;
 	}
 
-	private function _strip_abspath( $path ) {
+	private function _strip_abspath( $path ) : string {
 		return ltrim( str_replace( array( untrailingslashit( ABSPATH ), '\\' ), array( '', '/' ), $path ), '/' );
 	}
 
-	private function _get_caller( $type = '' ) {
+	private function _get_caller( $type = '' ) : array {
 		$_abspath = str_replace( '\\', '/', ABSPATH );
 
 		$filters = array( 'do_action', 'apply_filter', 'do_action_ref_array', 'call_user_func_array' );
@@ -612,8 +612,7 @@ class Tracker {
 				$log = array(
 					'transport' => $raw['transport'],
 					'info'      => $raw['info'],
-					'args'      => array(),
-					'response'  => array()
+					'args'      => array()
 				);
 
 				foreach ( $raw['args'] as $key => $val ) {

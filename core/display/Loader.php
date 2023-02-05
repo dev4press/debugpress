@@ -152,12 +152,14 @@ class Loader {
 
 		if ( ! is_admin() ) {
 			$this->tabs['query'] = __( "Query", "debugpress" );
-		} else {
-			$this->tabs['admin'] = __( "Admin", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_content' ) ) {
 			$this->tabs['content'] = __( "Content", "debugpress" );
+		}
+
+		if ( debugpress_plugin()->get( 'panel_rewriter' ) ) {
+			$this->tabs['rewriter'] = __( "Rewriter", "debugpress" );
 		}
 
 		if ( debugpress_plugin()->get( 'panel_roles' ) ) {
@@ -168,6 +170,10 @@ class Loader {
 			$this->tabs['constants'] = __( "Constants", "debugpress" );
 		}
 
+		if ( debugpress_plugin()->get( 'panel_hooks' ) ) {
+			$this->tabs['hooks'] = __( "Hooks", "debugpress" );
+		}
+
 		if ( ! empty( debugpress_db()->wpdb()->queries ) ) {
 			$this->tabs['queries'] = __( "SQL Queries", "debugpress" );
 		}
@@ -175,10 +181,6 @@ class Loader {
 		if ( is_user_logged_in() && debugpress_plugin()->get( 'panel_user' ) ) {
 			$this->tabs['user'] = __( "User", "debugpress" );
 		}
-
-		/*if ( debugpress_plugin()->get( 'panel_hooks' ) ) {
-			$this->tabs['hooks'] = __( "Hooks", "debugpress" );
-		}*/
 
 		if ( debugpress_plugin()->get( 'panel_enqueue' ) ) {
 			$this->tabs['enqueue'] = __( "Enqueue", "debugpress" );

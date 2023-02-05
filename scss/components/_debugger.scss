@@ -228,13 +228,60 @@
         }
     }
 
+    #debugpress-debugger-tab-hooks,
     #debugpress-debugger-tab-queries {
         .debugpress-debugger-table {
             &.debugpress-table-keyvalue {
                 tr {
                     td {
                         &:first-child {
-                            width: 60%;
+                            width: 70%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #debugpress-debugger-tab-hooks {
+        #dbg-hooks-list {
+            > thead {
+                th,
+                td {
+                    padding: 3px 8px !important;
+                }
+            }
+
+            > tbody {
+                > tr {
+                    > th {
+                        padding: 3px 8px !important;
+                        vertical-align: top;
+                    }
+
+                    > td {
+                        padding: 0 !important;
+                    }
+                }
+            }
+
+            .dbg-hooks-actions {
+                width: 100%;
+                table-layout: auto;
+                margin: 0;
+                border: 0;
+                background: #FFF;
+                border-collapse: collapse;
+                font-size: calc(var(--debugpress-base-font-size) - 1px);
+
+                tr {
+                    td {
+                        &:first-child {
+                            width: 80px;
+                        }
+
+                        &:last-child {
+                            width: 30%;
                         }
                     }
                 }

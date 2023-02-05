@@ -8,24 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
-class Content extends Panel {
+class Rewriter extends Panel {
 	public function left() {
-		global $wp_taxonomies, $wp_post_types, $wp_post_statuses, $_wp_additional_image_sizes;
-
-		$this->title( __( "Registered Post Types", "debugpress" ) );
-		$this->list_array( $wp_post_types );
-
-		$this->title( __( "Registered Taxonomies", "debugpress" ) );
-		$this->list_array( $wp_taxonomies );
-
-		$this->title( __( "Registered Post Statuses", "debugpress" ) );
-		$this->list_array( $wp_post_statuses );
-
-		$this->title( __( "Additional Image Sizes", "debugpress" ) );
-		$this->list_array( $_wp_additional_image_sizes );
-	}
-
-	public function right() {
 		global $wp_rewrite;
 
 		$this->title( __( "Rewrite Rules", "debugpress" ) );
@@ -46,6 +30,10 @@ class Content extends Panel {
 			_e( "Rewrite rules are not loaded on the WordPress admin side.", "debugpress" );
 			$this->block_footer();
 		}
+	}
+
+	public function right() {
+		global $wp_rewrite;
 
 		$this->title( __( "Extra Permalinks Structure", "debugpress" ) );
 		$this->list_array( $wp_rewrite->extra_permastructs, '$' . 'wp_rewrite' );

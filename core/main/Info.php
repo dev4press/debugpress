@@ -94,6 +94,24 @@ class Info {
 		return (int) $themes;
 	}
 
+	public static function cms_theme_type_in_use() : string {
+		return is_child_theme() ? 'child' : 'theme';
+	}
+
+	public static function cms_stylesheet_theme_name() : string {
+		return wp_get_theme()->Name;
+	}
+
+	public static function cms_templates_theme_name() : string {
+		if ( is_child_theme() ) {
+			$theme = wp_get_theme()->Template;
+
+			return wp_get_theme( $theme )->Name;
+		}
+
+		return self::cms_stylesheet_theme_name();
+	}
+
 	public static function apache_mod_rewrite() : string {
 		$status = apache_mod_loaded( 'mod_rewrite' );
 

@@ -43,6 +43,39 @@ class Request extends Panel {
 
 		$this->title( __( "IPs from &#36;_SERVER", "debugpress" ) );
 		$this->list_array( IP::get_all_ips() );
+
+		if ( is_admin() ) {
+			$this->title( __( "Page Information", "debugpress" ) );
+			$this->block_header();
+			$this->table_init_standard();
+			$this->table_head();
+			$this->table_row( array( "&#36;pagenow", $GLOBALS['pagenow'] ?? '' ) );
+			$this->table_row( array( "&#36;typenow", $GLOBALS['typenow'] ?? '' ) );
+			$this->table_row( array( "&#36;taxnow", $GLOBALS['taxnow'] ?? '' ) );
+			$this->table_row( array(
+				"&#36;hook_suffix",
+				$GLOBALS['hook_suffix'] ?? ''
+			) );
+			$this->table_foot();
+			$this->block_footer();
+
+			$screen = get_current_screen();
+
+			if ( ! is_null( $screen ) ) {
+				$this->title( __( "Current Screen", "debugpress" ) );
+				$this->block_header();
+				$this->table_init_standard();
+				$this->table_head();
+				$this->table_row( array( __( "Base", "debugpress" ), $screen->base ) );
+				$this->table_row( array( __( "ID", "debugpress" ), $screen->id ) );
+				$this->table_row( array( __( "Parent Base", "debugpress" ), $screen->parent_base ) );
+				$this->table_row( array( __( "Parent File", "debugpress" ), $screen->parent_file ) );
+				$this->table_row( array( __( "Post Type", "debugpress" ), $screen->post_type ) );
+				$this->table_row( array( __( "Taxonomy", "debugpress" ), $screen->taxonomy ) );
+				$this->table_foot();
+				$this->block_footer();
+			}
+		}
 	}
 
 	public function right() {

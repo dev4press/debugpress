@@ -107,7 +107,12 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Access Key option to enable loading on demand via URL
 * New: Settings block and information for the On Demand access
 * New: Plugin settings Help tab with On Demand information
+* New: Content tab split into Content and Rewrite tabs
+* New: Basic tab shows currently active theme information
+* New: Admin tab content moved to the Request tab
 * Edit: Few improvements to the plugin init and load process
+* Edit: Changes to some plugin default settings
+* Del: Removed the dedicated Admin tab
 
 = 2.2 (2023.02.03) =
 * New: Updated some plugin system requirements

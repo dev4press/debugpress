@@ -169,6 +169,13 @@ class Settings {
 			'debugpress_settings_panels' );
 
 		add_settings_field(
+			'debugpress_settings_panel_rewriter',
+			'<label for="debugpress_settings_panel_rewriter">' . __( "Rewriter Rules", "debugpress" ) . '</label>',
+			array( $this, 'option_panel_rewriter' ),
+			'debugpress',
+			'debugpress_settings_panels' );
+
+		add_settings_field(
 			'debugpress_settings_panel_roles',
 			'<label for="debugpress_settings_panel_roles">' . __( "User Roles", "debugpress" ) . '</label>',
 			array( $this, 'option_panel_roles' ),
@@ -189,12 +196,12 @@ class Settings {
 			'debugpress',
 			'debugpress_settings_special' );
 
-		/*add_settings_field(
+		add_settings_field(
 			'debugpress_settings_panel_hooks',
 			'<label for="debugpress_settings_panel_hooks">' . __( "Registered Hooks", "debugpress" ) . '</label>',
 			array( $this, 'option_panel_hooks' ),
 			'debugpress',
-			'debugpress_settings_panels' );*/
+			'debugpress_settings_panels' );
 
 		add_settings_field(
 			'debugpress_settings_panel_enqueue',
@@ -442,6 +449,12 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'panel_content' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_content' name='debugpress_settings[panel_content]' type='checkbox' />";
+	}
+
+	public function option_panel_rewriter() {
+		$checked = debugpress_plugin()->get( 'panel_rewriter' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_panel_rewriter' name='debugpress_settings[panel_rewriter]' type='checkbox' />";
 	}
 
 	public function option_panel_roles() {

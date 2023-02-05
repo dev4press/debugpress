@@ -588,8 +588,35 @@ a > .debugpress-icon {
 .debugpress-style-popup .debugpress-debugger-table .debugpress_r.debugpress_r_root {
   margin: 0;
 }
+.debugpress-style-popup #debugpress-debugger-tab-hooks .debugpress-debugger-table.debugpress-table-keyvalue tr td:first-child,
 .debugpress-style-popup #debugpress-debugger-tab-queries .debugpress-debugger-table.debugpress-table-keyvalue tr td:first-child {
-  width: 60%;
+  width: 70%;
+}
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list > thead th,
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list > thead td {
+  padding: 3px 8px !important;
+}
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list > tbody > tr > th {
+  padding: 3px 8px !important;
+  vertical-align: top;
+}
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list > tbody > tr > td {
+  padding: 0 !important;
+}
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list .dbg-hooks-actions {
+  width: 100%;
+  table-layout: auto;
+  margin: 0;
+  border: 0;
+  background: #FFF;
+  border-collapse: collapse;
+  font-size: calc(var(--debugpress-base-font-size) - 1px);
+}
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list .dbg-hooks-actions tr td:first-child {
+  width: 80px;
+}
+.debugpress-style-popup #debugpress-debugger-tab-hooks #dbg-hooks-list .dbg-hooks-actions tr td:last-child {
+  width: 30%;
 }
 .debugpress-style-popup .query-sql-run-full,
 .debugpress-style-popup #debugpress-debuglog-content {

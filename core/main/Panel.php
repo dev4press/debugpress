@@ -91,22 +91,24 @@ abstract class Panel {
 		$this->add_column( __( "Value", "debugpress" ), '', 'text-align: right;' );
 	}
 
-	public function table_head( $columns = array() ) {
+	public function table_head( $columns = array(), $id = '', $class = '', $thead = true ) {
 		if ( ! empty( $columns ) ) {
 			$this->_table = $columns;
 		}
 
-		$class = '';
 		if ( count( $this->_table ) == 2 ) {
-			$class = 'debugpress-table-keyvalue';
+			$class .= ' debugpress-table-keyvalue';
 		}
 
-		echo '<table class="debugpress-debugger-table ' . $class . '"><thead><tr>' . D4P_EOL;
-		foreach ( $this->_table as $row ) {
-			echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . D4P_EOL;
+		echo '<table' . ( ! empty( $id ) ? ' id="' . $id . '"' : '' ) . ' class="debugpress-debugger-table ' . trim( $class ) . '">' . D4P_EOL;
+		if ( $thead ) {
+			echo '<thead><tr>' . D4P_EOL;
+			foreach ( $this->_table as $row ) {
+				echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . D4P_EOL;
+			}
+			echo '</tr></thead>' . D4P_EOL;
 		}
-
-		echo '</tr></thead><tbody>' . D4P_EOL;
+		echo '<tbody>' . D4P_EOL;
 	}
 
 	public function table_foot() {

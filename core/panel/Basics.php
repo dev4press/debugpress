@@ -99,6 +99,18 @@ class Basics extends Panel {
 		$this->table_head();
 		$this->table_row( array( __( "Version", "debugpress" ), Info::cms_version() ) );
 		$this->table_row( array(
+			Info::cms_theme_type_in_use() == 'child' ? __( "Child Theme", "debugpress" ) : __( "Theme", "debugpress" ),
+			Info::cms_stylesheet_theme_name()
+		) );
+
+		if ( is_child_theme() ) {
+			$this->table_row( array(
+				__( "Parent Theme", "debugpress" ),
+				Info::cms_templates_theme_name()
+			) );
+		}
+
+		$this->table_row( array(
 			__( "Pretty Permalinks", "debugpress" ),
 			WP::instance()->has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" )
 		) );
