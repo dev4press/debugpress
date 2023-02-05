@@ -92,6 +92,9 @@ class Callback {
 					$plugin = basename( $plugin );
 				}
 
+				$plugin = sanitize_file_name( $plugin );
+				$plugin = strtolower( $plugin );
+
 				$value = $plugin;
 				break;
 			case 'stylesheet':

@@ -257,10 +257,16 @@
                     > th {
                         padding: 3px 8px !important;
                         vertical-align: top;
+                        width: 20%;
                     }
 
                     > td {
                         padding: 0 !important;
+
+                        &.dbg-hook-no-callbacks {
+                            padding: 4px 6px 4px 82px !important;
+                            font-weight: bold;
+                        }
                     }
                 }
             }
@@ -276,12 +282,61 @@
 
                 tr {
                     td {
+                        padding: 3px 5px !important;
+
                         &:first-child {
                             width: 80px;
+                            text-align: right;
                         }
 
                         &:last-child {
                             width: 30%;
+                        }
+
+                        &.dbg-hook-column-action {
+                            em {
+                                font-family: monospace;
+                                font-weight: bold;
+                                font-style: normal;
+                            }
+
+                            div {
+                                display: none;
+
+                                span {
+                                    display: block;
+
+                                    strong {
+                                        font-weight: normal;
+                                        font-family: monospace;
+                                    }
+                                }
+                            }
+
+                            &.dbg-calls-show {
+                                div {
+                                    display: block;
+                                }
+                            }
+
+                            button {
+                                float: right;
+                                font-weight: bold;
+                                font-size: calc(var(--debugpress-base-font-size) - 1px);
+                                color: #FFF !important;
+                                background: #0073AA;
+                                padding: 0 6px 3px;
+                                margin: 0 0 0 10px;
+                                border: 0;
+                                border-radius: 3px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        td {
+                            border-bottom: 0;
                         }
                     }
                 }

@@ -327,8 +327,41 @@
                 }
             },
             hooks: {
+                filters: {
+                    all: {
+                        types: []
+                    },
+                    active: {
+                        show: 'all',
+                        types: []
+                    }
+                },
                 init: function() {
+                    this.prepare();
+                    this.events();
+                },
+                prepare: function() {
+                    var types = $("#debugpress-debugger-tab-hooks .sqlq-option-type");
 
+                    types.each(function() {
+                        var type = $(this).data("type");
+
+                        wp.dev4press.debugpress.tabs.hooks.filters.active.types.push(type);
+                        wp.dev4press.debugpress.tabs.hooks.filters.all.types.push(type);
+                    });
+                },
+                events: function() {
+                    $(document).on("click", "#debugpress-debugger-tab-hooks .dbg-callback-button-expander", function() {
+                        var parent = $(this).parent(),
+                            location = $(this).next(),
+                            full = parent.hasClass("dbg-calls-show");
+
+                        if (full) {
+                            parent.removeClass("dbg-calls-show");
+                        } else {
+                            parent.addClass("dbg-calls-show");
+                        }
+                    });
                 }
             },
             queries: {
@@ -369,8 +402,10 @@
                     });
 
                     types.each(function() {
-                        wp.dev4press.debugpress.tabs.queries.filters.active.types.push($(this).data("type"));
-                        wp.dev4press.debugpress.tabs.queries.filters.all.types.push($(this).data("type"));
+                        var type = $(this).data("type");
+
+                        wp.dev4press.debugpress.tabs.queries.filters.active.types.push(type);
+                        wp.dev4press.debugpress.tabs.queries.filters.all.types.push(type);
                     });
 
                     tables.each(function() {
