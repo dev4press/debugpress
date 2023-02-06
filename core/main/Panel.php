@@ -73,6 +73,12 @@ abstract class Panel {
 		echo '<h6 class="debugpress-debugger-panel-block-subtitle">' . $title . '</h6>';
 	}
 
+	public function pre( $content ) {
+		echo '<div class="debugpress-pre-wrap"><pre>';
+		echo $content;
+		echo '</pre></div>';
+	}
+
 	public function add_column( $name, $class = '', $style = '', $reset = false ) {
 		if ( $reset ) {
 			$this->_table = array();

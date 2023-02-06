@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 2.3
+Stable tag: 3.0
 Requires at least: 5.2
 Tested up to: 6.1
 Requires PHP: 7.3
@@ -34,11 +34,11 @@ Currently, the plugin has the following panels:
 
 * Basic
 * Request (optional)
-* Admin (for admin side only)
 * Query (for frontend only)
 * Content (optional)
 * Roles (optional)
 * Constants (optional)
+* Hooks (optional)
 * SQL Queries (if SQL queries logging is enabled)
 * User (optional, if user is logged in only)
 * PHP (optional)
@@ -103,7 +103,7 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 2.3 (2023.02.13) =
+= 3.0 (2023.02.13) =
 * New: Access Key option to enable loading on demand via URL
 * New: Settings block and information for the On Demand access
 * New: Plugin settings Help tab with On Demand information

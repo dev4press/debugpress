@@ -203,7 +203,7 @@
             $(document).on("click", "#debugpress-debugger-tabs li a", function(e) {
                 e.preventDefault();
 
-                wp.dev4press.debugpress.tab_change($(this).attr("href").substr(1));
+                wp.dev4press.debugpress.tab_change($(this).attr("href").substring(1));
             });
 
             if (wp.dev4press.debugpress.ajax) {
@@ -350,7 +350,79 @@
                         wp.dev4press.debugpress.tabs.hooks.filters.all.types.push(type);
                     });
                 },
+                filter: function() {
+                    var i, selector;
+
+                    for (i = 0; i < wp.dev4press.debugpress.tabs.hooks.filters.all.types.length; i++) {
+                        selector = 'dbg-hook-' + wp.dev4press.debugpress.tabs.hooks.filters.all.types[i].replace('::', '--');
+                        $("table.dbg-hooks-actions ." + selector).hide();
+                        $("table#dbg-hooks-list > tbody > tr." + selector).hide();
+                    }
+
+                    for (i = 0; i < wp.dev4press.debugpress.tabs.hooks.filters.active.types.length; i++) {
+                        selector = 'dbg-hook-' + wp.dev4press.debugpress.tabs.hooks.filters.active.types[i].replace('::', '--');
+                        $("table.dbg-hooks-actions ." + selector).show();
+                        $("table#dbg-hooks-list > tbody > tr." + selector).show();
+                    }
+                },
                 events: function() {
+                    $(document).on("click", "#debugpress-debugger-tab-hooks .sqlq-option-callbacks", function(e) {
+                        e.preventDefault();
+
+                        if ($(this).hasClass("sqlq-option-off")) {
+                            var on = $(this).attr("id").substring(9),
+                                td = $(".dbg-hooks-actions .dbg-hook-column-action");
+
+                            if (on === 'full') {
+                                td.addClass("dbg-calls-show");
+                            } else {
+                                td.removeClass("dbg-calls-show");
+                            }
+
+                            $("#debugpress-debugger-tab-hooks .sqlq-option-callbacks").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                            $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
+                        }
+                    });
+
+                    $(document).on("click", "#debugpress-debugger-tab-hooks .sqlq-option-type", function(e) {
+                        e.preventDefault();
+
+                        var id = $(this).data("type");
+
+                        if ($(this).hasClass("sqlq-option-off")) {
+                            wp.dev4press.debugpress.tabs.hooks.filters.active.types.push(id);
+                            $(this).addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                        } else {
+                            wp.dev4press.debugpress.tabs.hooks.filters.active.types = wp.dev4press.debugpress.tabs.hooks.filters.active.types.filter(function(e) {
+                                return e !== id;
+                            });
+                            $(this).addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        }
+
+                        wp.dev4press.debugpress.tabs.hooks.filter();
+                    });
+
+                    $(document).on("click", "#debugpress-debugger-tab-hooks .sqlq-types-reset", function(e) {
+                        e.preventDefault();
+
+                        var on = $(this).attr("id").substring(10);
+
+                        if (on === "hide") {
+                            wp.dev4press.debugpress.tabs.hooks.filters.active.types = [];
+
+                            $("#debugpress-debugger-tab-hooks .sqlq-option-type").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        } else {
+                            wp.dev4press.debugpress.tabs.hooks.filters.active.types = wp.dev4press.debugpress.tabs.hooks.filters.all.types;
+
+                            $("#debugpress-debugger-tab-hooks .sqlq-option-type").addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                        }
+
+                        $("#debugpress-debugger-tab-hooks .sqlq-types-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
+
+                        wp.dev4press.debugpress.tabs.hooks.filter();
+                    });
+
                     $(document).on("click", "#debugpress-debugger-tab-hooks .dbg-callback-button-expander", function() {
                         var parent = $(this).parent(),
                             location = $(this).next(),
@@ -517,13 +589,13 @@
                         e.preventDefault();
 
                         if ($(this).hasClass("sqlq-option-off")) {
-                            var on = $(this).attr("id").substr(9);
+                            var on = $(this).attr("id").substring(9);
                             var off = on === "full" ? "compact" : "full";
 
                             $(".sql-calls-" + on).show();
                             $(".sql-calls-" + off).hide();
 
-                            $(".sqlq-option-calls").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-calls").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                             $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
                         }
 
@@ -533,11 +605,11 @@
                         e.preventDefault();
 
                         if ($(this).hasClass("sqlq-option-off")) {
-                            wp.dev4press.debugpress.status.sql_sort = $(this).attr("id").substr(9);
+                            wp.dev4press.debugpress.status.sql_sort = $(this).attr("id").substring(9);
 
                             wp.dev4press.debugpress.sort_by(".sql-query-list", "data-" + wp.dev4press.debugpress.status.sql_sort, wp.dev4press.debugpress.status.sql_order, "sql-query");
 
-                            $(".sqlq-option-sort").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-sort").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                             $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
                         } else {
                             wp.dev4press.debugpress.status.sql_order = wp.dev4press.debugpress.status.sql_order === "asc" ? "desc" : "asc";
@@ -551,7 +623,7 @@
                         if ($(this).hasClass("sqlq-option-off")) {
                             wp.dev4press.debugpress.tabs.queries.filters.active.show = $(this).data("show");
 
-                            $(".sqlq-option-show").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-show").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                             $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
 
                             wp.dev4press.debugpress.tabs.queries.filter();
@@ -561,19 +633,19 @@
                     $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-option-reset", function(e) {
                         e.preventDefault();
 
-                        var on = $(this).attr("id").substr(10);
+                        var on = $(this).attr("id").substring(10);
 
                         if (on === "hide") {
                             wp.dev4press.debugpress.tabs.queries.filters.active.tables = [];
 
-                            $(".sqlq-option-table").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-table").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                         } else {
                             wp.dev4press.debugpress.tabs.queries.filters.active.tables = wp.dev4press.debugpress.tabs.queries.filters.all.tables;
 
-                            $(".sqlq-option-table").addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-table").addClass("sqlq-option-on").removeClass("sqlq-option-off");
                         }
 
-                        $(".sqlq-option-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        $("#debugpress-debugger-tab-queries .sqlq-option-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                         $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
 
                         wp.dev4press.debugpress.tabs.queries.filter();
@@ -615,6 +687,27 @@
                         wp.dev4press.debugpress.tabs.queries.filter();
                     });
 
+                    $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-caller-reset", function(e) {
+                        e.preventDefault();
+
+                        var on = $(this).attr("id").substring(11);
+
+                        if (on === "hide") {
+                            wp.dev4press.debugpress.tabs.queries.filters.active.caller = [];
+
+                            $("#debugpress-debugger-tab-queries .sqlq-option-caller").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        } else {
+                            wp.dev4press.debugpress.tabs.queries.filters.active.caller = wp.dev4press.debugpress.tabs.queries.filters.all.caller;
+
+                            $("#debugpress-debugger-tab-queries .sqlq-option-caller").addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                        }
+
+                        $("#debugpress-debugger-tab-queries .sqlq-caller-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
+
+                        wp.dev4press.debugpress.tabs.queries.filter();
+                    });
+
                     $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-option-type", function(e) {
                         e.preventDefault();
 
@@ -633,43 +726,22 @@
                         wp.dev4press.debugpress.tabs.queries.filter();
                     });
 
-                    $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-caller-reset", function(e) {
-                        e.preventDefault();
-
-                        var on = $(this).attr("id").substr(11);
-
-                        if (on === "hide") {
-                            wp.dev4press.debugpress.tabs.queries.filters.active.caller = [];
-
-                            $(".sqlq-option-caller").addClass("sqlq-option-off").removeClass("sqlq-option-on");
-                        } else {
-                            wp.dev4press.debugpress.tabs.queries.filters.active.caller = wp.dev4press.debugpress.tabs.queries.filters.all.caller;
-
-                            $(".sqlq-option-caller").addClass("sqlq-option-on").removeClass("sqlq-option-off");
-                        }
-
-                        $(".sqlq-caller-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
-                        $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
-
-                        wp.dev4press.debugpress.tabs.queries.filter();
-                    });
-
                     $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-types-reset", function(e) {
                         e.preventDefault();
 
-                        var on = $(this).attr("id").substr(10);
+                        var on = $(this).attr("id").substring(10);
 
                         if (on === "hide") {
                             wp.dev4press.debugpress.tabs.queries.filters.active.types = [];
 
-                            $(".sqlq-option-type").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-type").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                         } else {
                             wp.dev4press.debugpress.tabs.queries.filters.active.types = wp.dev4press.debugpress.tabs.queries.filters.all.types;
 
-                            $(".sqlq-option-type").addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                            $("#debugpress-debugger-tab-queries .sqlq-option-type").addClass("sqlq-option-on").removeClass("sqlq-option-off");
                         }
 
-                        $(".sqlq-types-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        $("#debugpress-debugger-tab-queries .sqlq-types-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                         $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
 
                         wp.dev4press.debugpress.tabs.queries.filter();

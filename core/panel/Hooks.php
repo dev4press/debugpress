@@ -72,7 +72,7 @@ class Hooks extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Callback File", "debugpress" ),
-			'<a href="#" id="sql-call-compact" class="sqlq-option-callbacks sqlq-option-on">' . __( "compact", "debugpress" ) . '</a> &middot; <a href="#" id="sql-call-full" class="sqlq-option-calls sqlq-option-off">' . __( "full", "debugpress" ) . '</a>'
+			'<a href="#" id="sql-call-compact" class="sqlq-option-callbacks sqlq-option-on">' . __( "compact", "debugpress" ) . '</a> &middot; <a href="#" id="sql-call-full" class="sqlq-option-callbacks sqlq-option-off">' . __( "full", "debugpress" ) . '</a>'
 		) );
 		$this->table_foot();
 		$this->block_footer();

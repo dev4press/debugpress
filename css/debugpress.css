@@ -442,6 +442,19 @@ a > .debugpress-icon {
   font-size: 120%;
   vertical-align: text-bottom;
 }
+.debugpress-style-popup .debugpress-pre-wrap {
+  background-color: #F4F4F4;
+  color: #000;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: var(--debugpress-sql-font-size);
+  margin: 0 0 5px;
+  padding: 5px;
+}
+.debugpress-style-popup .debugpress-pre-wrap pre {
+  color: black;
+  background-color: white;
+}
 .debugpress-style-popup #debugpress-debugger-content-wrapper .debugpress-tab-content {
   display: none;
 }

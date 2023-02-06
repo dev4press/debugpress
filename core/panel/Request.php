@@ -17,7 +17,7 @@ class Request extends Panel {
 
 		$this->title( __( "URL", "debugpress" ) );
 		$this->block_header();
-		echo WP::instance()->current_url();
+		$this->pre( WP::instance()->current_url() );
 		$this->list_array( $this->request_url(), '', false );
 		$this->block_footer();
 
