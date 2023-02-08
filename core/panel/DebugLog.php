@@ -24,7 +24,7 @@ class DebugLog extends Panel {
 
 		if ( empty( $path ) ) {
 			echo '<div class="debugpress-debug-notice-block">';
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Debug Log not available", "debugpress" ), true, true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Debug Log not available", "debugpress" ), true, true );
 			$this->block_header();
 			_e( "WordPress Debug Log is not currently enabled.", "debugpress" );
 			echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . __( "More Information", "debugpress" ) . '</a>';

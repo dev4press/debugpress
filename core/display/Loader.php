@@ -106,25 +106,22 @@ class Loader {
 	}
 
 	public function button() : string {
-		$button = '<i class="debugpress-icon debugpress-icon-bug"></i>';
-		$button .= '<span class="debugpress-debug-button-indicators">';
-
 		$_error_counts = debugpress_tracker()->counts['total'];
 		$_http_counts  = count( debugpress_tracker()->httpapi );
 		$_store_counts = count( debugpress_tracker()->logged );
+
+		$button = '<i class="debugpress-icon debugpress-icon-bug"></i>';
+		$button .= '<span class="debugpress-debug-button-indicators">';
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
 			$button .= '<span class="debugpress-debug-has-ajax" style="display: none;" title="' . __( "AJAX Calls", "debugpress" ) . '">0</span>';
 		}
 
-		if ( debugpress_plugin()->get( 'panel_http' ) && $_http_counts > 0 ) {
+		if ( debugpress_plugin()->get( 'panel_http' ) ) {
 			$button .= '<span class="debugpress-debug-has-httpcalls" style="display: ' . ( $_http_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "HTTP API Calls", "debugpress" ) . '">' . $_http_counts . '</span>';
 		}
 
-		if ( $_store_counts > 0 ) {
-			$button .= '<span class="debugpress-debug-has-stored" style="display: ' . ( $_store_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "Storage", "debugpress" ) . '">' . $_store_counts . '</span>';
-		}
-
+		$button .= '<span class="debugpress-debug-has-stored" style="display: ' . ( $_store_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "Storage", "debugpress" ) . '">' . $_store_counts . '</span>';
 		$button .= '<span class="debugpress-debug-has-errors" style="display: ' . ( $_error_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( "PHP Errors", "debugpress" ) . '">' . $_error_counts . '</span>';
 
 		$button .= '</span>';
@@ -228,13 +225,13 @@ class Loader {
 
 		$this->tabs['tools'] = array(
 			'label' => __( "Tools", "debugpress" ),
-			'tab'   => '<i class="debugpress-icon debugpress-icon-tools"></i>'
+			'tab'   => '<i class="debugpress-icon debugpress-icon-screwdriver-wrench"></i>'
 		);
 
 		if ( debugpress_plugin()->get( 'panel_debuglog' ) ) {
 			$this->tabs['debuglog'] = array(
 				'label' => __( "Debug Log", "debugpress" ),
-				'tab'   => '<i class="debugpress-icon debugpress-icon-file"></i>'
+				'tab'   => '<i class="debugpress-icon debugpress-icon-file-lines"></i>'
 			);
 		}
 

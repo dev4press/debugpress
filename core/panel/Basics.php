@@ -26,7 +26,7 @@ class Basics extends Panel {
 		if ( ! empty( $test ) ) {
 			echo '<div class="debugpress-debug-notice-block">';
 
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Debug mode problems", "debugpress" ), true, true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Debug mode problems", "debugpress" ), true, true );
 			$this->block_header();
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );

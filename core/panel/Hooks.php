@@ -63,7 +63,7 @@ class Hooks extends Panel {
 	}
 
 	public function left() {
-		echo '<h4 class="debugpress-querie-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-right debugpress-icon-flip-horizontal"></i></span></h4>';
+		echo '<h4 class="debugpress-querie-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
 
 		$this->title( __( "Queries Control", "debugpress" ) );
 		$this->block_header();

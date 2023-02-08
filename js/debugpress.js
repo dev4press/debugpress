@@ -101,11 +101,11 @@
                 if (state === "open") {
                     tab.addClass("debugpress-queries-sidebar-closed");
                     $(this).data("state", "closed");
-                    $("i", this).removeClass("debugpress-icon-flip-horizontal");
+                    $("i", this).removeClass("debugpress-icon-caret-left").addClass("debugpress-icon-caret-right");
                 } else {
                     tab.removeClass("debugpress-queries-sidebar-closed");
                     $(this).data("state", "open");
-                    $("i", this).addClass("debugpress-icon-flip-horizontal");
+                    $("i", this).addClass("debugpress-icon-caret-left").removeClass("debugpress-icon-caret-right");
                 }
             });
 
@@ -116,12 +116,12 @@
 
                 if ($(this).hasClass("block-open")) {
                     $(this).removeClass("block-open");
-                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-plus");
+                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-square-plus");
 
                     block.hide();
                 } else {
                     $(this).addClass("block-open");
-                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-minus");
+                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-square-minus");
 
                     block.show();
                 }
@@ -290,9 +290,9 @@
                             response = ajax.response === undefined ? response : ajax.response.toString().toUpperCase();
                         }
 
-                        render = '<h5 class="debugpress-debugger-panel-block-title">[SUCCESS] [' + ajax.type + ' => ' + response + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                        render = '<h5 class="debugpress-debugger-panel-block-title">[SUCCESS] [' + ajax.type + ' => ' + response + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-square-minus"></i></span></h5>';
                     } else {
-                        render = '<h5 class="debugpress-debugger-panel-block-title" style="background: #900;">[ERROR] [' + ajax.type + ' => ' + ajax.error + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-minus"></i></span></h5>';
+                        render = '<h5 class="debugpress-debugger-panel-block-title" style="background: #900;">[ERROR] [' + ajax.type + ' => ' + ajax.error + '] ' + ajax.url + '<span class="block-open"><i class="debugpress-icon debugpress-icon-square-minus"></i></span></h5>';
                     }
 
                     render += '<div class="debugpress-debugger-panel-block" style="display: block;"><table class="debugpress-debugger-table"><thead><tr><th scope="col" class="" style="">Name</th><th scope="col" class="" style="">Value</th></tr></thead><tbody>';

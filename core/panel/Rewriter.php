@@ -19,7 +19,7 @@ class Rewriter extends Panel {
 				$this->list_array( $wp_rewrite->rules, '$' . 'wp_rewrite->rules' );
 			} else {
 				echo '<div class="debugpress-debug-notice-block">';
-				$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Rewrite Rules problem", "debugpress" ), true, true );
+				$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Rewrite Rules problem", "debugpress" ), true, true );
 				$this->block_header();
 				_e( "Permalinks are disabled.", "debugpress" );
 				$this->block_footer();

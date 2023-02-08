@@ -110,6 +110,7 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Content tab split into Content and Rewrite tabs
 * New: Basic tab shows currently active theme information
 * New: Admin tab content moved to the Request tab
+* New: Refreshed the debugger look with new icons
 * Edit: Few improvements to the plugin init and load process
 * Edit: Changes to some plugin default settings
 * Del: Removed the dedicated Admin tab

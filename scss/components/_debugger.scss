@@ -141,7 +141,7 @@
     .debugpress-debugger-panel-block-title {
         background: #23282D;
         color: #FFF;
-        padding: 5px !important;
+        padding: 5px 8px !important;
         font-size: 12px;
         margin: 0;
 
@@ -173,9 +173,10 @@
             font-size: calc(var(--debugpress-base-font-size) + 4px);
             cursor: pointer;
             padding-right: 4px;
+            vertical-align: top;
 
             i.debugpress-icon {
-                vertical-align: text-bottom;
+                vertical-align: bottom;
             }
         }
     }
@@ -519,7 +520,7 @@
         width: max-content;
         border-radius: 0;
         margin: 5px 5px 0 0;
-        padding: 5px 15px;
+        padding: 8px 14px;
         font-size: calc(var(--debugpress-base-font-size) + 3px);
     }
 }

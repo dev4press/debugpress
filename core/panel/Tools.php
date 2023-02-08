@@ -44,7 +44,7 @@ class Tools extends Panel {
 			$this->block_footer();
 		} else {
 			echo '<div class="debugpress-debug-notice-block">';
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Not Available", "debugpress" ), true, true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Not Available", "debugpress" ), true, true );
 			$this->block_header();
 			echo '<p>' . __( "Only administrator roles can access this information.", "debugpress" ) . '</p>';
 			$this->block_footer();
@@ -71,7 +71,7 @@ class Tools extends Panel {
 			$this->block_footer();
 		} else {
 			echo '<div class="debugpress-debug-notice-block">';
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Not Available", "debugpress" ), true, true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Not Available", "debugpress" ), true, true );
 			$this->block_header();
 			echo '<p>' . __( "Only administrator roles can access this information.", "debugpress" ) . '</p>';
 			$this->block_footer();
@@ -97,7 +97,7 @@ class Tools extends Panel {
 			$this->block_footer();
 		} else {
 			echo '<div class="debugpress-debug-notice-block">';
-			$this->title( '<i class="debugpress-icon debugpress-icon-exclamation"></i> ' . __( "Not available for this page", "debugpress" ), true, true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Not available for this page", "debugpress" ), true, true );
 			$this->block_header();
 			echo '<p>' . __( "Admin side panels can't be tested via online performance tools.", "debugpress" ) . '</p>';
 			$this->block_footer();

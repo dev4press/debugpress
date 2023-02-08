@@ -3,9 +3,7 @@
     src: url('fonts/debugpress.eot?#{$font-version}');
     src: url('fonts/debugpress.eot?#{$font-version}#iefix') format('embedded-opentype'),
     url('data:application/font-woff2;charset=utf-8;base64,#{$font_woff2}') format('woff2'),
-    url('data:application/font-woff;charset=utf-8;base64,#{$font_woff}') format('woff'),
-    url('fonts/debugpress.ttf?#{$font-version}') format('truetype'),
-    url('fonts/debugpress.svg?#{$font-version}#debugpress') format('svg');
+    url('data:application/font-woff;charset=utf-8;base64,#{$font_woff}') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -37,6 +35,12 @@ a {
 }
 
 /* Icons */
+@each $icon, $deg in $rotate {
+    .#{$font-prefix-ctrl}.#{$font-prefix}-#{$icon} {
+        transform: rotate(#{$deg}deg);
+    }
+}
+
 @each $icon, $char in $icons {
     .#{$font-prefix-ctrl}.#{$font-prefix}-#{$icon} {
         &:before {
@@ -66,17 +70,28 @@ a {
 
 /* Flip */
 .#{$font-prefix-ctrl}-flip-horizontal {
-    -webkit-transform: scaleX(-1);
     transform: scaleX(-1)
 }
 
 .#{$font-prefix-ctrl}-flip-vertical {
-    -webkit-transform: scaleY(-1);
     transform: scaleY(-1)
 }
 
 .#{$font-prefix-ctrl}-flip-both,
 .#{$font-prefix-ctrl}-flip-horizontal.#{$font-prefix-ctrl}-flip-vertical {
-    -webkit-transform: scale(-1);
     transform: scale(-1)
+}
+
+/* Spin */
+.#{$font-prefix-ctrl}-spin {
+    animation: #{$font-prefix}-icon-spin 2s infinite linear;
+}
+
+@keyframes #{$font-prefix}-icon-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
 }
