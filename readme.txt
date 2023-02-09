@@ -113,6 +113,7 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Refreshed the debugger look with new icons
 * Edit: Few improvements to the plugin init and load process
 * Edit: Changes to some plugin default settings
+* Edit: Smart Animated Popup v2.0 library
 * Del: Removed the dedicated Admin tab
 
 = 2.2 (2023.02.03) =

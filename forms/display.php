@@ -70,6 +70,9 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        window.wp.dev4press.debugpress.init(<?php echo json_encode( debugpress_tracker()->counts ); ?>, <?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>);
+        window.wp.dev4press.debugpress.init(
+            <?php echo json_encode( debugpress_tracker()->counts ); ?>,
+            <?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>,
+	        <?php echo is_admin() ? 'true' : 'false'; ?>);
     });
 </script>

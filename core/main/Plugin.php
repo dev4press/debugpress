@@ -55,7 +55,7 @@ class Plugin {
 	private $_allowed = false;
 	private $_activate = false;
 	private $_url_activated = false;
-	private $_animated_popup_version = '1.9';
+	private $_animated_popup_version = '2.0';
 	private $_wp_version;
 	private $_wp_version_real;
 	private $_cp_version;

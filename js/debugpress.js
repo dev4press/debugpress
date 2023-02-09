@@ -7,6 +7,7 @@
 
     window.wp.dev4press.debugpress = {
         ajax: false,
+        admin: false,
         tab: "",
         status: {
             sql_sort: "order",
@@ -48,9 +49,10 @@
                 $(source).append(div);
             });
         },
-        init: function(counts, ajax) {
+        init: function(counts, ajax, admin) {
             wp.dev4press.debugpress.counts = counts;
             wp.dev4press.debugpress.ajax = ajax;
+            wp.dev4press.debugpress.admin = admin;
 
             if (wp.dev4press.debugpress.counts.total > 0) {
                 var button = $(".debugpress-debug-dialog-button"),
@@ -73,7 +75,14 @@
                     headerContent: $("#debugpress-debugger-content-header"),
                     footerContent: $("#debugpress-debugger-content-footer"),
                     buttonXContent: "<i aria-hidden=\"true\" class=\"debugpress-icon debugpress-icon-power-off\"></i>",
-                    xContentSize: true
+                    cookiePosizeCode: "debugpress-settings-" + (wp.dev4press.debugpress.admin ? "admin" : "frontend"),
+                    xContentSize: true,
+                    save: {
+                        layout: "center",
+                        modal: "show",
+                        open: "manual",
+                        ratio: "normal"
+                    }
                 },
                 callbacks: {
                     afterOpen: function() {
