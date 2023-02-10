@@ -6,6 +6,14 @@
     window.wp.dev4press = window.wp.dev4press || {};
 
     window.wp.dev4press.debugpress = {
+        popup: null,
+        layout: {
+            layout: "center",
+            modal: "show",
+            open: "manual",
+            ratio: "normal",
+            tab: "debugpress-debugger-tab-basics"
+        },
         ajax: false,
         admin: false,
         tab: "",
@@ -53,6 +61,7 @@
             wp.dev4press.debugpress.counts = counts;
             wp.dev4press.debugpress.ajax = ajax;
             wp.dev4press.debugpress.admin = admin;
+            wp.dev4press.debugpress.popup = $("#debugpress-debugger-content-wrapper");
 
             if (wp.dev4press.debugpress.counts.total > 0) {
                 var button = $(".debugpress-debug-dialog-button"),
@@ -63,7 +72,7 @@
                 button.addClass(extra);
             }
 
-            $("#debugpress-debugger-content-wrapper").smartAniPopup({
+            wp.dev4press.debugpress.popup.smartAniPopup({
                 settings: {
                     style: "debugpress-style-popup",
                     modal: true,
@@ -81,10 +90,15 @@
                         layout: "center",
                         modal: "show",
                         open: "manual",
-                        ratio: "normal"
+                        ratio: "normal",
+                        tab: "debugpress-debugger-tab-basics"
                     }
                 },
                 callbacks: {
+                    prepared: function() {
+                        wp.dev4press.debugpress.layout = this.save;
+                        wp.dev4press.debugpress.tab_change(this.save.tab);
+                    },
                     afterOpen: function() {
                         $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger('focus');
                     }
@@ -94,7 +108,7 @@
             $(document).on("click", ".debugpress-debug-dialog-button a", function(e) {
                 e.preventDefault();
 
-                $("#debugpress-debugger-content-wrapper").smartAniPopup("open");
+                wp.dev4press.debugpress.popup.smartAniPopup("open");
             });
 
             $(document).on("change", "#debugpress-debugger-select", function() {
@@ -772,9 +786,14 @@
                 }
             }
         },
+        save_popup_state: function() {
+            wp.dev4press.debugpress.popup.smartAniPopup("mod", {save: wp.dev4press.debugpress.layout});
+            wp.dev4press.debugpress.popup.smartAniPopup("save");
+        },
         tab_change: function(tab) {
             if (tab !== wp.dev4press.debugpress.tab) {
                 wp.dev4press.debugpress.tab = tab;
+                wp.dev4press.debugpress.layout.tab = tab;
 
                 $("#debugpress-debugger-tabs li").removeClass("debugpress-tab-active");
                 $("#" + tab + "-li").addClass("debugpress-tab-active");
@@ -792,6 +811,8 @@
                 });
 
                 $("#debugpress-debugger-select").val(tab);
+
+                wp.dev4press.debugpress.save_popup_state();
             }
         }
     };

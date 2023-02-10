@@ -223,6 +223,11 @@ class Loader {
 			$this->tabs['store'] = __( "Store", "debugpress" ) . ' (' . count( debugpress_tracker()->logged ) . ')';
 		}
 
+		$this->tabs['layout'] = array(
+			'label' => __( "Layout", "debugpress" ),
+			'tab'   => '<i class="debugpress-icon debugpress-icon-layout"></i>'
+		);
+
 		$this->tabs['tools'] = array(
 			'label' => __( "Tools", "debugpress" ),
 			'tab'   => '<i class="debugpress-icon debugpress-icon-screwdriver-wrench"></i>'

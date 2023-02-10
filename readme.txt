@@ -104,6 +104,8 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 
 == Changelog ==
 = 3.0 (2023.02.13) =
+* New: Modify debugger popup layout and size
+* New: Save active tab and show it first on next page load
 * New: Access Key option to enable loading on demand via URL
 * New: Settings block and information for the On Demand access
 * New: Plugin settings Help tab with On Demand information
