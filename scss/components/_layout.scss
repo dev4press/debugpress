@@ -1,0 +1,19 @@
+.debugpress-layout-position {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    padding: 1em;
+
+    > div {
+        text-align: center;
+
+        &.selected {
+            color: #0073AA;
+            font-weight: bold;
+        }
+
+        > span {
+            display: block;
+        }
+    }
+}

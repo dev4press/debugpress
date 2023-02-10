@@ -50,21 +50,23 @@ a {
 }
 
 /* Full Width */
-.#{$font-prefix-ctrl}-fw {
-    width: 1.28571429em;
-    text-align: center;
-}
+i.#{$font-prefix-ctrl} {
+    &.#{$font-prefix-ctrl}-fw {
+        width: 1.28571429em;
+        text-align: center;
+    }
 
-/* Sizes */
-.#{$font-prefix-ctrl}-lg {
-    font-size: 1.33333333em;
-    line-height: 0.75em;
-    vertical-align: -15%;
-}
+    /* Sizes */
+    &.#{$font-prefix-ctrl}-lg {
+        font-size: 1.33333333em;
+        line-height: 0.75em;
+        vertical-align: -15%;
+    }
 
-@for $i from 2 to 5 {
-    .#{$font-prefix-ctrl}-#{$i}x {
-        font-size: #{$i}em;
+    @for $i from 2 to 8 {
+        &.#{$font-prefix-ctrl}-#{$i}x {
+            font-size: #{$i}em;
+        }
     }
 }
 
