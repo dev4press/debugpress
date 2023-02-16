@@ -39,6 +39,23 @@ function debugpress_store_for_plugin( string $plugin_file, array $data = array()
 }
 
 /**
+ * Get result of the `debug_print_backtrace` function as a string.
+ *
+ * @return string
+ */
+function debugpress_backtrace() : string {
+	ob_start();
+
+	debug_print_backtrace();
+
+	$backtrace = ob_get_contents();
+
+	ob_end_clean();
+
+	return (string) $backtrace;
+}
+
+/**
  * Check if the bbPress plugin is currently installed and active. Requires bbPress version 2.5 or newer.
  *
  * @return bool TRUE: if the bbPress is active, FALSE: if it is not active
