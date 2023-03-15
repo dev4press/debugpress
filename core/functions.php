@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Print the value in the WordPress debug.log, if it is available.
  *
- * @param mixed $object
+ * @param mixed $object Object value to store, it can be any type
  */
 function debugpress_error_log( $object ) {
 	if ( DEBUGPRESS_IS_DEBUG_LOG ) {
@@ -18,9 +18,27 @@ function debugpress_error_log( $object ) {
 }
 
 /**
+ * Print the value in the custom file based on the provided path and write mode.
+ *
+ * @param mixed  $object Object value to store, it can be any type
+ * @param string $path   Full path to the file to write into
+ * @param string $mode   File writing mode, @see 'fopen'
+ */
+function debugpress_info_file( $object, string $path, string $mode = 'w' ) {
+	$handle = fopen( $path, $mode );
+
+	if ( $handle ) {
+		$print = print_r( $object, true );
+
+		fwrite( $handle, $print );
+		fclose( $handle );
+	}
+}
+
+/**
  * Store the object into the DebugPress Tracker, and display it inside the Store tab of the Debugger.
  *
- * @param mixed  $object Object value to store, it can be any type.
+ * @param mixed  $object Object value to store, it can be any type
  * @param string $title  Optional title to associate with the stored object
  * @param false  $sql    If the stored object SQL string, it will be rendered as formatted SQL
  */
@@ -110,7 +128,7 @@ function debugpress_format_size( $size, int $decimal = 2, string $sep = ' ' ) : 
  *
  * @return bool true if the file is found in current path or include path.
  */
-function debugpress_file_exists( $file ) : bool {
+function debugpress_file_exists( string $file ) : bool {
 	if ( function_exists( 'stream_resolve_include_path' ) ) {
 		return ! ( stream_resolve_include_path( $file ) === false );
 	} else {
