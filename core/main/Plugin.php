@@ -81,10 +81,12 @@ class Plugin {
 		add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ), 0 );
 		add_action( 'plugins_loaded', array( $this, 'activation' ), DEBUGPRESS_ACTIVATION_PRIORITY );
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ), 1 );
 
 		if ( is_admin() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'loader' ) );
+			add_filter( 'gform_noconflict_scripts', array( $this, 'gravityforms_noconflict' ) );
+			add_filter( 'gform_noconflict_styles', array( $this, 'gravityforms_noconflict' ) );
 		} else {
 			add_action( 'wp', array( $this, 'loader' ) );
 			add_action( 'login_init', array( $this, 'loader' ) );
@@ -93,6 +95,12 @@ class Plugin {
 
 	public function rest_api() {
 		$this->_rest_request = defined( 'REST_REQUEST' ) && REST_REQUEST;
+	}
+
+	public function gravityforms_noconflict( $list ) {
+		$list[] = 'debugpress';
+
+		return $list;
 	}
 
 	public function is_rest_request() : bool {

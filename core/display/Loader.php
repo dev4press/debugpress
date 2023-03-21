@@ -9,36 +9,58 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Loader {
 	private $button = false;
 	private $position;
+	private $initialized = false;
 
 	public $tabs = array();
 
 	public function __construct() {
-		$this->position = is_admin() ? debugpress_plugin()->get( 'button_admin' ) : debugpress_plugin()->get( 'button_frontend' );
 
-		if ( $this->position == 'toolbar' ) {
-			add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );
+	}
+
+	private function init() {
+		if ( ! did_action( 'init' ) ) {
+			return;
 		}
 
-		if ( is_admin() ) {
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		} else {
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-			add_action( 'login_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		}
+		if ( ! $this->initialized ) {
+			$this->initialized = true;
+			$this->position    = is_admin() ? debugpress_plugin()->get( 'button_admin' ) : debugpress_plugin()->get( 'button_frontend' );
 
-		SQLFormat::$pre_attributes = '';
+			if ( $this->position == 'toolbar' ) {
+				add_action( 'admin_bar_menu', array( $this, 'display_in_toolbar' ), 1000000 );
+			}
+
+			if ( is_admin() ) {
+				add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			} else {
+				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+				add_action( 'login_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			}
+
+			SQLFormat::$pre_attributes = '';
+		}
 	}
 
 	public function run() {
 		if ( is_admin() ) {
-			add_action( 'admin_footer', array( $this, 'debugger_content_prepare' ) );
+			add_action( 'admin_footer', array( $this, 'debugger_content_prepare_admin' ) );
 		} else {
-			add_action( 'wp_footer', array( $this, 'debugger_content_prepare' ) );
-			add_action( 'login_footer', array( $this, 'debugger_content_prepare' ) );
+			add_action( 'wp_footer', array( $this, 'debugger_content_prepare_front' ) );
+			add_action( 'login_footer', array( $this, 'debugger_content_prepare_front' ) );
 		}
 	}
 
-	public function debugger_content_prepare() {
+	public function debugger_content_prepare_admin() {
+		global $hook_suffix;
+
+		if ( ! $this->button ) {
+			add_action( 'admin_footer-' . $hook_suffix, array( $this, 'display_float_button' ), 999990 );
+		}
+
+		add_action( 'admin_footer-' . $hook_suffix, array( $this, 'debugger_content' ), 1000000 );
+	}
+
+	public function debugger_content_prepare_front() {
 		if ( ! $this->button ) {
 			add_action( 'shutdown', array( $this, 'display_float_button' ), 999990 );
 		}
@@ -51,6 +73,7 @@ class Loader {
 
 		if ( ! isset( $instance ) ) {
 			$instance = new Loader();
+			$instance->init();
 		}
 
 		return $instance;
