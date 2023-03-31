@@ -9,7 +9,7 @@ Author URI:        https://www.dev4press.com/
 Text Domain:       debugpress
 Version:           3.0
 Requires at least: 5.2
-Tested up to:      6.1
+Tested up to:      6.2
 Requires PHP:      7.3
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html

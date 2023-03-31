@@ -4,7 +4,7 @@ Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
 Stable tag: 3.0
 Requires at least: 5.2
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -103,8 +103,10 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 3.0 (2023.02.13) =
+= 3.0 (2023.04.03) =
 * New: Modify debugger popup layout and size
+* New: Modify debugger popup modal state
+* New: Modify debugger popup opening state (auto, manual, remember state)
 * New: Save active tab and show it first on next page load
 * New: Access Key option to enable loading on demand via URL
 * New: Settings block and information for the On Demand access
@@ -113,6 +115,7 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Basic tab shows currently active theme information
 * New: Admin tab content moved to the Request tab
 * New: Refreshed the debugger look with new icons
+* New: Function to write log entry into custom info/log file
 * Edit: Few improvements to the plugin init and load process
 * Edit: Changes to some plugin default settings
 * Edit: Smart Animated Popup v2.0 library
