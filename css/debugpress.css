@@ -392,6 +392,23 @@ i.debugpress-icon.debugpress-icon-7x {
   display: block;
 }
 
+.debugpress-layout-settings {
+  padding: 1em;
+}
+.debugpress-layout-settings .debugpress-layout-option {
+  display: flex;
+  column-gap: 2em;
+  margin: 0 0 1em;
+  align-items: center;
+}
+.debugpress-layout-settings .debugpress-layout-option label {
+  min-width: 120px;
+}
+.debugpress-layout-settings .debugpress-layout-option select {
+  min-width: 120px;
+  width: 200px;
+}
+
 .debugpress-style-popup {
   color: #444;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -920,7 +937,7 @@ i.debugpress-icon.debugpress-icon-7x {
     margin-bottom: 5px;
   }
   .debugpress-style-popup .debugpress-debugger-footer-left,
-.debugpress-style-popup .debugpress-debugger-footer-right {
+  .debugpress-style-popup .debugpress-debugger-footer-right {
     float: none;
     text-align: center;
   }

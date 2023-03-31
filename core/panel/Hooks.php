@@ -18,12 +18,12 @@ class Hooks extends Panel {
 	public function __construct() {
 		global $wp_actions, $wp_filters, $wp_filter;
 
-		$this->origins['none::none']              = __( "No Callbacks" );
-		$this->origins['php::php']                = __( "PHP" );
-		$this->origins['core::core']              = __( "WordPress Core" );
-		$this->origins['stylesheet::child-theme'] = __( "Child Theme" ) . ': ' . Info::cms_stylesheet_theme_name();
-		$this->origins['stylesheet::theme']       = __( "Theme" ) . ': ' . Info::cms_templates_theme_name();
-		$this->origins['template::theme']         = __( "Theme" ) . ': ' . Info::cms_templates_theme_name();
+		$this->origins['none::none']              = __( "No Callbacks", "debugpress" );
+		$this->origins['php::php']                = __( "PHP", "debugpress" );
+		$this->origins['core::core']              = __( "WordPress Core", "debugpress" );
+		$this->origins['stylesheet::child-theme'] = __( "Child Theme", "debugpress" ) . ': ' . Info::cms_stylesheet_theme_name();
+		$this->origins['stylesheet::theme']       = __( "Theme", "debugpress" ) . ': ' . Info::cms_templates_theme_name();
+		$this->origins['template::theme']         = __( "Theme", "debugpress" ) . ': ' . Info::cms_templates_theme_name();
 		$this->origins_order['none::none']        = 0;
 
 		$hook_names = array_keys( $wp_filter );
@@ -54,7 +54,7 @@ class Hooks extends Panel {
 
 				$title = '';
 				if ( $parts[0] == 'plugin' ) {
-					$title = __( "Plugin" ) . ': ' . $parts[1];
+					$title = __( "Plugin", "debugpress" ) . ': ' . $parts[1];
 				}
 
 				$this->origins[ $origin ] = $title;
@@ -111,7 +111,7 @@ class Hooks extends Panel {
 			$rows = count( $hook['actions'] );
 
 			if ( $rows == 0 ) {
-				echo '<tr class="' . $this->_row_filter_classes( $hook['origins'] ) . '"><th>' . $hook['name'] . '</th><td class="dbg-hook-no-callbacks">' . __( "No callbacks registered for this hook." ) . '</td></tr>';
+				echo '<tr class="' . $this->_row_filter_classes( $hook['origins'] ) . '"><th>' . $hook['name'] . '</th><td class="dbg-hook-no-callbacks">' . __( "No callbacks registered for this hook.", "debugpress" ) . '</td></tr>';
 			} else {
 				echo '<tr class="' . $this->_row_filter_classes( $hook['origins'] ) . '">';
 				echo '<th>' . $hook['name'] . '</th>';
@@ -154,11 +154,11 @@ class Hooks extends Panel {
 		echo '<td class="dbg-hook-column-action"><em>' . $action['name'].'</em>';
 
 		if ( isset( $action['file'] ) && ! empty( $action['file'] ) ) {
-			echo '<button class="dbg-callback-button-expander" type="button">' . __( "toggle" ) . '</button>';
-			echo '<div><span>' . __( "In File" ) . ': <strong>' . $action['file'] . '</strong></span>';
+			echo '<button class="dbg-callback-button-expander" type="button">' . __( "toggle", "debugpress" ) . '</button>';
+			echo '<div><span>' . __( "In File", "debugpress" ) . ': <strong>' . $action['file'] . '</strong></span>';
 
 			if ( isset( $action['line'] ) && ! empty( $action['line'] ) ) {
-				echo '<span>' . __( "On Line" ) . ': <strong>' . $action['line'] . '</strong></span>';
+				echo '<span>' . __( "On Line", "debugpress" ) . ': <strong>' . $action['line'] . '</strong></span>';
 			}
 
 			echo '</div>';

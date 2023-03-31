@@ -17,3 +17,23 @@
         }
     }
 }
+
+.debugpress-layout-settings {
+    padding: 1em;
+
+    .debugpress-layout-option {
+        display: flex;
+        column-gap: 2em;
+        margin: 0 0 1em;
+        align-items: center;
+
+        label {
+            min-width: 120px;
+        }
+
+        select {
+            min-width: 120px;
+            width: 200px;
+        }
+    }
+}

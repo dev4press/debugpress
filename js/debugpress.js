@@ -11,8 +11,9 @@
             layout: "full",
             modal: "show",
             open: "manual",
-            ratio: "normal",
-            tab: "debugpress-debugger-tab-basics"
+            ratio: "40",
+            tab: "debugpress-debugger-tab-basics",
+            last: "closed"
         },
         ajax: false,
         admin: false,
@@ -586,30 +587,32 @@
                 }, size = {
                     width: "95%",
                     height: "90%"
-                };
+                }, ratio = parseInt(wp.dev4press.debugpress.layout.ratio) + '%';
 
                 switch (wp.dev4press.debugpress.layout.layout) {
                     case "right":
                         move.positionX = "right";
-                        size.width = "40%";
+                        size.width = ratio;
                         size.height = "100%";
                         break;
                     case "left":
                         move.positionX = "left";
-                        size.width = "40%";
+                        size.width = ratio;
                         size.height = "100%";
                         break;
                     case "top":
                         move.positionY = "top";
                         size.width = "100%";
-                        size.height = "40%";
+                        size.height = ratio;
                         break;
                     case "bottom":
                         move.positionY = "bottom";
                         size.width = "100%";
-                        size.height = "40%";
+                        size.height = ratio;
                         break;
                 }
+
+                wp.dev4press.debugpress.popup.smartAniPopup("mod", {modal: wp.dev4press.debugpress.layout.modal === "show"});
 
                 wp.dev4press.debugpress.popup.smartAniPopup("move", move);
                 wp.dev4press.debugpress.popup.smartAniPopup("resize", size);
@@ -618,13 +621,33 @@
                 wp.dev4press.debugpress.popup.smartAniPopup("mod", {save: wp.dev4press.debugpress.layout});
                 wp.dev4press.debugpress.popup.smartAniPopup("save");
             },
-            load_state: function() {
+            load_state: function(core, skin) {
+                if ($("#" + wp.dev4press.debugpress.layout.tab + "-li").length === 0) {
+                    wp.dev4press.debugpress.layout.tab = "debugpress-debugger-tab-basics";
+
+                    wp.dev4press.debugpress.dialog.save_state();
+                }
+
                 wp.dev4press.debugpress.tab_change(wp.dev4press.debugpress.layout.tab);
 
                 var layout = $(".debugpress-layout-position .debugpress-layout-position-" + wp.dev4press.debugpress.layout.layout);
 
                 layout.addClass("selected");
                 layout.find("input").prop("checked", true).trigger("change");
+
+                $(".debugpress-layout-size select").val(wp.dev4press.debugpress.layout.ratio);
+                $(".debugpress-layout-modal select").val(wp.dev4press.debugpress.layout.modal);
+                $(".debugpress-layout-activation select").val(wp.dev4press.debugpress.layout.open);
+
+                skin.onLoad = false;
+
+                if (wp.dev4press.debugpress.layout.open === "auto") {
+                    skin.onLoad = true;
+                } else if (wp.dev4press.debugpress.layout.open === "remember") {
+                    if (wp.dev4press.debugpress.layout.last === "open") {
+                        skin.onLoad = true;
+                    }
+                }
 
                 wp.dev4press.debugpress.dialog.reposition();
             }
@@ -681,6 +704,7 @@
                     effect: "fade",
                     closeEscape: true,
                     onLoad: false,
+                    onLoadDelay: 200,
                     positionX: "center",
                     positionY: "center",
                     width: "95%",
@@ -698,17 +722,25 @@
                         layout: "full",
                         modal: "show",
                         open: "manual",
-                        ratio: "normal",
-                        tab: "debugpress-debugger-tab-basics"
+                        ratio: "40",
+                        tab: "debugpress-debugger-tab-basics",
+                        last: "closed"
                     }
                 },
                 callbacks: {
-                    prepared: function() {
+                    prepared: function(core, skin) {
                         wp.dev4press.debugpress.layout = this.save;
-                        wp.dev4press.debugpress.dialog.load_state();
+                        wp.dev4press.debugpress.dialog.load_state(core, skin);
                     },
                     afterOpen: function() {
                         $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger('focus');
+
+                        wp.dev4press.debugpress.layout.last = "open";
+                        wp.dev4press.debugpress.dialog.save_state();
+                    },
+                    afterClose: function() {
+                        wp.dev4press.debugpress.layout.last = "closed";
+                        wp.dev4press.debugpress.dialog.save_state();
                     }
                 }
             });
@@ -835,6 +867,24 @@
                 e.preventDefault();
 
                 wp.dev4press.debugpress.tab_change($(this).attr("href").substring(1));
+            });
+
+            $(document).on("change", ".debugpress-layout-size select", function() {
+                wp.dev4press.debugpress.layout.ratio = $(this).val();
+                wp.dev4press.debugpress.dialog.save_state();
+                wp.dev4press.debugpress.dialog.reposition();
+            });
+
+            $(document).on("change", ".debugpress-layout-modal select", function() {
+                wp.dev4press.debugpress.layout.modal = $(this).val();
+                wp.dev4press.debugpress.dialog.save_state();
+                wp.dev4press.debugpress.dialog.reposition();
+            });
+
+            $(document).on("change", ".debugpress-layout-activation select", function() {
+                wp.dev4press.debugpress.layout.open = $(this).val();
+                wp.dev4press.debugpress.dialog.save_state();
+                wp.dev4press.debugpress.dialog.reposition();
             });
 
             $(document).on("click", ".debugpress-layout-position i", function() {
