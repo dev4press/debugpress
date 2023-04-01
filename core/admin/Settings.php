@@ -77,6 +77,12 @@ class Settings {
 			'debugpress' );
 
 		add_settings_section(
+			'debugpress_settings_shortcut',
+			__( "Keyboard Shortcut", "debugpress" ),
+			array( $this, 'block_shortcut' ),
+			'debugpress' );
+
+		add_settings_section(
 			'debugpress_settings_autos',
 			__( "Auto debug overrides", "debugpress" ),
 			array( $this, 'block_autos' ),
@@ -160,6 +166,20 @@ class Settings {
 			array( $this, 'option_auto_savequeries' ),
 			'debugpress',
 			'debugpress_settings_autos' );
+
+		add_settings_field(
+			'debugpress_settings_mousetrap',
+			'<label for="debugpress_settings_mousetrap">' . __( "Enable Shortcut Support", "debugpress" ) . '</label>',
+			array( $this, 'option_mousetrap' ),
+			'debugpress',
+			'debugpress_settings_shortcut' );
+
+		add_settings_field(
+			'debugpress_settings_mousetrap_sequence',
+			'<label for="debugpress_settings_mousetrap_sequence">' . __( "Shortcut Key Combination", "debugpress" ) . '</label>',
+			array( $this, 'option_mousetrap_sequence' ),
+			'debugpress',
+			'debugpress_settings_shortcut' );
 
 		add_settings_field(
 			'debugpress_settings_panel_content',
@@ -292,7 +312,7 @@ class Settings {
 		$roles = array();
 
 		foreach ( wp_roles()->roles as $role => $details ) {
-			$roles[ $role ] = translate_user_role( $details['name'] );
+			$roles[ $role ] = translate_user_role( $details[ 'name' ] );
 		}
 
 		return $roles;
@@ -363,6 +383,10 @@ class Settings {
 		echo __( "Choose which pretty print implementation to load. This is used to display complex arrays and objects in a readable form.", "debugpress" );
 	}
 
+	public function block_shortcut() {
+		echo __( "Show and hide the debugger popup using the shortcut combination on the keyboard.", "debugpress" );
+	}
+
 	public function block_autos() {
 		echo __( "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed.", "debugpress" );
 	}
@@ -419,6 +443,7 @@ class Settings {
 
 		echo "<input class='widefat' id='debugpress_settings_access_key' name='debugpress_settings[access_key]' type='text' value='" . esc_attr( $enabled ) . "' />";
 		echo '<p class="description">' . esc_html__( "Access key to use in the URL to activate DebugPress on demand. Use any URL friendly string you want that includes one or more: lowercase letters, numbers, dashes.", "debugpress" ) . '</p>';
+		echo '<p class="description">' . esc_html__( "URL Query Argument:", "debugpress" ) . '<code>?debugpress={access-key}</code></p>';
 	}
 
 	public function option_pretty_print() {
@@ -443,6 +468,20 @@ class Settings {
 
 		echo "<input " . $checked . " id='debugpress_settings_auto_savequeries' name='debugpress_settings[auto_savequeries]' type='checkbox' />";
 		echo '<p class="description">' . esc_html__( "Plugin will attempt to set SAVEQUERIES to 'true'. But, if the SAVEQUERIES was previously defined elsewhere as 'false', this option will not work.", "debugpress" ) . '</p>';
+	}
+
+	public function option_mousetrap() {
+		$checked = debugpress_plugin()->get( 'mousetrap' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_mousetraps' name='debugpress_settings[mousetrap]' type='checkbox' />";
+	}
+
+	public function option_mousetrap_sequence() {
+		$enabled = debugpress_plugin()->get( 'mousetrap_sequence' );
+
+		echo "<input class='widefat' id='debugpress_settings_mousetrap_sequence' name='debugpress_settings[mousetrap_sequence]' type='text' value='" . esc_attr( $enabled ) . "' />";
+		echo '<p class="description">' . esc_html__( "Keyboard keys combination to activate the debugger popup. You can use any number of letter key, with one or more special modifier keys. Use symbol + to connect separate the keys.", "debugpress" ) . '</p>';
+		echo '<p class="description">' . esc_html__( "Modifier keys:", "debugpress" ) . '<code>shift</code>, <code>ctrl</code>, <code>alt</code>, <code>command</code></p>';
 	}
 
 	public function option_panel_content() {

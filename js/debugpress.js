@@ -732,13 +732,16 @@
                         wp.dev4press.debugpress.layout = this.save;
                         wp.dev4press.debugpress.dialog.load_state(core, skin);
                     },
-                    afterOpen: function() {
+                    ready: function(core, skin) {
+                        wp.dev4press.debugpress.layout.last = skin.onLoad ? "open" : "closed"
+                    },
+                    afterOpen: function(core, skin) {
                         $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger('focus');
 
                         wp.dev4press.debugpress.layout.last = "open";
                         wp.dev4press.debugpress.dialog.save_state();
                     },
-                    afterClose: function() {
+                    afterClose: function(core, skin) {
                         wp.dev4press.debugpress.layout.last = "closed";
                         wp.dev4press.debugpress.dialog.save_state();
                     }
@@ -901,6 +904,16 @@
                 wp.dev4press.debugpress.dialog.save_state();
                 wp.dev4press.debugpress.dialog.reposition();
             });
+
+            if (debugpress_data.mousetrap) {
+                Mousetrap.bind(debugpress_data.mousetrap_sequence, function() {
+                    if (wp.dev4press.debugpress.layout.last === "open") {
+                        wp.dev4press.debugpress.popup.smartAniPopup("close");
+                    } else {
+                        wp.dev4press.debugpress.popup.smartAniPopup("open");
+                    }
+                });
+            }
 
             if (wp.dev4press.debugpress.ajax) {
                 wp.dev4press.debugpress.tabs.ajax.init();

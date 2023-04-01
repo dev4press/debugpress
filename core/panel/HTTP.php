@@ -28,11 +28,11 @@ class HTTP extends Panel {
 		$url = 'N/A';
 		$arg = array();
 
-		if ( isset( $request['info']['url'] ) ) {
-			$raw_url = explode( '?', $request['info']['url'], 2 );
+		if ( isset( $request[ 'info' ][ 'url' ] ) ) {
+			$raw_url = explode( '?', $request[ 'info' ][ 'url' ], 2 );
 
-			$url = $raw_url[0];
-			$arg = isset( $raw_url[1] ) ? explode( '&', $raw_url[1] ) : array();
+			$url = $raw_url[ 0 ];
+			$arg = isset( $raw_url[ 1 ] ) ? explode( '&', $raw_url[ 1 ] ) : array();
 		}
 
 		if ( ! empty( $arg ) ) {
@@ -40,36 +40,36 @@ class HTTP extends Panel {
 		}
 
 		$_req = array(
-			__( "Transport", "debugpress" )    => $request['transport'],
-			__( "Method", "debugpress" )       => $request['args']['method'] ?? 'N/A',
-			__( "User Agent", "debugpress" )   => $request['args']['user-agent'] ?? 'N/A',
-			__( "Timeout", "debugpress" )      => $request['args']['timeout'] ?? 'N/A',
-			__( "Redirection", "debugpress" )  => $request['args']['redirection'] ?? 'N/A',
-			__( "HTTP Version", "debugpress" ) => $request['args']['httpversion'] ?? 'N/A'
+			__( "Transport", "debugpress" )    => $request[ 'transport' ],
+			__( "Method", "debugpress" )       => $request[ 'args' ][ 'method' ] ?? 'N/A',
+			__( "User Agent", "debugpress" )   => $request[ 'args' ][ 'user-agent' ] ?? 'N/A',
+			__( "Timeout", "debugpress" )      => $request[ 'args' ][ 'timeout' ] ?? 'N/A',
+			__( "Redirection", "debugpress" )  => $request[ 'args' ][ 'redirection' ] ?? 'N/A',
+			__( "HTTP Version", "debugpress" ) => $request[ 'args' ][ 'httpversion' ] ?? 'N/A'
 		);
 
 		$_ip = 'N/A';
 
-		if ( isset( $request['info']['primary_ip'] ) ) {
-			$_ip = $request['info']['primary_ip'];
+		if ( isset( $request[ 'info' ][ 'primary_ip' ] ) ) {
+			$_ip = $request[ 'info' ][ 'primary_ip' ];
 
-			if ( isset( $request['info']['primary_port'] ) ) {
-				$_ip .= ':' . $request['info']['primary_port'];
+			if ( isset( $request[ 'info' ][ 'primary_port' ] ) ) {
+				$_ip .= ':' . $request[ 'info' ][ 'primary_port' ];
 			}
 		}
 
 		$_res = array(
-			__( "Code", "debugpress" )         => $request['info']['http_code'] ?? 'N/A',
-			__( "Content Type", "debugpress" ) => $request['info']['content_type'] ?? 'N/A',
+			__( "Code", "debugpress" )         => $request[ 'info' ][ 'http_code' ] ?? 'N/A',
+			__( "Content Type", "debugpress" ) => $request[ 'info' ][ 'content_type' ] ?? 'N/A',
 			__( "IP and Port", "debugpress" )  => $_ip
 		);
 
 		$_tme = array(
-			__( "Total", "debugpress" )          => '<strong>' . ( $request['info']['total_time'] ?? 'N/A' ) . '</strong>',
-			__( "DNS Resolution", "debugpress" ) => $request['info']['namelookup_time'] ?? 'N/A',
-			__( "Connect", "debugpress" )        => $request['info']['connect_time'] ?? 'N/A',
-			__( "Pre-transfer", "debugpress" )   => $request['info']['pretransfer_time'] ?? 'N/A',
-			__( "Redirect", "debugpress" )       => $request['info']['redirect_time'] ?? 'N/A'
+			__( "Total", "debugpress" )          => '<strong>' . ( $request[ 'info' ][ 'total_time' ] ?? 'N/A' ) . '</strong>',
+			__( "DNS Resolution", "debugpress" ) => $request[ 'info' ][ 'namelookup_time' ] ?? 'N/A',
+			__( "Connect", "debugpress" )        => $request[ 'info' ][ 'connect_time' ] ?? 'N/A',
+			__( "Pre-transfer", "debugpress" )   => $request[ 'info' ][ 'pretransfer_time' ] ?? 'N/A',
+			__( "Redirect", "debugpress" )       => $request[ 'info' ][ 'redirect_time' ] ?? 'N/A'
 		);
 
 		$this->table_row( array(

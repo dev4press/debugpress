@@ -54,6 +54,7 @@ Currently, the plugin has the following panels:
 * Store (if there are user stored objects to show)
 * Tools (internal and external tools links)
 * Debug Log (load content on demand from WordPress 'debug.log')
+* Layout (control the size, position and activation of the popup)
 
 = SQL Queries =
 This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read.
@@ -108,13 +109,16 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Modify debugger popup modal state
 * New: Modify debugger popup opening state (auto, manual, remember state)
 * New: Save active tab and show it first on next page load
+* New: Trigger debugger popup display via keyboard shortcut
 * New: Access Key option to enable loading on demand via URL
 * New: Settings block and information for the On Demand access
+* New: Settings block and information for shortcut key activation
 * New: Plugin settings Help tab with On Demand information
 * New: Content tab split into Content and Rewrite tabs
 * New: Basic tab shows currently active theme information
 * New: Admin tab content moved to the Request tab
 * New: Refreshed the debugger look with new icons
+* Edit: Mousetrap Javascript v1.6.5 library
 * New: Function to write log entry into custom info/log file
 * Edit: Few improvements to the plugin init and load process
 * Edit: Changes to some plugin default settings
@@ -267,6 +271,9 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * First official release
 
 == Upgrade Notice ==
+= 3.0 =
+Panel resize and positioning. On Demand load. Many updates and improvements.
+
 = 2.2 =
 Various updates, improvements and fixes.
 
@@ -284,9 +291,6 @@ Many improvements and bug fixes.
 
 = 1.7 =
 Plugins Panel. Few improvements and bug fixes.
-
-= 1.6 =
-Roles Panel. Few bug fixes.
 
 == Screenshots ==
 1. Debugger popup: Basic debugger panel

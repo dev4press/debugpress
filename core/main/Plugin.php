@@ -19,6 +19,8 @@ class Plugin {
 		'frontend'              => false,
 		'ajax'                  => true,
 		'ajax_to_debuglog'      => false,
+		'mousetrap'             => true,
+		'mousetrap_sequence'    => 'ctrl+shift+u',
 		'button_admin'          => 'toolbar',
 		'button_frontend'       => 'toolbar',
 		'for_super_admin'       => true,
@@ -56,6 +58,7 @@ class Plugin {
 	private $_activate = false;
 	private $_url_activated = false;
 	private $_animated_popup_version = '2.0';
+	private $_mousetrap_version = '1.6.5';
 	private $_wp_version;
 	private $_wp_version_real;
 	private $_cp_version;
@@ -141,7 +144,7 @@ class Plugin {
 		$the_access_key  = $this->get( 'access_key' );
 
 		if ( ! empty( $the_access_key ) ) {
-			$this->_url_activated = isset( $_GET['debugpress'] ) && sanitize_key( $_GET['debugpress'] ) === $the_access_key;
+			$this->_url_activated = isset( $_GET[ 'debugpress' ] ) && sanitize_key( $_GET[ 'debugpress' ] ) === $the_access_key;
 		}
 
 		$this->_allowed = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
@@ -163,11 +166,21 @@ class Plugin {
 	}
 
 	public function init() {
-		wp_register_style( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'popup/popup.min.css', array(), $this->_animated_popup_version );
+		$dependencies = array(
+			'jquery',
+			'animated-popup'
+		);
+
+		if ( $this->get( 'mousetrap' ) ) {
+			$dependencies[] = 'mousetrap';
+		}
+
+		wp_register_style( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'libraries/popup/popup.min.css', array(), $this->_animated_popup_version );
 		wp_register_style( 'debugpress-print', DEBUGPRESS_PLUGIN_URL . 'css/prettyprint' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array(), DEBUGPRESS_VERSION );
 		wp_register_style( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'css/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array( 'animated-popup' ), DEBUGPRESS_VERSION );
-		wp_register_script( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'popup/popup.min.js', array( 'jquery' ), $this->_animated_popup_version, true );
-		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array( 'animated-popup' ), DEBUGPRESS_VERSION, true );
+		wp_register_script( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'libraries/popup/popup.min.js', array( 'jquery' ), $this->_animated_popup_version, true );
+		wp_register_script( 'mousetrap', DEBUGPRESS_PLUGIN_URL . 'libraries/mousetrap/mousetrap.min.js', array(), $this->_mousetrap_version, true );
+		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', $dependencies, DEBUGPRESS_VERSION, true );
 
 		if ( $this->is_enabled() ) {
 			Loader::instance();
@@ -196,11 +209,12 @@ class Plugin {
 
 	public function process_settings( $input ) : array {
 		$types = array(
-			'for_roles'       => 'array',
-			'access_key'      => 'slug',
-			'pr'              => 'string',
-			'button_admin'    => 'string',
-			'button_frontend' => 'string'
+			'for_roles'          => 'array',
+			'access_key'         => 'slug',
+			'mousetrap_sequence' => 'string',
+			'pr'                 => 'string',
+			'button_admin'       => 'string',
+			'button_frontend'    => 'string'
 		);
 
 		$settings = array();
@@ -231,22 +245,22 @@ class Plugin {
 		$env = array();
 
 		if ( $this->_wp_version > 54 && function_exists( 'wp_get_environment_type' ) ) {
-			$env['type'] = wp_get_environment_type();
+			$env[ 'type' ] = wp_get_environment_type();
 
-			switch ( $env['type'] ) {
+			switch ( $env[ 'type' ] ) {
 				default:
 				case 'production':
-					$env['type']  = 'production';
-					$env['label'] = __( "Production Environment", "debugpress" );
+					$env[ 'type' ]  = 'production';
+					$env[ 'label' ] = __( "Production Environment", "debugpress" );
 					break;
 				case 'staging':
-					$env['label'] = __( "Staging Environment", "debugpress" );
+					$env[ 'label' ] = __( "Staging Environment", "debugpress" );
 					break;
 				case 'local':
-					$env['label'] = __( "Local Environment", "debugpress" );
+					$env[ 'label' ] = __( "Local Environment", "debugpress" );
 					break;
 				case 'development':
-					$env['label'] = __( "Development Environment", "debugpress" );
+					$env[ 'label' ] = __( "Development Environment", "debugpress" );
 					break;
 			}
 		}
@@ -264,7 +278,7 @@ class Plugin {
 		$env = $this->environment();
 
 		if ( ! empty( $env ) ) {
-			$gd .= '<strong class="debugpress-debugger-environment debugpress-env-' . $env['type'] . '">' . $env['label'] . '</strong> &middot; ';
+			$gd .= '<strong class="debugpress-debugger-environment debugpress-env-' . $env[ 'type' ] . '">' . $env[ 'label' ] . '</strong> &middot; ';
 		}
 
 		$gd .= Info::cms_name() . ': <strong>' . Info::cms_version() . '</strong> &middot; ';

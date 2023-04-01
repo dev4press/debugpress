@@ -103,12 +103,12 @@ class IP {
 	public static function is_ipv6_in_range( $ip, $range ) : bool {
 		$pieces = explode( '/', $range, 2 );
 
-		$left_piece  = $pieces[0];
-		$right_piece = $pieces[1];
+		$left_piece  = $pieces[ 0 ];
+		$right_piece = $pieces[ 1 ];
 
 		$ip_pieces     = explode( '::', $left_piece, 2 );
-		$main_ip_piece = $ip_pieces[0];
-		$last_ip_piece = $ip_pieces[1];
+		$main_ip_piece = $ip_pieces[ 0 ];
+		$last_ip_piece = $ip_pieces[ 1 ];
 
 		$main_ip_pieces = explode( ":", $main_ip_piece );
 		foreach ( $main_ip_pieces as $key => $val ) {
@@ -129,7 +129,7 @@ class IP {
 				$last[ $i ]  = 'ffff';
 			}
 
-			$main_ip_pieces[7] = $last_piece;
+			$main_ip_pieces[ 7 ] = $last_piece;
 		} else {
 			for ( $i = $size; $i < 8; $i ++ ) {
 				$first[ $i ] = '0000';
@@ -145,18 +145,18 @@ class IP {
 
 	public static function get_full_ipv6( $ip ) : string {
 		$pieces      = explode( '/', $ip, 2 );
-		$left_piece  = $pieces[0];
+		$left_piece  = $pieces[ 0 ];
 		$right_piece = null;
 
 		if ( count( $pieces ) > 1 ) {
-			$right_piece = $pieces[1];
+			$right_piece = $pieces[ 1 ];
 		}
 
 		$ip_pieces     = explode( "::", $left_piece, 2 );
-		$main_ip_piece = $ip_pieces[0];
+		$main_ip_piece = $ip_pieces[ 0 ];
 		$last_ip_piece = null;
 		if ( count( $ip_pieces ) > 1 ) {
-			$last_ip_piece = $ip_pieces[1];
+			$last_ip_piece = $ip_pieces[ 1 ];
 		}
 
 		$main_ip_pieces = explode( ':', $main_ip_piece );
@@ -173,7 +173,7 @@ class IP {
 				$main_ip_pieces[ $i ] = '0000';
 			}
 
-			$main_ip_pieces[7] = $last_piece;
+			$main_ip_pieces[ 7 ] = $last_piece;
 		} else {
 			for ( $i = $size; $i < 8; $i ++ ) {
 				$main_ip_pieces[ $i ] = '0000';
@@ -224,11 +224,11 @@ class IP {
 
 	public static function is_cloudflare_ip( $ip = null ) : bool {
 		if ( is_null( $ip ) ) {
-			if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
-				if ( isset( $_SERVER['HTTP_X_REAL_IP'] ) ) {
-					$ip = $_SERVER['HTTP_X_REAL_IP'];
+			if ( isset( $_SERVER[ 'HTTP_CF_CONNECTING_IP' ] ) ) {
+				if ( isset( $_SERVER[ 'HTTP_X_REAL_IP' ] ) ) {
+					$ip = $_SERVER[ 'HTTP_X_REAL_IP' ];
 				} else {
-					$ip = $_SERVER['REMOTE_ADDR'];
+					$ip = $_SERVER[ 'REMOTE_ADDR' ];
 				}
 			} else {
 				return false;
@@ -253,7 +253,7 @@ class IP {
 	}
 
 	public static function get_server_ip() {
-		$ip = IP::validate_ip( $_SERVER['SERVER_ADDR'] );
+		$ip = IP::validate_ip( $_SERVER[ 'SERVER_ADDR' ] );
 
 		if ( $ip == '::1' ) {
 			$ip = '127.0.0.1';
@@ -289,7 +289,7 @@ class IP {
 
 	public static function get_visitor_ip( $no_local_or_protected = false ) {
 		if ( IP::is_cloudflare_ip() ) {
-			return IP::validate_ip( $_SERVER['HTTP_CF_CONNECTING_IP'], true );
+			return IP::validate_ip( $_SERVER[ 'HTTP_CF_CONNECTING_IP' ], true );
 		}
 
 		$keys = array(

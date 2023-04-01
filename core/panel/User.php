@@ -89,7 +89,7 @@ class User extends Panel {
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
-		foreach ( $this->fields['users'] as $name ) {
+		foreach ( $this->fields[ 'users' ] as $name ) {
 			if ( isset( $userdata->data->$name ) ) {
 				$this->all_found[] = $name;
 				$this->table_row( array( $name, $this->print_it( $userdata->$name ) ) );
@@ -105,7 +105,7 @@ class User extends Panel {
 		foreach ( $this->usermeta as $key => $value ) {
 			$found = false;
 			if ( ! in_array( $key, $this->all_found ) ) {
-				foreach ( $this->fields['system'] as $name ) {
+				foreach ( $this->fields[ 'system' ] as $name ) {
 					if ( strpos( $name, '%reg%' ) !== false ) {
 						$name = str_replace( '%reg%', '.+', $name );
 						if ( preg_match( '/' . $name . '/i', $key ) ) {
@@ -137,7 +137,7 @@ class User extends Panel {
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
-		foreach ( $this->fields['info'] as $name ) {
+		foreach ( $this->fields[ 'info' ] as $name ) {
 			if ( isset( $this->usermeta[ $name ] ) ) {
 				$this->all_found[] = $name;
 				$value             = $this->usermeta[ $name ];

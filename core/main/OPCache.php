@@ -39,16 +39,16 @@ class OPCache {
 				$_status = opcache_get_status();
 				$_config = opcache_get_configuration();
 
-				$this->version = $_config['version']['version'];
-				$this->enabled = $_status['opcache_enabled'];
+				$this->version = $_config[ 'version' ][ 'version' ];
+				$this->enabled = $_status[ 'opcache_enabled' ];
 
-				foreach ( $_config['directives'] as $key => $value ) {
+				foreach ( $_config[ 'directives' ] as $key => $value ) {
 					$name                    = substr( $key, 8 );
 					$this->settings[ $name ] = $value;
 				}
 
-				$this->memory     = $_status['memory_usage'];
-				$this->statistics = $_status['opcache_statistics'];
+				$this->memory     = $_status[ 'memory_usage' ];
+				$this->statistics = $_status[ 'opcache_statistics' ];
 			}
 		}
 	}

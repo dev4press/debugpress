@@ -69,8 +69,8 @@ class Layout extends Panel {
 		echo '<select>';
 		foreach (
 			array(
-				'manual' => __( "Normal", "debugpress" ),
-				'auto' => __( "Auto show on page load", "debugpress" ),
+				'manual'   => __( "Normal", "debugpress" ),
+				'auto'     => __( "Auto show on page load", "debugpress" ),
 				'remember' => __( "Remember load state", "debugpress" )
 			) as $size => $label
 		) {

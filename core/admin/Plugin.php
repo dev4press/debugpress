@@ -37,7 +37,7 @@ class Plugin {
 	}
 
 	public function plugin_action_links( $actions ) {
-		$actions['settings'] = '<a href="' . admin_url( 'options-general.php?page=debugpress' ) . '">' . esc_html__( "Settings", "debugpress" ) . '</a>';
+		$actions[ 'settings' ] = '<a href="' . admin_url( 'options-general.php?page=debugpress' ) . '">' . esc_html__( "Settings", "debugpress" ) . '</a>';
 
 		return $actions;
 	}
@@ -56,16 +56,16 @@ class Plugin {
 	}
 
 	public function admin_menu() {
-		$this->_pages['settings'] = add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
+		$this->_pages[ 'settings' ] = add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
 			$this,
 			'settings_page'
 		) );
-		$this->_pages['info']     = add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
+		$this->_pages[ 'info' ]     = add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
 			$this,
 			'tools_page'
 		) );
 
-		add_action( 'load-' . $this->_pages['settings'], array( $this, 'settings_context_help' ) );
+		add_action( 'load-' . $this->_pages[ 'settings' ], array( $this, 'settings_context_help' ) );
 	}
 
 	public function settings_page() {
