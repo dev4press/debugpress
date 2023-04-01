@@ -84,9 +84,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 == Installation ==
 = General Requirements =
 * PHP: 7.3 or newer
+* Tested with the latest PHP, version 8.2
 
 = WordPress Requirements =
 * WordPress: 5.2 or newer
+* Tested with the latest WordPress, version 6.2
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -98,7 +100,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 = How can I open Debugger popup? =
-If you have enabled debugger (for admin side and/or frontend), Debugger is activated via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings).
+If you have enabled debugger (for admin side and/or frontend), Debugger is activated via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings). Since version 3.0, you can activate the button via keyboard shortcut, default combination is `ctrl+shift+u`, but it can be changed in the plugin settings.
+
+= Can I change the size and position of the popup? =
+Yes. Once the popup is open, you will find the Layout icon next to the button to close the popup. On the layout panel, you can change the location for the popup, size, modal status and auto activation on page load.
 
 = How can I enable WordPress Debug Mode? =
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
@@ -113,13 +118,14 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Access Key option to enable loading on demand via URL
 * New: Settings block and information for the On Demand access
 * New: Settings block and information for shortcut key activation
+* New: Admin bar button has basic stats dropdown menu
 * New: Plugin settings Help tab with On Demand information
 * New: Content tab split into Content and Rewrite tabs
 * New: Basic tab shows currently active theme information
 * New: Admin tab content moved to the Request tab
 * New: Refreshed the debugger look with new icons
-* Edit: Mousetrap Javascript v1.6.5 library
 * New: Function to write log entry into custom info/log file
+* New: Mousetrap Javascript v1.6.5 library
 * Edit: Few improvements to the plugin init and load process
 * Edit: Changes to some plugin default settings
 * Edit: Smart Animated Popup v2.0 library
@@ -293,15 +299,17 @@ Many improvements and bug fixes.
 Plugins Panel. Few improvements and bug fixes.
 
 == Screenshots ==
-1. Debugger popup: Basic debugger panel
-2. Debugger popup: Current page Query
-3. Debugger popup: Captured AJAX calls
-4. Debugger popup: SQL Queries
-5. Debugger popup: WordPress debug log
-6. Debugger popup: Responsive layout
-7. Settings: Activation
-8. Settings: Panels
-9. Settings: Advanced
-10. Tools: PHP Info
-11. Tools: OPCache Info
-12. Tools: MySQL Variables
+* Debugger popup: Basic debugger panel
+* Debugger popup: Current page Query
+* Debugger popup: Captured AJAX calls
+* Debugger popup: SQL Queries
+* Debugger popup: WordPress debug log
+* Debugger popup: Layouts and Size controls
+* Debugger popup: Responsive layout
+* Settings: Activation
+* Settings: Panels
+* Settings: Tracking
+* Settings: Advanced
+* Tools: PHP Info
+* Tools: OPCache Info
+* Tools: MySQL Variables

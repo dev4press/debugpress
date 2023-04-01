@@ -9,10 +9,10 @@ $_tabs = apply_filters( 'debugpress-tools-tabs', array(
 ) );
 
 if ( ! OPCache::instance()->has_opcache() ) {
-	unset( $_tabs['opcache'] );
+	unset( $_tabs[ 'opcache' ] );
 }
 
-$_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : '';
+$_tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( $_GET[ 'tab' ] ) : '';
 $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
 
 ?>

@@ -365,14 +365,25 @@ i.debugpress-icon.debugpress-icon-7x {
 .debugpress-debug-dialog-button a .debugpress-debug-button-indicators .debugpress-debug-has-errors {
   background-color: #ED1E24;
 }
-.debugpress-debug-dialog-button a, .debugpress-debug-dialog-button a:hover {
+.debugpress-debug-dialog-button > a, .debugpress-debug-dialog-button > a:hover {
   color: #69FB3B !important;
 }
-.debugpress-debug-dialog-button.debugpress-debug-has-warnings a, .debugpress-debug-dialog-button.debugpress-debug-has-warnings a:hover {
+.debugpress-debug-dialog-button.debugpress-debug-has-warnings > a, .debugpress-debug-dialog-button.debugpress-debug-has-warnings > :hover {
   color: #FF0 !important;
 }
-.debugpress-debug-dialog-button.debugpress-debug-has-errors a, .debugpress-debug-dialog-button.debugpress-debug-has-errors a:hover {
+.debugpress-debug-dialog-button.debugpress-debug-has-errors > a, .debugpress-debug-dialog-button.debugpress-debug-has-errors > :hover {
   color: #FF3232 !important;
+}
+.debugpress-debug-dialog-button .ab-sub-wrapper {
+  left: auto;
+  right: 0;
+}
+.debugpress-debug-dialog-button .ab-sub-wrapper .ab-item {
+  display: flex !important;
+  justify-content: space-between;
+}
+.debugpress-debug-dialog-button .ab-sub-wrapper .ab-item span {
+  font-weight: bold;
 }
 
 .debugpress-layout-position {

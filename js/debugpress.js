@@ -28,6 +28,7 @@
             doingitwrong: 0,
             deprecated: 0
         },
+        stats: {},
         tabs: {
             debuglog: {
                 init: function() {
@@ -682,8 +683,11 @@
                 $(source).append(div);
             });
         },
-        init: function(counts, ajax, admin) {
+        init: function(counts, stats, ajax, admin) {
+            var bar = $("#wp-admin-bar-debugpress-debugger-button"), ul;
+
             wp.dev4press.debugpress.counts = counts;
+            wp.dev4press.debugpress.stats = stats;
             wp.dev4press.debugpress.ajax = ajax;
             wp.dev4press.debugpress.admin = admin;
             wp.dev4press.debugpress.popup = $("#debugpress-debugger-content-wrapper");
@@ -917,6 +921,14 @@
 
             if (wp.dev4press.debugpress.ajax) {
                 wp.dev4press.debugpress.tabs.ajax.init();
+            }
+
+            if (bar.length === 1) {
+                bar.append("<div class='ab-sub-wrapper'><ul class='ab-submenu'></ul></div>");
+
+                $.each(wp.dev4press.debugpress.stats, function(label, value) {
+                    $("#wp-admin-bar-debugpress-debugger-button ul.ab-submenu").append("<li><a class='ab-item'>" + label + ": <span>" + value + "</span></a></li>");
+                });
             }
 
             wp.dev4press.debugpress.tabs.debuglog.init();

@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Dev4Press\Plugin\DebugPress\Main\IP;
 use Exception;
 use WP_Error;
 
@@ -477,7 +478,22 @@ class Tracker {
 		}
 	}
 
-	public function get_total_sql_time() {
+	public function get_counts() : array {
+		return $this->counts;
+	}
+
+	public function get_stats() : array {
+		$key = is_admin() ? 'in_admin_footer' : 'wp_footer';
+
+		return array(
+			__( "Memory", "debugpress" )     => debugpress_tracker()->get( $key, 'memory' ),
+			__( "Time", "debugpress" )       => debugpress_tracker()->get( $key, 'time' ) . 's',
+			__( "Queries", "debugpress" )    => debugpress_tracker()->get( $key, 'queries' ),
+			__( "Visitor IP", "debugpress" ) => IP::get_visitor_ip()
+		);
+	}
+
+	public function get_total_sql_time() : string {
 		$timer = 0;
 
 		if ( debugpress_db()->wpdb()->queries ) {

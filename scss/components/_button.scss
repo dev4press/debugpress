@@ -85,19 +85,33 @@
         }
     }
 
-    a, a:hover {
+    > a, > a:hover {
         color: #69FB3B !important;
     }
 
     &.debugpress-debug-has-warnings {
-        a, a:hover {
+        > a, >:hover {
             color: #FF0 !important;
         }
     }
 
     &.debugpress-debug-has-errors {
-        a, a:hover {
+        > a, >:hover {
             color: #FF3232 !important;
+        }
+    }
+
+    .ab-sub-wrapper {
+        left: auto;
+        right: 0;
+
+        .ab-item {
+            display: flex !important;
+            justify-content: space-between;
+
+            span {
+                font-weight: bold;
+            }
         }
     }
 }

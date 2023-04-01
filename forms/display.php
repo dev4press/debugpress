@@ -10,8 +10,8 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
-				$label = is_array( $obj ) ? $obj['tab'] : $obj;
-				$title = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
+				$label = is_array( $obj ) ? $obj[ 'tab' ] : $obj;
+				$title = is_array( $obj ) ? ' title="' . $obj[ 'label' ] . '"' : '';
 
 				echo '<li role="presentation" id="debugpress-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
 				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . $title . '>' . $label . '</a>';
@@ -27,7 +27,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
-				$label = is_array( $obj ) ? $obj['label'] : $obj;
+				$label = is_array( $obj ) ? $obj[ 'label' ] : $obj;
 
 				echo '<option value="debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
 
@@ -64,15 +64,17 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
         <div class="debugpress-debugger-footer-right">
             <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
             &middot;
-            <a rel="noopener" target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a> <strong>v<?php echo DEBUGPRESS_VERSION; ?></strong>
+            <a rel="noopener" target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
+            <strong>v<?php echo DEBUGPRESS_VERSION; ?></strong>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         window.wp.dev4press.debugpress.init(
-            <?php echo json_encode( debugpress_tracker()->counts ); ?>,
-            <?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>,
-	        <?php echo is_admin() ? 'true' : 'false'; ?>);
+			<?php echo json_encode( debugpress_tracker()->get_counts() ); ?>,
+			<?php echo json_encode( debugpress_tracker()->get_stats() ); ?>,
+			<?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>,
+			<?php echo is_admin() ? 'true' : 'false'; ?>);
     });
 </script>
