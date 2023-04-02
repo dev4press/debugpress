@@ -684,7 +684,7 @@
             });
         },
         init: function(counts, stats, ajax, admin) {
-            var bar = $("#wp-admin-bar-debugpress-debugger-button"), ul;
+            var bar = $("#wp-admin-bar-debugpress-debugger-button"), ul, sel, i = 0;
 
             wp.dev4press.debugpress.counts = counts;
             wp.dev4press.debugpress.stats = stats;
@@ -924,10 +924,13 @@
             }
 
             if (bar.length === 1) {
-                bar.append("<div class='ab-sub-wrapper'><ul class='ab-submenu'></ul></div>");
+                bar.append("<div class='ab-sub-wrapper'><ul class='ab-sub-primary ab-submenu'></ul><ul class='ab-sub-secondary ab-submenu'></ul></div>");
 
                 $.each(wp.dev4press.debugpress.stats, function(label, value) {
-                    $("#wp-admin-bar-debugpress-debugger-button ul.ab-submenu").append("<li><a class='ab-item'>" + label + ": <span>" + value + "</span></a></li>");
+                    i++;
+                    sel = i === Object.keys(wp.dev4press.debugpress.stats).length ? ".ab-sub-secondary" : ".ab-sub-primary";
+
+                    $("#wp-admin-bar-debugpress-debugger-button ul" + sel).append("<li><a class='ab-item'>" + label + ": <span>" + value + "</span></a></li>");
                 });
             }
 

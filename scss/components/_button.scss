@@ -90,13 +90,13 @@
     }
 
     &.debugpress-debug-has-warnings {
-        > a, >:hover {
+        > a, > :hover {
             color: #FF0 !important;
         }
     }
 
     &.debugpress-debug-has-errors {
-        > a, >:hover {
+        > a, > :hover {
             color: #FF3232 !important;
         }
     }
@@ -108,6 +108,8 @@
         .ab-item {
             display: flex !important;
             justify-content: space-between;
+            align-items: center;
+            column-gap: 1em;
 
             span {
                 font-weight: bold;

@@ -381,6 +381,8 @@ i.debugpress-icon.debugpress-icon-7x {
 .debugpress-debug-dialog-button .ab-sub-wrapper .ab-item {
   display: flex !important;
   justify-content: space-between;
+  align-items: center;
+  column-gap: 1em;
 }
 .debugpress-debug-dialog-button .ab-sub-wrapper .ab-item span {
   font-weight: bold;
@@ -973,10 +975,10 @@ i.debugpress-icon.debugpress-icon-7x {
   #wpadminbar .debugpress-debug-dialog-button {
     display: block !important;
   }
-  #wpadminbar .debugpress-debug-dialog-button .ab-item {
+  #wpadminbar .debugpress-debug-dialog-button > .ab-item {
     padding: 0 10px !important;
   }
-  #wpadminbar .debugpress-debug-dialog-button .ab-item i.debugpress-icon {
+  #wpadminbar .debugpress-debug-dialog-button > .ab-item i.debugpress-icon {
     font-size: 24px !important;
   }
 }

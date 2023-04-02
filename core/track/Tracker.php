@@ -485,12 +485,19 @@ class Tracker {
 	public function get_stats() : array {
 		$key = is_admin() ? 'in_admin_footer' : 'wp_footer';
 
-		return array(
-			__( "Memory", "debugpress" )     => debugpress_tracker()->get( $key, 'memory' ),
-			__( "Time", "debugpress" )       => debugpress_tracker()->get( $key, 'time' ) . 's',
-			__( "Queries", "debugpress" )    => debugpress_tracker()->get( $key, 'queries' ),
-			__( "Visitor IP", "debugpress" ) => IP::get_visitor_ip()
+		$stats = array(
+			__( "Used Memory", "debugpress" ) => debugpress_tracker()->get( $key, 'memory' ),
+			__( "Total Time", "debugpress" )  => debugpress_tracker()->get( $key, 'time' ) . 's',
+			__( "SQL Queries", "debugpress" ) => debugpress_tracker()->get( $key, 'queries' )
 		);
+
+		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
+			$stats[ __( "SQL Time", "debugpress" ) ] = debugpress_tracker()->get_total_sql_time() . 's';
+		}
+
+		$stats[ __( "Visitor IP", "debugpress" ) ] = IP::get_visitor_ip();
+
+		return $stats;
 	}
 
 	public function get_total_sql_time() : string {
