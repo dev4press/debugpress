@@ -193,7 +193,7 @@ class Tracker {
 		$time = 0;
 
 		foreach ( $this->httpapi as $request ) {
-			$time += isset( $request[ 'info' ][ 'total_time' ] ) ? $request[ 'info' ][ 'total_time' ] : 0;
+			$time += $request[ 'info' ][ 'total_time' ] ?? 0;
 		}
 
 		return $time;
@@ -495,7 +495,7 @@ class Tracker {
 			$stats[ __( "SQL Time", "debugpress" ) ] = debugpress_tracker()->get_total_sql_time() . 's';
 		}
 
-		$stats[ __( "Visitor IP", "debugpress" ) ] = IP::get_visitor_ip();
+		$stats[ __( "Visitor IP", "debugpress" ) ] = IP::visitor();
 
 		return $stats;
 	}
@@ -613,6 +613,7 @@ class Tracker {
 			'info'      => $this->_http_info,
 			'transport' => $this->_http_transport,
 			'response'  => $response,
+			'url'       => $url,
 			'args'      => $args
 		);
 

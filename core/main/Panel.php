@@ -192,7 +192,7 @@ abstract class Panel {
 		$this->table_head();
 
 		foreach ( $properties as $property ) {
-			$value = isset( $object->$property ) ? $object->$property : '<span style="color: #d00;">' . __( "not defined", "debugpress" ) . '</span>';
+			$value = $object->$property ?? '<span style="color: #d00;">' . __( "not defined", "debugpress" ) . '</span>';
 
 			$this->table_row( array( $property, $this->print_it( $value ) ) );
 		}

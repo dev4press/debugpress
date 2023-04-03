@@ -1368,9 +1368,8 @@ class SQLFormat {
 
 			$result .= $token[ self::TOKEN_VALUE ];
 		}
-		$result = self::format( $result, false );
 
-		return $result;
+		return self::format( $result, false );
 	}
 
 	/**
@@ -1630,10 +1629,6 @@ class SQLFormat {
 	}
 
 	private static function is_cli() {
-		if ( isset( self::$cli ) ) {
-			return self::$cli;
-		} else {
-			return php_sapi_name() === 'cli';
-		}
+		return self::$cli ?? php_sapi_name() === 'cli';
 	}
 }

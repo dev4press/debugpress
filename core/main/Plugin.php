@@ -284,7 +284,7 @@ class Plugin {
 		$gd .= Info::cms_name() . ': <strong>' . Info::cms_version() . '</strong> &middot; ';
 		$gd .= __( "PHP", "debugpress" ) . ': <strong>' . phpversion() . '</strong><span> &middot; </span>';
 
-		$gd .= __( "IP", "debugpress" ) . ': <strong>' . IP::get_visitor_ip() . '</strong> &middot; ';
+		$gd .= __( "IP", "debugpress" ) . ': <strong>' . IP::visitor() . '</strong> &middot; ';
 		$gd .= __( "Queries", "debugpress" ) . ': <strong>' . debugpress_tracker()->get( $key, 'queries' ) . '</strong> &middot; ';
 		$gd .= __( "Memory", "debugpress" ) . ': <strong>' . debugpress_tracker()->get( $key, 'memory' ) . '</strong> &middot; ';
 		$gd .= __( "Loaded", "debugpress" ) . ': <strong>' . debugpress_tracker()->get( $key, 'time' ) . ' ' . __( "seconds.", "debugpress" ) . '</strong>';

@@ -125,11 +125,15 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * New: Admin tab content moved to the Request tab
 * New: Refreshed the debugger look with new icons
 * New: Function to write log entry into custom info/log file
+* New: `IP` class mostly rewritten and expanded
 * New: Mousetrap Javascript v1.6.5 library
 * Edit: Few improvements to the plugin init and load process
+* Edit: Various improvements to the PHP core code
 * Edit: Changes to some plugin default settings
+* Edit: `IP` class expanded Cloudflare IP range
 * Edit: Smart Animated Popup v2.0 library
 * Del: Removed the dedicated Admin tab
+* Fix: Few issues with the `IP` class range methods
 
 = 2.2 (2023.02.03) =
 * New: Updated some plugin system requirements

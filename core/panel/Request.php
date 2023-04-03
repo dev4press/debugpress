@@ -42,7 +42,7 @@ class Request extends Panel {
 		}
 
 		$this->title( __( "IPs from &#36;_SERVER", "debugpress" ) );
-		$this->list_array( IP::get_all_ips() );
+		$this->list_array( IP::all() );
 
 		if ( is_admin() ) {
 			$this->title( __( "Page Information", "debugpress" ) );
