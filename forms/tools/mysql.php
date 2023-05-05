@@ -1,12 +1,12 @@
 <div class="debugpress_info">
-    <table>
-        <thead>
-        <tr>
-            <th><?php _e( "Variable", "debugpress" ); ?></th>
-            <th><?php _e( "Value", "debugpress" ); ?></th>
-        </tr>
-        </thead>
-        <tbody>
+	<table>
+		<thead>
+		<tr>
+			<th><?php _e( "Variable", "debugpress" ); ?></th>
+			<th><?php _e( "Value", "debugpress" ); ?></th>
+		</tr>
+		</thead>
+		<tbody>
 		<?php
 
 		$mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
@@ -16,6 +16,6 @@
 		}
 
 		?>
-        </tbody>
-    </table>
+		</tbody>
+	</table>
 </div>

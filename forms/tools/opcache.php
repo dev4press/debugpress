@@ -5,23 +5,23 @@ use Dev4Press\Plugin\DebugPress\Main\OPCache;
 if ( OPCache::instance()->status == 'restricted' ) {
 	?>
 
-    <p>
+	<p>
 		<?php _e( "OPCache information can't be displayed, because access to OPCache statistics and information has been restricted on the hosting level.", "debugpress" ); ?>
-    </p>
+	</p>
 
 	<?php
 } else {
 	?>
 
-    <div class="debugpress_info">
-        <table>
-            <thead>
-            <tr>
-                <th><?php _e( "Variable", "debugpress" ); ?></th>
-                <th><?php _e( "Value", "debugpress" ); ?></th>
-            </tr>
-            </thead>
-            <tbody>
+	<div class="debugpress_info">
+		<table>
+			<thead>
+			<tr>
+				<th><?php _e( "Variable", "debugpress" ); ?></th>
+				<th><?php _e( "Value", "debugpress" ); ?></th>
+			</tr>
+			</thead>
+			<tbody>
 			<?php
 
 			$opcache_info = OPCache::instance()->settings;
@@ -31,18 +31,18 @@ if ( OPCache::instance()->status == 'restricted' ) {
 			}
 
 			?>
-            </tbody>
-        </table>
+			</tbody>
+		</table>
 
-        <h2><?php _e( "OPCache Statistics", "debugpress" ); ?></h2>
-        <table>
-            <thead>
-            <tr>
-                <th><?php _e( "Variable", "debugpress" ); ?></th>
-                <th><?php _e( "Value", "debugpress" ); ?></th>
-            </tr>
-            </thead>
-            <tbody>
+		<h2><?php _e( "OPCache Statistics", "debugpress" ); ?></h2>
+		<table>
+			<thead>
+			<tr>
+				<th><?php _e( "Variable", "debugpress" ); ?></th>
+				<th><?php _e( "Value", "debugpress" ); ?></th>
+			</tr>
+			</thead>
+			<tbody>
 			<?php
 
 			$opcache_info = OPCache::instance()->statistics;
@@ -52,18 +52,18 @@ if ( OPCache::instance()->status == 'restricted' ) {
 			}
 
 			?>
-            </tbody>
-        </table>
+			</tbody>
+		</table>
 
-        <h2><?php _e( "OPCache Memory Usage", "debugpress" ); ?></h2>
-        <table>
-            <thead>
-            <tr>
-                <th><?php _e( "Variable", "debugpress" ); ?></th>
-                <th><?php _e( "Value", "debugpress" ); ?></th>
-            </tr>
-            </thead>
-            <tbody>
+		<h2><?php _e( "OPCache Memory Usage", "debugpress" ); ?></h2>
+		<table>
+			<thead>
+			<tr>
+				<th><?php _e( "Variable", "debugpress" ); ?></th>
+				<th><?php _e( "Value", "debugpress" ); ?></th>
+			</tr>
+			</thead>
+			<tbody>
 			<?php
 
 			$opcache_info = OPCache::instance()->memory;
@@ -73,9 +73,9 @@ if ( OPCache::instance()->status == 'restricted' ) {
 			}
 
 			?>
-            </tbody>
-        </table>
-    </div>
+			</tbody>
+		</table>
+	</div>
 
 	<?php
 }

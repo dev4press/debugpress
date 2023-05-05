@@ -172,7 +172,7 @@ class PrettyPrint {
 			$_ = debug_backtrace();
 
 			while ( $d = array_pop( $_ ) ) {
-				if ( ( strToLower( $d[ 'function' ] ) == 'debugpress_r' ) || ( strToLower( $d[ 'function' ] ) == 'debugpress_rx' ) ) {
+				if ( ( strToLower( $d['function'] ) == 'debugpress_r' ) || ( strToLower( $d['function'] ) == 'debugpress_rx' ) ) {
 					break;
 				}
 			}
@@ -226,8 +226,8 @@ class PrettyPrint {
 
 	protected function _generate_footer( $d ) : string {
 		$footer = '<div class="' . $this->css_class . '_f">';
-		$footer .= $this->STR_FOOTER_CALL . ' <code>' . $d[ 'file' ] . '</code> ';
-		$footer .= $this->STR_FOOTER_LINE . ' <code>' . $d[ 'line' ] . '</code>';
+		$footer .= $this->STR_FOOTER_CALL . ' <code>' . $d['file'] . '</code> ';
+		$footer .= $this->STR_FOOTER_LINE . ' <code>' . $d['line'] . '</code>';
 		$footer .= '</div>';
 
 		return $footer;

@@ -144,7 +144,7 @@ class Plugin {
 		$the_access_key  = $this->get( 'access_key' );
 
 		if ( ! empty( $the_access_key ) ) {
-			$this->_url_activated = isset( $_GET[ 'debugpress' ] ) && sanitize_key( $_GET[ 'debugpress' ] ) === $the_access_key;
+			$this->_url_activated = isset( $_GET['debugpress'] ) && sanitize_key( $_GET['debugpress'] ) === $the_access_key;
 		}
 
 		$this->_allowed = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );
@@ -245,22 +245,22 @@ class Plugin {
 		$env = array();
 
 		if ( $this->_wp_version > 54 && function_exists( 'wp_get_environment_type' ) ) {
-			$env[ 'type' ] = wp_get_environment_type();
+			$env['type'] = wp_get_environment_type();
 
-			switch ( $env[ 'type' ] ) {
+			switch ( $env['type'] ) {
 				default:
 				case 'production':
-					$env[ 'type' ]  = 'production';
-					$env[ 'label' ] = __( "Production Environment", "debugpress" );
+					$env['type']  = 'production';
+					$env['label'] = __( "Production Environment", "debugpress" );
 					break;
 				case 'staging':
-					$env[ 'label' ] = __( "Staging Environment", "debugpress" );
+					$env['label'] = __( "Staging Environment", "debugpress" );
 					break;
 				case 'local':
-					$env[ 'label' ] = __( "Local Environment", "debugpress" );
+					$env['label'] = __( "Local Environment", "debugpress" );
 					break;
 				case 'development':
-					$env[ 'label' ] = __( "Development Environment", "debugpress" );
+					$env['label'] = __( "Development Environment", "debugpress" );
 					break;
 			}
 		}
@@ -278,7 +278,7 @@ class Plugin {
 		$env = $this->environment();
 
 		if ( ! empty( $env ) ) {
-			$gd .= '<strong class="debugpress-debugger-environment debugpress-env-' . $env[ 'type' ] . '">' . $env[ 'label' ] . '</strong> &middot; ';
+			$gd .= '<strong class="debugpress-debugger-environment debugpress-env-' . $env['type'] . '">' . $env['label'] . '</strong> &middot; ';
 		}
 
 		$gd .= Info::cms_name() . ': <strong>' . Info::cms_version() . '</strong> &middot; ';

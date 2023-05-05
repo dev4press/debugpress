@@ -16,9 +16,9 @@ class Basics extends Panel {
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {
-			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . $env[ 'type' ] . '">';
+			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . $env['type'] . '">';
 
-			$this->title( $env[ 'label' ], true, true );
+			$this->title( $env['label'], true, true );
 
 			echo '</div>';
 		}
@@ -29,8 +29,8 @@ class Basics extends Panel {
 			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Debug mode problems", "debugpress" ), true, true );
 			$this->block_header();
 			foreach ( $test as $t ) {
-				$this->sub_title( $t[ 0 ] );
-				echo $t[ 1 ];
+				$this->sub_title( $t[0] );
+				echo $t[1];
 				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . __( "More Information", "debugpress" ) . '</a>';
 			}
 			$this->block_footer();
@@ -131,10 +131,10 @@ class Basics extends Panel {
 		foreach ( debugpress_tracker()->snapshots as $name => $obj ) {
 			$this->table_row( array(
 				$name,
-				debugpress_format_size( $obj[ 'memory' ] ),
-				number_format( $obj[ 'time' ], 5 ),
-				$obj[ 'queries' ],
-				$obj[ 'hooks' ]
+				debugpress_format_size( $obj['memory'] ),
+				number_format( $obj['time'], 5 ),
+				$obj['queries'],
+				$obj['hooks']
 			) );
 		}
 		$this->table_foot();

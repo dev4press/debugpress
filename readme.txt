@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://debug.press/
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.0
+Stable tag: 3.0.1
 Requires at least: 5.2
 Tested up to: 6.2
 Requires PHP: 7.3
@@ -47,11 +47,11 @@ Currently, the plugin has the following panels:
 * bbPress (optional, on bbPress forum pages only)
 * Plugins (optional, if plugins store data)
 * Enqueue (optional)
-* Errors (if PHP errors are captured)
-* Deprecated (if PHP deprecated warnings are captured)
-* Doing It Wrong (if WordPress Doing It Wrong warnings are captured)
-* AJAX (if AJAX calls are captured while page is active)
-* Store (if there are user stored objects to show)
+* Errors (for all captured PHP errors)
+* Doing It Wrong (for captured WordPress Doing It Wrong warnings)
+* Deprecated (for captured PHP deprecated warnings)
+* AJAX (for captured AJAX calls while page is active)
+* Store (for any user stored objects during the page loading)
 * Tools (internal and external tools links)
 * Debug Log (load content on demand from WordPress 'debug.log')
 * Layout (control the size, position and activation of the popup)
@@ -109,6 +109,11 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 3.0.1 (2023.05.05) =
+* Edit: Minor updates to the plugin readme file
+* Edit: Various improvements to the PHP core code
+* Fix: Warnings related to OPCache for some PHP configurations
+
 = 3.0 (2023.04.03) =
 * New: Modify debugger popup layout and size
 * New: Modify debugger popup modal state

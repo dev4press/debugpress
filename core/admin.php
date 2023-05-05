@@ -31,7 +31,7 @@ function debugpress_do_settings_sections( $page ) {
 	$close = false;
 
 	foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
-		$id = $section[ 'id' ];
+		$id = $section['id'];
 
 		if ( isset( $tabs[ $id ] ) ) {
 			$tab = $tabs[ $id ];
@@ -47,21 +47,21 @@ function debugpress_do_settings_sections( $page ) {
 		}
 
 		echo '<div class="debugpress-settings-section section-' . $id . '">';
-		if ( $section[ 'title' ] ) {
+		if ( $section['title'] ) {
 			echo "<h2>{$section['title']}</h2>\n";
 		}
 
-		if ( $section[ 'callback' ] ) {
+		if ( $section['callback'] ) {
 			echo '<div class="debugpress-section-info">';
-			call_user_func( $section[ 'callback' ], $section );
+			call_user_func( $section['callback'], $section );
 			echo '</div>';
 		}
 
-		if ( ! isset( $wp_settings_fields ) || ! isset( $wp_settings_fields[ $page ] ) || ! isset( $wp_settings_fields[ $page ][ $section[ 'id' ] ] ) ) {
+		if ( ! isset( $wp_settings_fields ) || ! isset( $wp_settings_fields[ $page ] ) || ! isset( $wp_settings_fields[ $page ][ $section['id'] ] ) ) {
 			continue;
 		}
 		echo '<table class="form-table" role="presentation">';
-		do_settings_fields( $page, $section[ 'id' ] );
+		do_settings_fields( $page, $section['id'] );
 		echo '</table>';
 		echo '</div>';
 	}

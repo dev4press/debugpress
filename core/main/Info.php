@@ -47,12 +47,12 @@ class Info {
 			$plugins = array( 'total' => 0, 'active' => 0, 'inactive' => 0 );
 
 			foreach ( array_keys( $all_plugins ) as $plugin ) {
-				$plugins[ 'total' ] ++;
+				$plugins['total'] ++;
 
 				if ( is_plugin_active( $plugin ) ) {
-					$plugins[ 'active' ] ++;
+					$plugins['active'] ++;
 				} else {
-					$plugins[ 'inactive' ] ++;
+					$plugins['inactive'] ++;
 				}
 			}
 
@@ -65,19 +65,19 @@ class Info {
 	public static function cms_count_plugins_total() : int {
 		$data = Info::cms_count_plugins();
 
-		return $data[ 'total' ];
+		return $data['total'];
 	}
 
 	public static function cms_count_plugins_active() : int {
 		$data = Info::cms_count_plugins();
 
-		return $data[ 'active' ];
+		return $data['active'];
 	}
 
 	public static function cms_count_plugins_inactive() : int {
 		$data = Info::cms_count_plugins();
 
-		return $data[ 'inactive' ];
+		return $data['inactive'];
 	}
 
 	public static function cms_count_themes() : int {
@@ -149,7 +149,7 @@ class Info {
 	}
 
 	public static function server_name() : string {
-		return (string) $_SERVER[ 'SERVER_SOFTWARE' ];
+		return (string) $_SERVER['SERVER_SOFTWARE'];
 	}
 
 	public static function server_os() : string {
@@ -157,15 +157,15 @@ class Info {
 	}
 
 	public static function server_hostname() : string {
-		return (string) $_SERVER[ 'SERVER_NAME' ];
+		return (string) $_SERVER['SERVER_NAME'];
 	}
 
 	public static function server_ip() : string {
-		return (string) $_SERVER[ 'SERVER_ADDR' ];
+		return (string) $_SERVER['SERVER_ADDR'];
 	}
 
 	public static function server_port() : string {
-		return (string) $_SERVER[ 'SERVER_PORT' ];
+		return (string) $_SERVER['SERVER_PORT'];
 	}
 
 	public static function mysql_variant() : string {
@@ -207,25 +207,25 @@ class Info {
 	public static function mysql_database_size() : string {
 		$data = Info::mysql_database();
 
-		return $data[ 'size' ];
+		return $data['size'];
 	}
 
 	public static function mysql_database_free_space() : string {
 		$data = Info::mysql_database();
 
-		return $data[ 'free' ];
+		return $data['free'];
 	}
 
 	public static function mysql_database_tables() : int {
 		$data = Info::mysql_database();
 
-		return $data[ 'tables' ];
+		return $data['tables'];
 	}
 
 	public static function mysql_database_records() : int {
 		$data = Info::mysql_database();
 
-		return $data[ 'records' ];
+		return $data['records'];
 	}
 
 	public static function mysql_wordpress() : array {
@@ -250,25 +250,25 @@ class Info {
 	public static function mysql_wordpress_size() : string {
 		$data = Info::mysql_wordpress();
 
-		return $data[ 'size' ];
+		return $data['size'];
 	}
 
 	public static function mysql_wordpress_free_space() : string {
 		$data = Info::mysql_wordpress();
 
-		return $data[ 'free' ];
+		return $data['free'];
 	}
 
 	public static function mysql_wordpress_tables() : int {
 		$data = Info::mysql_wordpress();
 
-		return $data[ 'tables' ];
+		return $data['tables'];
 	}
 
 	public static function mysql_wordpress_records() : int {
 		$data = Info::mysql_wordpress();
 
-		return $data[ 'records' ];
+		return $data['records'];
 	}
 
 	public static function php_error_display() : string {
@@ -379,7 +379,7 @@ class Info {
 			if ( function_exists( 'curl_version' ) ) {
 				$gdi = curl_version();
 
-				return $gdi[ 'libz_version' ];
+				return $gdi['libz_version'];
 			} else {
 				return __( "loaded", "debugpress" );
 			}
@@ -392,7 +392,7 @@ class Info {
 		if ( extension_loaded( 'curl' ) ) {
 			$gdi = curl_version();
 
-			return $gdi[ 'version' ];
+			return $gdi['version'];
 		} else {
 			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
 		}
@@ -410,7 +410,7 @@ class Info {
 		if ( extension_loaded( 'gd' ) ) {
 			$gdi = gd_info();
 
-			return $gdi[ 'GD Version' ];
+			return $gdi['GD Version'];
 		} else {
 			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
 		}
@@ -421,7 +421,7 @@ class Info {
 			if ( function_exists( 'opcache_get_configuration' ) ) {
 				$config = opcache_get_configuration();
 
-				return $config[ 'version' ][ 'version' ];
+				return $config['version']['version'];
 			} else {
 				return '<strong>' . __( "loaded", "debugpress" ) . '</strong>';
 			}

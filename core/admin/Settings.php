@@ -312,7 +312,7 @@ class Settings {
 		$roles = array();
 
 		foreach ( wp_roles()->roles as $role => $details ) {
-			$roles[ $role ] = translate_user_role( $details[ 'name' ] );
+			$roles[ $role ] = translate_user_role( $details['name'] );
 		}
 
 		return $roles;

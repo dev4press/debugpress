@@ -792,15 +792,15 @@ class SQLFormat {
 		// Whitespace
 		if ( preg_match( '/^\s+/', $string, $matches ) ) {
 			return array(
-				self::TOKEN_VALUE => $matches[ 0 ],
+				self::TOKEN_VALUE => $matches[0],
 				self::TOKEN_TYPE  => self::TOKEN_TYPE_WHITESPACE
 			);
 		}
 
 		// Comment
-		if ( $string[ 0 ] === '#' || ( isset( $string[ 1 ] ) && ( $string[ 0 ] === '-' && $string[ 1 ] === '-' ) || ( $string[ 0 ] === '/' && $string[ 1 ] === '*' ) ) ) {
+		if ( $string[0] === '#' || ( isset( $string[1] ) && ( $string[0] === '-' && $string[1] === '-' ) || ( $string[0] === '/' && $string[1] === '*' ) ) ) {
 			// Comment until end of line
-			if ( $string[ 0 ] === '-' || $string[ 0 ] === '#' ) {
+			if ( $string[0] === '-' || $string[0] === '#' ) {
 				$last = strpos( $string, "\n" );
 				$type = self::TOKEN_TYPE_COMMENT;
 			} else { // Comment until closing comment tag
@@ -819,28 +819,28 @@ class SQLFormat {
 		}
 
 		// Quoted String
-		if ( $string[ 0 ] === '"' || $string[ 0 ] === '\'' || $string[ 0 ] === '`' || $string[ 0 ] === '[' ) {
+		if ( $string[0] === '"' || $string[0] === '\'' || $string[0] === '`' || $string[0] === '[' ) {
 			return array(
-				self::TOKEN_TYPE  => ( ( $string[ 0 ] === '`' || $string[ 0 ] === '[' ) ? self::TOKEN_TYPE_BACKTICK_QUOTE : self::TOKEN_TYPE_QUOTE ),
+				self::TOKEN_TYPE  => ( ( $string[0] === '`' || $string[0] === '[' ) ? self::TOKEN_TYPE_BACKTICK_QUOTE : self::TOKEN_TYPE_QUOTE ),
 				self::TOKEN_VALUE => self::getQuotedString( $string )
 			);
 		}
 
 		// User-defined Variable
-		if ( ( $string[ 0 ] === '@' || $string[ 0 ] === ':' ) && isset( $string[ 1 ] ) ) {
+		if ( ( $string[0] === '@' || $string[0] === ':' ) && isset( $string[1] ) ) {
 			$ret = array(
 				self::TOKEN_VALUE => null,
 				self::TOKEN_TYPE  => self::TOKEN_TYPE_VARIABLE
 			);
 
 			// If the variable name is quoted
-			if ( $string[ 1 ] === '"' || $string[ 1 ] === '\'' || $string[ 1 ] === '`' ) {
-				$ret[ self::TOKEN_VALUE ] = $string[ 0 ] . self::getQuotedString( substr( $string, 1 ) );
+			if ( $string[1] === '"' || $string[1] === '\'' || $string[1] === '`' ) {
+				$ret[ self::TOKEN_VALUE ] = $string[0] . self::getQuotedString( substr( $string, 1 ) );
 			} // Non-quoted variable name
 			else {
-				preg_match( '/^(' . $string[ 0 ] . '[a-zA-Z0-9\._\$]+)/', $string, $matches );
+				preg_match( '/^(' . $string[0] . '[a-zA-Z0-9\._\$]+)/', $string, $matches );
 				if ( $matches ) {
-					$ret[ self::TOKEN_VALUE ] = $matches[ 1 ];
+					$ret[ self::TOKEN_VALUE ] = $matches[1];
 				}
 			}
 
@@ -852,7 +852,7 @@ class SQLFormat {
 		// Number (decimal, binary, or hex)
 		if ( preg_match( '/^([0-9]+(\.[0-9]+)?|0x[0-9a-fA-F]+|0b[01]+)($|\s|"\'`|' . self::$regex_boundaries . ')/', $string, $matches ) ) {
 			return array(
-				self::TOKEN_VALUE => $matches[ 1 ],
+				self::TOKEN_VALUE => $matches[1],
 				self::TOKEN_TYPE  => self::TOKEN_TYPE_NUMBER
 			);
 		}
@@ -860,7 +860,7 @@ class SQLFormat {
 		// Boundary Character (punctuation and symbols)
 		if ( preg_match( '/^(' . self::$regex_boundaries . ')/', $string, $matches ) ) {
 			return array(
-				self::TOKEN_VALUE => $matches[ 1 ],
+				self::TOKEN_VALUE => $matches[1],
 				self::TOKEN_TYPE  => self::TOKEN_TYPE_BOUNDARY
 			);
 		}
@@ -873,21 +873,21 @@ class SQLFormat {
 			if ( preg_match( '/^(' . self::$regex_reserved_toplevel . ')($|\s|' . self::$regex_boundaries . ')/', $upper, $matches ) ) {
 				return array(
 					self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED_TOPLEVEL,
-					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[ 1 ] ) )
+					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) )
 				);
 			}
 			// Newline Reserved Word
 			if ( preg_match( '/^(' . self::$regex_reserved_newline . ')($|\s|' . self::$regex_boundaries . ')/', $upper, $matches ) ) {
 				return array(
 					self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED_NEWLINE,
-					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[ 1 ] ) )
+					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) )
 				);
 			}
 			// Other Reserved Word
 			if ( preg_match( '/^(' . self::$regex_reserved . ')($|\s|' . self::$regex_boundaries . ')/', $upper, $matches ) ) {
 				return array(
 					self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED,
-					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[ 1 ] ) )
+					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) )
 				);
 			}
 		}
@@ -899,7 +899,7 @@ class SQLFormat {
 		if ( preg_match( '/^(' . self::$regex_function . '[(]|\s|[)])/', $upper, $matches ) ) {
 			return array(
 				self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED,
-				self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[ 1 ] ) - 1 )
+				self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) - 1 )
 			);
 		}
 
@@ -907,7 +907,7 @@ class SQLFormat {
 		preg_match( '/^(.*?)($|\s|["\'`]|' . self::$regex_boundaries . ')/', $string, $matches );
 
 		return array(
-			self::TOKEN_VALUE => $matches[ 1 ],
+			self::TOKEN_VALUE => $matches[1],
 			self::TOKEN_TYPE  => self::TOKEN_TYPE_WORD
 		);
 	}
@@ -921,7 +921,7 @@ class SQLFormat {
 		// 3. double quoted string using "" or \" to escape
 		// 4. single quoted string using '' or \' to escape
 		if ( preg_match( '/^(((`[^`]*($|`))+)|((\[[^\]]*($|\]))(\][^\]]*($|\]))*)|(("[^"\\\\]*(?:\\\\.[^"\\\\]*)*("|$))+)|((\'[^\'\\\\]*(?:\\\\.[^\'\\\\]*)*(\'|$))+))/s', $string, $matches ) ) {
-			$ret = $matches[ 1 ];
+			$ret = $matches[1];
 		}
 
 		return $ret;
@@ -1032,8 +1032,8 @@ class SQLFormat {
 		$tokens = array();
 		foreach ( $original_tokens as $i => $token ) {
 			if ( $token[ self::TOKEN_TYPE ] !== self::TOKEN_TYPE_WHITESPACE ) {
-				$token[ 'i' ] = $i;
-				$tokens[]     = $token;
+				$token['i'] = $i;
+				$tokens[]   = $token;
 			}
 		}
 
@@ -1150,7 +1150,7 @@ class SQLFormat {
 				}
 
 				// Take out the preceding space unless there was whitespace there in the original query
-				if ( isset( $original_tokens[ $token[ 'i' ] - 1 ] ) && $original_tokens[ $token[ 'i' ] - 1 ][ self::TOKEN_TYPE ] !== self::TOKEN_TYPE_WHITESPACE ) {
+				if ( isset( $original_tokens[ $token['i'] - 1 ] ) && $original_tokens[ $token['i'] - 1 ][ self::TOKEN_TYPE ] !== self::TOKEN_TYPE_WHITESPACE ) {
 					$return = rtrim( $return, ' ' );
 				}
 
@@ -1246,7 +1246,7 @@ class SQLFormat {
 			} // Multiple boundary characters in a row should not have spaces between them (not including parentheses)
 			else if ( $token[ self::TOKEN_TYPE ] === self::TOKEN_TYPE_BOUNDARY ) {
 				if ( isset( $tokens[ $i - 1 ] ) && $tokens[ $i - 1 ][ self::TOKEN_TYPE ] === self::TOKEN_TYPE_BOUNDARY ) {
-					if ( isset( $original_tokens[ $token[ 'i' ] - 1 ] ) && $original_tokens[ $token[ 'i' ] - 1 ][ self::TOKEN_TYPE ] !== self::TOKEN_TYPE_WHITESPACE ) {
+					if ( isset( $original_tokens[ $token['i'] - 1 ] ) && $original_tokens[ $token['i'] - 1 ][ self::TOKEN_TYPE ] !== self::TOKEN_TYPE_WHITESPACE ) {
 						$return = rtrim( $return, ' ' );
 					}
 				}

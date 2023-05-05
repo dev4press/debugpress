@@ -4,14 +4,14 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 ?>
 <div id="debugpress-debugger-container" style="display: none;">
-    <div id="debugpress-debugger-content-header">
-        <ul role="tablist" id="debugpress-debugger-tabs" class="debugpress-clearfix">
+	<div id="debugpress-debugger-content-header">
+		<ul role="tablist" id="debugpress-debugger-tabs" class="debugpress-clearfix">
 			<?php
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
-				$label = is_array( $obj ) ? $obj[ 'tab' ] : $obj;
-				$title = is_array( $obj ) ? ' title="' . $obj[ 'label' ] . '"' : '';
+				$label = is_array( $obj ) ? $obj['tab'] : $obj;
+				$title = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
 
 				echo '<li role="presentation" id="debugpress-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
 				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . $title . '>' . $label . '</a>';
@@ -21,13 +21,13 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			}
 
 			?>
-        </ul>
-        <select id="debugpress-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "debugpress" ); ?>">
+		</ul>
+		<select id="debugpress-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "debugpress" ); ?>">
 			<?php
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
-				$label = is_array( $obj ) ? $obj[ 'label' ] : $obj;
+				$label = is_array( $obj ) ? $obj['label'] : $obj;
 
 				echo '<option value="debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
 
@@ -35,9 +35,9 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			}
 
 			?>
-        </select>
-    </div>
-    <div id="debugpress-debugger-content-wrapper">
+		</select>
+	</div>
+	<div id="debugpress-debugger-content-wrapper">
 		<?php
 
 		$first = true;
@@ -56,21 +56,21 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 		}
 
 		?>
-    </div>
-    <div id="debugpress-debugger-content-footer" class="debugpress-clearfix">
-        <div class="debugpress-debugger-footer-left">
+	</div>
+	<div id="debugpress-debugger-content-footer" class="debugpress-clearfix">
+		<div class="debugpress-debugger-footer-left">
 			<?php echo debugpress_plugin()->build_stats( null ); ?>
-        </div>
-        <div class="debugpress-debugger-footer-right">
-            <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
-            &middot;
-            <a rel="noopener" target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
-            <strong>v<?php echo DEBUGPRESS_VERSION; ?></strong>
-        </div>
-    </div>
+		</div>
+		<div class="debugpress-debugger-footer-right">
+			<a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
+			&middot;
+			<a rel="noopener" target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
+			<strong>v<?php echo DEBUGPRESS_VERSION; ?></strong>
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         window.wp.dev4press.debugpress.init(
 			<?php echo json_encode( debugpress_tracker()->get_counts() ); ?>,
 			<?php echo json_encode( debugpress_tracker()->get_stats() ); ?>,
