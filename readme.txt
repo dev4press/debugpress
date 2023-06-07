@@ -1,8 +1,8 @@
 === DebugPress ===
 Contributors: GDragoN
-Donate link: https://debug.press/
+Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.0
+Stable tag: 3.1
 Requires at least: 5.2
 Tested up to: 6.2
 Requires PHP: 7.3
@@ -109,6 +109,12 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
+= 3.1 (2023.06.12) =
+* New: Identify SQL queries sources for Dev4Press plugins
+* Edit: Improved method for displaying button activation flags
+* Edit: Many improvements to escaping variables for display
+* Edit: Better optimized included images for logos
+
 = 3.0 (2023.04.03) =
 * New: Modify debugger popup layout and size
 * New: Modify debugger popup modal state

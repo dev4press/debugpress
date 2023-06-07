@@ -104,7 +104,7 @@ class Loader {
 			'id'    => 'debugpress-debugger-button',
 			'title' => $this->button(),
 			'href'  => '#',
-			'meta'  => array( 'class' => $this->button_class().' menupop' )
+			'meta'  => array( 'class' => $this->button_class() . ' menupop' )
 		) );
 
 		$this->button = true;

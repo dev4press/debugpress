@@ -2,8 +2,8 @@
     <table>
         <thead>
         <tr>
-            <th><?php _e( "Variable", "debugpress" ); ?></th>
-            <th><?php _e( "Value", "debugpress" ); ?></th>
+            <th><?php esc_html_e( "Variable", "debugpress" ); ?></th>
+            <th><?php esc_html_e( "Value", "debugpress" ); ?></th>
         </tr>
         </thead>
         <tbody>

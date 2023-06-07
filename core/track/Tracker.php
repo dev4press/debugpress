@@ -482,17 +482,26 @@ class Tracker {
 		return $this->counts;
 	}
 
+	public function get_counts_js() : array {
+		$counts = $this->counts;
+
+		$counts[ 'http' ]    = count( $this->httpapi );
+		$counts[ 'storage' ] = count( debugpress_tracker()->logged );
+
+		return $counts;
+	}
+
 	public function get_stats() : array {
 		$key = is_admin() ? 'in_admin_footer' : 'wp_footer';
 
 		$stats = array(
-			__( "Used Memory", "debugpress" ) => debugpress_tracker()->get( $key, 'memory' ),
-			__( "Total Time", "debugpress" )  => debugpress_tracker()->get( $key, 'time' ) . 's',
-			__( "SQL Queries", "debugpress" ) => debugpress_tracker()->get( $key, 'queries' )
+			__( "Used Memory", "debugpress" ) => $this->get( $key, 'memory' ),
+			__( "Total Time", "debugpress" )  => $this->get( $key, 'time' ) . 's',
+			__( "SQL Queries", "debugpress" ) => $this->get( $key, 'queries' )
 		);
 
 		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
-			$stats[ __( "SQL Time", "debugpress" ) ] = debugpress_tracker()->get_total_sql_time() . 's';
+			$stats[ __( "SQL Time", "debugpress" ) ] = $this->get_total_sql_time() . 's';
 		}
 
 		$stats[ __( "Visitor IP", "debugpress" ) ] = IP::visitor();

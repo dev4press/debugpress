@@ -351,48 +351,48 @@ class Settings {
 	}
 
 	public function block_activation() {
-		echo __( "Main activation settings for the plugin. You can choose to use debugger on admin side and / or frontend.", "debugpress" );
+		esc_html_e( "Main activation settings for the plugin. You can choose to use debugger on admin side and / or frontend.", "debugpress" );
 	}
 
 	public function block_buttons() {
-		echo __( "Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button.", "debugpress" );
+		esc_html_e( "Debugger is activated through the button, and you can choose where this button will be located. If you don't use WordPress Toolbar, you can have floating button.", "debugpress" );
 	}
 
 	public function block_roles() {
-		echo __( "Debugger can be visible to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", "debugpress" );
+		esc_html_e( "Debugger can be visible to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", "debugpress" );
 		echo ' <strong>' . __( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!", "debugpress" ) . '</strong>';
 	}
 
 	public function block_on_demand() {
-		echo __( "Debugger can be be loaded on demand only, by using the secret access key in the URL. This way you can have DebugPress plugin active, but both Activation options can be disabled, and plugin Debugger panel is activated only on pages with the on demand URL request.", "debugpress" );
+		esc_html_e( "Debugger can be be loaded on demand only, by using the secret access key in the URL. This way you can have DebugPress plugin active, but both Activation options can be disabled, and plugin Debugger panel is activated only on pages with the on demand URL request.", "debugpress" );
 	}
 
 	public function block_special() {
-		echo __( "Debugger contains some special panels that can be limited in terms of use when it comes to different user roles allowed to view Debugger popup.", "debugpress" );
+		esc_html_e( "Debugger contains some special panels that can be limited in terms of use when it comes to different user roles allowed to view Debugger popup.", "debugpress" );
 	}
 
 	public function block_panels() {
-		echo __( "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them.", "debugpress" );
+		esc_html_e( "Debugger contains various panels, and some of them are always enabled, but other panels can be enabled if you need them.", "debugpress" );
 	}
 
 	public function block_errors() {
-		echo __( "Control which types of errors and warnings plugins will track and report.", "debugpress" );
+		esc_html_e( "Control which types of errors and warnings plugins will track and report.", "debugpress" );
 	}
 
 	public function block_pretty() {
-		echo __( "Choose which pretty print implementation to load. This is used to display complex arrays and objects in a readable form.", "debugpress" );
+		esc_html_e( "Choose which pretty print implementation to load. This is used to display complex arrays and objects in a readable form.", "debugpress" );
 	}
 
 	public function block_shortcut() {
-		echo __( "Show and hide the debugger popup using the shortcut combination on the keyboard.", "debugpress" );
+		esc_html_e( "Show and hide the debugger popup using the shortcut combination on the keyboard.", "debugpress" );
 	}
 
 	public function block_autos() {
-		echo __( "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed.", "debugpress" );
+		esc_html_e( "If WP_DEBUG and SAVEQUERIES are not defined, plugin will attempt to enable both, because they are needed for the full debugger information to be displayed.", "debugpress" );
 	}
 
 	public function block_ajax() {
-		echo __( "Add AJAX tab in the debugger, and track the AJAX request on the active page.", "debugpress" );
+		esc_html_e( "Add AJAX tab in the debugger, and track the AJAX request on the active page.", "debugpress" );
 	}
 
 	public function option_admin() {

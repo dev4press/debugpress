@@ -33,6 +33,10 @@ class Queries extends Panel {
 
 	public $sql_types_use = array();
 	public $sql_types_classes = array();
+	public $sql_source_classes = array(
+		'n/a' => 0
+	);
+	public $library_identification = array();
 
 	public function __construct() {
 		$this->stats[ 'max' ]   = debugpress_db()->wpdb()->queries[ 0 ][ 1 ];
@@ -42,6 +46,8 @@ class Queries extends Panel {
 		$i  = 1;
 		$j  = 0;
 		$qi = 0;
+
+		$this->_prepare_library();
 
 		foreach ( debugpress_db()->wpdb()->queries as $q ) {
 			$query = trim( $q[ 0 ] );
@@ -62,6 +68,10 @@ class Queries extends Panel {
 			$this->_parse_callers( $calls, $qi, $j );
 			$this->_parse_tables( $query, $qi, $i );
 			$this->_parse_types( $query, $qi );
+
+			if ( ! isset( $this->library_identification[ $qi ] ) ) {
+				$this->sql_source_classes[ 'n/a' ] ++;
+			}
 
 			$qi ++;
 		}
@@ -198,6 +208,24 @@ class Queries extends Panel {
 		}
 		$this->table_foot();
 		$this->block_footer();
+
+		$this->title( __( "Call Source", "debugpress" ) );
+		$this->block_header();
+		$this->add_column( __( "Source", "debugpress" ), '', '', true );
+		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
+		$this->table_head();
+		$this->table_row( array(
+			__( "Reset All", "debugpress" ),
+			'<a href="#" id="sql-source-show" class="sqlq-source-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-source-hide" class="sqlq-source-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
+		) );
+		foreach ( $this->sql_source_classes as $caller => $count ) {
+			$this->table_row( array(
+				'<a href="#" data-source="' . $caller . '" class="sqlq-option-source sqlq-option-on">' . $caller . '</a>',
+				$count
+			) );
+		}
+		$this->table_foot();
+		$this->block_footer();
 	}
 
 	public function right() {
@@ -224,7 +252,9 @@ class Queries extends Panel {
 				$speed = 'fast';
 			}
 
-			echo '<div class="sql-query" data-caller="' . $this->sql_caller_classes[ $i ] . '" data-tables="' . join( ',', $this->sql_tables_classes[ $i ] ) . '" data-type="' . $this->sql_types_classes[ $i ] . '" data-speed="' . $speed . '" data-order="' . $i . '" data-time="' . $q[ 1 ] . '" data-length="' . strlen( $q[ 0 ] ) . '">';
+			$source = $this->library_identification[ $i ] ?? 'n/a';
+
+			echo '<div class="sql-query" data-source="' . $source . '" data-caller="' . $this->sql_caller_classes[ $i ] . '" data-tables="' . join( ',', $this->sql_tables_classes[ $i ] ) . '" data-type="' . $this->sql_types_classes[ $i ] . '" data-speed="' . $speed . '" data-order="' . $i . '" data-time="' . $q[ 1 ] . '" data-length="' . strlen( $q[ 0 ] ) . '">';
 			echo '<strong>' . __( "Order", "debugpress" ) . ':</strong> ' . $i . ' | ';
 			echo '<strong>' . __( "Length", "debugpress" ) . ':</strong> ' . strlen( $q[ 0 ] ) . ' ' . __( "characters", "debugpress" ) . ' | ';
 			echo '<strong>' . __( "Time", "debugpress" ) . ':</strong> ' . $q[ 1 ] . ' ' . __( "seconds", "debugpress" ) . ' | ';
@@ -328,5 +358,27 @@ class Queries extends Panel {
 		}
 
 		$this->sql_types_classes[ $qi ] = strtolower( $type );
+	}
+
+	private function _prepare_library() {
+		if ( class_exists( 'Dev4Press\v41\Core\Helpers\DB' ) ) {
+			foreach ( \Dev4Press\v41\Core\Helpers\DB::instance()->log_get_queries() as $query ) {
+				$this->library_identification[ absint( $query[ 'id' ] ) ] = $query[ 'plugin' ] . '/' . $query[ 'instance' ];
+			}
+		}
+
+		if ( class_exists( 'Dev4Press\v42\Core\Helpers\DB' ) ) {
+			foreach ( \Dev4Press\v42\Core\Helpers\DB::instance()->log_get_queries() as $query ) {
+				$this->library_identification[ absint( $query[ 'id' ] ) ] = $query[ 'plugin' ] . '/' . $query[ 'instance' ];
+			}
+		}
+
+		foreach ( $this->library_identification as $code ) {
+			if ( ! isset( $this->sql_source_classes[ $code ] ) ) {
+				$this->sql_source_classes[ $code ] = 0;
+			}
+
+			$this->sql_source_classes[ $code ] ++;
+		}
 	}
 }

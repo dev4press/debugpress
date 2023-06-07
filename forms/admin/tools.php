@@ -18,16 +18,16 @@ $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
 ?>
 
 <div class="wrap debugpress-panel debugpress-panel-tools">
-    <h1><?php _e( "DebugPress Information", "debugpress" ); ?></h1>
+    <h1><?php esc_html_e( "DebugPress Information", "debugpress" ); ?></h1>
 
     <nav class="nav-tab-wrapper">
-        <a href="<?php echo admin_url( "tools.php?page=debugpress-info" ); ?>" class="nav-tab<?php echo empty( $_tab ) ? ' nav-tab-active' : ''; ?>"><?php _e( "Intro", "debugpress" ); ?></a>
+        <a href="<?php echo admin_url( "tools.php?page=debugpress-info" ); ?>" class="nav-tab<?php echo empty( $_tab ) ? ' nav-tab-active' : ''; ?>"><?php esc_html_e( "Intro", "debugpress" ); ?></a>
 
 		<?php foreach ( $_tabs as $tab => $label ) { ?>
-            <a href="<?php echo admin_url( "tools.php?page=debugpress-info&tab=" . $tab ); ?>" class="nav-tab<?php echo $_tab == $tab ? ' nav-tab-active' : ''; ?>"><?php echo $label; ?></a>
+            <a href="<?php echo admin_url( "tools.php?page=debugpress-info&tab=" . $tab ); ?>" class="nav-tab<?php echo $_tab == $tab ? ' nav-tab-active' : ''; ?>"><?php echo esc_html( $label ); ?></a>
 		<?php } ?>
 
-        <a href="<?php echo admin_url( "options-general.php?page=debugpress" ); ?>" class="nav-tab nav-tab-right"><span class="dashicons dashicons-admin-settings"></span><?php _e( "Settings", "debugpress" ); ?>
+        <a href="<?php echo admin_url( "options-general.php?page=debugpress" ); ?>" class="nav-tab nav-tab-right"><span class="dashicons dashicons-admin-settings"></span><?php esc_html_e( "Settings", "debugpress" ); ?>
         </a>
     </nav>
 

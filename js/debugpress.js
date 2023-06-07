@@ -260,13 +260,15 @@
                     all: {
                         caller: [],
                         types: [],
-                        tables: []
+                        tables: [],
+                        sources: []
                     },
                     active: {
                         show: 'all',
                         caller: [],
                         types: [],
-                        tables: []
+                        tables: [],
+                        sources: []
                     }
                 },
                 init: function() {
@@ -276,7 +278,8 @@
                 prepare: function() {
                     var caller = $("#debugpress-debugger-tab-queries .sqlq-option-caller"),
                         types = $("#debugpress-debugger-tab-queries .sqlq-option-type"),
-                        tables = $("#debugpress-debugger-tab-queries .sqlq-option-table");
+                        tables = $("#debugpress-debugger-tab-queries .sqlq-option-table"),
+                        sources = $("#debugpress-debugger-tab-queries .sqlq-option-source");
 
                     wp.dev4press.debugpress.tabs.queries.filters.total.queries = parseInt($("#sqlq-stats-filter-queries").html());
                     wp.dev4press.debugpress.tabs.queries.filters.total.total = parseFloat($("#sqlq-stats-filter-total").html());
@@ -301,6 +304,13 @@
                         wp.dev4press.debugpress.tabs.queries.filters.active.tables.push(table);
                         wp.dev4press.debugpress.tabs.queries.filters.all.tables.push(table);
                     });
+
+                    sources.each(function() {
+                        var source = $(this).data("source");
+
+                        wp.dev4press.debugpress.tabs.queries.filters.active.sources.push(source);
+                        wp.dev4press.debugpress.tabs.queries.filters.all.sources.push(source);
+                    });
                 },
                 filter: function() {
                     var sqls = $(".sql-query-list > .sql-query"),
@@ -317,8 +327,9 @@
                         };
 
                     sqls.each(function() {
-                        var caller = $(this).data("caller"),
-                            tables = ($(this).data("tables") + "").split(","),
+                        var tables = ($(this).data("tables") + "").split(","),
+                            caller = $(this).data("caller"),
+                            source = $(this).data("source"),
                             type = $(this).data("type"),
                             speed = $(this).data("speed"),
                             timer = parseFloat($(this).data("time")),
@@ -334,6 +345,10 @@
                         }
 
                         if (on && filters.types.indexOf(type) === -1) {
+                            on = false;
+                        }
+
+                        if (on && filters.sources.indexOf(source) === -1) {
                             on = false;
                         }
 
@@ -562,6 +577,45 @@
                         wp.dev4press.debugpress.tabs.queries.filter();
                     });
 
+                    $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-source-reset", function(e) {
+                        e.preventDefault();
+
+                        var on = $(this).attr("id").substring(11);
+
+                        if (on === "hide") {
+                            wp.dev4press.debugpress.tabs.queries.filters.active.sources = [];
+
+                            $("#debugpress-debugger-tab-queries .sqlq-option-source").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        } else {
+                            wp.dev4press.debugpress.tabs.queries.filters.active.sources = wp.dev4press.debugpress.tabs.queries.filters.all.sources;
+
+                            $("#debugpress-debugger-tab-queries .sqlq-option-source").addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                        }
+
+                        $("#debugpress-debugger-tab-queries .sqlq-source-reset").addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
+
+                        wp.dev4press.debugpress.tabs.queries.filter();
+                    });
+
+                    $(document).on("click", "#debugpress-debugger-tab-queries .sqlq-option-source", function(e) {
+                        e.preventDefault();
+
+                        var id = $(this).data("source");
+
+                        if ($(this).hasClass("sqlq-option-off")) {
+                            wp.dev4press.debugpress.tabs.queries.filters.active.sources.push(id);
+                            $(this).addClass("sqlq-option-on").removeClass("sqlq-option-off");
+                        } else {
+                            wp.dev4press.debugpress.tabs.queries.filters.active.sources = wp.dev4press.debugpress.tabs.queries.filters.active.sources.filter(function(e) {
+                                return e !== id;
+                            });
+                            $(this).addClass("sqlq-option-off").removeClass("sqlq-option-on");
+                        }
+
+                        wp.dev4press.debugpress.tabs.queries.filter();
+                    });
+
                     $(document).on("click", "#debugpress-debugger-tab-queries .sql-calls-button-expander", function() {
                         var parent = $(this).parent(),
                             query = parent.parent(),
@@ -684,7 +738,8 @@
             });
         },
         init: function(counts, stats, ajax, admin) {
-            var bar = $("#wp-admin-bar-debugpress-debugger-button"), ul, sel, i = 0;
+            var bar = $("#wp-admin-bar-debugpress-debugger-button"), ul, sel, i = 0,
+                button = $(".debugpress-debug-dialog-button");
 
             wp.dev4press.debugpress.counts = counts;
             wp.dev4press.debugpress.stats = stats;
@@ -693,12 +748,19 @@
             wp.dev4press.debugpress.popup = $("#debugpress-debugger-content-wrapper");
 
             if (wp.dev4press.debugpress.counts.total > 0) {
-                var button = $(".debugpress-debug-dialog-button"),
-                    extra = wp.dev4press.debugpress.counts.errors > 0 ? 'debugpress-debug-has-errors' : 'debugpress-debug-has-warnings';
+                var extra = wp.dev4press.debugpress.counts.errors > 0 ? 'debugpress-debug-has-errors' : 'debugpress-debug-has-warnings';
 
                 $(".debugpress-debug-has-errors", button).show().html(wp.dev4press.debugpress.counts.total);
 
                 button.addClass(extra);
+            }
+
+            if (wp.dev4press.debugpress.counts.storage > 0) {
+                $(".debugpress-debug-has-stored", button).show().html(wp.dev4press.debugpress.counts.storage);
+            }
+
+            if (wp.dev4press.debugpress.counts.http > 0) {
+                $(".debugpress-debug-has-httpcalls", button).show().html(wp.dev4press.debugpress.counts.http);
             }
 
             wp.dev4press.debugpress.popup.smartAniPopup({

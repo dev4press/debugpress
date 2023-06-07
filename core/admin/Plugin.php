@@ -44,7 +44,8 @@ class Plugin {
 
 	public function plugin_links( $links, $file ) {
 		if ( $file == 'debugpress/debugpress.php' ) {
-			$links[] = '<a target="_blank" rel="noopener" href="https://www.dev4press.com/">dev4Press.com</a>';
+			$links[] = '<a target="_blank" rel="noopener" href="https://debug.press/"><span class="dashicons dashicons-flag" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( "Home Page", "debugpress" ) . '</a>';
+			$links[] = '<a target="_blank" rel="noopener" href="https://www.buymeacoffee.com/millan"><span class="dashicons dashicons-coffee" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( "Buy Me A Coffee", "debugpress" ) . '</a>';
 		}
 
 		return $links;

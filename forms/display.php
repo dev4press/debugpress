@@ -22,7 +22,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			?>
         </ul>
-        <select id="debugpress-debugger-select" aria-label="<?php _e( "Select Debugger Panel", "debugpress" ); ?>">
+        <select id="debugpress-debugger-select" aria-label="<?php esc_html_e( "Select Debugger Panel", "debugpress" ); ?>">
 			<?php
 
 			$first = true;
@@ -62,9 +62,9 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			<?php echo debugpress_plugin()->build_stats( null ); ?>
         </div>
         <div class="debugpress-debugger-footer-right">
-            <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php _e( "Settings", "debugpress" ); ?></a>
+            <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php esc_html_e( "Settings", "debugpress" ); ?></a>
             &middot;
-            <a rel="noopener" target="_blank" href="https://debug.press/"><?php _e( "DebugPress", "debugpress" ); ?></a>
+            <a rel="noopener" target="_blank" href="https://debug.press/"><?php esc_html_e( "DebugPress", "debugpress" ); ?></a>
             <strong>v<?php echo DEBUGPRESS_VERSION; ?></strong>
         </div>
     </div>
@@ -72,7 +72,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 <script type="text/javascript">
     jQuery(document).ready(function() {
         window.wp.dev4press.debugpress.init(
-			<?php echo json_encode( debugpress_tracker()->get_counts() ); ?>,
+			<?php echo json_encode( debugpress_tracker()->get_counts_js() ); ?>,
 			<?php echo json_encode( debugpress_tracker()->get_stats() ); ?>,
 			<?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>,
 			<?php echo is_admin() ? 'true' : 'false'; ?>);

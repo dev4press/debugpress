@@ -40,15 +40,16 @@ function debugpress_do_settings_sections( $page ) {
 				echo '</div>';
 			}
 
-			echo '<div class="tab-content nav-tab-content-' . $tab . ( $first ? ' tab-content-active' : '' ) . '">';
+			$classes = 'tab-content nav-tab-content-' . $tab . ( $first ? ' tab-content-active' : '' );
+			echo '<div class="' . esc_attr( $classes ) . '">';
 
 			$close = true;
 			$first = false;
 		}
 
-		echo '<div class="debugpress-settings-section section-' . $id . '">';
+		echo '<div class="debugpress-settings-section section-' . esc_attr( $id ) . '">';
 		if ( $section[ 'title' ] ) {
-			echo "<h2>{$section['title']}</h2>\n";
+			echo "<h2>" . esc_html( $section[ 'title' ] ) . "</h2>\n";
 		}
 
 		if ( $section[ 'callback' ] ) {
