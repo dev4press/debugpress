@@ -209,23 +209,25 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Call Source", "debugpress" ) );
-		$this->block_header();
-		$this->add_column( __( "Source", "debugpress" ), '', '', true );
-		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
-		$this->table_head();
-		$this->table_row( array(
-			__( "Reset All", "debugpress" ),
-			'<a href="#" id="sql-source-show" class="sqlq-source-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-source-hide" class="sqlq-source-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
-		) );
-		foreach ( $this->sql_source_classes as $caller => $count ) {
+		if ( count( $this->sql_source_classes ) > 1 ) {
+			$this->title( __( "Call Source", "debugpress" ) );
+			$this->block_header();
+			$this->add_column( __( "Source", "debugpress" ), '', '', true );
+			$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
+			$this->table_head();
 			$this->table_row( array(
-				'<a href="#" data-source="' . $caller . '" class="sqlq-option-source sqlq-option-on">' . $caller . '</a>',
-				$count
+				__( "Reset All", "debugpress" ),
+				'<a href="#" id="sql-source-show" class="sqlq-source-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-source-hide" class="sqlq-source-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
 			) );
+			foreach ( $this->sql_source_classes as $caller => $count ) {
+				$this->table_row( array(
+					'<a href="#" data-source="' . $caller . '" class="sqlq-option-source sqlq-option-on">' . $caller . '</a>',
+					$count
+				) );
+			}
+			$this->table_foot();
+			$this->block_footer();
 		}
-		$this->table_foot();
-		$this->block_footer();
 	}
 
 	public function right() {

@@ -114,6 +114,7 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 * Edit: Improved method for displaying button activation flags
 * Edit: Many improvements to escaping variables for display
 * Edit: Better optimized included images for logos
+* Edit: Various small tweaks to the main JavaScript file
 
 = 3.0.1 (2023.05.05) =
 * Edit: Minor updates to the plugin readme file

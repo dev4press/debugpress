@@ -240,7 +240,6 @@
 
                     $(document).on("click", "#debugpress-debugger-tab-hooks .dbg-callback-button-expander", function() {
                         var parent = $(this).parent(),
-                            location = $(this).next(),
                             full = parent.hasClass("dbg-calls-show");
 
                         if (full) {
@@ -305,12 +304,17 @@
                         wp.dev4press.debugpress.tabs.queries.filters.all.tables.push(table);
                     });
 
-                    sources.each(function() {
-                        var source = $(this).data("source");
+                    if (sources.length > 0) {
+                        sources.each(function() {
+                            var source = $(this).data("source");
 
-                        wp.dev4press.debugpress.tabs.queries.filters.active.sources.push(source);
-                        wp.dev4press.debugpress.tabs.queries.filters.all.sources.push(source);
-                    });
+                            wp.dev4press.debugpress.tabs.queries.filters.active.sources.push(source);
+                            wp.dev4press.debugpress.tabs.queries.filters.all.sources.push(source);
+                        });
+                    } else {
+                        wp.dev4press.debugpress.tabs.queries.filters.active.sources.push('n/a');
+                        wp.dev4press.debugpress.tabs.queries.filters.all.sources.push('n/a');
+                    }
                 },
                 filter: function() {
                     var sqls = $(".sql-query-list > .sql-query"),
@@ -738,7 +742,7 @@
             });
         },
         init: function(counts, stats, ajax, admin) {
-            var bar = $("#wp-admin-bar-debugpress-debugger-button"), ul, sel, i = 0,
+            var bar = $("#wp-admin-bar-debugpress-debugger-button"), sel, i = 0,
                 button = $(".debugpress-debug-dialog-button");
 
             wp.dev4press.debugpress.counts = counts;
