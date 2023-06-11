@@ -33,7 +33,9 @@ class Plugins extends Panel {
 			$this->title( $plugin[ 'plugin' ][ 'Name' ] );
 
 			foreach ( $plugin[ 'data' ] as $name => $values ) {
-				$this->list_array( $values, $name );
+				if ( ! empty( $values ) ) {
+					$this->list_array( $values, $name );
+				}
 			}
 		}
 	}
