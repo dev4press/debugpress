@@ -16,11 +16,13 @@ class Hooks extends Panel {
 	public $origins_order = array();
 
 	public function __construct() {
-		global $wp_actions, $wp_filters, $wp_filter;
+		global $wp_filter;
 
 		$this->origins[ 'none::none' ]              = __( "No Callbacks", "debugpress" );
 		$this->origins[ 'php::php' ]                = __( "PHP", "debugpress" );
-		$this->origins[ 'core::core' ]              = __( "WordPress Core", "debugpress" );
+		$this->origins[ 'core::core' ]              = __( "WordPress: Core", "debugpress" );
+		$this->origins[ 'admin::admin' ]            = __( "WordPress: Admin", "debugpress" );
+		$this->origins[ 'content::content' ]        = __( "WordPress: Content", "debugpress" );
 		$this->origins[ 'stylesheet::child-theme' ] = __( "Child Theme", "debugpress" ) . ': ' . Info::cms_stylesheet_theme_name();
 		$this->origins[ 'stylesheet::theme' ]       = __( "Theme", "debugpress" ) . ': ' . Info::cms_templates_theme_name();
 		$this->origins[ 'template::theme' ]         = __( "Theme", "debugpress" ) . ': ' . Info::cms_templates_theme_name();
@@ -33,7 +35,7 @@ class Hooks extends Panel {
 
 			$this->hooks[] = $hook;
 
-			if ( isset( $hook[ 'origins' ] ) && ! empty( $hook[ 'origins' ] ) ) {
+			if ( ! empty( $hook[ 'origins' ] ) ) {
 				$this->process_origin( $hook[ 'origins' ] );
 			} else {
 				++ $this->origins_order[ 'none::none' ];
@@ -55,6 +57,8 @@ class Hooks extends Panel {
 				$title = '';
 				if ( $parts[ 0 ] == 'plugin' ) {
 					$title = __( "Plugin", "debugpress" ) . ': ' . $parts[ 1 ];
+				} else if ( $parts[ 0 ] == 'mu-plugin' ) {
+					$title = __( "MU Plugin", "debugpress" ) . ': ' . $parts[ 1 ];
 				}
 
 				$this->origins[ $origin ] = $title;
@@ -153,11 +157,11 @@ class Hooks extends Panel {
 		echo '<td>' . ( $action[ 'priority' ] ?? 10 ) . '</td>';
 		echo '<td class="dbg-hook-column-action"><em>' . $action[ 'name' ] . '</em>';
 
-		if ( isset( $action[ 'file' ] ) && ! empty( $action[ 'file' ] ) ) {
+		if ( ! empty( $action[ 'file' ] ) ) {
 			echo '<button class="dbg-callback-button-expander" type="button">' . __( "toggle", "debugpress" ) . '</button>';
 			echo '<div><span>' . __( "In File", "debugpress" ) . ': <strong>' . $action[ 'file' ] . '</strong></span>';
 
-			if ( isset( $action[ 'line' ] ) && ! empty( $action[ 'line' ] ) ) {
+			if ( ! empty( $action[ 'line' ] ) ) {
 				echo '<span>' . __( "On Line", "debugpress" ) . ': <strong>' . $action[ 'line' ] . '</strong></span>';
 			}
 

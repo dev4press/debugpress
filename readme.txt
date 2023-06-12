@@ -109,12 +109,15 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 == Changelog ==
-= 3.1 (2023.06.12) =
+= 3.1 (2023.06.15) =
 * New: Identify SQL queries sources for Dev4Press plugins
+* New: Hooks panel can filter by the WordPress Admin callbacks
 * Edit: Improved method for displaying button activation flags
 * Edit: Many improvements to escaping variables for display
 * Edit: Better optimized included images for logos
+* Edit: Various small tweaks to the plugin PHP code
 * Edit: Various small tweaks to the main JavaScript file
+* Fix: Hooks panel not filtering MU Plugins
 
 = 3.0.1 (2023.05.05) =
 * Edit: Minor updates to the plugin readme file
