@@ -31,6 +31,7 @@ class Callback {
 				'stylesheet' => get_stylesheet_directory(),
 				'template'   => get_template_directory(),
 				'content'    => WP_CONTENT_DIR,
+				'includes'   => ABSPATH . 'wp-includes',
 				'admin'      => ABSPATH . 'wp-admin',
 				'core'       => ABSPATH,
 				'unknown'    => null

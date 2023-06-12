@@ -22,6 +22,7 @@ class Hooks extends Panel {
 		$this->origins[ 'php::php' ]                = __( "PHP", "debugpress" );
 		$this->origins[ 'core::core' ]              = __( "WordPress: Core", "debugpress" );
 		$this->origins[ 'admin::admin' ]            = __( "WordPress: Admin", "debugpress" );
+		$this->origins[ 'includes::includes' ]      = __( "WordPress: Includes", "debugpress" );
 		$this->origins[ 'content::content' ]        = __( "WordPress: Content", "debugpress" );
 		$this->origins[ 'stylesheet::child-theme' ] = __( "Child Theme", "debugpress" ) . ': ' . Info::cms_stylesheet_theme_name();
 		$this->origins[ 'stylesheet::theme' ]       = __( "Theme", "debugpress" ) . ': ' . Info::cms_templates_theme_name();
