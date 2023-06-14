@@ -39,14 +39,14 @@ Currently, the plugin has the following panels:
 * Roles (optional)
 * Constants (optional)
 * Hooks (optional)
-* SQL Queries (if SQL queries logging is enabled)
-* User (optional, if user is logged in only)
 * PHP (optional)
 * Server (optional)
+* Enqueue (optional)
+* SQL Queries (if SQL queries logging is enabled)
+* User (optional, if user is logged in only)
 * HTTP (optional, if HTTP API calls are captured)
 * bbPress (optional, on bbPress forum pages only)
 * Plugins (optional, if plugins store data)
-* Enqueue (optional)
 * Errors (for all captured PHP errors)
 * Doing It Wrong (for captured WordPress Doing It Wrong warnings)
 * Deprecated (for captured PHP deprecated warnings)
@@ -57,7 +57,7 @@ Currently, the plugin has the following panels:
 * Layout (control the size, position and activation of the popup)
 
 = SQL Queries =
-This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read.
+This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read. For some Dev4Press created plugins (and that list will grow), DebugPress can detect the source of the query and allow you to filter by the plugin calling the query.
 
 = PHP and WordPress Errors =
 Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. Plugin captures this information during the page load, and it shows full debug trace as returned by the PHP debug tracing function.
@@ -96,8 +96,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 * Plugin settings are available under WordPress 'Settings' panel
 
 == Frequently Asked Questions ==
-= Where can I configure the plugin? =
-Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
+= How I can install this plugin? =
+If you are not sure about WordPress plugins installation, here is the quick information: [Plugin Installation](https://debug.press/documentation/plugin-installation/).
+
+= How can I enable WordPress Debug Mode? =
+To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
 
 = How can I open Debugger popup? =
 If you have enabled debugger (for admin side and/or frontend), Debugger is activated via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings). Since version 3.0, you can activate the button via keyboard shortcut, default combination is `ctrl+shift+u`, but it can be changed in the plugin settings.
@@ -105,11 +108,11 @@ If you have enabled debugger (for admin side and/or frontend), Debugger is activ
 = Can I change the size and position of the popup? =
 Yes. Once the popup is open, you will find the Layout icon next to the button to close the popup. On the layout panel, you can change the location for the popup, size, modal status and auto activation on page load.
 
-= How can I enable WordPress Debug Mode? =
-To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
+= Where can I configure the plugin? =
+Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 3.1 (2023.06.15) =
+= 3.1 (2023.06.14) =
 * New: Identify SQL queries sources for Dev4Press plugins
 * New: Hooks panel can filter by the WordPress Admin callbacks
 * Edit: Improved method for displaying button activation flags
