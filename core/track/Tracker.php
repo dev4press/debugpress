@@ -320,7 +320,7 @@ class Tracker {
 		$wrong   = $function . '()';
 		$in_file = $this->_strip_abspath( $backtrace[ 3 ][ 'file' ] );
 		$on_line = $backtrace[ 3 ][ 'line' ];
-		$caller  = $this->_get_caller( 'doing_it_wrong_run', '_doing_it_wrong' );
+		$caller  = $this->_get_caller( '_doing_it_wrong' );
 
 		if ( ! empty( $this->_actual_file ) ) {
 			$in_file = $this->_actual_file;
@@ -351,8 +351,14 @@ class Tracker {
 
 		$in_file = $this->_strip_abspath( $backtrace[ $bt ][ 'file' ] );
 		$on_line = $backtrace[ $bt ][ 'line' ];
+		$caller  = $this->_get_caller( '_deprecated_function', true );
 
-		$error = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line' );
+		if ( ! empty( $this->_actual_file ) ) {
+			$in_file = $this->_actual_file;
+			$on_line = $this->_actual_line;
+		}
+
+		$error = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line', 'caller' );
 
 		$this->deprecated[ 'function' ][] = $error;
 
@@ -368,8 +374,14 @@ class Tracker {
 		$deprecated = $this->_strip_abspath( $backtrace[ 3 ][ 'file' ] );
 		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
 		$on_line    = $backtrace[ 4 ][ 'line' ];
+		$caller     = $this->_get_caller( '_deprecated_file', true );
 
-		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file' );;
+		if ( ! empty( $this->_actual_file ) ) {
+			$in_file = $this->_actual_file;
+			$on_line = $this->_actual_line;
+		}
+
+		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file', 'caller' );;
 
 		$this->deprecated[ 'file' ][] = $error;
 
@@ -424,7 +436,14 @@ class Tracker {
 				break;
 		}
 
-		$error = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line' );;
+		if ( ! empty( $this->_actual_file ) ) {
+			$in_file = $this->_actual_file;
+			$on_line = $this->_actual_line;
+		}
+
+		$caller = $this->_get_caller( '_deprecated_argument', true );
+
+		$error = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line', 'caller' );;
 
 		$this->deprecated[ 'argument' ][] = $error;
 
@@ -440,8 +459,14 @@ class Tracker {
 		$deprecated = $class;
 		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
 		$on_line    = $backtrace[ 4 ][ 'line' ];
+		$caller     = $this->_get_caller( '_deprecated_constructor', true );
 
-		$error = compact( 'deprecated', 'version', 'in_file', 'on_line' );
+		if ( ! empty( $this->_actual_file ) ) {
+			$in_file = $this->_actual_file;
+			$on_line = $this->_actual_line;
+		}
+
+		$error = compact( 'deprecated', 'version', 'in_file', 'on_line', 'caller' );
 
 		$this->deprecated[ 'constructor' ][] = $error;
 
@@ -457,8 +482,14 @@ class Tracker {
 		$deprecated = $hook;
 		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
 		$on_line    = $backtrace[ 4 ][ 'line' ];
+		$caller     = $this->_get_caller( '_deprecated_hook', true );
 
-		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line' );
+		if ( ! empty( $this->_actual_file ) ) {
+			$in_file = $this->_actual_file;
+			$on_line = $this->_actual_line;
+		}
+
+		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'caller' );
 
 		$this->deprecated[ 'hook-run' ][] = $error;
 
@@ -613,7 +644,7 @@ class Tracker {
 		return ltrim( str_replace( array( untrailingslashit( ABSPATH ), '\\' ), array( '', '/' ), $path ), '/' );
 	}
 
-	private function _get_caller( $type = '', $function_target = '' ) : array {
+	private function _get_caller( $function_target = '', $use_previous_call_actual = false ) : array {
 		$_abspath = str_replace( '\\', '/', ABSPATH );
 
 		$filters = array( 'do_action', 'apply_filter', 'do_action_ref_array', 'call_user_func_array' );
@@ -623,12 +654,20 @@ class Tracker {
 		$this->_actual_file = '';
 		$this->_actual_line = 0;
 
+		$prev = null;
 		foreach ( $trace as $call ) {
 			if ( ! empty( $function_target ) && isset( $call[ 'function' ] ) ) {
 				if ( substr( $call[ 'function' ], 0, strlen( $function_target ) ) == $function_target ) {
-					if ( isset( $call[ 'file' ] ) && isset( $call[ 'line' ] ) ) {
-						$this->_actual_file = $this->_normalize_path( $call[ 'file' ] );
-						$this->_actual_line = $call[ 'line' ];
+					if ( $use_previous_call_actual ) {
+						if ( $prev && isset( $prev[ 'file' ] ) && isset( $prev[ 'line' ] ) ) {
+							$this->_actual_file = $this->_normalize_path( $prev[ 'file' ] );
+							$this->_actual_line = $prev[ 'line' ];
+						}
+					} else {
+						if ( isset( $call[ 'file' ] ) && isset( $call[ 'line' ] ) ) {
+							$this->_actual_file = $this->_normalize_path( $call[ 'file' ] );
+							$this->_actual_line = $call[ 'line' ];
+						}
 					}
 
 					break;
@@ -645,12 +684,6 @@ class Tracker {
 
 			if ( $call[ 'function' ] == 'call_user_func_array' ) {
 				if ( isset( $call[ 'args' ][ 0 ][ 0 ] ) && $call[ 'args' ][ 0 ][ 0 ] instanceof Tracker ) {
-					continue;
-				}
-			}
-
-			if ( $type == 'doing_it_wrong_run' ) {
-				if ( $call[ 'function' ] == 'do_action' && $call[ 'args' ][ 0 ] == 'doing_it_wrong_run' ) {
 					continue;
 				}
 			}
@@ -683,6 +716,7 @@ class Tracker {
 			}
 
 			$caller[] = $value . $file . $filter;
+			$prev     = $call;
 		}
 
 		return $caller;

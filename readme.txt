@@ -115,9 +115,13 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 = 3.2 (2023.06.22) =
 * New: Support for the deprecated hook run handling
 * New: Execute actions when each error has been logged
+* New: Deprecated tracking now logs the caller information
 * Edit: Improved caller trace cleanup for error calls
 * Edit: Display more relevant error source file and log for errors
+* Edit: Errors tab moved to the end of the display order
+* Edit: Changed tab order for several other debugger tabs
 * Fix: Fatal error tracking calling default handler directly
+* Fix: Sometimes errors not getting displayed in the Error tab
 
 = 3.1 (2023.06.14) =
 * New: Identify SQL queries sources for Dev4Press plugins

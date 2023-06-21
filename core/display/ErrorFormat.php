@@ -10,7 +10,7 @@ class ErrorFormat {
 	public static function render_caller( $caller, $escape = false ) : string {
 		$_print = $escape ? esc_html( $caller ) : $caller;
 
-		$render = '<a href="#" class="debugpress-events-log-toggle">' . __( "Show Details", "debugpress" ) . '</a>';
+		$render = ' <a href="#" class="debugpress-events-log-toggle">' . __( "Show Details", "debugpress" ) . '</a>';
 		$render .= '<div class="debugpress-events-log-toggler"><strong>' . __( "From", "debugpress" ) . ':</strong><br/>' . $_print . '</div>';
 
 		return $render;
@@ -87,12 +87,7 @@ class ErrorFormat {
 		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item[ 'on_line' ] . '<br/>';
 		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item[ 'in_file' ] . '<br/>';
 
-		$caller = isset( $item[ 'caller' ] ) ? maybe_unserialize( $item[ 'caller' ] ) : '';
-		$caller = is_array( $caller ) ? join( '<br/>', $caller ) : $caller;
-
-		if ( ! empty( $caller ) ) {
-			$render .= ErrorFormat::render_caller( $caller );
-		}
+		$render .= ErrorFormat::process_caller( $item );
 
 		if ( $item[ 'message' ] ) {
 			$render .= '<div class="debugpress-error-message">' . esc_html( $item[ 'message' ] ) . '</div>';
@@ -115,6 +110,8 @@ class ErrorFormat {
 			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
 		}
 
+		$render .= ErrorFormat::process_caller( $item );
+
 		$render .= '</div>';
 
 		return $render;
@@ -136,9 +133,11 @@ class ErrorFormat {
 			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
 		}
 
-		if ( isset( $item[ 'message' ] ) && ! empty( $item[ 'message' ] ) ) {
+		if ( ! empty( $item[ 'message' ] ) ) {
 			$render .= '<em>' . $item[ 'message' ] . '</em>';
 		}
+
+		$render .= ErrorFormat::process_caller( $item );
 
 		$render .= '</div>';
 
@@ -153,9 +152,11 @@ class ErrorFormat {
 
 		$render .= sprintf( __( "For <strong>%s</strong> since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
 
-		if ( isset( $item[ 'message' ] ) && ! empty( $item[ 'message' ] ) ) {
+		if ( ! empty( $item[ 'message' ] ) ) {
 			$render .= '<em>' . $item[ 'message' ] . '</em>';
 		}
+
+		$render .= ErrorFormat::process_caller( $item );
 
 		$render .= '</div>';
 
@@ -176,11 +177,26 @@ class ErrorFormat {
 
 		$render .= sprintf( __( "Argument in <strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
 
-		if ( isset( $item[ 'message' ] ) && ! empty( $item[ 'message' ] ) ) {
+		if ( ! empty( $item[ 'message' ] ) ) {
 			$render .= '<em>' . $item[ 'message' ] . '</em>';
 		}
 
+		$render .= ErrorFormat::process_caller( $item );
+
 		$render .= '</div>';
+
+		return $render;
+	}
+
+	public static function process_caller( $item ) : string {
+		$render = '';
+
+		$caller = isset( $item[ 'caller' ] ) ? maybe_unserialize( $item[ 'caller' ] ) : '';
+		$caller = is_array( $caller ) ? join( '<br/>', $caller ) : $caller;
+
+		if ( ! empty( $caller ) ) {
+			$render .= ErrorFormat::render_caller( $caller );
+		}
 
 		return $render;
 	}

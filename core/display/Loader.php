@@ -224,18 +224,6 @@ class Loader {
 			$this->tabs[ 'plugins' ] = __( "Plugins", "debugpress" );
 		}
 
-		if ( ! empty( debugpress_tracker()->errors ) ) {
-			$this->tabs[ 'errors' ] = __( "Errors", "debugpress" ) . ' (' . debugpress_tracker()->counts[ 'errors' ] . ')';
-		}
-
-		if ( ! empty( debugpress_tracker()->deprecated ) ) {
-			$this->tabs[ 'deprecated' ] = __( "Deprecated", "debugpress" ) . ' (' . debugpress_tracker()->counts[ 'deprecated' ] . ')';
-		}
-
-		if ( ! empty( debugpress_tracker()->doingitwrong ) ) {
-			$this->tabs[ 'doingitwrong' ] = __( "Doing It Wrong", "debugpress" ) . ' (' . debugpress_tracker()->counts[ 'doingitwrong' ] . ')';
-		}
-
 		if ( debugpress_plugin()->get( 'panel_http' ) && ! empty( debugpress_tracker()->httpapi ) ) {
 			$this->tabs[ 'http' ] = __( "HTTP", "debugpress" ) . ' (' . count( debugpress_tracker()->httpapi ) . ')';
 		}
@@ -246,6 +234,18 @@ class Loader {
 
 		if ( ! empty( debugpress_tracker()->logged ) ) {
 			$this->tabs[ 'store' ] = __( "Store", "debugpress" ) . ' (' . count( debugpress_tracker()->logged ) . ')';
+		}
+
+		if ( ! empty( debugpress_tracker()->deprecated ) ) {
+			$this->tabs[ 'deprecated' ] = __( "Deprecated", "debugpress" ) . ' (' . debugpress_tracker()->counts[ 'deprecated' ] . ')';
+		}
+
+		if ( ! empty( debugpress_tracker()->doingitwrong ) ) {
+			$this->tabs[ 'doingitwrong' ] = __( "Doing It Wrong", "debugpress" ) . ' (' . debugpress_tracker()->counts[ 'doingitwrong' ] . ')';
+		}
+
+		if ( ! empty( debugpress_tracker()->errors ) ) {
+			$this->tabs[ 'errors' ] = __( "Errors", "debugpress" ) . ' (' . debugpress_tracker()->counts[ 'errors' ] . ')';
 		}
 
 		$this->tabs[ 'layout' ] = array(
