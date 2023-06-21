@@ -120,6 +120,7 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * Edit: Display more relevant error source file and log for errors
 * Edit: Errors tab moved to the end of the display order
 * Edit: Changed tab order for several other debugger tabs
+* Edit: Various small tweaks to the plugin PHP code
 * Fix: Fatal error tracking calling default handler directly
 * Fix: Sometimes errors not getting displayed in the Error tab
 

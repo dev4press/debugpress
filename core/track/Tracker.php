@@ -381,7 +381,7 @@ class Tracker {
 			$on_line = $this->_actual_line;
 		}
 
-		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file', 'caller' );;
+		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file', 'caller' );
 
 		$this->deprecated[ 'file' ][] = $error;
 
@@ -443,7 +443,7 @@ class Tracker {
 
 		$caller = $this->_get_caller( '_deprecated_argument', true );
 
-		$error = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line', 'caller' );;
+		$error = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line', 'caller' );
 
 		$this->deprecated[ 'argument' ][] = $error;
 
@@ -775,7 +775,7 @@ class Tracker {
 					$response = array( 'errors' => $raw->get_error_message() );
 				} else if ( isset( $raw[ 'response' ] ) && is_wp_error( $raw[ 'response' ] ) ) {
 					$response = array( 'errors' => $raw[ 'response' ]->get_error_message() );
-				} else if ( isset( $raw[ 'response' ] ) && isset( $raw[ 'response' ][ 'http_response' ] ) ) {
+				} else if ( isset( $raw[ 'response' ][ 'http_response' ] ) ) {
 					$response              = $raw[ 'response' ][ 'http_response' ]->to_array();
 					$response[ 'headers' ] = $response[ 'headers' ]->getAll();
 				} else {
