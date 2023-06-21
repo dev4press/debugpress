@@ -82,7 +82,7 @@ class ErrorFormat {
 
 	public static function doing_it_wrong( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-doingitwrong">';
-		$render .= '<h4>' . sprintf( __( "For <strong>%s</strong>", "debugpress" ), $item[ 'deprecated' ] ) . '</h4>';
+		$render .= '<h4>' . sprintf( __( "For <strong>%s</strong>", "debugpress" ), $item[ 'wrong' ] ) . '</h4>';
 		$render .= '<strong>' . __( "Since version", "debugpress" ) . ":</strong> " . $item[ 'version' ] . ', ';
 		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item[ 'on_line' ] . '<br/>';
 		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item[ 'in_file' ] . '<br/>';

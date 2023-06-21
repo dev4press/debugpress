@@ -30,6 +30,7 @@ class Tracker {
 	public $doingitwrong = array();
 	public $logged = array();
 	public $httpapi = array();
+	public $abspath;
 
 	public $counts = array(
 		'total'        => 0,
@@ -37,6 +38,8 @@ class Tracker {
 		'doingitwrong' => 0,
 		'deprecated'   => 0
 	);
+	private $_actual_file = '';
+	private $_actual_line = '';
 
 	private $_snapshot_actions = array(
 		'setup_theme',
@@ -70,6 +73,7 @@ class Tracker {
 		$this->timer_start    = microtime( true );
 		$this->memory_start   = memory_get_usage();
 		$this->query_start    = get_num_queries();
+		$this->abspath        = wp_normalize_path( ABSPATH );
 
 		$this->start();
 
@@ -120,11 +124,13 @@ class Tracker {
 			add_action( 'deprecated_constructor_run', array( $this, 'track_constructor' ), 10, 2 );
 			add_action( 'deprecated_file_included', array( $this, 'track_file' ), 10, 4 );
 			add_action( 'deprecated_argument_run', array( $this, 'track_argument' ), 10, 3 );
+			add_action( 'deprecated_hook_run', array( $this, 'track_hook_run' ), 10, 4 );
 
 			add_filter( 'deprecated_function_trigger_error', '__return_false' );
 			add_filter( 'deprecated_constructor_trigger_error', '__return_false' );
 			add_filter( 'deprecated_file_trigger_error', '__return_false' );
 			add_filter( 'deprecated_argument_trigger_error', '__return_false' );
+			add_filter( 'deprecated_hook_run', '__return_false' );
 		}
 
 		foreach ( $this->_snapshot_actions as $action ) {
@@ -275,7 +281,7 @@ class Tracker {
 		$this->logged[] = $log;
 	}
 
-	public function track_fatal_error() {
+	public function track_fatal_error() : bool {
 		$error = error_get_last();
 
 		if ( ! is_null( $error ) ) {
@@ -284,27 +290,22 @@ class Tracker {
 			$errfile = $error[ 'file' ];
 			$errline = $error[ 'line' ];
 
-			$this->track_error( $errno, $errstr, $errfile, $errline );
+			if ( ! ( error_reporting() & $errno ) ) {
+				return false;
+			}
+
+			$this->_track_error_basic( $errno, $errstr, $errfile, $errline );
 		}
+
+		return true;
 	}
 
-	public function track_error( $errno, $errstr, $errfile, $errline ) {
+	public function track_error( $errno, $errstr, $errfile, $errline ) : bool {
 		if ( ! ( error_reporting() & $errno ) ) {
 			return false;
 		}
 
-		$caller = $this->_get_caller();
-
-		$this->errors[] = compact( 'errno', 'errstr', 'errfile', 'errline', 'caller' );
-
-		$this->counts[ 'errors' ] ++;
-		$this->counts[ 'total' ] ++;
-
-		if ( $errno == E_ERROR || $errno == E_USER_ERROR ) {
-			$this->has_errors ++;
-		} else {
-			$this->has_warnings ++;
-		}
+		$this->_track_error_basic( $errno, $errstr, $errfile, $errline );
 
 		if ( is_callable( $this->_error_handler ) ) {
 			call_user_func( $this->_error_handler, $errno, $errstr, $errfile, $errline );
@@ -316,12 +317,21 @@ class Tracker {
 	public function track_wrong( $function, $message, $version ) {
 		$backtrace = debug_backtrace();
 
-		$deprecated = $function . '()';
-		$in_file    = $this->_strip_abspath( $backtrace[ 3 ][ 'file' ] );
-		$on_line    = $backtrace[ 3 ][ 'line' ];
-		$caller     = $this->_get_caller( 'doing_it_wrong_run' );
+		$wrong   = $function . '()';
+		$in_file = $this->_strip_abspath( $backtrace[ 3 ][ 'file' ] );
+		$on_line = $backtrace[ 3 ][ 'line' ];
+		$caller  = $this->_get_caller( 'doing_it_wrong_run', '_doing_it_wrong' );
 
-		$this->doingitwrong[] = compact( 'deprecated', 'message', 'version', 'in_file', 'on_line', 'caller' );
+		if ( ! empty( $this->_actual_file ) ) {
+			$in_file = $this->_actual_file;
+			$on_line = $this->_actual_line;
+		}
+
+		$error = compact( 'wrong', 'message', 'version', 'in_file', 'on_line', 'caller' );
+
+		$this->doingitwrong[] = $error;
+
+		do_action( 'debugpress-tracker-doing-it-wrong-logged', $error );
 
 		$this->counts[ 'doingitwrong' ] ++;
 		$this->counts[ 'total' ] ++;
@@ -342,7 +352,11 @@ class Tracker {
 		$in_file = $this->_strip_abspath( $backtrace[ $bt ][ 'file' ] );
 		$on_line = $backtrace[ $bt ][ 'line' ];
 
-		$this->deprecated[ 'function' ][] = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line' );
+		$error = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line' );
+
+		$this->deprecated[ 'function' ][] = $error;
+
+		do_action( 'debugpress-tracker-deprecated-function-logged', $error );
 
 		$this->counts[ 'deprecated' ] ++;
 		$this->counts[ 'total' ] ++;
@@ -355,7 +369,11 @@ class Tracker {
 		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
 		$on_line    = $backtrace[ 4 ][ 'line' ];
 
-		$this->deprecated[ 'file' ][] = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file' );
+		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file' );;
+
+		$this->deprecated[ 'file' ][] = $error;
+
+		do_action( 'debugpress-tracker-deprecated-file-logged', $error );
 
 		$this->counts[ 'deprecated' ] ++;
 		$this->counts[ 'total' ] ++;
@@ -406,7 +424,11 @@ class Tracker {
 				break;
 		}
 
-		$this->deprecated[ 'argument' ][] = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line' );
+		$error = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line' );;
+
+		$this->deprecated[ 'argument' ][] = $error;
+
+		do_action( 'debugpress-tracker-deprecated-argument-logged', $error );
 
 		$this->counts[ 'deprecated' ] ++;
 		$this->counts[ 'total' ] ++;
@@ -419,7 +441,28 @@ class Tracker {
 		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
 		$on_line    = $backtrace[ 4 ][ 'line' ];
 
-		$this->deprecated[ 'constructor' ][] = compact( 'deprecated', 'version', 'in_file', 'on_line' );
+		$error = compact( 'deprecated', 'version', 'in_file', 'on_line' );
+
+		$this->deprecated[ 'constructor' ][] = $error;
+
+		do_action( 'debugpress-tracker-deprecated-constructor-logged', $error );
+
+		$this->counts[ 'deprecated' ] ++;
+		$this->counts[ 'total' ] ++;
+	}
+
+	public function track_hook_run( $hook, $replacement, $version, $message ) {
+		$backtrace = debug_backtrace();
+
+		$deprecated = $hook;
+		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
+		$on_line    = $backtrace[ 4 ][ 'line' ];
+
+		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line' );
+
+		$this->deprecated[ 'hook-run' ][] = $error;
+
+		do_action( 'debugpress-tracker-deprecated-hook-run-logged', $error );
 
 		$this->counts[ 'deprecated' ] ++;
 		$this->counts[ 'total' ] ++;
@@ -527,6 +570,25 @@ class Tracker {
 		}
 	}
 
+	private function _track_error_basic( $errno, $errstr, $errfile, $errline ) {
+		$caller = $this->_get_caller();
+
+		$error = compact( 'errno', 'errstr', 'errfile', 'errline', 'caller' );
+
+		$this->errors[] = $error;
+
+		do_action( 'debugpress-tracker-error-logged', $error );
+
+		$this->counts[ 'errors' ] ++;
+		$this->counts[ 'total' ] ++;
+
+		if ( $errno == E_ERROR || $errno == E_USER_ERROR ) {
+			$this->has_errors ++;
+		} else {
+			$this->has_warnings ++;
+		}
+	}
+
 	private function _hooks_object() : int {
 		global $wp_filter;
 
@@ -551,15 +613,28 @@ class Tracker {
 		return ltrim( str_replace( array( untrailingslashit( ABSPATH ), '\\' ), array( '', '/' ), $path ), '/' );
 	}
 
-	private function _get_caller( $type = '' ) : array {
+	private function _get_caller( $type = '', $function_target = '' ) : array {
 		$_abspath = str_replace( '\\', '/', ABSPATH );
 
 		$filters = array( 'do_action', 'apply_filter', 'do_action_ref_array', 'call_user_func_array' );
 
-		$trace  = array_reverse( debug_backtrace() );
-		$caller = array();
+		$trace              = array_reverse( debug_backtrace() );
+		$caller             = array();
+		$this->_actual_file = '';
+		$this->_actual_line = 0;
 
 		foreach ( $trace as $call ) {
+			if ( ! empty( $function_target ) && isset( $call[ 'function' ] ) ) {
+				if ( substr( $call[ 'function' ], 0, strlen( $function_target ) ) == $function_target ) {
+					if ( isset( $call[ 'file' ] ) && isset( $call[ 'line' ] ) ) {
+						$this->_actual_file = $this->_normalize_path( $call[ 'file' ] );
+						$this->_actual_line = $call[ 'line' ];
+					}
+
+					break;
+				}
+			}
+
 			if ( isset( $call[ 'class' ] ) && "Dev4Press\\Plugin\\DebugPress\\Track\\Tracker" == $call[ 'class' ] ) {
 				continue;
 			}
@@ -584,13 +659,11 @@ class Tracker {
 
 			$file = '';
 			if ( isset( $call[ 'file' ] ) && isset( $call[ 'line' ] ) ) {
-				$_file = str_replace( '\\', '/', $call[ 'file' ] );
+				$_file = $this->_normalize_path( $call[ 'file' ] );
+				$file  = ' (' . $_file . ' => ' . $call[ 'line' ] . ')';
 
-				if ( strpos( $_file, $_abspath ) === 0 ) {
-					$_file = substr( $_file, strlen( $_abspath ) );
-				}
-
-				$file = ' (' . $_file . ' => ' . $call[ 'line' ] . ')';
+				$this->_actual_file = $_file;
+				$this->_actual_line = $call[ 'line' ];
 			}
 
 			$filter = '';
@@ -613,6 +686,16 @@ class Tracker {
 		}
 
 		return $caller;
+	}
+
+	private function _normalize_path( $path ) {
+		$path = wp_normalize_path( $path );
+
+		if ( strpos( $path, $this->abspath ) === 0 ) {
+			$path = substr( $path, strlen( $this->abspath ) );
+		}
+
+		return $path;
 	}
 
 	private function _log_http_api_call( $response, $args, $url ) {
