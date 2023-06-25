@@ -363,15 +363,15 @@ class Queries extends Panel {
 	}
 
 	private function _prepare_library() {
-		if ( class_exists( 'Dev4Press\v41\Core\Helpers\DB' ) ) {
-			foreach ( \Dev4Press\v41\Core\Helpers\DB::instance()->log_get_queries() as $query ) {
-				$this->library_identification[ absint( $query[ 'id' ] ) ] = $query[ 'plugin' ] . '/' . $query[ 'instance' ];
-			}
-		}
+		$list = array( '41', '42', '43' );
 
-		if ( class_exists( 'Dev4Press\v42\Core\Helpers\DB' ) ) {
-			foreach ( \Dev4Press\v42\Core\Helpers\DB::instance()->log_get_queries() as $query ) {
-				$this->library_identification[ absint( $query[ 'id' ] ) ] = $query[ 'plugin' ] . '/' . $query[ 'instance' ];
+		foreach ( $list as $code ) {
+			$class = 'Dev4Press\v' . $code . '\Core\Helpers\DB';
+
+			if ( class_exists( $class ) ) {
+				foreach ( $class::instance()->log_get_queries() as $query ) {
+					$this->library_identification[ absint( $query[ 'id' ] ) ] = $query[ 'plugin' ] . '/' . $query[ 'instance' ];
+				}
 			}
 		}
 

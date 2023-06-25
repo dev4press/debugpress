@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.2
+Stable tag: 3.3
 Requires at least: 5.2
 Tested up to: 6.2
 Requires PHP: 7.3
@@ -112,6 +112,9 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 3.3 (2023.06.22) =
+* New: Support for more versions of the Dev4Press Library
+
 = 3.2 (2023.06.22) =
 * New: Support for the deprecated hook run handling
 * New: Execute actions when each error has been logged
