@@ -42,24 +42,12 @@ class Basics extends Panel {
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
-		$this->table_row( array(
-			__( "Memory Used by PHP", "debugpress" ),
-			debugpress_tracker()->get( '_end', 'memory' )
-		) );
-		$this->table_row( array(
-			__( "Total Page Time", "debugpress" ),
-			debugpress_tracker()->get( '_end', 'time' ) . " " . __( "seconds", "debugpress" )
-		) );
-		$this->table_row( array(
-			__( "Number of SQL Queries", "debugpress" ),
-			debugpress_tracker()->get( '_end', 'queries' )
-		) );
+		$this->table_row( array( __( "Memory Used by PHP", "debugpress" ), debugpress_tracker()->get( '_end', 'memory' ) ) );
+		$this->table_row( array( __( "Total Page Time", "debugpress" ), debugpress_tracker()->get( '_end', 'time' ) . " " . __( "seconds", "debugpress" ) ) );
+		$this->table_row( array( __( "Number of SQL Queries", "debugpress" ), debugpress_tracker()->get( '_end', 'queries' ) ) );
 
 		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
-			$this->table_row( array(
-				__( "Time for SQL Queries", "debugpress" ),
-				debugpress_tracker()->get_total_sql_time() . " " . __( "seconds", "debugpress" )
-			) );
+			$this->table_row( array( __( "Time for SQL Queries", "debugpress" ), debugpress_tracker()->get_total_sql_time() . " " . __( "seconds", "debugpress" ) ) );
 		}
 
 		if ( debugpress_tracker()->count_hooks > 0 ) {
@@ -68,11 +56,10 @@ class Basics extends Panel {
 
 		if ( ! empty( debugpress_tracker()->httpapi ) ) {
 			$this->table_row( array( __( "HTTP API Calls", "debugpress" ), count( debugpress_tracker()->httpapi ) ) );
-			$this->table_row( array(
-				__( "HTTP API Total Time", "debugpress" ),
-				debugpress_tracker()->http_total_time() . " " . __( "seconds", "debugpress" )
-			) );
+			$this->table_row( array( __( "HTTP API Total Time", "debugpress" ), debugpress_tracker()->http_total_time() . " " . __( "seconds", "debugpress" ) ) );
 		}
+		$this->table_row( array( __( "Current Timestamp", "debugpress" ), time() ) );
+		$this->table_row( array( __( "Current Datetime", "debugpress" ), date( 'c' ) ) );
 		$this->table_foot();
 		$this->block_footer();
 
@@ -81,10 +68,7 @@ class Basics extends Panel {
 		$this->table_init_standard();
 		$this->table_head();
 		$this->table_row( array( __( "PHP Memory Available", "debugpress" ), ini_get( 'memory_limit' ) . "B" ) );
-		$this->table_row( array(
-			__( "PHP Max Execution Time", "debugpress" ),
-			ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" )
-		) );
+		$this->table_row( array( __( "PHP Max Execution Time", "debugpress" ), ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" ) ) );
 		$this->table_foot();
 		$this->block_footer();
 

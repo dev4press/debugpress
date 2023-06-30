@@ -46,7 +46,7 @@ class TracePlugin extends AbstractPlugin
 
         $i = 1;
         foreach ($o->value->contents as $frame) {
-            $framedesc = $indent.\str_pad($i.': ', 4 );
+            $framedesc = $indent.\str_pad($i.': ', 4, ' ');
 
             if ($frame->trace['file']) {
                 $framedesc .= $this->renderer->ideLink($frame->trace['file'], $frame->trace['line']).PHP_EOL;

@@ -1,5 +1,7 @@
 <?php
 
+use Kint\Renderer\AbstractRenderer;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -10,7 +12,7 @@ require_once( DEBUGPRESS_PLUGIN_PATH . 'core/printer/kint/autoload.php' );
 
 Kint\Renderer\RichRenderer::$folder = false;
 Kint\Renderer\RichRenderer::$theme  = 'aante-light.css';
-Kint\Renderer\RichRenderer::$sort   = Kint\Renderer\Renderer::SORT_FULL;
+Kint\Renderer\RichRenderer::$sort   = AbstractRenderer::SORT_FULL;
 
 do_action( 'debugpress-printer-loaded-kint' );
 

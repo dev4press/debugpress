@@ -112,8 +112,13 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 3.3 (2023.06.22) =
+= 3.3 (2023.07.03) =
 * New: Support for more versions of the Dev4Press Library
+* New: System tab shows additional information about Apache
+* New: System tab shows WordPress database overview information
+* Edit: Some changes to the displayed System and Basic tabs
+* Edit: Kint Pretty Print Library 5.0.7
+* Fix: Few issues with Info method for getting database information
 
 = 3.2 (2023.06.22) =
 * New: Support for the deprecated hook run handling

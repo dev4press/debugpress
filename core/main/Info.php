@@ -18,6 +18,12 @@ class Info {
 		}
 	}
 
+	public static function is_apache() : bool {
+		global $is_apache;
+
+		return $is_apache;
+	}
+
 	public static function debug_log_path() : string {
 		$path = '';
 
@@ -110,6 +116,22 @@ class Info {
 		}
 
 		return self::cms_stylesheet_theme_name();
+	}
+
+	public static function apache_modules_list() : array {
+		if ( Info::is_apache() && function_exists( 'apache_get_modules' ) ) {
+			return apache_get_modules();
+		}
+
+		return array();
+	}
+
+	public static function apache_version() : string {
+		if ( Info::is_apache() && function_exists( 'apache_get_version' ) ) {
+			return apache_get_version();
+		}
+
+		return '';
 	}
 
 	public static function apache_mod_rewrite() : string {
@@ -229,10 +251,10 @@ class Info {
 	}
 
 	public static function mysql_wordpress() : array {
-		$data = wp_cache_get( 'gd-press-tools', 'database' );
+		$data = wp_cache_get( 'database', 'debugpress' );
 
 		if ( $data === false ) {
-			$raw = debugpress_db()->get_row( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = '" . DB_NAME . "' AND table_name like '" . debugpress_db()->base_prefix() . "%' GROUP BY table_schema" );
+			$raw = debugpress_db()->wpdb()->get_row( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = '" . DB_NAME . "' AND table_name like '" . debugpress_db()->wpdb()->base_prefix . "%' GROUP BY table_schema" );
 
 			$data = array(
 				'tables'  => absint( $raw->tables_count ),
@@ -241,7 +263,7 @@ class Info {
 				'free'    => debugpress_format_size( $raw->free_space )
 			);
 
-			wp_cache_add( 'gd-press-tools', $data, 'database' );
+			wp_cache_add( 'database', 'debugpress' );
 		}
 
 		return (array) $data;

@@ -24,14 +24,21 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Server Status", "debugpress" ) );
-		$this->block_header();
-		$this->table_init_standard();
-		$this->table_head();
-		$this->table_row( array( __( "Current Timestamp", "debugpress" ), time() ) );
-		$this->table_row( array( __( "Current Datetime", "debugpress" ), date( 'c' ) ) );
-		$this->table_foot();
-		$this->block_footer();
+		if ( Info::is_apache() ) {
+			$this->title( __( "Apache Status", "debugpress" ) );
+			$this->block_header();
+			$this->table_init_standard();
+			$this->table_head();
+			$this->table_row( array( __( "Version", "debugpress" ), Info::apache_version() ) );
+			$this->table_row( array( __( "Module: Rewrite", "debugpress" ), Info::apache_mod_rewrite() ) );
+			$this->table_row( array( __( "Module: SSL", "debugpress" ), Info::apache_mod_ssl() ) );
+			$this->table_row( array(
+				__( "All Loaded Modules", "debugpress" ),
+				debugpress_rx( Info::apache_modules_list(), false )
+			) );
+			$this->table_foot();
+			$this->block_footer();
+		}
 
 		$this->title( __( "mySQL Status", "debugpress" ) );
 		$this->block_header();
@@ -52,6 +59,17 @@ class Server extends Panel {
 		$this->table_row( array( __( "User", "debugpress" ), DB_USER ) );
 		$this->table_row( array( __( "Charset", "debugpress" ), defined( 'DB_CHARSET' ) ? DB_CHARSET : '' ) );
 		$this->table_row( array( __( "Collation", "debugpress" ), defined( 'DB_COLLATE' ) ? DB_COLLATE : '' ) );
+		$this->table_foot();
+		$this->block_footer();
+
+		$this->title( __( "WordPress Database", "debugpress" ) );
+		$this->block_header();
+		$this->table_init_standard();
+		$this->table_head();
+		$this->table_row( array( __( "Tables", "debugpress" ), Info::mysql_wordpress_tables() ) );
+		$this->table_row( array( __( "Records", "debugpress" ), Info::mysql_wordpress_records() ) );
+		$this->table_row( array( __( "Size", "debugpress" ), Info::mysql_wordpress_size() ) );
+		$this->table_row( array( __( "Free Space", "debugpress" ), Info::mysql_wordpress_free_space() ) );
 		$this->table_foot();
 		$this->block_footer();
 	}

@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "kint-php/kint",
-            "version": "5.0.1",
-            "version_normalized": "5.0.1.0",
+            "version": "5.0.7",
+            "version_normalized": "5.0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "dd7fbd9673a88f6c5d2f838aacb2340afa4ce044"
+                "reference": "a700653a77250b122920799b10c94e904c9b78c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/dd7fbd9673a88f6c5d2f838aacb2340afa4ce044",
-                "reference": "dd7fbd9673a88f6c5d2f838aacb2340afa4ce044",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/a700653a77250b122920799b10c94e904c9b78c7",
+                "reference": "a700653a77250b122920799b10c94e904c9b78c7",
                 "shasum": ""
             },
             "require": {
@@ -30,7 +30,7 @@
                 "kint-php/kint-helpers": "Provides extra helper functions",
                 "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
             },
-            "time": "2022-11-22T12:16:00+00:00",
+            "time": "2023-06-26T19:25:00+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -64,7 +64,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kint-php/kint/issues",
-                "source": "https://github.com/kint-php/kint/tree/5.0.1"
+                "source": "https://github.com/kint-php/kint/tree/5.0.7"
             },
             "install-path": "../kint-php/kint"
         }
