@@ -75,8 +75,6 @@ class User extends Panel {
 	);
 
 	public function __construct() {
-		parent::__construct();
-
 		global $userdata;
 
 		$this->usermeta = get_user_meta( $userdata->ID );

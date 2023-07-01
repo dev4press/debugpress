@@ -9,9 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class Panel {
 	private $_table = array();
 
-	public function __construct() {
-	}
-
 	/** @return \Dev4Press\Plugin\DebugPress\Main\Panel */
 	public static function instance() {
 		static $instance = array();
