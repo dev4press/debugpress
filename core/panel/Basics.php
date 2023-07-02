@@ -26,12 +26,12 @@ class Basics extends Panel {
 		if ( ! empty( $test ) ) {
 			echo '<div class="debugpress-debug-notice-block">';
 
-			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . __( "Debug mode problems", "debugpress" ), true, true );
+			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . esc_html__( "Debug mode problems", "debugpress" ), true, true );
 			$this->block_header();
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[ 0 ] );
 				echo $t[ 1 ];
-				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . __( "More Information", "debugpress" ) . '</a>';
+				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . esc_html__( "More Information", "debugpress" ) . '</a>';
 			}
 			$this->block_footer();
 

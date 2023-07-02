@@ -117,6 +117,7 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * New: System tab shows additional information about Apache
 * New: System tab shows WordPress database overview information
 * Edit: Some changes to the displayed System and Basic tabs
+* Edit: Various small tweaks to the plugin PHP code
 * Edit: Kint Pretty Print Library 5.0.7
 * Fix: Few issues with Info method for getting database information
 

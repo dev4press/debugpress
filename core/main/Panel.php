@@ -55,7 +55,7 @@ abstract class Panel {
 	}
 
 	public function title( $title, $open = true, $hide_button = false ) {
-		$render = '<h5 class="debugpress-debugger-panel-block-title">' . $title;
+		$render = '<h5 class="debugpress-debugger-panel-block-title">' . esc_html( $title );
 
 		if ( ! $hide_button ) {
 			$render .= '<span class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-square-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
@@ -67,7 +67,7 @@ abstract class Panel {
 	}
 
 	public function sub_title( $title ) {
-		echo '<h6 class="debugpress-debugger-panel-block-subtitle">' . $title . '</h6>';
+		echo '<h6 class="debugpress-debugger-panel-block-subtitle">' . esc_html( $title ) . '</h6>';
 	}
 
 	public function pre( $content ) {

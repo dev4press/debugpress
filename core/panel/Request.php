@@ -27,17 +27,17 @@ class Request extends Panel {
 			$this->title( __( "Page Request", "debugpress" ) );
 			$this->block_header();
 			$this->sub_title( __( "Request", "debugpress" ) );
-			echo empty( $wp->request ) ? __( "None", "debugpress" ) : esc_html( $wp->request );
+			echo empty( $wp->request ) ? esc_html__( "None", "debugpress" ) : esc_html( $wp->request );
 
 			$this->sub_title( __( "Matched Rewrite Rule", "debugpress" ) );
-			echo empty( $wp->matched_rule ) ? __( "None", "debugpress" ) : esc_html( $wp->matched_rule );
+			echo empty( $wp->matched_rule ) ? esc_html__( "None", "debugpress" ) : esc_html( $wp->matched_rule );
 
 			$this->sub_title( __( "Matched Rewrite Query", "debugpress" ) );
-			echo empty( $wp->matched_query ) ? __( "None", "debugpress" ) : esc_html( $wp->matched_query );
+			echo empty( $wp->matched_query ) ? esc_html__( "None", "debugpress" ) : esc_html( $wp->matched_query );
 
 			$this->sub_title( __( "Loaded Template", "debugpress" ) );
 			$tpl = $template ? basename( $template ) : '';
-			echo empty( $tpl ) ? __( "None", "debugpress" ) : esc_html( $tpl );
+			echo empty( $tpl ) ? esc_html__( "None", "debugpress" ) : esc_html( $tpl );
 			$this->block_footer();
 		}
 
