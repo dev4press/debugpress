@@ -54,11 +54,13 @@ abstract class Panel {
 		return ! empty( $print ) ? $print : debugpress_rx( $value, false );
 	}
 
-	public function title( $title, $open = true, $hide_button = false ) {
+	public function title( $title, $open = true, $hide_button = false, $button_id = '' ) {
 		$render = '<h5 class="debugpress-debugger-panel-block-title">' . esc_html( $title );
 
 		if ( ! $hide_button ) {
-			$render .= '<span class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-square-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
+			$id = empty( $button_id ) ? '' : 'debugpress-toggle-' . $button_id;
+
+			$render .= '<span id="' . $id . '" class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-square-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
 		}
 
 		$render .= '</h5>';

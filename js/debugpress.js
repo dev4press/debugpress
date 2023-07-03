@@ -13,7 +13,8 @@
             open: "manual",
             ratio: "40",
             tab: "debugpress-debugger-tab-basics",
-            last: "closed"
+            last: "closed",
+            close: []
         },
         ajax: false,
         admin: false,
@@ -52,7 +53,7 @@
                         });
                     });
 
-                    $(window).on('resize orientationchange', wp.dev4press.debugpress.tabs.debuglog.resize);
+                    $(window).on("resize orientationchange", wp.dev4press.debugpress.tabs.debuglog.resize);
                 },
                 resize: function() {
                     $("#debugpress-debuglog-content div").height($(".debugpress-style-popup .sanp-content").height() - 65);
@@ -62,7 +63,7 @@
                 init: function() {
                     $(document).ajaxError(function(event, response, options, error) {
                         var ajax = {
-                            status: 'error',
+                            status: "error",
                             error: error,
                             url: options.url,
                             type: options.type,
@@ -74,11 +75,11 @@
 
                     $(document).ajaxSuccess(function(event, response, options) {
                         var ajax = {
-                            status: 'success',
+                            status: "success",
                             url: options.url,
-                            data: options.data ? options.data.toString() : '',
+                            data: options.data ? options.data.toString() : "",
                             type: options.type,
-                            response: options.hasOwnProperty('dataType') ? options.dataType : options.dataTypes.join('/'),
+                            response: options.hasOwnProperty("dataType") ? options.dataType : options.dataTypes.join("/"),
                             headers: wp.dev4press.debugpress.tabs.ajax.headers(response)
                         };
 
@@ -90,7 +91,7 @@
                         tab = $("#debugpress-debugger-tab-ajax-li"),
                         button = $(".debugpress-debug-dialog-button"),
                         count = parseInt(el.data("calls")),
-                        render = '', response = 'UNKNOWN';
+                        render = "", response = "UNKNOWN";
 
                     if (count === 0) {
                         el.html("");
@@ -100,8 +101,8 @@
                     el.data("calls", count);
                     $("a span", tab).html(count);
 
-                    if (ajax.status === 'success') {
-                        if (ajax.hasOwnProperty('response')) {
+                    if (ajax.status === "success") {
+                        if (ajax.hasOwnProperty("response")) {
                             response = ajax.response === undefined ? response : ajax.response.toString().toUpperCase();
                         }
 
@@ -128,11 +129,11 @@
                         list = raw.trim().split(/[\r\n]+/), headers = {};
 
                     $.each(list, function(idx, line) {
-                        var parts = line.split(': '),
+                        var parts = line.split(": "),
                             header = parts.shift(),
-                            value = parts.join(': ');
+                            value = parts.join(": ");
 
-                        if (header.substring(0, 13).toLowerCase() === 'x-debugpress-') {
+                        if (header.substring(0, 13).toLowerCase() === "x-debugpress-") {
                             header = header.substring(13);
                             headers[header] = value;
                         }
@@ -147,7 +148,7 @@
                         types: []
                     },
                     active: {
-                        show: 'all',
+                        show: "all",
                         types: []
                     }
                 },
@@ -169,13 +170,13 @@
                     var i, selector;
 
                     for (i = 0; i < wp.dev4press.debugpress.tabs.hooks.filters.all.types.length; i++) {
-                        selector = 'dbg-hook-' + wp.dev4press.debugpress.tabs.hooks.filters.all.types[i].replace('::', '--');
+                        selector = "dbg-hook-" + wp.dev4press.debugpress.tabs.hooks.filters.all.types[i].replace("::", "--");
                         $("table.dbg-hooks-actions ." + selector).hide();
                         $("table#dbg-hooks-list > tbody > tr." + selector).hide();
                     }
 
                     for (i = 0; i < wp.dev4press.debugpress.tabs.hooks.filters.active.types.length; i++) {
-                        selector = 'dbg-hook-' + wp.dev4press.debugpress.tabs.hooks.filters.active.types[i].replace('::', '--');
+                        selector = "dbg-hook-" + wp.dev4press.debugpress.tabs.hooks.filters.active.types[i].replace("::", "--");
                         $("table.dbg-hooks-actions ." + selector).show();
                         $("table#dbg-hooks-list > tbody > tr." + selector).show();
                     }
@@ -188,7 +189,7 @@
                             var on = $(this).attr("id").substring(9),
                                 td = $(".dbg-hooks-actions .dbg-hook-column-action");
 
-                            if (on === 'full') {
+                            if (on === "full") {
                                 td.addClass("dbg-calls-show");
                             } else {
                                 td.removeClass("dbg-calls-show");
@@ -263,7 +264,7 @@
                         sources: []
                     },
                     active: {
-                        show: 'all',
+                        show: "all",
                         caller: [],
                         types: [],
                         tables: [],
@@ -312,8 +313,8 @@
                             wp.dev4press.debugpress.tabs.queries.filters.all.sources.push(source);
                         });
                     } else {
-                        wp.dev4press.debugpress.tabs.queries.filters.active.sources.push('n/a');
-                        wp.dev4press.debugpress.tabs.queries.filters.all.sources.push('n/a');
+                        wp.dev4press.debugpress.tabs.queries.filters.active.sources.push("n/a");
+                        wp.dev4press.debugpress.tabs.queries.filters.all.sources.push("n/a");
                     }
                 },
                 filter: function() {
@@ -646,7 +647,7 @@
                 }, size = {
                     width: "95%",
                     height: "90%"
-                }, ratio = parseInt(wp.dev4press.debugpress.layout.ratio) + '%';
+                }, ratio = parseInt(wp.dev4press.debugpress.layout.ratio) + "%";
 
                 switch (wp.dev4press.debugpress.layout.layout) {
                     case "right":
@@ -677,6 +678,10 @@
                 wp.dev4press.debugpress.popup.smartAniPopup("resize", size);
             },
             save_state: function() {
+                if (!wp.dev4press.debugpress.layout.hasOwnProperty("close")) {
+                    wp.dev4press.debugpress.layout.close = [];
+                }
+
                 wp.dev4press.debugpress.popup.smartAniPopup("mod", {save: wp.dev4press.debugpress.layout});
                 wp.dev4press.debugpress.popup.smartAniPopup("save");
             },
@@ -689,7 +694,7 @@
 
                 wp.dev4press.debugpress.tab_change(wp.dev4press.debugpress.layout.tab);
 
-                var layout = $(".debugpress-layout-position .debugpress-layout-position-" + wp.dev4press.debugpress.layout.layout);
+                var i, id, layout = $(".debugpress-layout-position .debugpress-layout-position-" + wp.dev4press.debugpress.layout.layout);
 
                 layout.addClass("selected");
                 layout.find("input").prop("checked", true).trigger("change");
@@ -708,7 +713,32 @@
                     }
                 }
 
+                if (!wp.dev4press.debugpress.layout.hasOwnProperty("close")) {
+                    wp.dev4press.debugpress.layout.close = [];
+                }
+
+                for (i = 0; i < wp.dev4press.debugpress.layout.close.length; i++) {
+                    id = "#debugpress-toggle-" + wp.dev4press.debugpress.layout.close[i];
+
+                    wp.dev4press.debugpress.dialog.section_toggle($(id));
+                }
+
                 wp.dev4press.debugpress.dialog.reposition();
+            },
+            section_toggle: function(button) {
+                var block = button.parent().next();
+
+                if (button.hasClass("block-open")) {
+                    button.removeClass("block-open");
+                    button.find("i").attr("class", "debugpress-icon debugpress-icon-square-plus");
+
+                    block.hide();
+                } else {
+                    button.addClass("block-open");
+                    button.find("i").attr("class", "debugpress-icon debugpress-icon-square-minus");
+
+                    block.show();
+                }
             }
         },
         sort_by: function(source, attr, order, cls) {
@@ -752,7 +782,7 @@
             wp.dev4press.debugpress.popup = $("#debugpress-debugger-content-wrapper");
 
             if (wp.dev4press.debugpress.counts.total > 0) {
-                var extra = wp.dev4press.debugpress.counts.errors > 0 ? 'debugpress-debug-has-errors' : 'debugpress-debug-has-warnings';
+                var extra = wp.dev4press.debugpress.counts.errors > 0 ? "debugpress-debug-has-errors" : "debugpress-debug-has-warnings";
 
                 $(".debugpress-debug-has-errors", button).show().html(wp.dev4press.debugpress.counts.total);
 
@@ -806,7 +836,7 @@
                         wp.dev4press.debugpress.layout.last = skin.onLoad ? "open" : "closed"
                     },
                     afterOpen: function(core, skin) {
-                        $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger('focus');
+                        $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger("focus");
 
                         wp.dev4press.debugpress.layout.last = "open";
                         wp.dev4press.debugpress.dialog.save_state();
@@ -848,18 +878,30 @@
             $(document).on("click", ".debugpress-debugger-panel-block-title span", function(e) {
                 e.preventDefault();
 
-                var block = $(this).parent().next();
+                var btn = $(this), id = btn.attr("id"), open = !btn.hasClass("block-open"), idx;
 
-                if ($(this).hasClass("block-open")) {
-                    $(this).removeClass("block-open");
-                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-square-plus");
+                wp.dev4press.debugpress.dialog.section_toggle(btn);
 
-                    block.hide();
-                } else {
-                    $(this).addClass("block-open");
-                    $(this).find("i").attr("class", "debugpress-icon debugpress-icon-square-minus");
+                if (id !== "") {
+                    id = id.substring(18);
 
-                    block.show();
+                    if (!wp.dev4press.debugpress.layout.hasOwnProperty("close")) {
+                        wp.dev4press.debugpress.layout.close = [];
+                    }
+
+                    idx = wp.dev4press.debugpress.layout.close.indexOf(id);
+
+                    if (open) {
+                        if (idx > -1) {
+                            wp.dev4press.debugpress.layout.close.splice(idx, 1);
+                        }
+                    } else {
+                        if (idx === -1) {
+                            wp.dev4press.debugpress.layout.close.push(id);
+                        }
+                    }
+
+                    wp.dev4press.debugpress.dialog.save_state();
                 }
             });
 
@@ -900,18 +942,18 @@
 
                 if (current.length) {
                     first.attr({
-                        'tabindex': '-1',
-                        'aria-selected': null
+                        "tabindex": "-1",
+                        "aria-selected": null
                     });
                     current.attr({
-                        'tabindex': '0',
-                        'aria-selected': true
-                    }).trigger('focus');
+                        "tabindex": "0",
+                        "aria-selected": true
+                    }).trigger("focus");
 
-                    theid = $(document.activeElement).attr('href').substring(1);
+                    theid = $(document.activeElement).attr("href").substring(1);
 
-                    $('#debugpress-debugger-content-wrapper [role="tabpanel"]').attr('aria-hidden', 'true');
-                    $('#debugpress-debugger-content-wrapper #' + theid).attr('aria-hidden', null);
+                    $('#debugpress-debugger-content-wrapper [role="tabpanel"]').attr("aria-hidden", "true");
+                    $('#debugpress-debugger-content-wrapper #' + theid).attr("aria-hidden", null);
 
                     wp.dev4press.debugpress.tab_change(theid);
                 }

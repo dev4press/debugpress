@@ -12,7 +12,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Server extends Panel {
 	public function left() {
-		$this->title( __( "Server Information", "debugpress" ) );
+		$this->title( __( "Server Information", "debugpress" ), true, false, 'server-info' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -25,7 +25,7 @@ class Server extends Panel {
 		$this->block_footer();
 
 		if ( Info::is_apache() ) {
-			$this->title( __( "Apache Status", "debugpress" ) );
+			$this->title( __( "Apache Status", "debugpress" ), true, false, 'server-apache' );
 			$this->block_header();
 			$this->table_init_standard();
 			$this->table_head();
@@ -40,7 +40,7 @@ class Server extends Panel {
 			$this->block_footer();
 		}
 
-		$this->title( __( "mySQL Status", "debugpress" ) );
+		$this->title( __( "mySQL Status", "debugpress" ), true, false, 'server-mysql' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -50,7 +50,7 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "mySQL Connection", "debugpress" ) );
+		$this->title( __( "mySQL Connection", "debugpress" ), true, false, 'server-connection' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -62,7 +62,7 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "WordPress Database", "debugpress" ) );
+		$this->title( __( "WordPress Database", "debugpress" ), true, false, 'wp-database' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -75,7 +75,7 @@ class Server extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "PHP Status", "debugpress" ) );
+		$this->title( __( "PHP Status", "debugpress" ), true, false, 'php-status' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -93,7 +93,7 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Errors Display and Logging", "debugpress" ) );
+		$this->title( __( "PHP Errors Display and Logging", "debugpress" ), true, false, 'php-errors' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -107,7 +107,7 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Important Extensions", "debugpress" ) );
+		$this->title( __( "PHP Important Extensions", "debugpress" ), true, false, 'php-ext' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -119,7 +119,7 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Cache Extensions", "debugpress" ) );
+		$this->title( __( "PHP Cache Extensions", "debugpress" ), true, false, 'php-cache' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -130,7 +130,7 @@ class Server extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "PHP Loaded Extensions", "debugpress" ) );
+		$this->title( __( "PHP Loaded Extensions", "debugpress" ), true, false, 'php-loaded' );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();

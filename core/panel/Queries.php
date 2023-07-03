@@ -95,7 +95,7 @@ class Queries extends Panel {
 	public function left() {
 		echo '<h4 class="debugpress-querie-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
 
-		$this->title( __( "Basic Statistics", "debugpress" ) );
+		$this->title( __( "Basic Statistics", "debugpress" ), true, false, 'basic-statistics' );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
 		$this->add_column( __( "Total", "debugpress" ), '', 'text-align: right;' );
@@ -135,7 +135,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Queries Control", "debugpress" ) );
+		$this->title( __( "Queries Control", "debugpress" ), true, false, 'queries-control' );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
 		$this->add_column( __( "Control", "debugpress" ), '', 'text-align: right;' );
@@ -155,7 +155,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Query Types", "debugpress" ) );
+		$this->title( __( "Query Types", "debugpress" ), true, false, 'query-types' );
 		$this->block_header();
 		$this->add_column( __( "Type", "debugpress" ), '', '', true );
 		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -173,7 +173,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Database Tables", "debugpress" ) );
+		$this->title( __( "Database Tables", "debugpress" ), true, false, 'db-tables' );
 		$this->block_header();
 		$this->add_column( __( "Table", "debugpress" ), '', '', true );
 		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -191,7 +191,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Query Callers", "debugpress" ) );
+		$this->title( __( "Query Callers", "debugpress" ), true, false, 'query-callers' );
 		$this->block_header();
 		$this->add_column( __( "Caller", "debugpress" ), '', '', true );
 		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -210,7 +210,7 @@ class Queries extends Panel {
 		$this->block_footer();
 
 		if ( count( $this->sql_source_classes ) > 1 ) {
-			$this->title( __( "Call Source", "debugpress" ) );
+			$this->title( __( "Call Source", "debugpress" ), true, false, 'call-source' );
 			$this->block_header();
 			$this->add_column( __( "Source", "debugpress" ), '', '', true );
 			$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );

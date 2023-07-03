@@ -116,6 +116,7 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * New: Support for more versions of the Dev4Press Library
 * New: System tab shows additional information about Apache
 * New: System tab shows WordPress database overview information
+* New: Remember open/close sections on some panels
 * Edit: Some changes to the displayed System and Basic tabs
 * Edit: Various small tweaks to the plugin PHP code
 * Edit: Kint Pretty Print Library 5.0.7

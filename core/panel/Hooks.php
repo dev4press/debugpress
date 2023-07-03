@@ -70,7 +70,7 @@ class Hooks extends Panel {
 	public function left() {
 		echo '<h4 class="debugpress-querie-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
 
-		$this->title( __( "Queries Control", "debugpress" ) );
+		$this->title( __( "Hooks Control", "debugpress" ), true, false, 'hooks-control' );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
 		$this->add_column( __( "Control", "debugpress" ), '', 'text-align: right;' );
@@ -82,7 +82,7 @@ class Hooks extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Callback Filter", "debugpress" ) );
+		$this->title( __( "Callback Filter", "debugpress" ), true, false, 'hooks-filter' );
 		$this->block_header();
 		$this->add_column( __( "Origin", "debugpress" ), '', '', true );
 		$this->add_column( __( "Count", "debugpress" ), '', 'text-align: right;' );
