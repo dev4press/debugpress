@@ -55,7 +55,7 @@ abstract class Panel {
 	}
 
 	public function title( $title, $open = true, $hide_button = false, $button_id = '' ) {
-		$render = '<h5 class="debugpress-debugger-panel-block-title">' . esc_html( $title );
+		$render = '<h5 class="debugpress-debugger-panel-block-title">' . debugpress_kses_basic( $title );
 
 		if ( ! $hide_button ) {
 			$id = empty( $button_id ) ? '' : 'debugpress-toggle-' . $button_id;

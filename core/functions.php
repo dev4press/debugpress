@@ -206,3 +206,36 @@ function debugpress_rs( $value, bool $echo = true ) : string {
 
 	return $result;
 }
+
+function debugpress_kses_basic( string $render ) : string {
+	return wp_kses( $render, array(
+		'br'     => array(),
+		'code'   => array(),
+		'a'      => array(
+			'href'   => array(),
+			'title'  => array(),
+			'class'  => array(),
+			'target' => array(),
+			'data-*' => true
+		),
+		'em'     => array(
+			'class' => true,
+			'style' => true
+		),
+		'strong' => array(
+			'class' => true,
+			'style' => true
+		),
+		'span'   => array(
+			'class'  => true,
+			'style'  => true,
+			'title'  => true,
+			'data-*' => true,
+			'aria-*' => true
+		),
+		'i'      => array(
+			'class'  => true,
+			'aria-*' => true
+		)
+	) );
+}
