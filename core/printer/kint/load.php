@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'KINT_SKIP_HELPERS', true );
 
-require_once( DEBUGPRESS_PLUGIN_PATH . 'core/printer/kint/autoload.php' );
+require_once( DEBUGPRESS_PLUGIN_PATH . 'vendor/kint/autoload.php' );
 
 Kint\Renderer\RichRenderer::$folder = false;
 Kint\Renderer\RichRenderer::$theme  = 'aante-light.css';

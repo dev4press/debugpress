@@ -1,3 +1,8 @@
+<?php
+
+$mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
+
+?>
 <div class="debugpress_info">
     <table>
         <thead>
@@ -9,11 +14,13 @@
         <tbody>
 		<?php
 
-		$mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
-
-		foreach ( $mysql_info as $info ) {
-			echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $info->Variable_name, debugpress_rs( htmlspecialchars( $info->Value ), false ) );
-		}
+		if ( is_array( $mysql_info ) && ! empty( $mysql_info ) ) {
+			foreach ( $mysql_info as $info ) {
+				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $info->Variable_name, debugpress_rs( htmlspecialchars( $info->Value ), false ) );
+			}
+		} else {
+			echo sprintf( '<tr><th colspan="2">%s</th></tr>', esc_attr__( "Data Not Available.", "debugpress" ) );
+        }
 
 		?>
         </tbody>
