@@ -16,7 +16,7 @@ class Queries extends Panel {
 		'total'   => 0,
 		'avg'     => 0,
 		'min'     => 0,
-		'count'   => 0
+		'count'   => 0,
 	);
 
 	public $sql_caller_use = array();
@@ -24,24 +24,24 @@ class Queries extends Panel {
 	public $sql_caller_classes = array();
 
 	public $sql_tables_use = array(
-		'__system__' => 0
+		'__system__' => 0,
 	);
 	public $sql_tables_keys = array(
-		'__system__' => 0
+		'__system__' => 0,
 	);
 	public $sql_tables_classes = array();
 
 	public $sql_types_use = array();
 	public $sql_types_classes = array();
 	public $sql_source_classes = array(
-		'n/a' => 0
+		'n/a' => 0,
 	);
 	public $library_identification = array();
 
 	public function __construct() {
-		$this->stats[ 'max' ]   = debugpress_db()->wpdb()->queries[ 0 ][ 1 ];
-		$this->stats[ 'min' ]   = debugpress_db()->wpdb()->queries[ 0 ][ 1 ];
-		$this->stats[ 'count' ] = count( debugpress_db()->wpdb()->queries );
+		$this->stats['max']   = debugpress_db()->wpdb()->queries[0][1];
+		$this->stats['min']   = debugpress_db()->wpdb()->queries[0][1];
+		$this->stats['count'] = count( debugpress_db()->wpdb()->queries );
 
 		$i  = 1;
 		$j  = 0;
@@ -50,17 +50,17 @@ class Queries extends Panel {
 		$this->_prepare_library();
 
 		foreach ( debugpress_db()->wpdb()->queries as $q ) {
-			$query = trim( $q[ 0 ] );
-			$calls = explode( ', ', $q[ 2 ] );
+			$query = trim( $q[0] );
+			$calls = explode( ', ', $q[2] );
 
-			$this->stats[ 'total' ] += floatval( $q[ 1 ] );
+			$this->stats['total'] += floatval( $q[1] );
 
-			if ( $this->stats[ 'max' ] < $q[ 1 ] ) {
-				$this->stats[ 'max' ] = $q[ 1 ];
+			if ( $this->stats['max'] < $q[1] ) {
+				$this->stats['max'] = $q[1];
 			}
 
-			if ( $this->stats[ 'min' ] > $q[ 1 ] ) {
-				$this->stats[ 'min' ] = $q[ 1 ];
+			if ( $this->stats['min'] > $q[1] ) {
+				$this->stats['min'] = $q[1];
 			}
 
 			$this->sql_tables_classes[ $qi ] = array();
@@ -70,7 +70,7 @@ class Queries extends Panel {
 			$this->_parse_types( $query, $qi );
 
 			if ( ! isset( $this->library_identification[ $qi ] ) ) {
-				$this->sql_source_classes[ 'n/a' ] ++;
+				$this->sql_source_classes['n/a'] ++;
 			}
 
 			$qi ++;
@@ -79,7 +79,7 @@ class Queries extends Panel {
 		arsort( $this->sql_tables_use );
 
 		$temp = array(
-			'__system__' => $this->sql_tables_use[ '__system__' ]
+			'__system__' => $this->sql_tables_use['__system__'],
 		);
 
 		foreach ( $this->sql_tables_use as $key => $val ) {
@@ -88,8 +88,8 @@ class Queries extends Panel {
 
 		$this->sql_tables_use = $temp;
 
-		$this->stats[ 'percent' ] = $this->stats[ 'total' ] / 100;
-		$this->stats[ 'avg' ]     = $this->stats[ 'total' ] / $this->stats[ 'count' ];
+		$this->stats['percent'] = $this->stats['total'] / 100;
+		$this->stats['avg']     = $this->stats['total'] / $this->stats['count'];
 	}
 
 	public function left() {
@@ -104,33 +104,33 @@ class Queries extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Queries", "debugpress" ),
-			$this->stats[ 'count' ],
-			'<span id="sqlq-stats-filter-queries">' . $this->stats[ 'count' ] . '</span>',
-			'<span id="sqlq-stats-ratio-queries">100%</span>'
+			$this->stats['count'],
+			'<span id="sqlq-stats-filter-queries">' . $this->stats['count'] . '</span>',
+			'<span id="sqlq-stats-ratio-queries">100%</span>',
 		) );
 		$this->table_row( array(
 			__( "Total", "debugpress" ),
-			number_format( $this->stats[ 'total' ], 6 ) . ' ' . __( "sec", "debugpress" ),
-			'<span id="sqlq-stats-filter-total">' . number_format( $this->stats[ 'total' ], 6 ) . '</span> ' . __( "sec", "debugpress" ),
-			'<span id="sqlq-stats-ratio-total">100%</span>'
+			number_format( $this->stats['total'], 6 ) . ' ' . __( "sec", "debugpress" ),
+			'<span id="sqlq-stats-filter-total">' . number_format( $this->stats['total'], 6 ) . '</span> ' . __( "sec", "debugpress" ),
+			'<span id="sqlq-stats-ratio-total">100%</span>',
 		) );
 		$this->table_row( array(
 			__( "Fastest", "debugpress" ),
-			number_format( $this->stats[ 'min' ], 6 ) . ' ' . __( "sec", "debugpress" ),
-			'<span id="sqlq-stats-filter-min">' . number_format( $this->stats[ 'min' ], 6 ) . '</span> ' . __( "sec", "debugpress" ),
-			'-'
+			number_format( $this->stats['min'], 6 ) . ' ' . __( "sec", "debugpress" ),
+			'<span id="sqlq-stats-filter-min">' . number_format( $this->stats['min'], 6 ) . '</span> ' . __( "sec", "debugpress" ),
+			'-',
 		) );
 		$this->table_row( array(
 			__( "Slowest", "debugpress" ),
-			number_format( $this->stats[ 'max' ], 6 ) . ' ' . __( "sec", "debugpress" ),
-			'<span id="sqlq-stats-filter-max">' . number_format( $this->stats[ 'max' ], 6 ) . '</span> ' . __( "sec", "debugpress" ),
-			'-'
+			number_format( $this->stats['max'], 6 ) . ' ' . __( "sec", "debugpress" ),
+			'<span id="sqlq-stats-filter-max">' . number_format( $this->stats['max'], 6 ) . '</span> ' . __( "sec", "debugpress" ),
+			'-',
 		) );
 		$this->table_row( array(
 			__( "Average", "debugpress" ),
-			number_format( $this->stats[ 'avg' ], 6 ) . ' ' . __( "sec", "debugpress" ),
-			'<span id="sqlq-stats-filter-avg">' . number_format( $this->stats[ 'avg' ], 6 ) . '</span> ' . __( "sec", "debugpress" ),
-			'-'
+			number_format( $this->stats['avg'], 6 ) . ' ' . __( "sec", "debugpress" ),
+			'<span id="sqlq-stats-filter-avg">' . number_format( $this->stats['avg'], 6 ) . '</span> ' . __( "sec", "debugpress" ),
+			'-',
 		) );
 		$this->table_foot();
 		$this->block_footer();
@@ -142,15 +142,15 @@ class Queries extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Call List", "debugpress" ),
-			'<a href="#" id="sql-call-compact" class="sqlq-option-calls sqlq-option-on">' . __( "compact", "debugpress" ) . '</a> &middot; <a href="#" id="sql-call-full" class="sqlq-option-calls sqlq-option-off">' . __( "full", "debugpress" ) . '</a>'
+			'<a href="#" id="sql-call-compact" class="sqlq-option-calls sqlq-option-on">' . __( "compact", "debugpress" ) . '</a> &middot; <a href="#" id="sql-call-full" class="sqlq-option-calls sqlq-option-off">' . __( "full", "debugpress" ) . '</a>',
 		) );
 		$this->table_row( array(
 			__( "Sort By", "debugpress" ),
-			'<a href="#" id="sql-sort-order" class="sqlq-option-sort sqlq-option-on">' . __( "order", "debugpress" ) . '</a> &middot; <a href="#" id="sql-sort-time" class="sqlq-option-sort sqlq-option-off">' . __( "time", "debugpress" ) . '</a> &middot; <a href="#" id="sql-sort-length" class="sqlq-option-sort sqlq-option-off">' . __( "length", "debugpress" ) . '</a>'
+			'<a href="#" id="sql-sort-order" class="sqlq-option-sort sqlq-option-on">' . __( "order", "debugpress" ) . '</a> &middot; <a href="#" id="sql-sort-time" class="sqlq-option-sort sqlq-option-off">' . __( "time", "debugpress" ) . '</a> &middot; <a href="#" id="sql-sort-length" class="sqlq-option-sort sqlq-option-off">' . __( "length", "debugpress" ) . '</a>',
 		) );
 		$this->table_row( array(
 			__( "Show", "debugpress" ),
-			'<a href="#" data-show="all" class="sqlq-option-show sqlq-option-on">' . __( "all", "debugpress" ) . '</a> &middot; <a href="#" data-show="slow" class="sqlq-option-show sqlq-option-off">' . __( "slow", "debugpress" ) . '</a> &middot; <a href="#" data-show="fast" class="sqlq-option-show sqlq-option-off">' . __( "fast", "debugpress" ) . '</a>'
+			'<a href="#" data-show="all" class="sqlq-option-show sqlq-option-on">' . __( "all", "debugpress" ) . '</a> &middot; <a href="#" data-show="slow" class="sqlq-option-show sqlq-option-off">' . __( "slow", "debugpress" ) . '</a> &middot; <a href="#" data-show="fast" class="sqlq-option-show sqlq-option-off">' . __( "fast", "debugpress" ) . '</a>',
 		) );
 		$this->table_foot();
 		$this->block_footer();
@@ -162,12 +162,12 @@ class Queries extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Reset All", "debugpress" ),
-			'<a href="#" id="sql-types-show" class="sqlq-types-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-types-hide" class="sqlq-types-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
+			'<a href="#" id="sql-types-show" class="sqlq-types-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-types-hide" class="sqlq-types-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>',
 		) );
 		foreach ( $this->sql_types_use as $type => $count ) {
 			$this->table_row( array(
 				'<a href="#" data-type="' . strtolower( $type ) . '" class="sqlq-option-type sqlq-option-on">' . $type . '</a>',
-				$count
+				$count,
 			) );
 		}
 		$this->table_foot();
@@ -180,12 +180,12 @@ class Queries extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Reset All", "debugpress" ),
-			'<a href="#" id="sql-reset-show" class="sqlq-option-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-reset-hide" class="sqlq-option-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
+			'<a href="#" id="sql-reset-show" class="sqlq-option-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-reset-hide" class="sqlq-option-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>',
 		) );
 		foreach ( $this->sql_tables_use as $table => $count ) {
 			$this->table_row( array(
 				'<a href="#" data-table="' . $this->sql_tables_keys[ $table ] . '" class="sqlq-option-table sqlq-option-on">' . $table . '</a>',
-				$count
+				$count,
 			) );
 		}
 		$this->table_foot();
@@ -198,12 +198,12 @@ class Queries extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Reset All", "debugpress" ),
-			'<a href="#" id="sql-caller-show" class="sqlq-caller-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-caller-hide" class="sqlq-caller-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
+			'<a href="#" id="sql-caller-show" class="sqlq-caller-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-caller-hide" class="sqlq-caller-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>',
 		) );
 		foreach ( $this->sql_caller_use as $caller => $count ) {
 			$this->table_row( array(
 				'<a href="#" data-caller="' . $this->sql_caller_keys[ $caller ] . '" class="sqlq-option-caller sqlq-option-on">' . $caller . '</a>',
-				$count
+				$count,
 			) );
 		}
 		$this->table_foot();
@@ -217,12 +217,12 @@ class Queries extends Panel {
 			$this->table_head();
 			$this->table_row( array(
 				__( "Reset All", "debugpress" ),
-				'<a href="#" id="sql-source-show" class="sqlq-source-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-source-hide" class="sqlq-source-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>'
+				'<a href="#" id="sql-source-show" class="sqlq-source-reset sqlq-option-on">' . __( "show", "debugpress" ) . '</a> &middot; <a href="#" id="sql-source-hide" class="sqlq-source-reset sqlq-option-off">' . __( "hide", "debugpress" ) . '</a>',
 			) );
 			foreach ( $this->sql_source_classes as $caller => $count ) {
 				$this->table_row( array(
 					'<a href="#" data-source="' . $caller . '" class="sqlq-option-source sqlq-option-on">' . $caller . '</a>',
-					$count
+					$count,
 				) );
 			}
 			$this->table_foot();
@@ -235,7 +235,7 @@ class Queries extends Panel {
 		$this->block_header();
 		echo '<div class="sql-query-list">';
 
-		$total  = $this->stats[ 'total' ];
+		$total  = $this->stats['total'];
 		$cutoff = debugpress_plugin()->get( 'slow_query_cutoff' );
 
 		if ( $cutoff < 1 || $cutoff > 100 ) {
@@ -246,9 +246,9 @@ class Queries extends Panel {
 
 		$i = 0;
 		foreach ( debugpress_db()->wpdb()->queries as $q ) {
-			$calls = explode( ', ', $q[ 2 ] );
+			$calls = explode( ', ', $q[2] );
 
-			if ( $cutoff <= $q[ 1 ] ) {
+			if ( $cutoff <= $q[1] ) {
 				$speed = 'slow';
 			} else {
 				$speed = 'fast';
@@ -256,19 +256,19 @@ class Queries extends Panel {
 
 			$source = $this->library_identification[ $i ] ?? 'n/a';
 
-			echo '<div class="sql-query" data-source="' . $source . '" data-caller="' . $this->sql_caller_classes[ $i ] . '" data-tables="' . join( ',', $this->sql_tables_classes[ $i ] ) . '" data-type="' . $this->sql_types_classes[ $i ] . '" data-speed="' . $speed . '" data-order="' . $i . '" data-time="' . $q[ 1 ] . '" data-length="' . strlen( $q[ 0 ] ) . '">';
+			echo '<div class="sql-query" data-source="' . $source . '" data-caller="' . $this->sql_caller_classes[ $i ] . '" data-tables="' . join( ',', $this->sql_tables_classes[ $i ] ) . '" data-type="' . $this->sql_types_classes[ $i ] . '" data-speed="' . $speed . '" data-order="' . $i . '" data-time="' . $q[1] . '" data-length="' . strlen( $q[0] ) . '">';
 			echo '<strong>' . __( "Order", "debugpress" ) . ':</strong> ' . $i . ' | ';
-			echo '<strong>' . __( "Length", "debugpress" ) . ':</strong> ' . strlen( $q[ 0 ] ) . ' ' . __( "characters", "debugpress" ) . ' | ';
-			echo '<strong>' . __( "Time", "debugpress" ) . ':</strong> ' . $q[ 1 ] . ' ' . __( "seconds", "debugpress" ) . ' | ';
-			echo '<strong>' . __( "Share", "debugpress" ) . ':</strong> ' . number_format( $q[ 1 ] / $this->stats[ 'percent' ], 4 ) . '% | ';
+			echo '<strong>' . __( "Length", "debugpress" ) . ':</strong> ' . strlen( $q[0] ) . ' ' . __( "characters", "debugpress" ) . ' | ';
+			echo '<strong>' . __( "Time", "debugpress" ) . ':</strong> ' . $q[1] . ' ' . __( "seconds", "debugpress" ) . ' | ';
+			echo '<strong>' . __( "Share", "debugpress" ) . ':</strong> ' . number_format( $q[1] / $this->stats['percent'], 4 ) . '% | ';
 
-			if ( $this->stats[ 'min' ] == $q[ 1 ] ) {
+			if ( $this->stats['min'] == $q[1] ) {
 				echo '<strong>' . __( "Fastest Query", "debugpress" ) . '</strong>';
-			} else if ( $this->stats[ 'max' ] == $q[ 1 ] ) {
+			} else if ( $this->stats['max'] == $q[1] ) {
 				echo '<strong>' . __( "Slowest Query", "debugpress" ) . '</strong>';
-			} else if ( $this->stats[ 'avg' ] < $q[ 1 ] ) {
+			} else if ( $this->stats['avg'] < $q[1] ) {
 				echo '<strong>' . __( "Slow", "debugpress" ) . '</strong>';
-			} else if ( $this->stats[ 'avg' ] > $q[ 1 ] ) {
+			} else if ( $this->stats['avg'] > $q[1] ) {
 				echo '<strong>' . __( "Fast", "debugpress" ) . '</strong>';
 			} else {
 				echo '<strong>' . __( "Average", "debugpress" ) . '</strong>';
@@ -283,9 +283,9 @@ class Queries extends Panel {
 			echo '</div><div class="sql-query-full">';
 
 			if ( debugpress_plugin()->get( 'format_queries_panel' ) ) {
-				echo SQLFormat::format( $q[ 0 ] );
+				echo SQLFormat::format( $q[0] );
 			} else {
-				echo $q[ 0 ];
+				echo $q[0];
 			}
 			echo '</div>';
 			echo '</div>';
@@ -320,12 +320,12 @@ class Queries extends Panel {
 	private function _parse_tables( $query, $qi, &$i ) {
 		preg_match_all( '/\s(`?)(' . debugpress_db()->wpdb()->base_prefix . '.+?)\1(\s|;|$)/i', $query, $matches );
 
-		$_tables = empty( $matches[ 2 ] ) ? array( '__system__' ) : $matches[ 2 ];
+		$_tables = empty( $matches[2] ) ? array( '__system__' ) : $matches[2];
 
 		$listed = array();
 		foreach ( $_tables as $_table ) {
 			$tables = explode( ".", $_table );
-			$table  = $tables[ 0 ];
+			$table  = $tables[0];
 
 			if ( ! isset( $this->sql_tables_use[ $table ] ) ) {
 				$this->sql_tables_keys[ $table ] = $i;
@@ -351,7 +351,7 @@ class Queries extends Panel {
 		}
 
 		$type = preg_split( '/\b/', trim( $type ), 2, PREG_SPLIT_NO_EMPTY );
-		$type = strtoupper( $type[ 0 ] );
+		$type = strtoupper( $type[0] );
 
 		if ( ! isset( $this->sql_types_use[ $type ] ) ) {
 			$this->sql_types_use[ $type ] = 1;
@@ -370,7 +370,7 @@ class Queries extends Panel {
 
 			if ( class_exists( $class ) ) {
 				foreach ( $class::instance()->log_get_queries() as $query ) {
-					$this->library_identification[ absint( $query[ 'id' ] ) ] = $query[ 'plugin' ] . '/' . $query[ 'instance' ];
+					$this->library_identification[ absint( $query['id'] ) ] = $query['plugin'] . '/' . $query['instance'];
 				}
 			}
 		}

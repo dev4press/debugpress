@@ -11,7 +11,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 class Plugins extends Panel {
 	public $sides = array(
 		'left'  => array(),
-		'right' => array()
+		'right' => array(),
 	);
 
 	public function __construct() {
@@ -28,11 +28,11 @@ class Plugins extends Panel {
 
 	private function _side( $side ) {
 		foreach ( $this->sides[ $side ] as $item ) {
-			$plugin = debugpress_tracker()->plugins[ $item[ 0 ] ][ $item[ 1 ] ];
+			$plugin = debugpress_tracker()->plugins[ $item[0] ][ $item[1] ];
 
-			$this->title( $plugin[ 'plugin' ][ 'Name' ] );
+			$this->title( $plugin['plugin']['Name'] );
 
-			foreach ( $plugin[ 'data' ] as $name => $values ) {
+			foreach ( $plugin['data'] as $name => $values ) {
 				if ( ! empty( $values ) ) {
 					$this->list_array( $values, $name );
 				}

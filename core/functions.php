@@ -216,26 +216,26 @@ function debugpress_kses_basic( string $render ) : string {
 			'title'  => array(),
 			'class'  => array(),
 			'target' => array(),
-			'data-*' => true
+			'data-*' => true,
 		),
 		'em'     => array(
 			'class' => true,
-			'style' => true
+			'style' => true,
 		),
 		'strong' => array(
 			'class' => true,
-			'style' => true
+			'style' => true,
 		),
 		'span'   => array(
 			'class'  => true,
 			'style'  => true,
 			'title'  => true,
 			'data-*' => true,
-			'aria-*' => true
+			'aria-*' => true,
 		),
 		'i'      => array(
 			'class'  => true,
-			'aria-*' => true
-		)
+			'aria-*' => true,
+		),
 	) );
 }

@@ -56,7 +56,7 @@ class Content extends Panel {
 			"feed_structure",
 			"comment_feed_structure",
 			"author_structure",
-			"date_structure"
+			"date_structure",
 		), '$' . 'wp_rewrite' );
 
 		$this->title( __( "Rewrite Base", "debugpress" ) );
@@ -65,14 +65,14 @@ class Content extends Panel {
 			"search_base",
 			"comments_base",
 			"pagination_base",
-			"feed_base"
+			"feed_base",
 		), '$' . 'wp_rewrite' );
 
 		$this->title( __( "Rewrite Tags", "debugpress" ) );
 		$this->list_properties( $wp_rewrite, array(
 			"rewritecode",
 			"rewritereplace",
-			"queryreplace"
+			"queryreplace",
 		), '$' . 'wp_rewrite' );
 	}
 }

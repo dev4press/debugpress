@@ -21,7 +21,7 @@ class Callback {
 	public function __construct() {
 		$this->replace = array(
 			wp_normalize_path( ABSPATH ),
-			wp_normalize_path( dirname( WP_CONTENT_DIR ) . '/' )
+			wp_normalize_path( dirname( WP_CONTENT_DIR ) . '/' ),
 		);
 
 		foreach (
@@ -34,7 +34,7 @@ class Callback {
 				'includes'   => ABSPATH . 'wp-includes',
 				'admin'      => ABSPATH . 'wp-admin',
 				'core'       => ABSPATH,
-				'unknown'    => null
+				'unknown'    => null,
 			) as $key => $path
 		) {
 			if ( is_null( $path ) ) {
@@ -117,29 +117,29 @@ class Callback {
 			return $this->resolve[ $code ];
 		}
 
-		if ( is_string( $callback[ 'function' ] ) && ( strpos( $callback[ 'function' ], '::' ) !== false ) ) {
-			$callback[ 'function' ] = explode( '::', $callback[ 'function' ] );
+		if ( is_string( $callback['function'] ) && ( strpos( $callback['function'], '::' ) !== false ) ) {
+			$callback['function'] = explode( '::', $callback['function'] );
 		}
 
-		if ( isset( $callback[ 'class' ] ) ) {
-			$callback[ 'function' ] = array( $callback[ 'class' ], $callback[ 'function' ] );
+		if ( isset( $callback['class'] ) ) {
+			$callback['function'] = array( $callback['class'], $callback['function'] );
 		}
 
 		try {
-			if ( is_array( $callback[ 'function' ] ) ) {
-				if ( is_object( $callback[ 'function' ][ 0 ] ) ) {
-					$_the_class  = get_class( $callback[ 'function' ][ 0 ] );
+			if ( is_array( $callback['function'] ) ) {
+				if ( is_object( $callback['function'][0] ) ) {
+					$_the_class  = get_class( $callback['function'][0] );
 					$_the_access = '->';
 				} else {
-					$_the_class  = $callback[ 'function' ][ 0 ];
+					$_the_class  = $callback['function'][0];
 					$_the_access = '::';
 				}
 
-				$callback[ 'name' ] = $_the_class . $_the_access . $callback[ 'function' ][ 1 ] . '()';
-				$ref                = new ReflectionMethod( $_the_class, $callback[ 'function' ][ 1 ] );
-			} else if ( is_object( $callback[ 'function' ] ) ) {
-				if ( $callback[ 'function' ] instanceof Closure ) {
-					$ref      = new ReflectionFunction( $callback[ 'function' ] );
+				$callback['name'] = $_the_class . $_the_access . $callback['function'][1] . '()';
+				$ref              = new ReflectionMethod( $_the_class, $callback['function'][1] );
+			} else if ( is_object( $callback['function'] ) ) {
+				if ( $callback['function'] instanceof Closure ) {
+					$ref      = new ReflectionFunction( $callback['function'] );
 					$filename = $ref->getFileName();
 
 					if ( $filename ) {
@@ -148,31 +148,31 @@ class Callback {
 							$file = basename( $filename );
 						}
 
-						$callback[ 'name' ] = sprintf( __( 'Closure in [%1$d] on line [%2$s]', "debugpress" ), $file, $ref->getStartLine() );
+						$callback['name'] = sprintf( __( 'Closure in [%1$d] on line [%2$s]', "debugpress" ), $file, $ref->getStartLine() );
 					} else {
-						$callback[ 'name' ] = __( "The Unknown Closure", "debugpress" );
+						$callback['name'] = __( "The Unknown Closure", "debugpress" );
 					}
 				} else {
-					$class              = get_class( $callback[ 'function' ] );
-					$callback[ 'name' ] = $class . '->__invoke()';
-					$ref                = new ReflectionMethod( $class, '__invoke' );
+					$class            = get_class( $callback['function'] );
+					$callback['name'] = $class . '->__invoke()';
+					$ref              = new ReflectionMethod( $class, '__invoke' );
 				}
 			} else {
-				$callback[ 'name' ] = $callback[ 'function' ] . '()';
-				$ref                = new ReflectionFunction( $callback[ 'function' ] );
+				$callback['name'] = $callback['function'] . '()';
+				$ref              = new ReflectionFunction( $callback['function'] );
 			}
 
-			$callback[ 'file' ] = $ref->getFileName();
-			$callback[ 'line' ] = $ref->getStartLine();
+			$callback['file'] = $ref->getFileName();
+			$callback['line'] = $ref->getStartLine();
 
-			if ( ! empty( $callback[ 'file' ] ) ) {
-				$callback[ 'origin' ] = $this->_origin( $callback[ 'file' ] );
+			if ( ! empty( $callback['file'] ) ) {
+				$callback['origin'] = $this->_origin( $callback['file'] );
 			} else {
-				$callback[ 'origin' ] = 'php::php';
+				$callback['origin'] = 'php::php';
 			}
 		} catch ( ReflectionException $e ) {
-			$callback[ 'error' ]  = new WP_Error( 'reflection-error', $e->getMessage() );
-			$callback[ 'origin' ] = 'error::error';
+			$callback['error']  = new WP_Error( 'reflection-error', $e->getMessage() );
+			$callback['origin'] = 'error::error';
 		}
 
 		$this->resolve[ $code ] = $callback;

@@ -26,17 +26,17 @@ class Store extends Panel {
 	}
 
 	public function render_item( $item ) {
-		$printed = $item[ 'sql' ]
+		$printed = $item['sql']
 			?
-			'<div class="query-sql-run-full">' . SQLFormat::format( $item[ 'print' ] ) . '</div>'
+			'<div class="query-sql-run-full">' . SQLFormat::format( $item['print'] ) . '</div>'
 			:
-			debugpress_rx( $item[ 'print' ], false );
+			debugpress_rx( $item['print'], false );
 
 		$this->table_row( array(
-				$item[ 'time' ],
-				( empty( $item[ 'title' ] ) ? '/' : '<strong>' . $item[ 'title' ] . '</strong>' ),
+				$item['time'],
+				( empty( $item['title'] ) ? '/' : '<strong>' . $item['title'] . '</strong>' ),
 				$printed,
-				debugpress_rx( $item[ 'caller' ], false )
+				debugpress_rx( $item['caller'], false ),
 			)
 		);
 	}

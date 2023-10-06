@@ -312,7 +312,7 @@ class Settings {
 		$roles = array();
 
 		foreach ( wp_roles()->roles as $role => $details ) {
-			$roles[ $role ] = translate_user_role( $details[ 'name' ] );
+			$roles[ $role ] = translate_user_role( $details['name'] );
 		}
 
 		return $roles;
@@ -324,7 +324,7 @@ class Settings {
 			'topleft'     => __( "Float, Top / Left", "debugpress" ),
 			'topright'    => __( "Float, Top / Right", "debugpress" ),
 			'bottomleft'  => __( "Float, Bottom / Left", "debugpress" ),
-			'bottomright' => __( "Float, Bottom / Right", "debugpress" )
+			'bottomright' => __( "Float, Bottom / Right", "debugpress" ),
 		);
 	}
 

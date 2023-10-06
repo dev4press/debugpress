@@ -23,7 +23,7 @@ class Constants extends Panel {
 			'WP_TEMP_DIR',
 			'MUPLUGINDIR',
 			'WPMU_PLUGIN_DIR',
-			'WPMU_PLUGIN_URL'
+			'WPMU_PLUGIN_URL',
 		),
 		'ms'    => array(
 			'MULTISITE',
@@ -41,14 +41,14 @@ class Constants extends Panel {
 			'UPLOADS',
 			'WPMU_ACCEL_REDIRECT',
 			'WPMU_SENDFILE',
-			'WP_ALLOW_MULTISITE'
+			'WP_ALLOW_MULTISITE',
 		),
 		'dbg'   => array(
 			'WP_DEBUG',
 			'WP_DEBUG_DISPLAY',
 			'WP_DEBUG_LOG',
 			'SAVEQUERIES',
-			'SCRIPT_DEBUG'
+			'SCRIPT_DEBUG',
 		),
 		'sys'   => array( 'WP_START_TIMESTAMP', 'WP_MAX_MEMORY_LIMIT', 'WP_MEMORY_LIMIT' ),
 		'glbl'  => array(
@@ -74,7 +74,7 @@ class Constants extends Panel {
 			'CORE_UPGRADE_SKIP_NEW_BUNDLED',
 			'DO_NOT_UPGRADE_GLOBAL_TABLES',
 			'PO_MAX_LINE_LEN',
-			'DIR_TESTDATA'
+			'DIR_TESTDATA',
 		),
 		'req'   => array(
 			'IFRAME_REQUEST',
@@ -82,7 +82,7 @@ class Constants extends Panel {
 			'DOING_AJAX',
 			'REST_REQUEST',
 			'DOING_AUTOSAVE',
-			'WP_SETUP_CONFIG'
+			'WP_SETUP_CONFIG',
 		),
 		'bck'   => array( 'POST_BY_EMAIL', 'EDIT_ANY_USER' ),
 		'db'    => array(
@@ -91,7 +91,7 @@ class Constants extends Panel {
 			'WP_ALLOW_REPAIR',
 			'WP_USE_EXT_MYSQL',
 			'CUSTOM_USER_TABLE',
-			'CUSTOM_USER_META_TABLE'
+			'CUSTOM_USER_META_TABLE',
 		),
 		'thm'   => array(
 			'WP_DEFAULT_THEME',
@@ -103,7 +103,7 @@ class Constants extends Panel {
 			'NO_HEADER_TEXT',
 			'WP_USE_THEMES',
 			'STYLESHEETPATH',
-			'TEMPLATEPATH'
+			'TEMPLATEPATH',
 		),
 		'sec'   => array(
 			'ADMIN_COOKIE_PATH',
@@ -125,41 +125,41 @@ class Constants extends Panel {
 			'FORCE_SSL_LOGIN',
 			'DISALLOW_UNFILTERED_HTML',
 			'DISALLOW_FILE_EDIT',
-			'DISALLOW_FILE_MODS'
-		)
+			'DISALLOW_FILE_MODS',
+		),
 	);
 
 	public function left() {
 		$this->title( __( "Path, directories", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'paths' ] );
+		$this->list_defines( $this->constants['paths'] );
 
 		$this->title( __( "Debug", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'dbg' ] );
+		$this->list_defines( $this->constants['dbg'] );
 
 		$this->title( __( "System", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'sys' ] );
+		$this->list_defines( $this->constants['sys'] );
 
 		$this->title( __( "Theme", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'thm' ] );
+		$this->list_defines( $this->constants['thm'] );
 
 		$this->title( __( "Database", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'db' ] );
+		$this->list_defines( $this->constants['db'] );
 
 		$this->title( __( "Request", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'req' ] );
+		$this->list_defines( $this->constants['req'] );
 	}
 
 	public function right() {
 		$this->title( __( "Global", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'glbl' ] );
+		$this->list_defines( $this->constants['glbl'] );
 
 		$this->title( __( "Multisite", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'ms' ] );
+		$this->list_defines( $this->constants['ms'] );
 
 		$this->title( __( "Security", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'sec' ] );
+		$this->list_defines( $this->constants['sec'] );
 
 		$this->title( __( "Back Compatibility", "debugpress" ) );
-		$this->list_defines( $this->constants[ 'bck' ] );
+		$this->list_defines( $this->constants['bck'] );
 	}
 }

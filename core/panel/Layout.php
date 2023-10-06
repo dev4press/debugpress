@@ -20,7 +20,7 @@ class Layout extends Panel {
 				'top'    => __( "Top", "debugpress" ),
 				'bottom' => __( "Bottom", "debugpress" ),
 				'left'   => __( "Left", "debugpress" ),
-				'right'  => __( "Right", "debugpress" )
+				'right'  => __( "Right", "debugpress" ),
 			) as $pos => $label
 		) {
 			echo '<div class="debugpress-layout-position-' . $pos . '"><i class="debugpress-icon debugpress-icon-layout-' . $pos . ' debugpress-icon-6x"></i>';
@@ -42,7 +42,7 @@ class Layout extends Panel {
 				'40' => "40%",
 				'50' => "50%",
 				'60' => "60%",
-				'70' => "70%"
+				'70' => "70%",
 			) as $size => $label
 		) {
 			echo '<option value="' . $size . '">' . $label . '</option>';
@@ -56,7 +56,7 @@ class Layout extends Panel {
 		foreach (
 			array(
 				'show' => __( "Yes", "debugpress" ),
-				'hide' => __( "No", "debugpress" )
+				'hide' => __( "No", "debugpress" ),
 			) as $size => $label
 		) {
 			echo '<option value="' . $size . '">' . $label . '</option>';
@@ -71,7 +71,7 @@ class Layout extends Panel {
 			array(
 				'manual'   => __( "Normal", "debugpress" ),
 				'auto'     => __( "Auto show on page load", "debugpress" ),
-				'remember' => __( "Remember load state", "debugpress" )
+				'remember' => __( "Remember load state", "debugpress" ),
 			) as $size => $label
 		) {
 			echo '<option value="' . $size . '">' . $label . '</option>';

@@ -19,11 +19,11 @@ class ErrorFormat {
 	public static function php_error( $error ) : string {
 		$class = 'debugpress-wrapper-warning debugpress-warning-errors debugpress-error-';
 
-		if ( ! isset( $error[ 'errno' ] ) || ! isset( $error[ 'caller' ] ) ) {
+		if ( ! isset( $error['errno'] ) || ! isset( $error['caller'] ) ) {
 			return __( "Error information is missing", "debugpress" );
 		}
 
-		switch ( $error[ 'errno' ] ) {
+		switch ( $error['errno'] ) {
 			case E_ERROR:
 			case E_CORE_ERROR:
 			case E_COMPILE_ERROR:
@@ -62,19 +62,19 @@ class ErrorFormat {
 				break;
 		}
 
-		$caller = maybe_unserialize( $error[ 'caller' ] );
+		$caller = maybe_unserialize( $error['caller'] );
 		$caller = is_array( $caller ) ? join( '<br/>', $caller ) : $caller;
 
 		$render = '<div class="' . $class . '">';
-		$render .= '<h4>' . $title . ' [' . $error[ 'errno' ] . ']</h4>';
-		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $error[ 'errline' ] . '<br/>';
-		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $error[ 'errfile' ] . '<br/>';
+		$render .= '<h4>' . $title . ' [' . $error['errno'] . ']</h4>';
+		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $error['errline'] . '<br/>';
+		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $error['errfile'] . '<br/>';
 
 		if ( ! empty( $caller ) ) {
 			$render .= ErrorFormat::render_caller( $caller );
 		}
 
-		$render .= '<div class="debugpress-error-message">' . esc_html( $error[ 'errstr' ] ) . '</div>';
+		$render .= '<div class="debugpress-error-message">' . esc_html( $error['errstr'] ) . '</div>';
 		$render .= '</div>';
 
 		return $render;
@@ -82,15 +82,15 @@ class ErrorFormat {
 
 	public static function doing_it_wrong( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-doingitwrong">';
-		$render .= '<h4>' . sprintf( __( "For <strong>%s</strong>", "debugpress" ), $item[ 'wrong' ] ) . '</h4>';
-		$render .= '<strong>' . __( "Since version", "debugpress" ) . ":</strong> " . $item[ 'version' ] . ', ';
-		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item[ 'on_line' ] . '<br/>';
-		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item[ 'in_file' ] . '<br/>';
+		$render .= '<h4>' . sprintf( __( "For <strong>%s</strong>", "debugpress" ), $item['wrong'] ) . '</h4>';
+		$render .= '<strong>' . __( "Since version", "debugpress" ) . ":</strong> " . $item['version'] . ', ';
+		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item['on_line'] . '<br/>';
+		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item['in_file'] . '<br/>';
 
 		$render .= ErrorFormat::process_caller( $item );
 
-		if ( $item[ 'message' ] ) {
-			$render .= '<div class="debugpress-error-message">' . esc_html( $item[ 'message' ] ) . '</div>';
+		if ( $item['message'] ) {
+			$render .= '<div class="debugpress-error-message">' . esc_html( $item['message'] ) . '</div>';
 		}
 
 		$render .= '</div>';
@@ -101,13 +101,13 @@ class ErrorFormat {
 	public static function deprecated_file( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-file">';
 		$render .= '<h4>' . __( "Deprecated File", "debugpress" ) . ':</h4>';
-		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item[ "on_line" ] . '<br/>';
-		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item[ "in_file" ] . '<br/>';
+		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . '<br/>';
+		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item["in_file"] . '<br/>';
 
-		if ( $item[ "replacement" ] ) {
-			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s. Use <strong>%s</strong> instead.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ], $item[ "replacement" ] );
+		if ( $item["replacement"] ) {
+			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s. Use <strong>%s</strong> instead.", "debugpress" ), $item["deprecated"], $item["version"], $item["replacement"] );
 		} else {
-			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
+			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item["deprecated"], $item["version"] );
 		}
 
 		$render .= ErrorFormat::process_caller( $item );
@@ -120,21 +120,21 @@ class ErrorFormat {
 	public static function deprecated_function( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-function">';
 		$render .= '<h4>' . __( "Deprecated Function", "debugpress" ) . ':</h4>';
-		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item[ "on_line" ] . '<br/>';
-		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item[ "in_file" ] . '<br/>';
+		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . '<br/>';
+		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item["in_file"] . '<br/>';
 
-		if ( $item[ "hook" ] ) {
-			$render .= "<strong>" . __( "Hook", "debugpress" ) . ":</strong> " . $item[ "hook" ] . "<br/>";
+		if ( $item["hook"] ) {
+			$render .= "<strong>" . __( "Hook", "debugpress" ) . ":</strong> " . $item["hook"] . "<br/>";
 		}
 
-		if ( $item[ "replacement" ] ) {
-			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s. Use <strong>%s</strong> instead.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ], $item[ "replacement" ] );
+		if ( $item["replacement"] ) {
+			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s. Use <strong>%s</strong> instead.", "debugpress" ), $item["deprecated"], $item["version"], $item["replacement"] );
 		} else {
-			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
+			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item["deprecated"], $item["version"] );
 		}
 
-		if ( ! empty( $item[ 'message' ] ) ) {
-			$render .= '<em>' . $item[ 'message' ] . '</em>';
+		if ( ! empty( $item['message'] ) ) {
+			$render .= '<em>' . $item['message'] . '</em>';
 		}
 
 		$render .= ErrorFormat::process_caller( $item );
@@ -147,13 +147,13 @@ class ErrorFormat {
 	public static function deprecated_constructor( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-constructor">';
 		$render .= '<h4>' . __( "Deprecated Constructor", "debugpress" ) . ':</h4>';
-		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item[ "on_line" ] . '<br/>';
-		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item[ "in_file" ] . '<br/>';
+		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . '<br/>';
+		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item["in_file"] . '<br/>';
 
-		$render .= sprintf( __( "For <strong>%s</strong> since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
+		$render .= sprintf( __( "For <strong>%s</strong> since version %s.", "debugpress" ), $item["deprecated"], $item["version"] );
 
-		if ( ! empty( $item[ 'message' ] ) ) {
-			$render .= '<em>' . $item[ 'message' ] . '</em>';
+		if ( ! empty( $item['message'] ) ) {
+			$render .= '<em>' . $item['message'] . '</em>';
 		}
 
 		$render .= ErrorFormat::process_caller( $item );
@@ -167,18 +167,18 @@ class ErrorFormat {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-argument">';
 		$render .= '<h4>' . __( "Deprecated Argument", "debugpress" ) . ':</h4>';
 
-		if ( $item[ 'in_file' ] ) {
-			if ( $item[ 'on_line' ] ) {
-				$render .= "<strong>" . __( "On line", "debugpress" ) . ":</strong> " . $item[ "on_line" ] . ", ";
+		if ( $item['in_file'] ) {
+			if ( $item['on_line'] ) {
+				$render .= "<strong>" . __( "On line", "debugpress" ) . ":</strong> " . $item["on_line"] . ", ";
 			}
 
-			$render .= "<strong>" . __( "In file", "debugpress" ) . ":</strong> " . $item[ "in_file" ] . "<br/>";
+			$render .= "<strong>" . __( "In file", "debugpress" ) . ":</strong> " . $item["in_file"] . "<br/>";
 		}
 
-		$render .= sprintf( __( "Argument in <strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item[ "deprecated" ], $item[ "version" ] );
+		$render .= sprintf( __( "Argument in <strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item["deprecated"], $item["version"] );
 
-		if ( ! empty( $item[ 'message' ] ) ) {
-			$render .= '<em>' . $item[ 'message' ] . '</em>';
+		if ( ! empty( $item['message'] ) ) {
+			$render .= '<em>' . $item['message'] . '</em>';
 		}
 
 		$render .= ErrorFormat::process_caller( $item );
@@ -191,7 +191,7 @@ class ErrorFormat {
 	public static function process_caller( $item ) : string {
 		$render = '';
 
-		$caller = isset( $item[ 'caller' ] ) ? maybe_unserialize( $item[ 'caller' ] ) : '';
+		$caller = isset( $item['caller'] ) ? maybe_unserialize( $item['caller'] ) : '';
 		$caller = is_array( $caller ) ? join( '<br/>', $caller ) : $caller;
 
 		if ( ! empty( $caller ) ) {

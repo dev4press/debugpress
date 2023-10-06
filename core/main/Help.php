@@ -18,16 +18,16 @@ class Help {
 
 			foreach ( $action as $priority => $callbacks ) {
 				foreach ( $callbacks as $code => $cb ) {
-					$callback               = Callback::instance()->process( $code, $cb );
-					$callback[ 'priority' ] = $priority;
+					$callback             = Callback::instance()->process( $code, $cb );
+					$callback['priority'] = $priority;
 
-					unset( $callback[ 'function' ] );
+					unset( $callback['function'] );
 
-					if ( ! isset( $callback[ 'error' ] ) ) {
+					if ( ! isset( $callback['error'] ) ) {
 						$actions[] = $callback;
 
-						if ( ! in_array( $callback[ 'origin' ], $origins ) ) {
-							$origins[] = $callback[ 'origin' ];
+						if ( ! in_array( $callback['origin'], $origins ) ) {
+							$origins[] = $callback['origin'];
 						}
 					}
 				}
@@ -37,7 +37,7 @@ class Help {
 		return array(
 			'name'    => $name,
 			'actions' => $actions,
-			'origins' => $origins
+			'origins' => $origins,
 		);
 	}
 }

@@ -3,8 +3,8 @@ Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
 Stable tag: 3.4
-Requires at least: 5.2
-Tested up to: 6.2
+Requires at least: 5.5
+Tested up to: 6.3
 Requires PHP: 7.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -15,9 +15,9 @@ DebugPress is an easy-to-use plugin implementing popup for debugging and profili
 
 DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests. The main debugger window is displayed as a popup, activated through the button with the Bug integrated into WordPress Toolbar, or floating on the page.
 
-The plugin currently has total of 22 tabs in the popup debugger window, showing all kinds of information relevant to current page, WordPress setup, background AJAX calls and much more.
+The plugin currently has a total of 22 tabs in the popup debugger window, showing all kinds of information relevant to the current page, WordPress setup, background AJAX calls, and much more.
 
-The plugin doesn't modify or replaces any WordPress files or functions.
+The plugin doesn't modify or replace any WordPress files or functions.
 
 = Home and GitHub =
 * Learn more about the plugin: [DebugPress Website](https://debug.press/)
@@ -60,7 +60,7 @@ Currently, the plugin has the following panels:
 This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read. For some Dev4Press created plugins (and that list will grow), DebugPress can detect the source of the query and allow you to filter by the plugin calling the query.
 
 = PHP and WordPress Errors =
-Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. Plugin captures this information during the page load, and it shows full debug trace as returned by the PHP debug tracing function.
+Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. The Plugin captures this information during the page load, and it shows full debug trace as returned by the PHP debug tracing function.
 
 = AJAX =
 The plugin tracks every AJAX call coming through WordPress `admin-ajax.php` handler, and with every response, it returns HTTP headers with AJAX request basic execution information. Right now, plugin is not returning list of logged errors or SQL queries, because both can produce huge output that goes over the HTTP header limits. Plan is to introduce these in the future plugin versions.
@@ -87,8 +87,8 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 * Tested with the latest PHP, version 8.2
 
 = WordPress Requirements =
-* WordPress: 5.2 or newer
-* Tested with the latest WordPress, version 6.2
+* WordPress: 5.5 or newer
+* Tested with the latest WordPress, version 6.3
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -112,7 +112,9 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 3.4 (2023.10.05) =
+= 3.4 (2023.10.06) =
+* New: Updated some plugin system requirements
+* Edit: KINT now loads own helper d() and s() functions
 * Edit: Various styling improvements and tweaks
 * Edit: Improved organization of the print libraries now moved to vendor directory
 * Fix: MySQL tools panel showing error if the server information can't be retrieved

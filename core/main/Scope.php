@@ -128,7 +128,7 @@ class Scope {
 			'is_master_network_admin' => $this->is_master_network_admin(),
 			'is_multisite_blog_admin' => $this->is_multisite_blog_admin(),
 			'blog_id'                 => $this->get_blog_id(),
-			'scope'                   => $this->get_scope()
+			'scope'                   => $this->get_scope(),
 		);
 	}
 }

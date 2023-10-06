@@ -11,12 +11,12 @@ class IP {
 		'10.0.0.0/8',
 		'127.0.0.0/8',
 		'172.16.0.0/12',
-		'192.168.0.0/16'
+		'192.168.0.0/16',
 	);
 
 	protected static $private_ipv6 = array(
 		'::1/128',
-		'fd00::/8'
+		'fd00::/8',
 	);
 
 	protected static $cloudflare_ipv4 = array(
@@ -34,7 +34,7 @@ class IP {
 		'104.16.0.0/13',
 		'104.24.0.0/14',
 		'172.64.0.0/13',
-		'131.0.72.0/22'
+		'131.0.72.0/22',
 	);
 
 	protected static $cloudflare_ipv6 = array(
@@ -44,7 +44,7 @@ class IP {
 		'2405:b500::/32',
 		'2405:8100::/32',
 		'2a06:98c0::/29',
-		'2c0f:f248::/32'
+		'2c0f:f248::/32',
 	);
 
 	public static function is_v4( $ip ) : bool {
@@ -158,8 +158,8 @@ class IP {
 
 	public static function is_cloudflare( $ip = null ) : bool {
 		if ( is_null( $ip ) ) {
-			if ( isset( $_SERVER[ 'HTTP_CF_CONNECTING_IP' ] ) ) {
-				$ip = $_SERVER[ 'HTTP_X_REAL_IP' ] ?? $_SERVER[ 'REMOTE_ADDR' ];
+			if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+				$ip = $_SERVER['HTTP_X_REAL_IP'] ?? $_SERVER['REMOTE_ADDR'];
 			} else {
 				return false;
 			}
@@ -183,7 +183,7 @@ class IP {
 	}
 
 	public static function server() : string {
-		$ip = IP::validate( $_SERVER[ 'SERVER_ADDR' ] );
+		$ip = IP::validate( $_SERVER['SERVER_ADDR'] );
 
 		if ( $ip == '::1' ) {
 			$ip = '127.0.0.1';
@@ -203,7 +203,7 @@ class IP {
 			'HTTP_FORWARDED_FOR',
 			'HTTP_FORWARDED',
 			'REMOTE_ADDR',
-			'SERVER_ADDR'
+			'SERVER_ADDR',
 		);
 
 		$ips = array();
@@ -219,7 +219,7 @@ class IP {
 
 	public static function visitor( $no_local_or_protected = false ) {
 		if ( IP::is_cloudflare() ) {
-			return IP::validate( $_SERVER[ 'HTTP_CF_CONNECTING_IP' ], true );
+			return IP::validate( $_SERVER['HTTP_CF_CONNECTING_IP'], true );
 		}
 
 		$keys = array(
@@ -230,7 +230,7 @@ class IP {
 			'HTTP_X_CLUSTER_CLIENT_IP',
 			'HTTP_FORWARDED_FOR',
 			'HTTP_FORWARDED',
-			'REMOTE_ADDR'
+			'REMOTE_ADDR',
 		);
 
 		$ip = '';

@@ -25,7 +25,7 @@ class AJAX {
 	}
 
 	public function load_debuglog() {
-		$_nonce  = isset( $_REQUEST[ '_ajax_nonce' ] ) ? sanitize_text_field( $_REQUEST[ '_ajax_nonce' ] ) : '';
+		$_nonce  = isset( $_REQUEST['_ajax_nonce'] ) ? sanitize_text_field( $_REQUEST['_ajax_nonce'] ) : '';
 		$_verify = wp_verify_nonce( $_nonce, 'debugpress-ajax-call' );
 
 		if ( $_verify === false ) {

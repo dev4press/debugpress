@@ -36,7 +36,7 @@ class Tracker {
 		'total'        => 0,
 		'errors'       => 0,
 		'doingitwrong' => 0,
-		'deprecated'   => 0
+		'deprecated'   => 0,
 	);
 	private $_actual_file = '';
 	private $_actual_line = '';
@@ -51,14 +51,14 @@ class Tracker {
 		'admin_init',
 		'admin_head',
 		'in_admin_footer',
-		'admin_footer'
+		'admin_footer',
 	);
 
 	private $_bbp_queries = array(
 		'bbp_has_forums',
 		'bbp_has_topics',
 		'bbp_has_replies',
-		'bbp_has_search_results'
+		'bbp_has_search_results',
 	);
 
 	private $_error_handler = null;
@@ -164,17 +164,17 @@ class Tracker {
 	public function http_request_args( $args, $url ) {
 		$trace = $this->_get_caller();
 
-		if ( isset( $args[ '_debugpress_key_' ] ) ) {
-			$args[ '_debugpress_key_original_' ] = $args[ '_debugpress_key_' ];
-			$start                               = $this->httpapi[ $args[ '_debugpress_key_' ] ][ 'start' ];
+		if ( isset( $args['_debugpress_key_'] ) ) {
+			$args['_debugpress_key_original_'] = $args['_debugpress_key_'];
+			$start                             = $this->httpapi[ $args['_debugpress_key_'] ]['start'];
 		} else {
 			$start = microtime( true );
 		}
 
-		$args[ '_debugpress_key_' ] = md5( microtime( true ) . '-' . $url ) . '-' . microtime( true );
+		$args['_debugpress_key_'] = md5( microtime( true ) . '-' . $url ) . '-' . microtime( true );
 
 		if ( ! empty( $url ) ) {
-			$this->httpapi[ $args[ '_debugpress_key_' ] ] = array(
+			$this->httpapi[ $args['_debugpress_key_'] ] = array(
 				'url'   => $url,
 				'args'  => $args,
 				'start' => $start,
@@ -199,7 +199,7 @@ class Tracker {
 		$time = 0;
 
 		foreach ( $this->httpapi as $request ) {
-			$time += $request[ 'info' ][ 'total_time' ] ?? 0;
+			$time += $request['info']['total_time'] ?? 0;
 		}
 
 		return $time;
@@ -207,12 +207,12 @@ class Tracker {
 
 	public function http_api_debug( $response, $action, $class, $args, $url ) {
 		if ( $action == 'response' ) {
-			$key = $args[ '_debugpress_key_' ];
+			$key = $args['_debugpress_key_'];
 
 			if ( ! empty( $class ) ) {
-				$this->httpapi[ $key ][ 'transport' ] = str_replace( 'wp_http_', '', strtolower( $class ) );
+				$this->httpapi[ $key ]['transport'] = str_replace( 'wp_http_', '', strtolower( $class ) );
 			} else {
-				$this->httpapi[ $key ][ 'transport' ] = null;
+				$this->httpapi[ $key ]['transport'] = null;
 			}
 
 			$this->_log_http_api_call( $response, $args, $url );
@@ -265,7 +265,7 @@ class Tracker {
 		$this->plugins[ $plugin_file ][] = array(
 			'file'   => $plugin_file,
 			'plugin' => $plugin,
-			'data'   => $data
+			'data'   => $data,
 		);
 	}
 
@@ -275,7 +275,7 @@ class Tracker {
 			'title'  => $title,
 			'print'  => $object,
 			'caller' => $this->_get_caller(),
-			'sql'    => $sql
+			'sql'    => $sql,
 		);
 
 		$this->logged[] = $log;
@@ -285,10 +285,10 @@ class Tracker {
 		$error = error_get_last();
 
 		if ( ! is_null( $error ) ) {
-			$errno   = $error[ 'type' ];
-			$errstr  = $error[ 'message' ];
-			$errfile = $error[ 'file' ];
-			$errline = $error[ 'line' ];
+			$errno   = $error['type'];
+			$errstr  = $error['message'];
+			$errfile = $error['file'];
+			$errline = $error['line'];
 
 			if ( ! ( error_reporting() & $errno ) ) {
 				return false;
@@ -318,8 +318,8 @@ class Tracker {
 		$backtrace = debug_backtrace();
 
 		$wrong   = $function . '()';
-		$in_file = $this->_strip_abspath( $backtrace[ 3 ][ 'file' ] );
-		$on_line = $backtrace[ 3 ][ 'line' ];
+		$in_file = $this->_strip_abspath( $backtrace[3]['file'] );
+		$on_line = $backtrace[3]['line'];
 		$caller  = $this->_get_caller( '_doing_it_wrong' );
 
 		if ( ! empty( $this->_actual_file ) ) {
@@ -333,8 +333,8 @@ class Tracker {
 
 		do_action( 'debugpress-tracker-doing-it-wrong-logged', $error );
 
-		$this->counts[ 'doingitwrong' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['doingitwrong'] ++;
+		$this->counts['total'] ++;
 	}
 
 	public function track_function( $function, $replacement, $version ) {
@@ -344,13 +344,13 @@ class Tracker {
 		$hook       = null;
 		$bt         = 4;
 
-		if ( ! isset( $backtrace[ 4 ][ 'file' ] ) && 'call_user_func_array' == $backtrace[ 5 ][ 'function' ] ) {
-			$hook = $backtrace[ 6 ][ 'args' ][ 0 ];
+		if ( ! isset( $backtrace[4]['file'] ) && 'call_user_func_array' == $backtrace[5]['function'] ) {
+			$hook = $backtrace[6]['args'][0];
 			$bt   = 6;
 		}
 
-		$in_file = $this->_strip_abspath( $backtrace[ $bt ][ 'file' ] );
-		$on_line = $backtrace[ $bt ][ 'line' ];
+		$in_file = $this->_strip_abspath( $backtrace[ $bt ]['file'] );
+		$on_line = $backtrace[ $bt ]['line'];
 		$caller  = $this->_get_caller( '_deprecated_function', true );
 
 		if ( ! empty( $this->_actual_file ) ) {
@@ -360,20 +360,20 @@ class Tracker {
 
 		$error = compact( 'deprecated', 'replacement', 'version', 'hook', 'in_file', 'on_line', 'caller' );
 
-		$this->deprecated[ 'function' ][] = $error;
+		$this->deprecated['function'][] = $error;
 
 		do_action( 'debugpress-tracker-deprecated-function-logged', $error );
 
-		$this->counts[ 'deprecated' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['deprecated'] ++;
+		$this->counts['total'] ++;
 	}
 
 	public function track_file( $file, $replacement, $version, $message ) {
 		$backtrace = debug_backtrace();
 
-		$deprecated = $this->_strip_abspath( $backtrace[ 3 ][ 'file' ] );
-		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
-		$on_line    = $backtrace[ 4 ][ 'line' ];
+		$deprecated = $this->_strip_abspath( $backtrace[3]['file'] );
+		$in_file    = $this->_strip_abspath( $backtrace[4]['file'] );
+		$on_line    = $backtrace[4]['line'];
 		$caller     = $this->_get_caller( '_deprecated_file', true );
 
 		if ( ! empty( $this->_actual_file ) ) {
@@ -383,12 +383,12 @@ class Tracker {
 
 		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'file', 'caller' );
 
-		$this->deprecated[ 'file' ][] = $error;
+		$this->deprecated['file'][] = $error;
 
 		do_action( 'debugpress-tracker-deprecated-file-logged', $error );
 
-		$this->counts[ 'deprecated' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['deprecated'] ++;
+		$this->counts['total'] ++;
 	}
 
 	public function track_argument( $function, $message, $version ) {
@@ -404,35 +404,35 @@ class Tracker {
 				$deprecated = __( "Unregistered Setting", "debugpress" );
 				break;
 			case 'has_cap' :
-				if ( 0 === strpos( $backtrace[ 7 ][ "function" ], "add_" ) && "_page" == substr( $backtrace[ 7 ][ "function" ], - 5 ) ) {
+				if ( 0 === strpos( $backtrace[7]["function"], "add_" ) && "_page" == substr( $backtrace[7]["function"], - 5 ) ) {
 					$bt = 7;
-					if ( 0 === strpos( $backtrace[ 8 ][ "function" ], "add_" ) && "_page" == substr( $backtrace[ 8 ][ "function" ], - 5 ) ) {
+					if ( 0 === strpos( $backtrace[8]["function"], "add_" ) && "_page" == substr( $backtrace[8]["function"], - 5 ) ) {
 						$bt = 8;
 					}
-					$in_file    = $this->_strip_abspath( $backtrace[ $bt ][ "file" ] );
-					$on_line    = $backtrace[ $bt ][ "line" ];
-					$deprecated = $backtrace[ $bt ][ "function" ] . "()";
-				} else if ( "_wp_menu_output" == $backtrace[ 7 ][ "function" ] ) {
+					$in_file    = $this->_strip_abspath( $backtrace[ $bt ]["file"] );
+					$on_line    = $backtrace[ $bt ]["line"];
+					$deprecated = $backtrace[ $bt ]["function"] . "()";
+				} else if ( "_wp_menu_output" == $backtrace[7]["function"] ) {
 					$deprecated = "current_user_can()";
 					$menu       = true;
 				} else {
-					$in_file    = $this->_strip_abspath( $backtrace[ 6 ][ "file" ] );
-					$on_line    = $backtrace[ 6 ][ "line" ];
+					$in_file    = $this->_strip_abspath( $backtrace[6]["file"] );
+					$on_line    = $backtrace[6]["line"];
 					$deprecated = "current_user_can()";
 				}
 				break;
 			case 'get_plugin_data' :
-				$in_file = $this->_strip_abspath( $backtrace[ 4 ][ "args" ][ 0 ] );
+				$in_file = $this->_strip_abspath( $backtrace[4]["args"][0] );
 				break;
 			case 'define()' :
 			case 'define' :
-				if ( 'ms_subdomain_constants' == $backtrace[ 4 ][ "function" ] ) {
+				if ( 'ms_subdomain_constants' == $backtrace[4]["function"] ) {
 					$deprecated = 'VHOST';
 				}
 				break;
 			default :
-				$in_file = $this->_strip_abspath( $backtrace[ 4 ][ "file" ] );
-				$on_line = $backtrace[ 4 ][ "line" ];
+				$in_file = $this->_strip_abspath( $backtrace[4]["file"] );
+				$on_line = $backtrace[4]["line"];
 				break;
 		}
 
@@ -445,20 +445,20 @@ class Tracker {
 
 		$error = compact( 'deprecated', 'message', 'menu', 'version', 'in_file', 'on_line', 'caller' );
 
-		$this->deprecated[ 'argument' ][] = $error;
+		$this->deprecated['argument'][] = $error;
 
 		do_action( 'debugpress-tracker-deprecated-argument-logged', $error );
 
-		$this->counts[ 'deprecated' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['deprecated'] ++;
+		$this->counts['total'] ++;
 	}
 
 	public function track_constructor( $class, $version ) {
 		$backtrace = debug_backtrace();
 
 		$deprecated = $class;
-		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
-		$on_line    = $backtrace[ 4 ][ 'line' ];
+		$in_file    = $this->_strip_abspath( $backtrace[4]['file'] );
+		$on_line    = $backtrace[4]['line'];
 		$caller     = $this->_get_caller( '_deprecated_constructor', true );
 
 		if ( ! empty( $this->_actual_file ) ) {
@@ -468,20 +468,20 @@ class Tracker {
 
 		$error = compact( 'deprecated', 'version', 'in_file', 'on_line', 'caller' );
 
-		$this->deprecated[ 'constructor' ][] = $error;
+		$this->deprecated['constructor'][] = $error;
 
 		do_action( 'debugpress-tracker-deprecated-constructor-logged', $error );
 
-		$this->counts[ 'deprecated' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['deprecated'] ++;
+		$this->counts['total'] ++;
 	}
 
 	public function track_hook_run( $hook, $replacement, $version, $message ) {
 		$backtrace = debug_backtrace();
 
 		$deprecated = $hook;
-		$in_file    = $this->_strip_abspath( $backtrace[ 4 ][ 'file' ] );
-		$on_line    = $backtrace[ 4 ][ 'line' ];
+		$in_file    = $this->_strip_abspath( $backtrace[4]['file'] );
+		$on_line    = $backtrace[4]['line'];
 		$caller     = $this->_get_caller( '_deprecated_hook', true );
 
 		if ( ! empty( $this->_actual_file ) ) {
@@ -491,12 +491,12 @@ class Tracker {
 
 		$error = compact( 'deprecated', 'replacement', 'message', 'version', 'in_file', 'on_line', 'caller' );
 
-		$this->deprecated[ 'hook-run' ][] = $error;
+		$this->deprecated['hook-run'][] = $error;
 
 		do_action( 'debugpress-tracker-deprecated-hook-run-logged', $error );
 
-		$this->counts[ 'deprecated' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['deprecated'] ++;
+		$this->counts['total'] ++;
 	}
 
 	public function wp_action() {
@@ -508,16 +508,16 @@ class Tracker {
 
 		switch ( $filter ) {
 			case 'bbp_has_forums':
-				$this->objects[ 'bbpress' ][ 'forum_query' ] = maybe_unserialize( maybe_serialize( bbpress()->forum_query ) );
+				$this->objects['bbpress']['forum_query'] = maybe_unserialize( maybe_serialize( bbpress()->forum_query ) );
 				break;
 			case 'bbp_has_topics':
-				$this->objects[ 'bbpress' ][ 'topic_query' ] = maybe_unserialize( maybe_serialize( bbpress()->topic_query ) );
+				$this->objects['bbpress']['topic_query'] = maybe_unserialize( maybe_serialize( bbpress()->topic_query ) );
 				break;
 			case 'bbp_has_replies':
-				$this->objects[ 'bbpress' ][ 'reply_query' ] = maybe_unserialize( maybe_serialize( bbpress()->reply_query ) );
+				$this->objects['bbpress']['reply_query'] = maybe_unserialize( maybe_serialize( bbpress()->reply_query ) );
 				break;
 			case 'bbp_has_search_results':
-				$this->objects[ 'bbpress' ][ 'search_query' ] = maybe_unserialize( maybe_serialize( bbpress()->topic_query ) );
+				$this->objects['bbpress']['search_query'] = maybe_unserialize( maybe_serialize( bbpress()->topic_query ) );
 				break;
 		}
 
@@ -529,7 +529,7 @@ class Tracker {
 			'memory'  => $this->memory(),
 			'time'    => $this->timer(),
 			'hooks'   => $this->hooks(),
-			'queries' => $this->query()
+			'queries' => $this->query(),
 		);
 
 		$this->snapshots[ $name ] = $snapshot;
@@ -559,8 +559,8 @@ class Tracker {
 	public function get_counts_js() : array {
 		$counts = $this->counts;
 
-		$counts[ 'http' ]    = count( $this->httpapi );
-		$counts[ 'storage' ] = count( debugpress_tracker()->logged );
+		$counts['http']    = count( $this->httpapi );
+		$counts['storage'] = count( debugpress_tracker()->logged );
 
 		return $counts;
 	}
@@ -571,7 +571,7 @@ class Tracker {
 		$stats = array(
 			__( "Used Memory", "debugpress" ) => $this->get( $key, 'memory' ),
 			__( "Total Time", "debugpress" )  => $this->get( $key, 'time' ) . 's',
-			__( "SQL Queries", "debugpress" ) => $this->get( $key, 'queries' )
+			__( "SQL Queries", "debugpress" ) => $this->get( $key, 'queries' ),
 		);
 
 		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
@@ -588,7 +588,7 @@ class Tracker {
 
 		if ( debugpress_db()->wpdb()->queries ) {
 			foreach ( debugpress_db()->wpdb()->queries as $q ) {
-				$timer += $q[ 1 ];
+				$timer += $q[1];
 			}
 		}
 
@@ -610,8 +610,8 @@ class Tracker {
 
 		do_action( 'debugpress-tracker-error-logged', $error );
 
-		$this->counts[ 'errors' ] ++;
-		$this->counts[ 'total' ] ++;
+		$this->counts['errors'] ++;
+		$this->counts['total'] ++;
 
 		if ( $errno == E_ERROR || $errno == E_USER_ERROR ) {
 			$this->has_errors ++;
@@ -656,17 +656,17 @@ class Tracker {
 
 		$prev = null;
 		foreach ( $trace as $call ) {
-			if ( ! empty( $function_target ) && isset( $call[ 'function' ] ) ) {
-				if ( substr( $call[ 'function' ], 0, strlen( $function_target ) ) == $function_target ) {
+			if ( ! empty( $function_target ) && isset( $call['function'] ) ) {
+				if ( substr( $call['function'], 0, strlen( $function_target ) ) == $function_target ) {
 					if ( $use_previous_call_actual ) {
-						if ( $prev && isset( $prev[ 'file' ] ) && isset( $prev[ 'line' ] ) ) {
-							$this->_actual_file = $this->_normalize_path( $prev[ 'file' ] );
-							$this->_actual_line = $prev[ 'line' ];
+						if ( $prev && isset( $prev['file'] ) && isset( $prev['line'] ) ) {
+							$this->_actual_file = $this->_normalize_path( $prev['file'] );
+							$this->_actual_line = $prev['line'];
 						}
 					} else {
-						if ( isset( $call[ 'file' ] ) && isset( $call[ 'line' ] ) ) {
-							$this->_actual_file = $this->_normalize_path( $call[ 'file' ] );
-							$this->_actual_line = $call[ 'line' ];
+						if ( isset( $call['file'] ) && isset( $call['line'] ) ) {
+							$this->_actual_file = $this->_normalize_path( $call['file'] );
+							$this->_actual_line = $call['line'];
 						}
 					}
 
@@ -674,40 +674,40 @@ class Tracker {
 				}
 			}
 
-			if ( isset( $call[ 'class' ] ) && "Dev4Press\\Plugin\\DebugPress\\Track\\Tracker" == $call[ 'class' ] ) {
+			if ( isset( $call['class'] ) && "Dev4Press\\Plugin\\DebugPress\\Track\\Tracker" == $call['class'] ) {
 				continue;
 			}
 
-			if ( $call[ 'function' ] == 'debugpress_tracker' || $call[ 'function' ] == 'debugpress_store_object' ) {
+			if ( $call['function'] == 'debugpress_tracker' || $call['function'] == 'debugpress_store_object' ) {
 				continue;
 			}
 
-			if ( $call[ 'function' ] == 'call_user_func_array' ) {
-				if ( isset( $call[ 'args' ][ 0 ][ 0 ] ) && $call[ 'args' ][ 0 ][ 0 ] instanceof Tracker ) {
+			if ( $call['function'] == 'call_user_func_array' ) {
+				if ( isset( $call['args'][0][0] ) && $call['args'][0][0] instanceof Tracker ) {
 					continue;
 				}
 			}
 
-			$value = isset( $call[ "class" ] ) ? "{$call["class"]}->{$call["function"]}" : $call[ "function" ];
+			$value = isset( $call["class"] ) ? "{$call["class"]}->{$call["function"]}" : $call["function"];
 
 			$file = '';
-			if ( isset( $call[ 'file' ] ) && isset( $call[ 'line' ] ) ) {
-				$_file = $this->_normalize_path( $call[ 'file' ] );
-				$file  = ' (' . $_file . ' => ' . $call[ 'line' ] . ')';
+			if ( isset( $call['file'] ) && isset( $call['line'] ) ) {
+				$_file = $this->_normalize_path( $call['file'] );
+				$file  = ' (' . $_file . ' => ' . $call['line'] . ')';
 
 				$this->_actual_file = $_file;
-				$this->_actual_line = $call[ 'line' ];
+				$this->_actual_line = $call['line'];
 			}
 
 			$filter = '';
 
 			try {
-				if ( in_array( $call[ 'function' ], $filters ) ) {
-					if ( isset( $call[ 'args' ][ 0 ] ) ) {
-						if ( is_array( $call[ 'args' ][ 0 ] ) ) {
-							$filter = ' (' . maybe_serialize( current( $call[ 'args' ][ 0 ] ) ) . ')';
+				if ( in_array( $call['function'], $filters ) ) {
+					if ( isset( $call['args'][0] ) ) {
+						if ( is_array( $call['args'][0] ) ) {
+							$filter = ' (' . maybe_serialize( current( $call['args'][0] ) ) . ')';
 						} else {
-							$filter = ' (' . maybe_serialize( $call[ 'args' ][ 0 ] ) . ')';
+							$filter = ' (' . maybe_serialize( $call['args'][0] ) . ')';
 						}
 					}
 				}
@@ -733,21 +733,21 @@ class Tracker {
 	}
 
 	private function _log_http_api_call( $response, $args, $url ) {
-		$key = $args[ '_debugpress_key_' ];
+		$key = $args['_debugpress_key_'];
 		$log = array(
 			'end'       => microtime( true ),
 			'info'      => $this->_http_info,
 			'transport' => $this->_http_transport,
 			'response'  => $response,
 			'url'       => $url,
-			'args'      => $args
+			'args'      => $args,
 		);
 
-		if ( isset( $args[ '_debugpress_key_original_' ] ) ) {
-			$key_original = $args[ '_debugpress_key_original_' ];
+		if ( isset( $args['_debugpress_key_original_'] ) ) {
+			$key_original = $args['_debugpress_key_original_'];
 
-			$this->httpapi[ $key_original ][ 'end' ]      = $this->httpapi[ $key_original ][ 'start' ];
-			$this->httpapi[ $key_original ][ 'response' ] = new WP_Error( 'http_request_not_executed', sprintf( __( "Request not executed because of the filter on %s.", "debugpress" ), 'pre_http_request' ) );
+			$this->httpapi[ $key_original ]['end']      = $this->httpapi[ $key_original ]['start'];
+			$this->httpapi[ $key_original ]['response'] = new WP_Error( 'http_request_not_executed', sprintf( __( "Request not executed because of the filter on %s.", "debugpress" ), 'pre_http_request' ) );
 		}
 
 		$this->_http_info      = null;
@@ -760,29 +760,29 @@ class Tracker {
 		if ( ! empty( $this->httpapi ) ) {
 			foreach ( $this->httpapi as &$raw ) {
 				$log = array(
-					'transport' => $raw[ 'transport' ],
-					'info'      => $raw[ 'info' ],
-					'args'      => array()
+					'transport' => $raw['transport'],
+					'info'      => $raw['info'],
+					'args'      => array(),
 				);
 
-				foreach ( $raw[ 'args' ] as $key => $val ) {
+				foreach ( $raw['args'] as $key => $val ) {
 					if ( substr( $key, 0, 1 ) !== '_' ) {
-						$log[ 'args' ][ $key ] = $val;
+						$log['args'][ $key ] = $val;
 					}
 				}
 
 				if ( is_wp_error( $raw ) ) {
 					$response = array( 'errors' => $raw->get_error_message() );
-				} else if ( isset( $raw[ 'response' ] ) && is_wp_error( $raw[ 'response' ] ) ) {
-					$response = array( 'errors' => $raw[ 'response' ]->get_error_message() );
-				} else if ( isset( $raw[ 'response' ][ 'http_response' ] ) ) {
-					$response              = $raw[ 'response' ][ 'http_response' ]->to_array();
-					$response[ 'headers' ] = $response[ 'headers' ]->getAll();
+				} else if ( isset( $raw['response'] ) && is_wp_error( $raw['response'] ) ) {
+					$response = array( 'errors' => $raw['response']->get_error_message() );
+				} else if ( isset( $raw['response']['http_response'] ) ) {
+					$response            = $raw['response']['http_response']->to_array();
+					$response['headers'] = $response['headers']->getAll();
 				} else {
 					$response = array();
 				}
 
-				$log[ 'response' ] = $response;
+				$log['response'] = $response;
 
 				$raw = $log;
 			}

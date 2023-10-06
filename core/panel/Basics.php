@@ -16,9 +16,9 @@ class Basics extends Panel {
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {
-			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . $env[ 'type' ] . '">';
+			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . $env['type'] . '">';
 
-			$this->title( $env[ 'label' ], true, true );
+			$this->title( $env['label'], true, true );
 
 			echo '</div>';
 		}
@@ -29,8 +29,8 @@ class Basics extends Panel {
 			$this->title( '<i class="debugpress-icon debugpress-icon-triangle-exclamation"></i> ' . esc_html__( "Debug mode problems", "debugpress" ), true, true );
 			$this->block_header();
 			foreach ( $test as $t ) {
-				$this->sub_title( $t[ 0 ] );
-				echo $t[ 1 ];
+				$this->sub_title( $t[0] );
+				echo $t[1];
 				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . esc_html__( "More Information", "debugpress" ) . '</a>';
 			}
 			$this->block_footer();
@@ -84,19 +84,19 @@ class Basics extends Panel {
 		$this->table_row( array( __( "Version", "debugpress" ), Info::cms_version() ) );
 		$this->table_row( array(
 			Info::cms_theme_type_in_use() == 'child' ? __( "Child Theme", "debugpress" ) : __( "Theme", "debugpress" ),
-			Info::cms_stylesheet_theme_name()
+			Info::cms_stylesheet_theme_name(),
 		) );
 
 		if ( is_child_theme() ) {
 			$this->table_row( array(
 				__( "Parent Theme", "debugpress" ),
-				Info::cms_templates_theme_name()
+				Info::cms_templates_theme_name(),
 			) );
 		}
 
 		$this->table_row( array(
 			__( "Pretty Permalinks", "debugpress" ),
-			WP::instance()->has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" )
+			WP::instance()->has_permalinks() ? __( "Enabled", "debugpress" ) : __( "Disabled", "debugpress" ),
 		) );
 		$this->table_foot();
 		$this->block_footer();
@@ -115,10 +115,10 @@ class Basics extends Panel {
 		foreach ( debugpress_tracker()->snapshots as $name => $obj ) {
 			$this->table_row( array(
 				$name,
-				debugpress_format_size( $obj[ 'memory' ] ),
-				number_format( $obj[ 'time' ], 5 ),
-				$obj[ 'queries' ],
-				$obj[ 'hooks' ]
+				debugpress_format_size( $obj['memory'] ),
+				number_format( $obj['time'], 5 ),
+				$obj['queries'],
+				$obj['hooks'],
 			) );
 		}
 		$this->table_foot();
@@ -135,14 +135,14 @@ class Basics extends Panel {
 		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
 			$test[] = array(
 				'WP_DEBUG',
-				__( "Debug mode is not enabled. Some of the debug related information is not available.", "debugpress" )
+				__( "Debug mode is not enabled. Some of the debug related information is not available.", "debugpress" ),
 			);
 		}
 
 		if ( ! defined( 'SAVEQUERIES' ) || ! SAVEQUERIES ) {
 			$test[] = array(
 				'SAVEQUERIES',
-				__( "Saving of SQL queries is not enabled. SQL queries debug is not available.", "debugpress" )
+				__( "Saving of SQL queries is not enabled. SQL queries debug is not available.", "debugpress" ),
 			);
 		}
 

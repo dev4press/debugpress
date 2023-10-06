@@ -49,12 +49,12 @@ class Request extends Panel {
 			$this->block_header();
 			$this->table_init_standard();
 			$this->table_head();
-			$this->table_row( array( "&#36;pagenow", $GLOBALS[ 'pagenow' ] ?? '' ) );
-			$this->table_row( array( "&#36;typenow", $GLOBALS[ 'typenow' ] ?? '' ) );
-			$this->table_row( array( "&#36;taxnow", $GLOBALS[ 'taxnow' ] ?? '' ) );
+			$this->table_row( array( "&#36;pagenow", $GLOBALS['pagenow'] ?? '' ) );
+			$this->table_row( array( "&#36;typenow", $GLOBALS['typenow'] ?? '' ) );
+			$this->table_row( array( "&#36;taxnow", $GLOBALS['taxnow'] ?? '' ) );
 			$this->table_row( array(
 				"&#36;hook_suffix",
-				$GLOBALS[ 'hook_suffix' ] ?? ''
+				$GLOBALS['hook_suffix'] ?? '',
 			) );
 			$this->table_foot();
 			$this->block_footer();
@@ -88,16 +88,16 @@ class Request extends Panel {
 
 	public function request_url() : array {
 		return array(
-			__( "Host", "debugpress" )  => wp_unslash( $_SERVER[ 'HTTP_HOST' ] ),
-			__( "Path", "debugpress" )  => isset( $_SERVER[ 'REQUEST_URI' ] ) ? wp_unslash( $_SERVER[ 'REQUEST_URI' ] ) : '/',
-			__( "Query", "debugpress" ) => isset( $_SERVER[ 'QUERY_STRING' ] ) ? wp_unslash( $_SERVER[ 'QUERY_STRING' ] ) : '',
+			__( "Host", "debugpress" )  => wp_unslash( $_SERVER['HTTP_HOST'] ),
+			__( "Path", "debugpress" )  => isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/',
+			__( "Query", "debugpress" ) => isset( $_SERVER['QUERY_STRING'] ) ? wp_unslash( $_SERVER['QUERY_STRING'] ) : '',
 		);
 	}
 
 	public function request_basics() : array {
 		return array(
-			__( "Method", "debugpress" ) => strtoupper( wp_unslash( $_SERVER[ 'REQUEST_METHOD' ] ) ),
-			__( "Scheme", "debugpress" ) => is_ssl() ? 'HTTPS' : 'HTTP'
+			__( "Method", "debugpress" ) => strtoupper( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ),
+			__( "Scheme", "debugpress" ) => is_ssl() ? 'HTTPS' : 'HTTP',
 		);
 	}
 
@@ -125,8 +125,8 @@ class Request extends Panel {
 
 		foreach ( $raw as $header ) {
 			$parts = explode( ":", $header, 2 );
-			$key   = trim( $parts[ 0 ] );
-			$value = isset( $parts[ 1 ] ) ? trim( $parts[ 1 ] ) : '/';
+			$key   = trim( $parts[0] );
+			$value = isset( $parts[1] ) ? trim( $parts[1] ) : '/';
 
 			$list[ $key ] = $value;
 		}

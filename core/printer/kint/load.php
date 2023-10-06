@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KINT_SKIP_HELPERS', true );
-
 require_once( DEBUGPRESS_PLUGIN_PATH . 'vendor/kint/autoload.php' );
 
 Kint\Renderer\RichRenderer::$folder = false;

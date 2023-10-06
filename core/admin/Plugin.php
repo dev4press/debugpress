@@ -16,11 +16,11 @@ class Plugin {
 
 		add_filter( 'network_admin_plugin_action_links_debugpress/debugpress.php', array(
 			$this,
-			'plugin_action_links'
+			'plugin_action_links',
 		) );
 		add_filter( 'plugin_action_links_debugpress/debugpress.php', array(
 			$this,
-			'plugin_action_links'
+			'plugin_action_links',
 		) );
 
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_links' ), 10, 2 );
@@ -37,7 +37,7 @@ class Plugin {
 	}
 
 	public function plugin_action_links( $actions ) {
-		$actions[ 'settings' ] = '<a href="' . admin_url( 'options-general.php?page=debugpress' ) . '">' . esc_html__( "Settings", "debugpress" ) . '</a>';
+		$actions['settings'] = '<a href="' . admin_url( 'options-general.php?page=debugpress' ) . '">' . esc_html__( "Settings", "debugpress" ) . '</a>';
 
 		return $actions;
 	}
@@ -57,16 +57,16 @@ class Plugin {
 	}
 
 	public function admin_menu() {
-		$this->_pages[ 'settings' ] = add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
+		$this->_pages['settings'] = add_options_page( __( "DebugPress Settings", "debugpress" ), __( "DebugPress", "debugpress" ), 'manage_options', 'debugpress', array(
 			$this,
-			'settings_page'
+			'settings_page',
 		) );
-		$this->_pages[ 'info' ]     = add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
+		$this->_pages['info']     = add_management_page( __( "DebugPress Info", "debugpress" ), __( "DebugPress Info", "debugpress" ), 'manage_options', 'debugpress-info', array(
 			$this,
-			'tools_page'
+			'tools_page',
 		) );
 
-		add_action( 'load-' . $this->_pages[ 'settings' ], array( $this, 'settings_context_help' ) );
+		add_action( 'load-' . $this->_pages['settings'], array( $this, 'settings_context_help' ) );
 	}
 
 	public function settings_page() {
@@ -89,7 +89,7 @@ class Plugin {
 				             '</p><pre>define( \'WP_DEBUG\', true );
 define( \'WP_DEBUG_DISPLAY\', false );
 define( \'WP_DEBUG_LOG\', true );
-define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.", "debugpress" ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( "More Information", "debugpress" ) . '</a></p>'
+define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.", "debugpress" ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( "More Information", "debugpress" ) . '</a></p>',
 			)
 		);
 
@@ -98,7 +98,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, 
 				'id'      => 'debugpress-demand',
 				'title'   => __( "On Demand", "debugpress" ),
 				'content' => '<h2>' . __( "Debugger On Demand Activation", "debugpress" ) . '</h2><p>' . __( "Add the following argument and value to the URL. If the access key value is not configured in the plugin settings, On Demand loading is disabled.", "debugpress" ) .
-				             '</p><pre>?debugpress={ACCESS_KEY}</pre><p>' . __( "If the URL already has arguments (? is already in URL), replace ? with &.", "debugpress" ) . '</p>'
+				             '</p><pre>?debugpress={ACCESS_KEY}</pre><p>' . __( "If the URL already has arguments (? is already in URL), replace ? with &.", "debugpress" ) . '</p>',
 			)
 		);
 
@@ -107,7 +107,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, 
 				'id'      => 'debugpress-info',
 				'title'   => __( "Help & Support", "debugpress" ),
 				'content' => '<h2>' . __( "Help & Support", "debugpress" ) . '</h2><p>' . __( "To get help with DebugPress, you can start with Knowledge Base list of frequently asked questions, user guides, articles (tutorials) and reference guide (for developers).", "debugpress" ) .
-				             '</p><p><a href="https://support.dev4press.com/kb/product/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( "Knowledge Base", "debugpress" ) . '</a> <a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-secondary" target="_blank">' . __( "Support Forum", "debugpress" ) . '</a></p>'
+				             '</p><p><a href="https://support.dev4press.com/kb/product/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( "Knowledge Base", "debugpress" ) . '</a> <a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-secondary" target="_blank">' . __( "Support Forum", "debugpress" ) . '</a></p>',
 			)
 		);
 
@@ -117,7 +117,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, 
 				'title'   => __( "Found a bug?", "debugpress" ),
 				'content' => '<h2>' . __( "Found a bug?", "debugpress" ) . '</h2><p>' . __( "If you find a bug in DebugPress, you can report it in the support forum.", "debugpress" ) .
 				             '</p><p>' . __( "Before reporting a bug, make sure you use latest plugin version, your website and server meet system requirements. And, please be as descriptive as possible, include server side logged errors, or errors from browser debugger.", "debugpress" ) .
-				             '</p><p><a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( "Open new topic", "debugpress" ) . '</a></p>'
+				             '</p><p><a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( "Open new topic", "debugpress" ) . '</a></p>',
 			)
 		);
 
@@ -126,7 +126,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, 
 			'<p>' . join( '<br/>', array(
 				'home'  => '<a target="_blank" rel="noopener" href="https://debug.press/">' . esc_html__( "Home Page", "debugpress" ) . '</a>',
 				'kb'    => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/kb/product/debugpress/">' . esc_html__( "Knowledge Base", "debugpress" ) . '</a>',
-				'forum' => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/">' . esc_html__( "Support Forum", "debugpress" ) . '</a>'
+				'forum' => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/">' . esc_html__( "Support Forum", "debugpress" ) . '</a>',
 			) ) . '</p>'
 		);
 	}
@@ -136,7 +136,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( "This code enables debug mode, 
 			'debugpress',
 			'debugpress_settings',
 			array(
-				'sanitize_callback' => array( $this, 'settings_sanitize' )
+				'sanitize_callback' => array( $this, 'settings_sanitize' ),
 			) );
 
 		Settings::instance()->sections();

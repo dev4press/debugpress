@@ -34,7 +34,7 @@ class Server extends Panel {
 			$this->table_row( array( __( "Module: SSL", "debugpress" ), Info::apache_mod_ssl() ) );
 			$this->table_row( array(
 				__( "All Loaded Modules", "debugpress" ),
-				debugpress_rx( Info::apache_modules_list(), false )
+				debugpress_rx( Info::apache_modules_list(), false ),
 			) );
 			$this->table_foot();
 			$this->block_footer();
@@ -102,7 +102,7 @@ class Server extends Panel {
 		$this->table_row( array( __( "Log file", "debugpress" ), Info::php_error_filepath() ) );
 		$this->table_row( array(
 			__( "Error flags", "debugpress" ),
-			debugpress_rx( Info::php_error_levels(), false )
+			debugpress_rx( Info::php_error_levels(), false ),
 		) );
 		$this->table_foot();
 		$this->block_footer();
@@ -136,11 +136,11 @@ class Server extends Panel {
 		$this->table_head();
 		$this->table_row( array(
 			__( "Standard", "debugpress" ),
-			debugpress_rx( Info::php_loaded_extensions(), false )
+			debugpress_rx( Info::php_loaded_extensions(), false ),
 		) );
 		$this->table_row( array(
 			__( "ZEND", "debugpress" ),
-			debugpress_rx( Info::php_loaded_extensions( true ), false )
+			debugpress_rx( Info::php_loaded_extensions( true ), false ),
 		) );
 		$this->table_foot();
 		$this->block_footer();
