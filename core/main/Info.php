@@ -128,7 +128,11 @@ class Info {
 
 	public static function apache_version() : string {
 		if ( Info::is_apache() && function_exists( 'apache_get_version' ) ) {
-			return apache_get_version();
+			$version = apache_get_version();
+
+			if ( is_string( $version ) ) {
+				return $version;
+			}
 		}
 
 		return '';

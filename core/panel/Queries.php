@@ -363,7 +363,7 @@ class Queries extends Panel {
 	}
 
 	private function _prepare_library() {
-		$list = array( '41', '42', '43', '44' );
+		$list = array( '41', '42', '43', '44', '45' );
 
 		foreach ( $list as $code ) {
 			$class = 'Dev4Press\v' . $code . '\Core\Helpers\DB';

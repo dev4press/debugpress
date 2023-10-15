@@ -1,8 +1,8 @@
-=== DebugPress ===
+=== DebugPress: Popup debugger for WordPress ===
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.4
+Stable tag: 3.4.1
 Requires at least: 5.5
 Tested up to: 6.3
 Requires PHP: 7.3
@@ -112,6 +112,9 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 3.4.1 (2023.10.15) =
+* Fix: Function `apache_get_version` not working on every server
+
 = 3.4 (2023.10.06) =
 * New: Updated some plugin system requirements
 * Edit: KINT now loads own helper d() and s() functions
