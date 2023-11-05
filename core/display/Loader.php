@@ -305,9 +305,9 @@ class Loader {
 			);
 		}
 
-		if ( empty( debugpress_tracker()->errors ) ) {
+		if ( ! empty( debugpress_tracker()->errors ) ) {
 			$this->tabs['errors'] = array(
-				'label' => __( "Errors", "debugpress" ) . ' (' . ( debugpress_tracker()->counts['errors'] + 1 ) . ')',
+				'label' => __( "Errors", "debugpress" ) . ' (' . debugpress_tracker()->counts['errors'] . ')',
 				'icon'  => 'triangle-exclamation',
 			);
 		}
