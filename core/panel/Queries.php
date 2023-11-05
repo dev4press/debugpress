@@ -93,7 +93,7 @@ class Queries extends Panel {
 	}
 
 	public function left() {
-		echo '<h4 class="debugpress-querie-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
+		echo '<h4 class="debugpress-query-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
 
 		$this->title( __( "Basic Statistics", "debugpress" ), true, false, 'basic-statistics' );
 		$this->block_header();

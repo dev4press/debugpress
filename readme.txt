@@ -2,9 +2,9 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.4.1
+Stable tag: 3.5
 Requires at least: 5.5
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -75,6 +75,11 @@ In the administration Tools menu, plugin adds DebugPress Info page showing sever
 = Plugin Settings =
 The plugin has various options controlling the plugin activation, button integration position, user roles that can see the debugger window, options to attempt overriding WordPress debug flags and options controlling the visibility of optional debugger panels.
 
+= Log into Database =
+Debugger popup is visible for the request running in the browser. But, there are many requests that are happening in the background (AJAX calls, REST API calls...), and for them, you can't see errors, call information and other stuff in the debugger. Because of that, DebugPress supports logging of various events into database with the use of 'coreActivity' plugin, and it is highly recommended to install and use coreActivity.
+
+Log various debug events into database with the free plugin: [coreActivity Plugin](https://wordpress.org/plugins/coreactivity/), supporting over 120 events and 10 popular WordPress plugins. DebugPress related events will be logged and available for later analysis and this includes errors, AJAX calls and HTTP API calls.
+
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
 
@@ -112,6 +117,16 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 3.5 (2023.11.06) =
+* New: Tracker logs the trace for each HTTP API request made
+* New: Tracker executes action for every completed HTTP API request
+* New: AJAX Tracker executes action for every completed Admin AJAX request
+* New: HTTP API log shows the trace and timestamps for each request
+* New: Popup tools links to the coreActivity events and logs
+* New: Popup header shows icons for tabs with labels with improved sizing
+* New: Popup tabs show label or icon only, depending on the screen size
+* Fix: Trace information for tracker HTTP API request was lost
+
 = 3.4.1 (2023.10.15) =
 * Fix: Function `apache_get_version` not working on every server
 

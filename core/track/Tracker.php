@@ -65,6 +65,7 @@ class Tracker {
 
 	private $_http_transport = null;
 	private $_http_info = null;
+	private $_http_spawn_cron = false;
 
 	public function __construct() {
 		global $timestart;
@@ -173,14 +174,13 @@ class Tracker {
 
 		$args['_debugpress_key_'] = md5( microtime( true ) . '-' . $url ) . '-' . microtime( true );
 
-		if ( ! empty( $url ) ) {
-			$this->httpapi[ $args['_debugpress_key_'] ] = array(
-				'url'   => $url,
-				'args'  => $args,
-				'start' => $start,
-				'trace' => $trace,
-			);
-		}
+		$this->httpapi[ $args['_debugpress_key_'] ] = array(
+			'url'   => $url,
+			'args'  => $args,
+			'start' => $start,
+			'trace' => $trace,
+			'spawn' => $this->_http_spawn_cron,
+		);
 
 		return $args;
 	}
@@ -645,12 +645,13 @@ class Tracker {
 	}
 
 	private function _get_caller( $function_target = '', $use_previous_call_actual = false ) : array {
-		$_abspath = str_replace( '\\', '/', ABSPATH );
+		$this->_http_spawn_cron = false;
 
 		$filters = array( 'do_action', 'apply_filter', 'do_action_ref_array', 'call_user_func_array' );
 
-		$trace              = array_reverse( debug_backtrace() );
-		$caller             = array();
+		$trace  = array_reverse( debug_backtrace() );
+		$caller = array();
+
 		$this->_actual_file = '';
 		$this->_actual_line = 0;
 
@@ -688,7 +689,11 @@ class Tracker {
 				}
 			}
 
-			$value = isset( $call["class"] ) ? "{$call["class"]}->{$call["function"]}" : $call["function"];
+			if ( $call['function'] == 'spawn_cron' ) {
+				$this->_http_spawn_cron = true;
+			}
+
+			$value = isset( $call['class'] ) ? "{$call['class']}->{$call['function']}" : $call['function'];
 
 			$file = '';
 			if ( isset( $call['file'] ) && isset( $call['line'] ) ) {
@@ -750,8 +755,18 @@ class Tracker {
 			$this->httpapi[ $key_original ]['response'] = new WP_Error( 'http_request_not_executed', sprintf( __( "Request not executed because of the filter on %s.", "debugpress" ), 'pre_http_request' ) );
 		}
 
+		if ( isset( $this->httpapi[ $key ] ) ) {
+			$log['start'] = $this->httpapi[ $key ]['start'] ?? 0;
+			$log['trace'] = $this->httpapi[ $key ]['trace'] ?? array();
+			$log['spawn'] = $this->httpapi[ $key ]['spawn'] ?? false;
+		}
+
 		$this->_http_info      = null;
 		$this->_http_transport = null;
+
+		if ( ! $log['spawn'] ) {
+			do_action( 'debugpress-tracker-http-request-call-logged', $log );
+		}
 
 		$this->httpapi[ $key ] = $log;
 	}
@@ -762,7 +777,13 @@ class Tracker {
 				$log = array(
 					'transport' => $raw['transport'],
 					'info'      => $raw['info'],
+					'trace'     => $raw['trace'] ?? array(),
+					'timers'    => array(
+						'start' => $raw['start'] ?? 0,
+						'end'   => $raw['end'] ?? 0,
+					),
 					'args'      => array(),
+					'spawn'     => $raw['spawn'] ?? false,
 				);
 
 				foreach ( $raw['args'] as $key => $val ) {
@@ -786,6 +807,7 @@ class Tracker {
 
 				$raw = $log;
 			}
+			debugpress_error_log( $this->httpapi );
 		}
 	}
 }

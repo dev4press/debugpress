@@ -15,6 +15,11 @@
             padding: 0 10px;
             list-style: none;
 
+            .debugpress-tab-ctrl-icon {
+                padding-right: 5px;
+                font-size: calc(var(--debugpress-base-font-size) + 2px);
+            }
+
             a {
                 color: #EEE;
                 box-shadow: none;
@@ -24,6 +29,7 @@
 
             &.debugpress-tab-active {
                 background: #FFF;
+                height: 33px;
 
                 a {
                     color: #23282D;
@@ -162,7 +168,7 @@
         }
     }
 
-    .debugpress-querie-sidebar-control {
+    .debugpress-query-sidebar-control {
         background: #23282D;
         color: #FFF;
         padding: 5px !important;

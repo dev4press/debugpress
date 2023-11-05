@@ -10,8 +10,18 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
-				$label = is_array( $obj ) ? $obj[ 'tab' ] : $obj;
-				$title = is_array( $obj ) ? ' title="' . $obj[ 'label' ] . '"' : '';
+				$label   = is_array( $obj ) ? ( $obj['tab'] ?? $obj['label'] ) : $obj;
+				$icon    = is_array( $obj ) ? ( $obj['icon'] ?? '' ) : 'bug';
+				$title   = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
+				$counter = is_array( $obj ) && ( ( $obj['counter'] ?? false ) );
+
+				if ( ! empty( $icon ) ) {
+					$label = '<i class="debugpress-icon debugpress-icon-' . $icon . ' debugpress-tab-ctrl-icon"></i><span class="debugpress-tab-ctrl-span">' . $label . '</span>';
+				}
+
+				if ( $counter ) {
+					$label .= ' (<span class="debugpress-counter">0</span>)';
+				}
 
 				echo '<li role="presentation" id="debugpress-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
 				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . $title . '>' . $label . '</a>';
@@ -27,7 +37,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			$first = true;
 			foreach ( Loader::instance()->tabs as $tab => $obj ) {
-				$label = is_array( $obj ) ? $obj[ 'label' ] : $obj;
+				$label = is_array( $obj ) ? $obj['label'] : $obj;
 
 				echo '<option value="debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
 

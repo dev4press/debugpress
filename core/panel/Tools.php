@@ -53,6 +53,22 @@ class Tools extends Panel {
 	}
 
 	public function middle() {
+		$this->title( 'coreActivity', true, true );
+		echo '<p>' . esc_html__( "coreActivity is free and powerful plugin for logging activities in WordPress for later review and analysis, supporting over 120 events, more than 10 plugins, with notifications, live logs and more. And, it has 9 events for DebugPress plugin.", "debugpress" ) . '</p>';
+
+		$this->block_header();
+		if ( debugpress_has_coreactivity() ) {
+			$this->sub_title( __( "Events and Logs", "debugpress" ) );
+			echo '<p>' . esc_html__( "Configure available events and check out what is logged.", "debugpress" ) . '</p>';
+			echo '<a target="_blank" href="' . network_admin_url( 'admin.php?page=coreactivity-events&filter-component=coreactivity/debugpress' ) . '" class="debugpress-button-action">' . esc_html__( "DebugPress Events", "debugpress" ) . '</a>';
+			echo '<a target="_blank" href="' . network_admin_url( 'admin.php?page=coreactivity-logs&view=component&filter-component=coreactivity/debugpress' ) . '" class="debugpress-button-action">' . esc_html__( "DebugPress Log", "debugpress" ) . '</a>';
+		} else {
+			$this->sub_title( __( "Install the Plugin", "debugpress" ) );
+			echo '<p>' . esc_html__( "Find plugin in the repository, install and activate it.", "debugpress" ) . '</p>';
+			echo '<a target="_blank" href="' . network_admin_url( 'plugin-install.php?s=coreactivity&tab=search&type=term' ) . '" class="debugpress-button-action">' . esc_html__( "Find and Install the plugin", "debugpress" ) . '</a>';
+		}
+		$this->block_footer();
+
 		$this->title( __( "WordPress Important Tools", "debugpress" ), true, true );
 
 		if ( current_user_can( 'manage_options' ) ) {

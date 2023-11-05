@@ -54,7 +54,11 @@ class AJAX {
 		debugpress_tracker()->end();
 
 		if ( ! headers_sent() ) {
-			foreach ( $this->data() as $key => $value ) {
+			$data = $this->data();
+
+			do_action( 'debugpress-tracker-admin-ajax-logged', $data );
+
+			foreach ( $data as $key => $value ) {
 				$formatted = is_scalar( $value ) ? $value : json_encode( $value );
 				$header    = sprintf( 'X-DEBUGPRESS-%s: %s', $key, $formatted );
 

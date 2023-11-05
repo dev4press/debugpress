@@ -165,87 +165,151 @@ class Loader {
 
 	public function prepare_tabs() {
 		$this->tabs = array(
-			'basics' => __( "Basics", "debugpress" ),
+			'basics' => array(
+				'label' => __( "Basics", "debugpress" ),
+				'icon'  => 'gear',
+			),
 		);
 
 		if ( debugpress_plugin()->get( 'panel_request' ) ) {
-			$this->tabs['request'] = __( "Request", "debugpress" );
+			$this->tabs['request'] = array(
+				'label' => __( "Request", "debugpress" ),
+				'icon'  => 'globe',
+			);
 		}
 
 		if ( ! is_admin() ) {
-			$this->tabs['query'] = __( "Query", "debugpress" );
+			$this->tabs['query'] = array(
+				'label' => __( "Query", "debugpress" ),
+				'icon'  => 'brackets-curly',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_content' ) ) {
-			$this->tabs['content'] = __( "Content", "debugpress" );
+			$this->tabs['content'] = array(
+				'label' => __( "Content", "debugpress" ),
+				'icon'  => 'folder',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_rewriter' ) ) {
-			$this->tabs['rewriter'] = __( "Rewriter", "debugpress" );
+			$this->tabs['rewriter'] = array(
+				'label' => __( "Rewriter", "debugpress" ),
+				'icon'  => 'link-simple',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_roles' ) ) {
-			$this->tabs['roles'] = __( "Roles", "debugpress" );
+			$this->tabs['roles'] = array(
+				'label' => __( "Roles", "debugpress" ),
+				'icon'  => 'folder-user',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_constants' ) ) {
-			$this->tabs['constants'] = __( "Constants", "debugpress" );
+			$this->tabs['constants'] = array(
+				'label' => __( "Constants", "debugpress" ),
+				'icon'  => 'brackets-square',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_hooks' ) ) {
-			$this->tabs['hooks'] = __( "Hooks", "debugpress" );
+			$this->tabs['hooks'] = array(
+				'label' => __( "Hooks", "debugpress" ),
+				'icon'  => 'diagram-project',
+			);
 		}
 
 		if ( ! empty( debugpress_db()->wpdb()->queries ) ) {
-			$this->tabs['queries'] = __( "SQL Queries", "debugpress" );
+			$this->tabs['queries'] = array(
+				'label' => __( "SQL Queries", "debugpress" ),
+				'icon'  => 'database',
+			);
 		}
 
 		if ( is_user_logged_in() && debugpress_plugin()->get( 'panel_user' ) ) {
-			$this->tabs['user'] = __( "User", "debugpress" );
+			$this->tabs['user'] = array(
+				'label' => __( "User", "debugpress" ),
+				'icon'  => 'id-card-clip',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_enqueue' ) ) {
-			$this->tabs['enqueue'] = __( "Enqueue", "debugpress" );
+			$this->tabs['enqueue'] = array(
+				'label' => __( "Enqueue", "debugpress" ),
+				'icon'  => 'files',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_php' ) ) {
-			$this->tabs['php'] = __( "PHP", "debugpress" );
+			$this->tabs['php'] = array(
+				'label' => __( "PHP", "debugpress" ),
+				'icon'  => 'php',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_system' ) ) {
-			$this->tabs['server'] = __( "System", "debugpress" );
+			$this->tabs['server'] = array(
+				'label' => __( "System", "debugpress" ),
+				'icon'  => 'server',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_bbpress' ) && debugpress_has_bbpress() && is_bbpress() ) {
-			$this->tabs['bbpress'] = __( "bbPress", "debugpress" );
+			$this->tabs['bbpress'] = array(
+				'label' => __( "bbPress", "debugpress" ),
+				'icon'  => 'bbpress',
+			);
 		}
 
 		if ( ! empty( debugpress_tracker()->plugins ) ) {
-			$this->tabs['plugins'] = __( "Plugins", "debugpress" );
+			$this->tabs['plugins'] = array(
+				'label' => __( "Plugins", "debugpress" ),
+				'icon'  => 'plug',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'panel_http' ) && ! empty( debugpress_tracker()->httpapi ) ) {
-			$this->tabs['http'] = __( "HTTP", "debugpress" ) . ' (' . count( debugpress_tracker()->httpapi ) . ')';
+			$this->tabs['http'] = array(
+				'label' => __( "HTTP", "debugpress" ) . ' (' . count( debugpress_tracker()->httpapi ) . ')',
+				'icon'  => 'diagram-project',
+			);
 		}
 
 		if ( debugpress_plugin()->get( 'ajax' ) ) {
-			$this->tabs['ajax'] = __( "AJAX", "debugpress" ) . ' (<span>0</span>)';
+			$this->tabs['ajax'] = array(
+				'label'   => __( "AJAX", "debugpress" ) . '',
+				'counter' => true,
+				'icon'    => 'code',
+			);
 		}
 
 		if ( ! empty( debugpress_tracker()->logged ) ) {
-			$this->tabs['store'] = __( "Store", "debugpress" ) . ' (' . count( debugpress_tracker()->logged ) . ')';
+			$this->tabs['store'] = array(
+				'label' => __( "Store", "debugpress" ) . ' (' . count( debugpress_tracker()->logged ) . ')',
+				'icon'  => 'clipboard',
+			);
 		}
 
 		if ( ! empty( debugpress_tracker()->deprecated ) ) {
-			$this->tabs['deprecated'] = __( "Deprecated", "debugpress" ) . ' (' . debugpress_tracker()->counts['deprecated'] . ')';
+			$this->tabs['deprecated'] = array(
+				'label' => __( "Deprecated", "debugpress" ) . ' (' . debugpress_tracker()->counts['deprecated'] . ')',
+				'icon'  => 'octagon-exclamation',
+			);
 		}
 
 		if ( ! empty( debugpress_tracker()->doingitwrong ) ) {
-			$this->tabs['doingitwrong'] = __( "Doing It Wrong", "debugpress" ) . ' (' . debugpress_tracker()->counts['doingitwrong'] . ')';
+			$this->tabs['doingitwrong'] = array(
+				'label' => __( "Doing It Wrong", "debugpress" ) . ' (' . debugpress_tracker()->counts['doingitwrong'] . ')',
+				'icon'  => 'square-exclamation',
+			);
 		}
 
-		if ( ! empty( debugpress_tracker()->errors ) ) {
-			$this->tabs['errors'] = __( "Errors", "debugpress" ) . ' (' . debugpress_tracker()->counts['errors'] . ')';
+		if ( empty( debugpress_tracker()->errors ) ) {
+			$this->tabs['errors'] = array(
+				'label' => __( "Errors", "debugpress" ) . ' (' . ( debugpress_tracker()->counts['errors'] + 1 ) . ')',
+				'icon'  => 'triangle-exclamation',
+			);
 		}
 
 		$this->tabs['layout'] = array(

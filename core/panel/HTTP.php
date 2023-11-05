@@ -16,6 +16,7 @@ class HTTP extends Panel {
 		$this->add_column( __( "Request", "debugpress" ) );
 		$this->add_column( __( "Response", "debugpress" ) );
 		$this->add_column( __( "Time", "debugpress" ) );
+		$this->add_column( __( "Caller", "debugpress" ) );
 		$this->table_head();
 		foreach ( debugpress_tracker()->httpapi as $request ) {
 			$this->render_request( $request );
@@ -40,6 +41,7 @@ class HTTP extends Panel {
 		}
 
 		$_req = array(
+			__( "Timestamp", "debugpress" )    => $request['timers']['start'] ?? '',
 			__( "Transport", "debugpress" )    => $request['transport'],
 			__( "Method", "debugpress" )       => $request['args']['method'] ?? 'N/A',
 			__( "User Agent", "debugpress" )   => $request['args']['user-agent'] ?? 'N/A',
@@ -59,6 +61,7 @@ class HTTP extends Panel {
 		}
 
 		$_res = array(
+			__( "Timestamp", "debugpress" )    => $request['timers']['end'] ?? '',
 			__( "Code", "debugpress" )         => $request['info']['http_code'] ?? 'N/A',
 			__( "Content Type", "debugpress" ) => $request['info']['content_type'] ?? 'N/A',
 			__( "IP and Port", "debugpress" )  => $_ip,
@@ -77,6 +80,7 @@ class HTTP extends Panel {
 				$this->list_plain_pairs( $_req ),
 				$this->list_plain_pairs( $_res ),
 				$this->list_plain_pairs( $_tme ),
+				$this->list_plain_pairs( $request['trace'] ),
 			)
 		);
 	}
