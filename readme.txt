@@ -348,6 +348,9 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 3.5 =
+Tracking improvements. Popup layout improvements. Tweaks and fixes.
+
 = 3.4 =
 Various updates and improvements.
 
@@ -362,12 +365,6 @@ Various updates, improvements and fixes.
 
 = 3.0 =
 Panel resize and positioning. On Demand load. Many updates and improvements.
-
-= 2.2 =
-Various updates, improvements and fixes.
-
-= 2.1 =
-Various updates and improvements. Updated Kint Library.
 
 == Screenshots ==
 * Debugger popup: Basic debugger panel
