@@ -807,7 +807,6 @@ class Tracker {
 
 				$raw = $log;
 			}
-			debugpress_error_log( $this->httpapi );
 		}
 	}
 }
