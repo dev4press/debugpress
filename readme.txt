@@ -117,7 +117,7 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 3.5.1 (2023.11.14) =
+= 3.5.1 (2023.11.18) =
 * Fix: Internal debug to error log remain in the source code
 
 = 3.5 (2023.11.06) =
