@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'kint-php/kint' => array(
-            'pretty_version' => '5.0.7',
-            'version' => '5.0.7.0',
-            'reference' => 'a700653a77250b122920799b10c94e904c9b78c7',
+            'pretty_version' => '5.1.0',
+            'version' => '5.1.0.0',
+            'reference' => '128303461092734a1e3cb4beb1eea9afe7a5a0ee',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kint-php/kint',
             'aliases' => array(),

@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "kint-php/kint",
-            "version": "5.0.7",
-            "version_normalized": "5.0.7.0",
+            "version": "5.1.0",
+            "version_normalized": "5.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "a700653a77250b122920799b10c94e904c9b78c7"
+                "reference": "128303461092734a1e3cb4beb1eea9afe7a5a0ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/a700653a77250b122920799b10c94e904c9b78c7",
-                "reference": "a700653a77250b122920799b10c94e904c9b78c7",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/128303461092734a1e3cb4beb1eea9afe7a5a0ee",
+                "reference": "128303461092734a1e3cb4beb1eea9afe7a5a0ee",
                 "shasum": ""
             },
             "require": {
@@ -23,14 +23,14 @@
                 "phpspec/prophecy-phpunit": "^2",
                 "phpunit/phpunit": "^9",
                 "seld/phar-utils": "^1",
-                "symfony/finder": "^4.0 || ^5.0 || ^6.0",
-                "vimeo/psalm": "^5@dev"
+                "symfony/finder": ">=4.0",
+                "vimeo/psalm": "^5"
             },
             "suggest": {
                 "kint-php/kint-helpers": "Provides extra helper functions",
                 "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
             },
-            "time": "2023-06-26T19:25:00+00:00",
+            "time": "2023-11-16T06:04:49+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -64,7 +64,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kint-php/kint/issues",
-                "source": "https://github.com/kint-php/kint/tree/5.0.7"
+                "source": "https://github.com/kint-php/kint/tree/5.1.0"
             },
             "install-path": "../kint-php/kint"
         }

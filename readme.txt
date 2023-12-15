@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.5.1
+Stable tag: 3.6
 Requires at least: 5.5
 Tested up to: 6.4
 Requires PHP: 7.3
@@ -117,6 +117,11 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 3.6 (2023.12.15) =
+* Edit: Increase Kint Library depth levels to 12
+* Edit: Kint Pretty Print Library 5.1.0
+* Fix: Small issue with getting the OPCache version when not allowed by the server
+
 = 3.5.1 (2023.11.18) =
 * Fix: Internal debug to error log remain in the source code
 
@@ -351,6 +356,9 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 3.6 =
+Various updates and improvements.
+
 = 3.5 =
 Tracking improvements. Popup layout improvements. Tweaks and fixes.
 
@@ -365,9 +373,6 @@ Tracking improvements and bug fixes.
 
 = 3.1 =
 Various updates, improvements and fixes.
-
-= 3.0 =
-Panel resize and positioning. On Demand load. Many updates and improvements.
 
 == Screenshots ==
 * Debugger popup: Basic debugger panel

@@ -8,6 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once( DEBUGPRESS_PLUGIN_PATH . 'vendor/kint/autoload.php' );
 
+Kint::$depth_limit = 12;
+
 Kint\Renderer\RichRenderer::$folder = false;
 Kint\Renderer\RichRenderer::$theme  = 'aante-light.css';
 Kint\Renderer\RichRenderer::$sort   = AbstractRenderer::SORT_FULL;
