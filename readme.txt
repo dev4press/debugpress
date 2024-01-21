@@ -118,6 +118,7 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
 = 3.6.1 (2024.01.02) =
+* Edit: updated Query object for page query conditionals
 * Edit: updated Dev4Press Library Query detection versions
 
 = 3.6 (2023.12.15) =

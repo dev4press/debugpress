@@ -19,8 +19,10 @@ class Query extends Panel {
 		$this->table_init_standard();
 		$this->table_head();
 		foreach ( $wp_query as $property => $value ) {
-			if ( substr( $property, 0, 3 ) == "is_" && $value === true ) {
-				$this->table_row( array( $property, ucwords( str_replace( "_", " ", substr( $property, 3 ) ) ) ) );
+			if ( substr( $property, 0, 3 ) == 'is_' && $value === true ) {
+				$this->table_row( array( $property, 'WP: ' . ucwords( str_replace( "_", " ", substr( $property, 3 ) ) ) ) );
+			} else if ( substr( $property, 0, 7 ) == 'bbp_is_' && $value === true ) {
+				$this->table_row( array( $property, 'bbPress: ' . ucwords( str_replace( "_", " ", substr( $property, 7 ) ) ) ) );
 			}
 		}
 
