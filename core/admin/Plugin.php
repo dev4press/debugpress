@@ -70,11 +70,11 @@ class Plugin {
 	}
 
 	public function settings_page() {
-		include( DEBUGPRESS_PLUGIN_PATH . 'forms/admin/settings.php' );
+		include DEBUGPRESS_PLUGIN_PATH . 'forms/admin/settings.php';
 	}
 
 	public function tools_page() {
-		include( DEBUGPRESS_PLUGIN_PATH . 'forms/admin/tools.php' );
+		include DEBUGPRESS_PLUGIN_PATH . 'forms/admin/tools.php';
 	}
 
 	public function settings_context_help() {

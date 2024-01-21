@@ -8,7 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Settings {
 	public function __construct() {
-
 	}
 
 	public static function instance() : Settings {
@@ -332,8 +331,7 @@ class Settings {
 		echo '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '">';
 
 		foreach ( $values as $value => $label ) {
-			$sel = $selected == $value ? ' selected="selected"' : '';
-			echo '<option' . $sel . ' value="' . esc_attr( $value ) . '">' . esc_html( $label ) . '</option>';
+			echo '<option' . ( $selected == $value ? ' selected="selected"' : '' ) . ' value="' . esc_attr( $value ) . '">' . esc_html( $label ) . '</option>';
 		}
 
 		echo '</select>';
@@ -343,10 +341,8 @@ class Settings {
 		$selected = is_null( $selected ) || $selected === true ? array_keys( $values ) : (array) $selected;
 
 		foreach ( $values as $key => $title ) {
-			$sel = in_array( $key, $selected ) ? ' checked="checked"' : '';
-
-			echo sprintf( '<label style="display: block"><input type="checkbox" value="%s" name="%s[]"%s class="widefat" />%s</label>',
-				esc_attr( $key ), esc_attr( $name ), $sel, $title );
+			printf( '<label style="display: block"><input type="checkbox" value="%s" name="%s[]"%s class="widefat" />%s</label>',
+				esc_attr( $key ), esc_attr( $name ), ( in_array( $key, $selected ) ? ' checked="checked"' : '' ), esc_html( $title ) );
 		}
 	}
 
@@ -360,7 +356,7 @@ class Settings {
 
 	public function block_roles() {
 		esc_html_e( "Debugger can be visible to any user (or visitor), depending on the settings here. It can be useful for debugger to be available with different roles, if the website behaviour is influenced by the role.", "debugpress" );
-		echo ' <strong>' . __( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!", "debugpress" ) . '</strong>';
+		echo ' <strong>' . esc_html__( "Make sure not to leave Debugger active for all user roles and visitors once you have done testing, or it will expose information about your website and server!", "debugpress" ) . '</strong>';
 	}
 
 	public function block_on_demand() {
@@ -398,13 +394,13 @@ class Settings {
 	public function option_admin() {
 		$checked = debugpress_plugin()->get( 'admin' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_admin' name='debugpress_settings[admin]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_admin' name='debugpress_settings[admin]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_frontend() {
 		$checked = debugpress_plugin()->get( 'frontend' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_frontend' name='debugpress_settings[frontend]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_frontend' name='debugpress_settings[frontend]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_button_admin() {
@@ -422,7 +418,7 @@ class Settings {
 	public function option_for_super_admin() {
 		$checked = debugpress_plugin()->get( 'for_super_admin' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_for_super_admin' name='debugpress_settings[for_super_admin]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_for_super_admin' name='debugpress_settings[for_super_admin]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_for_roles() {
@@ -434,7 +430,7 @@ class Settings {
 	public function option_for_visitor() {
 		$checked = debugpress_plugin()->get( 'for_visitor' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_for_visitor' name='debugpress_settings[for_visitor]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_for_visitor' name='debugpress_settings[for_visitor]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<p class="description">' . esc_html__( "Visitors are users that are not currently logged in.", "debugpress" ) . '</p>';
 	}
 
@@ -449,31 +445,31 @@ class Settings {
 	public function option_pretty_print() {
 		$enabled = debugpress_plugin()->get( 'pr' );
 
-		echo "<label style='display: block;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . __( "Default", "debugpress" ) . "</label>";
+		echo "<label style='display: block;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . esc_html__( "Default", "debugpress" ) . "</label>";
 		echo '<p class="description">' . esc_html__( "Default and simple library, but it can be limited in what it can process.", "debugpress" ) . '</p>';
 
 		echo "<label style='display: block; margin-top: 15px;'><input " . ( $enabled == 'kint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='kint' type='radio' />KINT</label>";
-		echo '<p class="description">' . esc_html__( "Third party developed library with more robust output and able to process almost any type of complex objects.", "debugpress" ) . ' <a href="https://github.com/kint-php/kint" target="_blank">' . __( "GitHub", "debugpress" ) . '</a></p>';
+		echo '<p class="description">' . esc_html__( "Third party developed library with more robust output and able to process almost any type of complex objects.", "debugpress" ) . ' <a href="https://github.com/kint-php/kint" target="_blank">' . esc_html__( "GitHub", "debugpress" ) . '</a></p>';
 	}
 
 	public function option_auto_wpdebug() {
 		$checked = debugpress_plugin()->get( 'auto_wpdebug' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_auto_wpdebug' name='debugpress_settings[auto_wpdebug]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_auto_wpdebug' name='debugpress_settings[auto_wpdebug]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<p class="description">' . esc_html__( "Plugin will attempt to set WP_DEBUG to 'true'. But, if the WP_DEBUG was previously defined elsewhere as 'false', this option will not work.", "debugpress" ) . '</p>';
 	}
 
 	public function option_auto_savequeries() {
 		$checked = debugpress_plugin()->get( 'auto_savequeries' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_auto_savequeries' name='debugpress_settings[auto_savequeries]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_auto_savequeries' name='debugpress_settings[auto_savequeries]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<p class="description">' . esc_html__( "Plugin will attempt to set SAVEQUERIES to 'true'. But, if the SAVEQUERIES was previously defined elsewhere as 'false', this option will not work.", "debugpress" ) . '</p>';
 	}
 
 	public function option_mousetrap() {
 		$checked = debugpress_plugin()->get( 'mousetrap' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_mousetraps' name='debugpress_settings[mousetrap]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_mousetraps' name='debugpress_settings[mousetrap]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_mousetrap_sequence() {
@@ -487,110 +483,110 @@ class Settings {
 	public function option_panel_content() {
 		$checked = debugpress_plugin()->get( 'panel_content' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_content' name='debugpress_settings[panel_content]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_content' name='debugpress_settings[panel_content]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_rewriter() {
 		$checked = debugpress_plugin()->get( 'panel_rewriter' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_rewriter' name='debugpress_settings[panel_rewriter]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_rewriter' name='debugpress_settings[panel_rewriter]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_roles() {
 		$checked = debugpress_plugin()->get( 'panel_roles' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_roles' name='debugpress_settings[panel_roles]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_roles' name='debugpress_settings[panel_roles]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_request() {
 		$checked = debugpress_plugin()->get( 'panel_request' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_request' name='debugpress_settings[panel_request]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_request' name='debugpress_settings[panel_request]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_debuglog() {
 		$checked = debugpress_plugin()->get( 'panel_debuglog' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_debuglog' name='debugpress_settings[panel_debuglog]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_debuglog' name='debugpress_settings[panel_debuglog]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<p class="description">' . esc_html__( "This panel will be on the right side of the Debugger header, and it is displayed as icon only.", "debugpress" ) . '</p>';
 	}
 
 	public function option_panel_hooks() {
 		$checked = debugpress_plugin()->get( 'panel_hooks' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_hooks' name='debugpress_settings[panel_hooks]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_hooks' name='debugpress_settings[panel_hooks]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_enqueue() {
 		$checked = debugpress_plugin()->get( 'panel_enqueue' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_enqueue' name='debugpress_settings[panel_enqueue]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_enqueue' name='debugpress_settings[panel_enqueue]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_system() {
 		$checked = debugpress_plugin()->get( 'panel_system' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_system' name='debugpress_settings[panel_system]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_system' name='debugpress_settings[panel_system]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_user() {
 		$checked = debugpress_plugin()->get( 'panel_user' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_user' name='debugpress_settings[panel_user]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_user' name='debugpress_settings[panel_user]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_constants() {
 		$checked = debugpress_plugin()->get( 'panel_constants' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_constants' name='debugpress_settings[panel_constants]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_constants' name='debugpress_settings[panel_constants]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_http() {
 		$checked = debugpress_plugin()->get( 'panel_http' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_http' name='debugpress_settings[panel_http]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_http' name='debugpress_settings[panel_http]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_php() {
 		$checked = debugpress_plugin()->get( 'panel_php' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_php' name='debugpress_settings[panel_php]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_php' name='debugpress_settings[panel_php]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_panel_bbpress() {
 		$checked = debugpress_plugin()->get( 'panel_bbpress' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_panel_bbpress' name='debugpress_settings[panel_bbpress]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_panel_bbpress' name='debugpress_settings[panel_bbpress]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_errors_override() {
 		$checked = debugpress_plugin()->get( 'errors_override' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_errors_override' name='debugpress_settings[errors_override]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_errors_override' name='debugpress_settings[errors_override]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_deprecated_override() {
 		$checked = debugpress_plugin()->get( 'deprecated_override' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_deprecated_override' name='debugpress_settings[deprecated_override]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_deprecated_override' name='debugpress_settings[deprecated_override]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_doingitwrong_override() {
 		$checked = debugpress_plugin()->get( 'doingitwrong_override' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_doingitwrong_override' name='debugpress_settings[doingitwrong_override]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_doingitwrong_override' name='debugpress_settings[doingitwrong_override]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_ajax() {
 		$checked = debugpress_plugin()->get( 'ajax' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_ajax' name='debugpress_settings[ajax]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_ajax' name='debugpress_settings[ajax]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_ajax_to_debuglog() {
 		$checked = debugpress_plugin()->get( 'ajax_to_debuglog' ) ? ' checked="checked" ' : '';
 
-		echo "<input " . $checked . " id='debugpress_settings_ajax_to_debuglog' name='debugpress_settings[ajax_to_debuglog]' type='checkbox' />";
+		echo "<input " . $checked . " id='debugpress_settings_ajax_to_debuglog' name='debugpress_settings[ajax_to_debuglog]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<p class="description">' . esc_html__( "The tracking results for each tracked AJAX call would be also saved in the WordPress 'debug.log', if it is used.", "debugpress" ) . '</p>';
 	}
 }

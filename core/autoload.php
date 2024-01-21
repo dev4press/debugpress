@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param string $class name of the class to load
  */
 function d4p_plugin_debugpress_autoload( $class ) {
-	$path = dirname( __FILE__ ) . '/';
+	$path = __DIR__ . '/';
 	$base = 'Dev4Press\\Plugin\\DebugPress\\';
 
 	if ( substr( $class, 0, strlen( $base ) ) == $base ) {
@@ -27,7 +27,7 @@ function d4p_plugin_debugpress_autoload( $class ) {
 		$path .= $class_namespace . '/' . $class_name . '.php';
 
 		if ( file_exists( $path ) ) {
-			include( $path );
+			include $path;
 		}
 	}
 }

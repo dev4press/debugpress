@@ -71,7 +71,7 @@ class ErrorFormat {
 		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $error['errfile'] . '<br/>';
 
 		if ( ! empty( $caller ) ) {
-			$render .= ErrorFormat::render_caller( $caller );
+			$render .= self::render_caller( $caller );
 		}
 
 		$render .= '<div class="debugpress-error-message">' . esc_html( $error['errstr'] ) . '</div>';
@@ -87,7 +87,7 @@ class ErrorFormat {
 		$render .= '<strong>' . __( "On line", "debugpress" ) . ":</strong> " . $item['on_line'] . '<br/>';
 		$render .= '<strong>' . __( "In file", "debugpress" ) . ":</strong> " . $item['in_file'] . '<br/>';
 
-		$render .= ErrorFormat::process_caller( $item );
+		$render .= self::process_caller( $item );
 
 		if ( $item['message'] ) {
 			$render .= '<div class="debugpress-error-message">' . esc_html( $item['message'] ) . '</div>';
@@ -110,7 +110,7 @@ class ErrorFormat {
 			$render .= sprintf( __( "<strong>%s</strong> is deprecated since version %s.", "debugpress" ), $item["deprecated"], $item["version"] );
 		}
 
-		$render .= ErrorFormat::process_caller( $item );
+		$render .= self::process_caller( $item );
 
 		$render .= '</div>';
 
@@ -137,7 +137,7 @@ class ErrorFormat {
 			$render .= '<em>' . $item['message'] . '</em>';
 		}
 
-		$render .= ErrorFormat::process_caller( $item );
+		$render .= self::process_caller( $item );
 
 		$render .= '</div>';
 
@@ -156,7 +156,7 @@ class ErrorFormat {
 			$render .= '<em>' . $item['message'] . '</em>';
 		}
 
-		$render .= ErrorFormat::process_caller( $item );
+		$render .= self::process_caller( $item );
 
 		$render .= '</div>';
 
@@ -181,7 +181,7 @@ class ErrorFormat {
 			$render .= '<em>' . $item['message'] . '</em>';
 		}
 
-		$render .= ErrorFormat::process_caller( $item );
+		$render .= self::process_caller( $item );
 
 		$render .= '</div>';
 
@@ -195,7 +195,7 @@ class ErrorFormat {
 		$caller = is_array( $caller ) ? join( '<br/>', $caller ) : $caller;
 
 		if ( ! empty( $caller ) ) {
-			$render .= ErrorFormat::render_caller( $caller );
+			$render .= self::render_caller( $caller );
 		}
 
 		return $render;

@@ -58,14 +58,14 @@ if ( DEBUGPRESS_IS_CLI || DEBUGPRESS_IS_CRON ) {
 	return;
 }
 
-require_once( DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php' );
-require_once( DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php' );
-require_once( DEBUGPRESS_PLUGIN_PATH . 'core/functions.php' );
+require_once DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php';
+require_once DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php';
+require_once DEBUGPRESS_PLUGIN_PATH . 'core/functions.php';
 
 debugpress_plugin();
 
 if ( defined( 'WP_ADMIN' ) && WP_ADMIN ) {
-	require_once( DEBUGPRESS_PLUGIN_PATH . 'core/admin.php' );
+	require_once DEBUGPRESS_PLUGIN_PATH . 'core/admin.php';
 
 	debugpress_admin();
 }

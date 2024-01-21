@@ -348,7 +348,7 @@ class Plugin {
 			}
 
 			if ( file_exists( $path ) ) {
-				require_once( $path );
+				require_once $path;
 			} else {
 				$this->load_printer( 'prettyprint' );
 			}

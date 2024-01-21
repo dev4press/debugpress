@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once( DEBUGPRESS_PLUGIN_PATH . 'vendor/kint/autoload.php' );
+require_once DEBUGPRESS_PLUGIN_PATH . 'vendor/kint/autoload.php';
 
 Kint::$depth_limit = 12;
 

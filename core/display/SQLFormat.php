@@ -1,4 +1,5 @@
 <?php
+// phpcs:ignoreFile
 
 /**
  * SQL Formatter is a collection of utilities for debugging SQL queries.

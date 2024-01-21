@@ -34,6 +34,6 @@
 
 			?>
         </div>
-		<?php include( DEBUGPRESS_PLUGIN_PATH . 'forms/admin/sidebar.php' ); ?>
+		<?php include DEBUGPRESS_PLUGIN_PATH . 'forms/admin/sidebar.php'; ?>
     </form>
 </div>

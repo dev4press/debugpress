@@ -14,7 +14,6 @@ class Loader {
 	public $tabs = array();
 
 	public function __construct() {
-
 	}
 
 	private function init() {
@@ -113,7 +112,7 @@ class Loader {
 	public function display_float_button() {
 		$_position = $this->position == 'toolbar' ? apply_filters( 'debugpress-float-button-fallback_position', 'topright' ) : $this->position;
 
-		echo '<div id="debugpress-debugger-button" class="' . $this->button_class() . ' debugpress-float-button debugpress-position-' . $_position . '"><a title="' . __( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>';
+		echo '<div id="debugpress-debugger-button" class="' . esc_attr( $this->button_class() ) . ' debugpress-float-button debugpress-position-' . esc_attr( $_position ) . '"><a title="' . esc_html__( "Debugger Panel", "debugpress" ) . '" role="button" href="#">' . $this->button() . '</a></div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function button_class() : string {
@@ -160,7 +159,7 @@ class Loader {
 
 		$this->prepare_tabs();
 
-		include( DEBUGPRESS_PLUGIN_PATH . 'forms/display.php' );
+		include DEBUGPRESS_PLUGIN_PATH . 'forms/display.php';
 	}
 
 	public function prepare_tabs() {

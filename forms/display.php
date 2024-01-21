@@ -57,7 +57,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			$panel_path = apply_filters( 'debugpress-debugger-panel-path-' . $tab, DEBUGPRESS_PLUGIN_PATH . 'forms/panels/' . $tab . '.php' );
 
 			if ( file_exists( $panel_path ) ) {
-				include( $panel_path );
+				include $panel_path;
 			}
 
 			echo '</div>';

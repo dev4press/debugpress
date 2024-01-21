@@ -254,7 +254,7 @@ class Tracker {
 	}
 
 	public function plugin( $plugin_file, $data = array() ) {
-		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 		$plugin = get_plugin_data( $plugin_file );
 

@@ -470,7 +470,7 @@ class Info {
 
 		if ( debugpress_file_exists( $file ) ) {
 			try {
-				@include_once( $file );
+				@include_once $file;
 
 				if ( class_exists( '\System' ) === true ) {
 					return __( "loaded", "debugpress" );

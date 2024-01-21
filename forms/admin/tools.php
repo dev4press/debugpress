@@ -38,7 +38,7 @@ $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
 		$file = DEBUGPRESS_PLUGIN_PATH . 'forms/tools/' . $file . '.php';
 		$file = apply_filters( 'debugpress-tools-tab-file-' . $_tab, $file );
 
-		include( $file );
+		include $file;
 
 		?>
     </div>
