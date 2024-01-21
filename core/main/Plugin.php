@@ -66,7 +66,6 @@ class Plugin {
 	private $_rest_request = false;
 
 	public function __construct() {
-
 	}
 
 	public static function instance() : Plugin {

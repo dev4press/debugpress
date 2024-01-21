@@ -23,19 +23,15 @@ abstract class Panel {
 	}
 
 	public function left() {
-
 	}
 
 	public function middle() {
-
 	}
 
 	public function right() {
-
 	}
 
 	public function single() {
-
 	}
 
 	public function block_header( $open = true ) {
@@ -105,19 +101,19 @@ abstract class Panel {
 			$class .= ' debugpress-table-keyvalue';
 		}
 
-		echo '<table' . ( ! empty( $id ) ? ' id="' . $id . '"' : '' ) . ' class="debugpress-debugger-table ' . trim( $class ) . '">' . D4P_EOL;
+		echo '<table' . ( ! empty( $id ) ? ' id="' . $id . '"' : '' ) . ' class="debugpress-debugger-table ' . trim( $class ) . '">' . PHP_EOL;
 		if ( $thead ) {
-			echo '<thead><tr>' . D4P_EOL;
+			echo '<thead><tr>' . PHP_EOL;
 			foreach ( $this->_table as $row ) {
-				echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . D4P_EOL;
+				echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . PHP_EOL;
 			}
-			echo '</tr></thead>' . D4P_EOL;
+			echo '</tr></thead>' . PHP_EOL;
 		}
-		echo '<tbody>' . D4P_EOL;
+		echo '<tbody>' . PHP_EOL;
 	}
 
 	public function table_foot() {
-		echo '</tbody></table>' . D4P_EOL;
+		echo '</tbody></table>' . PHP_EOL;
 	}
 
 	public function table_row( $data ) {
@@ -125,7 +121,7 @@ abstract class Panel {
 		$i = 0;
 
 		foreach ( $data as $el ) {
-			echo '<td style="' . $this->_table[ $i ]->style . '">' . $el . '</td>' . D4P_EOL;
+			echo '<td style="' . $this->_table[ $i ]->style . '">' . $el . '</td>' . PHP_EOL;
 			$i ++;
 		}
 

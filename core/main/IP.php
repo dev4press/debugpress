@@ -56,7 +56,7 @@ class IP {
 	}
 
 	public static function is_in_range( $ip, $range ) : bool {
-		return IP::is_v6( $ip ) ? IP::is_ipv6_in_range( $ip, $range ) : IP::is_ipv4_in_range( $ip, $range );
+		return self::is_v6( $ip ) ? self::is_ipv6_in_range( $ip, $range ) : self::is_ipv4_in_range( $ip, $range );
 	}
 
 	public static function is_ipv4_in_range( $ip, $range ) : bool {
@@ -119,9 +119,9 @@ class IP {
 	}
 
 	public static function full_ip( $ip ) : string {
-		if ( IP::is_v4( $ip ) ) {
+		if ( self::is_v4( $ip ) ) {
 			return $ip;
-		} else if ( IP::is_v6( $ip ) ) {
+		} else if ( self::is_v6( $ip ) ) {
 			$hex = bin2hex( inet_pton( $ip ) );
 
 			if ( substr( $hex, 0, 24 ) == '00000000000000000000ffff' ) {
@@ -136,18 +136,18 @@ class IP {
 
 	public static function is_private( $ip = null ) : bool {
 		if ( is_null( $ip ) ) {
-			$ip = IP::visitor();
+			$ip = self::visitor();
 		}
 
 		if ( strpos( $ip, ':' ) === false ) {
-			foreach ( IP::$private_ipv4 as $cf ) {
-				if ( IP::is_ipv4_in_range( $ip, $cf ) ) {
+			foreach ( self::$private_ipv4 as $cf ) {
+				if ( self::is_ipv4_in_range( $ip, $cf ) ) {
 					return true;
 				}
 			}
 		} else {
-			foreach ( IP::$private_ipv6 as $cf ) {
-				if ( IP::is_ipv6_in_range( $ip, $cf ) ) {
+			foreach ( self::$private_ipv6 as $cf ) {
+				if ( self::is_ipv6_in_range( $ip, $cf ) ) {
 					return true;
 				}
 			}
@@ -166,14 +166,14 @@ class IP {
 		}
 
 		if ( strpos( $ip, ':' ) === false ) {
-			foreach ( IP::$cloudflare_ipv4 as $cf ) {
-				if ( IP::is_ipv4_in_range( $ip, $cf ) ) {
+			foreach ( self::$cloudflare_ipv4 as $cf ) {
+				if ( self::is_ipv4_in_range( $ip, $cf ) ) {
 					return true;
 				}
 			}
 		} else {
-			foreach ( IP::$cloudflare_ipv6 as $cf ) {
-				if ( IP::is_ipv6_in_range( $ip, $cf ) ) {
+			foreach ( self::$cloudflare_ipv6 as $cf ) {
+				if ( self::is_ipv6_in_range( $ip, $cf ) ) {
 					return true;
 				}
 			}
@@ -183,7 +183,7 @@ class IP {
 	}
 
 	public static function server() : string {
-		$ip = IP::validate( $_SERVER['SERVER_ADDR'] );
+		$ip = self::validate( $_SERVER['SERVER_ADDR'] );
 
 		if ( $ip == '::1' ) {
 			$ip = '127.0.0.1';
@@ -218,8 +218,8 @@ class IP {
 	}
 
 	public static function visitor( $no_local_or_protected = false ) {
-		if ( IP::is_cloudflare() ) {
-			return IP::validate( $_SERVER['HTTP_CF_CONNECTING_IP'], true );
+		if ( self::is_cloudflare() ) {
+			return self::validate( $_SERVER['HTTP_CF_CONNECTING_IP'], true );
 		}
 
 		$keys = array(
@@ -243,12 +243,12 @@ class IP {
 		}
 
 		if ( $no_local_or_protected ) {
-			$ip = IP::validate( $ip, true );
+			$ip = self::validate( $ip, true );
 		} else {
 			if ( $ip == '::1' ) {
 				$ip = '127.0.0.1';
 			} else if ( $ip != '' ) {
-				$ip = IP::cleanup( $ip );
+				$ip = self::cleanup( $ip );
 			}
 		}
 

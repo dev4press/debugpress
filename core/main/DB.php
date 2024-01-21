@@ -13,7 +13,6 @@ class DB {
 	private $_dbv;
 
 	public function __construct() {
-
 	}
 
 	public static function instance() : DB {

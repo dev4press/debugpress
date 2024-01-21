@@ -348,7 +348,7 @@ class Loader {
 		}
 
 		if ( ! empty( $mods ) ) {
-			return ':root {' . D4P_EOL . D4P_TAB . join( D4P_EOL . D4P_TAB, $mods ) . D4P_EOL . '}';
+			return ':root {' . PHP_EOL . D4P_TAB . join( PHP_EOL . D4P_TAB, $mods ) . PHP_EOL . '}';
 		} else {
 			return '';
 		}

@@ -8,7 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WP {
 	public function __construct() {
-
 	}
 
 	public static function instance() : WP {

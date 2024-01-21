@@ -27,7 +27,7 @@ if ( OPCache::instance()->status == 'restricted' ) {
 			$opcache_info = OPCache::instance()->settings;
 
 			foreach ( $opcache_info as $var => $value ) {
-				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
+				printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 
 			?>
@@ -48,7 +48,7 @@ if ( OPCache::instance()->status == 'restricted' ) {
 			$opcache_info = OPCache::instance()->statistics;
 
 			foreach ( $opcache_info as $var => $value ) {
-				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
+				printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 
 			?>
@@ -69,7 +69,7 @@ if ( OPCache::instance()->status == 'restricted' ) {
 			$opcache_info = OPCache::instance()->memory;
 
 			foreach ( $opcache_info as $var => $value ) {
-				echo sprintf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) );
+				printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 
 			?>

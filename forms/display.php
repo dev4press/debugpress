@@ -9,11 +9,11 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			<?php
 
 			$first = true;
-			foreach ( Loader::instance()->tabs as $tab => $obj ) {
+			foreach ( Loader::instance()->tabs as $_tab => $obj ) {
 				$label   = is_array( $obj ) ? ( $obj['tab'] ?? $obj['label'] ) : $obj;
 				$icon    = is_array( $obj ) ? ( $obj['icon'] ?? '' ) : 'bug';
-				$title   = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
 				$counter = is_array( $obj ) && ( ( $obj['counter'] ?? false ) );
+				$_title  = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
 
 				if ( ! empty( $icon ) ) {
 					$label = '<i class="debugpress-icon debugpress-icon-' . $icon . ' debugpress-tab-ctrl-icon"></i><span class="debugpress-tab-ctrl-span">' . $label . '</span>';
@@ -23,8 +23,8 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 					$label .= ' (<span class="debugpress-counter">0</span>)';
 				}
 
-				echo '<li role="presentation" id="debugpress-debugger-tab-' . $tab . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
-				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . $tab . '" href="#debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' aria-selected="true"' : '' ) . $title . '>' . $label . '</a>';
+				echo '<li role="presentation" id="debugpress-debugger-tab-' . esc_attr( $_tab ) . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
+				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . esc_attr( $_tab ) . '" href="#debugpress-debugger-tab-' . esc_attr( $_tab ) . '"' . ( $first ? ' aria-selected="true"' : '' ) . $_title . '>' . $label . '</a>';
 				echo '</li>';
 
 				$first = false;
@@ -36,10 +36,10 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			<?php
 
 			$first = true;
-			foreach ( Loader::instance()->tabs as $tab => $obj ) {
+			foreach ( Loader::instance()->tabs as $_tab => $obj ) {
 				$label = is_array( $obj ) ? $obj['label'] : $obj;
 
-				echo '<option value="debugpress-debugger-tab-' . $tab . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
+				echo '<option value="debugpress-debugger-tab-' . esc_attr( $_tab ) . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
 
 				$first = false;
 			}
@@ -51,10 +51,10 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 		<?php
 
 		$first = true;
-		foreach ( Loader::instance()->tabs as $tab => $label ) {
-			echo '<div id="debugpress-debugger-tab-' . $tab . '" role="tabpanel" class="debugpress-tab-content ' . ( $first ? 'debugpress-tab-active' : '' ) . '"' . ( ! $first ? ' aria-hidden="true"' : '' ) . '>';
+		foreach ( Loader::instance()->tabs as $_tab => $label ) {
+			echo '<div id="debugpress-debugger-tab-' . esc_attr( $_tab ) . '" role="tabpanel" class="debugpress-tab-content ' . ( $first ? 'debugpress-tab-active' : '' ) . '"' . ( ! $first ? ' aria-hidden="true"' : '' ) . '>';
 
-			$panel_path = apply_filters( 'debugpress-debugger-panel-path-' . $tab, DEBUGPRESS_PLUGIN_PATH . 'forms/panels/' . $tab . '.php' );
+			$panel_path = apply_filters( 'debugpress-debugger-panel-path-' . esc_attr( $_tab ), DEBUGPRESS_PLUGIN_PATH . 'forms/panels/' . $_tab . '.php' );
 
 			if ( file_exists( $panel_path ) ) {
 				include $panel_path;
@@ -69,13 +69,13 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
     </div>
     <div id="debugpress-debugger-content-footer" class="debugpress-clearfix">
         <div class="debugpress-debugger-footer-left">
-			<?php echo debugpress_plugin()->build_stats( null ); ?>
+			<?php echo debugpress_plugin()->build_stats( null ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         </div>
         <div class="debugpress-debugger-footer-right">
-            <a target="_blank" href="<?php echo admin_url( 'options-general.php?page=debugpress' ); ?>"><?php esc_html_e( "Settings", "debugpress" ); ?></a>
+            <a target="_blank" href="<?php echo esc_url( admin_url( 'options-general.php?page=debugpress' ) ); ?>"><?php esc_html_e( "Settings", "debugpress" ); ?></a>
             &middot;
             <a rel="noopener" target="_blank" href="https://debug.press/"><?php esc_html_e( "DebugPress", "debugpress" ); ?></a>
-            <strong>v<?php echo DEBUGPRESS_VERSION; ?></strong>
+            <strong>v<?php echo esc_html( DEBUGPRESS_VERSION ); ?></strong>
         </div>
     </div>
 </div>

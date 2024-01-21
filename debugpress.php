@@ -2,21 +2,14 @@
 /**
  * Plugin Name:       DebugPress: Popup debugger for WordPress
  * Plugin URI:        https://debug.press/
- * Description:       DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests.
- * Author:            Milan Petrovic
- * Author URI:        https://www.dev4press.com/
- * Text Domain:       debugpress
- * Version:           3.6.1
- * Requires at least: 5.5
- * Tested up to:      6.4
- * Requires PHP:      7.3
- * License:           GPLv3 or later
- * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+ * Description:       DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for
+ * intercepting AJAX requests. Author:            Milan Petrovic Author URI:        https://www.dev4press.com/ Text Domain:       debugpress Version:           3.7 Requires at
+ * least: 5.5 Tested up to:      6.4 Requires PHP:      7.3 License:           GPLv3 or later License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  *
  * @package DebugPress
  *
  * == Copyright ==
- * Copyright 2008 - 2023 Milan Petrovic (email: support@dev4press.com)
+ * Copyright 2008 - 2024 Milan Petrovic (email: support@dev4press.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +25,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-const DEBUGPRESS_VERSION     = '3.6.1';
+const DEBUGPRESS_VERSION     = '3.7';
 const DEBUGPRESS_FILE        = __FILE__;
 const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
 
@@ -41,10 +34,6 @@ define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', DEBUGPRESS_FILE ) );
 define( 'DEBUGPRESS_IS_AJAX', defined( 'DOING_AJAX' ) && DOING_AJAX );
 define( 'DEBUGPRESS_IS_CRON', defined( 'DOING_CRON' ) && DOING_CRON );
 define( 'DEBUGPRESS_IS_CLI', defined( 'WP_CLI' ) && WP_CLI );
-
-if ( ! defined( 'D4P_EOL' ) ) {
-	define( 'D4P_EOL', "\r\n" );
-}
 
 if ( ! defined( 'D4P_TAB' ) ) {
 	define( 'D4P_TAB', "\t" );

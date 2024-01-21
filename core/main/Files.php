@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Files {
 	public function __construct() {
-
 	}
 
 	public static function instance() : Files {

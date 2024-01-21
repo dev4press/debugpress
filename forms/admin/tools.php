@@ -5,14 +5,14 @@ use Dev4Press\Plugin\DebugPress\Main\OPCache;
 $_tabs = apply_filters( 'debugpress-tools-tabs', array(
 	'php'     => __( "PHP Info", "debugpress" ),
 	'opcache' => __( "OPCache Info", "debugpress" ),
-	'mysql'   => __( "MySQL Variables", "debugpress" )
+	'mysql'   => __( "MySQL Variables", "debugpress" ),
 ) );
 
 if ( ! OPCache::instance()->has_opcache() ) {
-	unset( $_tabs[ 'opcache' ] );
+	unset( $_tabs['opcache'] );
 }
 
-$_tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( $_GET[ 'tab' ] ) : '';
+$_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : '';
 $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
 
 ?>
@@ -21,13 +21,13 @@ $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
     <h1><?php esc_html_e( "DebugPress Information", "debugpress" ); ?></h1>
 
     <nav class="nav-tab-wrapper">
-        <a href="<?php echo admin_url( "tools.php?page=debugpress-info" ); ?>" class="nav-tab<?php echo empty( $_tab ) ? ' nav-tab-active' : ''; ?>"><?php esc_html_e( "Intro", "debugpress" ); ?></a>
+        <a href="<?php echo esc_url( admin_url( "tools.php?page=debugpress-info" ) ); ?>" class="nav-tab<?php echo empty( $_tab ) ? ' nav-tab-active' : ''; ?>"><?php esc_html_e( "Intro", "debugpress" ); ?></a>
 
-		<?php foreach ( $_tabs as $tab => $label ) { ?>
-            <a href="<?php echo admin_url( "tools.php?page=debugpress-info&tab=" . $tab ); ?>" class="nav-tab<?php echo $_tab == $tab ? ' nav-tab-active' : ''; ?>"><?php echo esc_html( $label ); ?></a>
+		<?php foreach ( $_tabs as $t => $label ) { ?>
+            <a href="<?php echo esc_url( admin_url( "tools.php?page=debugpress-info&tab=" . $t ) ); ?>" class="nav-tab<?php echo $_tab == $t ? ' nav-tab-active' : ''; ?>"><?php echo esc_html( $label ); ?></a>
 		<?php } ?>
 
-        <a href="<?php echo admin_url( "options-general.php?page=debugpress" ); ?>" class="nav-tab nav-tab-right"><span class="dashicons dashicons-admin-settings"></span><?php esc_html_e( "Settings", "debugpress" ); ?>
+        <a href="<?php echo esc_url( admin_url( "options-general.php?page=debugpress" ) ); ?>" class="nav-tab nav-tab-right"><span class="dashicons dashicons-admin-settings"></span><?php esc_html_e( "Settings", "debugpress" ); ?>
         </a>
     </nav>
 

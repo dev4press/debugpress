@@ -15,7 +15,6 @@ class OPCache {
 	public $statistics = array();
 
 	public function __construct() {
-
 	}
 
 	public static function instance() : OPCache {

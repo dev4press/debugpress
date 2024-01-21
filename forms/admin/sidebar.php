@@ -1,7 +1,7 @@
 <div class="debugpress_sidebar">
     <div class="debugpress_plugin">
         <a href="https://debug.press/" target="_blank" rel="noopener">
-            <img src="<?php echo DEBUGPRESS_PLUGIN_URL; ?>logos/debugpress_logo_400.png" alt="DebugPress Logo"/>
+            <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/debugpress_logo_400.png" alt="DebugPress Logo"/>
         </a>
         <span>Version: <strong><?php echo DEBUGPRESS_VERSION; ?></strong></span>
         <div>
@@ -13,7 +13,7 @@
     <div class="debugpress_help">
         <p><?php esc_html_e( "DebugPress is a free plugin, and if you find it useful or want to support its future development, please consider donating.", "debugpress" ); ?></p>
         <a href="https://www.buymeacoffee.com/millan" target="_blank" rel="noopener">
-            <img src="<?php echo DEBUGPRESS_PLUGIN_URL; ?>logos/buy_me_a_coffee.png" alt="Buy Me A Coffee"/>
+            <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/buy_me_a_coffee.png" alt="Buy Me A Coffee"/>
         </a>
     </div>
 
@@ -39,7 +39,7 @@
     <div class="debugpress_dev4press">
         <p>DebugPress has been developed by</p>
         <a href="https://www.dev4press.com/" target="_blank" rel="noopener">
-            <img src="<?php echo DEBUGPRESS_PLUGIN_URL; ?>logos/dev4press_logo_400.png" alt="Dev4Press Logo"/>
+            <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/dev4press_logo_400.png" alt="Dev4Press Logo"/>
         </a>
         <div>
             Premium and free plugins for<br/>WordPress and bbPress<br/>powered websites.

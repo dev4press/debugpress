@@ -50,7 +50,11 @@ class Info {
 		if ( $plugins === false ) {
 			$all_plugins = get_plugins();
 
-			$plugins = array( 'total' => 0, 'active' => 0, 'inactive' => 0 );
+			$plugins = array(
+				'total'    => 0,
+				'active'   => 0,
+				'inactive' => 0,
+			);
 
 			foreach ( array_keys( $all_plugins ) as $plugin ) {
 				$plugins['total'] ++;
@@ -69,19 +73,19 @@ class Info {
 	}
 
 	public static function cms_count_plugins_total() : int {
-		$data = Info::cms_count_plugins();
+		$data = self::cms_count_plugins();
 
 		return $data['total'];
 	}
 
 	public static function cms_count_plugins_active() : int {
-		$data = Info::cms_count_plugins();
+		$data = self::cms_count_plugins();
 
 		return $data['active'];
 	}
 
 	public static function cms_count_plugins_inactive() : int {
-		$data = Info::cms_count_plugins();
+		$data = self::cms_count_plugins();
 
 		return $data['inactive'];
 	}
@@ -119,7 +123,7 @@ class Info {
 	}
 
 	public static function apache_modules_list() : array {
-		if ( Info::is_apache() && function_exists( 'apache_get_modules' ) ) {
+		if ( self::is_apache() && function_exists( 'apache_get_modules' ) ) {
 			return apache_get_modules();
 		}
 
@@ -127,7 +131,7 @@ class Info {
 	}
 
 	public static function apache_version() : string {
-		if ( Info::is_apache() && function_exists( 'apache_get_version' ) ) {
+		if ( self::is_apache() && function_exists( 'apache_get_version' ) ) {
 			$version = apache_get_version();
 
 			if ( is_string( $version ) ) {
@@ -141,41 +145,41 @@ class Info {
 	public static function apache_mod_rewrite() : string {
 		$status = apache_mod_loaded( 'mod_rewrite' );
 
-		return Info::_loaded_status( $status );
+		return self::_loaded_status( $status );
 	}
 
 	public static function apache_mod_headers() : string {
 		$status = apache_mod_loaded( 'mod_headers' );
 
-		return Info::_loaded_status( $status );
+		return self::_loaded_status( $status );
 	}
 
 	public static function apache_mod_security() : string {
 		$status = apache_mod_loaded( 'mod_security' );
 
-		return Info::_loaded_status( $status );
+		return self::_loaded_status( $status );
 	}
 
 	public static function apache_mod_ssl() : string {
 		$status = apache_mod_loaded( 'mod_ssl' );
 
-		return Info::_loaded_status( $status );
+		return self::_loaded_status( $status );
 	}
 
 	public static function apache_mod_setenvif() : string {
 		$status = apache_mod_loaded( 'mod_setenvif' );
 
-		return Info::_loaded_status( $status );
+		return self::_loaded_status( $status );
 	}
 
 	public static function apache_mod_alias() : string {
 		$status = apache_mod_loaded( 'mod_alias' );
 
-		return Info::_loaded_status( $status );
+		return self::_loaded_status( $status );
 	}
 
 	public static function server_name() : string {
-		return (string) $_SERVER['SERVER_SOFTWARE'];
+		return (string) ( $_SERVER['SERVER_SOFTWARE'] ?? '' );
 	}
 
 	public static function server_os() : string {
@@ -183,7 +187,7 @@ class Info {
 	}
 
 	public static function server_hostname() : string {
-		return (string) $_SERVER['SERVER_NAME'];
+		return (string) ( $_SERVER['SERVER_NAME'] ?? '' );
 	}
 
 	public static function server_ip() : string {
@@ -191,7 +195,7 @@ class Info {
 	}
 
 	public static function server_port() : string {
-		return (string) $_SERVER['SERVER_PORT'];
+		return (string) ( $_SERVER['SERVER_PORT'] ?? '' );
 	}
 
 	public static function mysql_variant() : string {
@@ -231,25 +235,25 @@ class Info {
 	}
 
 	public static function mysql_database_size() : string {
-		$data = Info::mysql_database();
+		$data = self::mysql_database();
 
 		return $data['size'];
 	}
 
 	public static function mysql_database_free_space() : string {
-		$data = Info::mysql_database();
+		$data = self::mysql_database();
 
 		return $data['free'];
 	}
 
 	public static function mysql_database_tables() : int {
-		$data = Info::mysql_database();
+		$data = self::mysql_database();
 
 		return $data['tables'];
 	}
 
 	public static function mysql_database_records() : int {
-		$data = Info::mysql_database();
+		$data = self::mysql_database();
 
 		return $data['records'];
 	}
@@ -275,25 +279,25 @@ class Info {
 	}
 
 	public static function mysql_wordpress_size() : string {
-		$data = Info::mysql_wordpress();
+		$data = self::mysql_wordpress();
 
 		return $data['size'];
 	}
 
 	public static function mysql_wordpress_free_space() : string {
-		$data = Info::mysql_wordpress();
+		$data = self::mysql_wordpress();
 
 		return $data['free'];
 	}
 
 	public static function mysql_wordpress_tables() : int {
-		$data = Info::mysql_wordpress();
+		$data = self::mysql_wordpress();
 
 		return $data['tables'];
 	}
 
 	public static function mysql_wordpress_records() : int {
-		$data = Info::mysql_wordpress();
+		$data = self::mysql_wordpress();
 
 		return $data['records'];
 	}
@@ -331,7 +335,7 @@ class Info {
 	}
 
 	public static function php_error_levels_display() : array {
-		$levels = Info::php_error_levels();
+		$levels = self::php_error_levels();
 
 		$list = array();
 
