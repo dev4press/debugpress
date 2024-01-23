@@ -2,9 +2,16 @@
 /**
  * Plugin Name:       DebugPress: Popup debugger for WordPress
  * Plugin URI:        https://debug.press/
- * Description:       DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for
- * intercepting AJAX requests. Author:            Milan Petrovic Author URI:        https://www.dev4press.com/ Text Domain:       debugpress Version:           3.7 Requires at
- * least: 5.5 Tested up to:      6.4 Requires PHP:      7.3 License:           GPLv3 or later License URI:       https://www.gnu.org/licenses/gpl-3.0.html
+ * Description:       DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests.
+ * Author:            Milan Petrovic
+ * Author URI:        https://www.dev4press.com/
+ * Text Domain:       debugpress
+ * Version:           3.7
+ * Requires at least: 5.5
+ * Tested up to:      6.4
+ * Requires PHP:      7.3
+ * License:           GPLv3 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  *
  * @package DebugPress
  *
