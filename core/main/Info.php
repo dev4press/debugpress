@@ -179,7 +179,7 @@ class Info {
 	}
 
 	public static function server_name() : string {
-		return (string) ( $_SERVER['SERVER_SOFTWARE'] ?? '' );
+		return (string) ( $_SERVER['SERVER_SOFTWARE'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	}
 
 	public static function server_os() : string {
@@ -187,15 +187,15 @@ class Info {
 	}
 
 	public static function server_hostname() : string {
-		return (string) ( $_SERVER['SERVER_NAME'] ?? '' );
+		return (string) ( $_SERVER['SERVER_NAME'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	}
 
 	public static function server_ip() : string {
-		return isset( $_SERVER['SERVER_ADDR'] ) ? (string) $_SERVER['SERVER_ADDR'] : 'Missing';
+		return isset( $_SERVER['SERVER_ADDR'] ) ? (string) $_SERVER['SERVER_ADDR'] : 'Missing'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	}
 
 	public static function server_port() : string {
-		return (string) ( $_SERVER['SERVER_PORT'] ?? '' );
+		return (string) ( $_SERVER['SERVER_PORT'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	}
 
 	public static function mysql_variant() : string {
@@ -479,7 +479,8 @@ class Info {
 				if ( class_exists( '\System' ) === true ) {
 					return __( "loaded", "debugpress" );
 				}
-			} catch ( Exception $exception ) {
+			} catch ( Exception $exception ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement
+				// if file can't be loaded, nothing needs to happen.
 			}
 		}
 

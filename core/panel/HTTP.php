@@ -10,7 +10,7 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class HTTP extends Panel {
 	public function single() {
-		$this->title( __( "Logged HTTP API Requests", "debugpress" ) );
+		$this->title( esc_html__( "Logged HTTP API Requests", "debugpress" ) );
 		$this->block_header();
 		$this->add_column( __( "URL", "debugpress" ), "", "", true );
 		$this->add_column( __( "Request", "debugpress" ) );

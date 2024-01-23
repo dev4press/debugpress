@@ -70,7 +70,7 @@ class Hooks extends Panel {
 	public function left() {
 		echo '<h4 class="debugpress-query-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
 
-		$this->title( __( "Hooks Control", "debugpress" ), true, false, 'hooks-control' );
+		$this->title( esc_html__( "Hooks Control", "debugpress" ), true, false, 'hooks-control' );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
 		$this->add_column( __( "Control", "debugpress" ), '', 'text-align: right;' );
@@ -82,7 +82,7 @@ class Hooks extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Callback Filter", "debugpress" ), true, false, 'hooks-filter' );
+		$this->title( esc_html__( "Callback Filter", "debugpress" ), true, false, 'hooks-filter' );
 		$this->block_header();
 		$this->add_column( __( "Origin", "debugpress" ), '', '', true );
 		$this->add_column( __( "Count", "debugpress" ), '', 'text-align: right;' );
@@ -106,7 +106,7 @@ class Hooks extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "List of Hooks", "debugpress" ) );
+		$this->title( esc_html__( "List of Hooks", "debugpress" ) );
 		$this->block_header();
 		$this->add_column( __( "Hook", "debugpress" ), '', '', true );
 		$this->add_column( __( "Priority | Callback | Origin", "debugpress" ) );
@@ -116,14 +116,14 @@ class Hooks extends Panel {
 			$rows = count( $hook['actions'] );
 
 			if ( $rows == 0 ) {
-				echo '<tr class="' . $this->_row_filter_classes( $hook['origins'] ) . '"><th>' . $hook['name'] . '</th><td class="dbg-hook-no-callbacks">' . __( "No callbacks registered for this hook.", "debugpress" ) . '</td></tr>';
+				echo '<tr class="' . esc_attr( $this->_row_filter_classes( $hook['origins'] ) ) . '"><th>' . esc_html( $hook['name'] ) . '</th><td class="dbg-hook-no-callbacks">' . esc_html__( "No callbacks registered for this hook.", "debugpress" ) . '</td></tr>';
 			} else {
-				echo '<tr class="' . $this->_row_filter_classes( $hook['origins'] ) . '">';
-				echo '<th>' . $hook['name'] . '</th>';
+				echo '<tr class="' . esc_attr( $this->_row_filter_classes( $hook['origins'] ) ) . '">';
+				echo '<th>' . esc_html( $hook['name'] ) . '</th>';
 				echo '<td>';
 				echo '<table class="dbg-hooks-actions">';
 				foreach ( $hook['actions'] as $action ) {
-					echo '<tr class="' . $this->_row_filter_classes( $action['origin'] ) . '">';
+					echo '<tr class="' . esc_attr( $this->_row_filter_classes( $action['origin'] ) ) . '">';
 					$this->_action( $action );
 					echo '</tr>';
 				}
@@ -155,21 +155,21 @@ class Hooks extends Panel {
 	}
 
 	private function _action( $action ) {
-		echo '<td>' . ( $action['priority'] ?? 10 ) . '</td>';
-		echo '<td class="dbg-hook-column-action"><em>' . $action['name'] . '</em>';
+		echo '<td>' . esc_html( $action['priority'] ?? 10 ) . '</td>';
+		echo '<td class="dbg-hook-column-action"><em>' . esc_html( $action['name'] ) . '</em>';
 
 		if ( ! empty( $action['file'] ) ) {
-			echo '<button class="dbg-callback-button-expander" type="button">' . __( "toggle", "debugpress" ) . '</button>';
-			echo '<div><span>' . __( "In File", "debugpress" ) . ': <strong>' . $action['file'] . '</strong></span>';
+			echo '<button class="dbg-callback-button-expander" type="button">' . esc_html__( "toggle", "debugpress" ) . '</button>';
+			echo '<div><span>' . esc_html__( "In File", "debugpress" ) . ': <strong>' . esc_html( $action['file'] ) . '</strong></span>';
 
 			if ( ! empty( $action['line'] ) ) {
-				echo '<span>' . __( "On Line", "debugpress" ) . ': <strong>' . $action['line'] . '</strong></span>';
+				echo '<span>' . esc_html__( "On Line", "debugpress" ) . ': <strong>' . esc_html( $action['line'] ) . '</strong></span>';
 			}
 
 			echo '</div>';
 		}
 
 		echo '</td>';
-		echo '<td>' . $this->origins[ $action['origin'] ] . '</td>';
+		echo '<td>' . $this->origins[ $action['origin'] ] . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }

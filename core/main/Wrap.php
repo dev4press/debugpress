@@ -11,13 +11,13 @@ class Wrap {
 	public $class;
 	public $style;
 
-	function __construct( $args = array() ) {
+	public function __construct( $args = array() ) {
 		if ( is_array( $args ) && ! empty( $args ) ) {
 			$this->from_array( $args );
 		}
 	}
 
-	function __clone() {
+	public function __clone() {
 		foreach ( $this as $key => $val ) {
 			if ( is_object( $val ) || ( is_array( $val ) ) ) {
 				$this->{$key} = unserialize( serialize( $val ) );

@@ -61,7 +61,7 @@ abstract class Panel {
 
 		$render .= '</h5>';
 
-		echo $render;
+		echo $render; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function sub_title( $title ) {
@@ -70,7 +70,7 @@ abstract class Panel {
 
 	public function pre( $content ) {
 		echo '<div class="debugpress-pre-wrap"><pre>';
-		echo $content;
+		echo $content; // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '</pre></div>';
 	}
 
@@ -79,7 +79,11 @@ abstract class Panel {
 			$this->_table = array();
 		}
 
-		$this->_table[] = new Wrap( array( 'name' => $name, 'class' => $class, 'style' => $style ) );
+		$this->_table[] = new Wrap( array(
+			'name'  => $name,
+			'class' => $class,
+			'style' => $style,
+		) );
 	}
 
 	public function table_init_standard() {
@@ -101,11 +105,11 @@ abstract class Panel {
 			$class .= ' debugpress-table-keyvalue';
 		}
 
-		echo '<table' . ( ! empty( $id ) ? ' id="' . $id . '"' : '' ) . ' class="debugpress-debugger-table ' . trim( $class ) . '">' . PHP_EOL;
+		echo '<table' . ( ! empty( $id ) ? ' id="' . esc_attr( $id ) . '"' : '' ) . ' class="debugpress-debugger-table ' . esc_attr( trim( $class ) ) . '">' . PHP_EOL;
 		if ( $thead ) {
 			echo '<thead><tr>' . PHP_EOL;
 			foreach ( $this->_table as $row ) {
-				echo '<th scope="col" class="' . $row->class . '" style="' . $row->style . '">' . $row->name . '</th>' . PHP_EOL;
+				echo '<th scope="col" class="' . esc_attr( $row->class ) . '" style="' . esc_attr( $row->style ) . '">' . esc_html( $row->name ) . '</th>' . PHP_EOL;
 			}
 			echo '</tr></thead>' . PHP_EOL;
 		}
@@ -121,7 +125,7 @@ abstract class Panel {
 		$i = 0;
 
 		foreach ( $data as $el ) {
-			echo '<td style="' . $this->_table[ $i ]->style . '">' . $el . '</td>' . PHP_EOL;
+			echo '<td style="' . esc_attr( $this->_table[ $i ]->style ) . '">' . $el . '</td>' . PHP_EOL; // phpcs:ignore WordPress.Security.EscapeOutput
 			$i ++;
 		}
 

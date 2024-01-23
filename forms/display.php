@@ -24,7 +24,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 				}
 
 				echo '<li role="presentation" id="debugpress-debugger-tab-' . esc_attr( $_tab ) . '-li" class="' . ( $first ? 'debugpress-tab-active' : '' ) . '">';
-				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . esc_attr( $_tab ) . '" href="#debugpress-debugger-tab-' . esc_attr( $_tab ) . '"' . ( $first ? ' aria-selected="true"' : '' ) . $_title . '>' . $label . '</a>';
+				echo '<a tabindex="0" role="tab" aria-controls="debugpress-debugger-tab-' . esc_attr( $_tab ) . '" href="#debugpress-debugger-tab-' . esc_attr( $_tab ) . '"' . ( $first ? ' aria-selected="true"' : '' ) . $_title . '>' . $label . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 				echo '</li>';
 
 				$first = false;
@@ -39,7 +39,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			foreach ( Loader::instance()->tabs as $_tab => $obj ) {
 				$label = is_array( $obj ) ? $obj['label'] : $obj;
 
-				echo '<option value="debugpress-debugger-tab-' . esc_attr( $_tab ) . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . $label . '</option>';
+				echo '<option value="debugpress-debugger-tab-' . esc_attr( $_tab ) . '"' . ( $first ? ' selected="selected"' : '' ) . '>' . esc_attr( $label ) . '</option>';
 
 				$first = false;
 			}

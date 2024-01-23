@@ -12,10 +12,10 @@ use Dev4Press\Plugin\DebugPress\Main\WP;
 
 class Request extends Panel {
 	public function left() {
-		$this->title( __( "Request", "debugpress" ) );
+		$this->title( esc_html__( "Request", "debugpress" ) );
 		$this->list_array( $this->request_basics() );
 
-		$this->title( __( "URL", "debugpress" ) );
+		$this->title( esc_html__( "URL", "debugpress" ) );
 		$this->block_header();
 		$this->pre( WP::instance()->current_url() );
 		$this->list_array( $this->request_url(), '', false );
@@ -24,7 +24,7 @@ class Request extends Panel {
 		if ( ! is_admin() ) {
 			global $wp, $template;
 
-			$this->title( __( "Page Request", "debugpress" ) );
+			$this->title( esc_html__( "Page Request", "debugpress" ) );
 			$this->block_header();
 			$this->sub_title( __( "Request", "debugpress" ) );
 			echo empty( $wp->request ) ? esc_html__( "None", "debugpress" ) : esc_html( $wp->request );
@@ -41,11 +41,11 @@ class Request extends Panel {
 			$this->block_footer();
 		}
 
-		$this->title( __( "IPs from &#36;_SERVER", "debugpress" ) );
+		$this->title( esc_html__( "IPs from &#36;_SERVER", "debugpress" ) );
 		$this->list_array( IP::all() );
 
 		if ( is_admin() ) {
-			$this->title( __( "Page Information", "debugpress" ) );
+			$this->title( esc_html__( "Page Information", "debugpress" ) );
 			$this->block_header();
 			$this->table_init_standard();
 			$this->table_head();
@@ -62,7 +62,7 @@ class Request extends Panel {
 			$screen = get_current_screen();
 
 			if ( ! is_null( $screen ) ) {
-				$this->title( __( "Current Screen", "debugpress" ) );
+				$this->title( esc_html__( "Current Screen", "debugpress" ) );
 				$this->block_header();
 				$this->table_init_standard();
 				$this->table_head();
@@ -79,24 +79,24 @@ class Request extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "Request Headers", "debugpress" ) );
+		$this->title( esc_html__( "Request Headers", "debugpress" ) );
 		$this->list_array( $this->request_headers() );
 
-		$this->title( __( "Response Headers", "debugpress" ) );
+		$this->title( esc_html__( "Response Headers", "debugpress" ) );
 		$this->list_array( $this->response_headers() );
 	}
 
 	public function request_url() : array {
 		return array(
-			__( "Host", "debugpress" )  => wp_unslash( $_SERVER['HTTP_HOST'] ),
-			__( "Path", "debugpress" )  => isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/',
-			__( "Query", "debugpress" ) => isset( $_SERVER['QUERY_STRING'] ) ? wp_unslash( $_SERVER['QUERY_STRING'] ) : '',
+			__( "Host", "debugpress" )  => isset( $_SERVER['HTTP_HOST'] ) ? wp_unslash( $_SERVER['HTTP_HOST'] ) : '/', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			__( "Path", "debugpress" )  => isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			__( "Query", "debugpress" ) => isset( $_SERVER['QUERY_STRING'] ) ? wp_unslash( $_SERVER['QUERY_STRING'] ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		);
 	}
 
 	public function request_basics() : array {
 		return array(
-			__( "Method", "debugpress" ) => strtoupper( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ),
+			__( "Method", "debugpress" ) => isset( $_SERVER['HTTP_HOST'] ) ? strtoupper( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) : '/', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			__( "Scheme", "debugpress" ) => is_ssl() ? 'HTTPS' : 'HTTP',
 		);
 	}

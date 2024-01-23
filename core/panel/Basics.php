@@ -16,7 +16,7 @@ class Basics extends Panel {
 		$test = $this->_test();
 
 		if ( ! empty( $env ) ) {
-			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . $env['type'] . '">';
+			echo '<div class="debugpress-debug-environment debugpress-debug-env-' . esc_attr( $env['type'] ) . '">';
 
 			$this->title( $env['label'], true, true );
 
@@ -30,7 +30,7 @@ class Basics extends Panel {
 			$this->block_header();
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );
-				echo $t[1];
+				echo esc_html( $t[1] );
 				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . esc_html__( "More Information", "debugpress" ) . '</a>';
 			}
 			$this->block_footer();
@@ -38,7 +38,7 @@ class Basics extends Panel {
 			echo '</div>';
 		}
 
-		$this->title( __( "Page Loading Stats", "debugpress" ) );
+		$this->title( esc_html__( "Page Loading Stats", "debugpress" ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -59,11 +59,11 @@ class Basics extends Panel {
 			$this->table_row( array( __( "HTTP API Total Time", "debugpress" ), debugpress_tracker()->http_total_time() . " " . __( "seconds", "debugpress" ) ) );
 		}
 		$this->table_row( array( __( "Current Timestamp", "debugpress" ), time() ) );
-		$this->table_row( array( __( "Current Datetime", "debugpress" ), date( 'c' ) ) );
+		$this->table_row( array( __( "Current Datetime", "debugpress" ), gmdate( 'c' ) ) );
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Current PHP Limits", "debugpress" ) );
+		$this->title( esc_html__( "Current PHP Limits", "debugpress" ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -72,7 +72,7 @@ class Basics extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Upload Directory", "debugpress" ) );
+		$this->title( esc_html__( "Upload Directory", "debugpress" ) );
 		$this->list_array( wp_upload_dir() );
 	}
 
@@ -101,10 +101,10 @@ class Basics extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Page Scope", "debugpress" ) );
+		$this->title( esc_html__( "Page Scope", "debugpress" ) );
 		$this->list_array( debugpress_scope()->scope() );
 
-		$this->title( __( "Load Snapshots", "debugpress" ) );
+		$this->title( esc_html__( "Load Snapshots", "debugpress" ) );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), "", "", true );
 		$this->add_column( __( "Memory", "debugpress" ), "", "text-align: right;" );

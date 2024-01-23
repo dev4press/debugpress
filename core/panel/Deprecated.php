@@ -15,16 +15,16 @@ class Deprecated extends Panel {
 			foreach ( $items as $item ) {
 				switch ( $type ) {
 					case 'file':
-						echo ErrorFormat::deprecated_file( $item );
+						echo ErrorFormat::deprecated_file( $item ); // phpcs:ignore WordPress.Security.EscapeOutput
 						break;
 					case 'function':
-						echo ErrorFormat::deprecated_function( $item );
+						echo ErrorFormat::deprecated_function( $item ); // phpcs:ignore WordPress.Security.EscapeOutput
 						break;
 					case 'constructor':
-						echo ErrorFormat::deprecated_constructor( $item );
+						echo ErrorFormat::deprecated_constructor( $item ); // phpcs:ignore WordPress.Security.EscapeOutput
 						break;
 					case 'argument':
-						echo ErrorFormat::deprecated_argument( $item );
+						echo ErrorFormat::deprecated_argument( $item ); // phpcs:ignore WordPress.Security.EscapeOutput
 						break;
 				}
 			}

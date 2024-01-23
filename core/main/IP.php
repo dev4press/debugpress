@@ -20,29 +20,29 @@ class IP {
 	);
 
 	protected static $cloudflare_ipv4 = array(
-		'173.245.48.0/20',
 		'103.21.244.0/22',
 		'103.22.200.0/22',
 		'103.31.4.0/22',
-		'141.101.64.0/18',
-		'108.162.192.0/18',
-		'190.93.240.0/20',
-		'188.114.96.0/20',
-		'197.234.240.0/22',
-		'198.41.128.0/17',
-		'162.158.0.0/15',
 		'104.16.0.0/13',
 		'104.24.0.0/14',
-		'172.64.0.0/13',
+		'108.162.192.0/18',
 		'131.0.72.0/22',
+		'141.101.64.0/18',
+		'162.158.0.0/15',
+		'172.64.0.0/13',
+		'173.245.48.0/20',
+		'188.114.96.0/20',
+		'190.93.240.0/20',
+		'197.234.240.0/22',
+		'198.41.128.0/17',
 	);
 
 	protected static $cloudflare_ipv6 = array(
 		'2400:cb00::/32',
+		'2405:8100::/32',
+		'2405:b500::/32',
 		'2606:4700::/32',
 		'2803:f800::/32',
-		'2405:b500::/32',
-		'2405:8100::/32',
 		'2a06:98c0::/29',
 		'2c0f:f248::/32',
 	);
@@ -67,8 +67,8 @@ class IP {
 				return false;
 			}
 
-			$ip_binary  = sprintf( "%032b", ip2long( $ip ) );
-			$net_binary = sprintf( "%032b", ip2long( $subnet ) );
+			$ip_binary  = sprintf( '%032b', ip2long( $ip ) );
+			$net_binary = sprintf( '%032b', ip2long( $subnet ) );
 
 			return ( substr_compare( $ip_binary, $net_binary, 0, $mask ) === 0 );
 		} else {
@@ -81,9 +81,9 @@ class IP {
 			if ( strpos( $range, '-' ) !== false ) {
 				list( $lower, $upper ) = explode( '-', $range, 2 );
 
-				$lower_dec = (float) sprintf( "%u", ip2long( $lower ) );
-				$upper_dec = (float) sprintf( "%u", ip2long( $upper ) );
-				$ip_dec    = (float) sprintf( "%u", ip2long( $ip ) );
+				$lower_dec = (float) sprintf( '%u', ip2long( $lower ) );
+				$upper_dec = (float) sprintf( '%u', ip2long( $upper ) );
+				$ip_dec    = (float) sprintf( '%u', ip2long( $ip ) );
 
 				return ( ( $ip_dec >= $lower_dec ) && ( $ip_dec <= $upper_dec ) );
 			}
@@ -98,22 +98,22 @@ class IP {
 		$subnet = inet_pton( $subnet );
 		$ip     = inet_pton( $ip );
 
-		$mask_binary = str_repeat( "f", $mask / 4 );
+		$mask_binary = str_repeat( 'f', $mask / 4 );
 		switch ( $mask % 4 ) {
 			case 0:
 				break;
 			case 1:
-				$mask_binary .= "8";
+				$mask_binary .= '8';
 				break;
 			case 2:
-				$mask_binary .= "c";
+				$mask_binary .= 'c';
 				break;
 			case 3:
-				$mask_binary .= "e";
+				$mask_binary .= 'e';
 				break;
 		}
 		$mask_binary = str_pad( $mask_binary, 32, '0' );
-		$mask_binary = pack( "H*", $mask_binary );
+		$mask_binary = pack( 'H*', $mask_binary );
 
 		return ( $ip & $mask_binary ) == $subnet;
 	}
@@ -156,13 +156,30 @@ class IP {
 		return false;
 	}
 
+	public static function is_private_regex( $ip = null ) : bool {
+		if ( preg_match( '/^((127\.)|(192\.168\.)|(10\.)|(172\.1[6-9]\.)|(172\.2[0-9]\.)|(172\.3[0-1]\.)|(::1)|(fe80::))/', $ip ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public static function is_cloudflare( $ip = null ) : bool {
 		if ( is_null( $ip ) ) {
 			if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
-				$ip = $_SERVER['HTTP_X_REAL_IP'] ?? $_SERVER['REMOTE_ADDR'];
+				$ip = $_SERVER['HTTP_X_REAL_IP'] ?? ( $_SERVER['REMOTE_ADDR'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+				$ip = self::validate( $ip );
+
+				if ( $ip === false ) {
+					return false;
+				}
 			} else {
 				return false;
 			}
+		}
+
+		if ( empty( $ip ) ) {
+			return false;
 		}
 
 		if ( strpos( $ip, ':' ) === false ) {
@@ -183,7 +200,11 @@ class IP {
 	}
 
 	public static function server() : string {
-		$ip = self::validate( $_SERVER['SERVER_ADDR'] );
+		if ( ! isset( $_SERVER['SERVER_ADDR'] ) ) {
+			return '';
+		}
+
+		$ip = self::validate( $_SERVER['SERVER_ADDR'] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( $ip == '::1' ) {
 			$ip = '127.0.0.1';
@@ -210,16 +231,24 @@ class IP {
 
 		foreach ( $keys as $key ) {
 			if ( isset( $_SERVER[ $key ] ) ) {
-				$ips[ $key ] = $_SERVER[ $key ];
+				$ip = self::validate( $_SERVER[ $key ] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+
+				if ( $ip !== false ) {
+					$ips[ $key ] = $ip;
+				}
 			}
 		}
 
 		return $ips;
 	}
 
-	public static function visitor( $no_local_or_protected = false ) {
+	public static function visitor() : string {
 		if ( self::is_cloudflare() ) {
-			return self::validate( $_SERVER['HTTP_CF_CONNECTING_IP'], true );
+			$ip = self::validate( $_SERVER['HTTP_CF_CONNECTING_IP'] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+
+			if ( $ip !== false ) {
+				return $ip;
+			}
 		}
 
 		$keys = array(
@@ -237,51 +266,48 @@ class IP {
 
 		foreach ( $keys as $key ) {
 			if ( array_key_exists( $key, $_SERVER ) === true ) {
-				$ip = $_SERVER[ $key ];
-				break;
+				$ip = self::validate( $_SERVER[ $key ] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+
+				if ( $ip !== false ) {
+					break;
+				}
 			}
 		}
 
-		if ( $no_local_or_protected ) {
-			$ip = self::validate( $ip, true );
-		} else {
-			if ( $ip == '::1' ) {
-				$ip = '127.0.0.1';
-			} else if ( $ip != '' ) {
-				$ip = self::cleanup( $ip );
-			}
+		if ( $ip === false ) {
+			$ip = '';
 		}
 
-		return $ip;
+		if ( $ip === '::1' ) {
+			$ip = '127.0.0.1';
+		}
+
+		return (string) $ip;
 	}
 
-	public static function validate( $ip, $no_local_or_protected = false ) {
+	public static function validate( $ip ) {
 		$ips = explode( ',', $ip );
 
 		foreach ( $ips as $_ip ) {
 			$_ip = trim( $_ip );
 
-			if ( $no_local_or_protected ) {
-				if ( filter_var( $_ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) !== false ) {
-					return $_ip;
-				}
-			} else {
-				if ( filter_var( $_ip, FILTER_VALIDATE_IP ) !== false ) {
-					return $_ip;
-				}
+			$filtered = filter_var( $_ip, FILTER_VALIDATE_IP );
+
+			if ( $filtered !== false ) {
+				return $filtered;
 			}
 		}
 
 		return false;
 	}
 
-	public static function cleanup( $ip ) {
-		if ( preg_replace( '/[^0-9a-fA-F:., ]/', '', $ip ) ) {
-			$ips = explode( ',', $ip );
+	public static function cleanup( $ip ) : string {
+		$ip = self::validate( $ip );
 
-			return trim( $ips[ count( $ips ) - 1 ] );
-		} else {
-			return false;
-		}
+		return $ip === false ? '' : $ip;
+	}
+
+	public static function random_ipv4() : string {
+		return wp_rand( 0, 255 ) . '.' . wp_rand( 0, 255 ) . '.' . wp_rand( 0, 255 ) . '.' . wp_rand( 0, 255 );
 	}
 }

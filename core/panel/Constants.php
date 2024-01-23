@@ -130,36 +130,36 @@ class Constants extends Panel {
 	);
 
 	public function left() {
-		$this->title( __( "Path, directories", "debugpress" ) );
+		$this->title( esc_html__( "Path, directories", "debugpress" ) );
 		$this->list_defines( $this->constants['paths'] );
 
-		$this->title( __( "Debug", "debugpress" ) );
+		$this->title( esc_html__( "Debug", "debugpress" ) );
 		$this->list_defines( $this->constants['dbg'] );
 
-		$this->title( __( "System", "debugpress" ) );
+		$this->title( esc_html__( "System", "debugpress" ) );
 		$this->list_defines( $this->constants['sys'] );
 
-		$this->title( __( "Theme", "debugpress" ) );
+		$this->title( esc_html__( "Theme", "debugpress" ) );
 		$this->list_defines( $this->constants['thm'] );
 
-		$this->title( __( "Database", "debugpress" ) );
+		$this->title( esc_html__( "Database", "debugpress" ) );
 		$this->list_defines( $this->constants['db'] );
 
-		$this->title( __( "Request", "debugpress" ) );
+		$this->title( esc_html__( "Request", "debugpress" ) );
 		$this->list_defines( $this->constants['req'] );
 	}
 
 	public function right() {
-		$this->title( __( "Global", "debugpress" ) );
+		$this->title( esc_html__( "Global", "debugpress" ) );
 		$this->list_defines( $this->constants['glbl'] );
 
-		$this->title( __( "Multisite", "debugpress" ) );
+		$this->title( esc_html__( "Multisite", "debugpress" ) );
 		$this->list_defines( $this->constants['ms'] );
 
-		$this->title( __( "Security", "debugpress" ) );
+		$this->title( esc_html__( "Security", "debugpress" ) );
 		$this->list_defines( $this->constants['sec'] );
 
-		$this->title( __( "Back Compatibility", "debugpress" ) );
+		$this->title( esc_html__( "Back Compatibility", "debugpress" ) );
 		$this->list_defines( $this->constants['bck'] );
 	}
 }

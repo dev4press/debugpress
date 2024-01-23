@@ -716,8 +716,8 @@ class Tracker {
 						}
 					}
 				}
-			} catch ( Exception $ex ) {
-
+			} catch ( Exception $ex ) {  // phpcs:ignore Generic.CodeAnalysis.EmptyStatement
+				// skip the element if something happens
 			}
 
 			$caller[] = $value . $file . $filter;

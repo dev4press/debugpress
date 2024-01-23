@@ -82,7 +82,7 @@ class AJAX {
 	public function data() {
 		$data = array(
 			'ajax-session-key'       => $this->_session_key,
-			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( $_REQUEST['action'] ) : '',
+			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : '',
 			'php-memory-available'   => ini_get( 'memory_limit' ) . "B",
 			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" ),
 			'page-memory-usage'      => debugpress_tracker()->get( '_end', 'memory' ),

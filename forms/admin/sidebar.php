@@ -3,7 +3,7 @@
         <a href="https://debug.press/" target="_blank" rel="noopener">
             <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/debugpress_logo_400.png" alt="DebugPress Logo"/>
         </a>
-        <span>Version: <strong><?php echo DEBUGPRESS_VERSION; ?></strong></span>
+        <span>Version: <strong><?php echo esc_html(DEBUGPRESS_VERSION); ?></strong></span>
         <div>
 			<?php esc_html_e( "A powerful plugin for debugging WordPress powered websites.", "debugpress" ); ?>
         </div>

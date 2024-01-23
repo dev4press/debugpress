@@ -95,7 +95,7 @@ class Queries extends Panel {
 	public function left() {
 		echo '<h4 class="debugpress-query-sidebar-control"><span data-state="open"><i class="debugpress-icon debugpress-icon-caret-left"></i></span></h4>';
 
-		$this->title( __( "Basic Statistics", "debugpress" ), true, false, 'basic-statistics' );
+		$this->title( esc_html__( "Basic Statistics", "debugpress" ), true, false, 'basic-statistics' );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
 		$this->add_column( __( "Total", "debugpress" ), '', 'text-align: right;' );
@@ -135,7 +135,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Queries Control", "debugpress" ), true, false, 'queries-control' );
+		$this->title( esc_html__( "Queries Control", "debugpress" ), true, false, 'queries-control' );
 		$this->block_header();
 		$this->add_column( __( "Name", "debugpress" ), '', '', true );
 		$this->add_column( __( "Control", "debugpress" ), '', 'text-align: right;' );
@@ -155,7 +155,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Query Types", "debugpress" ), true, false, 'query-types' );
+		$this->title( esc_html__( "Query Types", "debugpress" ), true, false, 'query-types' );
 		$this->block_header();
 		$this->add_column( __( "Type", "debugpress" ), '', '', true );
 		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -173,7 +173,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Database Tables", "debugpress" ), true, false, 'db-tables' );
+		$this->title( esc_html__( "Database Tables", "debugpress" ), true, false, 'db-tables' );
 		$this->block_header();
 		$this->add_column( __( "Table", "debugpress" ), '', '', true );
 		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -191,7 +191,7 @@ class Queries extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( __( "Query Callers", "debugpress" ), true, false, 'query-callers' );
+		$this->title( esc_html__( "Query Callers", "debugpress" ), true, false, 'query-callers' );
 		$this->block_header();
 		$this->add_column( __( "Caller", "debugpress" ), '', '', true );
 		$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -210,7 +210,7 @@ class Queries extends Panel {
 		$this->block_footer();
 
 		if ( count( $this->sql_source_classes ) > 1 ) {
-			$this->title( __( "Call Source", "debugpress" ), true, false, 'call-source' );
+			$this->title( esc_html__( "Call Source", "debugpress" ), true, false, 'call-source' );
 			$this->block_header();
 			$this->add_column( __( "Source", "debugpress" ), '', '', true );
 			$this->add_column( __( "Queries", "debugpress" ), '', 'text-align: right;' );
@@ -231,7 +231,7 @@ class Queries extends Panel {
 	}
 
 	public function right() {
-		$this->title( __( "List of Executed SQL Queries", "debugpress" ), true, true );
+		$this->title( esc_html__( "List of Executed SQL Queries", "debugpress" ), true, true );
 		$this->block_header();
 		echo '<div class="sql-query-list">';
 
@@ -256,36 +256,36 @@ class Queries extends Panel {
 
 			$source = $this->library_identification[ $i ] ?? 'n/a';
 
-			echo '<div class="sql-query" data-source="' . $source . '" data-caller="' . $this->sql_caller_classes[ $i ] . '" data-tables="' . join( ',', $this->sql_tables_classes[ $i ] ) . '" data-type="' . $this->sql_types_classes[ $i ] . '" data-speed="' . $speed . '" data-order="' . $i . '" data-time="' . $q[1] . '" data-length="' . strlen( $q[0] ) . '">';
-			echo '<strong>' . __( "Order", "debugpress" ) . ':</strong> ' . $i . ' | ';
-			echo '<strong>' . __( "Length", "debugpress" ) . ':</strong> ' . strlen( $q[0] ) . ' ' . __( "characters", "debugpress" ) . ' | ';
-			echo '<strong>' . __( "Time", "debugpress" ) . ':</strong> ' . $q[1] . ' ' . __( "seconds", "debugpress" ) . ' | ';
-			echo '<strong>' . __( "Share", "debugpress" ) . ':</strong> ' . number_format( $q[1] / $this->stats['percent'], 4 ) . '% | ';
+			echo '<div class="sql-query" data-source="' . esc_attr( $source ) . '" data-caller="' . esc_attr( $this->sql_caller_classes[ $i ] ) . '" data-tables="' . esc_attr( join( ',', $this->sql_tables_classes[ $i ] ) ) . '" data-type="' . esc_attr( $this->sql_types_classes[ $i ] ) . '" data-speed="' . esc_attr( $speed ) . '" data-order="' . esc_attr( $i ) . '" data-time="' . esc_attr( $q[1] ) . '" data-length="' . esc_attr( strlen( $q[0] ) ) . '">';
+			echo '<strong>' . esc_html__( "Order", "debugpress" ) . ':</strong> ' . esc_html( $i ) . ' | ';
+			echo '<strong>' . esc_html__( "Length", "debugpress" ) . ':</strong> ' . esc_html( strlen( $q[0] ) ) . ' ' . esc_html__( "characters", "debugpress" ) . ' | ';
+			echo '<strong>' . esc_html__( "Time", "debugpress" ) . ':</strong> ' . esc_html( $q[1] ) . ' ' . esc_html__( "seconds", "debugpress" ) . ' | ';
+			echo '<strong>' . esc_html__( "Share", "debugpress" ) . ':</strong> ' . number_format( $q[1] / $this->stats['percent'], 4 ) . '% | ';
 
 			if ( $this->stats['min'] == $q[1] ) {
-				echo '<strong>' . __( "Fastest Query", "debugpress" ) . '</strong>';
+				echo '<strong>' . esc_html__( "Fastest Query", "debugpress" ) . '</strong>';
 			} else if ( $this->stats['max'] == $q[1] ) {
-				echo '<strong>' . __( "Slowest Query", "debugpress" ) . '</strong>';
+				echo '<strong>' . esc_html__( "Slowest Query", "debugpress" ) . '</strong>';
 			} else if ( $this->stats['avg'] < $q[1] ) {
-				echo '<strong>' . __( "Slow", "debugpress" ) . '</strong>';
+				echo '<strong>' . esc_html__( "Slow", "debugpress" ) . '</strong>';
 			} else if ( $this->stats['avg'] > $q[1] ) {
-				echo '<strong>' . __( "Fast", "debugpress" ) . '</strong>';
+				echo '<strong>' . esc_html__( "Fast", "debugpress" ) . '</strong>';
 			} else {
-				echo '<strong>' . __( "Average", "debugpress" ) . '</strong>';
+				echo '<strong>' . esc_html__( "Average", "debugpress" ) . '</strong>';
 			}
 
 			echo '<div class="sql-calls-full" style="display: none;">';
-			echo '<strong>' . __( "Called from", "debugpress" ) . ':</strong> <br/>' . join( '<br/>', $calls );
-			echo '<a class="sql-calls-button-expander" href="#">' . __( "collapse", "debugpress" ) . '</a><br />';
+			echo '<strong>' . esc_html__( "Called from", "debugpress" ) . ':</strong> <br/>' . join( '<br/>', $calls ); // phpcs:ignore WordPress.Security.EscapeOutput
+			echo '<a class="sql-calls-button-expander" href="#">' . esc_html__( "collapse", "debugpress" ) . '</a><br />';
 			echo '</div><div class="sql-calls-compact">';
-			echo '<strong>' . __( "Called from", "debugpress" ) . ':</strong> ' . end( $calls );
-			echo '<a class="sql-calls-button-expander" href="#">' . __( "expand", "debugpress" ) . '</a><br />';
+			echo '<strong>' . esc_html__( "Called from", "debugpress" ) . ':</strong> ' . esc_html( end( $calls ) );
+			echo '<a class="sql-calls-button-expander" href="#">' . esc_html__( "expand", "debugpress" ) . '</a><br />';
 			echo '</div><div class="sql-query-full">';
 
 			if ( debugpress_plugin()->get( 'format_queries_panel' ) ) {
-				echo SQLFormat::format( $q[0] );
+				echo SQLFormat::format( $q[0] ); // phpcs:ignore WordPress.Security.EscapeOutput
 			} else {
-				echo $q[0];
+				echo $q[0]; // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 			echo '</div>';
 			echo '</div>';

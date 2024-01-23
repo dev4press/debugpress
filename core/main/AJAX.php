@@ -25,7 +25,7 @@ class AJAX {
 	}
 
 	public function load_debuglog() {
-		$_nonce  = isset( $_REQUEST['_ajax_nonce'] ) ? sanitize_text_field( $_REQUEST['_ajax_nonce'] ) : '';
+		$_nonce  = isset( $_REQUEST['_ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_ajax_nonce'] ) ) : '';
 		$_verify = wp_verify_nonce( $_nonce, 'debugpress-ajax-call' );
 
 		if ( $_verify === false ) {
@@ -48,6 +48,6 @@ class AJAX {
 			header( 'Content-Type: application/json' );
 		}
 
-		die( $response );
+		die( $response ); // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
