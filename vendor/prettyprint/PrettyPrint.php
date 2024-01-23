@@ -47,16 +47,16 @@ class PrettyPrint {
 			$this->_has_reflection = class_exists( 'ReflectionClass' );
 		}
 
-		$this->STR_EMPTY_ARRAY                = _x( "Empty Array", "PrettyPrint message", "debugpress" );
-		$this->STR_NO_PROPERTIES              = _x( "No Properties", "PrettyPrint message", "debugpress" );
-		$this->STR_NO_METHODS                 = _x( "No Methods", "PrettyPrint message", "debugpress" );
-		$this->STR_INFINITE_RECURSION_WARNING = _x( "Infinite Recursion Detected!", "PrettyPrint message", "debugpress" );
-		$this->STR_STR_DESC                   = _x( "%d characters", "PrettyPrint message", "debugpress" );
-		$this->STR_RES_DESC                   = _x( "%s type", "PrettyPrint message", "debugpress" );
-		$this->STR_ARR_DESC                   = _x( "%d elements", "PrettyPrint message", "debugpress" );
-		$this->STR_OBJ_DESC                   = _x( "%d properties", "PrettyPrint message", "debugpress" );
-		$this->STR_FOOTER_CALL                = _x( "Called From", "PrettyPrint message", "debugpress" );
-		$this->STR_FOOTER_LINE                = _x( "line", "PrettyPrint message", "debugpress" );
+		$this->STR_EMPTY_ARRAY                = _x( 'Empty Array', 'PrettyPrint message', 'debugpress' );
+		$this->STR_NO_PROPERTIES              = _x( 'No Properties', 'PrettyPrint message', 'debugpress' );
+		$this->STR_NO_METHODS                 = _x( 'No Methods', 'PrettyPrint message', 'debugpress' );
+		$this->STR_INFINITE_RECURSION_WARNING = _x( 'Infinite Recursion Detected!', 'PrettyPrint message', 'debugpress' );
+		$this->STR_STR_DESC                   = _x( '%d characters', 'PrettyPrint message', 'debugpress' );
+		$this->STR_RES_DESC                   = _x( '%s type', 'PrettyPrint message', 'debugpress' );
+		$this->STR_ARR_DESC                   = _x( '%d elements', 'PrettyPrint message', 'debugpress' );
+		$this->STR_OBJ_DESC                   = _x( '%d properties', 'PrettyPrint message', 'debugpress' );
+		$this->STR_FOOTER_CALL                = _x( 'Called From', 'PrettyPrint message', 'debugpress' );
+		$this->STR_FOOTER_LINE                = _x( 'line', 'PrettyPrint message', 'debugpress' );
 	}
 
 	public static function init() : PrettyPrint {

@@ -12,7 +12,7 @@ class Enqueue extends Panel {
 	public function left() {
 		global $wp_scripts;
 
-		$this->title( esc_html__( "Scripts in Header", "debugpress" ) );
+		$this->title( esc_html__( 'Scripts in Header', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -22,7 +22,7 @@ class Enqueue extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( esc_html__( "Scripts in Footer", "debugpress" ) );
+		$this->title( esc_html__( 'Scripts in Footer', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -36,7 +36,7 @@ class Enqueue extends Panel {
 	public function right() {
 		global $wp_styles;
 
-		$this->title( esc_html__( "Styles in Header", "debugpress" ) );
+		$this->title( esc_html__( 'Styles in Header', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();

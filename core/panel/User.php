@@ -83,7 +83,7 @@ class User extends Panel {
 	public function left() {
 		global $userdata;
 
-		$this->title( esc_html__( "Basic User Information", "debugpress" ) );
+		$this->title( esc_html__( 'Basic User Information', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -96,7 +96,7 @@ class User extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( esc_html__( "Core Meta Information", "debugpress" ) );
+		$this->title( esc_html__( 'Core Meta Information', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -131,7 +131,7 @@ class User extends Panel {
 	}
 
 	public function right() {
-		$this->title( esc_html__( "User Information", "debugpress" ) );
+		$this->title( esc_html__( 'User Information', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();
@@ -148,7 +148,7 @@ class User extends Panel {
 		$this->table_foot();
 		$this->block_footer();
 
-		$this->title( esc_html__( "Rest of User Meta Information", "debugpress" ) );
+		$this->title( esc_html__( 'Rest of User Meta Information', 'debugpress' ) );
 		$this->block_header();
 		$this->table_init_standard();
 		$this->table_head();

@@ -7,8 +7,8 @@ $mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
     <table>
         <thead>
         <tr>
-            <th><?php esc_html_e( "Variable", "debugpress" ); ?></th>
-            <th><?php esc_html_e( "Value", "debugpress" ); ?></th>
+            <th><?php esc_html_e( 'Variable', 'debugpress' ); ?></th>
+            <th><?php esc_html_e( 'Value', 'debugpress' ); ?></th>
         </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@ $mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
 				printf( '<tr><th>%s:</th><td>%s</td></tr>', $info->Variable_name, debugpress_rs( htmlspecialchars( $info->Value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		} else {
-			printf( '<tr><th colspan="2">%s</th></tr>', esc_attr__( "Data Not Available.", "debugpress" ) );
+			printf( '<tr><th colspan="2">%s</th></tr>', esc_attr__( 'Data Not Available.', 'debugpress' ) );
 		}
 
 		?>

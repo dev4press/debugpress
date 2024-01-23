@@ -11,12 +11,12 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Store extends Panel {
 	public function single() {
-		$this->title( esc_html__( "Stored objects and other data", "debugpress" ), true, true );
+		$this->title( esc_html__( 'Stored objects and other data', 'debugpress' ), true, true );
 		$this->block_header();
-		$this->add_column( __( "Time", "debugpress" ), "", "", true );
-		$this->add_column( __( "Title", "debugpress" ) );
-		$this->add_column( __( "Logged Data", "debugpress" ) );
-		$this->add_column( __( "Caller", "debugpress" ) );
+		$this->add_column( __( 'Time', 'debugpress' ), "", "", true );
+		$this->add_column( __( 'Title', 'debugpress' ) );
+		$this->add_column( __( 'Logged Data', 'debugpress' ) );
+		$this->add_column( __( 'Caller', 'debugpress' ) );
 		$this->table_head();
 		foreach ( debugpress_tracker()->logged as $item ) {
 			$this->render_item( $item );

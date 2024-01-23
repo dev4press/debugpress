@@ -6,7 +6,7 @@ if ( OPCache::instance()->status == 'restricted' ) {
 	?>
 
     <p>
-		<?php esc_html_e( "OPCache information can't be displayed, because access to OPCache statistics and information has been restricted on the hosting level.", "debugpress" ); ?>
+		<?php esc_html_e( 'OPCache information can\'t be displayed, because access to OPCache statistics and information has been restricted on the hosting level.', 'debugpress' ); ?>
     </p>
 
 	<?php
@@ -17,8 +17,8 @@ if ( OPCache::instance()->status == 'restricted' ) {
         <table>
             <thead>
             <tr>
-                <th><?php esc_html_e( "Variable", "debugpress" ); ?></th>
-                <th><?php esc_html_e( "Value", "debugpress" ); ?></th>
+                <th><?php esc_html_e( 'Variable', 'debugpress' ); ?></th>
+                <th><?php esc_html_e( 'Value', 'debugpress' ); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -34,12 +34,12 @@ if ( OPCache::instance()->status == 'restricted' ) {
             </tbody>
         </table>
 
-        <h2><?php esc_html_e( "OPCache Statistics", "debugpress" ); ?></h2>
+        <h2><?php esc_html_e( 'OPCache Statistics', 'debugpress' ); ?></h2>
         <table>
             <thead>
             <tr>
-                <th><?php esc_html_e( "Variable", "debugpress" ); ?></th>
-                <th><?php esc_html_e( "Value", "debugpress" ); ?></th>
+                <th><?php esc_html_e( 'Variable', 'debugpress' ); ?></th>
+                <th><?php esc_html_e( 'Value', 'debugpress' ); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -55,12 +55,12 @@ if ( OPCache::instance()->status == 'restricted' ) {
             </tbody>
         </table>
 
-        <h2><?php esc_html_e( "OPCache Memory Usage", "debugpress" ); ?></h2>
+        <h2><?php esc_html_e( 'OPCache Memory Usage', 'debugpress' ); ?></h2>
         <table>
             <thead>
             <tr>
-                <th><?php esc_html_e( "Variable", "debugpress" ); ?></th>
-                <th><?php esc_html_e( "Value", "debugpress" ); ?></th>
+                <th><?php esc_html_e( 'Variable', 'debugpress' ); ?></th>
+                <th><?php esc_html_e( 'Value', 'debugpress' ); ?></th>
             </tr>
             </thead>
             <tbody>

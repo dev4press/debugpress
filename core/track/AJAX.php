@@ -38,7 +38,7 @@ class AJAX {
 		$this->_session_key = time() . '-' . rand( 100000, 999999 );
 
 		if ( $this->_to_debug_log ) {
-			debugpress_error_log( $this->_session_key . ' - ' . __( "AJAX STARTED", "debugpress" ) );
+			debugpress_error_log( $this->_session_key . ' - ' . __( 'AJAX STARTED', 'debugpress' ) );
 		}
 
 		ob_start();
@@ -71,7 +71,7 @@ class AJAX {
 		}
 
 		if ( $this->_to_debug_log ) {
-			debugpress_error_log( $this->_session_key . ' - ' . __( "AJAX ENDED", "debugpress" ) );
+			debugpress_error_log( $this->_session_key . ' - ' . __( 'AJAX ENDED', 'debugpress' ) );
 		}
 
 		if ( ob_get_length() !== false ) {
@@ -84,14 +84,14 @@ class AJAX {
 			'ajax-session-key'       => $this->_session_key,
 			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : '',
 			'php-memory-available'   => ini_get( 'memory_limit' ) . "B",
-			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( "seconds", "debugpress" ),
+			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( 'seconds', 'debugpress' ),
 			'page-memory-usage'      => debugpress_tracker()->get( '_end', 'memory' ),
-			'page-total-time'        => debugpress_tracker()->get( '_end', 'time' ) . " " . __( "seconds", "debugpress" ),
+			'page-total-time'        => debugpress_tracker()->get( '_end', 'time' ) . " " . __( 'seconds', 'debugpress' ),
 			'sql-queries-count'      => debugpress_tracker()->get( '_end', 'queries' ),
 		);
 
 		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
-			$data['sql-total-time'] = debugpress_tracker()->get_total_sql_time() . " " . __( "seconds", "debugpress" );
+			$data['sql-total-time'] = debugpress_tracker()->get_total_sql_time() . " " . __( 'seconds', 'debugpress' );
 		}
 
 		if ( ! empty( debugpress_tracker()->httpapi ) ) {

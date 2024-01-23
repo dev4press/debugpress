@@ -12,9 +12,9 @@ use PDO;
 class Info {
 	public static function _loaded_status( $value ) : string {
 		if ( $value === true ) {
-			return __( "loaded", "debugpress" );
+			return __( 'loaded', 'debugpress' );
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -303,11 +303,11 @@ class Info {
 	}
 
 	public static function php_error_display() : string {
-		return ini_get( 'display_errors' ) ? __( "On", "debugpress" ) : __( "Off", "debugpress" );
+		return ini_get( 'display_errors' ) ? __( 'On', 'debugpress' ) : __( 'Off', 'debugpress' );
 	}
 
 	public static function php_error_logging() : string {
-		return ini_get( 'log_errors' ) ? __( "On", "debugpress" ) : __( "Off", "debugpress" );
+		return ini_get( 'log_errors' ) ? __( 'On', 'debugpress' ) : __( 'Off', 'debugpress' );
 	}
 
 	public static function php_error_filepath() : string {
@@ -342,7 +342,7 @@ class Info {
 		foreach ( $levels as $level => $status ) {
 			$color = $status ? '#00cc00' : '#cc0000';
 			$tag   = $status ? 'strong' : 'span';
-			$val   = $status ? __( "ON", "debugpress" ) : __( "OFF", "debugpress" );
+			$val   = $status ? __( 'ON', 'debugpress' ) : __( 'OFF', 'debugpress' );
 
 			$list[] = '<' . $tag . ' style="color: ' . $color . '">' . $level . ' / ' . $val . '</' . $tag . '>';
 		}
@@ -402,7 +402,7 @@ class Info {
 	}
 
 	public static function php_allow_url_fopen() : string {
-		return ini_get( 'allow_url_fopen' ) ? __( "On", "debugpress" ) : __( "Off", "debugpress" );
+		return ini_get( 'allow_url_fopen' ) ? __( 'On', 'debugpress' ) : __( 'Off', 'debugpress' );
 	}
 
 	public static function php_zlib() : string {
@@ -412,10 +412,10 @@ class Info {
 
 				return $gdi['libz_version'];
 			} else {
-				return __( "loaded", "debugpress" );
+				return __( 'loaded', 'debugpress' );
 			}
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -425,7 +425,7 @@ class Info {
 
 			return $gdi['version'];
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -433,7 +433,7 @@ class Info {
 		if ( extension_loaded( 'pdo' ) ) {
 			return join( '<br/>', PDO::getAvailableDrivers() );
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -443,7 +443,7 @@ class Info {
 
 			return $gdi['GD Version'];
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -454,10 +454,10 @@ class Info {
 
 				return $config['version']['version'] ?? '';
 			} else {
-				return '<strong>' . __( "loaded", "debugpress" ) . '</strong>';
+				return '<strong>' . __( 'loaded', 'debugpress' ) . '</strong>';
 			}
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -465,7 +465,7 @@ class Info {
 		if ( extension_loaded( 'apc' ) ) {
 			return phpversion( 'apc' );
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 		}
 	}
 
@@ -477,14 +477,14 @@ class Info {
 				@include_once $file;
 
 				if ( class_exists( '\System' ) === true ) {
-					return __( "loaded", "debugpress" );
+					return __( 'loaded', 'debugpress' );
 				}
 			} catch ( Exception $exception ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement
 				// if file can't be loaded, nothing needs to happen.
 			}
 		}
 
-		return '<strong style="color: #cc0000;">' . __( "not loaded", "debugpress" ) . '</strong>';
+		return '<strong style="color: #cc0000;">' . __( 'not loaded', 'debugpress' ) . '</strong>';
 	}
 
 	public static function php_include_path() : string {
@@ -499,17 +499,17 @@ class Info {
 
 	public static function php_extension( $name ) : string {
 		if ( extension_loaded( $name ) ) {
-			return __( "OK", "debugpress" );
+			return __( 'OK', 'debugpress' );
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not available", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not available', 'debugpress' ) . '</strong>';
 		}
 	}
 
 	public static function php_function( $name ) : string {
 		if ( function_exists( $name ) ) {
-			return __( "OK", "debugpress" );
+			return __( 'OK', 'debugpress' );
 		} else {
-			return '<strong style="color: #cc0000;">' . __( "not available", "debugpress" ) . '</strong>';
+			return '<strong style="color: #cc0000;">' . __( 'not available', 'debugpress' ) . '</strong>';
 		}
 	}
 }

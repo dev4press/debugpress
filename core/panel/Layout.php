@@ -10,17 +10,17 @@ use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class Layout extends Panel {
 	public function single() {
-		$this->title( esc_html__( "Popup Position", "debugpress" ) );
+		$this->title( esc_html__( 'Popup Position', 'debugpress' ) );
 
 		echo '<div class="debugpress-layout-position">';
 
 		foreach (
 			array(
-				'full'   => __( "Full", "debugpress" ),
-				'top'    => __( "Top", "debugpress" ),
-				'bottom' => __( "Bottom", "debugpress" ),
-				'left'   => __( "Left", "debugpress" ),
-				'right'  => __( "Right", "debugpress" ),
+				'full'   => __( 'Full', 'debugpress' ),
+				'top'    => __( 'Top', 'debugpress' ),
+				'bottom' => __( 'Bottom', 'debugpress' ),
+				'left'   => __( 'Left', 'debugpress' ),
+				'right'  => __( 'Right', 'debugpress' ),
 			) as $pos => $label
 		) {
 			echo '<div class="debugpress-layout-position-' . esc_attr( $pos ) . '"><i class="debugpress-icon debugpress-icon-layout-' . esc_attr( $pos ) . ' debugpress-icon-6x"></i>';
@@ -30,11 +30,11 @@ class Layout extends Panel {
 
 		echo '</div>';
 
-		$this->title( esc_html__( "Popup Settings", "debugpress" ) );
+		$this->title( esc_html__( 'Popup Settings', 'debugpress' ) );
 
 		echo '<div class="debugpress-layout-settings">';
 		echo '<div class="debugpress-layout-option debugpress-layout-size">';
-		echo '<label>' . esc_html__( "Popup Size", "debugpress" ) . '</label>';
+		echo '<label>' . esc_html__( 'Popup Size', 'debugpress' ) . '</label>';
 		echo '<select>';
 		foreach (
 			array(
@@ -51,12 +51,12 @@ class Layout extends Panel {
 		echo '</div>';
 
 		echo '<div class="debugpress-layout-option debugpress-layout-modal">';
-		echo '<label>' . esc_html__( "Popup Modal", "debugpress" ) . '</label>';
+		echo '<label>' . esc_html__( 'Popup Modal', 'debugpress' ) . '</label>';
 		echo '<select>';
 		foreach (
 			array(
-				'show' => __( "Yes", "debugpress" ),
-				'hide' => __( "No", "debugpress" ),
+				'show' => __( 'Yes', 'debugpress' ),
+				'hide' => __( 'No', 'debugpress' ),
 			) as $size => $label
 		) {
 			echo '<option value="' . esc_attr( $size ) . '">' . esc_html( $label ) . '</option>';
@@ -65,13 +65,13 @@ class Layout extends Panel {
 		echo '</div>';
 
 		echo '<div class="debugpress-layout-option debugpress-layout-activation">';
-		echo '<label>' . esc_html__( "Popup Activation", "debugpress" ) . '</label>';
+		echo '<label>' . esc_html__( 'Popup Activation', 'debugpress' ) . '</label>';
 		echo '<select>';
 		foreach (
 			array(
-				'manual'   => __( "Normal", "debugpress" ),
-				'auto'     => __( "Auto show on page load", "debugpress" ),
-				'remember' => __( "Remember load state", "debugpress" ),
+				'manual'   => __( 'Normal', 'debugpress' ),
+				'auto'     => __( 'Auto show on page load', 'debugpress' ),
+				'remember' => __( 'Remember load state', 'debugpress' ),
 			) as $size => $label
 		) {
 			echo '<option value="' . esc_attr( $size ) . '">' . esc_html( $label ) . '</option>';

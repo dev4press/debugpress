@@ -250,16 +250,16 @@ class Plugin {
 				default:
 				case 'production':
 					$env['type']  = 'production';
-					$env['label'] = __( "Production Environment", "debugpress" );
+					$env['label'] = __( 'Production Environment', 'debugpress' );
 					break;
 				case 'staging':
-					$env['label'] = __( "Staging Environment", "debugpress" );
+					$env['label'] = __( 'Staging Environment', 'debugpress' );
 					break;
 				case 'local':
-					$env['label'] = __( "Local Environment", "debugpress" );
+					$env['label'] = __( 'Local Environment', 'debugpress' );
 					break;
 				case 'development':
-					$env['label'] = __( "Development Environment", "debugpress" );
+					$env['label'] = __( 'Development Environment', 'debugpress' );
 					break;
 			}
 		}
@@ -281,12 +281,12 @@ class Plugin {
 		}
 
 		$gd .= Info::cms_name() . ': <strong>' . Info::cms_version() . '</strong> &middot; ';
-		$gd .= __( "PHP", "debugpress" ) . ': <strong>' . phpversion() . '</strong><span> &middot; </span>';
+		$gd .= __( 'PHP', 'debugpress' ) . ': <strong>' . phpversion() . '</strong><span> &middot; </span>';
 
-		$gd .= __( "IP", "debugpress" ) . ': <strong>' . IP::visitor() . '</strong> &middot; ';
-		$gd .= __( "Queries", "debugpress" ) . ': <strong>' . debugpress_tracker()->get( $key, 'queries' ) . '</strong> &middot; ';
-		$gd .= __( "Memory", "debugpress" ) . ': <strong>' . debugpress_tracker()->get( $key, 'memory' ) . '</strong> &middot; ';
-		$gd .= __( "Loaded", "debugpress" ) . ': <strong>' . debugpress_tracker()->get( $key, 'time' ) . ' ' . __( "seconds.", "debugpress" ) . '</strong>';
+		$gd .= __( 'IP', 'debugpress' ) . ': <strong>' . IP::visitor() . '</strong> &middot; ';
+		$gd .= __( 'Queries', 'debugpress' ) . ': <strong>' . debugpress_tracker()->get( $key, 'queries' ) . '</strong> &middot; ';
+		$gd .= __( 'Memory', 'debugpress' ) . ': <strong>' . debugpress_tracker()->get( $key, 'memory' ) . '</strong> &middot; ';
+		$gd .= __( 'Loaded', 'debugpress' ) . ': <strong>' . debugpress_tracker()->get( $key, 'time' ) . ' ' . __( 'seconds.', 'debugpress' ) . '</strong>';
 		$gd .= '</div>';
 
 		return $gd;

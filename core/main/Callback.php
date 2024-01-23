@@ -148,9 +148,9 @@ class Callback {
 							$file = basename( $filename );
 						}
 
-						$callback['name'] = sprintf( __( 'Closure in [%1$d] on line [%2$s]', "debugpress" ), $file, $ref->getStartLine() );
+						$callback['name'] = sprintf( __( 'Closure in [%1$d] on line [%2$s]', 'debugpress' ), $file, $ref->getStartLine() );
 					} else {
-						$callback['name'] = __( "The Unknown Closure", "debugpress" );
+						$callback['name'] = __( 'The Unknown Closure', 'debugpress' );
 					}
 				} else {
 					$class            = get_class( $callback['function'] );

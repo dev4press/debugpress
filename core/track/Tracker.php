@@ -401,7 +401,7 @@ class Tracker {
 
 		switch ( $function ) {
 			case 'options.php' :
-				$deprecated = __( "Unregistered Setting", "debugpress" );
+				$deprecated = __( 'Unregistered Setting', 'debugpress' );
 				break;
 			case 'has_cap' :
 				if ( 0 === strpos( $backtrace[7]["function"], "add_" ) && "_page" == substr( $backtrace[7]["function"], - 5 ) ) {
@@ -569,16 +569,16 @@ class Tracker {
 		$key = is_admin() ? 'in_admin_footer' : 'wp_footer';
 
 		$stats = array(
-			__( "Used Memory", "debugpress" ) => $this->get( $key, 'memory' ),
-			__( "Total Time", "debugpress" )  => $this->get( $key, 'time' ) . 's',
-			__( "SQL Queries", "debugpress" ) => $this->get( $key, 'queries' ),
+			__( 'Used Memory', 'debugpress' ) => $this->get( $key, 'memory' ),
+			__( 'Total Time', 'debugpress' )  => $this->get( $key, 'time' ) . 's',
+			__( 'SQL Queries', 'debugpress' ) => $this->get( $key, 'queries' ),
 		);
 
 		if ( defined( "SAVEQUERIES" ) && SAVEQUERIES ) {
-			$stats[ __( "SQL Time", "debugpress" ) ] = $this->get_total_sql_time() . 's';
+			$stats[ __( 'SQL Time', 'debugpress' ) ] = $this->get_total_sql_time() . 's';
 		}
 
-		$stats[ __( "Visitor IP", "debugpress" ) ] = IP::visitor();
+		$stats[ __( 'Visitor IP', 'debugpress' ) ] = IP::visitor();
 
 		return $stats;
 	}
@@ -752,7 +752,7 @@ class Tracker {
 			$key_original = $args['_debugpress_key_original_'];
 
 			$this->httpapi[ $key_original ]['end']      = $this->httpapi[ $key_original ]['start'];
-			$this->httpapi[ $key_original ]['response'] = new WP_Error( 'http_request_not_executed', sprintf( __( "Request not executed because of the filter on %s.", "debugpress" ), 'pre_http_request' ) );
+			$this->httpapi[ $key_original ]['response'] = new WP_Error( 'http_request_not_executed', sprintf( __( 'Request not executed because of the filter on %s.', 'debugpress' ), 'pre_http_request' ) );
 		}
 
 		if ( isset( $this->httpapi[ $key ] ) ) {

@@ -32,7 +32,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 
 			?>
         </ul>
-        <select id="debugpress-debugger-select" aria-label="<?php esc_html_e( "Select Debugger Panel", "debugpress" ); ?>">
+        <select id="debugpress-debugger-select" aria-label="<?php esc_html_e( 'Select Debugger Panel', 'debugpress' ); ?>">
 			<?php
 
 			$first = true;
@@ -72,9 +72,9 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 			<?php echo debugpress_plugin()->build_stats( null ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         </div>
         <div class="debugpress-debugger-footer-right">
-            <a target="_blank" href="<?php echo esc_url( admin_url( 'options-general.php?page=debugpress' ) ); ?>"><?php esc_html_e( "Settings", "debugpress" ); ?></a>
+            <a target="_blank" href="<?php echo esc_url( admin_url( 'options-general.php?page=debugpress' ) ); ?>"><?php esc_html_e( 'Settings', 'debugpress' ); ?></a>
             &middot;
-            <a rel="noopener" target="_blank" href="https://debug.press/"><?php esc_html_e( "DebugPress", "debugpress" ); ?></a>
+            <a rel="noopener" target="_blank" href="https://debug.press/"><?php esc_html_e( 'DebugPress', 'debugpress' ); ?></a>
             <strong>v<?php echo esc_html( DEBUGPRESS_VERSION ); ?></strong>
         </div>
     </div>
