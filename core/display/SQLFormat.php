@@ -975,12 +975,12 @@ class SQLFormat {
 			if ( $cacheKey && isset( self::$token_cache[ $cacheKey ] ) ) {
 				// Retrieve from cache
 				$token        = self::$token_cache[ $cacheKey ];
-				$token_length = strlen( $token[ self::TOKEN_VALUE ] );
+				$token_length = strlen( $token[ self::TOKEN_VALUE ] ?? '' );
 				self::$cache_hits ++;
 			} else {
 				// Get the next token and the token type
 				$token        = self::getNextToken( $string, $token );
-				$token_length = strlen( $token[ self::TOKEN_VALUE ] );
+				$token_length = strlen( $token[ self::TOKEN_VALUE ] ?? '' );
 				self::$cache_misses ++;
 
 				// If the token is shorter than the max length, store it in cache
@@ -1428,9 +1428,9 @@ class SQLFormat {
 			$token = $token[ self::TOKEN_VALUE ];
 		} else {
 			if ( defined( 'ENT_IGNORE' ) ) {
-				$token = htmlentities( $token[ self::TOKEN_VALUE ], ENT_COMPAT | ENT_IGNORE, 'UTF-8' );
+				$token = htmlentities( $token[ self::TOKEN_VALUE ] ?? '', ENT_COMPAT | ENT_IGNORE, 'UTF-8' );
 			} else {
-				$token = htmlentities( $token[ self::TOKEN_VALUE ], ENT_COMPAT, 'UTF-8' );
+				$token = htmlentities( $token[ self::TOKEN_VALUE ] ?? '', ENT_COMPAT, 'UTF-8' );
 			}
 		}
 
