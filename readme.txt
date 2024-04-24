@@ -1,15 +1,16 @@
-=== DebugPress: Popup debugger for WordPress ===
+=== DebugPress: Debugger in a Popup ===
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
-Tags: dev4press, debugger, debug, debugging, development, profiler, queries, query monitor, ajax monitor
-Stable tag: 3.7.1
+Tags: dev4press, query monitor, debugging, development, ajax monitor
+Stable tag: 3.8
 Requires at least: 5.5
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.3
+Requires CP: 2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-DebugPress is an easy-to-use plugin implementing popup for debugging and profiling currently loaded WordPress powered website page with support for intercepting AJAX requests.
+DebugPress is an easy-to-use plugin that implements popups for debugging and profiling website pages with support for intercepting AJAX requests.
 
 == Description ==
 
@@ -57,13 +58,13 @@ Currently, the plugin has the following panels:
 * Layout (control the size, position and activation of the popup)
 
 = SQL Queries =
-This panel lists all the queries WordPress has run, and it allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read. For some Dev4Press created plugins (and that list will grow), DebugPress can detect the source of the query and allow you to filter by the plugin calling the query.
+This panel lists all the queries WordPress has run. It allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read. For some Dev4Press created plugins (and that list will grow), DebugPress can detect the source of the query and allow you to filter by the plugin calling the query.
 
 = PHP and WordPress Errors =
 Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. The Plugin captures this information during the page load, and it shows full debug trace as returned by the PHP debug tracing function.
 
 = AJAX =
-The plugin tracks every AJAX call coming through WordPress `admin-ajax.php` handler, and with every response, it returns HTTP headers with AJAX request basic execution information. Right now, plugin is not returning list of logged errors or SQL queries, because both can produce huge output that goes over the HTTP header limits. Plan is to introduce these in the future plugin versions.
+The plugin tracks every AJAX call coming through WordPress `admin-ajax.php` handler, and with every response, it returns HTTP headers with AJAX request basic execution information. Right now, plugin is not returning a list of logged errors or SQL queries, because both can produce huge output that goes over the HTTP header limits. Plan is to introduce these in the future plugin versions.
 
 = Info Panels =
 In the administration Tools menu, plugin adds DebugPress Info page showing several panels
@@ -76,9 +77,9 @@ In the administration Tools menu, plugin adds DebugPress Info page showing sever
 The plugin has various options controlling the plugin activation, button integration position, user roles that can see the debugger window, options to attempt overriding WordPress debug flags and options controlling the visibility of optional debugger panels.
 
 = Log into Database =
-Debugger popup is visible for the request running in the browser. But, there are many requests that are happening in the background (AJAX calls, REST API calls...), and for them, you can't see errors, call information and other stuff in the debugger. Because of that, DebugPress supports logging of various events into database with the use of 'coreActivity' plugin, and it is highly recommended to install and use coreActivity.
+Debugger popup is visible for the request running in the browser. But there are many requests that are happening in the background (AJAX calls, REST API calls...), and for them, you can't see errors, call information and other stuff in the debugger. Because of that, DebugPress supports logging of various events into database with the use of 'coreActivity' plugin, and it is highly recommended to install and use coreActivity.
 
-Log various debug events into database with the free plugin: [coreActivity Plugin](https://wordpress.org/plugins/coreactivity/), supporting over 120 events and 10 popular WordPress plugins. DebugPress related events will be logged and available for later analysis and this includes errors, AJAX calls and HTTP API calls.
+Log various debug events into a database with the free plugin: [coreActivity Plugin](https://wordpress.org/plugins/coreactivity/), supporting over 120 events and 10 popular WordPress plugins. DebugPress related events will be logged and available for later analysis, and this includes errors, AJAX calls, and HTTP API calls.
 
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
@@ -89,11 +90,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 == Installation ==
 = General Requirements =
 * PHP: 7.3 or newer
-* Tested with the latest PHP, version 8.2
+* Tested with the latest PHP, version 8.3
 
 = WordPress Requirements =
 * WordPress: 5.5 or newer
-* Tested with the latest WordPress, version 6.3
+* Tested with the latest WordPress, version 6.5
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -117,8 +118,11 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 3.7.1 (2024.01.31) =
+= 3.8 (2024.04.24) =
+* Edit: few minor tweaks and changes
+* Edit: updates to the plugin readme file
 * Edit: small changes related to the PHP 8.3 compatibility
+* Fix: various PHP notices related to PHP 8.1 and newer
 
 = 3.7 (2024.01.23) =
 * Edit: changes related to WordPress and PHP code standards
@@ -365,6 +369,9 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 3.7 =
+Various updates and improvements.
+
 = 3.6 =
 Various updates and improvements.
 
