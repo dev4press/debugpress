@@ -369,6 +369,9 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 3.8 =
+Various updates and improvements.
+
 = 3.7 =
 Various updates and improvements.
 
