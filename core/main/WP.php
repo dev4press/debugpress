@@ -33,7 +33,7 @@ class WP {
 			$port     = isset( $_SERVER['SERVER_PORT'] ) ? absint( $_SERVER['SERVER_PORT'] ) : 80;
 			$port     = $port === 80 || $port === 443 ? '' : ':' . $port;
 
-			return $protocol . '://' . sanitize_url( $_SERVER['SERVER_NAME'] ) . $port . sanitize_url( $_SERVER['REQUEST_URI'] );  // phpcs:ignore WordPress.Security.EscapeOutput,WordPress.Security.ValidatedSanitizedInput,WordPress.Security.NonceVerification,WordPress.WP.DeprecatedFunctions
+			return $protocol . '://' . sanitize_url( $_SERVER['SERVER_NAME'] ) . $port . sanitize_url( $_SERVER['REQUEST_URI'] ); // phpcs:ignore WordPress.Security.EscapeOutput,WordPress.Security.ValidatedSanitizedInput,WordPress.Security.NonceVerification,WordPress.WP.DeprecatedFunctions
 		}
 	}
 

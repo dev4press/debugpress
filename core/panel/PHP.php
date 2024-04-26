@@ -16,7 +16,7 @@ class PHP extends Panel {
 
 	public function right() {
 		$this->title( esc_html__( 'Full PHP $_REQUEST', 'debugpress' ) );
-		$this->list_array( wp_unslash( $_REQUEST ) );
+		$this->list_array( wp_unslash( $_REQUEST ) ); // phpcs:ignore WordPress.Security.NonceVerification
 
 		$this->title( esc_html__( 'Full PHP $_COOKIE', 'debugpress' ) );
 		$this->list_array( wp_unslash( $_COOKIE ) );

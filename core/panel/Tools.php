@@ -123,14 +123,14 @@ class Tools extends Panel {
 
 	private function _gtmetrix_url() : string {
 		$url = 'https://gtmetrix.com/?url=';
-		$url .= urlencode( WP::instance()->current_url() );
+		$url .= rawurlencode( WP::instance()->current_url() );
 
 		return $url;
 	}
 
 	private function _google_pagespeed_url( $tab = 'mobile' ) : string {
 		$url = 'https://developers.google.com/speed/pagespeed/insights/?url=';
-		$url .= urlencode( WP::instance()->current_url() );
+		$url .= rawurlencode( WP::instance()->current_url() );
 		$url .= '&tab=' . $tab;
 
 		return $url;

@@ -35,7 +35,7 @@ class AJAX {
 			return;
 		}
 
-		$this->_session_key = time() . '-' . rand( 100000, 999999 );
+		$this->_session_key = time() . '-' . wp_rand( 100000, 999999 );
 
 		if ( $this->_to_debug_log ) {
 			debugpress_error_log( $this->_session_key . ' - ' . __( 'AJAX STARTED', 'debugpress' ) );
@@ -59,7 +59,7 @@ class AJAX {
 			do_action( 'debugpress-tracker-admin-ajax-logged', $data );
 
 			foreach ( $data as $key => $value ) {
-				$formatted = is_scalar( $value ) ? $value : json_encode( $value );
+				$formatted = is_scalar( $value ) ? $value : wp_json_encode( $value );
 				$header    = sprintf( 'X-DEBUGPRESS-%s: %s', $key, $formatted );
 
 				if ( $this->_to_debug_log && $key !== 'ajax-session-key' ) {
@@ -82,7 +82,7 @@ class AJAX {
 	public function data() {
 		$data = array(
 			'ajax-session-key'       => $this->_session_key,
-			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : '',
+			'ajax-action-call'       => isset( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : '', // phpcs:ignore WordPress.Security.NonceVerification
 			'php-memory-available'   => ini_get( 'memory_limit' ) . "B",
 			'php-max-execution-time' => ini_get( 'max_execution_time' ) . " " . __( 'seconds', 'debugpress' ),
 			'page-memory-usage'      => debugpress_tracker()->get( '_end', 'memory' ),

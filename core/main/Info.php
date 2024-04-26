@@ -219,7 +219,8 @@ class Info {
 		$data = wp_cache_get( 'gd-press-tools', 'database' );
 
 		if ( $data === false ) {
-			$raw = debugpress_db()->wpdb()->get_row( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = '" . DB_NAME . "' GROUP BY table_schema" );
+			$sql = debugpress_db()->wpdb()->prepare( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = %s GROUP BY table_schema", DB_NAME );
+			$raw = debugpress_db()->wpdb()->get_row( $sql );
 
 			$data = array(
 				'tables'  => absint( $raw->tables_count ),
@@ -262,7 +263,7 @@ class Info {
 		$data = wp_cache_get( 'database', 'debugpress' );
 
 		if ( $data === false ) {
-			$sql = "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = '" . DB_NAME . "' AND table_name like '" . debugpress_db()->wpdb()->base_prefix . "%' GROUP BY table_schema";
+			$sql = debugpress_db()->wpdb()->prepare( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = %s AND table_name like '" . debugpress_db()->wpdb()->base_prefix . "%' GROUP BY table_schema", DB_NAME );
 			$raw = debugpress_db()->wpdb()->get_row( $sql );
 
 			$data = array(
@@ -370,7 +371,7 @@ class Info {
 			'E_USER_DEPRECATED'   => false,
 		);
 
-		$error_reporting = error_reporting();
+		$error_reporting = error_reporting(); // phpcs:ignore WordPress.PHP.DevelopmentFunctions,WordPress.PHP.DiscouragedPHPFunctions
 
 		foreach ( array_keys( $levels ) as $level ) {
 			if ( defined( $level ) ) {
@@ -474,7 +475,7 @@ class Info {
 
 		if ( debugpress_file_exists( $file ) ) {
 			try {
-				@include_once $file;
+				@include_once $file; // phpcs:ignore WordPress.PHP.NoSilencedErrors
 
 				if ( class_exists( '\System' ) === true ) {
 					return __( 'loaded', 'debugpress' );

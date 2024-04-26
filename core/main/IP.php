@@ -204,7 +204,7 @@ class IP {
 			return '';
 		}
 
-		$ip = self::validate( $_SERVER['SERVER_ADDR'] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$ip = self::validate( $_SERVER['SERVER_ADDR'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( $ip == '::1' ) {
 			$ip = '127.0.0.1';
@@ -231,7 +231,7 @@ class IP {
 
 		foreach ( $keys as $key ) {
 			if ( isset( $_SERVER[ $key ] ) ) {
-				$ip = self::validate( $_SERVER[ $key ] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+				$ip = self::validate( $_SERVER[ $key ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 				if ( $ip !== false ) {
 					$ips[ $key ] = $ip;
@@ -244,7 +244,7 @@ class IP {
 
 	public static function visitor() : string {
 		if ( self::is_cloudflare() ) {
-			$ip = self::validate( $_SERVER['HTTP_CF_CONNECTING_IP'] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$ip = self::validate( $_SERVER['HTTP_CF_CONNECTING_IP'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 			if ( $ip !== false ) {
 				return $ip;
@@ -266,7 +266,7 @@ class IP {
 
 		foreach ( $keys as $key ) {
 			if ( array_key_exists( $key, $_SERVER ) === true ) {
-				$ip = self::validate( $_SERVER[ $key ] );  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+				$ip = self::validate( $_SERVER[ $key ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 				if ( $ip !== false ) {
 					break;

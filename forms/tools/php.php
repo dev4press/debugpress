@@ -2,7 +2,7 @@
 	<?php
 
 	ob_start();
-	phpinfo();
+	phpinfo(); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 	$php_info = ob_get_contents();
 	ob_end_clean();
 

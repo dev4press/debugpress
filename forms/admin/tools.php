@@ -12,7 +12,7 @@ if ( ! OPCache::instance()->has_opcache() ) {
 	unset( $_tabs['opcache'] );
 }
 
-$_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : '';
+$_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
 
 ?>
@@ -38,7 +38,7 @@ $_tab = ! isset( $_tabs[ $_tab ] ) ? '' : $_tab;
 		$file = DEBUGPRESS_PLUGIN_PATH . 'forms/tools/' . $file . '.php';
 		$file = apply_filters( 'debugpress-tools-tab-file-' . $_tab, $file );
 
-		include $file;
+		require $file;
 
 		?>
     </div>

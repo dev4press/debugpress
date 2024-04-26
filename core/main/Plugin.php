@@ -143,7 +143,7 @@ class Plugin {
 		$the_access_key  = $this->get( 'access_key' );
 
 		if ( ! empty( $the_access_key ) ) {
-			$this->_url_activated = isset( $_GET['debugpress'] ) && sanitize_key( $_GET['debugpress'] ) === $the_access_key;
+			$this->_url_activated = isset( $_GET['debugpress'] ) && sanitize_key( $_GET['debugpress'] ) === $the_access_key; // phpcs:ignore WordPress.Security.NonceVerification
 		}
 
 		$this->_allowed = apply_filters( 'debugpress-debugger-is-allowed', $this->is_user_allowed() );

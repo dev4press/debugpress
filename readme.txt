@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
-Stable tag: 3.8
+Stable tag: 3.8.1
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 7.3

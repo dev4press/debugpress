@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:disable WordPress.PHP.DevelopmentFunctions,WordPress.PHP.DiscouragedPHPFunctions
+
 namespace Dev4Press\Plugin\DebugPress\Track;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -430,7 +432,7 @@ class Tracker {
 					$deprecated = 'VHOST';
 				}
 				break;
-			default :
+			default:
 				$in_file = $this->_strip_abspath( $backtrace[4]["file"] );
 				$on_line = $backtrace[4]["line"];
 				break;
@@ -716,7 +718,7 @@ class Tracker {
 						}
 					}
 				}
-			} catch ( Exception $ex ) {  // phpcs:ignore Generic.CodeAnalysis.EmptyStatement
+			} catch ( Exception $ex ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement
 				// skip the element if something happens
 			}
 
@@ -810,3 +812,5 @@ class Tracker {
 		}
 	}
 }
+
+// phpcs:enable

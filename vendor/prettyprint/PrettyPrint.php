@@ -86,7 +86,7 @@ class PrettyPrint {
 	}
 
 	public function render() {
-		echo $this->generate();
+		echo $this->generate(); // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	protected function _esc_html( $text ) : string {
@@ -169,9 +169,9 @@ class PrettyPrint {
 		$html .= $this->_generate_value( $var, $cls, $id );
 
 		if ( $this->display_footer ) {
-			$_ = debug_backtrace();
+			$_ = debug_backtrace(); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 
-			while ( $d = array_pop( $_ ) ) {
+			while ( $d = array_pop( $_ ) ) { // phpcs:ignore WordPress.CodeAnalysis.AssignmentInCondition
 				if ( ( strToLower( $d[ 'function' ] ) == 'debugpress_r' ) || ( strToLower( $d[ 'function' ] ) == 'debugpress_rx' ) ) {
 					break;
 				}
@@ -347,7 +347,7 @@ class PrettyPrint {
 			$prms = array();
 
 			foreach ( $ref->getParameters() as $p ) {
-				$prms[] = '$' . $p->getName() . ( $p->isDefaultValueAvailable() ? ' = <span class="' . $cls . '_mv">' . var_export( $p->getDefaultValue(), true ) . '</span>' : '' );
+				$prms[] = '$' . $p->getName() . ( $p->isDefaultValueAvailable() ? ' = <span class="' . $cls . '_mv">' . var_export( $p->getDefaultValue(), true ) . '</span>' : '' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 			}
 		} else {
 			$doc  = null;

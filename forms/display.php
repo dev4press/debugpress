@@ -82,8 +82,8 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 <script type="text/javascript">
     jQuery(document).ready(function() {
         window.wp.dev4press.debugpress.init(
-			<?php echo json_encode( debugpress_tracker()->get_counts_js() ); ?>,
-			<?php echo json_encode( debugpress_tracker()->get_stats() ); ?>,
+			<?php echo wp_json_encode( debugpress_tracker()->get_counts_js() ); ?>,
+			<?php echo wp_json_encode( debugpress_tracker()->get_stats() ); ?>,
 			<?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>,
 			<?php echo is_admin() ? 'true' : 'false'; ?>);
     });

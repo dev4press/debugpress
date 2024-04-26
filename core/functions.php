@@ -1,5 +1,7 @@
 <?php
 
+ // phpcs:disable WordPress.PHP.DevelopmentFunctions,WordPress.WP.AlternativeFunctions
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -248,3 +250,5 @@ function debugpress_kses_basic( string $render ) : string {
 		),
 	) );
 }
+
+ // phpcs:enable
