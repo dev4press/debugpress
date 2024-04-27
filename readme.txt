@@ -118,6 +118,11 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 3.8.1 (2024.04.27) =
+* Edit: replacement of some native with WordPress functions
+* Edit: various small updates and tweaks
+* Edit: Kint Pretty Print Library 5.1.1
+
 = 3.8 (2024.04.24) =
 * Edit: few minor tweaks and changes
 * Edit: updates to the plugin readme file

@@ -101,13 +101,13 @@ class ErrorFormat {
 	public static function deprecated_file( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-file">';
 		$render .= '<h4>' . __( 'Deprecated File', 'debugpress' ) . ':</h4>';
-		$render .= '<strong>' . __( 'On line', 'debugpress' ) . ":</strong> " . $item["on_line"] . '<br/>';
-		$render .= '<strong>' . __( 'In file', 'debugpress' ) . ":</strong> " . $item["in_file"] . '<br/>';
+		$render .= '<strong>' . __( 'On line', 'debugpress' ) . ":</strong> " . $item['on_line'] . '<br/>';
+		$render .= '<strong>' . __( 'In file', 'debugpress' ) . ":</strong> " . $item['in_file'] . '<br/>';
 
-		if ( $item["replacement"] ) {
-			$render .= sprintf( __( '<strong>%s</strong> is deprecated since version %s. Use <strong>%s</strong> instead.', 'debugpress' ), $item["deprecated"], $item["version"], $item["replacement"] );
+		if ( $item['replacement'] ) {
+			$render .= sprintf( __( '<strong>%1$s</strong> is deprecated since version %2$s. Use <strong>%3$s</strong> instead.', 'debugpress' ), $item['deprecated'], $item['version'], $item['replacement'] );
 		} else {
-			$render .= sprintf( __( '<strong>%s</strong> is deprecated since version %s.', 'debugpress' ), $item["deprecated"], $item["version"] );
+			$render .= sprintf( __( '<strong>%1$s</strong> is deprecated since version %2$s.', 'debugpress' ), $item['deprecated'], $item['version'] );
 		}
 
 		$render .= self::process_caller( $item );
@@ -120,17 +120,17 @@ class ErrorFormat {
 	public static function deprecated_function( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-function">';
 		$render .= '<h4>' . __( 'Deprecated Function', 'debugpress' ) . ':</h4>';
-		$render .= '<strong>' . __( 'On line', 'debugpress' ) . ":</strong> " . $item["on_line"] . '<br/>';
-		$render .= '<strong>' . __( 'In file', 'debugpress' ) . ":</strong> " . $item["in_file"] . '<br/>';
+		$render .= '<strong>' . __( 'On line', 'debugpress' ) . ":</strong> " . $item['on_line'] . '<br/>';
+		$render .= '<strong>' . __( 'In file', 'debugpress' ) . ":</strong> " . $item['in_file'] . '<br/>';
 
-		if ( $item["hook"] ) {
-			$render .= "<strong>" . __( 'Hook', 'debugpress' ) . ":</strong> " . $item["hook"] . "<br/>";
+		if ( $item['hook'] ) {
+			$render .= "<strong>" . __( 'Hook', 'debugpress' ) . ":</strong> " . $item['hook'] . "<br/>";
 		}
 
-		if ( $item["replacement"] ) {
-			$render .= sprintf( __( '<strong>%s</strong> is deprecated since version %s. Use <strong>%s</strong> instead.', 'debugpress' ), $item["deprecated"], $item["version"], $item["replacement"] );
+		if ( $item['replacement'] ) {
+			$render .= sprintf( __( '<strong>%1$s</strong> is deprecated since version %2$s. Use <strong>%3$s</strong> instead.', 'debugpress' ), $item['deprecated'], $item['version'], $item['replacement'] );
 		} else {
-			$render .= sprintf( __( '<strong>%s</strong> is deprecated since version %s.', 'debugpress' ), $item["deprecated"], $item["version"] );
+			$render .= sprintf( __( '<strong>%1$s</strong> is deprecated since version %2$s.', 'debugpress' ), $item['deprecated'], $item['version'] );
 		}
 
 		if ( ! empty( $item['message'] ) ) {
@@ -147,10 +147,10 @@ class ErrorFormat {
 	public static function deprecated_constructor( $item ) : string {
 		$render = '<div class="debugpress-wrapper-warning debugpress-warning-deprecated debugpress-deprecated-constructor">';
 		$render .= '<h4>' . __( 'Deprecated Constructor', 'debugpress' ) . ':</h4>';
-		$render .= '<strong>' . __( 'On line', 'debugpress' ) . ":</strong> " . $item["on_line"] . '<br/>';
-		$render .= '<strong>' . __( 'In file', 'debugpress' ) . ":</strong> " . $item["in_file"] . '<br/>';
+		$render .= '<strong>' . __( 'On line', 'debugpress' ) . ":</strong> " . $item['on_line'] . '<br/>';
+		$render .= '<strong>' . __( 'In file', 'debugpress' ) . ":</strong> " . $item['in_file'] . '<br/>';
 
-		$render .= sprintf( __( 'For <strong>%s</strong> since version %s.', 'debugpress' ), $item["deprecated"], $item["version"] );
+		$render .= sprintf( __( 'For <strong>%1$s</strong> since version %2$s.', 'debugpress' ), $item['deprecated'], $item['version'] );
 
 		if ( ! empty( $item['message'] ) ) {
 			$render .= '<em>' . $item['message'] . '</em>';
@@ -169,13 +169,13 @@ class ErrorFormat {
 
 		if ( $item['in_file'] ) {
 			if ( $item['on_line'] ) {
-				$render .= "<strong>" . __( 'On line', 'debugpress' ) . ":</strong> " . $item["on_line"] . ", ";
+				$render .= "<strong>" . __( 'On line', 'debugpress' ) . ":</strong> " . $item['on_line'] . ", ";
 			}
 
-			$render .= "<strong>" . __( 'In file', 'debugpress' ) . ":</strong> " . $item["in_file"] . "<br/>";
+			$render .= "<strong>" . __( 'In file', 'debugpress' ) . ":</strong> " . $item['in_file'] . "<br/>";
 		}
 
-		$render .= sprintf( __( 'Argument in <strong>%s</strong> is deprecated since version %s.', 'debugpress' ), $item["deprecated"], $item["version"] );
+		$render .= sprintf( __( 'Argument in <strong>%1$s</strong> is deprecated since version %2$s.', 'debugpress' ), $item['deprecated'], $item['version'] );
 
 		if ( ! empty( $item['message'] ) ) {
 			$render .= '<em>' . $item['message'] . '</em>';
