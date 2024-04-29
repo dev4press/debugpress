@@ -219,8 +219,8 @@ class Info {
 		$data = wp_cache_get( 'gd-press-tools', 'database' );
 
 		if ( $data === false ) {
-			$sql = debugpress_db()->wpdb()->prepare( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = %s GROUP BY table_schema", DB_NAME );
-			$raw = debugpress_db()->wpdb()->get_row( $sql );
+			$sql = debugpress_db()->wpdb()->prepare( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = %s GROUP BY table_schema", DB_NAME ); // phpcs:ignore WordPress.DB.PreparedSQL
+			$raw = debugpress_db()->wpdb()->get_row( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL
 
 			$data = array(
 				'tables'  => absint( $raw->tables_count ),
@@ -263,8 +263,8 @@ class Info {
 		$data = wp_cache_get( 'database', 'debugpress' );
 
 		if ( $data === false ) {
-			$sql = debugpress_db()->wpdb()->prepare( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = %s AND table_name like '" . debugpress_db()->wpdb()->base_prefix . "%' GROUP BY table_schema", DB_NAME );
-			$raw = debugpress_db()->wpdb()->get_row( $sql );
+			$sql = debugpress_db()->wpdb()->prepare( "SELECT table_schema, COUNT(*) as tables_count, SUM(data_length + index_length) AS data_size, SUM(data_free) AS free_space, SUM(table_rows) AS rows_count FROM information_schema.TABLES WHERE table_schema = %s AND table_name like '" . debugpress_db()->wpdb()->base_prefix . "%' GROUP BY table_schema", DB_NAME ); // phpcs:ignore WordPress.DB.PreparedSQL
+			$raw = debugpress_db()->wpdb()->get_row( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL
 
 			$data = array(
 				'tables'  => absint( $raw->tables_count ?? 0 ),

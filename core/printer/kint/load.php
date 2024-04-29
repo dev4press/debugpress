@@ -49,7 +49,8 @@ function debugpress_rx( $value, $footer = true ) : string {
 		Kint::$display_called_from = false;
 	}
 
-	$show = @Kint::dump( $value );
+	// The only way for Kint Dump method to return value, and not echo it, is with @ modifier
+	$show = @Kint::dump( $value ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
 
 	if ( ! $footer ) {
 		Kint::$display_called_from = true;
