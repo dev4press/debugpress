@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
-Stable tag: 3.8.2
+Stable tag: 3.9
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 7.3
@@ -118,13 +118,12 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 3.8.2 (2024.04.29) =
+= 3.9 (2024.05.14) =
 * Edit: few more updates and improvements
-
-= 3.8.1 (2024.04.27) =
 * Edit: replacement of some native with WordPress functions
 * Edit: various small updates and tweaks
 * Edit: Kint Pretty Print Library 5.1.1
+* Fix: various PHP notices related to PHP 8.1 and newer
 
 = 3.8 (2024.04.24) =
 * Edit: few minor tweaks and changes

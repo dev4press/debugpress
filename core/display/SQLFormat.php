@@ -874,21 +874,21 @@ class SQLFormat {
 			if ( preg_match( '/^(' . self::$regex_reserved_toplevel . ')($|\s|' . self::$regex_boundaries . ')/', $upper, $matches ) ) {
 				return array(
 					self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED_TOPLEVEL,
-					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) ),
+					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ?? '' ) ),
 				);
 			}
 			// Newline Reserved Word
 			if ( preg_match( '/^(' . self::$regex_reserved_newline . ')($|\s|' . self::$regex_boundaries . ')/', $upper, $matches ) ) {
 				return array(
 					self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED_NEWLINE,
-					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) ),
+					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ?? '' ) ),
 				);
 			}
 			// Other Reserved Word
 			if ( preg_match( '/^(' . self::$regex_reserved . ')($|\s|' . self::$regex_boundaries . ')/', $upper, $matches ) ) {
 				return array(
 					self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED,
-					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) ),
+					self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ?? '' ) ),
 				);
 			}
 		}
@@ -900,7 +900,7 @@ class SQLFormat {
 		if ( preg_match( '/^(' . self::$regex_function . '[(]|\s|[)])/', $upper, $matches ) ) {
 			return array(
 				self::TOKEN_TYPE  => self::TOKEN_TYPE_RESERVED,
-				self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ) - 1 ),
+				self::TOKEN_VALUE => substr( $string, 0, strlen( $matches[1] ?? '' ) - 1 ),
 			);
 		}
 
@@ -1106,7 +1106,7 @@ class SQLFormat {
 					}
 				}
 
-				$inline_count += strlen( $token[ self::TOKEN_VALUE ] );
+				$inline_count += strlen( $token[ self::TOKEN_VALUE ] ?? '' );
 			}
 
 			// Opening parentheses increase the block indent level and start a new line
@@ -1141,7 +1141,7 @@ class SQLFormat {
 						break;
 					}
 
-					$length += strlen( $next[ self::TOKEN_VALUE ] );
+					$length += strlen( $next[ self::TOKEN_VALUE ] ?? '' );
 				}
 
 				if ( $inline_parentheses && $length > 30 ) {
