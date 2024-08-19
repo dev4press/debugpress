@@ -21,7 +21,7 @@
         <p><?php esc_html_e( 'To get help for the DebugPress plugin, start with the plugin website for tutorials, or use Dev4Press.com knowledge base.', 'debugpress' ); ?></p>
         <div>
             <a target="_blank" rel="noopener" href="https://debug.press/documentation/">Debug.Press</a> &middot;
-            <a target="_blank" rel="noopener" href="https://support.dev4press.com/kb/product/debugpress/">Dev4Press.com</a>
+            <a target="_blank" rel="noopener" href="https://www.dev4press.com/kb/product/debugpress/">Dev4Press.com</a>
         </div>
         <hr/>
         <p><?php esc_html_e( 'If you need direct help, you can use WordPress.org support forums or the Dev4Press.com support forums.', 'debugpress' ); ?></p>

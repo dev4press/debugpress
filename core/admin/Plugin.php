@@ -107,7 +107,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( 'This code enables debug mode, 
 				'id'      => 'debugpress-info',
 				'title'   => __( 'Help & Support', 'debugpress' ),
 				'content' => '<h2>' . __( 'Help & Support', 'debugpress' ) . '</h2><p>' . __( 'To get help with DebugPress, you can start with Knowledge Base list of frequently asked questions, user guides, articles (tutorials) and reference guide (for developers).', 'debugpress' ) .
-				             '</p><p><a href="https://support.dev4press.com/kb/product/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( 'Knowledge Base', 'debugpress' ) . '</a> <a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-secondary" target="_blank">' . __( 'Support Forum', 'debugpress' ) . '</a></p>',
+				             '</p><p><a href="https://www.dev4press.com/kb/product/debugpress/" class="button-primary" target="_blank" rel="noopener">' . __( 'Knowledge Base', 'debugpress' ) . '</a> <a href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/" class="button-secondary" target="_blank">' . __( 'Support Forum', 'debugpress' ) . '</a></p>',
 			)
 		);
 
@@ -125,7 +125,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( 'This code enables debug mode, 
 			'<p><strong>' . __( 'DebugPress', 'debugpress' ) . '</strong></p>' .
 			'<p>' . join( '<br/>', array(
 				'home'  => '<a target="_blank" rel="noopener" href="https://debug.press/">' . esc_html__( 'Home Page', 'debugpress' ) . '</a>',
-				'kb'    => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/kb/product/debugpress/">' . esc_html__( 'Knowledge Base', 'debugpress' ) . '</a>',
+				'kb'    => '<a target="_blank" rel="noopener" href="https://www.dev4press.com/kb/product/debugpress/">' . esc_html__( 'Knowledge Base', 'debugpress' ) . '</a>',
 				'forum' => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/">' . esc_html__( 'Support Forum', 'debugpress' ) . '</a>',
 			) ) . '</p>'
 		);

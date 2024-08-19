@@ -686,6 +686,10 @@ class Tracker {
 			}
 
 			if ( $call['function'] == 'call_user_func_array' ) {
+				if ( ! is_array( $call['args'] ) || ! is_array( $call['args'][0] ) ) {
+					continue;
+				}
+
 				if ( isset( $call['args'][0][0] ) && $call['args'][0][0] instanceof Tracker ) {
 					continue;
 				}

@@ -6,9 +6,9 @@
  * Author:            Milan Petrovic
  * Author URI:        https://www.dev4press.com/
  * Text Domain:       debugpress
- * Version:           3.9
+ * Version:           3.9.1
  * Requires at least: 5.5
- * Tested up to:      6.5
+ * Tested up to:      6.6
  * Requires PHP:      7.4
  * Requires CP:       2.0
  * License:           GPLv3 or later
@@ -33,7 +33,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-const DEBUGPRESS_VERSION     = '3.9';
+const DEBUGPRESS_VERSION     = '3.9.1';
 const DEBUGPRESS_FILE        = __FILE__;
 const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
 

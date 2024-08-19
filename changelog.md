@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### Version: 3.9.1 (2024.08.19)
+
+* **fix** problem with the Tracker when closure makes a call
+
 ### Version: 3.9 (2024.05.14)
 
 * **edit** few more updates and improvements
