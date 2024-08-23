@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### Version: 3.9.2 (2024.08.23)
+
+* **fix** one more issue with the access to OPCache status information
+
 ### Version: 3.9.1 (2024.08.19)
 
 * **fix** problem with the Tracker when closure makes a call

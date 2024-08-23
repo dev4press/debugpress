@@ -32,7 +32,7 @@ class OPCache {
 		if ( $this->has_opcache() ) {
 			$this->status = 'enabled';
 
-			if ( function_exists( 'opcache_get_configuration' ) ) {
+			if ( function_exists( 'opcache_get_status' ) && function_exists( 'opcache_get_configuration' ) ) {
 				$this->status = 'restricted';
 
 				$_status = opcache_get_status();

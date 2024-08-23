@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
-Stable tag: 3.9.1
+Stable tag: 3.9.2
 Requires at least: 5.5
 Tested up to: 6.6
 Requires PHP: 7.3
@@ -118,6 +118,9 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 3.9.2 (2024.08.23) =
+* Fix: one more issue with the access to OPCache status information
+
 = 3.9.1 (2024.08.19) =
 * Fix: problem with the Tracker when closure makes a call [#08](https://github.com/dev4press/debugpress/issues/8)
 
