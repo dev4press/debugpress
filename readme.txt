@@ -2,10 +2,10 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
-Stable tag: 3.9.2
+Stable tag: 4.0
 Requires at least: 5.5
-Tested up to: 6.6
-Requires PHP: 7.3
+Tested up to: 6.7
+Requires PHP: 7.4
 Requires CP: 2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -89,7 +89,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 
 == Installation ==
 = General Requirements =
-* PHP: 7.3 or newer
+* PHP: 7.4 or newer
 * Tested with the latest PHP, version 8.3
 
 = WordPress Requirements =
@@ -118,6 +118,12 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 4.0 (2024.11.02) =
+* New: tested with WordPress 6.7
+* New: tested and compatible with `PHP` 8.4 RC 3
+* New: using composer to load `Kint` library
+* New: various constants for KINT library control
+
 = 3.9.2 (2024.08.23) =
 * Fix: one more issue with the access to OPCache status information
 

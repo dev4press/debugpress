@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Dev4Press\Plugin\DebugPress\Printer\PrettyPrint\PrettyPrint;
 
-require_once DEBUGPRESS_PLUGIN_PATH . 'vendor/prettyprint/PrettyPrint.php';
-
 /**
  * Main `print_r` pretty print replacement that can pretty print and format (almost) anything you want including
  * objects with support for reflection analysis.

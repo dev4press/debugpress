@@ -6,9 +6,9 @@
  * Author:            Milan Petrovic
  * Author URI:        https://www.dev4press.com/
  * Text Domain:       debugpress
- * Version:           3.9.2
+ * Version:           4.0
  * Requires at least: 5.5
- * Tested up to:      6.6
+ * Tested up to:      6.7
  * Requires PHP:      7.4
  * Requires CP:       2.0
  * License:           GPLv3 or later
@@ -33,7 +33,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-const DEBUGPRESS_VERSION     = '3.9.2';
+const DEBUGPRESS_VERSION     = '4.0';
 const DEBUGPRESS_FILE        = __FILE__;
 const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
 
@@ -55,6 +55,7 @@ if ( DEBUGPRESS_IS_CLI || DEBUGPRESS_IS_CRON ) {
 	return;
 }
 
+require_once DEBUGPRESS_PLUGIN_PATH . 'vendor/autoload.php';
 require_once DEBUGPRESS_PLUGIN_PATH . 'core/autoload.php';
 require_once DEBUGPRESS_PLUGIN_PATH . 'core/bridge.php';
 require_once DEBUGPRESS_PLUGIN_PATH . 'core/functions.php';

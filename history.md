@@ -2,6 +2,19 @@
 
 ## Changelog
 
+### Version: 3.7 (2024.01.23)
+
+* **edit** changes related to WordPress and PHP code standards
+* **edit** updated Query object for page query conditionals
+* **edit** updated Dev4Press Library Query detection versions
+* **fix** few compare statements written as assignment
+
+### Version: 3.6 (2023.12.15)
+
+* **edit** Increase Kint Library depth levels to 12
+* **edit** Kint Pretty Print Library 5.1.0
+* **fix** Small issue with getting the OPCache version when not allowed by the server
+
 ### Version: 3.5.1 (2023.11.18)
 
 * **fix** Internal debug to error log remain in the source code

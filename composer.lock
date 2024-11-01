@@ -1,9 +1,14 @@
 {
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d672a3162baeea4984c6f28271dd5c8b",
     "packages": [
         {
             "name": "kint-php/kint",
             "version": "5.1.1",
-            "version_normalized": "5.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
@@ -30,9 +35,7 @@
                 "kint-php/kint-helpers": "Provides extra helper functions",
                 "kint-php/kint-twig": "Provides d() and s() functions in twig templates"
             },
-            "time": "2024-04-26T14:20:09+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "init.php"
@@ -66,11 +69,16 @@
                 "issues": "https://github.com/kint-php/kint/issues",
                 "source": "https://github.com/kint-php/kint/tree/5.1.1"
             },
-            "install-path": "../kint-php/kint"
+            "time": "2024-04-26T14:20:09+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": [
-        "kint-php/kint"
-    ]
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
