@@ -12,8 +12,11 @@
 
     <div class="debugpress_help">
         <p><?php esc_html_e( 'DebugPress is a free plugin, and if you find it useful or want to support its future development, please consider donating.', 'debugpress' ); ?></p>
-        <a href="https://www.buymeacoffee.com/millan" target="_blank" rel="noopener">
+        <a style="display: block;" href="https://www.buymeacoffee.com/millan" target="_blank" rel="noopener">
             <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/buy_me_a_coffee.png" alt="Buy Me A Coffee"/>
+        </a>
+        <a style="display: block; margin-top: 5px" href="https://ko-fi.com/milanpetrovic" target="_blank" rel="noopener">
+            <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/ko_fi.png" alt="Ko-Fi"/>
         </a>
     </div>
 

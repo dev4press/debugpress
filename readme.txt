@@ -1,4 +1,4 @@
-=== DebugPress: Debugger in a Popup ===
+=== DebugPress: Debugger in Popup ===
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
@@ -10,7 +10,7 @@ Requires CP: 2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-DebugPress is an easy-to-use plugin that implements popups for debugging and profiling website pages with support for intercepting AJAX requests.
+Easy-to-use plugin for debugging and profiling website loading, SQL queries analysis, help with development, bug fixing, all in configurable popup.
 
 == Description ==
 

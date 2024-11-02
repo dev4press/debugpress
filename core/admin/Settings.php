@@ -445,11 +445,11 @@ class Settings {
 	public function option_pretty_print() {
 		$enabled = debugpress_plugin()->get( 'pr' );
 
-		echo "<label style='display: block;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . esc_html__( 'Default', 'debugpress' ) . "</label>";
-		echo '<p class="description">' . esc_html__( 'Default and simple library, but it can be limited in what it can process.', 'debugpress' ) . '</p>';
-
-		echo "<label style='display: block; margin-top: 15px;'><input " . ( $enabled == 'kint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='kint' type='radio' />KINT</label>";
+		echo "<label style='display: block;'><input " . ( $enabled == 'kint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='kint' type='radio' />KINT</label>";
 		echo '<p class="description">' . esc_html__( 'Third party developed library with more robust output and able to process almost any type of complex objects.', 'debugpress' ) . ' <a href="https://github.com/kint-php/kint" target="_blank">' . esc_html__( 'GitHub', 'debugpress' ) . '</a></p>';
+
+		echo "<label style='display: block; margin-top: 15px;'><input " . ( $enabled == 'prettyprint' ? " checked='checked'" : "" ) . " name='debugpress_settings[pr]' value='prettyprint' type='radio' />" . esc_html__( 'Basic Pretty Print', 'debugpress' ) . "</label>";
+		echo '<p class="description">' . esc_html__( 'Default and simple library, but it can be limited in what it can process.', 'debugpress' ) . '</p>';
 	}
 
 	public function option_auto_wpdebug() {
