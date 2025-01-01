@@ -44,7 +44,6 @@ if ( DEBUGPRESS_KINT_DISABLED_COLOR ) {
 
 RichRenderer::$folder = false;
 RichRenderer::$theme  = DEBUGPRESS_KINT_THEME;
-RichRenderer::$sort   = AbstractRenderer::SORT_FULL;
 
 do_action( 'debugpress-printer-loaded-kint' );
 

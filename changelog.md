@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### Version: 4.1 (2025.01.02)
+
+* **new** tested and compatible with `PHP` 8.4
+* **edit** Kint Pretty Print Library 6.0
+
 ### Version: 4.0 (2024.11.02)
 
 * **new** tested with WordPress 6.7
@@ -23,11 +28,4 @@
 * **edit** replacement of some native with WordPress functions
 * **edit** various small updates and tweaks
 * **edit** Kint Pretty Print Library 5.1.1
-* **fix** various PHP notices related to PHP 8.1 and newer
-
-### Version: 3.8 (2024.04.24)
-
-* **edit** few minor tweaks and changes
-* **edit** updates to the plugin readme file
-* **edit** small changes related to the PHP 8.3 compatibility
 * **fix** various PHP notices related to PHP 8.1 and newer

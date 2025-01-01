@@ -2,6 +2,13 @@
 
 ## Changelog
 
+### Version: 3.8 (2024.04.24)
+
+* **edit** few minor tweaks and changes
+* **edit** updates to the plugin readme file
+* **edit** small changes related to the PHP 8.3 compatibility
+* **fix** various PHP notices related to PHP 8.1 and newer
+
 ### Version: 3.7 (2024.01.23)
 
 * **edit** changes related to WordPress and PHP code standards
