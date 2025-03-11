@@ -1,7 +1,6 @@
 <?php
 
 use Kint\Kint;
-use Kint\Renderer\AbstractRenderer;
 use Kint\Renderer\RichRenderer;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,20 +30,19 @@ if ( ! defined( 'DEBUGPRESS_KINT_THEME' ) ) {
 Kint::$depth_limit = DEBUGPRESS_KINT_DEPTH_LIMIT;
 
 if ( DEBUGPRESS_KINT_DISABLED_CLASS_METHOD ) {
-	unset( Kint::$plugins[4] );
+	Kint::$plugins[6] = null;
 }
 
 if ( DEBUGPRESS_KINT_DISABLED_CLASS_STATICS ) {
-	unset( Kint::$plugins[5] );
+	Kint::$plugins[7] = null;
 }
 
 if ( DEBUGPRESS_KINT_DISABLED_COLOR ) {
-	unset( Kint::$plugins[7] );
+	Kint::$plugins[10] = null;
 }
 
 RichRenderer::$folder = false;
 RichRenderer::$theme  = DEBUGPRESS_KINT_THEME;
-RichRenderer::$sort   = AbstractRenderer::SORT_FULL;
 
 do_action( 'debugpress-printer-loaded-kint' );
 

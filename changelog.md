@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### Version: 4.1 (2024.11.02)
+
+* **edit** Kint Pretty Print Library 6.0.1
+
 ### Version: 4.0 (2024.11.02)
 
 * **new** tested with WordPress 6.7

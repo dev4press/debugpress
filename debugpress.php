@@ -6,9 +6,9 @@
  * Author:            Milan Petrovic
  * Author URI:        https://www.dev4press.com/
  * Text Domain:       debugpress
- * Version:           4.0
+ * Version:           4.1
  * Requires at least: 5.5
- * Tested up to:      6.7
+ * Tested up to:      6.8
  * Requires PHP:      7.4
  * Requires CP:       2.0
  * License:           GPLv3 or later
@@ -17,7 +17,7 @@
  * @package DebugPress
  *
  * == Copyright ==
- * Copyright 2008 - 2024 Milan Petrovic (email: support@dev4press.com)
+ * Copyright 2008 - 2025 Milan Petrovic (email: support@dev4press.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-const DEBUGPRESS_VERSION     = '4.0';
+const DEBUGPRESS_VERSION     = '4.1';
 const DEBUGPRESS_FILE        = __FILE__;
 const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
 
