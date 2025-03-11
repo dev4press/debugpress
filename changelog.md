@@ -4,6 +4,7 @@
 
 ### Version: 4.1 (2024.11.02)
 
+* **new** tested and compatible with `PHP` 8.4
 * **edit** Kint Pretty Print Library 6.0.1
 
 ### Version: 4.0 (2024.11.02)
