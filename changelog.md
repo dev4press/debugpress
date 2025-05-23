@@ -2,9 +2,11 @@
 
 ## Changelog
 
-### Version: 4.1 (2024.11.02)
+### Version: 4.1 (2025.05.24)
 
+* **new** tested with WordPress 6.8
 * **new** tested and compatible with `PHP` 8.4
+* **new** additional functions for logging
 * **edit** Kint Pretty Print Library 6.0.1
 
 ### Version: 4.0 (2024.11.02)

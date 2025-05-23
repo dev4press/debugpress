@@ -47,6 +47,19 @@ RichRenderer::$theme  = DEBUGPRESS_KINT_THEME;
 do_action( 'debugpress-printer-loaded-kint' );
 
 /**
+ * Pretty print replacement that outputs the provided variables for debugging purposes.
+ *
+ * @param mixed ...$value One or more variables to be dumped for debugging.
+ *
+ * @return void
+ */
+function debugpress_p( ...$value ) {
+	foreach ( $value as $v ) {
+		Kint::dump( $v );
+	}
+}
+
+/**
  * Main `print_r` pretty print replacement that can pretty print and format (almost) anything you want including
  * objects with support for reflection analysis.
  *

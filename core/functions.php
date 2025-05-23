@@ -1,21 +1,25 @@
 <?php
 
- // phpcs:disable WordPress.PHP.DevelopmentFunctions,WordPress.WP.AlternativeFunctions
+// phpcs:disable WordPress.PHP.DevelopmentFunctions,WordPress.WP.AlternativeFunctions
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Print the value in the WordPress debug.log, if it is available.
+ * Log the provided objects into the error log if debug logging is enabled.
  *
- * @param mixed $object Object value to store, it can be any type
+ * @param mixed ...$objects A variable number of objects to log.
+ *
+ * @return void
  */
-function debugpress_error_log( $object ) {
+function debugpress_error_log( ...$objects ) {
 	if ( DEBUGPRESS_IS_DEBUG_LOG ) {
-		$print = print_r( $object, true );
+		foreach ( $objects as $object ) {
+			$print = print_r( $object, true );
 
-		error_log( $print );
+			error_log( $print );
+		}
 	}
 }
 
@@ -25,6 +29,8 @@ function debugpress_error_log( $object ) {
  * @param mixed  $object Object value to store, it can be any type
  * @param string $path   Full path to the file to write into
  * @param string $mode   File writing mode, @see 'fopen'
+ *
+ * @return void
  */
 function debugpress_info_file( $object, string $path, string $mode = 'w' ) {
 	$handle = fopen( $path, $mode );
@@ -43,9 +49,36 @@ function debugpress_info_file( $object, string $path, string $mode = 'w' ) {
  * @param mixed  $object Object value to store, it can be any type
  * @param string $title  Optional title to associate with the stored object
  * @param false  $sql    If the stored object SQL string, it will be rendered as formatted SQL
+ *
+ * @return void
  */
 function debugpress_store_object( $object, string $title = '', bool $sql = false ) {
 	debugpress_tracker()->log( $object, $title, $sql );
+}
+
+/**
+ * Store multiple objects into the DebugPress Tracker, and display them inside the Store tab of the Debugger.
+ *
+ * @param mixed ...$object Objects to store, can be of any type
+ *
+ * @return void
+ */
+function debugpress_store_objects( ...$object ) {
+	foreach ( $object as $obj ) {
+		debugpress_tracker()->log( $object );
+	}
+}
+
+/**
+ * Store the SQL query into the DebugPress Tracker, and display it inside the Store tab of the Debugger with formatted SQL.
+ *
+ * @param string $sql   SQL query string to store
+ * @param string $title Optional title to associate with the stored SQL query
+ *
+ * @return void
+ */
+function debugpress_store_sql( string $sql, string $title = '' ) {
+	debugpress_tracker()->log( $sql, $title, true );
 }
 
 /**
@@ -251,4 +284,4 @@ function debugpress_kses_basic( string $render ) : string {
 	) );
 }
 
- // phpcs:enable
+// phpcs:enable
