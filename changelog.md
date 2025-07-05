@@ -2,12 +2,16 @@
 
 ## Changelog
 
-### Version: 4.1 (2025.05.24)
+### Version: 4.1 (2025.07.05)
 
 * **new** tested with WordPress 6.8
 * **new** tested and compatible with `PHP` 8.4
 * **new** additional functions for logging
+* **edit** improvements to plugin initialization
+* **edit** various small improvements and tweaks
+* **edit** expanded support for Dev4Press Library
 * **edit** Kint Pretty Print Library 6.0.1
+* **fix** minor issue with PHP 8.4 and error reporting
 
 ### Version: 4.0 (2024.11.02)
 

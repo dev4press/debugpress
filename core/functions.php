@@ -65,7 +65,7 @@ function debugpress_store_object( $object, string $title = '', bool $sql = false
  */
 function debugpress_store_objects( ...$object ) {
 	foreach ( $object as $obj ) {
-		debugpress_tracker()->log( $object );
+		debugpress_tracker()->log( $obj );
 	}
 }
 

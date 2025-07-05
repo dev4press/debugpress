@@ -316,7 +316,7 @@ class Info {
 	}
 
 	public static function php_version() : string {
-		return phpversion();
+		return PHP_VERSION;
 	}
 
 	public static function php_sapi() : string {
@@ -352,6 +352,10 @@ class Info {
 	}
 
 	public static function php_error_levels() : array {
+		$deprecated = array(
+			'E_STRICT' => '8.4',
+		);
+
 		$levels = array(
 			'E_ALL'               => false,
 			'E_ERROR'             => false,
@@ -374,12 +378,19 @@ class Info {
 		$error_reporting = error_reporting(); // phpcs:ignore WordPress.PHP.DevelopmentFunctions,WordPress.PHP.DiscouragedPHPFunctions
 
 		foreach ( array_keys( $levels ) as $level ) {
-			if ( defined( $level ) ) {
-				$c = constant( $level );
+			$dep = $deprecated[ $level ] ?? '';
+			$dep = empty( $dep ) || version_compare( PHP_VERSION, $dep, '<' );
 
-				if ( $error_reporting & $c ) {
-					$levels[ $level ] = true;
+			if ( $dep ) {
+				if ( defined( $level ) ) {
+					$c = constant( $level );
+
+					if ( $error_reporting & $c ) {
+						$levels[ $level ] = true;
+					}
 				}
+			} else {
+				unset( $levels[ $level ] );
 			}
 		}
 

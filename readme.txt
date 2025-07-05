@@ -90,11 +90,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 == Installation ==
 = General Requirements =
 * PHP: 7.4 or newer
-* Tested with the latest PHP, version 8.3
+* Tested with the latest PHP, version 8.4
 
 = WordPress Requirements =
 * WordPress: 5.5 or newer
-* Tested with the latest WordPress, version 6.5
+* Tested with the latest WordPress, version 6.8
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -118,6 +118,16 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 4.1 (2025.07.05) =
+* New: tested with WordPress 6.8
+* New: tested and compatible with `PHP` 8.4
+* New: additional functions for logging
+* Edit: improvements to plugin initialization
+* Edit: various small improvements and tweaks
+* Edit: expanded support for Dev4Press Library
+* Edit: Kint Pretty Print Library 6.0.1
+* Fix minor issue with PHP 8.4 and error reporting
+
 = 4.0 (2024.11.02) =
 * New: tested with WordPress 6.7
 * New: tested and compatible with `PHP` 8.4 RC 3
@@ -388,6 +398,15 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 4.1 =
+Few updates and improvements. Updated Kint Library.
+
+= 4.0 =
+Various updates and improvements.
+
+= 3.9 =
+Various updates and improvements.
+
 = 3.8 =
 Various updates and improvements.
 
@@ -399,18 +418,6 @@ Various updates and improvements.
 
 = 3.5 =
 Tracking improvements. Popup layout improvements. Tweaks and fixes.
-
-= 3.4 =
-Various updates and improvements.
-
-= 3.3 =
-Few updates and improvements. Updated Kint Library.
-
-= 3.2 =
-Tracking improvements and bug fixes.
-
-= 3.1 =
-Various updates, improvements and fixes.
 
 == Screenshots ==
 * Debugger popup: Basic debugger panel

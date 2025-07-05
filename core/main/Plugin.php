@@ -64,6 +64,7 @@ class Plugin {
 	private $_cp_version;
 	private $_cp_version_real;
 	private $_rest_request = false;
+	private $_loader_init = false;
 
 	public function __construct() {
 	}
@@ -181,13 +182,15 @@ class Plugin {
 		wp_register_script( 'mousetrap', DEBUGPRESS_PLUGIN_URL . 'libraries/mousetrap/mousetrap.min.js', array(), $this->_mousetrap_version, true );
 		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', $dependencies, DEBUGPRESS_VERSION, true );
 
-		if ( $this->is_enabled() ) {
+		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_CLI && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->is_enabled() ) {
 			Loader::instance();
+
+			$this->_loader_init = true;
 		}
 	}
 
 	public function loader() {
-		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->is_enabled() ) {
+		if ( $this->_loader_init ) {
 			Loader::instance()->run();
 		}
 	}
