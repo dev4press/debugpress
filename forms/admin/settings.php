@@ -14,7 +14,7 @@
         <a href="#advanced" class="nav-tab nav-tab-change">
 			<?php esc_html_e( 'Advanced', 'debugpress' ); ?>
         </a>
-        <a href="https://debug.press" target="_blank" rel="noopener nofollow" class="nav-tab nav-tab-right">
+        <a href="https://www.dev4press.com/plugins/debugpress/" target="_blank" rel="noopener nofollow" class="nav-tab nav-tab-right">
             <span class="dashicons dashicons-external"></span><?php esc_html_e( 'Website', 'debugpress' ); ?>
         </a>
         <a href="tools.php?page=debugpress-info" class="nav-tab nav-tab-right">

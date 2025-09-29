@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       DebugPress: Debugger in Popup
- * Plugin URI:        https://debug.press/
+ * Plugin URI:        https://www.dev4press.com/plugins/debugpress/
  * Description:       Easy-to-use plugin for debugging and profiling website loading, SQL queries analysis, help with development, bug fixing, all in configurable popup.
  * Author:            Milan Petrovic
  * Author URI:        https://www.dev4press.com/

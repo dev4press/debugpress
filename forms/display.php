@@ -74,7 +74,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
         <div class="debugpress-debugger-footer-right">
             <a target="_blank" href="<?php echo esc_url( admin_url( 'options-general.php?page=debugpress' ) ); ?>"><?php esc_html_e( 'Settings', 'debugpress' ); ?></a>
             &middot;
-            <a rel="noopener" target="_blank" href="https://debug.press/"><?php esc_html_e( 'DebugPress', 'debugpress' ); ?></a>
+            <a rel="noopener" target="_blank" href="https://www.dev4press.com/plugins/debugpress/"><?php esc_html_e( 'DebugPress', 'debugpress' ); ?></a>
             <strong>v<?php echo esc_html( DEBUGPRESS_VERSION ); ?></strong>
         </div>
     </div>

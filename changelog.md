@@ -2,7 +2,7 @@
 
 ## Changelog
 
-### Version: 4.1 (2025.07.05)
+### Version: 4.1 (2025.09.28)
 
 * **new** tested with WordPress 6.8
 * **new** tested and compatible with `PHP` 8.4

@@ -31,7 +31,7 @@ class Basics extends Panel {
 			foreach ( $test as $t ) {
 				$this->sub_title( $t[0] );
 				echo esc_html( $t[1] );
-				echo ' <a rel="noopener" href="https://debug.press/documentation/wordpress-setup/" target="_blank">' . esc_html__( 'More Information', 'debugpress' ) . '</a>';
+				echo ' <a rel="noopener" href="https://www.dev4press.com/kb/article/debug-mode-wordpress-setup/" target="_blank">' . esc_html__( 'More Information', 'debugpress' ) . '</a>';
 			}
 			$this->block_footer();
 

@@ -44,7 +44,7 @@ class Plugin {
 
 	public function plugin_links( $links, $file ) {
 		if ( $file == 'debugpress/debugpress.php' ) {
-			$links[] = '<a target="_blank" rel="noopener" href="https://debug.press/"><span class="dashicons dashicons-flag" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( 'Home Page', 'debugpress' ) . '</a>';
+			$links[] = '<a target="_blank" rel="noopener" href="https://www.dev4press.com/plugins/debugpress/"><span class="dashicons dashicons-flag" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( 'Home Page', 'debugpress' ) . '</a>';
 			$links[] = '<a target="_blank" rel="noopener" href="https://www.buymeacoffee.com/millan"><span class="dashicons dashicons-coffee" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( 'Buy Me A Coffee', 'debugpress' ) . '</a>';
 		}
 
@@ -89,7 +89,7 @@ class Plugin {
 				             '</p><pre>define( \'WP_DEBUG\', true );
 define( \'WP_DEBUG_DISPLAY\', false );
 define( \'WP_DEBUG_LOG\', true );
-define( \'SAVEQUERIES\', true );</pre><p>' . __( 'This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.', 'debugpress' ) . '</p><p><a href="https://debug.press/documentation/wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( 'More Information', 'debugpress' ) . '</a></p>',
+define( \'SAVEQUERIES\', true );</pre><p>' . __( 'This code enables debug mode, hides errors from being displayed, but enables logging errors into debug log file. It also enables saving of all SQL queries.', 'debugpress' ) . '</p><p><a href="https://www.dev4press.com/kb/article/debug-mode-wordpress-setup/" class="button-primary" target="_blank" rel="noopener">' . __( 'More Information', 'debugpress' ) . '</a></p>',
 			)
 		);
 
@@ -124,7 +124,7 @@ define( \'SAVEQUERIES\', true );</pre><p>' . __( 'This code enables debug mode, 
 		$screen->set_help_sidebar(
 			'<p><strong>' . __( 'DebugPress', 'debugpress' ) . '</strong></p>' .
 			'<p>' . join( '<br/>', array(
-				'home'  => '<a target="_blank" rel="noopener" href="https://debug.press/">' . esc_html__( 'Home Page', 'debugpress' ) . '</a>',
+				'home'  => '<a target="_blank" rel="noopener" href="https://www.dev4press.com/plugins/debugpress/">' . esc_html__( 'Home Page', 'debugpress' ) . '</a>',
 				'kb'    => '<a target="_blank" rel="noopener" href="https://www.dev4press.com/kb/product/debugpress/">' . esc_html__( 'Knowledge Base', 'debugpress' ) . '</a>',
 				'forum' => '<a target="_blank" rel="noopener" href="https://support.dev4press.com/forums/forum/plugins-free/debugpress/">' . esc_html__( 'Support Forum', 'debugpress' ) . '</a>',
 			) ) . '</p>'

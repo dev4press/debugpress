@@ -21,7 +21,7 @@ The plugin currently has a total of 22 tabs in the popup debugger window, showin
 The plugin doesn't modify or replace any WordPress files or functions.
 
 = Home and GitHub =
-* Learn more about the plugin: [DebugPress Website](https://debug.press/)
+* Learn more about the plugin: [DebugPress Website](https://www.dev4press.com/plugins/debugpress/)
 * Contribute to plugin development: [DebugPress on GitHub](https://github.com/dev4press/debugpress)
 
 = Quick Overview Video =
@@ -84,7 +84,7 @@ Log various debug events into a database with the free plugin: [coreActivity Plu
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
 
-* Plugin Documentation: [DebugPress Website](https://debug.press/documentation/)
+* Plugin Documentation: [DebugPress Website](https://www.dev4press.com/kb/product/debugpress/)
 * Support Forum: [Dev4Press Support](https://support.dev4press.com/forums/forum/plugins-free/debugpress/)
 
 == Installation ==
@@ -102,11 +102,8 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 * Plugin settings are available under WordPress 'Settings' panel
 
 == Frequently Asked Questions ==
-= How I can install this plugin? =
-If you are not sure about WordPress plugins installation, here is the quick information: [Plugin Installation](https://debug.press/documentation/plugin-installation/).
-
 = How can I enable WordPress Debug Mode? =
-To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://debug.press/documentation/wordpress-setup/).
+To enable WordPress debug mode via `wp-config.php`, check out the article here: [WordPress Setup](https://www.dev4press.com/kb/article/debug-mode-wordpress-setup/).
 
 = How can I open Debugger popup? =
 If you have enabled debugger (for admin side and/or frontend), Debugger is activated via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings). Since version 3.0, you can activate the button via keyboard shortcut, default combination is `ctrl+shift+u`, but it can be changed in the plugin settings.
@@ -118,7 +115,7 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
-= 4.1 (2025.07.05) =
+= 4.1 (2025.09.18) =
 * New: tested with WordPress 6.8
 * New: tested and compatible with `PHP` 8.4
 * New: additional functions for logging
