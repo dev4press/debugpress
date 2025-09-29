@@ -1,7 +1,2 @@
-@import "includes/_variables";
-
-:root {
-    --debugpress-pretty-font-size: #{$pretty-font-size};
-}
-
-@import "components/_pretty";
+@use "includes/variables" as *;
+@use "components/pretty";

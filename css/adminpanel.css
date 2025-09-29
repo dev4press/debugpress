@@ -79,11 +79,11 @@
   border-bottom: 1px solid #FFF;
   padding: 15px 0;
   margin: 15px 0;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.1em;
 }
 .debugpress_sidebar .debugpress_plugin .button-secondary {
-  font-weight: bold;
+  font-weight: 700;
 }
 .debugpress_sidebar .debugpress_help {
   color: #111;
@@ -102,17 +102,17 @@
 .debugpress_sidebar .debugpress_dev4press > p {
   margin: 0;
   padding: 0 0 10px;
-  font-weight: bold;
+  font-weight: 700;
 }
 .debugpress_sidebar .debugpress_dev4press > div {
   border-top: 1px solid #1E72BD;
   padding: 15px 0 0;
   margin: 15px 0 0;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.2em;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (width <= 900px) {
   .debugpress_settings {
     width: 100%;
     float: none;
@@ -170,7 +170,7 @@
 .debugpress_phpinfo table tr td.b,
 .debugpress_phpinfo table tr th.first {
   color: #333;
-  font-weight: bold;
+  font-weight: 700;
 }
 .debugpress_phpinfo table tr td {
   border-bottom: 1px solid #ECECEC;
@@ -183,7 +183,7 @@
 }
 .debugpress_phpinfo table tr.first th {
   color: #222;
-  font-weight: bold;
+  font-weight: 700;
 }
 .debugpress_phpinfo table tr:last-child td {
   border-bottom: none;
@@ -210,14 +210,14 @@
 }
 .debugpress_phpinfo h3 {
   background: #333 !important;
-  color: white;
+  color: #FFF;
   text-shadow: none !important;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
 }
 .debugpress_phpinfo div.inside .link {
   text-align: right;
-  font-weight: bold;
+  font-weight: 700;
 }
 .debugpress_phpinfo a {
   text-decoration: none;
@@ -269,7 +269,7 @@
   word-break: break-all;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (width <= 1200px) {
   .debugpress_info table {
     width: 100%;
   }

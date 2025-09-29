@@ -59,7 +59,7 @@ function debugpress_store_object( $object, string $title = '', bool $sql = false
 /**
  * Store multiple objects into the DebugPress Tracker, and display them inside the Store tab of the Debugger.
  *
- * @param mixed ...$object Objects to store, can be of any type
+ * @param mixed ...$object Objects to store can be of any type
  *
  * @return void
  */
@@ -82,9 +82,9 @@ function debugpress_store_sql( string $sql, string $title = '' ) {
 }
 
 /**
- * Store the data associated with the plugin for debug purposes, to be displayed on the Plugins tab of the Debugger.
+ * Store the data associated with the plugin for debug purposes, to be displayed in the Plugins tab of the Debugger.
  *
- * @param string $plugin_file Name of the plugin as identified by WordPress, relative path to plugin main file
+ * @param string $plugin_file Name of the plugin as identified by WordPress, relative path to the plugin main file
  * @param array  $data        Data to show on the Plugins page
  */
 function debugpress_store_for_plugin( string $plugin_file, array $data = array() ) {
@@ -92,7 +92,7 @@ function debugpress_store_for_plugin( string $plugin_file, array $data = array()
 }
 
 /**
- * Get result of the `debug_print_backtrace` function as a string.
+ * Get the result of the `debug_print_backtrace` function as a string.
  *
  * @return string
  */
@@ -144,8 +144,8 @@ function debugpress_is_classicpress() : bool {
 }
 
 /**
- * Format numeric value representing bytes (for file size, for instance) into short format rounded to KB, MB, GB, TB
- * and PB.
+ * Format a numeric value representing bytes (for file size, for instance) into
+ * a short format rounded to KB, MB, GB, TB, and PB.
  *
  * @param float|int $size    size value to format
  * @param int       $decimal number of decimal points to show
@@ -207,7 +207,7 @@ function debugpress_strleft( string $input, string $modifier ) {
 }
 
 /**
- * Replace first occurrence of the $from string with the $to string inside the $subject.
+ * Replace the first occurrence of the $from string with the $to string inside the $subject.
  *
  * @param string $from
  * @param string $to
@@ -223,7 +223,7 @@ function debugpress_str_replace_first( string $from, string $to, string $subject
  * Basic pretty print replacement that handles only scalars or null, and it can't print objects or arrays.
  *
  * @param bool|numeric|string|null $value variable to pretty print
- * @param bool                     $echo  print or return formatted result
+ * @param bool                     $echo  print or return a formatted result
  *
  * @return string pretty printed output
  */
@@ -251,6 +251,13 @@ function debugpress_rs( $value, bool $echo = true ) : string {
 	return $result;
 }
 
+/**
+ * Sanitizes the given string by allowing only a basic set of HTML tags and attributes.
+ *
+ * @param string $render The input string to be sanitized.
+ *
+ * @return string The sanitized string with only allowed HTML tags and attributes.
+ */
 function debugpress_kses_basic( string $render ) : string {
 	return wp_kses( $render, array(
 		'br'     => array(),

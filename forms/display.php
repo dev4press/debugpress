@@ -13,10 +13,10 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 				$label   = is_array( $obj ) ? ( $obj['tab'] ?? $obj['label'] ) : $obj;
 				$icon    = is_array( $obj ) ? ( $obj['icon'] ?? '' ) : 'bug';
 				$counter = is_array( $obj ) && ( ( $obj['counter'] ?? false ) );
-				$_title  = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
+				$_title  = is_array( $obj ) ? ' title="' . esc_attr( $obj['label'] ) . '"' : '';
 
 				if ( ! empty( $icon ) ) {
-					$label = '<i class="debugpress-icon debugpress-icon-' . $icon . ' debugpress-tab-ctrl-icon"></i><span class="debugpress-tab-ctrl-span">' . $label . '</span>';
+					$label = '<i class="debugpress-icon debugpress-icon-' . esc_attr( $icon ) . ' debugpress-tab-ctrl-icon"></i><span class="debugpress-tab-ctrl-span">' . esc_html( $label ) . '</span>';
 				}
 
 				if ( $counter ) {
@@ -74,7 +74,7 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
         <div class="debugpress-debugger-footer-right">
             <a target="_blank" href="<?php echo esc_url( admin_url( 'options-general.php?page=debugpress' ) ); ?>"><?php esc_html_e( 'Settings', 'debugpress' ); ?></a>
             &middot;
-            <a rel="noopener" target="_blank" href="https://debug.press/"><?php esc_html_e( 'DebugPress', 'debugpress' ); ?></a>
+            <a rel="noopener" target="_blank" href="https://www.dev4press.com/plugins/debugpress/"><?php esc_html_e( 'DebugPress', 'debugpress' ); ?></a>
             <strong>v<?php echo esc_html( DEBUGPRESS_VERSION ); ?></strong>
         </div>
     </div>

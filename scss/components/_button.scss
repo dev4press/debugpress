@@ -2,7 +2,7 @@
     position: fixed;
     background-color: #23282D;
     border: 1px solid #23282D;
-    box-shadow: 0 0 3px rgba(35, 40, 45, 0.7);
+    box-shadow: 0 0 3px rgb(35 40 45 / 70%);
     z-index: 142000;
     padding: 5px;
 
@@ -112,7 +112,7 @@
             column-gap: 1em;
 
             span {
-                font-weight: bold;
+                font-weight: 700;
             }
         }
     }

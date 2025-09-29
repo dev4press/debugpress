@@ -1,13 +1,13 @@
 <div class="debugpress_sidebar">
     <div class="debugpress_plugin">
-        <a href="https://debug.press/" target="_blank" rel="noopener">
+        <a href="https://www.dev4press.com/plugins/debugpress/" target="_blank" rel="noopener">
             <img src="<?php echo esc_url( DEBUGPRESS_PLUGIN_URL ); ?>logos/debugpress_logo_400.png" alt="DebugPress Logo"/>
         </a>
         <span>Version: <strong><?php echo esc_html(DEBUGPRESS_VERSION); ?></strong></span>
         <div>
 			<?php esc_html_e( 'A powerful plugin for debugging WordPress powered websites.', 'debugpress' ); ?>
         </div>
-        <a href="https://debug.press/" class="button-secondary" target="_blank" rel="noopener"><?php esc_html_e( 'DebugPress Home Page', 'debugpress' ); ?></a>
+        <a href="https://www.dev4press.com/plugins/debugpress/" class="button-secondary" target="_blank" rel="noopener"><?php esc_html_e( 'DebugPress Home Page', 'debugpress' ); ?></a>
     </div>
 
     <div class="debugpress_help">
@@ -23,7 +23,6 @@
     <div class="debugpress_help">
         <p><?php esc_html_e( 'To get help for the DebugPress plugin, start with the plugin website for tutorials, or use Dev4Press.com knowledge base.', 'debugpress' ); ?></p>
         <div>
-            <a target="_blank" rel="noopener" href="https://debug.press/documentation/">Debug.Press</a> &middot;
             <a target="_blank" rel="noopener" href="https://www.dev4press.com/kb/product/debugpress/">Dev4Press.com</a>
         </div>
         <hr/>

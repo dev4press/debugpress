@@ -1,4 +1,6 @@
-@media screen and (max-width: 568px) {
+@use "../includes/variables" as *;
+
+@media screen and (width <= 568px) {
     .#{$grid-prefix}-grid {
         .#{$grid-prefix}-unit {
             width: 100% !important;
@@ -25,7 +27,7 @@
     }
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (width <= 1080px) {
     #debugpress-debugger-tab-queries {
         .#{$grid-prefix}-grid {
             .one-quarter {
@@ -49,7 +51,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (width <= 800px) {
     .debugpress-style-popup {
         .debugpress-query-sidebar-control {
             margin-bottom: 5px;
@@ -88,7 +90,7 @@
     }
 }
 
-@media screen and (max-width: 782px) {
+@media screen and (width <= 782px) {
     #wpadminbar {
         .debugpress-debug-dialog-button {
             display: block !important;

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class AJAX {
-	public function __construct() {
+	private function __construct() {
 		add_action( 'wp_ajax_debugpress_load_debuglog', array( $this, 'load_debuglog' ) );
 		add_action( 'wp_ajax_nopriv_debugpress_load_debuglog', array( $this, 'load_debuglog' ) );
 	}
@@ -34,7 +34,7 @@ class AJAX {
 
 		$lines = DebugLog::instance()->load_from_debug_log();
 
-		$this->respond( '<pre>' . join( '', $lines ) . '</pre>' );
+		$this->respond( '<pre>' . esc_html( join( '', $lines ) ) . '</pre>' );
 	}
 
 	public function respond( $response, $code = 200, $json = false ) {

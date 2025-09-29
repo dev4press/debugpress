@@ -43,7 +43,7 @@
             td.b,
             th.first {
                 color: #333;
-                font-weight: bold;
+                font-weight: 700;
             }
 
             td {
@@ -60,7 +60,7 @@
             &.first {
                 th {
                     color: #222;
-                    font-weight: bold;
+                    font-weight: 700;
                 }
             }
 
@@ -101,15 +101,15 @@
 
     h3 {
         background: #333 !important;
-        color: white;
+        color: #FFF;
         text-shadow: none !important;
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 700;
     }
 
     div.inside .link {
         text-align: right;
-        font-weight: bold;
+        font-weight: 700;
     }
 
     a {
@@ -177,7 +177,7 @@
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (width <= 1200px) {
     .debugpress_info {
         table {
             width: 100%;

@@ -1,3 +1,5 @@
+@use "../includes/variables" as *;
+
 .#{$prefix}-clearfix:before,
 .#{$prefix}-clearfix:after {
     content: " ";
@@ -11,7 +13,7 @@
 #wpadminbar .#{$font-prefix-ctrl} {
     vertical-align: text-top !important;
     font-size: 19px !important;
-    font-family: "debugpress" !important;
+    font-family: debugpress, cursive !important;
     line-height: 1;
 }
 

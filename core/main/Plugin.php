@@ -10,8 +10,8 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 use Dev4Press\Plugin\DebugPress\Track\AJAX as AJAXTracker;
 
 class Plugin {
-	private $_settings = array();
-	private $_defaults = array(
+	private array $_settings = array();
+	private array $_defaults = array(
 		'access_key'            => '',
 		'pr'                    => 'kint',
 		'active'                => false,
@@ -46,7 +46,7 @@ class Plugin {
 		'panel_bbpress'         => false,
 	);
 
-	private $_extras = array(
+	private array $_extras = array(
 		'panel_hooks'          => false,
 		'slow_query_cutoff'    => 10,
 		'use_sql_formatter'    => true,
@@ -54,19 +54,19 @@ class Plugin {
 		'ajax_header_no_cache' => true,
 	);
 
-	private $_allowed = false;
-	private $_activate = false;
-	private $_url_activated = false;
-	private $_animated_popup_version = '2.0';
-	private $_mousetrap_version = '1.6.5';
-	private $_wp_version;
-	private $_wp_version_real;
-	private $_cp_version;
-	private $_cp_version_real;
-	private $_rest_request = false;
-	private $_loader_init = false;
+	private bool $_allowed = false;
+	private bool $_activate = false;
+	private bool $_url_activated = false;
+	private string $_animated_popup_version = '2.0';
+	private string $_mousetrap_version = '1.6.5';
+	private string $_wp_version;
+	private string $_wp_version_real;
+	private string $_cp_version;
+	private string $_cp_version_real;
+	private bool $_rest_request = false;
+	private bool $_loader_init = false;
 
-	public function __construct() {
+	private function __construct() {
 	}
 
 	public static function instance() : Plugin {

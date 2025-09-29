@@ -1,7 +1,7 @@
+@use "../includes/variables" as *;
+
 .#{$grid-prefix}-grid,
 .#{$grid-prefix}-unit {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -23,14 +23,14 @@
 
     *zoom: 1;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         display: table;
         content: "";
         line-height: 0;
     }
 
-    &:after {
+    &::after {
         clear: both;
     }
 

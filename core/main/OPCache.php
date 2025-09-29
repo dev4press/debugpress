@@ -7,14 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class OPCache {
-	public $status = 'disabled';
-	public $version;
-	public $enabled;
-	public $settings = array();
-	public $memory = array();
-	public $statistics = array();
+	public string $status = 'disabled';
+	public string $version = 'NA';
+	public bool $enabled = false;
+	public array $settings = array();
+	public array $memory = array();
+	public array $statistics = array();
 
-	public function __construct() {
+	private function __construct() {
 	}
 
 	public static function instance() : OPCache {
@@ -38,8 +38,8 @@ class OPCache {
 				$_status = opcache_get_status();
 				$_config = opcache_get_configuration();
 
-				$this->version = $_config['version']['version'] ?? 'NA';
-				$this->enabled = $_status['opcache_enabled'] ?? false;
+				$this->version = (string) ( $_config['version']['version'] ?? 'NA' );
+				$this->enabled = (bool)($_status['opcache_enabled'] ?? false);
 
 				foreach ( $_config['directives'] as $key => $value ) {
 					$name = substr( $key, 8 );

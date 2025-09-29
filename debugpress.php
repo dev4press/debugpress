@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name:       DebugPress: Debugger in Popup
- * Plugin URI:        https://debug.press/
+ * Plugin URI:        https://www.dev4press.com/plugins/debugpress/
  * Description:       Easy-to-use plugin for debugging and profiling website loading, SQL queries analysis, help with development, bug fixing, all in configurable popup.
  * Author:            Milan Petrovic
  * Author URI:        https://www.dev4press.com/
  * Text Domain:       debugpress
- * Version:           4.1
+ * Version:           4.2
  * Requires at least: 5.5
- * Tested up to:      6.8
+ * Tested up to:      7.0
  * Requires PHP:      7.4
  * Requires CP:       2.0
  * License:           GPLv3 or later
@@ -33,7 +33,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-const DEBUGPRESS_VERSION     = '4.1';
+const DEBUGPRESS_VERSION     = '4.2';
 const DEBUGPRESS_FILE        = __FILE__;
 const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
 

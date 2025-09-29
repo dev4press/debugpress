@@ -18,32 +18,33 @@ class Tracker {
 	public $timer_current = 0;
 	public $memory_start = 0;
 	public $memory_current = 0;
-	public $query_start = 0;
-	public $query_current = 0;
-	public $count_hooks = 0;
-	public $has_errors = 0;
-	public $has_warnings = 0;
 
-	public $plugins = array();
-	public $snapshots = array();
-	public $objects = array();
-	public $errors = array();
-	public $deprecated = array();
-	public $doingitwrong = array();
-	public $logged = array();
-	public $httpapi = array();
-	public $abspath;
+	public int $query_start = 0;
+	public int $query_current = 0;
+	public int $count_hooks = 0;
+	public int $has_errors = 0;
+	public int $has_warnings = 0;
 
-	public $counts = array(
+	public array $plugins = array();
+	public array $snapshots = array();
+	public array $objects = array();
+	public array $errors = array();
+	public array $deprecated = array();
+	public array $doingitwrong = array();
+	public array $logged = array();
+	public array $httpapi = array();
+	public string $abspath;
+
+	public array $counts = array(
 		'total'        => 0,
 		'errors'       => 0,
 		'doingitwrong' => 0,
 		'deprecated'   => 0,
 	);
-	private $_actual_file = '';
-	private $_actual_line = '';
+	private string $_actual_file = '';
+	private string $_actual_line = '';
 
-	private $_snapshot_actions = array(
+	private array $_snapshot_actions = array(
 		'setup_theme',
 		'after_setup_theme',
 		'init',
