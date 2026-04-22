@@ -93,12 +93,12 @@
             border-bottom: 1px solid #FFF;
             padding: 15px 0;
             margin: 15px 0;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.1em;
         }
 
         .button-secondary {
-            font-weight: bold;
+            font-weight: 700;
         }
     }
 
@@ -121,20 +121,20 @@
         > p {
             margin: 0;
             padding: 0 0 10px;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         > div {
             border-top: 1px solid #1E72BD;
             padding: 15px 0 0;
             margin: 15px 0 0;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 1.2em;
         }
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (width <= 900px) {
     .debugpress_settings {
         width: 100%;
         float: none;

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Panel {
-	private $_table = array();
+	private array $_table = array();
 
 	/** @return \Dev4Press\Plugin\DebugPress\Main\Panel */
 	public static function instance() {
@@ -56,7 +56,7 @@ abstract class Panel {
 		if ( ! $hide_button ) {
 			$id = empty( $button_id ) ? '' : 'debugpress-toggle-' . $button_id;
 
-			$render .= '<span id="' . $id . '" class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-square-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
+			$render .= '<span id="' . esc_attr( $id ) . '" class="' . ( $open ? 'block-open' : '' ) . '"><i class="debugpress-icon debugpress-icon-square-' . ( $open ? 'minus' : 'plus' ) . '"></i></span>';
 		}
 
 		$render .= '</h5>';

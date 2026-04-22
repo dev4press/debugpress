@@ -2,9 +2,9 @@
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
-Stable tag: 4.1
+Stable tag: 4.2
 Requires at least: 5.5
-Tested up to: 6.8
+Tested up to: 7.0
 Requires PHP: 7.4
 Requires CP: 2.0
 License: GPLv3 or later
@@ -90,11 +90,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 == Installation ==
 = General Requirements =
 * PHP: 7.4 or newer
-* Tested with the latest PHP, version 8.4
+* Tested with the latest PHP, version 8.5
 
 = WordPress Requirements =
 * WordPress: 5.5 or newer
-* Tested with the latest WordPress, version 6.8
+* Tested with the latest WordPress, version 7.0
 
 = Basic Installation =
 * Upload folder `debugpress` to the `/wp-content/plugins/` directory
@@ -249,152 +249,12 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * Del: Removed the dedicated Admin tab
 * Fix: Few issues with the `IP` class range methods
 
-= 2.2 (2023.02.03) =
-* New: Updated some plugin system requirements
-* New: Server panel shows PHP Include Path value
-* New: Server panel shows Memcache/Memcached status
-* New: Server panel shows all loaded extensions
-* New: Server panel shows expanded MySQL information
-* Edit: Various improvements to some panels display conditions
-* Fix: Several more issues related to changes in PHP 8.1 and 8.2
-* Fix: Issue with detection of the PEAR System.php file
-
-= 2.1 (2022.12.30) =
-* New: Tested with PHP 8.2 and WordPress 6.1
-* New: Query panel shows current post and metadata for that post
-* Edit: Improvements to the Query panel and organization of displayed data
-* Edit: Various language syntax improvements and changes
-* Edit: Kint Pretty Print Library 5.0.1
-* Fix: Several issues related to changes in PHP 8.2
-* Fix: Few minor issues with the layouts in the debugger panels
-* Fix: Missing semicolon in one instance in JavaScript
-
-= 2.0 (2022.08.31) =
-* New: Prevent loading of the debugger panel for REST request
-* New: Default PrettyPrint library has own CSS file
-* New: Debugger now loads on the WordPress login pages
-* New: Kint set as default pretty print library for new installations
-* Edit: Improvements to the plugin loading process
-* Edit: Various minor updates and tweaks
-* Edit: Kint Pretty Print Library 4.2
-* Fix: Plugin can break some REST request responses
-
-= 1.9 (2022.05.15) =
-* New: Tested with WordPress 6.0
-* Edit: Several minor updates and improvements
-* Edit: Kint Pretty Print Library 4.1.1
-* Fix: Some layout issues with the tables
-
-= 1.8 (2021.09.30) =
-* New: requires WordPress 5.1 or newer
-* New: activation button indicator for number of stored object
-* Edit: few more compatibility changes to the JavaScript code
-* Edit: OPCache status support for server restricted access
-* Fix: OPCache warnings when access is restricted on server
-
-= 1.7 (2021.04.03) =
-* New: debugger panel - Plugins
-* New: plugins panel - log specially formatted objects from plugins
-* New: settings panel shows Tracking tab
-* New: settings group to select Pretty Print engine to use
-* New: third party pretty print Engine: Kint
-* Edit: various improvements to the debugger popup styling
-* Fix: few Info methods have wrong names
-* Fix: few warnings thrown by the Tracker object
-
-= 1.6 (2021.01.06) =
-* New: requires PHP 7.0 or newer
-* New: requires WordPress 5.0 or newer
-* New: debugger panel - Roles
-* New: roles panel - shows registered user roles
-* New: changed the loading order and activation priority
-* Edit: few improvements to the readme file
-* Fix: tools panel - broken links to all the plugin panels
-* Fix: tracker loading causes' problem with some plugins changing user roles
-
-= 1.5 (2020.11.14) =
-* New: debugger panel - Tools
-* New: tools panel - links to the individual plugin info panels
-* New: tools panel - links to the individual WordPress tools panels
-* New: tools panel - links to test with Google PageSpeed Insights
-* New: tools panel - link to test with GTMetrix website
-* New: contextual help tab for the plugin settings
-* New: contextual help includes information about debug mode activation
-* Edit: various styling changes and tweaks
-* Fix: few minor typos in various parts of the code
-* Fix: few external links were missing REL noopener attribute
-* Fix: minor issue with CMS version INFO method
-
-= 1.4.1 (2020.11.06) =
-* Edit: support for the edge case HTTP request missing valid URL
-* Fix: HTTP panel could still fail in some edge case requests
-
-= 1.4 (2020.11.03) =
-* Edit: improvements to the way HTTP panel displays logged data
-* Fix: HTTP panel shows duplicated content type entry
-* Fix: HTTP panel attempts to display data that doesn't exist
-* Fix: error log loading fails due to file offset calculation
-* Fix: problem with returning error log via AJAX method
-
-= 1.3.2 (2020.10.03) =
-* New: link to plugin Tools (Info) page added to Debugger popup footer
-* Edit: improvements to documentation for pretty print functions
-* Edit: renamed existing System class to Server for potential file name conflict
-* Fix: debuglog tab doesn't scroll to the end of the list after the list is loaded
-* Fix: test for Pear presence can throw warnings on some hosts
-
-= 1.3.1 (2020.10.01) =
-* Edit: minor changes to the main plugin class
-* Fix: one constant was not defined
-
-= 1.3 (2020.10.01) =
-* New: additional Info page added into WordPress admin Tools
-* New: tools info page shows the content of PHP Info
-* New: tools info page shows the content of OPCache Info
-* New: tools info page shows the content of MySQL Variables
-* New: plugin settings panel uses tabbed interface to organize settings
-* New: option to control AJAX tracking data save into debug.log
-* New: filters to control AJAX tracking activity and data returned
-* New: filter to control every plugin settings returned value
-* New: ability to print SQL formatted string for the user stored queries
-* New: improved documentation for all the functions
-* Edit: refactored functions and improved the functions' organization
-* Edit: refactored pretty print function to use different name and classes
-* Edit: uniform return of rendered results from ErrorFormat class
-* Edit: expanded plugin readme.txt and added new screenshots
-* Removed: several unused methods in the ErrorFormat class
-
-= 1.2.1 (2020.09.27) =
-* Edit: various improvements to errors and warnings tracking handlers
-* Fix: missing argument for the deprecated tracking handler
-
-= 1.2 (2020.09.25) =
-* New: debugger activator: show number of captured HTTP API calls
-* New: debugger Log panel: renamed to Store
-* New: debugger Log panel: rewritten rendering to match other panels
-* New: debugger HTTP tab: shows number of calls in the tab button
-* New: settings to control AJAX calls tracking on active page
-* New: settings to control errors and warnings tracking
-* Edit: various minor improvements and changes
-* Fix: wrong class name in the backtrace tracker processor
-* Fix: few small issues with the deprecated tracker processor
-* Fix: several issues with displaying AJAX calls results
-
-= 1.1 (2020.09.23) =
-* New: debugger panel - Debug Log
-* New: using CSS variables for some debugger styling
-* New: filters to modify CSS variables
-* New: improved the look of the plugin settings page
-* Edit: expanded some information for plugin settings
-* Edit: changed plugins own actions and filters for uniformity
-* Edit: many improvements to the debugger styling
-* Edit: various improvements to the SCSS organization
-* Edit: various tweaks and changes
-
-= 1.0 (2020.09.15) =
-* First official release
+Full changelog: [DebugPress Changelog](https://www.dev4press.com/plugins/debugpress/changelog/)
 
 == Upgrade Notice ==
+= 4.2 =
+Various updates and improvements. Updated Kint Library.
+
 = 4.1 =
 Few updates and improvements. Updated Kint Library.
 
@@ -406,15 +266,6 @@ Various updates and improvements.
 
 = 3.8 =
 Various updates and improvements.
-
-= 3.7 =
-Various updates and improvements.
-
-= 3.6 =
-Various updates and improvements.
-
-= 3.5 =
-Tracking improvements. Popup layout improvements. Tweaks and fixes.
 
 == Screenshots ==
 * Debugger popup: Basic debugger panel

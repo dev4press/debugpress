@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param string $page the slug name of the page whose settings section you want to output
  *
  * @see \do_settings_sections()
- *
  */
 function debugpress_do_settings_sections( $page ) {
 	$tabs = array(

@@ -13,12 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Callback {
-	private $replace;
-	private $paths = array();
-	private $resolve = array();
-	private $origins = array();
+	private array $replace;
+	private array $paths = array();
+	private array $resolve = array();
+	private array $origins = array();
 
-	public function __construct() {
+	private function __construct() {
 		$this->replace = array(
 			wp_normalize_path( ABSPATH ),
 			wp_normalize_path( dirname( WP_CONTENT_DIR ) . '/' ),

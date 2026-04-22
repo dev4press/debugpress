@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Dev4Press\Plugin\DebugPress\Main\Panel;
 
 class bbPress extends Panel {
-	public $globals = array(
+	public array $globals = array(
 		'version',
 		'db_version',
 		'file',
@@ -25,7 +25,7 @@ class bbPress extends Panel {
 		'themes_url',
 	);
 
-	public $conditionals = array(
+	public array $conditionals = array(
 		'bbp_is_forum',
 		'bbp_is_forum_archive',
 		'bbp_is_single_forum',

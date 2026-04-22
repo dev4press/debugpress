@@ -7,20 +7,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Scope {
-	private $scope;
+	private string $scope;
 
-	private $multisite;
+	private bool $multisite;
 
-	private $admin = false;
-	private $network_admin = false;
-	private $user_admin = false;
-	private $blog_admin = false;
+	private bool $admin = false;
+	private bool $network_admin = false;
+	private bool $user_admin = false;
+	private bool $blog_admin = false;
 
-	private $frontend = false;
+	private bool $frontend = false;
 
-	private $blog_id;
+	private int $blog_id;
 
-	public function __construct() {
+	private function __construct() {
 		$this->multisite = is_multisite();
 		$this->blog_id   = get_current_blog_id();
 

@@ -13,10 +13,10 @@ use Dev4Press\Plugin\DebugPress\Display\Loader;
 				$label   = is_array( $obj ) ? ( $obj['tab'] ?? $obj['label'] ) : $obj;
 				$icon    = is_array( $obj ) ? ( $obj['icon'] ?? '' ) : 'bug';
 				$counter = is_array( $obj ) && ( ( $obj['counter'] ?? false ) );
-				$_title  = is_array( $obj ) ? ' title="' . $obj['label'] . '"' : '';
+				$_title  = is_array( $obj ) ? ' title="' . esc_attr( $obj['label'] ) . '"' : '';
 
 				if ( ! empty( $icon ) ) {
-					$label = '<i class="debugpress-icon debugpress-icon-' . $icon . ' debugpress-tab-ctrl-icon"></i><span class="debugpress-tab-ctrl-span">' . $label . '</span>';
+					$label = '<i class="debugpress-icon debugpress-icon-' . esc_attr( $icon ) . ' debugpress-tab-ctrl-icon"></i><span class="debugpress-tab-ctrl-span">' . esc_html( $label ) . '</span>';
 				}
 
 				if ( $counter ) {

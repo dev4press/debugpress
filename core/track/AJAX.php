@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class AJAX {
-	private $_session_key = '';
-	private $_skip_tracking = false;
-	private $_to_debug_log = true;
+	private string $_session_key = '';
+	private bool $_skip_tracking = false;
+	private bool $_to_debug_log = true;
 
 	public function __construct() {
 		add_action( 'debugpress-tracker-getting-ready', array( $this, 'prepare' ), 30 );
@@ -28,8 +28,8 @@ class AJAX {
 	}
 
 	public function prepare() {
-		$this->_skip_tracking = apply_filters( 'debugpress-ajax-tracker-skip', $this->_skip_tracking );
-		$this->_to_debug_log  = apply_filters( 'debugpress-ajax-tracker-to-debug-log', debugpress_plugin()->get( 'ajax_to_debuglog' ) );
+		$this->_skip_tracking = (bool) apply_filters( 'debugpress-ajax-tracker-skip', $this->_skip_tracking );
+		$this->_to_debug_log  = (bool) apply_filters( 'debugpress-ajax-tracker-to-debug-log', debugpress_plugin()->get( 'ajax_to_debuglog' ) );
 
 		if ( $this->_skip_tracking ) {
 			return;

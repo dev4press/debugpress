@@ -1,21 +1,24 @@
+@use "../includes/variables" as *;
+@use "../includes/functions" as *;
+@use "../includes/embeds" as *;
+@use "../includes/icons" as *;
+
 @font-face {
     font-family: $font-name;
-    src: url('fonts/debugpress.eot?#{$font-version}');
-    src: url('fonts/debugpress.eot?#{$font-version}#iefix') format('embedded-opentype'),
-    url('data:application/font-woff2;charset=utf-8;base64,#{$font_woff2}') format('woff2'),
-    url('data:application/font-woff;charset=utf-8;base64,#{$font_woff}') format('woff');
-    font-weight: normal;
+    src: url('data:application/font-woff2;charset=utf-8;base64,#{$font-woff2}') format('woff2'),
+    url('data:application/font-woff;charset=utf-8;base64,#{$font-woff}') format('woff');
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 i.#{$font-prefix-ctrl} {
-    font: normal normal normal $font-size/1 $font-name;
+    font: 400 normal normal $font-size / 1 $font-name;
     font-size: inherit;
     text-transform: none;
     display: inline-block;
     vertical-align: text-bottom;
-    speak: none;
+    speak: never;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -43,7 +46,7 @@ a {
 
 @each $icon, $char in $icons {
     .#{$font-prefix-ctrl}.#{$font-prefix}-#{$icon} {
-        &:before {
+        &::before {
             content: icon($char);
         }
     }
@@ -52,14 +55,14 @@ a {
 /* Full Width */
 i.#{$font-prefix-ctrl} {
     &.#{$font-prefix-ctrl}-fw {
-        width: 1.28571429em;
+        width: 1.2857em;
         text-align: center;
     }
 
     /* Sizes */
     &.#{$font-prefix-ctrl}-lg {
-        font-size: 1.33333333em;
-        line-height: 0.75em;
+        font-size: 1.3333em;
+        line-height: 0.75;
         vertical-align: -15%;
     }
 
@@ -72,16 +75,16 @@ i.#{$font-prefix-ctrl} {
 
 /* Flip */
 .#{$font-prefix-ctrl}-flip-horizontal {
-    transform: scaleX(-1)
+    transform: scaleX(-1);
 }
 
 .#{$font-prefix-ctrl}-flip-vertical {
-    transform: scaleY(-1)
+    transform: scaleY(-1);
 }
 
 .#{$font-prefix-ctrl}-flip-both,
 .#{$font-prefix-ctrl}-flip-horizontal.#{$font-prefix-ctrl}-flip-vertical {
-    transform: scale(-1)
+    transform: scale(-1);
 }
 
 /* Spin */

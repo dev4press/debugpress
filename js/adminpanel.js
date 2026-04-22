@@ -1,6 +1,6 @@
 /*jslint regexp: true, nomen: true, undef: true, sloppy: true, eqeq: true, vars: true, white: true, plusplus: true, maxerr: 50, indent: 4 */
 
-;(function($, window, document, undefined) {
+;(function($, window, document,) {
     window.wp = window.wp || {};
     window.wp.dev4press = window.wp.dev4press || {};
 
@@ -9,7 +9,7 @@
             $(document).on("click", ".debugpress-panel-settings nav a.nav-tab-change", function(e) {
                 e.preventDefault();
 
-                var tab = $(this).attr("href").substr(1);
+                const tab = $(this).attr("href").substr(1);
 
                 $(".debugpress-panel-settings nav a.nav-tab-change").removeClass("nav-tab-active");
                 $(this).addClass("nav-tab-active");
