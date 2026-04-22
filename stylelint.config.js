@@ -11,6 +11,7 @@ export default {
     rules: {
         'at-rule-no-unknown': null,
         'scss/at-rule-no-unknown': true,
+        'scss/dollar-variable-pattern': null,
 
         'selector-class-pattern': null,
         'selector-id-pattern': null,

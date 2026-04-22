@@ -125,6 +125,15 @@ function debugpress_has_bbpress() : bool {
 }
 
 /**
+ * Check if there is at least one active Freemius instance from any plugin or theme.
+ *
+ * @return bool TRUE: if the Freemius is available, FALSE: if it is not available
+ */
+function debugpress_has_freemius() : bool {
+	return class_exists( 'Freemius' ) && defined( 'WP_FS__SDK_VERSION' );
+}
+
+/**
  * Check if the coreActivity plugin is currently installed and active.
  *
  * @return bool TRUE: if the coreActivity is active, FALSE: if it is not active

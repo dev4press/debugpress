@@ -44,6 +44,7 @@ class Plugin {
 		'panel_http'            => false,
 		'panel_php'             => false,
 		'panel_bbpress'         => false,
+		'panel_freemius'        => false,
 	);
 
 	private array $_extras = array(

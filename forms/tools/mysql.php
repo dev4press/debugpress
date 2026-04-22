@@ -2,6 +2,10 @@
 
 $mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ?>
 <div class="debugpress_info">
     <table>
@@ -12,17 +16,17 @@ $mysql_info = debugpress_db()->wpdb()->get_results( 'SHOW VARIABLES' );
         </tr>
         </thead>
         <tbody>
-		<?php
+        <?php
 
-		if ( is_array( $mysql_info ) && ! empty( $mysql_info ) ) {
-			foreach ( $mysql_info as $info ) {
-				printf( '<tr><th>%s:</th><td>%s</td></tr>', $info->Variable_name, debugpress_rs( htmlspecialchars( $info->Value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
-			}
-		} else {
-			printf( '<tr><th colspan="2">%s</th></tr>', esc_attr__( 'Data Not Available.', 'debugpress' ) );
-		}
+        if ( is_array( $mysql_info ) && ! empty( $mysql_info ) ) {
+            foreach ( $mysql_info as $info ) {
+                printf( '<tr><th>%s:</th><td>%s</td></tr>', $info->Variable_name, debugpress_rs( htmlspecialchars( $info->Value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+            }
+        } else {
+            printf( '<tr><th colspan="2">%s</th></tr>', esc_attr__( 'Data Not Available.', 'debugpress' ) );
+        }
 
-		?>
+        ?>
         </tbody>
     </table>
 </div>

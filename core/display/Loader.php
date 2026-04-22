@@ -254,6 +254,13 @@ class Loader {
 			);
 		}
 
+		if ( debugpress_plugin()->get( 'panel_freemius' ) && debugpress_has_freemius() ) {
+			$this->tabs['freemius'] = array(
+				'label' => __( 'Freemius', 'debugpress' ),
+				'icon'  => 'freemius',
+			);
+		}
+
 		if ( debugpress_plugin()->get( 'panel_bbpress' ) && debugpress_has_bbpress() && is_bbpress() ) {
 			$this->tabs['bbpress'] = array(
 				'label' => __( 'bbPress', 'debugpress' ),

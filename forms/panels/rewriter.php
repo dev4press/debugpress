@@ -2,12 +2,16 @@
 
 use Dev4Press\Plugin\DebugPress\Panel\Rewriter;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ?>
 <div class="debugpress-grid">
     <div class="debugpress-unit half">
-		<?php Rewriter::instance()->left(); ?>
+        <?php Rewriter::instance()->left(); ?>
     </div>
     <div class="debugpress-unit half">
-		<?php Rewriter::instance()->right(); ?>
+        <?php Rewriter::instance()->right(); ?>
     </div>
 </div>

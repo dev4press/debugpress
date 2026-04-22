@@ -265,6 +265,13 @@ class Settings {
 			'debugpress_settings_panels' );
 
 		add_settings_field(
+			'debugpress_settings_panel_freemius',
+			'<label for="debugpress_settings_panel_freemius">' . __( 'Freemius', 'debugpress' ) . '</label>',
+			array( $this, 'option_panel_freemius' ),
+			'debugpress',
+			'debugpress_settings_panels' );
+
+		add_settings_field(
 			'debugpress_settings_panel_bbpress',
 			'<label for="debugpress_settings_panel_bbpress">' . __( 'bbPress', 'debugpress' ) . '</label>',
 			array( $this, 'option_panel_bbpress' ),
@@ -557,6 +564,12 @@ class Settings {
 		$checked = debugpress_plugin()->get( 'panel_bbpress' ) ? ' checked="checked" ' : '';
 
 		echo "<input " . $checked . " id='debugpress_settings_panel_bbpress' name='debugpress_settings[panel_bbpress]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
+	}
+
+	public function option_panel_freemius() {
+		$checked = debugpress_plugin()->get( 'panel_freemius' ) ? ' checked="checked" ' : '';
+
+		echo "<input " . $checked . " id='debugpress_settings_panel_freemius' name='debugpress_settings[panel_freemius]' type='checkbox' />"; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 
 	public function option_errors_override() {

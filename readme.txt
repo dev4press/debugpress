@@ -3,7 +3,7 @@ Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
 Stable tag: 4.2
-Requires at least: 5.5
+Requires at least: 5.6
 Tested up to: 7.0
 Requires PHP: 7.4
 Requires CP: 2.0
@@ -47,6 +47,7 @@ Currently, the plugin has the following panels:
 * User (optional, if user is logged in only)
 * HTTP (optional, if HTTP API calls are captured)
 * bbPress (optional, on bbPress forum pages only)
+* Freemius (optional, if Freemius SDK is active)
 * Plugins (optional, if plugins store data)
 * Errors (for all captured PHP errors)
 * Doing It Wrong (for captured WordPress Doing It Wrong warnings)
@@ -67,7 +68,7 @@ Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. 
 The plugin tracks every AJAX call coming through WordPress `admin-ajax.php` handler, and with every response, it returns HTTP headers with AJAX request basic execution information. Right now, plugin is not returning a list of logged errors or SQL queries, because both can produce huge output that goes over the HTTP header limits. Plan is to introduce these in the future plugin versions.
 
 = Info Panels =
-In the administration Tools menu, plugin adds DebugPress Info page showing several panels
+In the administration Tools menu, the plugin adds a DebugPress Info page showing several panels
 
 * PHP Info: full formatted results from `phpinfo()` function
 * OPCache Info: full settings and statistics for the OPCache PHP extension
@@ -93,7 +94,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 * Tested with the latest PHP, version 8.5
 
 = WordPress Requirements =
-* WordPress: 5.5 or newer
+* WordPress: 5.6 or newer
 * Tested with the latest WordPress, version 7.0
 
 = Basic Installation =
@@ -115,6 +116,16 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 4.2 (2026.06.30) =
+* New: tested with WordPress 7.0
+* New: tested and compatible with `PHP` 8.5
+* New: eslint and stylelint support
+* New: panel for Freemius
+* Edit: reorganized SCSS code to modernize loading
+* Edit: many improvements to the SCSS code and styling
+* Edit: many improvements to the JS code
+* Edit: Kint Pretty Print Library 6.1
+
 = 4.1 (2025.09.18) =
 * New: tested with WordPress 6.8
 * New: tested and compatible with `PHP` 8.4
@@ -262,9 +273,6 @@ Few updates and improvements. Updated Kint Library.
 Various updates and improvements.
 
 = 3.9 =
-Various updates and improvements.
-
-= 3.8 =
 Various updates and improvements.
 
 == Screenshots ==
