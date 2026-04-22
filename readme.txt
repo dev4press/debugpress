@@ -115,6 +115,15 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 4.2 (2026.04.23) =
+* New: tested with WordPress 7.0
+* New: tested and compatible with `PHP` 8.5
+* New: eslint and stylelint support
+* Edit: reorganized SCSS code to modernize loading
+* Edit: many improvements to the SCSS code and styling
+* Edit: many improvements to the JS code
+* Edit: Kint Pretty Print Library 6.1
+
 = 4.1 (2025.09.18) =
 * New: tested with WordPress 6.8
 * New: tested and compatible with `PHP` 8.4
@@ -262,9 +271,6 @@ Few updates and improvements. Updated Kint Library.
 Various updates and improvements.
 
 = 3.9 =
-Various updates and improvements.
-
-= 3.8 =
 Various updates and improvements.
 
 == Screenshots ==

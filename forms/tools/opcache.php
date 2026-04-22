@@ -2,16 +2,20 @@
 
 use Dev4Press\Plugin\DebugPress\Main\OPCache;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 if ( OPCache::instance()->status == 'restricted' ) {
-	?>
+    ?>
 
     <p>
-		<?php esc_html_e( 'OPCache information can\'t be displayed, because access to OPCache statistics and information has been restricted on the hosting level.', 'debugpress' ); ?>
+        <?php esc_html_e( 'OPCache information can\'t be displayed, because access to OPCache statistics and information has been restricted on the hosting level.', 'debugpress' ); ?>
     </p>
 
-	<?php
+    <?php
 } else {
-	?>
+    ?>
 
     <div class="debugpress_info">
         <table>
@@ -22,15 +26,15 @@ if ( OPCache::instance()->status == 'restricted' ) {
             </tr>
             </thead>
             <tbody>
-			<?php
+            <?php
 
-			$opcache_info = OPCache::instance()->settings;
+            $opcache_info = OPCache::instance()->settings;
 
-			foreach ( $opcache_info as $var => $value ) {
-				printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
-			}
+            foreach ( $opcache_info as $var => $value ) {
+                printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+            }
 
-			?>
+            ?>
             </tbody>
         </table>
 
@@ -43,15 +47,15 @@ if ( OPCache::instance()->status == 'restricted' ) {
             </tr>
             </thead>
             <tbody>
-			<?php
+            <?php
 
-			$opcache_info = OPCache::instance()->statistics;
+            $opcache_info = OPCache::instance()->statistics;
 
-			foreach ( $opcache_info as $var => $value ) {
-				printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
-			}
+            foreach ( $opcache_info as $var => $value ) {
+                printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+            }
 
-			?>
+            ?>
             </tbody>
         </table>
 
@@ -64,18 +68,18 @@ if ( OPCache::instance()->status == 'restricted' ) {
             </tr>
             </thead>
             <tbody>
-			<?php
+            <?php
 
-			$opcache_info = OPCache::instance()->memory;
+            $opcache_info = OPCache::instance()->memory;
 
-			foreach ( $opcache_info as $var => $value ) {
-				printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
-			}
+            foreach ( $opcache_info as $var => $value ) {
+                printf( '<tr><th>%s:</th><td>%s</td></tr>', $var, debugpress_rs( htmlspecialchars( $value ), false ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+            }
 
-			?>
+            ?>
             </tbody>
         </table>
     </div>
 
-	<?php
+    <?php
 }

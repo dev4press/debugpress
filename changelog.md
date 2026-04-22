@@ -2,14 +2,14 @@
 
 ## Changelog
 
-### Version: 4.2 (2025.04.21)
+### Version: 4.2 (2025.04.23)
 
 * **new** tested with WordPress 7.0
 * **new** tested and compatible with `PHP` 8.5
 * **new** eslint and stylelint support
-* **edit**: reorganized SCSS code to modernize loading
-* **edit**: many improvements to the SCSS code and styling
-* **edit**: many improvements to the JS code
+* **edit** reorganized SCSS code to modernize loading
+* **edit** many improvements to the SCSS code and styling
+* **edit** many improvements to the JS code
 * **edit** Kint Pretty Print Library 6.1
 
 ### Version: 4.1 (2025.09.28)

@@ -2,12 +2,16 @@
 
 use Dev4Press\Plugin\DebugPress\Panel\Queries;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ?>
 <div class="debugpress-grid">
     <div class="debugpress-unit one-quarter">
-		<?php Queries::instance()->left(); ?>
+        <?php Queries::instance()->left(); ?>
     </div>
     <div class="debugpress-unit three-quarters">
-		<?php Queries::instance()->right(); ?>
+        <?php Queries::instance()->right(); ?>
     </div>
 </div>
