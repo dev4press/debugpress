@@ -116,6 +116,12 @@ Yes. Once the popup is open, you will find the Layout icon next to the button to
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 4.3 (2026.07.17) =
+* New: replaced SmartAnimatedPopup with Flyin
+* New: rewritten all JS into TypeScript with no jQuery dependencies
+* New: modern Vite and TypeScript build system
+* Removed: all external JavaScript libraries
+
 = 4.2 (2026.06.30) =
 * New: tested with WordPress 7.0
 * New: tested and compatible with `PHP` 8.5

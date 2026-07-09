@@ -1,28 +1,38 @@
 {
   "name": "debugpress",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "private": true,
   "type": "module",
   "engines": {
     "node": ">=22.0.0"
   },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode admin && vite build --mode panel && vite build --mode print",
     "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint \"js/**/*.js\"",
-    "lint:css": "stylelint \"scss/**/*.scss\"",
-    "lint:css:fix": "stylelint \"scss/**/*.scss\" --fix"
+    "lint:js": "eslint \"src/scripts/**/*.ts\"",
+    "lint:css": "stylelint \"src/styles/**/*.scss\"",
+    "lint:css:fix": "stylelint \"src/styles/**/*.scss\" --fix"
   },
   "devDependencies": {
+    "@types/node": "^26.1.1",
     "@wordpress/eslint-plugin": "^24.5.0",
     "@wordpress/stylelint-config": "^23.35.0",
     "eslint": "^10.1.0",
+    "sass": "^1.77.8",
     "stylelint": "^17.6.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-scss": "^7.0.0"
+    "stylelint-scss": "^7.0.0",
+    "terser": "^5.31.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.3"
   },
   "overrides": {
     "@wordpress/stylelint-config": {
       "stylelint": "$stylelint"
     }
+  },
+  "dependencies": {
+    "@dev4press/flyin": "^1.1.0"
   }
 }

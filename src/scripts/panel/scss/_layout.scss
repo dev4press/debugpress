@@ -1,0 +1,39 @@
+.debugpress-layout-position {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    padding: 1em;
+
+    > div {
+        text-align: center;
+
+        &.selected {
+            color: #0073AA;
+            font-weight: 700;
+        }
+
+        > span {
+            display: block;
+        }
+    }
+}
+
+.debugpress-layout-settings {
+    padding: 1em;
+
+    .debugpress-layout-option {
+        display: flex;
+        column-gap: 2em;
+        margin: 0 0 1em;
+        align-items: center;
+
+        label {
+            min-width: 120px;
+        }
+
+        select {
+            min-width: 120px;
+            width: 200px;
+        }
+    }
+}

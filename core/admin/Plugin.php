@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Plugin {
-	private $_pages = array();
+	private array $_pages = array();
 
-	public function __construct() {
+	private function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -40,14 +40,15 @@ class Plugin {
 		if ( $file == 'debugpress/debugpress.php' ) {
 			$links[] = '<a target="_blank" rel="noopener" href="https://www.dev4press.com/plugins/debugpress/"><span class="dashicons dashicons-flag" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( 'Home Page', 'debugpress' ) . '</a>';
 			$links[] = '<a target="_blank" rel="noopener" href="https://www.buymeacoffee.com/millan"><span class="dashicons dashicons-coffee" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( 'Buy Me A Coffee', 'debugpress' ) . '</a>';
+			$links[] = '<a target="_blank" rel="noopener" href="https://ko-fi.com/milanpetrovic"><span class="dashicons dashicons-coffee" aria-hidden="true" style="font-size: 16px; line-height: 1.3"></span>' . esc_html__( 'Ko-Fi', 'debugpress' ) . '</a>';
 		}
 
 		return $links;
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'debugpress-admin', DEBUGPRESS_PLUGIN_URL . 'css/adminpanel' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array(), DEBUGPRESS_VERSION );
-		wp_enqueue_script( 'debugpress-admin', DEBUGPRESS_PLUGIN_URL . 'js/adminpanel' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array( 'jquery' ), DEBUGPRESS_VERSION, true );
+		wp_enqueue_style( 'debugpress-admin', DEBUGPRESS_PLUGIN_DIST_URL . 'admin.css', array(), DEBUGPRESS_VERSION );
+		wp_enqueue_script( 'debugpress-admin', DEBUGPRESS_PLUGIN_DIST_URL . 'admin.js', array( 'jquery' ), DEBUGPRESS_VERSION, true );
 	}
 
 	public function admin_menu() {

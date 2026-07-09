@@ -42,6 +42,7 @@ const DEBUGPRESS_FILE        = __FILE__;
 const DEBUGPRESS_PLUGIN_PATH = __DIR__ . '/';
 
 define( 'DEBUGPRESS_PLUGIN_URL', plugins_url( '/', DEBUGPRESS_FILE ) );
+define( 'DEBUGPRESS_PLUGIN_DIST_URL', DEBUGPRESS_PLUGIN_URL.'dist/' );
 
 define( 'DEBUGPRESS_IS_AJAX', defined( 'DOING_AJAX' ) && DOING_AJAX );
 define( 'DEBUGPRESS_IS_CRON', defined( 'DOING_CRON' ) && DOING_CRON );

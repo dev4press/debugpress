@@ -6,7 +6,7 @@
     window.wp.dev4press = window.wp.dev4press || {};
 
     window.wp.dev4press.debugpress = {
-        popup: null,
+        popup: undefined,
         layout: {
             layout: "full",
             modal: "show",
@@ -50,8 +50,7 @@
 
                                 div.scrollTop(div.prop("scrollHeight"));
                             },
-                            error: function(jqXhr, textStatus, errorThrown) {
-
+                            error: function() {
                             }
                         });
                     });
@@ -59,7 +58,7 @@
                     $(window).on("resize orientationchange", wp.dev4press.debugpress.tabs.debuglog.resize);
                 },
                 resize: function() {
-                    $("#debugpress-debuglog-content div").height($(".debugpress-style-popup .sanp-content").height() - 65);
+                    $("#debugpress-debuglog-content div").height($(".flyin-style-debugpress-light .flyin-content").height() - 65);
                 }
             },
             ajax: {
@@ -445,13 +444,13 @@
                         if ($(this).hasClass("sqlq-option-off")) {
                             wp.dev4press.debugpress.status.sql_sort = $(this).attr("id").substring(9);
 
-                            wp.dev4press.debugpress.sort_by(".sql-query-list", "data-" + wp.dev4press.debugpress.status.sql_sort, wp.dev4press.debugpress.status.sql_order, "sql-query");
+                            wp.dev4press.debugpress.tabs.queries.sort_by(".sql-query-list", "data-" + wp.dev4press.debugpress.status.sql_sort, wp.dev4press.debugpress.status.sql_order, "sql-query");
 
                             $("#debugpress-debugger-tab-queries .sqlq-option-sort").addClass("sqlq-option-off").removeClass("sqlq-option-on");
                             $(this).removeClass("sqlq-option-off").addClass("sqlq-option-on");
                         } else {
                             wp.dev4press.debugpress.status.sql_order = wp.dev4press.debugpress.status.sql_order === "asc" ? "desc" : "asc";
-                            wp.dev4press.debugpress.sort_by(".sql-query-list", "data-" + wp.dev4press.debugpress.status.sql_sort, wp.dev4press.debugpress.status.sql_order, "sql-query");
+                            wp.dev4press.debugpress.tabs.queries.sort_by(".sql-query-list", "data-" + wp.dev4press.debugpress.status.sql_sort, wp.dev4press.debugpress.status.sql_order, "sql-query");
                         }
                     });
 
@@ -637,11 +636,94 @@
                             $(".sql-calls-full", query).show();
                         }
                     });
+                },
+                sort_by: function(source, attr, order, cls) {
+                    var i, elms = [], list = [], keys = [], key;
+
+                    $(source + " div." + cls).each(function() {
+                        key = $(this).attr(attr);
+
+                        elms[key] = this;
+                        keys.push(key);
+                    });
+
+                    if (order === "asc") {
+                        keys.sort(function(a, b) {
+                            return a - b;
+                        });
+                    } else {
+                        keys.sort(function(a, b) {
+                            return b - a;
+                        });
+                    }
+
+                    for (i in keys) {
+                        list.push(elms[keys[i]]);
+                    }
+
+                    $(source).empty();
+
+                    $.each(list, function(index, div) {
+                        $(source).append(div);
+                    });
                 }
             }
         },
         dialog: {
-            reposition: function() {
+            create: function() {
+                wp.dev4press.debugpress.popup = new Flyin("#debugpress-debugger-content-wrapper", {
+                    settings: {
+                        name: "debugpress-popup",
+                        style: "debugpress-light",
+                        modal: true,
+                        effect: "fade",
+                        closeEscape: true,
+                        onLoad: false,
+                        onLoadDelay: 200,
+                        positionX: "center",
+                        positionY: "center",
+                        width: "95%",
+                        height: "90%",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        minWidth: "20%",
+                        minHeight: "20%",
+                        offsetX: "0px",
+                        offsetY: "0px",
+                        buttonFooter: false,
+                        titleTag: "div",
+                        keysOpen: debugpress_data.mousetrap ? debugpress_data.mousetrap_sequence : null,
+                        keysClose: debugpress_data.mousetrap ? debugpress_data.mousetrap_sequence : null,
+                        headerContent: $("#debugpress-debugger-content-header")[0],
+                        footerContent: $("#debugpress-debugger-content-footer")[0],
+                        buttonXContent: "<i aria-hidden=\"true\" class=\"debugpress-icon debugpress-icon-power-off\"></i>",
+                        storeCode: "debugpress-settings-" + (wp.dev4press.debugpress.admin ? "admin" : "frontend"),
+                        save: wp.dev4press.debugpress.default_layout()
+                    },
+                    callbacks: {
+                        prepared: function(skin) {
+                            wp.dev4press.debugpress.layout = {...wp.dev4press.debugpress.default_layout(), ...skin.settings.save};
+                            wp.dev4press.debugpress.dialog.load_state(skin);
+                        },
+                        ready: function(core) {
+                            wp.dev4press.debugpress.layout.last = core.skinInstance.settings.onLoad ? "open" : "closed"
+                        },
+                        afterOpen: function(skin) {
+                            $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger("focus");
+
+                            wp.dev4press.debugpress.layout.last = "open";
+                            wp.dev4press.debugpress.dialog.save_state(skin);
+
+                            wp.dev4press.debugpress.head.resize();
+                        },
+                        afterClose: function(skin) {
+                            wp.dev4press.debugpress.layout.last = "closed";
+                            wp.dev4press.debugpress.dialog.save_state(skin);
+                        }
+                    }
+                });
+            },
+            reposition: function(skin) {
                 var move = {
                     positionX: "center",
                     positionY: "center",
@@ -675,29 +757,41 @@
                         break;
                 }
 
-                wp.dev4press.debugpress.popup.smartAniPopup("mod", {modal: wp.dev4press.debugpress.layout.modal === "show"});
+                if (typeof skin === 'object') {
+                    skin.mod({modal: wp.dev4press.debugpress.layout.modal === "show"});
 
-                wp.dev4press.debugpress.popup.smartAniPopup("move", move);
-                wp.dev4press.debugpress.popup.smartAniPopup("resize", size);
+                    skin.move(move);
+                    skin.resize(size);
+                } else if (typeof core === 'undefined') {
+                    wp.dev4press.debugpress.popup.mod({modal: wp.dev4press.debugpress.layout.modal === "show"});
+
+                    wp.dev4press.debugpress.popup.move(move);
+                    wp.dev4press.debugpress.popup.resize(size);
+                }
 
                 wp.dev4press.debugpress.head.resize();
             },
-            save_state: function() {
+            save_state: function(skin) {
                 if (!wp.dev4press.debugpress.layout.hasOwnProperty("close")) {
                     wp.dev4press.debugpress.layout.close = [];
                 }
 
-                wp.dev4press.debugpress.popup.smartAniPopup("mod", {save: wp.dev4press.debugpress.layout});
-                wp.dev4press.debugpress.popup.smartAniPopup("save");
+                if (typeof skin === 'object') {
+                    skin.mod({save: wp.dev4press.debugpress.layout});
+                    skin.save();
+                } else if (typeof wp.dev4press.debugpress.popup === 'object') {
+                    wp.dev4press.debugpress.popup.mod({save: wp.dev4press.debugpress.layout});
+                    wp.dev4press.debugpress.popup.save();
+                }
             },
-            load_state: function(core, skin) {
+            load_state: function(skin) {
                 if ($("#" + wp.dev4press.debugpress.layout.tab + "-li").length === 0) {
                     wp.dev4press.debugpress.layout.tab = "debugpress-debugger-tab-basics";
 
-                    wp.dev4press.debugpress.dialog.save_state();
+                    wp.dev4press.debugpress.dialog.save_state(skin);
                 }
 
-                wp.dev4press.debugpress.tab_change(wp.dev4press.debugpress.layout.tab);
+                wp.dev4press.debugpress.dialog.tab_change(wp.dev4press.debugpress.layout.tab);
 
                 var i, id, layout = $(".debugpress-layout-position .debugpress-layout-position-" + wp.dev4press.debugpress.layout.layout);
 
@@ -708,13 +802,13 @@
                 $(".debugpress-layout-modal select").val(wp.dev4press.debugpress.layout.modal);
                 $(".debugpress-layout-activation select").val(wp.dev4press.debugpress.layout.open);
 
-                skin.onLoad = false;
+                skin.settings.onLoad = false;
 
                 if (wp.dev4press.debugpress.layout.open === "auto") {
-                    skin.onLoad = true;
+                    skin.settings.onLoad = true;
                 } else if (wp.dev4press.debugpress.layout.open === "remember") {
                     if (wp.dev4press.debugpress.layout.last === "open") {
-                        skin.onLoad = true;
+                        skin.settings.onLoad = true;
                     }
                 }
 
@@ -728,7 +822,7 @@
                     wp.dev4press.debugpress.dialog.section_toggle($(id));
                 }
 
-                wp.dev4press.debugpress.dialog.reposition();
+                wp.dev4press.debugpress.dialog.reposition(skin);
             },
             section_toggle: function(button) {
                 var block = button.parent().next();
@@ -744,37 +838,225 @@
 
                     block.show();
                 }
+            },
+            events: function() {
+                $(document).on("change", "#debugpress-debugger-select", function() {
+                    wp.dev4press.debugpress.dialog.tab_change($(this).val());
+                });
+
+                $(document).on("click", ".debugpress-query-sidebar-control span", function(e) {
+                    e.preventDefault();
+
+                    var tab = $(".debugpress-tab-content.debugpress-tab-active"),
+                        state = $(this).data("state");
+
+                    if (state === "open") {
+                        tab.addClass("debugpress-queries-sidebar-closed");
+                        $(this).data("state", "closed");
+                        $("i", this).removeClass("debugpress-icon-caret-left").addClass("debugpress-icon-caret-right");
+                    } else {
+                        tab.removeClass("debugpress-queries-sidebar-closed");
+                        $(this).data("state", "open");
+                        $("i", this).addClass("debugpress-icon-caret-left").removeClass("debugpress-icon-caret-right");
+                    }
+                });
+
+                $(document).on("click", ".debugpress-debugger-panel-block-title span", function(e) {
+                    e.preventDefault();
+
+                    var btn = $(this), id = btn.attr("id"), open = !btn.hasClass("block-open"), idx;
+
+                    wp.dev4press.debugpress.dialog.section_toggle(btn);
+
+                    if (id !== "") {
+                        id = id.substring(18);
+
+                        if (!wp.dev4press.debugpress.layout.hasOwnProperty("close")) {
+                            wp.dev4press.debugpress.layout.close = [];
+                        }
+
+                        idx = wp.dev4press.debugpress.layout.close.indexOf(id);
+
+                        if (open) {
+                            if (idx > -1) {
+                                wp.dev4press.debugpress.layout.close.splice(idx, 1);
+                            }
+                        } else {
+                            if (idx === -1) {
+                                wp.dev4press.debugpress.layout.close.push(id);
+                            }
+                        }
+
+                        wp.dev4press.debugpress.dialog.save_state();
+                    }
+                });
+
+                $(document).on("click", "#debugpress-debugger-content-wrapper .debugpress-events-log-toggle", function(e) {
+                    e.preventDefault();
+
+                    var opened = $(this).hasClass("debugpress-events-log-toggle-opened");
+
+                    if (opened) {
+                        $(this).html(debugpress_data.events_show_details);
+
+                        $(this).removeClass("debugpress-events-log-toggle-opened");
+                        $(this).next().removeClass("debugpress-events-log-toggler-opened");
+                    } else {
+                        $(this).html(debugpress_data.events_hide_details);
+
+                        $(this).addClass("debugpress-events-log-toggle-opened");
+                        $(this).next().addClass("debugpress-events-log-toggler-opened");
+                    }
+                });
+
+                $(document).on("keydown", '#debugpress-debugger-tabs [role="tab"]', function(e) {
+                    var first = $(this), current, theid,
+                        prev = $(this).parents('li').prev().children('[role="tab"]'),
+                        next = $(this).parents('li').next().children('[role="tab"]');
+
+                    switch (e.keyCode) {
+                        case 37:
+                            current = prev;
+                            break;
+                        case 39:
+                            current = next;
+                            break;
+                        default:
+                            current = false;
+                            break;
+                    }
+
+                    if (current.length) {
+                        first.attr({
+                            "tabindex": "-1",
+                            "aria-selected": null
+                        });
+                        current.attr({
+                            "tabindex": "0",
+                            "aria-selected": true
+                        }).trigger("focus");
+
+                        theid = $(document.activeElement).attr("href").substring(1);
+
+                        $('#debugpress-debugger-content-wrapper [role="tabpanel"]').attr("aria-hidden", "true");
+                        $('#debugpress-debugger-content-wrapper #' + theid).attr("aria-hidden", null);
+
+                        wp.dev4press.debugpress.dialog.tab_change(theid);
+                    }
+                });
+
+                $(document).on("click", ".debugpress_r a.debugpress_r_c", function(e) {
+                    e.preventDefault();
+
+                    if ($(this).hasClass("debugpress_r_aa")) {
+                        var button = $(this).find(".debugpress_r_a");
+                        var branch = $("#" + $(this).data("branch"));
+
+                        if (branch) {
+                            if (branch.hasClass("debugpress_r_open")) {
+                                button.html(debugpress_data.icon_right);
+                            } else {
+                                button.html(debugpress_data.icon_down);
+                            }
+
+                            branch.toggleClass("debugpress_r_open");
+                        }
+                    }
+                });
+
+                $(document).on("click", "#debugpress-debugger-tabs li a", function(e) {
+                    e.preventDefault();
+
+                    wp.dev4press.debugpress.dialog.tab_change($(this).attr("href").substring(1));
+                });
+
+                $(document).on("change", ".debugpress-layout-size select", function() {
+                    wp.dev4press.debugpress.layout.ratio = $(this).val();
+                    wp.dev4press.debugpress.dialog.save_state();
+                    wp.dev4press.debugpress.dialog.reposition();
+                });
+
+                $(document).on("change", ".debugpress-layout-modal select", function() {
+                    wp.dev4press.debugpress.layout.modal = $(this).val();
+                    wp.dev4press.debugpress.dialog.save_state();
+                    wp.dev4press.debugpress.dialog.reposition();
+                });
+
+                $(document).on("change", ".debugpress-layout-activation select", function() {
+                    wp.dev4press.debugpress.layout.open = $(this).val();
+                    wp.dev4press.debugpress.dialog.save_state();
+                    wp.dev4press.debugpress.dialog.reposition();
+                });
+
+                $(document).on("click", ".debugpress-layout-position i", function() {
+                    $(this).parent().find("input").prop("checked", true).trigger("change");
+                });
+
+                $(document).on("change", ".debugpress-layout-position input", function() {
+                    var val = $("input[name=debugpress-layout-position]:checked").val();
+
+                    $(".debugpress-layout-position > div").removeClass("selected");
+                    $(".debugpress-layout-position > div.debugpress-layout-position-" + val).addClass("selected");
+
+                    wp.dev4press.debugpress.layout.layout = val;
+                    wp.dev4press.debugpress.dialog.save_state();
+                    wp.dev4press.debugpress.dialog.reposition();
+                });
+
+                $(window).on("resize orientationchange", wp.dev4press.debugpress.head.resize);
+            },
+            tab_change: function(tab) {
+                if (tab !== wp.dev4press.debugpress.tab) {
+                    wp.dev4press.debugpress.tab = tab;
+                    wp.dev4press.debugpress.layout.tab = tab;
+
+                    $("#debugpress-debugger-tabs li").removeClass("debugpress-tab-active");
+                    $("#" + tab + "-li").addClass("debugpress-tab-active");
+                    $("#debugpress-debugger-content-wrapper div.debugpress-tab-content").removeClass("debugpress-tab-active");
+                    $("#" + tab).addClass("debugpress-tab-active");
+
+                    $("#debugpress-debugger-tabs li a").attr({
+                        'tabindex': '-1',
+                        'aria-selected': null
+                    });
+
+                    $("#" + tab + "-li a").attr({
+                        'tabindex': '0',
+                        'aria-selected': true
+                    });
+
+                    $("#debugpress-debugger-select").val(tab);
+
+                    wp.dev4press.debugpress.dialog.save_state();
+                }
             }
         },
-        sort_by: function(source, attr, order, cls) {
-            var i, elms = [], list = [], keys = [], key;
+        button: {
+            init: function() {
+                var button = $(".debugpress-debug-dialog-button");
 
-            $(source + " div." + cls).each(function() {
-                key = $(this).attr(attr);
+                if (wp.dev4press.debugpress.counts.total > 0) {
+                    var extra = wp.dev4press.debugpress.counts.errors > 0 ? "debugpress-debug-has-errors" : "debugpress-debug-has-warnings";
 
-                elms[key] = this;
-                keys.push(key);
-            });
+                    $(".debugpress-debug-has-errors", button).show().html(wp.dev4press.debugpress.counts.total);
 
-            if (order === "asc") {
-                keys.sort(function(a, b) {
-                    return a - b;
-                });
-            } else {
-                keys.sort(function(a, b) {
-                    return b - a;
+                    button.addClass(extra);
+                }
+
+                if (wp.dev4press.debugpress.counts.storage > 0) {
+                    $(".debugpress-debug-has-stored", button).show().html(wp.dev4press.debugpress.counts.storage);
+                }
+
+                if (wp.dev4press.debugpress.counts.http > 0) {
+                    $(".debugpress-debug-has-httpcalls", button).show().html(wp.dev4press.debugpress.counts.http);
+                }
+
+                $(document).on("click", ".debugpress-debug-dialog-button a", function(e) {
+                    e.preventDefault();
+
+                    wp.dev4press.debugpress.popup.open();
                 });
             }
-
-            for (i in keys) {
-                list.push(elms[keys[i]]);
-            }
-
-            $(source).empty();
-
-            $.each(list, function(index, div) {
-                $(source).append(div);
-            });
         },
         head: {
             size: function() {
@@ -850,265 +1132,28 @@
                 }
             }
         },
+        default_layout: function() {
+            return {
+                layout: "full",
+                modal: "show",
+                open: "manual",
+                ratio: "40",
+                tab: "debugpress-debugger-tab-basics",
+                last: "closed",
+                close: []
+            };
+        },
         init: function(counts, stats, ajax, admin) {
-            var bar = $("#wp-admin-bar-debugpress-debugger-button"), sel, i = 0,
-                button = $(".debugpress-debug-dialog-button");
+            var bar = $("#wp-admin-bar-debugpress-debugger-button"), sel, i = 0;
 
             wp.dev4press.debugpress.counts = counts;
             wp.dev4press.debugpress.stats = stats;
             wp.dev4press.debugpress.ajax = ajax;
             wp.dev4press.debugpress.admin = admin;
-            wp.dev4press.debugpress.popup = $("#debugpress-debugger-content-wrapper");
 
-            if (wp.dev4press.debugpress.counts.total > 0) {
-                var extra = wp.dev4press.debugpress.counts.errors > 0 ? "debugpress-debug-has-errors" : "debugpress-debug-has-warnings";
-
-                $(".debugpress-debug-has-errors", button).show().html(wp.dev4press.debugpress.counts.total);
-
-                button.addClass(extra);
-            }
-
-            if (wp.dev4press.debugpress.counts.storage > 0) {
-                $(".debugpress-debug-has-stored", button).show().html(wp.dev4press.debugpress.counts.storage);
-            }
-
-            if (wp.dev4press.debugpress.counts.http > 0) {
-                $(".debugpress-debug-has-httpcalls", button).show().html(wp.dev4press.debugpress.counts.http);
-            }
-
-            wp.dev4press.debugpress.popup.smartAniPopup({
-                settings: {
-                    style: "debugpress-style-popup",
-                    modal: true,
-                    effect: "fade",
-                    closeEscape: true,
-                    onLoad: false,
-                    onLoadDelay: 200,
-                    positionX: "center",
-                    positionY: "center",
-                    width: "95%",
-                    height: "90%",
-                    maxWidth: "100%",
-                    maxHeight: "100%",
-                    minWidth: "20%",
-                    minHeight: "20%",
-                    headerContent: $("#debugpress-debugger-content-header"),
-                    footerContent: $("#debugpress-debugger-content-footer"),
-                    buttonXContent: "<i aria-hidden=\"true\" class=\"debugpress-icon debugpress-icon-power-off\"></i>",
-                    cookiePosizeCode: "debugpress-settings-" + (wp.dev4press.debugpress.admin ? "admin" : "frontend"),
-                    xContentSize: true,
-                    save: {
-                        layout: "full",
-                        modal: "show",
-                        open: "manual",
-                        ratio: "40",
-                        tab: "debugpress-debugger-tab-basics",
-                        last: "closed"
-                    }
-                },
-                callbacks: {
-                    prepared: function(core, skin) {
-                        wp.dev4press.debugpress.layout = this.save;
-                        wp.dev4press.debugpress.dialog.load_state(core, skin);
-                    },
-                    ready: function(core, skin) {
-                        wp.dev4press.debugpress.layout.last = skin.onLoad ? "open" : "closed"
-                    },
-                    afterOpen: function(core, skin) {
-                        $("#debugpress-debugger-tabs .debugpress-tab-active a").trigger("focus");
-
-                        wp.dev4press.debugpress.layout.last = "open";
-                        wp.dev4press.debugpress.dialog.save_state();
-
-                        wp.dev4press.debugpress.head.resize();
-                    },
-                    afterClose: function(core, skin) {
-                        wp.dev4press.debugpress.layout.last = "closed";
-                        wp.dev4press.debugpress.dialog.save_state();
-                    }
-                }
-            });
-
-            $(document).on("click", ".debugpress-debug-dialog-button a", function(e) {
-                e.preventDefault();
-
-                wp.dev4press.debugpress.popup.smartAniPopup("open");
-            });
-
-            $(document).on("change", "#debugpress-debugger-select", function() {
-                wp.dev4press.debugpress.tab_change($(this).val());
-            });
-
-            $(document).on("click", ".debugpress-query-sidebar-control span", function(e) {
-                e.preventDefault();
-
-                var tab = $(".debugpress-tab-content.debugpress-tab-active"),
-                    state = $(this).data("state");
-
-                if (state === "open") {
-                    tab.addClass("debugpress-queries-sidebar-closed");
-                    $(this).data("state", "closed");
-                    $("i", this).removeClass("debugpress-icon-caret-left").addClass("debugpress-icon-caret-right");
-                } else {
-                    tab.removeClass("debugpress-queries-sidebar-closed");
-                    $(this).data("state", "open");
-                    $("i", this).addClass("debugpress-icon-caret-left").removeClass("debugpress-icon-caret-right");
-                }
-            });
-
-            $(document).on("click", ".debugpress-debugger-panel-block-title span", function(e) {
-                e.preventDefault();
-
-                var btn = $(this), id = btn.attr("id"), open = !btn.hasClass("block-open"), idx;
-
-                wp.dev4press.debugpress.dialog.section_toggle(btn);
-
-                if (id !== "") {
-                    id = id.substring(18);
-
-                    if (!wp.dev4press.debugpress.layout.hasOwnProperty("close")) {
-                        wp.dev4press.debugpress.layout.close = [];
-                    }
-
-                    idx = wp.dev4press.debugpress.layout.close.indexOf(id);
-
-                    if (open) {
-                        if (idx > -1) {
-                            wp.dev4press.debugpress.layout.close.splice(idx, 1);
-                        }
-                    } else {
-                        if (idx === -1) {
-                            wp.dev4press.debugpress.layout.close.push(id);
-                        }
-                    }
-
-                    wp.dev4press.debugpress.dialog.save_state();
-                }
-            });
-
-            $(document).on("click", "#debugpress-debugger-content-wrapper .debugpress-events-log-toggle", function(e) {
-                e.preventDefault();
-
-                var opened = $(this).hasClass("debugpress-events-log-toggle-opened");
-
-                if (opened) {
-                    $(this).html(debugpress_data.events_show_details);
-
-                    $(this).removeClass("debugpress-events-log-toggle-opened");
-                    $(this).next().removeClass("debugpress-events-log-toggler-opened");
-                } else {
-                    $(this).html(debugpress_data.events_hide_details);
-
-                    $(this).addClass("debugpress-events-log-toggle-opened");
-                    $(this).next().addClass("debugpress-events-log-toggler-opened");
-                }
-            });
-
-            $(document).on("keydown", '#debugpress-debugger-tabs [role="tab"]', function(e) {
-                var first = $(this), current, theid,
-                    prev = $(this).parents('li').prev().children('[role="tab"]'),
-                    next = $(this).parents('li').next().children('[role="tab"]');
-
-                switch (e.keyCode) {
-                    case 37:
-                        current = prev;
-                        break;
-                    case 39:
-                        current = next;
-                        break;
-                    default:
-                        current = false;
-                        break;
-                }
-
-                if (current.length) {
-                    first.attr({
-                        "tabindex": "-1",
-                        "aria-selected": null
-                    });
-                    current.attr({
-                        "tabindex": "0",
-                        "aria-selected": true
-                    }).trigger("focus");
-
-                    theid = $(document.activeElement).attr("href").substring(1);
-
-                    $('#debugpress-debugger-content-wrapper [role="tabpanel"]').attr("aria-hidden", "true");
-                    $('#debugpress-debugger-content-wrapper #' + theid).attr("aria-hidden", null);
-
-                    wp.dev4press.debugpress.tab_change(theid);
-                }
-            });
-
-            $(document).on("click", ".debugpress_r a.debugpress_r_c", function(e) {
-                e.preventDefault();
-
-                if ($(this).hasClass("debugpress_r_aa")) {
-                    var button = $(this).find(".debugpress_r_a");
-                    var branch = $("#" + $(this).data("branch"));
-
-                    if (branch) {
-                        if (branch.hasClass("debugpress_r_open")) {
-                            button.html(debugpress_data.icon_right);
-                        } else {
-                            button.html(debugpress_data.icon_down);
-                        }
-
-                        branch.toggleClass("debugpress_r_open");
-                    }
-                }
-            });
-
-            $(document).on("click", "#debugpress-debugger-tabs li a", function(e) {
-                e.preventDefault();
-
-                wp.dev4press.debugpress.tab_change($(this).attr("href").substring(1));
-            });
-
-            $(document).on("change", ".debugpress-layout-size select", function() {
-                wp.dev4press.debugpress.layout.ratio = $(this).val();
-                wp.dev4press.debugpress.dialog.save_state();
-                wp.dev4press.debugpress.dialog.reposition();
-            });
-
-            $(document).on("change", ".debugpress-layout-modal select", function() {
-                wp.dev4press.debugpress.layout.modal = $(this).val();
-                wp.dev4press.debugpress.dialog.save_state();
-                wp.dev4press.debugpress.dialog.reposition();
-            });
-
-            $(document).on("change", ".debugpress-layout-activation select", function() {
-                wp.dev4press.debugpress.layout.open = $(this).val();
-                wp.dev4press.debugpress.dialog.save_state();
-                wp.dev4press.debugpress.dialog.reposition();
-            });
-
-            $(document).on("click", ".debugpress-layout-position i", function() {
-                $(this).parent().find("input").prop("checked", true).trigger("change");
-            });
-
-            $(document).on("change", ".debugpress-layout-position input", function() {
-                var val = $("input[name=debugpress-layout-position]:checked").val();
-
-                $(".debugpress-layout-position > div").removeClass("selected");
-                $(".debugpress-layout-position > div.debugpress-layout-position-" + val).addClass("selected");
-
-                wp.dev4press.debugpress.layout.layout = val;
-                wp.dev4press.debugpress.dialog.save_state();
-                wp.dev4press.debugpress.dialog.reposition();
-            });
-
-            $(window).on("resize orientationchange", wp.dev4press.debugpress.head.resize);
-
-            if (debugpress_data.mousetrap) {
-                Mousetrap.bind(debugpress_data.mousetrap_sequence, function() {
-                    if (wp.dev4press.debugpress.layout.last === "open") {
-                        wp.dev4press.debugpress.popup.smartAniPopup("close");
-                    } else {
-                        wp.dev4press.debugpress.popup.smartAniPopup("open");
-                    }
-                });
-            }
+            wp.dev4press.debugpress.button.init();
+            wp.dev4press.debugpress.dialog.create();
+            wp.dev4press.debugpress.dialog.events();
 
             if (wp.dev4press.debugpress.ajax) {
                 wp.dev4press.debugpress.tabs.ajax.init();
@@ -1130,31 +1175,6 @@
             wp.dev4press.debugpress.tabs.hooks.init();
 
             wp.dev4press.debugpress.head.resize();
-        },
-        tab_change: function(tab) {
-            if (tab !== wp.dev4press.debugpress.tab) {
-                wp.dev4press.debugpress.tab = tab;
-                wp.dev4press.debugpress.layout.tab = tab;
-
-                $("#debugpress-debugger-tabs li").removeClass("debugpress-tab-active");
-                $("#" + tab + "-li").addClass("debugpress-tab-active");
-                $("#debugpress-debugger-content-wrapper div.debugpress-tab-content").removeClass("debugpress-tab-active");
-                $("#" + tab).addClass("debugpress-tab-active");
-
-                $("#debugpress-debugger-tabs li a").attr({
-                    'tabindex': '-1',
-                    'aria-selected': null
-                });
-
-                $("#" + tab + "-li a").attr({
-                    'tabindex': '0',
-                    'aria-selected': true
-                });
-
-                $("#debugpress-debugger-select").val(tab);
-
-                wp.dev4press.debugpress.dialog.save_state();
-            }
         }
     };
 })(jQuery, window, document);

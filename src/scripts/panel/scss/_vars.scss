@@ -1,0 +1,7 @@
+@use "./variables" as *;
+
+:root {
+    --debugpress-base-font-size: #{$base-font-size};
+    --debugpress-sql-font-size: #{$sql-font-size};
+    --debugpress-pretty-font-size: #{$pretty-font-size};
+}
