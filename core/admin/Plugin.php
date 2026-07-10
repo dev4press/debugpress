@@ -48,7 +48,7 @@ class Plugin {
 
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'debugpress-admin', DEBUGPRESS_PLUGIN_DIST_URL . 'admin.css', array(), DEBUGPRESS_VERSION );
-		wp_enqueue_script( 'debugpress-admin', DEBUGPRESS_PLUGIN_DIST_URL . 'admin.js', array( 'jquery' ), DEBUGPRESS_VERSION, true );
+		wp_enqueue_script( 'debugpress-admin', DEBUGPRESS_PLUGIN_DIST_URL . 'admin.js', array(), DEBUGPRESS_VERSION, true );
 	}
 
 	public function admin_menu() {

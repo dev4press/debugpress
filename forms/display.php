@@ -84,8 +84,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 </div>
 <script type="text/javascript">
-    jQuery(document).ready(function() {
-        window.wp.dev4press.debugpress.init(
+    document.addEventListener('DOMContentLoaded', function() {
+        window.DebugPressPanelInstance.init(
 			<?php echo wp_json_encode( debugpress_tracker()->get_counts_js() ); ?>,
 			<?php echo wp_json_encode( debugpress_tracker()->get_stats() ); ?>,
 			<?php echo debugpress_plugin()->get( 'ajax' ) ? 'true' : 'false'; ?>,

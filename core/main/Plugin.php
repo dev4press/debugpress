@@ -167,11 +167,12 @@ class Plugin {
 	}
 
 	public function init() {
-		wp_register_style( 'dev4press-flyin', DEBUGPRESS_PLUGIN_URL . 'libraries/flyin.css', array(), '1.0.1' );
 		wp_register_style( 'debugpress-print', DEBUGPRESS_PLUGIN_DIST_URL . 'print.css', array(), DEBUGPRESS_VERSION );
+		wp_register_style( 'dev4press-flyin', DEBUGPRESS_PLUGIN_DIST_URL . 'flyin.css', array(), DEBUGPRESS_FLYIN_VERSION );
+		wp_register_script( 'dev4press-flyin', DEBUGPRESS_PLUGIN_DIST_URL . 'flyin.js', array(), DEBUGPRESS_FLYIN_VERSION, true );
+
 		wp_register_style( 'debugpress', DEBUGPRESS_PLUGIN_DIST_URL . 'panel.css', array( 'dev4press-flyin', 'debugpress-print' ), DEBUGPRESS_VERSION );
-		wp_register_script( 'dev4press-flyin', DEBUGPRESS_PLUGIN_URL . 'libraries/flyin.js', array(),'1.0.1', true );
-		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', array('jquery', 'dev4press-flyin'), DEBUGPRESS_VERSION, true );
+		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_DIST_URL . 'panel.js', array( 'dev4press-flyin' ), DEBUGPRESS_VERSION, true );
 
 		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_CLI && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->is_enabled() ) {
 			Loader::instance();
