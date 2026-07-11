@@ -167,21 +167,12 @@ class Plugin {
 	}
 
 	public function init() {
-		$dependencies = array(
-			'jquery',
-			'animated-popup',
-		);
+		wp_register_style( 'debugpress-print', DEBUGPRESS_PLUGIN_DIST_URL . 'print.css', array(), DEBUGPRESS_VERSION );
+		wp_register_style( 'dev4press-flyin', DEBUGPRESS_PLUGIN_DIST_URL . 'flyin.css', array(), DEBUGPRESS_FLYIN_VERSION );
+		wp_register_script( 'dev4press-flyin', DEBUGPRESS_PLUGIN_DIST_URL . 'flyin.js', array(), DEBUGPRESS_FLYIN_VERSION, true );
 
-		if ( $this->get( 'mousetrap' ) ) {
-			$dependencies[] = 'mousetrap';
-		}
-
-		wp_register_style( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'libraries/popup/popup.min.css', array(), $this->_animated_popup_version );
-		wp_register_style( 'debugpress-print', DEBUGPRESS_PLUGIN_URL . 'css/prettyprint' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array(), DEBUGPRESS_VERSION );
-		wp_register_style( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'css/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.css', array( 'animated-popup' ), DEBUGPRESS_VERSION );
-		wp_register_script( 'animated-popup', DEBUGPRESS_PLUGIN_URL . 'libraries/popup/popup.min.js', array( 'jquery' ), $this->_animated_popup_version, true );
-		wp_register_script( 'mousetrap', DEBUGPRESS_PLUGIN_URL . 'libraries/mousetrap/mousetrap.min.js', array(), $this->_mousetrap_version, true );
-		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_URL . 'js/debugpress' . ( DEBUGPRESS_IS_DEBUG ? '' : '.min' ) . '.js', $dependencies, DEBUGPRESS_VERSION, true );
+		wp_register_style( 'debugpress', DEBUGPRESS_PLUGIN_DIST_URL . 'panel.css', array( 'dev4press-flyin', 'debugpress-print' ), DEBUGPRESS_VERSION );
+		wp_register_script( 'debugpress', DEBUGPRESS_PLUGIN_DIST_URL . 'panel.js', array( 'dev4press-flyin' ), DEBUGPRESS_VERSION, true );
 
 		if ( ! $this->is_rest_request() && ! DEBUGPRESS_IS_CLI && ! DEBUGPRESS_IS_AJAX && ! DEBUGPRESS_IS_CRON && $this->is_enabled() ) {
 			Loader::instance();

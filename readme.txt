@@ -1,8 +1,8 @@
-=== DebugPress: Debugger in Popup ===
+=== DebugPress: Debugger in a Popup ===
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, query monitor, debugging, development, ajax monitor
-Stable tag: 4.2
+Stable tag: 4.3
 Requires at least: 5.6
 Tested up to: 7.0
 Requires PHP: 7.4
@@ -56,10 +56,15 @@ Currently, the plugin has the following panels:
 * Store (for any user stored objects during the page loading)
 * Tools (internal and external tools links)
 * Debug Log (load content on demand from WordPress 'debug.log')
-* Layout (control the size, position and activation of the popup)
+* Layout (control the size, position, and activation of the popup)
+
+= Flyin =
+Flyin is library used to create popups used to generate the popup or the debugger.
+
+[Flyin Website](https://dev4press.github.io/flyin/) &middot; [Flyin on Github](https://github.com/dev4press/flyin)
 
 = SQL Queries =
-This panel lists all the queries WordPress has run. It allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets or the WordPress function that called it. Every query displays the execution time, order, caller functions stack and fully formatted SQL query that is easy to read. For some Dev4Press created plugins (and that list will grow), DebugPress can detect the source of the query and allow you to filter by the plugin calling the query.
+This panel lists all the queries WordPress has run. It allows you to order the queries by execution order or length of execution, and all queries can be filtered by the query type, database table it targets, or the WordPress function that called it. Every query displays the execution time, order, caller functions stack, and fully formatted SQL query that is easy to read. For some Dev4Press created plugins (and that list will grow), DebugPress can detect the source of the query and allow you to filter by the plugin calling the query.
 
 = PHP and WordPress Errors =
 Plugin has 3 panels dedicated to showing PHP and WordPress errors and warnings. The Plugin captures this information during the page load, and it shows full debug trace as returned by the PHP debug tracing function.
@@ -75,10 +80,10 @@ In the administration Tools menu, the plugin adds a DebugPress Info page showing
 * MySQL Variables: full MySQL settings retrieved from the database
 
 = Plugin Settings =
-The plugin has various options controlling the plugin activation, button integration position, user roles that can see the debugger window, options to attempt overriding WordPress debug flags and options controlling the visibility of optional debugger panels.
+The plugin has various options controlling the plugin activation, button integration position, user roles that can see the debugger window, options to attempt overriding WordPress debug flags, and options controlling the visibility of optional debugger panels.
 
 = Log into Database =
-Debugger popup is visible for the request running in the browser. But there are many requests that are happening in the background (AJAX calls, REST API calls...), and for them, you can't see errors, call information and other stuff in the debugger. Because of that, DebugPress supports logging of various events into database with the use of 'coreActivity' plugin, and it is highly recommended to install and use coreActivity.
+Debugger popup is visible for the request running in the browser. But there are many requests that are happening in the background (AJAX calls, REST API calls...), and for them, you can't see errors, call information, and other stuff in the debugger. Because of that, DebugPress supports logging of various events into database with the use of 'coreActivity' plugin, and it is highly recommended to install and use coreActivity.
 
 Log various debug events into a database with the free plugin: [coreActivity Plugin](https://wordpress.org/plugins/coreactivity/), supporting over 120 events and 10 popular WordPress plugins. DebugPress related events will be logged and available for later analysis, and this includes errors, AJAX calls, and HTTP API calls.
 
@@ -110,12 +115,18 @@ To enable WordPress debug mode via `wp-config.php`, check out the article here: 
 If you have enabled debugger (for admin side and/or frontend), Debugger is activated via Bug button placed in the WordPress Toolbar or as a float button (depending on the settings). Since version 3.0, you can activate the button via keyboard shortcut, default combination is `ctrl+shift+u`, but it can be changed in the plugin settings.
 
 = Can I change the size and position of the popup? =
-Yes. Once the popup is open, you will find the Layout icon next to the button to close the popup. On the layout panel, you can change the location for the popup, size, modal status and auto activation on page load.
+Yes. Once the popup is open, you will find the Layout icon next to the button to close the popup. On the layout panel, you can change the location for the popup, size, modal status, and auto activation on page load.
 
 = Where can I configure the plugin? =
 Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 
 == Changelog ==
+= 4.3 (2026.07.17) =
+* New: replaced SmartAnimatedPopup with Flyin
+* New: rewritten all JS into TypeScript with no jQuery dependencies
+* New: modern Vite and TypeScript build system
+* Removed: all external JavaScript libraries
+
 = 4.2 (2026.06.30) =
 * New: tested with WordPress 7.0
 * New: tested and compatible with `PHP` 8.5
@@ -172,97 +183,12 @@ Open the WordPress 'Settings' menu, there you will find 'DebugPress' panel.
 * Edit: Kint Pretty Print Library 5.1.0
 * Fix: Small issue with getting the OPCache version when not allowed by the server
 
-= 3.5.1 (2023.11.18) =
-* Fix: Internal debug to error log remain in the source code
-
-= 3.5 (2023.11.06) =
-* New: Tracker logs the trace for each HTTP API request made
-* New: Tracker executes action for every completed HTTP API request
-* New: AJAX Tracker executes action for every completed Admin AJAX request
-* New: HTTP API log shows the trace and timestamps for each request
-* New: Popup tools links to the coreActivity events and logs
-* New: Popup header shows icons for tabs with labels with improved sizing
-* New: Popup tabs show label or icon only, depending on the screen size
-* Fix: Trace information for tracker HTTP API request was lost
-
-= 3.4.1 (2023.10.15) =
-* Fix: Function `apache_get_version` not working on every server
-
-= 3.4 (2023.10.06) =
-* New: Updated some plugin system requirements
-* Edit: KINT now loads own helper d() and s() functions
-* Edit: Various styling improvements and tweaks
-* Edit: Improved organization of the print libraries now moved to vendor directory
-* Fix: MySQL tools panel showing error if the server information can't be retrieved
-* Fix: Problem with the Info method for getting server IP in some cases
-* Fix: Few more issues with Info method for getting database information
-
-= 3.3 (2023.07.03) =
-* New: Support for more versions of the Dev4Press Library
-* New: System tab shows additional information about Apache
-* New: System tab shows WordPress database overview information
-* New: Remember open/close sections on some panels
-* Edit: Some changes to the displayed System and Basic tabs
-* Edit: Various small tweaks to the plugin PHP code
-* Edit: Kint Pretty Print Library 5.0.7
-* Fix: Few issues with Info method for getting database information
-
-= 3.2 (2023.06.22) =
-* New: Support for the deprecated hook run handling
-* New: Execute actions when each error has been logged
-* New: Deprecated tracking now logs the caller information
-* Edit: Improved caller trace cleanup for error calls
-* Edit: Display more relevant error source file and log for errors
-* Edit: Errors tab moved to the end of the display order
-* Edit: Changed tab order for several other debugger tabs
-* Edit: Various small tweaks to the plugin PHP code
-* Fix: Fatal error tracking calling default handler directly
-* Fix: Sometimes errors not getting displayed in the Error tab
-
-= 3.1 (2023.06.14) =
-* New: Identify SQL queries sources for Dev4Press plugins
-* New: Hooks panel can filter by the WordPress Admin callbacks
-* Edit: Improved method for displaying button activation flags
-* Edit: Many improvements to escaping variables for display
-* Edit: Better optimized included images for logos
-* Edit: Various small tweaks to the plugin PHP code
-* Edit: Various small tweaks to the main JavaScript file
-* Fix: Hooks panel not filtering MU Plugins
-
-= 3.0.1 (2023.05.05) =
-* Edit: Minor updates to the plugin readme file
-* Edit: Various improvements to the PHP core code
-* Fix: Warnings related to OPCache for some PHP configurations
-
-= 3.0 (2023.04.03) =
-* New: Modify debugger popup layout and size
-* New: Modify debugger popup modal state
-* New: Modify debugger popup opening state (auto, manual, remember state)
-* New: Save active tab and show it first on next page load
-* New: Trigger debugger popup display via keyboard shortcut
-* New: Access Key option to enable loading on demand via URL
-* New: Settings block and information for the On Demand access
-* New: Settings block and information for shortcut key activation
-* New: Admin bar button has basic stats dropdown menu
-* New: Plugin settings Help tab with On Demand information
-* New: Content tab split into Content and Rewrite tabs
-* New: Basic tab shows currently active theme information
-* New: Admin tab content moved to the Request tab
-* New: Refreshed the debugger look with new icons
-* New: Function to write log entry into custom info/log file
-* New: `IP` class mostly rewritten and expanded
-* New: Mousetrap Javascript v1.6.5 library
-* Edit: Few improvements to the plugin init and load process
-* Edit: Various improvements to the PHP core code
-* Edit: Changes to some plugin default settings
-* Edit: `IP` class expanded Cloudflare IP range
-* Edit: Smart Animated Popup v2.0 library
-* Del: Removed the dedicated Admin tab
-* Fix: Few issues with the `IP` class range methods
-
 Full changelog: [DebugPress Changelog](https://www.dev4press.com/plugins/debugpress/changelog/)
 
 == Upgrade Notice ==
+= 4.3 =
+Dropped jQuery dependency. New popup library.
+
 = 4.2 =
 Various updates and improvements. Updated Kint Library.
 
@@ -270,9 +196,6 @@ Various updates and improvements. Updated Kint Library.
 Few updates and improvements. Updated Kint Library.
 
 = 4.0 =
-Various updates and improvements.
-
-= 3.9 =
 Various updates and improvements.
 
 == Screenshots ==

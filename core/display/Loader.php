@@ -149,7 +149,7 @@ class Loader {
 		$button .= '<span class="debugpress-debug-has-errors" style="display: ' . ( $_error_counts == 0 ? 'none' : 'inline' ) . '" title="' . __( 'PHP Errors', 'debugpress' ) . '">' . $_error_counts . '</span>';
 
 		$button .= '</span>';
-		$button .= '<span class="sanp-sr-only">' . __( 'Open Debugger Panel', 'debugpress' ) . '</span>';
+		$button .= '<span class="flyin-sr-only">' . __( 'Open Debugger Panel', 'debugpress' ) . '</span>';
 
 		return $button;
 	}

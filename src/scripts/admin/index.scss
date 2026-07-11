@@ -1,0 +1,347 @@
+.debugpress-panel {
+    .nav-tab {
+        margin-left: 10px;
+        padding: 5px 15px;
+
+        .dashicons {
+            font-size: 16px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+    }
+
+    .nav-tab-right {
+        float: right;
+        margin-right: 10px;
+        margin-left: 0;
+    }
+}
+
+.debugpress-panel-settings {
+    .tab-content {
+        display: none;
+
+        &.tab-content-active {
+            display: block;
+        }
+    }
+}
+
+.debugpress_settings {
+    width: calc(100% - 330px);
+    float: left;
+    color: #000;
+
+    .debugpress-settings-section {
+        max-width: 720px;
+        background-color: #FFF;
+        padding: 15px;
+        margin: 15px 0 0 15px;
+        border: 1px solid #1E72BD;
+
+        h2 {
+            margin: -15px -15px 15px;
+            padding: 15px;
+            background-color: #1E72BD;
+            color: #FFF;
+        }
+
+        .debugpress-section-info {
+            margin: -15px -15px 0;
+            padding: 15px;
+            background-color: #DAEEFF;
+        }
+
+        p.description {
+            border-top: 1px solid #1E72BD;
+            margin: 10px 0 0;
+            padding: 5px 0 0;
+        }
+    }
+}
+
+.debugpress_sidebar {
+    float: right;
+    padding-left: 20px;
+    margin-right: 15px;
+    width: 280px;
+
+    img {
+        height: auto;
+        width: 100%;
+    }
+
+    > div {
+        text-align: center;
+        padding: 15px;
+        margin: 15px 0;
+        max-width: 360px;
+    }
+
+    .debugpress_plugin {
+        color: #FFF;
+        background: #1E72BD;
+
+        > span {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        > div {
+            border-top: 1px solid #FFF;
+            border-bottom: 1px solid #FFF;
+            padding: 15px 0;
+            margin: 15px 0;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .button-secondary {
+            font-weight: 700;
+            background-color: #FFF;
+        }
+    }
+
+    .debugpress_help {
+        color: #111;
+        background: #FFF;
+        border: 1px solid #1E72BD;
+
+        > p {
+            margin: 0;
+            padding: 0 0 15px;
+        }
+    }
+
+    .debugpress_dev4press {
+        color: #111;
+        background: #E0E0E0;
+        border: 1px solid #1E72BD;
+
+        > p {
+            margin: 0;
+            padding: 0 0 10px;
+            font-weight: 700;
+        }
+
+        > div {
+            border-top: 1px solid #1E72BD;
+            padding: 15px 0 0;
+            margin: 15px 0 0;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+    }
+}
+
+.debugpress-panel-tools {
+    .tab-content {
+        margin: 15px;
+    }
+}
+
+.debugpress_phpinfo {
+    overflow: auto;
+
+    h1.p {
+        background-color: #222;
+        color: #FFF;
+        font-size: 28px;
+        margin: 0;
+        padding: 22px 16px;
+    }
+
+    td img {
+        float: right;
+        margin: 7px 16px 0 0;
+    }
+
+    table {
+        width: 100%;
+        background: #FFF;
+        border-collapse: collapse;
+        border: 1px solid #BBB;
+        margin: 0 0 5px;
+
+        td,
+        th {
+            padding: 5px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        tr {
+            th,
+            td.first {
+                width: 20%;
+            }
+
+            td.b,
+            th.first {
+                color: #333;
+                font-weight: 700;
+            }
+
+            td {
+                border-bottom: 1px solid #ECECEC;
+                word-break: break-all;
+
+                .options {
+                    text-align: right;
+                    white-space: normal;
+                    padding-right: 0;
+                }
+            }
+
+            &.first {
+                th {
+                    color: #222;
+                    font-weight: 700;
+                }
+            }
+
+            &:last-child {
+                td {
+                    border-bottom: none;
+                }
+            }
+
+            &.h,
+            &.with-header {
+                th {
+                    background: #666;
+                    color: #FFF;
+                    padding: 10px;
+                }
+            }
+        }
+
+        th {
+            text-align: left;
+            background-color: #ECECEC;
+            padding: 3px 5px;
+        }
+    }
+
+    div.inside {
+        margin: -1px 0 10px;
+    }
+
+    p.sub {
+        color: #777;
+        font-size: 13px;
+        font-style: italic;
+        padding: 5px 10px 15px;
+        margin: -12px;
+    }
+
+    h3 {
+        background: #333 !important;
+        color: #FFF;
+        text-shadow: none !important;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    div.inside .link {
+        text-align: right;
+        font-weight: 700;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    h2.phpsection {
+        background-color: #333;
+        color: #FFF;
+        font-style: normal;
+        padding: 5px 10px;
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 5px;
+        text-shadow: none;
+    }
+
+    h2.phpsection a {
+        color: #FFF;
+    }
+}
+
+.debugpress_info {
+    table {
+        min-width: 50%;
+        max-width: 100%;
+        line-height: 1.5;
+        border-collapse: collapse;
+        border: 1px solid #BBB;
+        border-top: 0;
+
+        thead {
+            th {
+                text-align: left;
+                padding: 5px;
+                background: #666;
+                color: #FFF;
+            }
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid #BBB;
+                background: #FFF;
+
+                th, td {
+                    vertical-align: top;
+                    padding: 5px;
+                    text-align: left;
+                }
+
+                td {
+                    border-left: 1px solid #BBB;
+
+                    div {
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (width <= 900px) {
+    .debugpress_settings {
+        width: 100%;
+        float: none;
+
+        .debugpress-settings-section {
+            margin: 15px;
+        }
+    }
+
+    .debugpress_sidebar {
+        border-top: 1px solid #1E72BD;
+        padding-top: 20px;
+        padding-left: 0;
+        width: 100%;
+        float: none;
+        margin: 0;
+
+        > div {
+            margin: 0 auto 15px;
+        }
+    }
+}
+
+@media screen and (width <= 1200px) {
+    .debugpress_info {
+        table {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,532 @@
+.flyin-style-debugpress-light {
+    #debugpress-debugger-tabs {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: var(--debugpress-base-font-size);
+        line-height: 26px;
+        width: calc(100% - 30px);
+
+        li {
+            float: left;
+            height: 28px;
+            line-height: 26px;
+            margin: 0;
+            padding: 0 10px;
+            list-style: none;
+
+            .debugpress-tab-ctrl-icon {
+                padding-right: 5px;
+                font-size: calc(var(--debugpress-base-font-size) + 2px);
+            }
+
+            a {
+                color: #EEE;
+                box-shadow: none;
+                outline: none;
+                text-decoration: none;
+            }
+
+            &.debugpress-tab-active {
+                background: #FFF;
+                height: 33px;
+
+                a {
+                    color: #23282D;
+                    font-weight: 700;
+                }
+            }
+
+            &#debugpress-debugger-tab-layout-li,
+            &#debugpress-debugger-tab-tools-li,
+            &#debugpress-debugger-tab-debuglog-li {
+                float: right;
+
+                i {
+                    font-size: 120%;
+                    vertical-align: text-bottom;
+                }
+            }
+        }
+    }
+
+    .debugpress-pre-wrap {
+        background-color: #F4F4F4;
+        color: #000;
+        font-family: monospace;
+        font-weight: 700;
+        font-size: var(--debugpress-sql-font-size);
+        margin: 0 0 5px;
+        padding: 5px;
+
+        pre {
+            color: #000;
+            background-color: #FFF;
+        }
+    }
+
+    #debugpress-debugger-content-wrapper {
+        .debugpress-tab-content {
+            display: none;
+
+            &.debugpress-tab-active {
+                display: block;
+            }
+        }
+    }
+
+    #debugpress-debugger-select {
+        display: none;
+        font-size: calc(var(--debugpress-base-font-size) + 1px);
+        height: 28px;
+        line-height: 28px;
+        margin: 0;
+        padding: 0 10px;
+        width: calc(100% - 30px);
+        min-height: 28px;
+        max-width: 100%;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .debugpress-debugger-footer-right {
+        float: right;
+    }
+
+    .debugpress-debugger-footer-left {
+        float: left;
+
+        div {
+            display: inline;
+        }
+    }
+
+    #debugpress-debugger-content-wrapper {
+        .debugpress-events-log-toggle {
+            font-weight: 700;
+        }
+
+        .debugpress-events-log-toggler {
+            border-left: 1px solid #888;
+            padding-left: 10px;
+            display: none;
+
+            &.debugpress-events-log-toggler-opened {
+                display: block;
+            }
+        }
+
+        .debugpress-error-message {
+            font-weight: 700;
+            font-style: italic;
+            color: #F00;
+        }
+    }
+
+    .debugpress-debugger-panel-block {
+        margin: 5px 0 10px;
+        display: block;
+        overflow: auto;
+
+        p {
+            padding: 0;
+            margin: 0 0 .5em;
+        }
+
+        .sql-calls-button-expander {
+            font-weight: 700;
+            font-size: calc(var(--debugpress-base-font-size) - 1px);
+            color: #FFF !important;
+            background: #0073AA;
+            padding: 0 6px 3px;
+            margin: 0 0 0 10px;
+            border-radius: 3px;
+        }
+    }
+
+    .debugpress-debugger-panel-block-title {
+        background: #23282D;
+        color: #FFF;
+        padding: 5px 8px !important;
+        font-size: 12px;
+        margin: 0;
+
+        > i.debugpress-icon {
+            font-size: 1.5em;
+            margin: 0 5px 0 0;
+        }
+
+        span {
+            float: right;
+            font-size: 18px;
+            cursor: pointer;
+
+            i.debugpress-icon {
+                vertical-align: top;
+            }
+        }
+    }
+
+    .debugpress-query-sidebar-control {
+        background: #23282D;
+        color: #FFF;
+        padding: 5px !important;
+        font-size: calc(var(--debugpress-base-font-size) - 1px);
+        margin: 0 0 10px;
+        text-align: right;
+
+        span {
+            font-size: calc(var(--debugpress-base-font-size) + 4px);
+            cursor: pointer;
+            padding-right: 4px;
+            vertical-align: top;
+
+            i.debugpress-icon {
+                vertical-align: bottom;
+            }
+        }
+    }
+
+    .debugpress-debugger-panel-block-subtitle {
+        background: #777;
+        color: #FFF;
+        margin: 5px 0;
+        padding: 2px 5px !important;
+        font-size: calc(var(--debugpress-base-font-size) - 2px);
+        line-height: 20px;
+    }
+
+    .debugpress-debugger-table {
+        width: 100%;
+        table-layout: auto;
+        margin: 0;
+        border: 1px solid #DDD;
+        background: #FFF;
+        border-collapse: collapse;
+        font-size: calc(var(--debugpress-base-font-size) - 1px);
+        line-height: 20px;
+
+        thead {
+            background: #DDD;
+        }
+
+        th,
+        td {
+            border: 1px solid #E8E8E8;
+            text-align: left;
+            padding: 1px 4px !important;
+            font-size: calc(var(--debugpress-base-font-size) - 1px);
+
+            .kint-rich {
+                margin: 0;
+
+                > dl > .kint-parent {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        td {
+            border-width: 0 1px 1px 0;
+            vertical-align: top;
+        }
+
+        tr:nth-of-type(2n) {
+            background: #FAFAFA;
+        }
+
+        &.debugpress-table-keyvalue {
+            tr {
+                td {
+                    &:first-child {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+
+        .debugpress_r.debugpress_r_root {
+            margin: 0;
+        }
+    }
+
+    #debugpress-debugger-tab-hooks,
+    #debugpress-debugger-tab-queries {
+        .debugpress-debugger-table {
+            &.debugpress-table-keyvalue {
+                tr {
+                    td {
+                        &:first-child {
+                            width: 70%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #debugpress-debugger-tab-hooks {
+        #dbg-hooks-list {
+            > thead {
+                th,
+                td {
+                    padding: 3px 8px !important;
+                }
+            }
+
+            > tbody {
+                > tr {
+                    > th {
+                        padding: 3px 8px !important;
+                        vertical-align: top;
+                        width: 20%;
+                    }
+
+                    > td {
+                        padding: 0 !important;
+
+                        &.dbg-hook-no-callbacks {
+                            padding: 4px 6px 4px 82px !important;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+
+            .dbg-hooks-actions {
+                width: 100%;
+                table-layout: auto;
+                margin: 0;
+                border: 0;
+                background: #FFF;
+                border-collapse: collapse;
+                font-size: calc(var(--debugpress-base-font-size) - 1px);
+
+                tr {
+                    td {
+                        padding: 3px 5px !important;
+
+                        &:first-child {
+                            width: 80px;
+                            text-align: right;
+                        }
+
+                        &:last-child {
+                            width: 30%;
+                        }
+
+                        &.dbg-hook-column-action {
+                            em {
+                                font-family: monospace;
+                                font-weight: 700;
+                                font-style: normal;
+                            }
+
+                            div {
+                                display: none;
+                            }
+
+                            .dbg-hook-action-callback-call {
+                                display: block;
+
+                                strong {
+                                    font-weight: 400;
+                                    font-family: monospace;
+                                }
+                            }
+
+                            &.dbg-calls-show {
+                                div {
+                                    display: block;
+                                }
+                            }
+
+                            button {
+                                float: right;
+                                font-weight: 700;
+                                font-size: calc(var(--debugpress-base-font-size) - 1px);
+                                color: #FFF !important;
+                                background: #0073AA;
+                                padding: 0 6px 3px;
+                                margin: 0 0 0 10px;
+                                border: 0;
+                                border-radius: 3px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        td {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .query-sql-run-full,
+    #debugpress-debuglog-content {
+        background-color: #F4F4F4;
+        color: #000;
+        font-family: monospace;
+        font-size: var(--debugpress-sql-font-size);
+        margin: 5px 0 0;
+        padding: 5px;
+    }
+
+    .query-sql-run-full {
+        font-weight: 700;
+
+        pre {
+            color: #000;
+            background-color: #FFF;
+        }
+    }
+
+    #debugpress-debuglog-content {
+        font-weight: 400;
+
+        > div {
+            overflow: auto;
+            color: #000;
+            background-color: #FFF;
+
+            pre {
+                background: none;
+                overflow: visible;
+            }
+        }
+    }
+
+    .sql-query-list {
+        .sql-query {
+            border: 1px solid #777;
+            margin: 5px 0;
+            padding: 5px;
+
+            .sql-query-full {
+                background-color: #F4F4F4;
+                color: #000;
+                font-family: monospace;
+                font-weight: 700;
+                font-size: var(--debugpress-sql-font-size);
+                margin: 5px 0 0;
+                padding: 5px;
+
+                pre {
+                    color: #000;
+                    background-color: #FFF;
+                }
+            }
+        }
+    }
+
+    .debugpress-wrapper-warning {
+        border: 1px solid #23282D;
+        padding: 10px;
+        margin: 0 0 10px;
+
+        h4 {
+            color: #900;
+            font-size: calc(var(--debugpress-base-font-size) + 3px);
+            margin: 0 0 5px;
+        }
+    }
+
+    .debugpress-debug-environment {
+        margin: 0 0 10px;
+        padding: 10px;
+        background-color: #F3FFE7;
+
+        .debugpress-debugger-panel-block-title {
+            background-color: #12AE00;
+            text-align: center;
+            font-size: 110%;
+        }
+
+        &.debugpress-debug-env-development {
+            background-color: #FFE7F2;
+
+            .debugpress-debugger-panel-block-title {
+                background-color: #AE0060;
+            }
+        }
+
+        &.debugpress-debug-env-local {
+            background-color: #F7E7FF;
+
+            .debugpress-debugger-panel-block-title {
+                background-color: #8800AE;
+            }
+        }
+
+        &.debugpress-debug-env-staging {
+            background-color: #E7EEFF;
+
+            .debugpress-debugger-panel-block-title {
+                background-color: #0026AE;
+            }
+        }
+    }
+
+    .debugpress-debugger-footer-left {
+        .debugpress-debugger-environment {
+            color: #12AE00;
+
+            &.debugpress-env-development {
+                color: #AE0060;
+            }
+
+            &.debugpress-env-local {
+                color: #8800AE;
+            }
+
+            &.debugpress-env-staging {
+                color: #0026AE;
+            }
+        }
+    }
+
+    .debugpress-debug-notice-block {
+        margin: 10px 0;
+        padding: 10px 10px 1px;
+        border-left: 4px solid #F00;
+        background-color: #FFE7E7;
+
+        .debugpress-debugger-panel-block-title {
+            background-color: #F00;
+        }
+    }
+
+    .debugpress-tab-content {
+        &.debugpress-queries-sidebar-closed {
+            .one-quarter {
+                width: 44px;
+
+                h5, div {
+                    display: none !important;
+                }
+            }
+
+            .three-quarters {
+                width: calc(100% - 44px);
+            }
+        }
+    }
+
+    .debugpress-button-action {
+        background: #27B;
+        color: #FFF;
+        display: inline-block;
+        cursor: pointer;
+        border: 0;
+        text-align: center;
+        width: max-content;
+        border-radius: 0;
+        margin: 5px 5px 0 0;
+        padding: 8px 14px;
+        font-size: calc(var(--debugpress-base-font-size) + 3px);
+    }
+}

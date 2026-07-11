@@ -1,39 +1,30 @@
-import wordpress from '@wordpress/eslint-plugin';
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
     {
-        ignores: [
-            'node_modules/**',
-            'vendor/**',
-            'dist/**',
-            'build/**',
-            '**/*.min.js',
-        ],
+        ignores: ['dist', 'node_modules', 'pack', 'source', 'eslint.config.js'],
     },
     {
-        files: [ 'js/**/*.js' ],
+        files: ['**/*.ts'],
         languageOptions: {
-            ecmaVersion: 'latest',
-            sourceType: 'script',
-            globals: {
-                $: 'readonly',
-                jQuery: 'readonly',
-                wp: 'readonly',
-                ajaxurl: 'readonly',
-                ClipboardJS: 'readonly',
-                google: 'readonly',
-                monthSelectPlugin: 'readonly',
-                window: 'readonly',
-                document: 'readonly',
-                confirm: 'readonly',
+            parserOptions: {
+                project: true,
+                tsconfigRootDir: import.meta.dirname,
             },
         },
-        plugins: {
-            '@wordpress': wordpress,
-        },
         rules: {
-            'no-unused-vars': [ 'error', { argsIgnorePattern: '^_' } ],
-            'no-undef': 'error',
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                    caughtErrorsIgnorePattern: '^_',
+                },
+            ],
         },
-    },
-];
+    }
+);
